@@ -1,0 +1,39 @@
+RELATÓRIO DE DURAÇÃO — VIDA DE ATLETA EP01
+======================================================================
+Medido com ffprobe/numpy nos arquivos finais. As marcas de tempo vêm da
+transcrição palavra a palavra (ElevenLabs Scribe) de narracao_completa.wav.
+
+RESULTADO: 91,2 s de narração contra a meta de 60 s (+31 s, +52%).
+O roteiro original NÃO cabe em 60 s com interpretação natural.
+Para caber, a voz precisaria ficar ~1,5x mais rápida, o que violaria a
+prioridade nº 1 do briefing (naturalidade).
+
+Cena | Take | Duração | Meta | Diferença | Início–fim em narracao_completa.wav
+-----+------+---------+------+-----------+-------------------------------------
+  1  |  A   |  8,43 s | 5 s  |  +3,4 s   |  0,00 –  8,43
+  2  |  A   | 14,20 s | 7 s  |  +7,2 s   |  8,73 – 22,93
+  3  |  A   | 12,87 s | 9 s  |  +3,9 s   | 23,23 – 36,10
+  4  |  B   | 10,60 s | 8 s  |  +2,6 s   | 36,40 – 47,00
+  5  |  B   | 14,37 s | 10 s |  +4,4 s   | 47,30 – 61,67
+  6  |  A   | 12,46 s | 10 s |  +2,5 s   | 61,97 – 74,43
+  7  |  A   | 16,48 s | 11 s |  +5,5 s   | 74,73 – 91,21
+-----+------+---------+------+-----------+
+Soma das cenas: 89,41 s + 6 intervalos de 0,30 s = 91,21 s
+
+MOMENTOS-CHAVE PARA CORTE DE IMAGEM (tempo em narracao_completa.wav)
+  7,58 s  "o boleto" (revelação do vilão — pausa de ~0,8 s antes)
+ 16,50 s  "energético"
+ 20,90 s  "Esse ficou pra próxima temporada" (pausa de ~0,7 s antes)
+ 29,92 s  "luz" / 30,90 s "água" / 31,60 s "internet"
+ 34,28 s  "Nenhum aceita um mata-leão"
+ 41,68 s  "Resultado:" → 43,10 s "saldo negativo" (pausa de ~0,8 s)
+ 46,44 s  "fetal"
+ 59,98 s  "lutar contra um pão francês"
+ 71,38 s  "e o banco" → 72,46 s "não aceita cinturão"
+ 76,88 s  "A"  / 81,22 s "B"
+ 88,14 s  "mata-leão nos boletos"
+ 89,74 s  "Comenta A ou B"
+
+Ritmo medido: ~200 palavras em 91 s ≈ 2,2 palavras/s (com pausas).
+Para 60 s, o alvo é ~125–130 palavras. A versão enxuta proposta está em
+roteiro_final.txt (ainda não gravada).

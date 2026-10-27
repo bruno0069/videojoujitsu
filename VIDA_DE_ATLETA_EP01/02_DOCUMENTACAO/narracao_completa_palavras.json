@@ -1,0 +1,1202 @@
+[
+{
+"text": "Esse",
+"type": "word",
+"start": 0.08,
+"end": 0.3
+},
+{
+"text": "é",
+"type": "word",
+"start": 0.32,
+"end": 0.34
+},
+{
+"text": "o",
+"type": "word",
+"start": 0.38,
+"end": 0.48
+},
+{
+"text": "Caio.",
+"type": "word",
+"start": 0.52,
+"end": 0.88
+},
+{
+"text": "No",
+"type": "word",
+"start": 1.14,
+"end": 1.24
+},
+{
+"text": "jiu-jitsu,",
+"type": "word",
+"start": 1.26,
+"end": 1.8
+},
+{
+"text": "ele",
+"type": "word",
+"start": 1.98,
+"end": 2.1
+},
+{
+"text": "finaliza",
+"type": "word",
+"start": 2.22,
+"end": 2.74
+},
+{
+"text": "gigantes,",
+"type": "word",
+"start": 2.8,
+"end": 3.6
+},
+{
+"text": "mas",
+"type": "word",
+"start": 3.94,
+"end": 4.12
+},
+{
+"text": "tem",
+"type": "word",
+"start": 4.18,
+"end": 4.26
+},
+{
+"text": "um",
+"type": "word",
+"start": 4.28,
+"end": 4.34
+},
+{
+"text": "adversário",
+"type": "word",
+"start": 4.38,
+"end": 5.04
+},
+{
+"text": "que",
+"type": "word",
+"start": 5.14,
+"end": 5.24
+},
+{
+"text": "nunca",
+"type": "word",
+"start": 5.42,
+"end": 5.8
+},
+{
+"text": "conseguiu",
+"type": "word",
+"start": 5.84,
+"end": 6.26
+},
+{
+"text": "vencer:",
+"type": "word",
+"start": 6.3,
+"end": 6.74
+},
+{
+"text": "o",
+"type": "word",
+"start": 7.58,
+"end": 7.68
+},
+{
+"text": "boleto.",
+"type": "word",
+"start": 7.72,
+"end": 8.36
+},
+{
+"text": "Recém-formado,",
+"type": "word",
+"start": 8.78,
+"end": 9.8
+},
+{
+"text": "o",
+"type": "word",
+"start": 10.08,
+"end": 10.14
+},
+{
+"text": "garoto",
+"type": "word",
+"start": 10.18,
+"end": 10.52
+},
+{
+"text": "já",
+"type": "word",
+"start": 10.56,
+"end": 10.7
+},
+{
+"text": "se",
+"type": "word",
+"start": 10.72,
+"end": 10.78
+},
+{
+"text": "imaginava",
+"type": "word",
+"start": 10.8,
+"end": 11.34
+},
+{
+"text": "campeão,",
+"type": "word",
+"start": 11.48,
+"end": 12.1
+},
+{
+"text": "famoso",
+"type": "word",
+"start": 12.28,
+"end": 12.84
+},
+{
+"text": "e",
+"type": "word",
+"start": 12.86,
+"end": 12.98
+},
+{
+"text": "cheio",
+"type": "word",
+"start": 13.12,
+"end": 13.44
+},
+{
+"text": "de",
+"type": "word",
+"start": 13.48,
+"end": 13.58
+},
+{
+"text": "patrocinadores.",
+"type": "word",
+"start": 13.6,
+"end": 14.52
+},
+{
+"text": "Na",
+"type": "word",
+"start": 14.92,
+"end": 15.02
+},
+{
+"text": "cabeça",
+"type": "word",
+"start": 15.06,
+"end": 15.5
+},
+{
+"text": "dele,",
+"type": "word",
+"start": 15.56,
+"end": 15.82
+},
+{
+"text": "até",
+"type": "word",
+"start": 16.02,
+"end": 16.379
+},
+{
+"text": "o",
+"type": "word",
+"start": 16.4,
+"end": 16.46
+},
+{
+"text": "energético",
+"type": "word",
+"start": 16.5,
+"end": 17.22
+},
+{
+"text": "seria",
+"type": "word",
+"start": 17.32,
+"end": 17.56
+},
+{
+"text": "patrocinador.",
+"type": "word",
+"start": 17.6,
+"end": 18.34
+},
+{
+"text": "O",
+"type": "word",
+"start": 18.82,
+"end": 19.04
+},
+{
+"text": "planejamento",
+"type": "word",
+"start": 19.06,
+"end": 19.64
+},
+{
+"text": "financeiro?",
+"type": "word",
+"start": 19.68,
+"end": 20.2
+},
+{
+"text": "Esse",
+"type": "word",
+"start": 20.9,
+"end": 21.18
+},
+{
+"text": "ficou",
+"type": "word",
+"start": 21.24,
+"end": 21.54
+},
+{
+"text": "pra",
+"type": "word",
+"start": 21.56,
+"end": 21.76
+},
+{
+"text": "próxima",
+"type": "word",
+"start": 21.78,
+"end": 22.14
+},
+{
+"text": "temporada.",
+"type": "word",
+"start": 22.2,
+"end": 22.76
+},
+{
+"text": "Só",
+"type": "word",
+"start": 23.36,
+"end": 23.48
+},
+{
+"text": "que",
+"type": "word",
+"start": 23.5,
+"end": 23.6
+},
+{
+"text": "dona",
+"type": "word",
+"start": 23.62,
+"end": 23.84
+},
+{
+"text": "Marlene",
+"type": "word",
+"start": 23.88,
+"end": 24.32
+},
+{
+"text": "trabalha",
+"type": "word",
+"start": 24.36,
+"end": 24.7
+},
+{
+"text": "o",
+"type": "word",
+"start": 24.72,
+"end": 24.74
+},
+{
+"text": "dia",
+"type": "word",
+"start": 24.9,
+"end": 25.0
+},
+{
+"text": "inteiro",
+"type": "word",
+"start": 25.04,
+"end": 25.66
+},
+{
+"text": "pra",
+"type": "word",
+"start": 25.68,
+"end": 25.78
+},
+{
+"text": "sustentar",
+"type": "word",
+"start": 25.82,
+"end": 26.24
+},
+{
+"text": "a",
+"type": "word",
+"start": 26.24,
+"end": 26.26
+},
+{
+"text": "casa",
+"type": "word",
+"start": 26.38,
+"end": 26.72
+},
+{
+"text": "e",
+"type": "word",
+"start": 27.1,
+"end": 27.14
+},
+{
+"text": "agora",
+"type": "word",
+"start": 27.22,
+"end": 27.56
+},
+{
+"text": "precisa",
+"type": "word",
+"start": 27.66,
+"end": 28.04
+},
+{
+"text": "de",
+"type": "word",
+"start": 28.06,
+"end": 28.12
+},
+{
+"text": "ajuda.",
+"type": "word",
+"start": 28.16,
+"end": 28.56
+},
+{
+"text": "Na",
+"type": "word",
+"start": 29.02,
+"end": 29.08
+},
+{
+"text": "mesa:",
+"type": "word",
+"start": 29.18,
+"end": 29.54
+},
+{
+"text": "luz,",
+"type": "word",
+"start": 29.92,
+"end": 30.34
+},
+{
+"text": "água",
+"type": "word",
+"start": 30.9,
+"end": 31.16
+},
+{
+"text": "e",
+"type": "word",
+"start": 31.5,
+"end": 31.56
+},
+{
+"text": "internet.",
+"type": "word",
+"start": 31.6,
+"end": 32.32
+},
+{
+"text": "Três",
+"type": "word",
+"start": 32.7,
+"end": 32.96
+},
+{
+"text": "adversários.",
+"type": "word",
+"start": 33.0,
+"end": 33.82
+},
+{
+"text": "Nenhum",
+"type": "word",
+"start": 34.28,
+"end": 34.76
+},
+{
+"text": "aceita",
+"type": "word",
+"start": 34.84,
+"end": 35.22
+},
+{
+"text": "um",
+"type": "word",
+"start": 35.26,
+"end": 35.32
+},
+{
+"text": "mata-leão.",
+"type": "word",
+"start": 35.36,
+"end": 35.96
+},
+{
+"text": "Caio",
+"type": "word",
+"start": 36.48,
+"end": 36.8
+},
+{
+"text": "fez",
+"type": "word",
+"start": 36.86,
+"end": 37.02
+},
+{
+"text": "as",
+"type": "word",
+"start": 37.06,
+"end": 37.22
+},
+{
+"text": "contas.",
+"type": "word",
+"start": 37.26,
+"end": 37.72
+},
+{
+"text": "Fez",
+"type": "word",
+"start": 38.52,
+"end": 38.66
+},
+{
+"text": "de",
+"type": "word",
+"start": 38.7,
+"end": 38.8
+},
+{
+"text": "novo.",
+"type": "word",
+"start": 38.84,
+"end": 39.16
+},
+{
+"text": "Conferiu",
+"type": "word",
+"start": 39.78,
+"end": 40.2
+},
+{
+"text": "na",
+"type": "word",
+"start": 40.22,
+"end": 40.32
+},
+{
+"text": "calculadora.",
+"type": "word",
+"start": 40.34,
+"end": 40.96
+},
+{
+"text": "Resultado:",
+"type": "word",
+"start": 41.68,
+"end": 42.32
+},
+{
+"text": "saldo",
+"type": "word",
+"start": 43.1,
+"end": 43.38
+},
+{
+"text": "negativo",
+"type": "word",
+"start": 43.42,
+"end": 44.24
+},
+{
+"text": "e",
+"type": "word",
+"start": 44.64,
+"end": 44.68
+},
+{
+"text": "vontade",
+"type": "word",
+"start": 44.76,
+"end": 45.22
+},
+{
+"text": "de",
+"type": "word",
+"start": 45.26,
+"end": 45.38
+},
+{
+"text": "chorar",
+"type": "word",
+"start": 45.42,
+"end": 45.8
+},
+{
+"text": "em",
+"type": "word",
+"start": 45.82,
+"end": 45.94
+},
+{
+"text": "posição",
+"type": "word",
+"start": 45.96,
+"end": 46.4
+},
+{
+"text": "fetal.",
+"type": "word",
+"start": 46.44,
+"end": 46.86
+},
+{
+"text": "Aí",
+"type": "word",
+"start": 47.4,
+"end": 47.54
+},
+{
+"text": "aparecem",
+"type": "word",
+"start": 47.58,
+"end": 48.08
+},
+{
+"text": "duas",
+"type": "word",
+"start": 48.22,
+"end": 48.48
+},
+{
+"text": "oportunidades.",
+"type": "word",
+"start": 48.52,
+"end": 49.4
+},
+{
+"text": "O",
+"type": "word",
+"start": 49.72,
+"end": 49.76
+},
+{
+"text": "mestre",
+"type": "word",
+"start": 49.86,
+"end": 50.12
+},
+{
+"text": "oferece",
+"type": "word",
+"start": 50.14,
+"end": 50.52
+},
+{
+"text": "uma",
+"type": "word",
+"start": 50.56,
+"end": 50.78
+},
+{
+"text": "vaga",
+"type": "word",
+"start": 50.82,
+"end": 51.06
+},
+{
+"text": "no",
+"type": "word",
+"start": 51.08,
+"end": 51.16
+},
+{
+"text": "campeonato.",
+"type": "word",
+"start": 51.18,
+"end": 51.74
+},
+{
+"text": "O",
+"type": "word",
+"start": 52.06,
+"end": 52.14
+},
+{
+"text": "padeiro",
+"type": "word",
+"start": 52.16,
+"end": 52.54
+},
+{
+"text": "oferece",
+"type": "word",
+"start": 52.58,
+"end": 52.96
+},
+{
+"text": "um",
+"type": "word",
+"start": 52.98,
+"end": 53.02
+},
+{
+"text": "emprego.",
+"type": "word",
+"start": 53.06,
+"end": 53.46
+},
+{
+"text": "Um",
+"type": "word",
+"start": 53.82,
+"end": 53.94
+},
+{
+"text": "promete",
+"type": "word",
+"start": 53.98,
+"end": 54.28
+},
+{
+"text": "um",
+"type": "word",
+"start": 54.3,
+"end": 54.4
+},
+{
+"text": "cinturão,",
+"type": "word",
+"start": 54.44,
+"end": 54.84
+},
+{
+"text": "o",
+"type": "word",
+"start": 55.12,
+"end": 55.18
+},
+{
+"text": "outro",
+"type": "word",
+"start": 55.24,
+"end": 55.46
+},
+{
+"text": "promete",
+"type": "word",
+"start": 55.48,
+"end": 55.8
+},
+{
+"text": "salário.",
+"type": "word",
+"start": 55.84,
+"end": 56.26
+},
+{
+"text": "Pela",
+"type": "word",
+"start": 56.64,
+"end": 56.84
+},
+{
+"text": "primeira",
+"type": "word",
+"start": 56.88,
+"end": 57.22
+},
+{
+"text": "vez,",
+"type": "word",
+"start": 57.34,
+"end": 57.68
+},
+{
+"text": "Caio",
+"type": "word",
+"start": 58.0,
+"end": 58.24
+},
+{
+"text": "considera",
+"type": "word",
+"start": 58.26,
+"end": 58.72
+},
+{
+"text": "seriamente",
+"type": "word",
+"start": 58.94,
+"end": 59.6
+},
+{
+"text": "lutar",
+"type": "word",
+"start": 59.98,
+"end": 60.28
+},
+{
+"text": "contra",
+"type": "word",
+"start": 60.36,
+"end": 60.56
+},
+{
+"text": "um",
+"type": "word",
+"start": 60.6,
+"end": 60.72
+},
+{
+"text": "pão",
+"type": "word",
+"start": 60.76,
+"end": 60.92
+},
+{
+"text": "francês.",
+"type": "word",
+"start": 60.96,
+"end": 61.54
+},
+{
+"text": "Mas",
+"type": "word",
+"start": 62.08,
+"end": 62.32
+},
+{
+"text": "tem",
+"type": "word",
+"start": 62.36,
+"end": 62.5
+},
+{
+"text": "um",
+"type": "word",
+"start": 62.52,
+"end": 62.56
+},
+{
+"text": "detalhe:",
+"type": "word",
+"start": 62.6,
+"end": 63.14
+},
+{
+"text": "a",
+"type": "word",
+"start": 63.9,
+"end": 63.94
+},
+{
+"text": "inscrição",
+"type": "word",
+"start": 63.98,
+"end": 64.68
+},
+{
+"text": "custa",
+"type": "word",
+"start": 64.84,
+"end": 65.26
+},
+{
+"text": "quase",
+"type": "word",
+"start": 65.319,
+"end": 65.68
+},
+{
+"text": "o",
+"type": "word",
+"start": 65.7,
+"end": 65.78
+},
+{
+"text": "valor",
+"type": "word",
+"start": 65.82,
+"end": 66.16
+},
+{
+"text": "das",
+"type": "word",
+"start": 66.22,
+"end": 66.38
+},
+{
+"text": "contas",
+"type": "word",
+"start": 66.48,
+"end": 66.8
+},
+{
+"text": "da",
+"type": "word",
+"start": 66.82,
+"end": 66.9
+},
+{
+"text": "mãe.",
+"type": "word",
+"start": 67.0,
+"end": 67.2
+},
+{
+"text": "O",
+"type": "word",
+"start": 67.9,
+"end": 67.92
+},
+{
+"text": "sonho",
+"type": "word",
+"start": 68.08,
+"end": 68.3
+},
+{
+"text": "cobra",
+"type": "word",
+"start": 68.44,
+"end": 68.62
+},
+{
+"text": "entrada,",
+"type": "word",
+"start": 68.66,
+"end": 69.18
+},
+{
+"text": "a",
+"type": "word",
+"start": 69.5,
+"end": 69.52
+},
+{
+"text": "padaria",
+"type": "word",
+"start": 69.58,
+"end": 70.04
+},
+{
+"text": "paga",
+"type": "word",
+"start": 70.06,
+"end": 70.3
+},
+{
+"text": "salário",
+"type": "word",
+"start": 70.34,
+"end": 70.86
+},
+{
+"text": "e",
+"type": "word",
+"start": 71.38,
+"end": 71.42
+},
+{
+"text": "o",
+"type": "word",
+"start": 71.46,
+"end": 71.58
+},
+{
+"text": "banco",
+"type": "word",
+"start": 71.6,
+"end": 71.96
+},
+{
+"text": "não",
+"type": "word",
+"start": 72.46,
+"end": 72.56
+},
+{
+"text": "aceita",
+"type": "word",
+"start": 72.62,
+"end": 73.02
+},
+{
+"text": "cinturão",
+"type": "word",
+"start": 73.06,
+"end": 73.5
+},
+{
+"text": "como",
+"type": "word",
+"start": 73.54,
+"end": 73.72
+},
+{
+"text": "pagamento.",
+"type": "word",
+"start": 73.76,
+"end": 74.32
+},
+{
+"text": "Agora",
+"type": "word",
+"start": 74.82,
+"end": 75.24
+},
+{
+"text": "é",
+"type": "word",
+"start": 75.26,
+"end": 75.36
+},
+{
+"text": "com",
+"type": "word",
+"start": 75.38,
+"end": 75.52
+},
+{
+"text": "você.",
+"type": "word",
+"start": 75.56,
+"end": 76.06
+},
+{
+"text": "A,",
+"type": "word",
+"start": 76.88,
+"end": 76.94
+},
+{
+"text": "Caio",
+"type": "word",
+"start": 77.54,
+"end": 77.78
+},
+{
+"text": "aposta",
+"type": "word",
+"start": 77.84,
+"end": 78.32
+},
+{
+"text": "no",
+"type": "word",
+"start": 78.34,
+"end": 78.42
+},
+{
+"text": "campeonato",
+"type": "word",
+"start": 78.46,
+"end": 79.14
+},
+{
+"text": "e",
+"type": "word",
+"start": 79.18,
+"end": 79.22
+},
+{
+"text": "corre",
+"type": "word",
+"start": 79.44,
+"end": 79.66
+},
+{
+"text": "atrás",
+"type": "word",
+"start": 79.7,
+"end": 79.98
+},
+{
+"text": "do",
+"type": "word",
+"start": 80.02,
+"end": 80.08
+},
+{
+"text": "sonho.",
+"type": "word",
+"start": 80.22,
+"end": 80.58
+},
+{
+"text": "B,",
+"type": "word",
+"start": 81.22,
+"end": 81.24
+},
+{
+"text": "aceita",
+"type": "word",
+"start": 81.86,
+"end": 82.26
+},
+{
+"text": "o",
+"type": "word",
+"start": 82.28,
+"end": 82.3
+},
+{
+"text": "emprego",
+"type": "word",
+"start": 82.34,
+"end": 82.94
+},
+{
+"text": "e",
+"type": "word",
+"start": 82.96,
+"end": 83.02
+},
+{
+"text": "ajuda",
+"type": "word",
+"start": 83.1,
+"end": 83.36
+},
+{
+"text": "a",
+"type": "word",
+"start": 83.4,
+"end": 83.42
+},
+{
+"text": "mãe.",
+"type": "word",
+"start": 83.5,
+"end": 83.7
+},
+{
+"text": "E",
+"type": "word",
+"start": 84.32,
+"end": 84.38
+},
+{
+"text": "aí,",
+"type": "word",
+"start": 84.46,
+"end": 84.66
+},
+{
+"text": "campeão,",
+"type": "word",
+"start": 84.78,
+"end": 85.34
+},
+{
+"text": "você",
+"type": "word",
+"start": 85.82,
+"end": 86.04
+},
+{
+"text": "lutaria",
+"type": "word",
+"start": 86.08,
+"end": 86.44
+},
+{
+"text": "pelo",
+"type": "word",
+"start": 86.5,
+"end": 86.66
+},
+{
+"text": "sonho",
+"type": "word",
+"start": 86.84,
+"end": 87.32
+},
+{
+"text": "ou",
+"type": "word",
+"start": 87.4,
+"end": 87.54
+},
+{
+"text": "daria",
+"type": "word",
+"start": 87.62,
+"end": 87.86
+},
+{
+"text": "um",
+"type": "word",
+"start": 87.94,
+"end": 88.08
+},
+{
+"text": "mata-leão",
+"type": "word",
+"start": 88.14,
+"end": 88.7
+},
+{
+"text": "nos",
+"type": "word",
+"start": 88.74,
+"end": 88.84
+},
+{
+"text": "boletos?",
+"type": "word",
+"start": 88.92,
+"end": 89.48
+},
+{
+"text": "Comenta",
+"type": "word",
+"start": 89.74,
+"end": 90.18
+},
+{
+"text": "A",
+"type": "word",
+"start": 90.4,
+"end": 90.62
+},
+{
+"text": "ou",
+"type": "word",
+"start": 90.68,
+"end": 90.74
+},
+{
+"text": "B",
+"type": "word",
+"start": 90.84,
+"end": 91.06
+}
+]

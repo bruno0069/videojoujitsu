@@ -1,0 +1,76 @@
+CONFIGURAÇÕES DE VOZ — VIDA DE ATLETA EP01
+======================================================================
+
+VOZ SELECIONADA (identidade do narrador da série)
+  Nome:      Antonio de Jesus
+  voice_id:  MK5tXPmT83J5SUlpUo4K
+  Origem:    Voice Library do ElevenLabs (categoria professional)
+  Rótulos:   masculino, meia-idade, pt-BR
+  Descrição publicada: "Voz masculina adulta, português do Brasil. Fala
+  como quem conversa com a câmera: objetiva, irônica, sem exagero."
+
+MODELO
+  eleven_v4 (ElevenLabs v4, text-to-speech)
+  Escolhido por aceitar tags de direção ([sarcastic], [pause] etc.), que
+  dão a interpretação cena a cena sem que o narrador as pronuncie.
+
+PARÂMETROS EFETIVAMENTE APLICADOS
+  stability:  padrão do modelo (0.5) — não alterado
+  similarity: padrão do modelo — não alterado
+  language_code: não definido (o idioma foi detectado pelo texto: a
+                 transcrição saiu como "por", com probabilidade de 0,98)
+  Takes por cena: 2
+
+  Por que NÃO usei os valores sugeridos no briefing
+  (Stability 40%, Similarity 75%, Style 20%, Speed 1.05x):
+  - O esquema do eleven_v4 exposto na integração só tem "stability" e
+    "similarity". Não existe "style exaggeration" nem "speed" neste
+    modelo. Verificado via get_model_schema.
+  - Pela orientação do próprio modelo, ritmo e emoção no v4 se controlam
+    por tags ([slowly], [pause], [excited]), não por speed/style.
+  - A ferramenta usada (creative_generate_speech) não recebe
+    voice_settings na criação. Para mudar stability/similarity, é preciso
+    editar o nó no Flow.
+  Para aproximar o briefing na próxima rodada: stability 0.40 e
+  similarity 0.75, aplicados no nó TTS do Flow (Settings).
+
+FORMATO DE SAÍDA
+  O ElevenLabs entregou MP3 mono a 44,1 kHz e 128 kbps. Não havia WAV
+  nativo disponível por esta integração.
+  Os .wav em 01_NARRACAO/ são conversões desses MP3 para PCM 24-bit,
+  44,1 kHz, mono. São práticos para edição, mas NÃO têm mais qualidade
+  que o MP3 de origem. Para WAV nativo, gere pelo site ou pela API com
+  output_format "wav_44100" / "pcm_44100" (depende do plano).
+
+PÓS-PROCESSAMENTO APLICADO (local, ffmpeg + numpy)
+  1. Corte de silêncio no início e no fim de cada take, mantendo 0,12 s
+     de respiro (limiar -45 dBFS). Pausas internas intactas.
+  2. O mesmo ganho de +1,41 dB em todas as cenas, para que as cenas e a
+     narração completa tenham nível idêntico.
+  3. A narração completa usa 0,30 s de silêncio entre cenas.
+  Resultado: -19,9 LUFS integrado, com pico em -1,0 dBTP. Não foram
+  usados compressor, limitador, EQ, música nem efeitos.
+  Para publicar, masterize o mix final (voz + trilha) em -14 LUFS.
+
+TAKES ESCOLHIDOS
+  Cena 1 A | Cena 2 A | Cena 3 A | Cena 4 B | Cena 5 B | Cena 6 A | Cena 7 A
+  Critério: sem clipping em nenhum take (picos entre -1,7 e -4,5 dBFS) e,
+  quando havia diferença, o take mais curto. NÃO houve escuta humana:
+  os takes alternativos estão em 01_NARRACAO/takes_originais_mp3/
+  para comparar de ouvido.
+
+VOZES TESTADAS NA CENA 1 (descartadas)
+  Cirilo (1DXriIY2zhyCt1cj8onn) — adulto, médio-grave, natural. É a
+     melhor alternativa se o Antonio não convencer de ouvido.
+  Marcio - Viral Hook Narrator (plASsyS7JE6GCAvx9uIc) — energético,
+     voltado a redes sociais. Risco de soar "locutor de anúncio".
+  As três ficaram entre 8,6 e 8,9 s na Cena 1. Duração não as diferencia.
+
+FLOW NO ELEVENLABS (todos os takes e testes)
+  https://elevenlabs.io/app/flows/2bDZcCeDIwDBwqXNlorv
+
+CUSTO DESTA RODADA (créditos ElevenLabs, valores informados pela API)
+  Testes de voz:    6 × 234,8  ≈ 1.409
+  Cenas 2–7 (×2):   ≈ 4.221
+  Transcrição QC:   ≈ 718
+  Total aproximado: ≈ 6.350 créditos

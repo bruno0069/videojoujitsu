@@ -1,0 +1,106 @@
+VIDA DE ATLETA... OU NÃO — EPISÓDIO 1: O MATA-LEÃO E A CONTA DE LUZ
+ROTEIRO FINAL DE NARRAÇÃO (versão gravada em 27/10/2026)
+======================================================================
+
+O texto falado é o roteiro original, sem cortes nem troca de palavras.
+O que foi acrescentado: tags de direção em inglês entre [colchetes], que o
+eleven_v4 interpreta e não pronuncia, além de reticências (…) para criar
+pausas e CAIXA ALTA para dar ênfase.
+A transcrição de controle confirmou que nenhuma tag foi falada.
+
+Diferença detectada na transcrição: na Cena 2, o roteiro diz
+"para a próxima temporada", mas a transcrição registrou "pra próxima
+temporada". Ou a voz contraiu a fala, ou o reconhecimento normalizou.
+Como só um ouvido humano tira a dúvida, vale conferir. Se incomodar, regere
+só a Cena 2.
+
+----------------------------------------------------------------------
+CENA 1 — O VERDADEIRO ADVERSÁRIO (meta 0–5 s)
+Texto: Esse é o Caio. No jiu-jítsu, ele finaliza gigantes. Mas tem um
+adversário que nunca conseguiu vencer: o boleto!
+Prompt enviado:
+[confident] Esse é o Caio. No jiu-jítsu, ele finaliza gigantes. [sarcastic] Mas tem um adversário que nunca conseguiu vencer… [short pause] [dramatically] o BOLETO!
+
+CENA 2 — O SONHO DO GAROTO (meta 5–12 s)
+Texto: Recém-formado, o garoto já se imaginava campeão, famoso e cheio de
+patrocinadores. Na cabeça dele, até o energético seria patrocinador. O
+planejamento financeiro? Esse ficou para a próxima temporada.
+Prompt enviado:
+[excited] Recém-formado, o garoto já se imaginava campeão, famoso e cheio de patrocinadores. [mischievously] Na cabeça dele, até o energético seria patrocinador. [curious] O planejamento financeiro? [pause] [sarcastic] Esse ficou para a próxima temporada.
+
+CENA 3 — A REALIDADE BATE À PORTA (meta 12–21 s)
+Texto: Só que Dona Marlene trabalha o dia inteiro pra sustentar a casa. E
+agora precisa de ajuda. Na mesa: luz, água e internet. Três adversários.
+Nenhum aceita um mata-leão.
+Prompt enviado:
+[warmly] Só que Dona Marlene trabalha o dia inteiro pra sustentar a casa. E agora precisa de ajuda. [short pause] [mischievously] Na mesa: luz… água… e internet. [pause] Três adversários. [short pause] [sarcastic] Nenhum aceita um mata-leão.
+
+CENA 4 — O CÁLCULO IMPOSSÍVEL (meta 21–29 s)
+Texto: Caio fez as contas. Fez de novo. Conferiu na calculadora. Resultado:
+saldo negativo e vontade de chorar em posição fetal.
+Prompt enviado:
+[serious] Caio fez as contas. [short pause] Fez de novo. [short pause] Conferiu na calculadora. [pause] Resultado… [pause] [disappointed] saldo negativo… [sarcastic] e vontade de chorar em posição fetal.
+
+CENA 5 — DOIS CONVITES, UM PROBLEMA (meta 29–39 s)
+Texto: Aí aparecem duas oportunidades. O mestre oferece uma vaga no
+campeonato. O padeiro oferece um emprego. Um promete um cinturão. O outro
+promete salário. Pela primeira vez, Caio considera seriamente lutar contra
+um pão francês.
+Prompt enviado:
+[excited] Aí aparecem duas oportunidades. [confident] O mestre oferece uma vaga no campeonato. [casual] O padeiro oferece um emprego. [quickly] Um promete um cinturão. O outro promete salário. [pause] [deadpan] Pela primeira vez, Caio considera seriamente… lutar contra um pão francês.
+
+CENA 6 — O GOLPE FINAL (meta 39–49 s)
+Texto: Mas tem um detalhe: a inscrição custa quase o valor das contas da
+mãe. O sonho cobra entrada, a padaria paga salário... e o banco não aceita
+cinturão como pagamento.
+Prompt enviado:
+[suspenseful] Mas tem um detalhe: [slowly] a inscrição custa quase o valor das contas da mãe. [short pause] O sonho cobra entrada, a padaria paga salário… [pause] e o banco… [sarcastic] não aceita cinturão como pagamento.
+
+CENA 7 — VOCÊ DECIDE! (meta 49–60 s)
+Texto: Agora é com você! A: Caio aposta no campeonato e corre atrás do
+sonho. B: aceita o emprego e ajuda a mãe. E aí, campeão... você lutaria
+pelo sonho ou daria um mata-leão nos boletos? Comenta A ou B!
+Prompt enviado:
+[excited] Agora é com você! [short pause] A: Caio aposta no campeonato e corre atrás do sonho. [pause] B: aceita o emprego e ajuda a mãe. [pause] [playful] E aí, campeão… [short pause] você lutaria pelo sonho ou daria um MATA-LEÃO NOS BOLETOS? [excited] Comenta A ou B!
+
+======================================================================
+PROPOSTA DE VERSÃO ENXUTA (NÃO GRAVADA — depende da sua aprovação)
+======================================================================
+Motivo: o roteiro original gravado tem 91,2 s, contra a meta de 60 s.
+A estimativa abaixo usa o ritmo medido desta voz (~2,2 palavras/s,
+já contando as pausas) e ainda é uma estimativa, não uma medição.
+Palavras: ~200 no original e ~125 na versão enxuta.
+Duração estimada: ~60–66 s, que fecha em 60 s apertando 0,1–0,2 s das
+pausas na edição.
+
+CENA 1 (~7,5 s): Esse é o Caio. No jiu-jítsu, ele finaliza gigantes. Mas
+tem um adversário que ele nunca venceu: o boleto!
+  [mudança: "nunca conseguiu vencer" → "nunca venceu"]
+
+CENA 2 (~10 s): Recém-formado, Caio já se via campeão e cheio de
+patrocinadores. Até o energético ia patrocinar. Planejamento financeiro?
+Ficou pra próxima temporada.
+  [mudança: sai "famoso"; frases encurtadas; a piada se mantém]
+
+CENA 3 (~10,5 s): Só que Dona Marlene trabalha o dia todo pra sustentar a
+casa. E agora precisa de ajuda. Na mesa: luz, água e internet. Três
+adversários. Nenhum aceita mata-leão.
+  [mudança mínima: "dia inteiro" → "dia todo"; sai o "um"]
+
+CENA 4 (~8 s): Caio fez as contas. Fez de novo. Resultado: saldo negativo
+e vontade de chorar em posição fetal.
+  [mudança: sai "Conferiu na calculadora" — fica a regra de três, com 2
+  batidas antes do "Resultado"]
+
+CENA 5 (~10,5 s): Aí surgem duas propostas. O mestre oferece o campeonato.
+O padeiro, um emprego. Um promete cinturão. O outro, salário. Pela
+primeira vez, Caio pensa seriamente em lutar contra um pão francês.
+
+CENA 6 (~7,5 s): Detalhe: a inscrição custa quase as contas da mãe. E o
+banco não aceita cinturão como pagamento.
+  [mudança: sai "o sonho cobra entrada, a padaria paga salário" — é a
+  frase mais redundante com a Cena 5]
+
+CENA 7 (~11 s): Agora é com você! A: Caio vai pro campeonato. B: aceita o
+emprego e ajuda a mãe. E aí, campeão... sonho ou mata-leão nos boletos?
+Comenta A ou B!
