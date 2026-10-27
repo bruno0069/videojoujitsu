@@ -182,3 +182,46 @@ function mix(a: string, b: string, t: number) {
 	const k = Math.min(1, Math.max(0, t));
 	return `rgb(${pa.map((v, i) => Math.round(v + (pb[i] - v) * k)).join(',')})`;
 }
+
+/** Formatura do ensino médio: palco da escola, faixa, bandeirinhas e colegas de beca. */
+export const Escola: React.FC<{t: number}> = ({t}) => (
+	<Frame bg="#F3E6C8">
+		{/* parede e cortina do palco */}
+		<rect width={W} height={1300} fill="#F3E6C8" />
+		<path d="M 0 0 L 200 0 Q 180 600 120 1300 L 0 1300 Z" fill="#B5171E" {...sw} />
+		<path d="M 1080 0 L 880 0 Q 900 600 960 1300 L 1080 1300 Z" fill="#B5171E" {...sw} />
+		<path d="M 0 0 L 1080 0 L 1080 110 Q 540 200 0 110 Z" fill="#D62828" {...sw} />
+		{/* faixa da formatura */}
+		<g transform={`translate(540 330) rotate(${Math.sin(t * 1.2) * 1.2})`}>
+			<rect x={-400} y={-90} width={800} height={180} rx={20} fill="#22305E" {...sw} />
+			<text y={-4} textAnchor="middle" fontFamily={FONT} fontSize={92} fill="#F7C21B" stroke={OUTLINE} strokeWidth={8} paintOrder="stroke">
+				FORMATURA
+			</text>
+			<text y={62} textAnchor="middle" fontFamily={FONT} fontSize={44} fill="#FFFFFF">
+				ENSINO MÉDIO
+			</text>
+		</g>
+		{/* bandeirinhas */}
+		<path d="M 180 560 Q 540 660 900 560" fill="none" stroke={OUTLINE} strokeWidth={5} />
+		{Array.from({length: 9}, (_, i) => {
+			const x = 220 + i * 80;
+			const y = 568 + Math.sin((i / 8) * Math.PI) * 48;
+			const colors = ['#F7C21B', '#2A8BD8', '#D62828', '#2BA84A'];
+			return <path key={i} d={`M ${x - 28} ${y} L ${x + 28} ${y} L ${x} ${y + 56} Z`} fill={colors[i % 4]} stroke={OUTLINE} strokeWidth={4} />;
+		})}
+		{/* palco */}
+		<rect y={1300} width={W} height={H - 1300} fill="#8B5A2B" />
+		<rect y={1300} width={W} height={24} fill="#6E4520" />
+		{Array.from({length: 8}, (_, i) => (
+			<line key={i} x1={i * 150} y1={1324} x2={i * 150 - 60} y2={H} stroke="#7A4D24" strokeWidth={5} />
+		))}
+		{/* colegas de beca ao fundo */}
+		{[90, 250, 830, 990].map((x, i) => (
+			<g key={x} transform={`translate(${x} ${1060 + Math.sin(t * 5 + i) * 6})`}>
+				<path d="M -70 260 L -60 60 Q 0 30 60 60 L 70 260 Z" fill="#2B3A6E" {...sw} strokeWidth={6} />
+				<circle cy={0} r={52} fill={['#8C5A3C', '#E2AE84', '#6B4430', '#C98F62'][i]} {...sw} strokeWidth={6} />
+				<path d="M -70 -40 L 0 -66 L 70 -40 L 0 -16 Z" fill="#1E1E1E" {...sw} strokeWidth={5} />
+			</g>
+		))}
+	</Frame>
+);

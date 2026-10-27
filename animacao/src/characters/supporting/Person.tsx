@@ -1,5 +1,9 @@
 import React from 'react';
 import {CAIO} from '../caio/geometry';
+import type {GiColors} from '../caio/palette';
+import {ArmShape} from '../caio/parts/Arm';
+import {Belt} from '../caio/parts/Belt';
+import {Torso} from '../caio/parts/Torso';
 import {Eyebrows} from '../caio/parts/Eyebrows';
 import {Eyes} from '../caio/parts/Eyes';
 import {Mouth} from '../caio/parts/Mouth';
@@ -17,8 +21,10 @@ export type PersonLook = {
 	sleeveShade: string;
 	hairBack?: React.ReactNode;
 	hairFront?: React.ReactNode;
-	/** Roupa do tronco (do pescoço para baixo, até y≈800). */
-	outfit: React.ReactNode;
+	/** Roupa do tronco (do pescoço para baixo, até y≈800). Ignorada quando `gi` é usado. */
+	outfit?: React.ReactNode;
+	/** Kimono: usa exatamente as mesmas peças do kimono do Caio, com estas cores. */
+	gi?: GiColors;
 	/** Por cima do rosto: barba, bigode, chapéu… */
 	faceExtras?: React.ReactNode;
 	/** Rosto um pouco mais largo/estreito. */
@@ -38,8 +44,9 @@ export type PersonProps = {
 	y: number;
 	scale?: number;
 	flip?: boolean;
-	/** Algo que a mão direita da tela segura (coordenadas da mão). */
+	/** Algo que a mão direita / esquerda da tela segura (coordenadas da mão). */
 	holdRight?: React.ReactNode;
+	holdLeft?: React.ReactNode;
 };
 
 const VB = CAIO.viewBox;
@@ -49,10 +56,10 @@ const ANCHOR_Y = (CAIO.groundY - VB.y) / VB.height;
 const Arm: React.FC<{angles: ArmAngles; look: PersonLook; hold?: React.ReactNode}> = ({angles, look, hold}) => (
 	<g transform={`translate(138 334) rotate(${angles.shoulder})`}>
 		<g transform={`translate(0 100) rotate(${angles.elbow})`}>
+			{hold ? <g transform="translate(0 88)">{hold}</g> : null}
 			<path d="M -22 -8 L 22 -8 L 20 58 L -20 58 Z" fill={look.sleeve} {...outlined} />
 			<rect x={-11} y={54} width={22} height={22} fill={look.skin} {...outlined} />
 			<circle cx={0} cy={88} r={19} fill={look.skin} {...outlined} />
-			{hold ? <g transform="translate(0 88)">{hold}</g> : null}
 		</g>
 		<path d="M -25 0 A 25 25 0 0 1 25 0 L 23 100 A 23 23 0 0 1 -23 100 Z" fill={look.sleeve} {...outlined} />
 		<path d="M 10 10 L 12 90" stroke={look.sleeveShade} strokeWidth={5} strokeLinecap="round" />
@@ -74,7 +81,18 @@ export const Person: React.FC<PersonProps & {look: PersonLook}> = ({
 	scale = 1,
 	flip = false,
 	holdRight,
+	holdLeft,
 }) => {
+	const gi = look.gi;
+	const giOutfit = gi ? (
+		<g>
+			{/* calça do kimono (plano médio: só o começo das pernas) */}
+			<path d="M 144 500 L 202 500 L 198 800 L 148 800 Z" fill={gi.gi} {...outlined} />
+			<path d="M 256 500 L 198 500 L 202 800 L 252 800 Z" fill={gi.gi} {...outlined} />
+			<Torso c={gi} />
+			<Belt c={gi} />
+		</g>
+	) : null;
 	const width = VB.width * scale;
 	const height = VB.height * scale;
 	const fw = look.faceWidth ?? 1;
@@ -93,7 +111,7 @@ export const Person: React.FC<PersonProps & {look: PersonLook}> = ({
 		>
 			<g transform={`translate(0 ${bodyBob}) rotate(${bodyLean} 200 600)`}>
 				<rect x={181} y={272} width={38} height={52} fill={look.skin} {...outlined} />
-				{look.outfit}
+				{gi ? giOutfit : look.outfit}
 				<g transform={`rotate(${headTilt} 200 300)`}>
 					{look.hairBack}
 					<ellipse cx={200 - 88 * fw} cy={210} rx={15} ry={22} fill={look.skin} {...outlined} />
@@ -116,10 +134,21 @@ export const Person: React.FC<PersonProps & {look: PersonLook}> = ({
 					/>
 					{look.faceExtras}
 				</g>
-				<Arm angles={armLeft} look={look} />
-				<g transform="translate(400 0) scale(-1 1)">
-					<Arm angles={armRight} look={look} hold={holdRight ? <g transform="scale(-1 1)">{holdRight}</g> : undefined} />
-				</g>
+				{gi ? (
+					<>
+						<ArmShape angles={armLeft} c={gi} hold={holdLeft} />
+						<g transform="translate(400 0) scale(-1 1)">
+							<ArmShape angles={armRight} c={gi} hold={holdRight ? <g transform="scale(-1 1)">{holdRight}</g> : undefined} />
+						</g>
+					</>
+				) : (
+					<>
+						<Arm angles={armLeft} look={look} hold={holdLeft} />
+						<g transform="translate(400 0) scale(-1 1)">
+							<Arm angles={armRight} look={look} hold={holdRight ? <g transform="scale(-1 1)">{holdRight}</g> : undefined} />
+						</g>
+					</>
+				)}
 			</g>
 		</svg>
 	);

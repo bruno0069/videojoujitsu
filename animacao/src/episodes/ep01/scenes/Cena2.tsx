@@ -3,9 +3,8 @@ import {AbsoluteFill} from 'remotion';
 import {curve, easeIn, easeOut, pop, ramp, shakes, wave, flashAt} from '../../../animation/anim';
 import {Caio, armPoses, caioExpressions} from '../../../characters/caio';
 import {mixArm, mixFace} from '../../../characters/shared/math';
-import {CapeloShape, Energetico, MedalhaShape, Papel, PatchShape} from '../../../props/Objects';
-import {PalcoSonho} from '../../../scenes/backgrounds/Sets';
-import {Tatame} from '../../../scenes/backgrounds/Tatame';
+import {CapeloShape, DiplomaShape, Energetico, MedalhaShape, Papel, PatchShape} from '../../../props/Objects';
+import {Escola, PalcoSonho} from '../../../scenes/backgrounds/Sets';
 import {Camera} from '../../../scenes/camera/Camera';
 import {ComicText, Flash, Iris, Lighting} from '../../../scenes/fx/Fx';
 import {FONT} from '../../../fonts';
@@ -13,7 +12,7 @@ import {blink, breath, useT} from '../common';
 
 /**
  * CENA 2 — O sonho do garoto (8,60 – 23,05 s)
- *  8,78 "Recém-formado,"                         → capelo cai na cabeça
+ *  8,78 "Recém-formado,"                         → formatura na escola: Caio de beca, capelo cai, diploma e confete
  * 10,08 "o garoto já se imaginava campeão,"     → íris para o sonho, pódio; medalha em "campeão" (11,48)
  * 12,28 "famoso"                                → flashes de câmera
  * 13,60 "e cheio de patrocinadores."            → patches brotando no kimono
@@ -30,29 +29,62 @@ const patches = [
 	{x: 200, y: 330, text: 'TOP', color: '#2A8BD8', at: 14.25, rot: 0},
 ];
 
+/** Confete caindo (posições fixas, sem aleatoriedade). */
+const Confete: React.FC<{t: number; from: number}> = ({t, from}) => {
+	if (t < from) return null;
+	const k = t - from;
+	const colors = ['#F7C21B', '#D62828', '#2A8BD8', '#2BA84A', '#FFFFFF'];
+	return (
+		<>
+			{Array.from({length: 36}, (_, i) => {
+				const x = (i * 137) % 1080;
+				const y = -60 + k * (520 + (i % 5) * 90) - (i % 7) * 70;
+				return (
+					<div
+						key={i}
+						style={{
+							position: 'absolute',
+							left: x + Math.sin(k * 4 + i) * 30,
+							top: y,
+							width: 22,
+							height: 34,
+							background: colors[i % 5],
+							border: '3px solid #1A1410',
+							rotate: `${k * 300 + i * 40}deg`,
+						}}
+					/>
+				);
+			})}
+		</>
+	);
+};
+
 export const Cena2: React.FC = () => {
 	const t = useT(8.6);
 	const fps = 30;
 
-	// ---------- Plano A: recém-formado (8,60 – 10,05) ----------
+	// ---------- Plano A: recém-formado — formatura na escola, de beca (8,60 – 10,05) ----------
 	const formado = (
 		<AbsoluteFill>
-			<Camera zoom={ramp(t, 8.6, 10.0, 1.15, 1.3)} focusX={540} focusY={880}>
-				<Tatame />
+			<Camera zoom={ramp(t, 8.6, 10.0, 1.12, 1.25)} focusX={540} focusY={880}>
+				<Escola t={t} />
 				<Caio
 					x={540}
 					y={1740}
 					scale={1.5}
+					outfit="formatura"
 					expression={mixFace(caioExpressions.confiante, caioExpressions.feliz, ramp(t, 9.05, 9.3))}
-					arms={mixArm(armPoses.solto, armPoses.comemorando, ramp(t, 9.1, 9.4))}
+					arms={{left: mixArm(armPoses.solto, armPoses.comemorando, ramp(t, 9.1, 9.4)), right: mixArm(armPoses.solto, armPoses.comemorando, ramp(t, 9.0, 9.3))}}
+					holdRight={<DiplomaShape />}
 					bodyBob={breath(t)}
 					headTilt={wave(t, 0.6, 3)}
 					blink={blink(t, 'caio')}
 					headOverlay={<CapeloShape transform={`translate(50 ${ramp(t, 8.62, 8.95, -420, 0, easeIn) + 18}) scale(1)`} />}
 				/>
-				<Lighting />
+				<Confete t={t} from={9.05} />
+				<Lighting light="rgba(255,236,190,0.3)" />
 			</Camera>
-			<ComicText text="FORMADO!" x={540} y={420} size={140} scale={pop(t, 9.05, fps)} rotate={-6} />
+			<ComicText text="FORMADO!" x={540} y={580} size={140} scale={pop(t, 9.05, fps)} rotate={-6} />
 		</AbsoluteFill>
 	);
 
@@ -94,7 +126,6 @@ export const Cena2: React.FC = () => {
 								bodyBob={breath(t)}
 								blink={blink(t, 'caio')}
 								gaze={close && t > 16.4 ? {x: 0.8, y: 0} : t >= 18.9 ? {x: 0.3, y: 0.6} : {x: 0, y: 0}}
-								headOverlay={<CapeloShape transform="translate(50 18)" />}
 								bodyOverlay={
 									<>
 										{medal ? <g transform={`translate(0 ${ramp(t, 11.4, 11.6, -300, 0, easeIn)})`}><MedalhaShape swing={wave(t, 1.2, 6)} /></g> : null}
@@ -158,7 +189,6 @@ export const Cena2: React.FC = () => {
 						headTilt={ramp(t, 21.0, 21.4, 0, 8)}
 						bodyBob={breath(t)}
 						blink={blink(t, 'caio')}
-						headOverlay={<CapeloShape transform="translate(50 18)" />}
 					/>
 					<Lighting vignette={0.5} />
 				</Camera>

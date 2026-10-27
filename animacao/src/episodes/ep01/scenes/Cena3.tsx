@@ -5,7 +5,7 @@ import {Caio, armPoses, caioExpressions} from '../../../characters/caio';
 import {mixArm, mixFace} from '../../../characters/shared/math';
 import {Marlene} from '../../../characters/supporting/characters';
 import {Bill, type BillIcon} from '../../../props/Boleto';
-import {BracosMataLeao, Relogio} from '../../../props/Objects';
+import {BracosMataLeao, Relogio, VassouraShape} from '../../../props/Objects';
 import {Cozinha} from '../../../scenes/backgrounds/Sets';
 import {Camera} from '../../../scenes/camera/Camera';
 import {Burst, ComicText, Flash, Lighting, Stamp} from '../../../scenes/fx/Fx';
@@ -14,7 +14,7 @@ import {blink, breath, feetFor, useT} from '../common';
 /**
  * CENA 3 — A realidade bate à porta (23,05 – 36,25 s)
  * 23,36 "Só que Dona Marlene trabalha o dia inteiro pra sustentar a casa"
- *        → Marlene trabalhando; relógio gira e o céu vai do dia à noite
+ *        → Marlene varrendo a casa; relógio gira e o céu vai do dia à noite
  * 27,10 "e agora precisa de ajuda."  → ela senta cansada; Caio entra preocupado
  * 29,02 "Na mesa: luz, água e internet." → as três contas batem na mesa (29,92 / 30,90 / 31,60)
  * 32,70 "Três adversários."           → tela de luta: Caio VS as três contas
@@ -97,7 +97,10 @@ export const Cena3: React.FC = () => {
 	const marleneFace = working
 		? mixFace(caioExpressions.confiante, caioExpressions.preocupado, ramp(t, 24.5, 26.5))
 		: caioExpressions.preocupado;
-	const workArm = (phase: number) => ({shoulder: 30 + wave(t, 1.6, 14, phase), elbow: -95 + wave(t, 1.6, 30, phase + 0.25)});
+	// varrendo: braço da vassoura balança, a outra mão na cintura
+	const sweepArm = {shoulder: 20 + wave(t, 1.4, 12), elbow: -26 + wave(t, 1.4, 16, 0.2)};
+	const hipArm = {shoulder: 38, elbow: -98};
+	const restArm = {shoulder: 16, elbow: -14};
 
 	return (
 		<AbsoluteFill>
@@ -108,15 +111,16 @@ export const Cena3: React.FC = () => {
 				offsetX={sh.x}
 				offsetY={sh.y + (t < 23.35 ? ramp(t, 23.05, 23.35, -60, 0, easeOut) : 0)}
 			>
-				<Cozinha sky={sky} table />
+				<Cozinha sky={sky} table={!working} />
 				<Relogio x={900} y={800} width={160} hours={hours} />
 				<Marlene
 					x={ramp(t, 27.4, 28.1, 540, 730, easeOut)}
 					y={feetFor(800 + sitting * 60, 1.45)}
 					scale={1.45}
 					expression={marleneFace}
-					armLeft={working ? workArm(0) : mixArm(workArm(0), {shoulder: 18, elbow: -110}, sitting)}
-					armRight={working ? workArm(0.5) : mixArm(workArm(0.5), {shoulder: 18, elbow: -110}, sitting)}
+					armLeft={working ? hipArm : mixArm(hipArm, {shoulder: 18, elbow: -110}, sitting)}
+					armRight={working ? sweepArm : mixArm(sweepArm, restArm, sitting)}
+					holdRight={<VassouraShape angle={working ? 10 + wave(t, 1.4, 8, 0.1) : 4} />}
 					headTilt={working ? wave(t, 0.8, 4) : 6 + sitting * 4}
 					bodyLean={working ? wave(t, 1.6, 3) : 2}
 					bodyBob={breath(t)}

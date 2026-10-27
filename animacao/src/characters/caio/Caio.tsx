@@ -4,6 +4,7 @@ import {resolveExpression, type CaioExpression} from './expressions';
 import {CAIO} from './geometry';
 import {ArmLeft, ArmRight} from './parts/Arm';
 import {Belt} from './parts/Belt';
+import {becaColors, becaPants, TorsoBeca} from './parts/Beca';
 import {Head} from './parts/Head';
 import {Legs, legAngleFor} from './parts/Legs';
 import {Neck, Torso} from './parts/Torso';
@@ -45,6 +46,11 @@ export type CaioProps = {
 	bodyOverlay?: React.ReactNode;
 	/** Elementos extras presos à cabeça (coordenadas do SVG): capelo, lágrimas… */
 	headOverlay?: React.ReactNode;
+	/** Roupa: kimono (padrão) ou beca de formatura. */
+	outfit?: 'kimono' | 'formatura';
+	/** Objetos na mão esquerda / direita da tela (coordenadas da mão). */
+	holdLeft?: React.ReactNode;
+	holdRight?: React.ReactNode;
 };
 
 const {viewBox: VB} = CAIO;
@@ -70,7 +76,11 @@ export const Caio: React.FC<CaioProps> = ({
 	shadow = true,
 	bodyOverlay,
 	headOverlay,
+	outfit = 'kimono',
+	holdLeft,
+	holdRight,
 }) => {
+	const beca = outfit === 'formatura';
 	const face = resolveExpression(expression);
 	const armPair =
 		typeof arms === 'object' && 'left' in arms
@@ -102,18 +112,18 @@ export const Caio: React.FC<CaioProps> = ({
 				<ellipse cx={CAIO.centerX} cy={CAIO.groundY} rx={110 + stance * 40} ry={16} fill="#000" opacity={0.18} />
 			) : null}
 			<g id="caio" transform={`translate(0 ${drop})`}>
-				<Legs stance={stance} />
+				<Legs stance={stance} c={beca ? becaPants : undefined} />
 				<g id="corpo-superior" transform={`translate(0 ${bodyBob}) rotate(${bodyLean} ${hip.x} ${hip.y})`}>
 					<Neck />
-					<Torso />
-					<Belt sway={beltSway} />
+					{beca ? <TorsoBeca /> : <Torso />}
+					{beca ? null : <Belt sway={beltSway} />}
 					{bodyOverlay}
 					<g transform={`translate(0 ${headNod}) rotate(${headTilt} ${neck.x} ${neck.y})`}>
 						<Head face={face} blink={blink} gaze={gaze} />
 						{headOverlay}
 					</g>
-					<ArmLeft angles={armPair.left} />
-					<ArmRight angles={armPair.right} />
+					<ArmLeft angles={armPair.left} hold={holdLeft} c={beca ? becaColors : undefined} sleeve={beca ? 'beca' : 'kimono'} />
+					<ArmRight angles={armPair.right} hold={holdRight} c={beca ? becaColors : undefined} sleeve={beca ? 'beca' : 'kimono'} />
 				</g>
 			</g>
 		</svg>

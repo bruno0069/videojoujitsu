@@ -7,7 +7,7 @@ import {OUTLINE} from '../../../characters/shared/style';
 import {Marlene} from '../../../characters/supporting/characters';
 import {FONT} from '../../../fonts';
 import {Bill} from '../../../props/Boleto';
-import {BracosMataLeao, Cinturao, Salario} from '../../../props/Objects';
+import {BracosMataLeao, Cinturao, Salario, VassouraShape} from '../../../props/Objects';
 import {Auditorio} from '../../../scenes/backgrounds/Sets';
 import {Camera} from '../../../scenes/camera/Camera';
 import {Burst, ComicText, Flash, Lighting} from '../../../scenes/fx/Fx';
@@ -212,7 +212,7 @@ export const Cena7: React.FC = () => {
 					</Card>
 					{t >= 81.1 ? (
 						<Card letter="B" x={ramp(t, 81.22, 81.44, 1380, 800, easeOut)} enter={bIn} active={bActive} color="#F2A541" lines={['EMPREGO', 'AJUDA A MÃE']}>
-							<Marlene x={300} y={feetFor(280, 0.55)} scale={0.55} expression={caioExpressions.feliz} blink={blink(t, 'marlene')} />
+							<Marlene x={300} y={feetFor(280, 0.55)} scale={0.55} expression={caioExpressions.feliz} blink={blink(t, 'marlene')} armRight={{shoulder: 16, elbow: -14}} holdRight={<VassouraShape angle={4} />} />
 							<Salario x={140} y={400} width={190} rotate={-8} />
 						</Card>
 					) : null}

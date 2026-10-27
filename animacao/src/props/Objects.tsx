@@ -406,3 +406,25 @@ export const Rabiscos: React.FC<{t: number; opacity: number; seed?: number}> = (
 		</>
 	);
 };
+
+/** Vassoura, em coordenadas da mão (cabo passa pela mão, cerdas para baixo). */
+export const VassouraShape: React.FC<{angle?: number}> = ({angle = 0}) => (
+	<g transform={`rotate(${angle})`}>
+		<rect x={-8} y={-150} width={16} height={430} rx={8} fill="#B07A4A" {...outlined} strokeWidth={4} />
+		<path d="M -14 276 L 14 276 L 60 300 L -60 300 Z" fill="#D62828" {...outlined} strokeWidth={4} />
+		<path d="M -60 300 L 60 300 L 78 392 L -78 392 Z" fill="#E8C35A" {...outlined} strokeWidth={5} />
+		{[-50, -25, 0, 25, 50].map((x) => (
+			<line key={x} x1={x * 0.9} y1={308} x2={x * 1.2} y2={386} stroke="#B8902E" strokeWidth={4} strokeLinecap="round" />
+		))}
+	</g>
+);
+
+/** Diploma enrolado com fita, em coordenadas da mão. */
+export const DiplomaShape: React.FC = () => (
+	<g transform="rotate(-20)">
+		<rect x={-74} y={-18} width={148} height={36} rx={18} fill="#FBF6E9" {...outlined} strokeWidth={4} />
+		<ellipse cx={-74} cy={0} rx={10} ry={18} fill="#EDE3C8" {...outlined} strokeWidth={4} />
+		<rect x={-12} y={-20} width={24} height={40} fill="#D62828" stroke={OUTLINE} strokeWidth={3} />
+		<path d="M 0 20 L -14 48 M 0 20 L 14 48" stroke="#D62828" strokeWidth={8} strokeLinecap="round" />
+	</g>
+);

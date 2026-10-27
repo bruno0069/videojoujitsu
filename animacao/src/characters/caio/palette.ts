@@ -21,3 +21,28 @@ export const caioPalette = {
 };
 
 export type CaioPalette = typeof caioPalette;
+
+/** Cores de um kimono completo. O Caio usa o padrão; outros personagens trocam as cores. */
+export type GiColors = {
+	gi: string;
+	giShade: string;
+	undershirt: string;
+	patch: string;
+	skin: string;
+	skinShade: string;
+	belt: string;
+	beltShade: string;
+	/** Barra na ponta da faixa (ex.: barra vermelha da faixa preta). */
+	beltTip?: string;
+};
+
+export const caioGi: GiColors = {
+	gi: caioPalette.gi,
+	giShade: caioPalette.giShade,
+	undershirt: caioPalette.undershirt,
+	patch: caioPalette.patch,
+	skin: caioPalette.skin,
+	skinShade: caioPalette.skinShade,
+	belt: caioPalette.belt,
+	beltShade: caioPalette.beltShade,
+};

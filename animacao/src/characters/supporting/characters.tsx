@@ -59,19 +59,18 @@ const jorge: PersonLook = {
 	hairFront: (
 		<path d="M 112 178 Q 116 116 200 112 Q 284 116 288 178 Q 270 142 200 138 Q 130 142 112 178 Z" fill="#2A2523" {...outlined} strokeWidth={4} />
 	),
-	outfit: (
-		<g>
-			<path d={torsoPath} fill="#1F1F22" {...outlined} />
-			<path d="M 176 306 L 224 306 L 200 380 Z" fill="#F4F1EA" />
-			<path d="M 160 304 L 180 304 L 236 800 L 210 800 Z" fill="#2C2C31" {...outlined} />
-			<path d="M 240 304 L 220 304 L 170 560 L 192 560 Z" fill="#2C2C31" {...outlined} />
-			{/* emblema da academia */}
-			<circle cx={252} cy={420} r={22} fill="#C9930A" {...outlined} strokeWidth={4} />
-			<circle cx={252} cy={420} r={10} fill="#D62828" />
-			{/* faixa preta */}
-			<rect x={108} y={600} width={190} height={30} rx={6} fill="#0E0E0E" {...outlined} />
-		</g>
-	),
+	// kimono idêntico ao do Caio (mesmas peças), em preto, com faixa preta e barra vermelha
+	gi: {
+		gi: '#232328',
+		giShade: '#3A3A42',
+		undershirt: '#0E0E10',
+		patch: '#55555F',
+		skin: '#7A4A2E',
+		skinShade: '#633A22',
+		belt: '#0E0E0E',
+		beltShade: '#2A2A2A',
+		beltTip: '#D62828',
+	},
 	faceExtras: (
 		<g>
 			{/* barba grisalha */}
