@@ -8,6 +8,9 @@ export const armPoses = {
 	comemorando: {shoulder: 150, elbow: -22},
 	maosNaCintura: {shoulder: 38, elbow: -98},
 	susto: {shoulder: 32, elbow: 78},
+	// adicionadas no EP01
+	apontando: {shoulder: 88, elbow: -4},
+	encolhido: {shoulder: 12, elbow: -150},
 } satisfies Record<string, ArmAngles>;
 
 export type ArmPoseName = keyof typeof armPoses;

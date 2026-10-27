@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {OUTLINE} from '../../characters/shared/style';
+import {FONT} from '../../fonts';
 
 // Academia do projeto social: parede clara, protetores azuis e tatame em perspectiva.
 const W = 1080;
@@ -31,7 +32,7 @@ export const Tatame: React.FC = () => {
 					<text
 						textAnchor="middle"
 						y={-8}
-						fontFamily="Arial Black, Arial, sans-serif"
+						fontFamily={FONT}
 						fontWeight={900}
 						fontSize={66}
 						fill="#24418F"
@@ -41,7 +42,7 @@ export const Tatame: React.FC = () => {
 					<text
 						textAnchor="middle"
 						y={62}
-						fontFamily="Arial Black, Arial, sans-serif"
+						fontFamily={FONT}
 						fontWeight={900}
 						fontSize={66}
 						fill="#24418F"

@@ -1,0 +1,94 @@
+DECUPAGEM — EP01 "O MATA-LEÃO E A CONTA DE LUZ"
+======================================================================
+Referência de tempo: 01_NARRACAO/narracao_completa.wav (91,21 s), usada sem
+cortes. Os tempos abaixo vêm da transcrição palavra a palavra
+(narracao_completa_palavras.json).
+Vídeo: 1080×1920, 30 fps, 92,6 s (narração + 1,4 s de cartela final).
+Código: animacao/src/episodes/ep01/ (uma cena por arquivo, com os mesmos tempos).
+
+CENA 1 — O verdadeiro adversário (0,00–8,60)
+  0,08 "Esse é o Caio."             Plano médio no tatame. Zoom rápido de entrada,
+                                    plaquinha "CAIO / 18 ANOS · FAIXA AZUL".
+  1,14 "No jiu-jítsu, ele finaliza gigantes,"  Corte: guarda e base. Entra um gigante
+                                    em silhueta; em "gigantes" (2,8) ele cai.
+                                    Tremida, "FINALIZA!", "TAP! TAP!".
+  3,94 "mas tem um adversário que nunca conseguiu vencer:"  Push-in lento no rosto.
+                                    Confiante → preocupado, a luz escurece, gota de suor.
+  6,74 (pausa)                      Suspense: Caio olha para cima.
+  7,58 "o boleto."                  O boleto despenca na tela (impacto, raios vermelhos),
+                                    carimbo "VENCIDO". Caio, assustado.
+
+CENA 2 — O sonho do garoto (8,60–23,05)
+  8,78 "Recém-formado,"             O capelo cai na cabeça. "FORMADO!".
+ 10,08 "o garoto já se imaginava…"  Íris abre o sonho: pódio e holofotes.
+ 11,48 "campeão,"                   A medalha cai no peito. "CAMPEÃO!".
+ 12,28 "famoso"                     Flashes de câmera.
+ 13,60 "cheio de patrocinadores."   Patches de marcas fictícias brotam no kimono.
+ 14,92 "Na cabeça dele, até o energético seria patrocinador."  Close; a lata TURBO
+                                    entra de óculos escuros; contrato com ✓ em "patrocinador".
+ 18,82 "O planejamento financeiro?" Arranhão de disco: o sonho perde a cor e cai uma
+                                    prancheta empoeirada (com teia de aranha).
+ 20,90 "Esse ficou pra próxima temporada."  A prancheta é chutada para fora; Caio dá de
+                                    ombros; cartela "EM BREVE… PRÓXIMA TEMPORADA".
+
+CENA 3 — A realidade bate à porta (23,05–36,25)
+ 23,36 "Só que Dona Marlene trabalha o dia inteiro…"  Cozinha. Marlene trabalhando;
+                                    o relógio gira e a janela vai do dia à noite.
+ 27,10 "e agora precisa de ajuda."  Ela senta cansada; Caio entra preocupado.
+ 29,02 "Na mesa:"                   As contas batem na mesa, cada uma na sua palavra:
+                                    luz (29,92), água (30,90), internet (31,60).
+                                    "PÁ! PLAFT! POF!".
+ 32,70 "Três adversários."          Tela de luta: Caio VS as três contas.
+ 34,28 "Nenhum aceita um mata-leão." Caio tenta o mata-leão e a conta nem se mexe
+                                    (entediada). Carimbo "NÃO ACEITA".
+
+CENA 4 — O cálculo impossível (36,25–47,15)
+ 36,48 "Caio fez as contas."        Quarto à noite, luminária; símbolos de conta no ar.
+ 38,52 "Fez de novo."               Corte mais fechado, rabiscos mais rápidos, suor.
+ 39,78 "Conferiu na calculadora."   Close na calculadora, teclas sendo apertadas.
+ 41,68 "Resultado:"                 Aproximação lenta do visor ("…"), tensão.
+ 43,10 "saldo negativo"             Visor vermelho "NEGATIVO", trombone triste.
+ 44,64 "…chorar em posição fetal."  Caio encolhido no chão, chorando. "BUÁÁÁ".
+
+CENA 5 — Dois convites, um problema (47,15–61,80)
+ 47,40 "Aí aparecem duas oportunidades."  Duas luzes "?" surgem; Caio se anima.
+ 49,72 "O mestre oferece uma vaga no campeonato."  Mestre Jorge com o panfleto.
+ 52,06 "O padeiro oferece um emprego."  Seu Aldo com a placa "PRECISA-SE".
+ 53,82 "Um promete um cinturão," / 55,12 "o outro promete salário."  Tela dividida:
+                                    cinturão brilhando em cima, salário e moedas embaixo.
+ 56,64 "Pela primeira vez, Caio considera seriamente"  Close pensativo, luz roxa,
+                                    "HUMM…". Em "seriamente", olhos apertam.
+ 59,98 "lutar contra um pão francês." Caio VS pão francês de luvas.
+
+CENA 6 — O golpe final (61,80–74,60)
+ 62,08 "Mas tem um detalhe:"        Arranhão de disco; letras miúdas do panfleto
+                                    circuladas: "*INSCRIÇÃO".
+ 63,90 "a inscrição custa quase o valor das contas da mãe."  Balança oscila e quase
+                                    equilibra. "QUASE!" em "quase" (65,32).
+ 67,90 "O sonho cobra entrada,"     Sonho: ingresso, moedas saindo, "−R$".
+ 69,50 "a padaria paga salário"     Padaria: salário, "+R$".
+ 71,38 "e o banco" / 72,46 "não aceita cinturão como pagamento."  Caio oferece o
+                                    cinturão no caixa; carimbo "RECUSADO".
+
+CENA 7 — Você decide! (74,60–92,60)
+ 74,82 "Agora é com você!"          Auditório; Caio aponta, zoom em "você".
+                                    "VOCÊ DECIDE!".
+ 76,88 "A, …"                       Cartão A (campeonato / sonho).
+ 81,22 "B, …"                       Cartão B (emprego / ajuda a mãe); o A apaga.
+ 84,32 "E aí, campeão,"             Close, sobrancelha levantada.
+ 85,82 "você lutaria pelo sonho"    O cinturão brilha. "SONHO".
+ 87,62 "ou daria um mata-leão nos boletos?"  Desta vez o mata-leão funciona: o boleto
+                                    bate (TAP TAP). "FINALIZOU!" (fecha a piada da Cena 3).
+ 89,74 "Comenta A ou B!"            Cartela final: logo, "COMENTA A OU B!", botões A/B
+                                    piscando.
+
+LEGENDAS
+  Palavra a palavra, em blocos de até 3 palavras. A palavra falada fica amarela e as
+  palavras-chave em vermelho. A legenda fica em y=1450 (acima da interface do
+  TikTok/Reels) e muda de lugar quando cobriria algo importante: contas na mesa e
+  Caio no chão (topo), telas divididas (centro). Some na cartela final.
+
+EFEITOS SONOROS (sintetizados com ffmpeg; volume entre 0,15 e 0,45 da voz)
+  pop, whoosh, impact, tap, stamp, ding, flash, scratch, wahwah — 36 inserções
+  pontuais, todas em animacao/public/ep01/sfx/. Sem trilha musical (nenhuma foi
+  aprovada).

@@ -8,6 +8,7 @@ import {OUTLINE} from '../../characters/shared/style';
 import type {ArmAngles, FaceParams, Gaze} from '../../characters/shared/types';
 import {Tatame} from '../backgrounds/Tatame';
 import {Camera} from '../camera/Camera';
+import {FONT, FONT_TEXT} from '../../fonts';
 
 // Demonstração do boneco do Caio: 10 s, 1080×1920, 30 fps.
 export const CAIO_DEMO_DURATION = 300;
@@ -105,7 +106,7 @@ export const CaioDemo: React.FC = () => {
 					top: 80,
 					width: '100%',
 					textAlign: 'center',
-					fontFamily: 'Arial Black, Arial, sans-serif',
+					fontFamily: FONT,
 					fontWeight: 900,
 					fontSize: 64,
 					color: '#fff',
@@ -131,7 +132,7 @@ export const CaioDemo: React.FC = () => {
 					style={{
 						background: OUTLINE,
 						color: '#fff',
-						fontFamily: 'Arial, sans-serif',
+						fontFamily: FONT_TEXT,
 						fontWeight: 700,
 						fontSize: 44,
 						padding: '22px 40px',

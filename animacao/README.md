@@ -19,6 +19,19 @@ aponte para um Chromium local:
 npx remotion render CaioDemo out/caio-demo.mp4 --browser-executable=/caminho/do/chrome-headless-shell
 ```
 
+## EP01 — "O Mata-Leão e a Conta de Luz"
+
+```bash
+npm run render:ep01   # out/ep01-o-mata-leao-e-a-conta-de-luz.mp4 (1080×1920, 30 fps, 92,6 s)
+```
+
+- Composição `EP01-OMataLeaoEAContaDeLuz`. Código em `src/episodes/ep01/` (uma cena por arquivo).
+- A narração aprovada (`public/ep01/narracao.wav`) é a referência de tempo. Os
+  tempos de cada ação vêm de `src/episodes/ep01/palavras.json` (transcrição palavra a palavra).
+- Efeitos sonoros em `public/ep01/sfx/`, sintetizados com ffmpeg.
+- Fonte embutida: Inter Black/ExtraBold (`public/fonts`, licença SIL OFL).
+- Decupagem completa: `VIDA_DE_ATLETA_EP01/02_DOCUMENTACAO/decupagem_ep01.txt`.
+
 ## Estrutura
 
 ```

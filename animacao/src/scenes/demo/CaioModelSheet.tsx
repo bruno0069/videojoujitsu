@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Caio, caioExpressions, type ArmPoseName, type CaioExpression} from '../../characters/caio';
 import {OUTLINE} from '../../characters/shared/style';
+import {FONT} from '../../fonts';
 
 // Folha de referência estática: as três expressões lado a lado.
 // Útil para revisar mudanças no desenho sem assistir à animação inteira.
@@ -23,7 +24,7 @@ export const CaioModelSheet: React.FC = () => (
 						width: 640,
 						top: 990,
 						textAlign: 'center',
-						fontFamily: 'Arial Black, Arial, sans-serif',
+						fontFamily: FONT,
 						fontSize: 44,
 						color: OUTLINE,
 					}}

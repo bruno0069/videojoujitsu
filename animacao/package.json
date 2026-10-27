@@ -7,7 +7,8 @@
     "dev": "remotion studio",
     "render:demo": "remotion render CaioDemo out/caio-demo.mp4",
     "still:demo": "remotion still CaioDemo out/caio-demo.png --frame=60",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "render:ep01": "remotion render EP01-OMataLeaoEAContaDeLuz out/ep01-o-mata-leao-e-a-conta-de-luz.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.535",

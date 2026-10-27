@@ -41,6 +41,10 @@ export type CaioProps = {
 	flip?: boolean;
 	/** Sombra no chão. */
 	shadow?: boolean;
+	/** Elementos extras sobre o tronco (coordenadas do SVG): medalha, patrocínios… */
+	bodyOverlay?: React.ReactNode;
+	/** Elementos extras presos à cabeça (coordenadas do SVG): capelo, lágrimas… */
+	headOverlay?: React.ReactNode;
 };
 
 const {viewBox: VB} = CAIO;
@@ -64,6 +68,8 @@ export const Caio: React.FC<CaioProps> = ({
 	scale = 1,
 	flip = false,
 	shadow = true,
+	bodyOverlay,
+	headOverlay,
 }) => {
 	const face = resolveExpression(expression);
 	const armPair =
@@ -101,8 +107,10 @@ export const Caio: React.FC<CaioProps> = ({
 					<Neck />
 					<Torso />
 					<Belt sway={beltSway} />
+					{bodyOverlay}
 					<g transform={`translate(0 ${headNod}) rotate(${headTilt} ${neck.x} ${neck.y})`}>
 						<Head face={face} blink={blink} gaze={gaze} />
+						{headOverlay}
 					</g>
 					<ArmLeft angles={armPair.left} />
 					<ArmRight angles={armPair.right} />
