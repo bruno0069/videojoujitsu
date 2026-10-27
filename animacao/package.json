@@ -1,0 +1,22 @@
+{
+  "name": "vida-de-atleta-animacao",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vida de Atleta... Ou Não — animação 2D em Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "render:demo": "remotion render CaioDemo out/caio-demo.mp4",
+    "still:demo": "remotion still CaioDemo out/caio-demo.png --frame=60",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.535",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}
