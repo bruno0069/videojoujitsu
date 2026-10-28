@@ -26,6 +26,10 @@ gen -f lavfi -i "aevalsrc='0.8*exp(-mod(t,0.5)*140)*sin(2*PI*if(lt(mod(t,1),0.5)
 gen -f lavfi -i "aevalsrc='0.9*exp(-t*0.9)*sin(2*PI*(150/0.7)*(1-exp(-0.7*t)))':s=$R:d=3" \
   -af "afade=t=in:d=0.03,afade=t=out:st=2.6:d=0.4" -ac 1 "$SFX/queda_graves.wav"
 
+# whoosh: ruído com envelope em sino e filtro subindo (transição curta nas pausas da fala)
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.9:sample_rate=$R:duration=0.6:seed=11" \
+  -af "volume='pow(sin(PI*t/0.6),2)':eval=frame,highpass=f=300,lowpass=f=2600,afade=t=in:d=0.02,afade=t=out:st=0.55:d=0.05,volume=1.6" -ac 1 "$SFX/whoosh.wav"
+
 # vento_frio: ruído rosa filtrado, com rajadas lentas
 gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.8:sample_rate=$R:duration=8:seed=3" \
   -af "highpass=f=250,lowpass=f=1400,tremolo=f=0.25:d=0.7,volume=1.4,afade=t=in:d=0.05,afade=t=out:st=7.95:d=0.05" -ac 1 "$SFX/vento_frio.wav"

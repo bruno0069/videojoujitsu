@@ -1,0 +1,36 @@
+[
+  {
+    "em": 656,
+    "frames": 90,
+    "enquadramento": "raio_luz"
+  },
+  {
+    "em": 1503,
+    "frames": 75,
+    "enquadramento": "diagrama_lua"
+  },
+  {
+    "em": 1960,
+    "frames": -1
+  },
+  {
+    "em": 1700,
+    "frames": -43
+  },
+  {
+    "em": 1503,
+    "frames": -61
+  },
+  {
+    "em": 1266,
+    "frames": -68
+  },
+  {
+    "em": 900,
+    "frames": -83
+  },
+  {
+    "em": 662,
+    "frames": -75
+  }
+]

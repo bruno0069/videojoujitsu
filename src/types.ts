@@ -79,6 +79,8 @@ export type SceneDirection = {
   elementos?: ElementSpec[];
   personagens?: Record<string, CharacterKey[]>;
   sfx?: Record<string, Cue>;
+  // Efeitos curtos extras (transições nas pausas da fala), além dos sfx do roteiro
+  efeitos?: { id: string; de: Cue }[];
   fundo?: Record<string, Cue | Cue[]>;
   tremidas?: { de: Cue; frames: number; forca: number }[];
   texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" };
@@ -107,6 +109,4 @@ export type Direction = {
   legendaDe?: number;
   // O Sol "volta" depois do gancho: mostra um selo "agora" de 12 frames no início da cena seguinte
   sunReturnsAfterHook?: boolean;
-  // Versão longa (entrada extendTo70s): insertos só de imagem, com silêncio na voz
-  extensao?: { cena: string; em: number; frames: number; enquadramento: Plano["enquadramento"] }[];
 };

@@ -223,7 +223,7 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
   const s = pop(frame, from, to + 10000, fps, true);
   if (s <= 0) return null;
   const ink = inkTheme.stroke;
-  const x = big ? 800 : 790;
+  const x = big ? 830 : 790;
   const top = big ? 520 : 700;
   const bottom = big ? 1110 : 1090;
   const tube = big ? 58 : 38;

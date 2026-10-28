@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Renderiza os quadros de verificação em out/stills/. Uso: bash scripts/stills.sh Ep01 [frames...]
 # REMOTION_BROWSER (opcional) aponta para um Chrome já instalado.
-# PROPS (opcional): entradas da composição, ex.: PROPS='{"extendTo70s":true}' para a versão longa.
+# PROPS (opcional): entradas da composição em JSON, ex.: PROPS='{"stem":"voz"}'.
 # OUT (opcional): pasta de saída (padrão out/stills).
 set -euo pipefail
 cd "$(dirname "$0")/.."

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Monta a narração do episódio a partir das falas por cena (public/audio/voz/epNN-<cena>.mp3).
-# Cada fala começa no frame indicado em OFFSETS (frame absoluto, 30 fps). Resultado: 60 s exatos.
+# Cada fala começa no frame indicado em OFFSETS (frame absoluto da montagem original de 60 s, 30 fps):
+# isso gera a narração base. Depois as edições de tempo registradas em src/episodes/ep01.edicoes.json
+# (insertos de imagem e pausas encurtadas, scripts/editar-tempo.py) são reaplicadas sobre ela.
 # Uso: bash scripts/montar-narracao.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -20,5 +22,5 @@ for item in $OFFSETS; do
 done
 ffmpeg -hide_banner -loglevel error -y "${inputs[@]}" \
   -filter_complex "${filters}${labels}amix=inputs=$i:normalize=0:dropout_transition=0,apad=whole_dur=${TOTAL},atrim=0:${TOTAL}" \
-  -ac 1 -ar 44100 -c:a libmp3lame -b:a 192k "public/audio/${EP}-narracao.mp3"
-ffprobe -v error -show_entries format=duration -of csv=p=0 "public/audio/${EP}-narracao.mp3"
+  -ac 1 -ar 44100 -c:a libmp3lame -b:a 192k "public/audio/${EP}-narracao-base.mp3"
+python3 scripts/editar-tempo.py "$EP" audio

@@ -2,7 +2,6 @@ import React from "react";
 import type { Caption } from "@remotion/captions";
 import { CalculateMetadataFunction, Composition, staticFile } from "remotion";
 import { Episode, EpisodeProps } from "./Episode";
-import { applyExtension } from "./extend";
 import { EPISODES } from "./episodes";
 import { deriveSceneBounds, normalizeWordTimestamps, validateEpisode } from "./timing";
 
@@ -28,8 +27,7 @@ const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = async ({ prop
   const errors = validateEpisode(props.episode);
   if (errors.length > 0) throw new Error(`Episódio ${props.id} inválido:\n${errors.join("\n")}`);
 
-  const long = props.extendTo70s === true;
-  const narration = staticFile(`audio/${props.id}-narracao${long ? "-70s" : ""}.mp3`);
+  const narration = staticFile(`audio/${props.id}-narracao.mp3`);
   const hasNarration = (await fetchIfExists(narration, "audio")) !== null;
   // Legenda e limites de cena: timestamps por palavra vindos de um arquivo (entrada `legendas`).
   // "src/audio/…" vem do projeto; outro caminho é buscado em public/. Sem arquivo, usa tempo estimado.
@@ -41,17 +39,14 @@ const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = async ({ prop
   }
   const captions: Caption[] | null = raw ? normalizeWordTimestamps(raw) : null;
   if (!captions) console.warn(`[${props.id}] arquivo de palavras "${path}" não encontrado; usando tempo estimado.`);
-  const base = captions ? deriveSceneBounds(props.episode, captions, 3) : props.episode;
-  // Versão longa: insertos só de imagem; voz com silêncio nos mesmos pontos (scripts/estender-narracao.py)
-  const ext = long ? applyExtension(base, props.direction, captions) : { episode: base, direction: props.direction, words: captions };
-  const episode = ext.episode;
+  const episode = captions ? deriveSceneBounds(props.episode, captions, 3) : props.episode;
 
   return {
     durationInFrames: episode.totalFrames,
     fps: props.episode.fps,
     width: props.episode.width,
     height: props.episode.height,
-    props: { ...props, episode, direction: ext.direction, narrationSrc: hasNarration ? narration : null, captions: ext.words },
+    props: { ...props, episode, narrationSrc: hasNarration ? narration : null, captions },
   };
 };
 
@@ -73,7 +68,6 @@ export const RemotionRoot: React.FC = () => (
           episode: ep.data,
           direction: ep.direction,
           legendas: `src/audio/${ep.id}-words.json`,
-          extendTo70s: false,
           narrationSrc: null,
           stem: "mix",
           captions: null,

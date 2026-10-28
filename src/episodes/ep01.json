@@ -4,7 +4,7 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 1800,
+  "totalFrames": 1634,
   "scenes": [
     {
       "id": "gancho",
@@ -57,7 +57,7 @@
     {
       "id": "escalada1",
       "startFrame": 540,
-      "durationInFrames": 360,
+      "durationInFrames": 292,
       "narration": "A luz do Sol leva oito minutos e vinte segundos para chegar. Por isso, o Nico termina o lanche. Depois reclama da prova de matemática.",
       "onScreenText": "≈ 8 min 20 s",
       "visual": {
@@ -71,8 +71,8 @@
     },
     {
       "id": "escalada2",
-      "startFrame": 900,
-      "durationInFrames": 360,
+      "startFrame": 832,
+      "durationInFrames": 292,
       "narration": "A gravidade também demora cerca de oito minutos para perceber. Até lá, a Terra segue orbitando um Sol que já não existe. Ninguém sente nada.",
       "onScreenText": "a gravidade também demora ≈ 8 min",
       "visual": {
@@ -86,8 +86,8 @@
     },
     {
       "id": "virada",
-      "startFrame": 1260,
-      "durationInFrames": 270,
+      "startFrame": 1124,
+      "durationInFrames": 284,
       "narration": "Aí o céu escurece. A Lua apaga junto, porque ela só brilha com luz emprestada. Em uma semana, a superfície já estaria abaixo de zero.",
       "onScreenText": "a Lua também apaga",
       "visual": {
@@ -101,8 +101,8 @@
     },
     {
       "id": "fecho",
-      "startFrame": 1530,
-      "durationInFrames": 270,
+      "startFrame": 1408,
+      "durationInFrames": 226,
       "narration": "A Terra agora segue em linha reta pelo escuro. O Nico levanta a mão: professora, e se o Sol sumisse agora?",
       "onScreenText": "E SE… QUAL VAI SER O PRÓXIMO? COMENTA.",
       "visual": {

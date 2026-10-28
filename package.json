@@ -34,9 +34,8 @@
     "render": "bash scripts/render.sh",
     "stills": "bash scripts/stills.sh Ep01",
     "upgrade": "remotion upgrade",
-    "narracao": "bash scripts/montar-narracao.sh && python3 scripts/estender-narracao.py ep01",
-    "palavras": "python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json apresentacao=200",
-    "render:70s": "bash scripts/render.sh --longa"
+    "narracao": "bash scripts/montar-narracao.sh",
+    "palavras": "python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json apresentacao=200"
   },
   "allowScripts": {
     "esbuild": false

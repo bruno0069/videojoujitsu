@@ -35,6 +35,7 @@ export const colors = {
 
 // Paleta noturna desenhada (substitui o escurecimento por película). Cada cor do pátio vai
 // do dia para a sua versão noturna; a pele do Nico fica mais quente e escura, sem dessaturar.
+// O frio aparece no bafo saindo da boca (ação "frio"), não em manchas no rosto.
 export const night = {
   ceuAlto: "#1B1B2F",
   ceuBaixo: "#3B2F6B",
@@ -49,7 +50,6 @@ export const night = {
   banco: "#C9584B",
   pele: "#B07A55",
   rimLight: colors.turquesa,
-  bochechaFrio: "#8FC9F2",
 };
 
 // Sombra chapada de um tom: a mesma cor puxada 18% para a tinta

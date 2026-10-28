@@ -5,11 +5,11 @@
       "inicio": "08:20",
       "fim": "00:00",
       "de": 330,
-      "ate": 1260,
+      "ate": 1124,
       "grandeDe": 578,
-      "grandeAte": 703,
+      "grandeAte": 718,
       "seguraAte": 633,
-      "zeroEm": 1257
+      "zeroEm": 1121
     }
   ],
   "cenas": {
@@ -351,7 +351,17 @@
           ]
         },
         {
-          "de": 120,
+          "de": "segundos",
+          "enquadramento": "raio_luz",
+          "zoom": [
+            1,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": 135,
           "enquadramento": "medio",
           "foco": "nico",
           "zoom": [
@@ -386,7 +396,7 @@
           ]
         },
         {
-          "de": "matemática.$+6",
+          "de": "matemática.$",
           "enquadramento": "close",
           "foco": "dani",
           "zoom": [
@@ -411,7 +421,7 @@
           "type": "prova",
           "nota": "3,5",
           "de": "Depois",
-          "ate": "matemática.$+6",
+          "ate": "matemática.$",
           "notaEm": "reclama"
         }
       ],
@@ -431,19 +441,29 @@
           "evento": "timer 08:20 grande acima do Nico (vira HUD no canto em 120)"
         },
         {
-          "frame": 166,
+          "frame": 181,
           "palavra": "lanche.",
           "evento": "Nico termina o pão de queijo (222)"
         },
         {
-          "frame": 206,
+          "frame": 221,
           "palavra": "reclama",
           "evento": "corte para a prova (235); nota pula em 272"
         },
         {
-          "frame": 234,
+          "frame": 249,
           "palavra": "matemática.",
           "evento": "reação da Dani"
+        }
+      ],
+      "efeitos": [
+        {
+          "id": "whoosh",
+          "de": "chegar.$"
+        },
+        {
+          "id": "whoosh",
+          "de": "matemática.$+11"
         }
       ]
     },
@@ -498,7 +518,7 @@
         "rotulo": 20,
         "rotuloAte": 120
       },
-      "congelar": 357,
+      "congelar": 289,
       "personagens": {
         "nico": [
           {
@@ -538,7 +558,7 @@
           "evento": "corte para o Nico no pátio (240), joinha em 252"
         },
         {
-          "frame": 346,
+          "frame": 278,
           "palavra": "(fim)",
           "evento": "timer 00:00 pisca em coral (346); imagem congela 354–359"
         }
@@ -567,7 +587,17 @@
           "entrada": "corte"
         },
         {
-          "de": 190,
+          "de": "emprestada.$",
+          "enquadramento": "diagrama_lua",
+          "zoom": [
+            1,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": 204,
           "enquadramento": "medio",
           "foco": "nico",
           "zoom": [
@@ -578,7 +608,7 @@
           "personagens": [
             {
               "id": "nico",
-              "x": 330
+              "x": 380
             }
           ]
         }
@@ -597,12 +627,12 @@
           "aparece": "Lua-10",
           "pisca": "apaga-4",
           "apaga": "junto,",
-          "ate": 190
+          "ate": 204
         },
         {
           "type": "termometro",
           "grande": true,
-          "de": 190,
+          "de": 204,
           "ate": "zero.$"
         }
       ],
@@ -622,7 +652,7 @@
         ]
       },
       "sfx": {
-        "queda_graves": -42,
+        "queda_graves": -21,
         "vento_frio": 20
       },
       "sincronia": [
@@ -637,14 +667,20 @@
           "evento": "Lua aparece (38), pisca (56) e apaga (76)"
         },
         {
-          "frame": 173,
+          "frame": 187,
           "palavra": "semana,",
           "evento": "termômetro grande entra (190)"
         },
         {
-          "frame": 245,
+          "frame": 259,
           "palavra": "zero.",
           "evento": "mercúrio abaixo de zero (285)"
+        }
+      ],
+      "efeitos": [
+        {
+          "id": "whoosh",
+          "de": "emprestada.$"
         }
       ]
     },
@@ -661,7 +697,7 @@
           "entrada": "corte"
         },
         {
-          "de": 142,
+          "de": 99,
           "enquadramento": "close",
           "foco": "nico",
           "cenario": "patio_dia",
@@ -673,20 +709,20 @@
         }
       ],
       "texto": {
-        "de": 200,
-        "ate": 260,
+        "de": 157,
+        "ate": 217,
         "estilo": "sticker"
       },
       "elementos": [
         {
           "type": "sol",
-          "de": 142
+          "de": 99
         }
       ],
       "personagens": {
         "nico": [
           {
-            "de": 142,
+            "de": 99,
             "pose": "olhando_para_cima",
             "olhar": [
               0.7,
@@ -698,13 +734,13 @@
             "pose": "mao_levantada"
           },
           {
-            "de": 240,
+            "de": 197,
             "pose": "olhando_para_cima"
           }
         ]
       },
       "sfx": {
-        "estalo": 142
+        "estalo": 99
       },
       "sincronia": [
         {
@@ -713,40 +749,32 @@
           "evento": "Terra começa a deslizar em linha reta (51,0 s) e sai do quadro em 120"
         },
         {
-          "frame": 139,
+          "frame": 96,
           "palavra": "escuro.",
           "evento": "fim de \"pelo escuro\"; corte para o pátio em 142 (frame 1672)"
         },
         {
-          "frame": 164,
+          "frame": 121,
           "palavra": "levanta",
           "evento": "Nico levanta a mão"
         },
         {
-          "frame": 251,
+          "frame": 208,
           "palavra": "agora?",
           "evento": "CTA 200–260 (1730–1790); último quadro igual ao frame 0"
         }
       ],
       "fundo": {
-        "saida": 136
-      }
+        "saida": 93
+      },
+      "efeitos": [
+        {
+          "id": "whoosh",
+          "de": -4
+        }
+      ]
     }
   },
   "legendaDe": 46,
-  "sunReturnsAfterHook": false,
-  "extensao": [
-    {
-      "cena": "escalada1",
-      "em": 116,
-      "frames": 90,
-      "enquadramento": "raio_luz"
-    },
-    {
-      "cena": "virada",
-      "em": 153,
-      "frames": 75,
-      "enquadramento": "diagrama_lua"
-    }
-  ]
+  "sunReturnsAfterHook": false
 }

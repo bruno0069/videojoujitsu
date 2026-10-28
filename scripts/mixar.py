@@ -9,7 +9,7 @@ pelo Remotion (entrada `stem`: "voz" e "fundo") e grava o vídeo com o áudio fi
 Também mede o fundo e a voz só nos trechos com fala (distância voz/fundo sob a fala).
 Os stems processados e as medidas ficam em out/stems/.
 
-Uso: python3 scripts/mixar.py out/ep01-70s.mp4 out/stems/voz.wav out/stems/fundo.wav [--longa]
+Uso: python3 scripts/mixar.py out/ep01.mp4 out/stems/voz.wav out/stems/fundo.wav
 """
 import json
 import re
@@ -17,7 +17,6 @@ import subprocess
 import sys
 
 video, voz_in, fundo_in = sys.argv[1:4]
-longa = "--longa" in sys.argv
 EP = "ep01"
 OUT = "out/stems"
 VOZ_ALVO, FUNDO_ALVO, MIX_ALVO, PICO_MAX = -14.0, -30.0, -14.0, -1.5
@@ -57,13 +56,6 @@ def ajustar(nome, entrada, saida, cadeia, alvo, pico=True):
 # Trechos com fala (mesma regra do duck: pausas < 0,4 s contam como fala contínua)
 ep = json.load(open(f"src/episodes/{EP}.json", encoding="utf-8"))
 words = json.load(open(f"src/audio/{EP}-words.json", encoding="utf-8"))
-if longa:
-    direc = json.load(open(f"src/episodes/{EP}.direcao.json", encoding="utf-8"))
-    starts = {s["id"]: s["startFrame"] for s in ep["scenes"]}
-    for ins in sorted(direc.get("extensao", []), key=lambda x: -(starts[x["cena"]] + x["em"])):
-        at = (starts[ins["cena"]] + ins["em"]) / ep["fps"] * 1000
-        by = ins["frames"] / ep["fps"] * 1000
-        words = [{**w, "startMs": w["startMs"] + by, "endMs": w["endMs"] + by} if w["startMs"] >= at else w for w in words]
 spans = []
 for w in sorted(words, key=lambda w: w["startMs"]):
     if spans and w["startMs"] - spans[-1][1] <= 400:
@@ -85,7 +77,7 @@ for _ in range(5):
        f"[0:a][1:a]amix=inputs=2:normalize=0:duration=longest,volume={ganho:.2f}dB,{LIM}[m]",
        "-map", "[m]", "-ar", "48000", "-c:a", "pcm_s24le", mix)
     rm = medir(mix)
-    if abs(rm[0] - MIX_ALVO) <= 0.3 and rm[2] <= PICO_MAX:
+    if abs(rm[0] - MIX_ALVO) <= 0.1 and rm[2] <= PICO_MAX:
         break
     ganho += MIX_ALVO - rm[0]
 print(f"mix: ajuste {ganho:+.2f} dB -> I={rm[0]:.1f} LUFS, LRA={rm[1]:.1f} LU, pico real={rm[2]:.1f} dBTP")

@@ -235,7 +235,6 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
   const bf = loopPhase(g + style.blinkSeed * 37, blinkCycles, loopFrames) * blinkPeriod;
   const blink = interpolate(bf, [0, 2, 4, 6], [1, 0.08, 0.08, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const cold = action === "frio";
-  const coldCheeks = cold || nightK > 0.5;
   const shiverX = cold ? Math.sin(frame * 2.9) * 7 : p.shiver ? Math.sin(frame * 2.4) * 3 : 0;
 
   // Andar: passo no lugar, com balanço dos braços
@@ -395,7 +394,7 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
             strokeWidth={ink}
           />
         ) : (
-          <Face e={e} look={look} blink={blink} mouth={mouth} frame={frame} skin={skin} coldCheeks={coldCheeks} />
+          <Face e={e} look={look} blink={blink} mouth={mouth} frame={frame} skin={skin} />
         )}
 
         {!p.back && style.hair === "topete" ? (
@@ -428,35 +427,37 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
       </g>
 
       {arms}
-      {cold ? <Breath frame={frame} x={70} y={headY + 150} /> : null}
+      {cold ? <Breath frame={frame} x={40 + p.headTilt * 2} y={headY + 128} /> : null}
     </g>
   );
 };
 
-// Bafo de frio: nuvenzinhas que saem da boca, sobem e somem
+// Bafo de frio: nuvens de vapor saindo da boca em dois ciclos defasados (sempre há vapor no ar),
+// crescendo, subindo e sumindo
 const Breath: React.FC<{ frame: number; x: number; y: number }> = ({ frame, x, y }) => {
   const ink = useInk();
-  const cycle = 40;
-  const k = (frame % cycle) / cycle;
-  if (k > 0.75) return null;
-  const s = interpolate(k, [0, 0.2, 0.75], [0.3, 1, 1.3]);
-  const o = interpolate(k, [0, 0.1, 0.55, 0.75], [0, 0.9, 0.9, 0]);
-  return (
-    <g transform={`translate(${x + k * 120} ${y - k * 60}) scale(${s})`} opacity={o}>
-      <circle cx={0} cy={0} r={34} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-      <circle cx={38} cy={-14} r={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-      <circle cx={22} cy={18} r={22} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-    </g>
-  );
+  const cycle = 34;
+  const puff = (offset: number) => {
+    const k = ((frame + offset) % cycle) / cycle;
+    const s = interpolate(k, [0, 0.25, 1], [0.35, 1, 1.6]);
+    const o = interpolate(k, [0, 0.08, 0.6, 1], [0, 0.95, 0.85, 0]);
+    return (
+      <g key={offset} transform={`translate(${x + 20 + k * 170} ${y - k * 90}) scale(${s})`} opacity={o}>
+        <circle cx={0} cy={0} r={34} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+        <circle cx={38} cy={-14} r={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+        <circle cx={22} cy={18} r={22} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+      </g>
+    );
+  };
+  return <g>{[puff(0), puff(cycle / 2)]}</g>;
 };
 
-const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; frame: number; skin: string; coldCheeks: boolean }> = ({
+const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; frame: number; skin: string }> = ({
   e,
   look,
   blink,
   mouth,
   skin,
-  coldCheeks,
 }) => {
   const ink = useInk();
   const eyeRx = 50;
@@ -515,10 +516,10 @@ const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; fram
 
   return (
     <>
-      {e.blush || coldCheeks ? (
+      {e.blush ? (
         <>
-          <ellipse cx={-140} cy={78} rx={42} ry={22} fill={coldCheeks ? night.bochechaFrio : colors.coral} />
-          <ellipse cx={140} cy={78} rx={42} ry={22} fill={coldCheeks ? night.bochechaFrio : colors.coral} />
+          <ellipse cx={-140} cy={78} rx={42} ry={22} fill={colors.coral} />
+          <ellipse cx={140} cy={78} rx={42} ry={22} fill={colors.coral} />
         </>
       ) : null}
       {eye(-88)}

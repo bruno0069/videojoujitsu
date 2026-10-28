@@ -9,9 +9,11 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   recreio: { file: "audio/sfx/recreio.wav", loop: true, volume: audio.sfxVolume * 0.45 },
   grilo: { file: "audio/sfx/grilo.wav", loop: true, volume: audio.sfxVolume * 0.5 },
   tique_taque: { file: "audio/sfx/tique_taque.wav", loop: true, volume: audio.sfxVolume * 0.55 },
-  // Impacto grave da virada: mais -11 dB sobre a rodada 4 (0,21 -> 0,059) e no máximo 1,5 s.
-  // Entra na pausa antes de "Aí o céu escurece" (cue negativo na direção = antes da cena).
-  queda_graves: { file: "audio/sfx/queda_graves.wav", loop: false, volume: audio.sfxVolume * 0.118, maxFrames: 45 },
+  // Impacto grave da virada: -11 dB sobre a rodada 4 (0,21 -> 0,059), cabe inteiro na pausa
+  // de ~1 s antes de "Aí o céu escurece" (cue negativo na direção = antes da cena).
+  queda_graves: { file: "audio/sfx/queda_graves.wav", loop: false, volume: audio.sfxVolume * 0.118, maxFrames: 26 },
+  // Transição curta (0,6 s) nas pausas da fala
+  whoosh: { file: "audio/sfx/whoosh.wav", loop: false, volume: audio.sfxVolume * 0.7 },
   vento_frio: { file: "audio/sfx/vento_frio.wav", loop: true, volume: audio.sfxVolume * 0.55 },
 };
 

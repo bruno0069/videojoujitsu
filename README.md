@@ -7,9 +7,7 @@ Cada episódio é um arquivo de dados; o mesmo componente monta todos.
 npm install
 npm run dev        # abre o Remotion Studio (composição Ep01)
 npm run render     # gera out/ep01.mp4 (H.264, 1080×1920, 30 fps) com a mixagem por stems
-npm run render:70s # versão longa (extendTo70s): out/ep01-70s.mp4
-npm run stills     # quadros de verificação em out/stills/
-                   # (PROPS='{"extendTo70s":true}' para a versão longa; OUT=<pasta> muda a saída)
+npm run stills     # quadros de verificação em out/stills/ (OUT=<pasta> muda a saída)
 npm run sons       # regera efeitos e músicas com ffmpeg (síntese local)
 node scripts/check-episode.mjs src/episodes/ep01.json   # confere a soma dos frames
 ```
@@ -60,15 +58,16 @@ Campos por cena:
 - `elementos`: `sol` (com `some`/`encolhe`/`flash`), `lua` (`aparece`/`pisca`/`apaga`),
   `balao`, `etiqueta`, `prova`, `termometro`. Todos aceitam `de`/`ate`. A noite não é uma
   película escura: o cenário `patio_ceu_escurecendo` troca as cores pela paleta noturna
-  desenhada (`night` em `theme.ts`) e os personagens ganham pele noturna, luz de recorte
-  turquesa e bochechas azuladas.
+  desenhada (`night` em `theme.ts`) e os personagens ganham pele noturna e luz de recorte
+  turquesa. O frio aparece no bafo saindo da boca (ação `frio`).
 - `personagens`: chaves de tempo por personagem (pose, expressão, objeto, ação, `olhar`).
   Ações: `comendo`, `revirar_olhos`, `frio` (tremor + bafo).
 - `tremidas`: `{ de, frames, forca }`.
 - `texto`: `de`/`ate`/`mostrar`/`estilo` (`"sticker"` = chamada grande a 60% da altura). Sem
   `mostrar`, o texto da tela some sozinho quando só repete a fala.
 - `congelar`: frame a partir do qual a imagem da cena fica parada.
-- `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala). `fundo`: parâmetros do cenário (`passos` do céu, `seco: 1` para
+- `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala).
+  `efeitos`: lista extra `{ id, de }` para efeitos curtos repetidos (ex.: `whoosh` nas pausas). `fundo`: parâmetros do cenário (`passos` do céu, `seco: 1` para
   trocar a cor sem transição, `rotulo`/`rotuloAte` do diagrama).
 - `sincronia`: pontos de sincronização para a voz (palavra → frame → evento). Quando a
   narração real entrar, confira se cada palavra cai perto do frame indicado e ajuste os
@@ -79,15 +78,22 @@ No topo do arquivo, `hud` guarda elementos que atravessam cenas. O timer usa `de
 `seguraAte` (fica parado no valor inicial até aqui; só então conta), `zeroEm` (chega a 00:00
 e pisca em coral) e `travaEm` (opcional: para de piscar).
 
-### Versão longa (`extendTo70s`)
+### Editar o tempo (`scripts/editar-tempo.py`)
 
-Entrada da composição, falsa por padrão. Com `--props='{"extendTo70s":true}'`, a composição
-aplica os insertos listados em `extensao` na direção (`{ cena, em, frames, enquadramento }`):
-abre `frames` de imagem nova no frame `em` da cena e empurra tudo o que vem depois (cenas,
-cues numéricos, timer e palavras). A voz não é regenerada: `scripts/estender-narracao.py`
-insere silêncio nos mesmos pontos e gera `public/audio/epNN-narracao-70s.mp3`. No ep01 são
-dois insertos, o raio de luz Sol→Terra com o timer (+90) e o diagrama Sol→Lua→Terra da
-"luz emprestada" (+75), num total de 1965 frames (65,5 s).
+Abre frames de imagem nova ou remove um trecho sem fala, e mantém tudo em sincronia: roteiro
+(`startFrame`, `durationInFrames`, `totalFrames`), cues numéricos da direção, timer, palavras,
+transcrição e narração (a voz não é regenerada; a narração ganha silêncio ou perde o trecho).
+
+```bash
+python3 scripts/editar-tempo.py ep01 aplicar edicoes.json
+```
+
+`edicoes.json` é uma lista de `{ "em": frame absoluto, "frames": n }`: `n > 0` insere (com
+`"enquadramento"` opcional, ex. `"raio_luz"`, para abrir um plano de imagem), `n < 0` remove os
+frames `[em, em + |n|)`. Um trecho removido tem de caber numa cena e não pode conter palavras.
+Cada edição aplicada fica registrada em `src/episodes/epNN.edicoes.json`. No ep01 o registro
+tem os dois insertos de imagem (raio de luz +90, diagrama Sol→Lua→Terra +75) e os cortes que
+deixam toda pausa sem voz com no máximo 1 s (o episódio fica com 1634 frames, 54,5 s).
 
 O loop fecha porque as animações ociosas (piscar, respirar, nuvens, giro do Sol) rodam em
 ciclos inteiros por episódio (`idle` em `theme.ts`) e o último plano termina no mesmo
@@ -99,9 +105,8 @@ Fluxo usado no ep01 (voz "Renan Matheus", ElevenLabs `eleven_v4`, configuraçõe
 
 1. Uma fala por cena em `public/audio/voz/epNN-<cena>.mp3` (texto exato do roteiro).
 2. `npm run narracao` (`scripts/montar-narracao.sh`) posiciona cada fala no frame da sua cena
-   (`OFFSETS` no script) e gera `public/audio/epNN-narracao.mp3` com 60 s exatos. Reposicionar
-   uma fala (para abrir uma pausa) é só mudar o offset; depois rode `npm run palavras` com o
-   deslocamento da cena (`cena=ms`) para os tempos das palavras acompanharem.
+   na montagem original de 60 s (`OFFSETS` no script), grava `public/audio/epNN-narracao-base.mp3`
+   e reaplica o registro de edições de tempo, gerando `public/audio/epNN-narracao.mp3`.
 3. A narração montada é transcrita por palavra (ElevenLabs Scribe) e salva em
    `src/audio/epNN-transcricao.json`.
 4. `npm run palavras` (`scripts/alinhar-palavras.py`) alinha a transcrição ao texto do roteiro
@@ -128,7 +133,8 @@ npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"src/audio/ep01-words
   (`node scripts/gerar-timestamps-estimados.mjs <episódio.json> <saída.json>` gera esse arquivo).
 - Duck guiado pelas palavras: música e efeitos ficam baixos durante a fala e voltam ao nível
   base nas pausas maiores que 0,4 s, com rampas de 6 frames (`audio.duck*` em `theme.ts`).
-  Sob a fala, o fundo fica 15–18 dB abaixo da voz. Se a cena seguinte não tem música, a faixa
+  Sob a fala, o fundo fica 15–18 dB abaixo da voz. Cada pausa longa da fala (≤ 1 s) leva um
+  efeito curto de transição (`whoosh`, ou o impacto grave antes de "Aí o céu escurece"). Se a cena seguinte não tem música, a faixa
   sai em fade de 1,5 s dentro dela (sem buraco mudo).
 - As músicas entram com passa-altas em 120 Hz (`*_hp120.wav`, gerados por `npm run sons`).
 

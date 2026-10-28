@@ -32,8 +32,6 @@ export type EpisodeProps = {
   // Entrada: arquivo de timestamps por palavra (JSON). "src/audio/…" é lido do projeto;
   // qualquer outro caminho é relativo a public/. Ver README.
   legendas: string;
-  // Versão longa (~65 s): insertos de imagem definidos em `extensao` na direção
-  extendTo70s: boolean;
   // Preenchidos por calculateMetadata quando os arquivos existem em public/
   narrationSrc: string | null;
   captions: Caption[] | null;
@@ -113,20 +111,24 @@ export const Episode: React.FC<EpisodeProps> = ({
           );
         })}
 
-        {/* Efeitos em frames absolutos: um cue negativo põe o efeito antes da cena (numa pausa da fala) */}
+        {/* Efeitos em frames absolutos: um cue negativo põe o efeito antes da cena (numa pausa da fala).
+            Além dos sfx do roteiro, `efeitos` na direção acrescenta efeitos curtos de transição. */}
         {stem !== "voz" &&
           episode.scenes.flatMap((scene) => {
             const dir = direction.cenas[scene.id] ?? {};
             const words = sceneWords(allCaptions, scene, episode.fps);
-            return scene.sfx.map((id) => {
+            const list = [
+              ...scene.sfx.map((id) => ({ id, at: dir.sfx?.[id] !== undefined ? resolveCue(dir.sfx[id], words) : 0 })),
+              ...(dir.efeitos ?? []).map((e) => ({ id: e.id, at: resolveCue(e.de, words) })),
+            ];
+            return list.map(({ id, at }, k) => {
               const sfx = SFX[id];
               if (!sfx || !sfx.file) return null;
-              const at = dir.sfx?.[id] !== undefined ? resolveCue(dir.sfx[id], words) : 0;
               const from = scene.startFrame + at;
               const len = Math.min(scene.durationInFrames - at, sfx.maxFrames ?? Infinity);
               return (
                 <Sequence
-                  key={`${scene.id}-${id}`}
+                  key={`${scene.id}-${id}-${k}`}
                   from={from}
                   durationInFrames={sfx.loop ? len : Math.min(len, 90)}
                   layout="none"
