@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 COMP=${1:-Ep01}
 shift || true
-FRAMES=${*:-"0 45 150 400 700 1000 1400 1700 1799"}
+FRAMES=${*:-"0 24 330 780 1260 1450 1700 1799"}
 EXTRA=()
 if [ -n "${REMOTION_BROWSER:-}" ]; then EXTRA=(--browser-executable="$REMOTION_BROWSER" --chrome-mode=chrome-for-testing); fi
 mkdir -p out/stills

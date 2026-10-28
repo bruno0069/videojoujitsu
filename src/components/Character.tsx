@@ -1,6 +1,7 @@
 import React from "react";
-import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { colors } from "../theme";
+import { interpolate, useCurrentFrame } from "remotion";
+import { colors, loopPhase, idle } from "../theme";
+import { useGlobalFrame } from "./GlobalFrame";
 import { useInk } from "./Ink";
 
 // Rig 2D em camadas. Origem nos pés (0,0); y negativo para cima.
@@ -17,7 +18,8 @@ export type PoseName =
   | "encolhido"
   | "olhando_para_cima"
   | "mao_levantada"
-  | "bracos_cruzados";
+  | "bracos_cruzados"
+  | "joinha";
 
 export type ExpressionName = "neutro" | "surpresa" | "medo" | "vergonha" | "cetica";
 
@@ -33,6 +35,7 @@ type PoseDef = {
   look: Vec;
   back?: boolean;
   pointR?: boolean;
+  thumbR?: boolean;
   shiver?: boolean;
 };
 
@@ -78,6 +81,10 @@ const POSES: Record<PoseName, PoseDef> = {
     handL: [-170, -250], handR: [300, -860], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: -4, headDy: -8, look: [0.7, -0.9],
   },
+  joinha: {
+    handL: [-170, -250], handR: [175, -520], footL: [-58, -22], footR: [58, -22],
+    crouch: 0, lean: 0, headTilt: 5, headDy: 0, look: [0.3, 0.1], thumbR: true,
+  },
   bracos_cruzados: {
     handL: [110, -410], handR: [-110, -428], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 3, headDy: 0, look: [-0.9, 0],
@@ -121,6 +128,8 @@ export type CharacterProps = {
   // Transição suave entre poses: pose anterior e progresso (0..1)
   fromPose?: string;
   poseT?: number;
+  // Direção do olhar (-1..1), já suavizada por quem chama; sobrepõe a da pose
+  look?: Vec;
 };
 
 const getPose = (name: string | undefined): PoseDef => POSES[(name as PoseName) in POSES ? (name as PoseName) : "parado"];
@@ -182,21 +191,22 @@ const PaoDeQueijo: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r })
   );
 };
 
-export const Character: React.FC<CharacterProps> = ({ style, pose, expression, holding, action, fromPose, poseT = 1 }) => {
+export const Character: React.FC<CharacterProps> = ({ style, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const g = useGlobalFrame();
   const ink = useInk();
   const p = fromPose && fromPose !== pose ? blendPose(getPose(fromPose), getPose(pose), poseT) : getPose(pose);
   const e = EXPRESSIONS[(expression as ExpressionName) in EXPRESSIONS ? (expression as ExpressionName) : "neutro"];
 
-  // Respiração e piscada, sempre ativas
-  const t = frame / fps;
-  const breath = Math.sin((t * 2 * Math.PI) / 3.2);
+  // Respiração e piscada, sempre ativas (relógio do episódio, para o loop casar)
+  const breath = Math.sin(loopPhase(g, idle.breathCycles) * 2 * Math.PI);
   const breathDy = -breath * 5;
-  const blinkPeriod = 104 + (style.blinkSeed % 3) * 9;
-  const bf = (frame + style.blinkSeed * 37) % blinkPeriod;
+  const blinkCycles = idle.blinkCycles - style.blinkSeed;
+  const blinkPeriod = idle.loopFrames / blinkCycles;
+  const bf = loopPhase(g + style.blinkSeed * 37, blinkCycles) * blinkPeriod;
   const blink = interpolate(bf, [0, 2, 4, 6], [1, 0.08, 0.08, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const shiverX = p.shiver ? Math.sin(frame * 2.4) * 3 : 0;
+  const cold = action === "frio";
+  const shiverX = cold ? Math.sin(frame * 2.9) * 7 : p.shiver ? Math.sin(frame * 2.4) * 3 : 0;
 
   // Andar: passo no lugar, com balanço dos braços
   const walk = pose === "andando" ? Math.sin((frame / 9) * Math.PI) : 0;
@@ -231,13 +241,20 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
 
   const elbowL = ik(shL, handL, ARM, -1);
   // Segurando à frente do peito: cotovelo junto ao corpo e antebraço em escorço
-  const elbowR: Vec = holdUp ? [shR[0] + 40, shR[1] + 160] : ik(shR, handR, ARM, 1);
+  const elbowR: Vec = holdUp || p.thumbR ? [shR[0] + 40, shR[1] + 160] : ik(shR, handR, ARM, 1);
   const kneeL = ik(hipL, footL, LEG, -1);
   const kneeR = ik(hipR, footR, LEG, 1);
 
   const chewing = action === "comendo" && eatPhase > 0.45 && Math.floor(frame / 5) % 2 === 0;
   const mouth = chewing ? "aberta" : e.mouth;
-  const look = e.look && pose !== "olhando_para_cima" && pose !== "mao_levantada" ? e.look : p.look;
+  // Revirar os olhos: as pupilas dão a volta por cima, de um lado ao outro
+  const rollT = (frame % 54) / 54;
+  const rollA = interpolate(rollT, [0, 0.6, 1], [Math.PI, 2 * Math.PI, 2 * Math.PI], { extrapolateRight: "clamp" });
+  const rolling: Vec = [Math.cos(rollA) * 0.9, -Math.abs(Math.sin(rollA)) - 0.1];
+  const look =
+    action === "revirar_olhos"
+      ? rolling
+      : lookOverride ?? (e.look && pose !== "olhando_para_cima" && pose !== "mao_levantada" ? e.look : p.look);
 
   const headY = HEAD_Y + bodyDy + p.headDy + breathDy;
   const torsoScale = 1 + breath * 0.012;
@@ -260,6 +277,7 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
         })()
       ) : null}
       <circle cx={handR[0]} cy={handR[1]} r={34} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink} />
+      {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={colors.pele} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
     </>
   );
@@ -351,6 +369,24 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
       </g>
 
       {arms}
+      {cold ? <Breath frame={frame} x={70} y={headY + 150} /> : null}
+    </g>
+  );
+};
+
+// Bafo de frio: nuvenzinhas que saem da boca, sobem e somem
+const Breath: React.FC<{ frame: number; x: number; y: number }> = ({ frame, x, y }) => {
+  const ink = useInk();
+  const cycle = 40;
+  const k = (frame % cycle) / cycle;
+  if (k > 0.75) return null;
+  const s = interpolate(k, [0, 0.2, 0.75], [0.3, 1, 1.3]);
+  const o = interpolate(k, [0, 0.1, 0.55, 0.75], [0, 0.9, 0.9, 0]);
+  return (
+    <g transform={`translate(${x + k * 120} ${y - k * 60}) scale(${s})`} opacity={o}>
+      <circle cx={0} cy={0} r={34} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+      <circle cx={38} cy={-14} r={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+      <circle cx={22} cy={18} r={22} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
     </g>
   );
 };

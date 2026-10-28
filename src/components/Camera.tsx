@@ -19,84 +19,46 @@ export const Layer: React.FC<{ cam: Cam; depth: number; children: React.ReactNod
   );
 };
 
-type Segment = { from: number; to: number; target: Cam };
-
-// Gera um movimento de câmera a cada 2–4 s, sem cortes: cada trecho
-// muda o enquadramento com mola (leve overshoot) e segue com um empurrão lento.
-export const planCamera = (opts: {
-  duration: number;
-  cuts: number[];
-  focus: { x: number; y: number }[];
-  shot: string;
-  start: "base" | "punch";
-  endAtBase: boolean;
-}): Segment[] => {
-  const bounds = [0, ...opts.cuts.filter((c) => c > 0 && c < opts.duration), opts.duration];
-  const segs: Segment[] = [];
-  const amp = opts.shot === "close" ? 0.5 : 1;
-  const pattern = [
-    { zoom: 1.0, dx: 0, dy: 0, f: -1 },
-    { zoom: 1.13, dx: 0, dy: 0, f: 0 },
-    { zoom: 1.06, dx: 0, dy: 0, f: 1 },
-    { zoom: 1.16, dx: 0, dy: 30, f: 0 },
-    { zoom: 1.04, dx: -40, dy: -20, f: -1 },
-  ];
-  for (let b = 0; b < bounds.length - 1; b++) {
-    const len = bounds[b + 1] - bounds[b];
-    const n = Math.max(1, Math.round(len / 90));
-    for (let i = 0; i < n; i++) {
-      const from = bounds[b] + Math.round((len * i) / n);
-      const to = bounds[b] + Math.round((len * (i + 1)) / n);
-      const p = pattern[(i + b) % pattern.length];
-      const focus = p.f >= 0 && opts.focus.length > 0 ? opts.focus[p.f % opts.focus.length] : { x: 540, y: 960 };
-      const zoom = 1 + (p.zoom - 1) * amp;
-      // Aproxima o centro do ponto de foco na proporção do zoom
-      const k = p.f >= 0 ? Math.min(0.6, (zoom - 1) * 4) : 0;
-      segs.push({
-        from,
-        to,
-        target: {
-          zoom,
-          x: 540 + (focus.x - 540) * k + p.dx * amp,
-          y: 960 + (focus.y - 960) * k + p.dy * amp,
-        },
-      });
-    }
-  }
-  if (opts.endAtBase && segs.length > 0) segs[segs.length - 1].target = BASE_CAM;
-  return segs;
-};
-
-const lerpCam = (a: Cam, b: Cam, t: number): Cam => ({
-  zoom: a.zoom + (b.zoom - a.zoom) * t,
-  x: a.x + (b.x - a.x) * t,
-  y: a.y + (b.y - a.y) * t,
+// Converte um ponto do mundo para a tela com a câmera atual.
+export const toScreen = (cam: Cam, x: number, y: number) => ({
+  x: 540 + (x - cam.x) * cam.zoom,
+  y: 960 + (y - cam.y) * cam.zoom,
 });
 
-export const cameraAt = (
-  frame: number,
-  fps: number,
-  segs: Segment[],
-  cuts: number[],
-  start: "base" | "punch",
-  endAtBase: boolean,
-): Cam => {
-  const idx = Math.max(0, segs.findIndex((s) => frame >= s.from && frame < s.to));
-  const seg = segs[idx] ?? segs[segs.length - 1];
-  const isCutStart = idx === 0 || cuts.includes(seg.from);
-  const prev: Cam = isCutStart
-    ? start === "base" && idx === 0
-      ? seg.target
-      : { ...seg.target, zoom: seg.target.zoom * 1.07 }
-    : segs[idx - 1].target;
-  const local = frame - seg.from;
-  const s = spring({ frame: local, fps, config: { damping: 13, mass: 0.9, stiffness: 110 } });
-  const cam = lerpCam(prev, seg.target, s);
-  // Empurrão contínuo, para nenhum plano ficar parado
-  const isLast = idx === segs.length - 1;
-  const segLen = seg.to - seg.from;
-  const drift = isLast && endAtBase
-    ? interpolate(local, [0, segLen], [0.035, 0], { easing: Easing.out(Easing.quad), extrapolateRight: "clamp" })
-    : interpolate(local, [0, segLen], [0, 0.03], { extrapolateRight: "clamp" });
-  return { ...cam, zoom: cam.zoom + drift };
+// Câmera de um plano: zoom de `from` para `to` mantendo o ponto de foco parado na tela.
+// "punch" = entra com mola (leve overshoot) e segue num empurrão lento de 3%.
+export const shotCamera = (opts: {
+  local: number;
+  length: number;
+  fps: number;
+  from: number;
+  to: number;
+  focus: { x: number; y: number };
+  punch: boolean;
+}): Cam => {
+  const { local, length, fps, from, to, focus, punch } = opts;
+  const zoom = punch
+    ? from +
+      (to - from) * spring({ frame: local, fps, config: { damping: 12, mass: 0.6, stiffness: 170 } }) +
+      interpolate(local, [12, length], [0, to * 0.03], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+    : interpolate(local, [0, Math.max(1, length - 1)], [from, to], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+        easing: Easing.inOut(Easing.quad),
+      });
+  return {
+    zoom,
+    x: focus.x - (focus.x - 540) / zoom,
+    y: focus.y - (focus.y - 960) / zoom,
+  };
+};
+
+// Tremida de tela: deslocamento pseudoaleatório que perde força ao longo de `frames`.
+export const shakeOffset = (frame: number, at: number, frames: number, force: number) => {
+  if (frame < at || frame >= at + frames) return { x: 0, y: 0 };
+  const k = 1 - (frame - at) / frames;
+  return {
+    x: Math.sin(frame * 12.9898) * force * k,
+    y: Math.cos(frame * 78.233) * force * k,
+  };
 };

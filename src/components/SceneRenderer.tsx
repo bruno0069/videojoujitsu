@@ -1,181 +1,291 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { shots, sun } from "../theme";
+import { colors, idle, loopPhase, shots, sun } from "../theme";
 import { resolveCue, TimedWord } from "../timing";
-import type { CharacterKey, Cue, Scene, SceneDirection } from "../types";
+import type { CharacterKey, Cue, Plano, Scene, SceneDirection } from "../types";
 import { Background } from "./Background";
-import { cameraAt, Layer, planCamera } from "./Camera";
+import { ORBIT } from "./backgrounds/DiagramaOrbita";
+import { Cam, Layer, shakeOffset, shotCamera, toScreen } from "./Camera";
 import { Dani } from "./Dani";
-import { BreadInsert, Clock, Flash, Moon, SpeechBubble, Thermometer } from "./elements/Props";
+import { Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer, Vignette } from "./elements/Props";
 import { Sun } from "./elements/Sun";
+import { useGlobalFrame } from "./GlobalFrame";
 import { InkScale } from "./Ink";
 import { Nico } from "./Nico";
-import { OnScreenText } from "./OnScreenText";
+import { OnScreenText, repeatsNarration } from "./OnScreenText";
 
 const HEAD_Y = -790;
+const TAG_Y = -1240; // acima do topete
 
-type Placed = { id: string; x: number; y: number; s: number };
+type Vec = [number, number];
+type CharBase = { id: string; pose: string; expression: string; holding?: string | null; action?: string | null; small?: boolean };
+type Placed = CharBase & { x: number; y: number; s: number; screen: boolean };
 
-// Posição de cada personagem conforme o enquadramento e o número de personagens.
-const placeCharacters = (scene: Scene): Placed[] => {
-  const chars = scene.visual.characters;
-  const shot = scene.visual.camera;
-  return chars.map((c, i) => {
-    if (c.scale === "inserto_pequeno" || shot === "plano_aberto") {
-      return { id: c.id, ...shots.plano_aberto, s: shots.plano_aberto.scale };
+const CHAR_COLOR: Record<string, string> = { nico: colors.coral, dani: colors.turquesa };
+
+const SHOT_FROM_JSON: Record<string, Plano["enquadramento"]> = {
+  close: "close",
+  plano_medio: "medio",
+  plano_aberto: "aberto",
+};
+
+// Posição de cada personagem conforme o enquadramento do plano.
+const place = (chars: CharBase[], plano: Plano): Placed[] => {
+  const big = chars.filter((c) => !c.small && plano.enquadramento !== "inserto_pequeno");
+  return chars.flatMap((c): Placed[] => {
+    if (c.small || plano.enquadramento === "inserto_pequeno") {
+      const p = shots.inserto_pequeno;
+      return [{ ...c, x: p.x, y: p.y, s: p.scale, screen: true }];
     }
-    if (shot === "close") return { id: c.id, x: shots.close.x, y: shots.close.y, s: shots.close.scale };
-    const base = shots.plano_medio;
-    if (chars.length === 1) return { id: c.id, x: 430, y: base.y, s: base.scale };
-    const xs = [330, 770];
-    return { id: c.id, x: xs[i % 2], y: base.y, s: base.scale * (c.id === "dani" ? 0.97 : 1) };
+    const i = big.indexOf(c);
+    switch (plano.enquadramento) {
+      case "close": {
+        const focus = plano.foco ?? big[0]?.id;
+        return c.id === focus ? [{ ...c, x: shots.close.x, y: shots.close.y, s: shots.close.scale, screen: false }] : [];
+      }
+      case "aberto":
+        return [{ ...c, x: big.length === 1 ? 540 : shots.aberto.xs[i % 2], y: shots.aberto.y, s: shots.aberto.scale, screen: false }];
+      case "medio": {
+        const m = shots.plano_medio;
+        if (big.length === 1) return [{ ...c, x: 430, y: m.y, s: m.scale, screen: false }];
+        return [{ ...c, x: [330, 770][i % 2], y: m.y, s: m.scale * (c.id === "dani" ? 0.97 : 1), screen: false }];
+      }
+      default:
+        return [];
+    }
   });
 };
 
-const activeKey = (keys: CharacterKey[] | undefined, frame: number, words: TimedWord[], basePose: string) => {
-  const state: Omit<CharacterKey, "de"> = {};
-  let pose = basePose;
-  let prevPose = basePose;
-  let poseChangedAt = -Infinity;
-  for (const k of keys ?? []) {
-    const at = resolveCue(k.de, words);
-    if (at > frame) continue;
-    Object.assign(state, k);
-    if (k.pose && k.pose !== pose) {
-      prevPose = pose;
-      pose = k.pose;
-      poseChangedAt = at;
-    }
+// Estado de um personagem no frame: base da cena, chaves anteriores ao plano, campos do plano
+// e, por cima, chaves dentro do plano. Mudanças de pose/olhar dentro do plano são suavizadas;
+// no corte, trocam seco.
+const characterState = (
+  base: CharBase,
+  plano: Partial<CharBase>,
+  keys: CharacterKey[] | undefined,
+  frame: number,
+  planoStart: number,
+  cue: (c: Cue) => number,
+) => {
+  const resolved = (keys ?? []).map((k) => ({ ...k, at: cue(k.de) })).filter((k) => k.at <= frame);
+  const s: CharBase & { visible: boolean; look?: Vec } = { ...base, visible: true };
+  const apply = (k: CharacterKey) => {
+    if (k.visivel !== undefined) s.visible = k.visivel;
+    if (k.expressao) s.expression = k.expressao;
+    if (k.segurando !== undefined) s.holding = k.segurando;
+    if (k.acao !== undefined) s.action = k.acao;
+    if (k.pose) s.pose = k.pose;
+    if (k.olhar) s.look = k.olhar;
+  };
+  resolved.filter((k) => k.at <= planoStart).forEach(apply);
+  for (const [k, v] of Object.entries(plano)) {
+    if (v !== undefined) (s as Record<string, unknown>)[k] = v;
   }
-  return { state, pose, prevPose, poseChangedAt };
+  let prevPose = s.pose;
+  let poseAt = -Infinity;
+  let prevLook = s.look;
+  let lookAt = -Infinity;
+  for (const k of resolved.filter((r) => r.at > planoStart)) {
+    if (k.pose && k.pose !== s.pose) {
+      prevPose = s.pose;
+      poseAt = k.at;
+    }
+    if (k.olhar) {
+      prevLook = s.look;
+      lookAt = k.at;
+    }
+    apply(k);
+  }
+  return { ...s, prevPose, poseAt, prevLook, lookAt };
+};
+
+const centerOf = (focus: string | undefined, placed: Placed[]) => {
+  if (focus === "orbita") return { x: ORBIT.cx, y: ORBIT.cy };
+  if (focus === "ceu") return { x: 540, y: 620 };
+  const p = placed.find((c) => c.id === focus) ?? placed.find((c) => !c.screen);
+  return p ? { x: p.x, y: p.y + HEAD_Y * p.s } : { x: 540, y: 960 };
 };
 
 export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; words: TimedWord[] }> = ({ scene, direction, words }) => {
   const frame = useCurrentFrame();
+  const g = useGlobalFrame();
   const { fps } = useVideoConfig();
   const cue = (c: Cue | undefined, fb = 0) => resolveCue(c, words, fb);
   const duration = scene.durationInFrames;
+
+  // Plano atual
+  const planos: Plano[] = direction.planos ?? [{ de: 0, enquadramento: SHOT_FROM_JSON[scene.visual.camera] ?? "medio" }];
+  const starts = planos.map((p) => cue(p.de));
+  let idx = 0;
+  starts.forEach((st, i) => {
+    if (st <= frame) idx = i;
+  });
+  const plano = planos[idx];
+  const planoStart = starts[idx];
+  const planoEnd = starts[idx + 1] ?? duration;
+  const local = frame - planoStart;
+
+  // Personagens do plano
+  const sceneChars: CharBase[] = scene.visual.characters.map((c) => ({
+    id: c.id,
+    pose: c.pose,
+    expression: c.expression,
+    small: c.scale === "inserto_pequeno",
+  }));
+  const noChars = plano.enquadramento === "ceu" || plano.enquadramento === "inserto_pao";
+  const baseChars: CharBase[] = plano.personagens
+    ? plano.personagens.map((pc) => {
+        const fromScene = sceneChars.find((c) => c.id === pc.id);
+        return { id: pc.id, pose: fromScene?.pose ?? "parado", expression: fromScene?.expression ?? "neutro", small: fromScene?.small };
+      })
+    : noChars
+      ? []
+      : sceneChars;
+  const planoFields = (id: string): Partial<CharBase> => {
+    const pc = plano.personagens?.find((c) => c.id === id);
+    return pc ? { pose: pc.pose, expression: pc.expressao, holding: pc.segurando, action: pc.acao } : {};
+  };
+  const placed = place(baseChars, plano);
+
+  // Câmera do plano
+  const [zFrom, zTo] = plano.zoom ?? [1, 1.08];
+  const cam: Cam = shotCamera({
+    local,
+    length: planoEnd - planoStart,
+    fps,
+    from: zFrom,
+    to: zTo,
+    focus: centerOf(plano.foco, placed),
+    punch: plano.entrada === "punch",
+  });
+  const shake = (direction.tremidas ?? []).reduce(
+    (acc, t) => {
+      const o = shakeOffset(frame, cue(t.de), t.frames, t.forca);
+      return { x: acc.x + o.x, y: acc.y + o.y };
+    },
+    { x: 0, y: 0 },
+  );
 
   // Parâmetros do cenário (cues -> frames)
   const params: Record<string, number | number[]> = {};
   for (const [k, v] of Object.entries(direction.fundo ?? {})) {
     params[k] = Array.isArray(v) ? v.map((x) => cue(x)) : cue(v);
   }
-  const cuts = (direction.cortes ?? []).map((c) => cue(c));
-  if (typeof params.corte === "number") cuts.push(params.corte);
-
-  const placed = placeCharacters(scene);
-  const cam = cameraAt(
-    frame,
-    fps,
-    planCamera({
-      duration,
-      cuts,
-      focus: placed.map((p) => ({ x: p.x, y: p.y + HEAD_Y * p.s })),
-      shot: scene.visual.camera,
-      start: direction.camera?.inicio ?? "punch",
-      endAtBase: direction.camera?.fim === "base",
-    }),
-    cuts,
-    direction.camera?.inicio ?? "punch",
-    direction.camera?.fim === "base",
-  );
+  const backgroundName = plano.cenario ?? (plano.enquadramento === "inserto_pao" ? "inserto_pao" : scene.visual.background);
 
   const elements = direction.elementos ?? [];
+  const inWindow = (el: { de?: Cue; ate?: Cue }) => frame >= cue(el.de, 0) && frame < cue(el.ate, duration);
 
-  // Elementos no céu (camada de fundo)
+  // Elementos no céu (camada de fundo, com parallax)
   const skyElements = elements.map((el, i) => {
-    if (el.type === "sol") {
-      const goneAt = el.some !== undefined ? cue(el.some) : Infinity;
-      const s = frame < goneAt ? 1 : 1 - interpolate(frame, [goneAt, goneAt + 5], [0, 1], { extrapolateRight: "clamp" });
-      const wobble = 1 + 0.03 * Math.sin(frame / 7);
-      if (s <= 0) return null;
-      return <Sun key={i} x={el.x ?? sun.x} y={el.y ?? sun.y} r={sun.r} rot={frame * 0.4} scale={s * wobble} />;
+    if (el.type === "sol" && inWindow(el) && !noChars) {
+      const len = el.encolhe ?? 12;
+      const shrink =
+        el.some === undefined
+          ? 1
+          : interpolate(frame, [cue(el.some), cue(el.some) + len], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+      if (shrink <= 0) return null;
+      const lift = (1 - shrink) * 40;
+      // rotação e pulso no relógio do episódio: no último quadro voltam ao estado do primeiro
+      const wobble = 1 + 0.03 * Math.sin(2 * Math.PI * loopPhase(g, 20));
+      const rot = loopPhase(g, idle.sunTurns) * 36;
+      return <Sun key={i} x={el.x ?? sun.x} y={(el.y ?? sun.y) - lift} r={sun.r} rot={rot} scale={shrink * wobble} />;
     }
-    if (el.type === "lua") return <Moon key={i} frame={frame} appear={cue(el.aparece)} off={cue(el.apaga)} />;
+    if (el.type === "lua" && inWindow(el)) {
+      return <Moon key={i} frame={frame} appear={cue(el.aparece)} blink={el.pisca !== undefined ? cue(el.pisca) : undefined} off={cue(el.apaga)} />;
+    }
     return null;
   });
 
-  // Personagens + balões (camada da frente, mundo)
-  const characters = scene.visual.characters.map((c, i) => {
-    const p = placed[i];
-    const { state: k, pose, prevPose, poseChangedAt } = activeKey(direction.personagens?.[c.id], frame, words, c.pose);
-    if (k.visivel === false) return null;
+  // Personagens
+  const states = placed.map((p) => ({
+    p,
+    st: characterState(p, planoFields(p.id), direction.personagens?.[p.id], frame, planoStart, (c) => cue(c)),
+  }));
+  const drawChar = ({ p, st }: (typeof states)[number]) => {
+    if (!st.visible) return null;
+    const poseT = Number.isFinite(st.poseAt) ? spring({ frame: frame - st.poseAt, fps, config: { damping: 12, mass: 0.6, stiffness: 150 } }) : 1;
+    const lookT = Number.isFinite(st.lookAt) ? spring({ frame: frame - st.lookAt, fps, config: { damping: 14, mass: 0.4, stiffness: 200 } }) : 1;
+    const look: Vec | undefined =
+      st.look && st.prevLook && lookT < 1
+        ? [st.prevLook[0] + (st.look[0] - st.prevLook[0]) * lookT, st.prevLook[1] + (st.look[1] - st.prevLook[1]) * lookT]
+        : st.look;
     const props = {
-      pose,
-      fromPose: prevPose,
-      poseT: Number.isFinite(poseChangedAt)
-        ? spring({ frame: frame - poseChangedAt, fps, config: { damping: 12, mass: 0.6, stiffness: 150 } })
-        : 1,
-      expression: k.expressao ?? c.expression,
-      holding: k.segurando ?? null,
-      action: k.acao ?? null,
+      pose: st.pose,
+      fromPose: st.prevPose,
+      poseT,
+      expression: st.expression,
+      holding: st.holding ?? null,
+      action: st.action ?? null,
+      look,
     };
-    // Pequena entrada com mola quando o personagem aparece no meio da cena
-    const appearKey = (direction.personagens?.[c.id] ?? []).find((key) => key.visivel === true);
-    const appearAt = appearKey ? cue(appearKey.de) : 0;
-    const enter = appearAt > 0 ? spring({ frame: frame - appearAt, fps, config: { damping: 12, mass: 0.7 } }) : 1;
-    const dy = (1 - enter) * 160;
     return (
-      <g key={c.id} transform={`translate(${p.x} ${p.y + dy}) scale(${p.s})`}>
-        <InkScale scale={p.s}>{c.id === "dani" ? <Dani {...props} /> : <Nico {...props} />}</InkScale>
+      <g key={p.id} transform={`translate(${p.x} ${p.y}) scale(${p.s})`}>
+        <InkScale scale={p.s}>{p.id === "dani" ? <Dani {...props} /> : <Nico {...props} />}</InkScale>
       </g>
     );
-  });
+  };
+  const worldChars = states.filter((s) => !s.p.screen).map(drawChar);
+  const screenChars = states.filter((s) => s.p.screen).map(drawChar);
 
-  const bubbles = elements.map((el, i) => {
-    if (el.type !== "balao") return null;
-    const idx = Math.max(0, scene.visual.characters.findIndex((c) => c.id === (el.personagem ?? "nico")));
-    const p = placed[idx];
-    return (
-      <SpeechBubble
-        key={i}
-        frame={frame}
-        from={cue(el.de)}
-        to={cue(el.ate, duration)}
-        text={el.texto}
-        // âncora convertida do mundo para a tela (balão fica sempre dentro do quadro)
-        ax={540 + (p.x + 170 * p.s - cam.x) * cam.zoom}
-        ay={960 + (p.y + (HEAD_Y - 120) * p.s - cam.y) * cam.zoom}
-      />
-    );
-  });
+  // Âncoras em tela (balões e etiquetas ficam sempre dentro do quadro)
+  const anchor = (id: string | undefined, dy: number) => {
+    const p = placed.find((c) => c.id === (id ?? "nico"));
+    if (!p) return null;
+    if (p.screen) return { x: p.x, y: p.y + dy * p.s };
+    return toScreen(cam, p.x, p.y + dy * p.s);
+  };
 
-  const hud = elements.map((el, i) => {
+  const overlay = elements.map((el, i) => {
     switch (el.type) {
-      case "inserto":
-        return <BreadInsert key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} />;
-      case "relogio":
-        return <Clock key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} start={el.inicio} end={el.fim} />;
+      case "balao": {
+        const a = anchor(el.personagem, HEAD_Y - 120);
+        const p = placed.find((c) => c.id === (el.personagem ?? "nico"));
+        if (!a || !p) return null;
+        return <SpeechBubble key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} text={el.texto} ax={a.x + 170 * p.s * cam.zoom} ay={a.y} />;
+      }
+      case "etiqueta": {
+        const a = anchor(el.personagem, TAG_Y);
+        if (!a) return null;
+        return <NameTag key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} text={el.texto} color={CHAR_COLOR[el.personagem] ?? colors.coral} x={a.x} y={a.y} />;
+      }
+      case "prova":
+        return <TestPaper key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} gradeAt={cue(el.notaEm)} grade={el.nota} />;
       case "termometro":
-        return <Thermometer key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} />;
-      case "sol":
-        return el.flash && el.some !== undefined ? <Flash key={i} frame={frame} at={cue(el.some)} /> : null;
+        return <Thermometer key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} big={el.grande} />;
+      case "vinheta":
+        return <Vignette key={i} frame={frame} from={cue(el.de)} />;
+      case "sol": {
+        if (!el.flash || el.some === undefined) return null;
+        return <Flash key={i} frame={frame} at={cue(el.some) + (el.encolhe ?? 12) - 2} />;
+      }
       default:
         return null;
     }
   });
 
-  const textFrom = cue(direction.texto?.de, 0);
+  // Texto na tela: some quando só repete a fala
+  const showText = direction.texto?.mostrar ?? !repeatsNarration(scene.onScreenText, scene.narration);
 
   return (
-    <AbsoluteFill>
-      <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0 }}>
-        <Background
-          name={scene.visual.background}
-          cam={cam}
-          frame={frame}
-          duration={duration}
-          params={params}
-          skyElements={skyElements}
-        />
+    <AbsoluteFill style={{ translate: `${shake.x}px ${shake.y}px` }}>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0, overflow: "visible" }}>
+        <Background name={backgroundName} cam={cam} frame={frame} globalFrame={g} duration={duration} params={params} skyElements={skyElements} />
         <Layer cam={cam} depth={1}>
-          {characters}
+          {worldChars}
         </Layer>
-        {bubbles}
-        {hud}
+        {screenChars}
+        {overlay}
       </svg>
-      <OnScreenText text={scene.onScreenText} frame={frame} from={textFrom} animate={direction.texto?.animar !== false} />
+      {showText ? (
+        <OnScreenText
+          text={scene.onScreenText}
+          frame={frame}
+          from={cue(direction.texto?.de, 0)}
+          to={cue(direction.texto?.ate, duration)}
+          animate={direction.texto?.animar !== false}
+        />
+      ) : null}
     </AbsoluteFill>
   );
 };

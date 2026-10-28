@@ -49,15 +49,16 @@ export const layout = {
 
 // Legenda palavra por palavra
 export const captions = {
-  centerY: 1380, // centro do bloco de legenda (terço central-inferior)
-  fontSize: 78,
+  centerY: 1380, // centro do bloco; o bloco termina em ~1474, fora dos 18% inferiores (y > 1574)
+  fontSize: 84,
   lineHeight: 1.12,
   maxLines: 2,
+  wordsPerPage: 3,
+  stroke: 20, // contorno da legenda (mais grosso que o do texto na tela)
+  holdMs: 200, // quanto a página fica depois da última palavra
   textColor: colors.creme,
   activeColor: colors.amarelo,
   strokeColor: colors.tinta,
-  // Agrupamento das palavras em "páginas"
-  combineWithinMs: 1100,
   // Folga no começo e no fim de cada cena quando o tempo é estimado
   leadFrames: 4,
   tailFrames: 8,
@@ -65,7 +66,7 @@ export const captions = {
 
 // Texto na tela (caixa)
 export const onScreenText = {
-  top: 210,
+  top: 240,
   maxFontSize: 84,
   minFontSize: 52,
   paddingX: 40,
@@ -82,11 +83,32 @@ export const onScreenText = {
 export const shots = {
   close: { x: 420, y: 2225, scale: 1.55 },
   plano_medio: { x: 540, y: 1520, scale: 0.8 },
-  plano_aberto: { x: 175, y: 1190, scale: 0.3 },
+  aberto: { y: 1450, scale: 0.6, xs: [340, 740] },
+  inserto_pequeno: { x: 140, y: 1290, scale: 0.28 },
 } as const;
 
 // Posição do Sol no céu (repetida no gancho e na janela da sala para fechar o loop)
 export const sun = { x: 860, y: 630, r: 95 };
+
+// Elementos fixos na tela
+export const hud = {
+  timer: { x: 205, y: 150, scale: 0.5 }, // canto superior esquerdo
+};
+
+// Animação ociosa em ciclos inteiros por episódio. O relógio fecha em `loopFrames`
+// (último frame), então o frame 1799 sai idêntico ao frame 0.
+export const idle = {
+  loopFrames: 1799,
+  blinkCycles: 24, // piscar a cada ~2,5 s
+  breathCycles: 20, // respirar a cada ~3 s
+  sunTurns: 2, // o Sol gira 2 x 36° (simetria dos raios) por episódio
+};
+
+// Fração do ciclo (0..1) de algo que se repete `cycles` vezes por episódio
+export const loopPhase = (globalFrame: number, cycles: number) => {
+  const x = (globalFrame / idle.loopFrames) * cycles;
+  return x - Math.floor(x);
+};
 
 export const audio = {
   narrationVolume: 1,

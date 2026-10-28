@@ -1,65 +1,184 @@
 {
+  "hud": [{ "type": "relogio", "inicio": "08:20", "fim": "00:00", "de": 540, "ate": 1260, "grandeAte": 640 }],
   "cenas": {
     "gancho": {
-      "camera": { "inicio": "base" },
-      "texto": { "animar": false },
-      "elementos": [{ "type": "sol", "some": "agora?$", "flash": true }],
-      "sfx": { "estalo": "agora?$" }
+      "planos": [{ "de": 0, "enquadramento": "close", "foco": "nico", "zoom": [1, 1.06], "entrada": "corte" }],
+      "elementos": [{ "type": "sol", "some": 12, "encolhe": 12, "flash": true }],
+      "tremidas": [{ "de": 24, "frames": 6, "forca": 18 }],
+      "personagens": {
+        "nico": [
+          { "de": 0, "olhar": [0.7, -0.9] },
+          { "de": 12, "olhar": [0.8, -1] },
+          { "de": 27, "olhar": [0, -0.5] },
+          { "de": 40, "olhar": [-0.7, -0.6] },
+          { "de": 58, "olhar": [0.6, -0.7] },
+          { "de": 76, "olhar": [0, -0.2] }
+        ]
+      },
+      "sfx": { "estalo": 22 },
+      "sincronia": [
+        { "frame": 4, "palavra": "E", "evento": "início da fala" },
+        { "frame": 21, "palavra": "sumisse", "evento": "o Sol termina de encolher + flash (22) + tremida (24–30)" },
+        { "frame": 51, "palavra": "Ninguém", "evento": "olhos do Nico procurando o Sol" }
+      ]
     },
     "apresentacao": {
-      "elementos": [{ "type": "sol", "x": 880, "y": 500 }],
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "foco": "nico", "zoom": [1, 1.3], "entrada": "punch" },
+        { "de": 60, "enquadramento": "close", "foco": "dani", "zoom": [1, 1.08], "entrada": "corte" },
+        { "de": 120, "enquadramento": "aberto", "zoom": [1, 1.08], "entrada": "corte" }
+      ],
+      "texto": { "mostrar": false },
+      "elementos": [
+        { "type": "sol", "x": 880, "y": 500 },
+        { "type": "etiqueta", "texto": "NICO", "personagem": "nico", "de": 6, "ate": 60 },
+        { "type": "etiqueta", "texto": "DANI", "personagem": "dani", "de": 64, "ate": 120 },
+        { "type": "etiqueta", "texto": "NICO", "personagem": "nico", "de": 126, "ate": 210 },
+        { "type": "etiqueta", "texto": "DANI", "personagem": "dani", "de": 132, "ate": 210 }
+      ],
       "personagens": {
-        "nico": [{ "de": 0, "segurando": "pao_de_queijo" }]
-      }
+        "nico": [
+          { "de": 0, "segurando": "pao_de_queijo" },
+          { "de": 128, "pose": "mao_levantada", "expressao": "surpresa" }
+        ],
+        "dani": [
+          { "de": 60, "acao": "revirar_olhos" },
+          { "de": 120, "acao": null },
+          { "de": 180, "acao": "revirar_olhos" }
+        ]
+      },
+      "sincronia": [
+        { "frame": 22, "palavra": "Nico.", "evento": "punch-in no Nico + etiqueta NICO" },
+        { "frame": 60, "palavra": "recreio,", "evento": "corte seco: close da Dani revirando os olhos" },
+        { "frame": 129, "palavra": "Dani", "evento": "plano aberto; Nico ergue o pão de queijo" },
+        { "frame": 184, "palavra": "De novo.", "evento": "Dani revira os olhos de novo" }
+      ]
     },
     "gatilho": {
-      "texto": { "de": "Nada" },
-      "elementos": [
-        { "type": "sol", "some": "some", "x": 860, "y": 500 },
-        { "type": "balao", "texto": "Ué.", "de": "repente.", "ate": "continua" },
-        { "type": "inserto", "objeto": "pao_de_queijo", "de": "pão-6", "ate": 240 }
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "foco": "nico", "zoom": [1, 1.1], "entrada": "corte" },
+        { "de": 150, "enquadramento": "inserto_pao", "zoom": [1, 1.12], "entrada": "corte" }
       ],
+      "elementos": [
+        { "type": "sol", "some": 18, "encolhe": 12, "flash": true, "x": 860, "y": 500 },
+        { "type": "balao", "texto": "Ué.", "de": 58, "ate": 140 }
+      ],
+      "tremidas": [{ "de": 30, "frames": 6, "forca": 14 }],
       "personagens": {
-        "nico": [{ "de": 0, "segurando": "pao_de_queijo" }]
+        "nico": [
+          { "de": 0, "segurando": "pao_de_queijo", "olhar": [0.8, -0.9] },
+          { "de": 30, "expressao": "surpresa" },
+          { "de": 44, "olhar": [0.2, -0.3] },
+          { "de": 100, "expressao": "neutro", "olhar": [0, 0] }
+        ]
       },
-      "sfx": { "grilo": "Nada" }
+      "sfx": { "grilo": 85 },
+      "sincronia": [
+        { "frame": 28, "palavra": "some.", "evento": "o Sol some (encolhe 18–30), flash 28–31, tremida 30–36" },
+        { "frame": 56, "palavra": "repente.", "evento": "balão \"Ué.\" entra com bounce (58)" },
+        { "frame": 163, "palavra": "pão", "evento": "inserto do pão de queijo (corte em 150)" }
+      ]
     },
     "escalada1": {
-      "texto": { "de": "oito-4" },
-      "elementos": [
-        { "type": "relogio", "inicio": "08:20", "fim": "03:00", "de": "oito-4", "ate": 350 },
-        { "type": "balao", "texto": "x + y = ?!", "de": "reclama", "ate": 360 }
+      "planos": [
+        { "de": 0, "enquadramento": "ceu", "foco": "ceu", "zoom": [1, 1.12], "entrada": "corte" },
+        {
+          "de": 100,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [1, 1.12],
+          "entrada": "corte",
+          "personagens": [{ "id": "nico", "segurando": "pao_de_queijo", "acao": "comendo" }]
+        },
+        {
+          "de": 235,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [1, 1.12],
+          "entrada": "corte",
+          "personagens": [{ "id": "nico", "pose": "apontando", "expressao": "vergonha" }]
+        },
+        {
+          "de": 315,
+          "enquadramento": "close",
+          "foco": "dani",
+          "zoom": [1, 1.12],
+          "entrada": "corte",
+          "personagens": [{ "id": "dani", "pose": "bracos_cruzados", "expressao": "cetica" }]
+        }
       ],
+      "texto": { "de": 44, "ate": 100 },
+      "elementos": [{ "type": "prova", "nota": "3,5", "de": 238, "ate": 315, "notaEm": 272 }],
+      "personagens": {
+        "nico": [{ "de": 222, "segurando": null, "acao": null }]
+      },
+      "sincronia": [
+        { "frame": 47, "palavra": "oito", "evento": "timer 08:20 em close (vira HUD no canto a partir de 100)" },
+        { "frame": 229, "palavra": "lanche.", "evento": "Nico termina o pão de queijo (222)" },
+        { "frame": 276, "palavra": "reclama", "evento": "corte para a prova (235); nota pula em 272" },
+        { "frame": 315, "palavra": "matemática.", "evento": "reação da Dani" }
+      ]
+    },
+    "escalada2": {
+      "planos": [{ "de": 0, "enquadramento": "aberto", "foco": "orbita", "zoom": [1, 1.15], "entrada": "corte" }],
+      "fundo": { "rotulo": 20 },
       "personagens": {
         "nico": [
-          { "de": 0, "segurando": "pao_de_queijo", "acao": "comendo" },
-          { "de": "lanche$", "segurando": null, "acao": null },
-          { "de": "Depois", "pose": "apontando" }
-        ]
-      }
-    },
-    "escalada2": {},
-    "virada": {
-      "texto": { "de": "Lua-4" },
-      "fundo": { "passos": ["Aí", "escurece", "apaga"] },
-      "elementos": [
-        { "type": "lua", "aparece": "Lua-8", "apaga": "apaga" },
-        { "type": "termometro", "de": "semana", "ate": "zero$" }
-      ],
-      "sfx": { "queda_graves": "Aí", "vento_frio": "escurece" }
-    },
-    "fecho": {
-      "camera": { "fim": "base" },
-      "texto": { "de": "Nico-4" },
-      "fundo": { "corte": "Nico-4" },
-      "personagens": {
-        "nico": [
-          { "de": 0, "visivel": false, "pose": "parado" },
-          { "de": "Nico-4", "visivel": true },
-          { "de": "levanta", "pose": "mao_levantada" }
+          { "de": 0, "olhar": [0.8, -0.4] },
+          { "de": 300, "pose": "joinha", "olhar": [0, 0] }
         ]
       },
-      "sfx": { "estalo": "Nico-4" }
+      "sincronia": [
+        { "frame": 9, "palavra": "gravidade", "evento": "diagrama; rótulo \"onde o Sol estava\" em 20" },
+        { "frame": 186, "palavra": "Terra", "evento": "Terra com rastro na órbita" },
+        { "frame": 307, "palavra": "Ninguém", "evento": "Nico faz joinha (300); timer chega a 00:00 no fim da cena" }
+      ]
+    },
+    "virada": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "foco": "nico", "zoom": [1, 1.08], "entrada": "corte" },
+        { "de": 110, "enquadramento": "close", "foco": "nico", "zoom": [1, 1.1], "entrada": "corte" },
+        { "de": 190, "enquadramento": "medio", "foco": "nico", "zoom": [1, 1.08], "entrada": "corte" }
+      ],
+      "fundo": { "passos": [8, 35, 62] },
+      "elementos": [
+        { "type": "lua", "aparece": 38, "pisca": 56, "apaga": 76 },
+        { "type": "termometro", "grande": true, "de": 190, "ate": 285 },
+        { "type": "vinheta", "de": 30 }
+      ],
+      "tremidas": [{ "de": 6, "frames": 14, "forca": 22 }],
+      "personagens": {
+        "nico": [{ "de": 0, "acao": "frio" }]
+      },
+      "sfx": { "queda_graves": 6, "vento_frio": 20 },
+      "sincronia": [
+        { "frame": 22, "palavra": "escurece.", "evento": "céu escurece em 8, 35 e 62; queda dos graves + tremida em 6" },
+        { "frame": 55, "palavra": "Lua", "evento": "Lua aparece (38), pisca (56) e apaga (76)" },
+        { "frame": 195, "palavra": "semana,", "evento": "termômetro grande entra (190)" },
+        { "frame": 280, "palavra": "zero.", "evento": "mercúrio abaixo de zero (285)" }
+      ]
+    },
+    "fecho": {
+      "planos": [
+        { "de": 0, "enquadramento": "ceu", "cenario": "espaco_escuro", "zoom": [1, 1.1], "entrada": "corte" },
+        { "de": 90, "enquadramento": "close", "foco": "nico", "cenario": "patio_dia", "zoom": [1.06, 1], "entrada": "corte" }
+      ],
+      "texto": { "de": 180, "ate": 233 },
+      "elementos": [{ "type": "sol", "de": 90 }],
+      "personagens": {
+        "nico": [
+          { "de": 90, "pose": "olhando_para_cima", "olhar": [0.7, -0.9] },
+          { "de": 118, "pose": "mao_levantada" },
+          { "de": 210, "pose": "olhando_para_cima" }
+        ]
+      },
+      "sfx": { "estalo": 90 },
+      "sincronia": [
+        { "frame": 8, "palavra": "Terra", "evento": "Terra sai pela tangente, em linha reta" },
+        { "frame": 105, "palavra": "O Nico", "evento": "corte para o pátio no enquadramento do frame 0 (90)" },
+        { "frame": 119, "palavra": "levanta", "evento": "Nico levanta a mão (118); abaixa em 210" },
+        { "frame": 218, "palavra": "agora?", "evento": "CTA de 180 a 233; último quadro igual ao frame 0" }
+      ]
     }
   }
 }

@@ -1,26 +1,37 @@
 import React, { useMemo } from "react";
-import { createTikTokStyleCaptions } from "@remotion/captions";
-import type { Caption, TikTokPage } from "@remotion/captions";
+import type { Caption } from "@remotion/captions";
 import { AbsoluteFill, Sequence, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { captions as c, fonts, ink, layout } from "../theme";
+import { captions as c, fonts, layout } from "../theme";
 
-// Legenda palavra por palavra; a palavra atual fica em amarelo.
-export const Captions: React.FC<{ captions: Caption[] }> = ({ captions }) => {
+type Page = { startMs: number; endMs: number; tokens: Caption[] };
+
+// Agrupa as palavras em páginas de N palavras, sem atravessar o fim de uma cena.
+const toPages = (captions: Caption[], size: number): Page[] => {
+  const pages: Page[] = [];
+  let cur: Caption[] = [];
+  captions.forEach((cap, i) => {
+    cur.push(cap);
+    if (cur.length === size || cap.pageBreakAfter || i === captions.length - 1) {
+      pages.push({ startMs: cur[0].startMs, endMs: cur[cur.length - 1].endMs, tokens: cur });
+      cur = [];
+    }
+  });
+  return pages;
+};
+
+// Legenda palavra por palavra; a palavra atual fica em amarelo e dá um pulinho.
+export const Captions: React.FC<{ captions: Caption[]; hideAfterFrame: number }> = ({ captions, hideAfterFrame }) => {
   const { fps } = useVideoConfig();
-  const { pages } = useMemo(
-    () => createTikTokStyleCaptions({ captions, combineTokensWithinMilliseconds: c.combineWithinMs }),
-    [captions],
-  );
+  const pages = useMemo(() => toPages(captions, c.wordsPerPage), [captions]);
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       {pages.map((page, index) => {
         const next = pages[index + 1] ?? null;
-        const lastToken = page.tokens[page.tokens.length - 1];
         const startFrame = Math.round((page.startMs / 1000) * fps);
-        // Some logo depois da última palavra, para não invadir a cena seguinte
-        const endMs = next ? Math.min(next.startMs, lastToken.toMs + 250) : lastToken.toMs + 250;
-        const endFrame = Math.round((endMs / 1000) * fps);
+        // Some logo depois da última palavra, para não invadir a cena seguinte nem o quadro final do loop
+        const endMs = next ? Math.min(next.startMs, page.endMs + c.holdMs) : page.endMs + c.holdMs;
+        const endFrame = Math.min(hideAfterFrame, Math.round((endMs / 1000) * fps));
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
@@ -32,7 +43,7 @@ export const Captions: React.FC<{ captions: Caption[] }> = ({ captions }) => {
   );
 };
 
-const CaptionPage: React.FC<{ page: TikTokPage }> = ({ page }) => {
+const CaptionPage: React.FC<{ page: Page }> = ({ page }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const nowMs = page.startMs + (frame / fps) * 1000;
@@ -57,19 +68,23 @@ const CaptionPage: React.FC<{ page: TikTokPage }> = ({ page }) => {
           fontSize: c.fontSize,
           lineHeight: c.lineHeight,
           textAlign: "center",
-          whiteSpace: "pre-wrap",
           color: c.textColor,
-          WebkitTextStroke: `${ink.textStroke}px ${c.strokeColor}`,
+          WebkitTextStroke: `${c.stroke}px ${c.strokeColor}`,
           paintOrder: "stroke fill",
           scale: String(0.85 + 0.15 * enter),
         }}
       >
         {page.tokens.map((token, i) => {
           const nextToken = page.tokens[i + 1];
-          const active = token.fromMs <= nowMs && (nextToken ? nextToken.fromMs > nowMs : token.toMs > nowMs);
+          const active = token.startMs <= nowMs && (nextToken ? nextToken.startMs > nowMs : token.endMs > nowMs);
+          const since = ((nowMs - token.startMs) / 1000) * fps;
+          const bump = active ? 1 + 0.18 * (1 - spring({ frame: since, fps, config: { damping: 9, mass: 0.4, stiffness: 220 } })) + 0.06 : 1;
           return (
-            <span key={`${token.fromMs}-${i}`} style={{ color: active ? c.activeColor : c.textColor }}>
-              {token.text}
+            <span
+              key={`${token.startMs}-${i}`}
+              style={{ display: "inline-block", margin: "0 0.26em", color: active ? c.activeColor : c.textColor, scale: String(bump) }}
+            >
+              {token.text.trim()}
             </span>
           );
         })}

@@ -8,8 +8,12 @@ import { useInk } from "../Ink";
 import { SkyFill, Stars } from "../Sky";
 import { ORBIT } from "./DiagramaOrbita";
 
+export const EspacoEscuro: React.FC<{ cam: Cam; frame: number }> = ({ cam, frame }) => (
+  <EspacoParaSala cam={cam} frame={frame} cut={Infinity} spaceLength={90} />
+);
+
 // Espaço escuro (a Terra sai pela tangente, em linha reta) e, depois do corte, a sala de aula.
-export const EspacoParaSala: React.FC<{ cam: Cam; frame: number; cut: number }> = ({ cam, frame, cut }) => {
+export const EspacoParaSala: React.FC<{ cam: Cam; frame: number; cut: number; spaceLength?: number }> = ({ cam, frame, cut, spaceLength }) => {
   if (frame < cut) {
     return (
       <>
@@ -18,7 +22,7 @@ export const EspacoParaSala: React.FC<{ cam: Cam; frame: number; cut: number }> 
           <Stars frame={frame} opacity={0.6} />
         </Layer>
         <Layer cam={cam} depth={0.8}>
-          <StraightLine frame={frame} cut={cut} />
+          <StraightLine frame={frame} cut={spaceLength ?? cut} />
         </Layer>
       </>
     );
@@ -36,10 +40,10 @@ const StraightLine: React.FC<{ frame: number; cut: number }> = ({ frame, cut }) 
   const tx = Math.sin(a);
   const ty = -Math.cos(a);
   const t = interpolate(frame, [0, cut], [0, 1], { extrapolateRight: "clamp", easing: Easing.in(Easing.quad) });
-  const dist = 60 + t * 420;
+  const dist = 20 + t * 520;
   const ex = sx + tx * dist;
   const ey = sy + ty * dist;
-  const r = interpolate(t, [0, 1], [62, 30]);
+  const r = interpolate(t, [0, 1], [66, 26]);
   return (
     <g>
       <circle cx={ORBIT.cx} cy={ORBIT.cy} r={ORBIT.r} fill="none" stroke={colors.creme} strokeWidth={ink * 0.5} strokeDasharray={`${ink * 2} ${ink * 2}`} opacity={0.25} />

@@ -1,9 +1,11 @@
 import React from "react";
 import type { Caption } from "@remotion/captions";
 import { Audio } from "@remotion/media";
-import { AbsoluteFill, interpolate, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { MUSIC, SFX } from "./audioLibrary";
 import { Captions } from "./components/Captions";
+import { Timer } from "./components/elements/Props";
+import { SceneOffset } from "./components/GlobalFrame";
 import { SceneRenderer } from "./components/SceneRenderer";
 import { audio, colors } from "./theme";
 import { estimateEpisodeCaptions, resolveCue, sceneWords } from "./timing";
@@ -39,7 +41,9 @@ export const Episode: React.FC<EpisodeProps> = ({ episode, direction, narrationS
         const words = sceneWords(allCaptions, scene, episode.fps);
         return (
           <Sequence key={scene.id} name={scene.id} from={scene.startFrame} durationInFrames={scene.durationInFrames}>
-            <SceneRenderer scene={scene} direction={dir} words={words} />
+            <SceneOffset offset={scene.startFrame}>
+              <SceneRenderer scene={scene} direction={dir} words={words} />
+            </SceneOffset>
             {scene.sfx.map((id) => {
               const sfx = SFX[id];
               if (!sfx || !sfx.file) return null;
@@ -81,7 +85,24 @@ export const Episode: React.FC<EpisodeProps> = ({ episode, direction, narrationS
 
       {narrationSrc ? <Audio src={narrationSrc} volume={audio.narrationVolume} /> : null}
 
-      <Captions captions={allCaptions} />
+      {(direction.hud ?? []).map((h, i) => (
+        <Sequence key={`hud-${i}`} from={h.de} durationInFrames={h.ate - h.de} layout="none" name={`hud ${h.type}`}>
+          <HudTimer length={h.ate - h.de} bigUntil={h.grandeAte - h.de} start={h.inicio} end={h.fim} />
+        </Sequence>
+      ))}
+
+      <Captions captions={allCaptions} hideAfterFrame={episode.totalFrames - 6} />
+    </AbsoluteFill>
+  );
+};
+
+const HudTimer: React.FC<{ length: number; bigUntil: number; start: string; end: string }> = (props) => {
+  const frame = useCurrentFrame();
+  return (
+    <AbsoluteFill>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920">
+        <Timer frame={frame} {...props} />
+      </svg>
     </AbsoluteFill>
   );
 };

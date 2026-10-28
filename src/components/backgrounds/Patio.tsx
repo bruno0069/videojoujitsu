@@ -1,5 +1,5 @@
 import React from "react";
-import { colors } from "../../theme";
+import { colors, loopPhase } from "../../theme";
 import { Cam, Layer } from "../Camera";
 import { useInk } from "../Ink";
 import { Cloud, SkyFill, Stars } from "../Sky";
@@ -8,12 +8,18 @@ import { Cloud, SkyFill, Stars } from "../Sky";
 export const Patio: React.FC<{
   cam: Cam;
   frame: number;
+  globalFrame: number;
   skyColor: string;
   darkness: number;
   stars: number;
   skyElements?: React.ReactNode;
-}> = ({ cam, frame, skyColor, darkness, stars, skyElements }) => {
-  const cloudShift = frame * 0.35;
+}> = ({ cam, frame, globalFrame, skyColor, darkness, stars, skyElements }) => {
+  // Nuvens dão uma volta completa por episódio (relógio global), então o loop casa
+  const loop = (base: number, speed: number) => {
+    const w = 1700;
+    const v = (base + 300 + loopPhase(globalFrame, speed) * w) % w;
+    return v - 300;
+  };
   const cloudOpacity = Math.max(0, 1 - darkness * 1.6);
   return (
     <>
@@ -22,8 +28,8 @@ export const Patio: React.FC<{
         <Stars frame={frame} opacity={stars} maxY={950} />
       </Layer>
       <Layer cam={cam} depth={0.15}>
-        <Cloud x={160 + cloudShift} y={470} s={0.9} opacity={cloudOpacity} />
-        <Cloud x={980 - cloudShift * 0.6} y={330} s={0.65} opacity={cloudOpacity} />
+        <Cloud x={loop(160, 1)} y={470} s={0.9} opacity={cloudOpacity} />
+        <Cloud x={loop(980, 2)} y={330} s={0.65} opacity={cloudOpacity} />
         {skyElements}
       </Layer>
       <Layer cam={cam} depth={0.4}>

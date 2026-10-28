@@ -33,31 +33,41 @@ Nenhum código novo é necessário, a não ser que o episódio peça um **cenár
   `de_costas`, `encolhido`, `olhando_para_cima`, `mao_levantada`, `bracos_cruzados`) e
   `expression` (`neutro`, `surpresa`, `medo`, `vergonha`, `cetica`). `"scale": "inserto_pequeno"`
   põe o personagem pequeno no canto.
-- `visual.camera`: `close`, `plano_medio`, `plano_aberto`. A câmera muda o enquadramento
-  sozinha a cada ~3 s, com mola (zoom e deslocamento, sem cortes).
+- `visual.camera`: `close`, `plano_medio`, `plano_aberto`. É o plano padrão da cena (com um
+  push-in leve); para cortes e enquadramentos dentro da cena, use `planos` na direção.
 - `sfx` e `music`: nomes de `src/audioLibrary.ts`. Músicas iguais em cenas seguidas
   viram uma faixa contínua.
 - `onScreenText`: até 2 linhas; `" · "` força a quebra; números ficam em amarelo.
 
 ### Arquivo de direção (`epNN.direcao.json`)
 
-Marca *quando* as coisas acontecem dentro de cada cena. Os tempos ("cues") podem ser
-frames desde o início da cena ou **palavras da narração**, que se ajustam sozinhas
-quando o áudio real entra:
+Marca *o que* acontece e *quando*, dentro de cada cena. Tempos ("cues") são frames desde o
+início da cena ou **palavras da narração** (`"quente"`, `"continua#2"`, `"agora?$"` = fim da
+palavra, `"Nico-4"` = 4 frames antes).
 
-| Cue | Significa |
-| --- | --- |
-| `45` | frame 45 da cena |
-| `"quente"` | início da palavra "quente" |
-| `"continua#2"` | segunda ocorrência |
-| `"agora?$"` | fim da palavra |
-| `"Nico-4"` | 4 frames antes de "Nico" |
+Campos por cena:
 
-Campos por cena: `elementos` (`sol`, `lua`, `balao`, `inserto`, `relogio`, `termometro`),
-`personagens` (trocas de pose, expressão, objeto, visibilidade ao longo da cena),
-`sfx` (quando tocar cada efeito), `fundo` (parâmetros do cenário, por exemplo
-`passos` do céu escurecendo e `corte` para a sala), `texto` (quando o texto entra) e
-`camera` (`inicio: "base"` e `fim: "base"` para o loop). Veja `ep01.direcao.json`.
+- `planos`: cortes secos dentro da cena. Cada plano tem `de`, `enquadramento`
+  (`close`, `medio`, `aberto`, `inserto_pequeno`, `ceu`, `inserto_pao`), `foco` (personagem,
+  `"orbita"` ou `"ceu"`), `zoom` `[de, até]` (ex.: `[1, 1.12]` = push-in de 100% a 112%),
+  `entrada` (`"corte"` ou `"punch"`), `personagens` (quem aparece, com pose/expressão) e
+  `cenario` (troca o cenário só naquele plano).
+- `elementos`: `sol` (com `some`/`encolhe`/`flash`), `lua` (`aparece`/`pisca`/`apaga`),
+  `balao`, `etiqueta`, `prova`, `termometro`, `vinheta`. Todos aceitam `de`/`ate`.
+- `personagens`: chaves de tempo por personagem (pose, expressão, objeto, ação, `olhar`).
+  Ações: `comendo`, `revirar_olhos`, `frio` (tremor + bafo).
+- `tremidas`: `{ de, frames, forca }`.
+- `texto`: `de`/`ate`/`mostrar`. Sem `mostrar`, o texto da tela some sozinho quando só repete a fala.
+- `sfx`: frame de cada efeito. `fundo`: parâmetros do cenário (`passos` do céu, `rotulo`).
+- `sincronia`: pontos de sincronização para a voz (palavra → frame → evento). Quando a
+  narração real entrar, confira se cada palavra cai perto do frame indicado e ajuste os
+  frames da direção, ou troque os números por cues de palavra.
+
+No topo do arquivo, `hud` guarda elementos que atravessam cenas (ex.: o timer de 540 a 1260).
+
+O loop fecha porque as animações ociosas (piscar, respirar, nuvens, giro do Sol) rodam em
+ciclos inteiros por episódio (`idle` em `theme.ts`) e o último plano termina no mesmo
+enquadramento do primeiro.
 
 ## Narração e legendas
 

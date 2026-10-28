@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, spring, useVideoConfig } from "remotion";
+import { AbsoluteFill, interpolate, spring, useVideoConfig } from "remotion";
 import { colors, fonts, ink, onScreenText as t } from "../theme";
 
 // Quebra em no máximo 2 linhas: " · " vira quebra; texto longo é dividido no espaço mais equilibrado.
@@ -25,6 +25,22 @@ export const fitFontSize = (lines: string[]) => {
   return Math.round(Math.max(t.minFontSize, Math.min(t.maxFontSize, ...sizes)));
 };
 
+const words = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+
+// O texto só repete a fala? (75% ou mais das palavras aparecem na narração da cena)
+export const repeatsNarration = (text: string, narration: string) => {
+  const t = words(text);
+  if (t.length === 0) return true;
+  const n = new Set(words(narration));
+  return t.filter((w) => n.has(w)).length / t.length >= 0.75;
+};
+
 // Números ficam em amarelo (destaque)
 const renderLine = (line: string) =>
   line.split(/(\d+)/).map((part, i) =>
@@ -37,15 +53,18 @@ const renderLine = (line: string) =>
     ),
   );
 
-export const OnScreenText: React.FC<{ text: string; frame: number; from: number; animate: boolean }> = ({
+export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean }> = ({
   text,
   frame,
   from,
+  to,
   animate,
 }) => {
   const { fps } = useVideoConfig();
-  if (!text || frame < from) return null;
-  const s = animate ? spring({ frame: frame - from, fps, config: { damping: 11, mass: 0.7, stiffness: 140 } }) : 1;
+  if (!text || frame < from || frame >= to) return null;
+  const enter = animate ? spring({ frame: frame - from, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } }) : 1;
+  const exit = interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const s = enter * exit;
   const lines = splitLines(text);
   const fontSize = fitFontSize(lines);
   return (
