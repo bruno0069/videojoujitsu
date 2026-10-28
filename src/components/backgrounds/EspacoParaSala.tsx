@@ -8,9 +8,67 @@ import { useInk } from "../Ink";
 import { SkyFill, Stars } from "../Sky";
 import { ORBIT } from "./DiagramaOrbita";
 
-export const EspacoEscuro: React.FC<{ cam: Cam; frame: number }> = ({ cam, frame }) => (
-  <EspacoParaSala cam={cam} frame={frame} cut={Infinity} spaceLength={90} />
+// Estrelas em 3 camadas de parallax (campo maior que a tela, sem Math.random)
+const FIELD = Array.from({ length: 90 }, (_, i) => {
+  const a = Math.sin(i * 12.9898) * 43758.5453;
+  const b = Math.sin(i * 78.233) * 12345.6789;
+  return { x: (a - Math.floor(a)) * 2000 - 460, y: (b - Math.floor(b)) * 2800 - 440, layer: i % 3, p: i * 0.7 };
+});
+
+const ParallaxStars: React.FC<{ frame: number; dx: number; dy: number }> = ({ frame, dx, dy }) => (
+  <g>
+    {FIELD.map((s, i) => {
+      const k = [0.25, 0.55, 1][s.layer];
+      const r = [4, 6, 9][s.layer] * (0.7 + 0.3 * Math.sin(frame / 12 + s.p));
+      const x = s.x + dx * k;
+      const y = s.y + dy * k;
+      return (
+        <path
+          key={i}
+          d={`M ${x} ${y - r * 2} L ${x + r * 0.5} ${y - r * 0.5} L ${x + r * 2} ${y} L ${x + r * 0.5} ${y + r * 0.5} L ${x} ${y + r * 2} L ${x - r * 0.5} ${y + r * 0.5} L ${x - r * 2} ${y} L ${x - r * 0.5} ${y - r * 0.5} Z`}
+          fill={colors.creme}
+          opacity={[0.45, 0.7, 1][s.layer]}
+        />
+      );
+    })}
+  </g>
 );
+
+// Fecho: a Terra desliza em linha reta (pela tangente da órbita antiga) até sair do quadro,
+// com a câmera acompanhando um pouco e as estrelas passando em parallax. `exitAt` = frame em que sai.
+export const EspacoEscuro: React.FC<{ cam: Cam; frame: number; exitAt: number }> = ({ cam, frame, exitAt }) => {
+  const a = -Math.PI / 4;
+  const sx = ORBIT.cx + ORBIT.r * Math.cos(a);
+  const sy = ORBIT.cy + ORBIT.r * Math.sin(a);
+  const tx = Math.sin(a);
+  const ty = -Math.cos(a);
+  const t = interpolate(frame, [0, exitAt], [0, 1], { extrapolateRight: "extend", easing: Easing.in(Easing.quad) });
+  const dist = t * 1150;
+  // As estrelas andam no sentido contrário ao da Terra
+  const drift = frame * 3.2;
+  return (
+    <>
+      <Layer cam={cam} depth={0.1}>
+        <SkyFill color={colors.noiteEscura} />
+        <ParallaxStars frame={frame} dx={-tx * drift} dy={-ty * drift} />
+      </Layer>
+      <Layer cam={cam} depth={0.8}>
+        <Sliding sx={sx} sy={sy} ex={sx + tx * dist} ey={sy + ty * dist} r={interpolate(t, [0, 1], [66, 44])} />
+      </Layer>
+    </>
+  );
+};
+
+const Sliding: React.FC<{ sx: number; sy: number; ex: number; ey: number; r: number }> = ({ sx, sy, ex, ey, r }) => {
+  const ink = useInk();
+  return (
+    <g>
+      <circle cx={ORBIT.cx} cy={ORBIT.cy} r={ORBIT.r} fill="none" stroke={colors.creme} strokeWidth={ink * 0.5} strokeDasharray={`${ink * 2} ${ink * 2}`} opacity={0.25} />
+      <path d={`M ${sx} ${sy} L ${ex} ${ey}`} stroke={colors.creme} strokeWidth={ink * 0.6} strokeDasharray={`${ink * 1.5} ${ink * 1.5}`} opacity={0.8} />
+      <Earth x={ex} y={ey} r={r} />
+    </g>
+  );
+};
 
 // Espaço escuro (a Terra sai pela tangente, em linha reta) e, depois do corte, a sala de aula.
 export const EspacoParaSala: React.FC<{ cam: Cam; frame: number; cut: number; spaceLength?: number }> = ({ cam, frame, cut, spaceLength }) => {

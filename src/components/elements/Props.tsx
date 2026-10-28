@@ -94,22 +94,24 @@ const fmt = (total: number) => {
 };
 
 // Timer em contagem regressiva, fixo num canto (HUD). Entre `bigFrom` e `bigUntil` cresce
-// para o close acima do Nico e depois volta. Chega a 00:00 em `zeroAt` e pisca em coral.
+// para o close acima do Nico e depois volta. Fica parado no valor inicial até `holdUntil`,
+// depois conta até 00:00 em `zeroAt` e pisca em coral.
 // `frame` aqui é relativo ao início do timer.
 export const Timer: React.FC<{
   frame: number;
   bigFrom: number;
   bigUntil: number;
+  holdUntil: number;
   zeroAt: number;
   lockAt?: number;
   start: string;
   end: string;
-}> = ({ frame, bigFrom, bigUntil, zeroAt, lockAt, start, end }) => {
+}> = ({ frame, bigFrom, bigUntil, holdUntil, zeroAt, lockAt, start, end }) => {
   const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } });
   const cfg = { damping: 14, mass: 0.8, stiffness: 120 };
   const big = spring({ frame: frame - bigFrom, fps, config: cfg }) - spring({ frame: frame - bigUntil, fps, config: cfg });
-  const value = interpolate(frame, [0, zeroAt], [parseClock(start), parseClock(end)], {
+  const value = interpolate(frame, [holdUntil, zeroAt], [parseClock(start), parseClock(end)], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });

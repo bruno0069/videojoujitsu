@@ -87,7 +87,7 @@
     {
       "id": "virada",
       "startFrame": 1260,
-      "durationInFrames": 300,
+      "durationInFrames": 270,
       "narration": "Aí o céu escurece. A Lua apaga junto, porque ela só brilha com luz emprestada. Em uma semana, a superfície já estaria abaixo de zero.",
       "onScreenText": "a Lua também apaga",
       "visual": {
@@ -101,8 +101,8 @@
     },
     {
       "id": "fecho",
-      "startFrame": 1560,
-      "durationInFrames": 240,
+      "startFrame": 1530,
+      "durationInFrames": 270,
       "narration": "A Terra agora segue em linha reta pelo escuro. O Nico levanta a mão: professora, e se o Sol sumisse agora?",
       "onScreenText": "E SE… QUAL VAI SER O PRÓXIMO? COMENTA.",
       "visual": {

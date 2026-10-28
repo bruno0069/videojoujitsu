@@ -2,6 +2,7 @@ import React from "react";
 import { colors, loopPhase } from "../../theme";
 import { Cam, Layer } from "../Camera";
 import { useInk } from "../Ink";
+import { useLoopFrames } from "../GlobalFrame";
 import { Cloud, SkyFill, Stars } from "../Sky";
 
 // Pátio da escola em 3 planos: prédio e árvores (fundo), muro (meio), chão (frente).
@@ -14,10 +15,11 @@ export const Patio: React.FC<{
   stars: number;
   skyElements?: React.ReactNode;
 }> = ({ cam, frame, globalFrame, skyColor, darkness, stars, skyElements }) => {
+  const loopFrames = useLoopFrames();
   // Nuvens dão uma volta completa por episódio (relógio global), então o loop casa
   const loop = (base: number, speed: number) => {
     const w = 1700;
-    const v = (base + 300 + loopPhase(globalFrame, speed) * w) % w;
+    const v = (base + 300 + loopPhase(globalFrame, speed, loopFrames) * w) % w;
     return v - 300;
   };
   const cloudOpacity = Math.max(0, 1 - darkness * 1.6);

@@ -8,7 +8,7 @@ EP=ep01
 FPS=30
 TOTAL=60
 # cena:frame onde o arquivo começa (o primeiro som de cada arquivo está no início dele)
-OFFSETS="gancho:0 apresentacao:93 gatilho:303 escalada1:543 escalada2:901 virada:1263 fecho:1584"
+OFFSETS="gancho:0 apresentacao:99 gatilho:303 escalada1:543 escalada2:901 virada:1263 fecho:1584"
 inputs=(); filters=""; labels=""; i=0
 for item in $OFFSETS; do
   scene=${item%%:*}; frame=${item#*:}

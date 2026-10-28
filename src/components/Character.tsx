@@ -1,7 +1,7 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 import { colors, loopPhase, idle } from "../theme";
-import { useGlobalFrame } from "./GlobalFrame";
+import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { useInk } from "./Ink";
 
 // Rig 2D em camadas. Origem nos pés (0,0); y negativo para cima.
@@ -194,16 +194,17 @@ const PaoDeQueijo: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r })
 export const Character: React.FC<CharacterProps> = ({ style, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride }) => {
   const frame = useCurrentFrame();
   const g = useGlobalFrame();
+  const loopFrames = useLoopFrames();
   const ink = useInk();
   const p = fromPose && fromPose !== pose ? blendPose(getPose(fromPose), getPose(pose), poseT) : getPose(pose);
   const e = EXPRESSIONS[(expression as ExpressionName) in EXPRESSIONS ? (expression as ExpressionName) : "neutro"];
 
   // Respiração e piscada, sempre ativas (relógio do episódio, para o loop casar)
-  const breath = Math.sin(loopPhase(g, idle.breathCycles) * 2 * Math.PI);
+  const breath = Math.sin(loopPhase(g, idle.breathCycles, loopFrames) * 2 * Math.PI);
   const breathDy = -breath * 5;
   const blinkCycles = idle.blinkCycles - style.blinkSeed;
-  const blinkPeriod = idle.loopFrames / blinkCycles;
-  const bf = loopPhase(g + style.blinkSeed * 37, blinkCycles) * blinkPeriod;
+  const blinkPeriod = loopFrames / blinkCycles;
+  const bf = loopPhase(g + style.blinkSeed * 37, blinkCycles, loopFrames) * blinkPeriod;
   const blink = interpolate(bf, [0, 2, 4, 6], [1, 0.08, 0.08, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const cold = action === "frio";
   const shiverX = cold ? Math.sin(frame * 2.9) * 7 : p.shiver ? Math.sin(frame * 2.4) * 3 : 0;

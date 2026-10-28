@@ -7,6 +7,7 @@ Cada episódio é um arquivo de dados; o mesmo componente monta todos.
 npm install
 npm run dev        # abre o Remotion Studio (composição Ep01)
 npm run render     # gera out/ep01.mp4 (H.264, 1080×1920, 30 fps)
+npm run render:70s # versão longa (extendTo70s): out/ep01-70s.mp4
 npm run stills     # quadros de verificação em out/stills/
 npm run sons       # regera efeitos e músicas com ffmpeg (síntese local)
 node scripts/check-episode.mjs src/episodes/ep01.json   # confere a soma dos frames
@@ -69,8 +70,19 @@ Campos por cena:
   frames da direção, ou troque os números por cues de palavra.
 
 No topo do arquivo, `hud` guarda elementos que atravessam cenas. O timer usa `de`/`ate`
-(frames absolutos), `grandeAte` (quando sai do close para o canto), `zeroEm` (quando chega a
-00:00 e pisca em coral) e `travaEm` (quando para de piscar, junto com o `congelar` da cena).
+(frames absolutos), `grandeDe`/`grandeAte` (janela em que fica grande, acima do Nico),
+`seguraAte` (fica parado no valor inicial até aqui; só então conta), `zeroEm` (chega a 00:00
+e pisca em coral) e `travaEm` (opcional: para de piscar).
+
+### Versão longa (`extendTo70s`)
+
+Entrada da composição, falsa por padrão. Com `--props='{"extendTo70s":true}'`, a composição
+aplica os insertos listados em `extensao` na direção (`{ cena, em, frames, enquadramento }`):
+abre `frames` de imagem nova no frame `em` da cena e empurra tudo o que vem depois (cenas,
+cues numéricos, timer e palavras). A voz não é regenerada: `scripts/estender-narracao.py`
+insere silêncio nos mesmos pontos e gera `public/audio/epNN-narracao-70s.mp3`. No ep01 são
+dois insertos, o raio de luz Sol→Terra com o timer (+90) e o diagrama Sol→Lua→Terra da
+"luz emprestada" (+75), num total de 1965 frames (65,5 s).
 
 O loop fecha porque as animações ociosas (piscar, respirar, nuvens, giro do Sol) rodam em
 ciclos inteiros por episódio (`idle` em `theme.ts`) e o último plano termina no mesmo
@@ -82,12 +94,15 @@ Fluxo usado no ep01 (voz "Renan Matheus", ElevenLabs `eleven_v4`, configuraçõe
 
 1. Uma fala por cena em `public/audio/voz/epNN-<cena>.mp3` (texto exato do roteiro).
 2. `npm run narracao` (`scripts/montar-narracao.sh`) posiciona cada fala no frame da sua cena
-   (`OFFSETS` no script) e gera `public/audio/epNN-narracao.mp3` com 60 s exatos.
+   (`OFFSETS` no script) e gera `public/audio/epNN-narracao.mp3` com 60 s exatos. Reposicionar
+   uma fala (para abrir uma pausa) é só mudar o offset; depois rode `npm run palavras` com o
+   deslocamento da cena (`cena=ms`) para os tempos das palavras acompanharem.
 3. A narração montada é transcrita por palavra (ElevenLabs Scribe) e salva em
    `src/audio/epNN-transcricao.json`.
 4. `npm run palavras` (`scripts/alinhar-palavras.py`) alinha a transcrição ao texto do roteiro
    e grava `src/audio/epNN-words.json`: `{ text, startMs, endMs, scene }` por palavra.
-5. `npm run render` renderiza e masteriza (`scripts/masterizar.sh`: -14 LUFS, pico real ≤ -1,5 dBTP).
+5. `npm run render` renderiza e masteriza (`scripts/masterizar.sh`: compressor 3:1, -14 LUFS,
+   LRA ≤ 8 LU, pico real ≤ -1,5 dBTP).
 
 **A legenda e os limites de cena derivam do arquivo de palavras.** O caminho é a entrada
 `legendas` da composição (padrão `src/audio/epNN-words.json`; um caminho fora de `src/audio/`
@@ -104,7 +119,7 @@ npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"src/audio/ep01-words
 - Sem arquivo de palavras, a legenda usa tempo estimado pelo roteiro
   (`node scripts/gerar-timestamps-estimados.mjs <episódio.json> <saída.json>` gera esse arquivo).
 - Música e efeitos sofrem duck de -10 dB sob a fala (`audio.duck*` em `theme.ts`). Se a cena
-  seguinte não tem música, a faixa sai em fade de 1 s dentro dela (sem buraco mudo).
+  seguinte não tem música, a faixa sai em fade de 1,5 s dentro dela (sem buraco mudo).
 
 Campos de topo da direção ligados a isso: `legendaDe` (a legenda só aparece a partir desse
 frame; antes, o título da capa) e `sunReturnsAfterHook` (selo "agora" de 12 frames no início

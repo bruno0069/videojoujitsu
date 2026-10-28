@@ -4,6 +4,7 @@ import { colors } from "../theme";
 import { Cam } from "./Camera";
 import { DiagramaOrbita } from "./backgrounds/DiagramaOrbita";
 import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
+import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { Patio } from "./backgrounds/Patio";
 
@@ -15,6 +16,8 @@ export const BACKGROUNDS = [
   "espaco_escuro",
   "espaco_escuro_para_sala_de_aula",
   "inserto_pao",
+  "raio_luz",
+  "diagrama_lua",
 ];
 
 export const Background: React.FC<{
@@ -26,7 +29,10 @@ export const Background: React.FC<{
   // parâmetros do arquivo de direção, já convertidos para frames
   params: Record<string, number | number[]>;
   skyElements?: React.ReactNode;
-}> = ({ name, cam, frame, globalFrame, duration, params, skyElements }) => {
+  // frame e duração do plano atual (para insertos que contam do próprio começo)
+  shotFrame: number;
+  shotLength: number;
+}> = ({ name, cam, frame, globalFrame, duration, params, skyElements, shotFrame, shotLength }) => {
   switch (name) {
     case "patio_dia":
       return <Patio cam={cam} frame={frame} globalFrame={globalFrame} skyColor={colors.ceu} darkness={0} stars={0} skyElements={skyElements} />;
@@ -55,13 +61,17 @@ export const Background: React.FC<{
         />
       );
     case "espaco_escuro":
-      return <EspacoEscuro cam={cam} frame={frame} />;
+      return <EspacoEscuro cam={cam} frame={shotFrame} exitAt={typeof params.saida === "number" ? params.saida : Math.round(shotLength * 0.85)} />;
     case "espaco_escuro_para_sala_de_aula": {
       const cut = typeof params.corte === "number" ? params.corte : Math.round(duration * 0.45);
       return <EspacoParaSala cam={cam} frame={frame} cut={cut} />;
     }
     case "inserto_pao":
       return <InsertoPao cam={cam} frame={frame} />;
+    case "raio_luz":
+      return <RaioLuz cam={cam} frame={shotFrame} length={shotLength} />;
+    case "diagrama_lua":
+      return <DiagramaLua cam={cam} frame={shotFrame} length={shotLength} />;
     default:
       return <rect x={0} y={0} width={1080} height={1920} fill={colors.creme} />;
   }

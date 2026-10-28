@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Alinha a transcrição por palavra (tempos reais da voz) ao texto exato do roteiro.
 
-Uso: python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json
+Uso: python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json [cena=ms ...]
+
+Os pares opcionais cena=ms deslocam as palavras de uma cena quando a fala dela foi
+reposicionada na montagem depois da transcrição (sem regenerar o áudio).
 
 Entrada da transcrição: lista ou {"words": [...]} com {text|word, start, end} em segundos.
 Saída: [{ "text", "startMs", "endMs", "scene" }] com as palavras do roteiro (grafia e
@@ -21,6 +24,7 @@ def norm(s: str) -> str:
 
 
 ep_path, tr_path, out_path = sys.argv[1:4]
+shifts = {k: int(v) for k, v in (a.split("=") for a in sys.argv[4:])}
 ep = json.load(open(ep_path, encoding="utf-8"))
 raw = json.load(open(tr_path, encoding="utf-8"))
 raw = raw["words"] if isinstance(raw, dict) else raw
@@ -45,7 +49,10 @@ for i in missing:  # interpola entre as vizinhas com tempo
     nxt = next((times[j] for j in range(i + 1, len(times)) if times[j]), (prev[1] + 300, prev[1] + 600))
     times[i] = (prev[1], max(prev[1] + 1, nxt[0]))
 
-out = [{"text": w["text"], "startMs": t[0], "endMs": t[1], "scene": w["scene"]} for w, t in zip(script, times)]
+out = []
+for w, t in zip(script, times):
+    d = shifts.get(w["scene"], 0)
+    out.append({"text": w["text"], "startMs": t[0] + d, "endMs": t[1] + d, "scene": w["scene"]})
 json.dump(out, open(out_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 open(out_path, "a").write("\n")
 print(f"{len(out)} palavras do roteiro, {len(heard)} ouvidas, {len(missing)} sem par:", [script[i]["text"] for i in missing])

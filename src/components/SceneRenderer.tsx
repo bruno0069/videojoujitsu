@@ -9,7 +9,7 @@ import { Cam, Layer, shakeOffset, shotCamera, toScreen } from "./Camera";
 import { Dani } from "./Dani";
 import { DarkOverlay, Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer } from "./elements/Props";
 import { Sun } from "./elements/Sun";
-import { useGlobalFrame } from "./GlobalFrame";
+import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { InkScale } from "./Ink";
 import { Nico } from "./Nico";
 import { OnScreenText, repeatsNarration } from "./OnScreenText";
@@ -115,6 +115,7 @@ const centerOf = (focus: string | undefined, placed: Placed[], sceneFrame: numbe
 export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; words: TimedWord[] }> = ({ scene, direction, words }) => {
   const frame = useCurrentFrame();
   const g = useGlobalFrame();
+  const loopFrames = useLoopFrames();
   const { fps } = useVideoConfig();
   const cue = (c: Cue | undefined, fb = 0) => resolveCue(c, words, fb);
   const duration = scene.durationInFrames;
@@ -138,7 +139,7 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     expression: c.expression,
     small: c.scale === "inserto_pequeno",
   }));
-  const noChars = plano.enquadramento === "ceu" || plano.enquadramento === "inserto_pao";
+  const noChars = ["ceu", "inserto_pao", "raio_luz", "diagrama_lua"].includes(plano.enquadramento);
   const baseChars: CharBase[] = plano.personagens
     ? plano.personagens.map((pc) => {
         const fromScene = sceneChars.find((c) => c.id === pc.id);
@@ -178,7 +179,8 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
   for (const [k, v] of Object.entries(direction.fundo ?? {})) {
     params[k] = Array.isArray(v) ? v.map((x) => cue(x)) : cue(v);
   }
-  const backgroundName = plano.cenario ?? (plano.enquadramento === "inserto_pao" ? "inserto_pao" : scene.visual.background);
+  const ownBackground = ["inserto_pao", "raio_luz", "diagrama_lua"].includes(plano.enquadramento);
+  const backgroundName = plano.cenario ?? (ownBackground ? plano.enquadramento : scene.visual.background);
 
   const elements = direction.elementos ?? [];
   const inWindow = (el: { de?: Cue; ate?: Cue }) => frame >= cue(el.de, 0) && frame < cue(el.ate, duration);
@@ -194,8 +196,8 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
       if (shrink <= 0) return null;
       const lift = (1 - shrink) * 40;
       // rotação e pulso no relógio do episódio: no último quadro voltam ao estado do primeiro
-      const wobble = 1 + 0.03 * Math.sin(2 * Math.PI * loopPhase(g, 20));
-      const rot = loopPhase(g, idle.sunTurns) * 36;
+      const wobble = 1 + 0.03 * Math.sin(2 * Math.PI * loopPhase(g, 20, loopFrames));
+      const rot = loopPhase(g, idle.sunTurns, loopFrames) * 36;
       return <Sun key={i} x={el.x ?? sun.x} y={(el.y ?? sun.y) - lift} r={sun.r} rot={rot} scale={shrink * wobble} />;
     }
     if (el.type === "lua" && inWindow(el)) {
@@ -263,6 +265,8 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
       case "termometro":
         return <Thermometer key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} big={el.grande} />;
       case "escurecer":
+        // nos insertos de diagrama, a imagem fica limpa
+        if (ownBackground && plano.enquadramento !== "inserto_pao") return null;
         return <DarkOverlay key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} max={el.max ?? 0.45} />;
       case "sol": {
         if (!el.flash || el.some === undefined) return null;
@@ -279,7 +283,17 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
   return (
     <AbsoluteFill style={{ translate: `${shake.x}px ${shake.y}px` }}>
       <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0, overflow: "visible" }}>
-        <Background name={backgroundName} cam={cam} frame={frame} globalFrame={g} duration={duration} params={params} skyElements={skyElements} />
+        <Background
+          name={backgroundName}
+          cam={cam}
+          frame={frame}
+          globalFrame={g}
+          duration={duration}
+          params={params}
+          skyElements={skyElements}
+          shotFrame={local}
+          shotLength={planoEnd - planoStart}
+        />
         <Layer cam={cam} depth={1}>
           {worldChars}
         </Layer>

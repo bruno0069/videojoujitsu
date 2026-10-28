@@ -105,21 +105,20 @@ export const sun = { x: 860, y: 630, r: 95 };
 // Elementos fixos na tela
 export const hud = {
   timer: { x: 220, y: 160, scale: 0.6 }, // canto superior esquerdo (dígitos de 84 px)
-  timerBig: { x: 540, y: 520, scale: 1.25 }, // timer em close, acima do Nico
+  timerBig: { x: 540, y: 400, scale: 1.25 }, // timer em close, bem acima do cabelo do Nico
 };
 
-// Animação ociosa em ciclos inteiros por episódio. O relógio fecha em `loopFrames`
-// (último frame), então o frame 1799 sai idêntico ao frame 0.
+// Animação ociosa em ciclos inteiros por episódio. O relógio fecha no último frame
+// (duração - 1), então o último quadro sai idêntico ao frame 0.
 export const idle = {
-  loopFrames: 1799,
   blinkCycles: 24, // piscar a cada ~2,5 s
   breathCycles: 20, // respirar a cada ~3 s
   sunTurns: 2, // o Sol gira 2 x 36° (simetria dos raios) por episódio
 };
 
 // Fração do ciclo (0..1) de algo que se repete `cycles` vezes por episódio
-export const loopPhase = (globalFrame: number, cycles: number) => {
-  const x = (globalFrame / idle.loopFrames) * cycles;
+export const loopPhase = (globalFrame: number, cycles: number, loopFrames: number) => {
+  const x = (globalFrame / loopFrames) * cycles;
   return x - Math.floor(x);
 };
 

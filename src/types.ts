@@ -66,7 +66,7 @@ export type CharacterKey = {
 // Um plano dentro da cena. Troca de plano = corte seco.
 export type Plano = {
   de: Cue;
-  enquadramento: "close" | "medio" | "aberto" | "inserto_pequeno" | "ceu" | "inserto_pao";
+  enquadramento: "close" | "medio" | "aberto" | "inserto_pequeno" | "ceu" | "inserto_pao" | "raio_luz" | "diagrama_lua";
   foco?: string; // personagem em foco (close e zoom)
   personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null }[];
   zoom?: [number, number]; // empurrão do começo ao fim do plano (1 = 100%)
@@ -100,6 +100,7 @@ export type Direction = {
     ate: number;
     grandeDe: number;
     grandeAte: number;
+    seguraAte: number; // mostra o valor inicial parado até este frame; só então começa a contar
     zeroEm: number;
     travaEm?: number;
   }[];
@@ -107,4 +108,6 @@ export type Direction = {
   legendaDe?: number;
   // O Sol "volta" depois do gancho: mostra um selo "agora" de 12 frames no início da cena seguinte
   sunReturnsAfterHook?: boolean;
+  // Versão longa (entrada extendTo70s): insertos só de imagem, com silêncio na voz
+  extensao?: { cena: string; em: number; frames: number; enquadramento: Plano["enquadramento"] }[];
 };

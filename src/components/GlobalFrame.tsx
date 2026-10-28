@@ -10,3 +10,13 @@ export const SceneOffset: React.FC<{ offset: number; children: React.ReactNode }
 );
 
 export const useGlobalFrame = () => useCurrentFrame() + useContext(OffsetContext);
+
+// Tamanho do ciclo ocioso: do frame 0 ao último frame do episódio.
+// (Dentro de uma Sequence, useVideoConfig() devolve a duração da cena, por isso vem por contexto.)
+const LoopContext = createContext(1799);
+
+export const LoopLength: React.FC<{ frames: number; children: React.ReactNode }> = ({ frames, children }) => (
+  <LoopContext.Provider value={frames}>{children}</LoopContext.Provider>
+);
+
+export const useLoopFrames = () => useContext(LoopContext);
