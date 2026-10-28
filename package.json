@@ -31,12 +31,12 @@
     "lint": "eslint src && tsc",
     "typecheck": "tsc --noEmit",
     "sons": "bash scripts/gerar-sons.sh",
-    "render": "remotion render Ep01 out/ep01.mp4 --codec=h264 && bash scripts/masterizar.sh out/ep01.mp4",
+    "render": "bash scripts/render.sh",
     "stills": "bash scripts/stills.sh Ep01",
     "upgrade": "remotion upgrade",
     "narracao": "bash scripts/montar-narracao.sh && python3 scripts/estender-narracao.py ep01",
     "palavras": "python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json apresentacao=200",
-    "render:70s": "remotion render Ep01 out/ep01-70s.mp4 --codec=h264 --props='{\"extendTo70s\":true}' && bash scripts/masterizar.sh out/ep01-70s.mp4"
+    "render:70s": "bash scripts/render.sh --longa"
   },
   "allowScripts": {
     "esbuild": false

@@ -80,7 +80,8 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
           backgroundColor: t.boxColor,
           border: `${ink.stroke * 0.6}px solid ${t.borderColor}`,
           borderRadius: t.radius,
-          boxShadow: `0 ${ink.stroke * 0.6}px 0 ${t.borderColor}`,
+          // filete creme por dentro + sombra chapada de tinta
+          boxShadow: `inset 0 0 0 9px ${t.boxColor}, inset 0 0 0 13px ${t.innerLine}, 0 ${ink.stroke * 0.6}px 0 ${t.borderColor}`,
           scale: String(s),
           transformOrigin: "50% 0%",
           textAlign: "center",
@@ -109,6 +110,9 @@ const Sticker: React.FC<{ text: string; frame: number; from: number; to: number 
   const exit = interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const lines = splitLines(text);
   const st = stickerTheme;
+  // Cabe na largura mesmo girado (maiúsculas do Baloo 2 ocupam ~0,7 em)
+  const avail = st.maxWidth - 2 * st.paddingX - 60;
+  const fontSize = Math.min(st.fontSize, ...lines.map((l) => avail / (l.length * 0.7)));
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
       <div
@@ -127,7 +131,7 @@ const Sticker: React.FC<{ text: string; frame: number; from: number; to: number 
           textAlign: "center",
           fontFamily: fonts.main,
           fontWeight: fonts.weight,
-          fontSize: st.fontSize,
+          fontSize,
           lineHeight: 1.06,
           color: colors.creme,
           WebkitTextStroke: `${ink.textStroke + 2}px ${colors.tinta}`,

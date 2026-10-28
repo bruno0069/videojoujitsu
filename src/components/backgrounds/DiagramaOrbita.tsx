@@ -1,8 +1,9 @@
 import React from "react";
 import { interpolate, spring, useVideoConfig } from "remotion";
-import { colors, fonts } from "../../theme";
+import { colors } from "../../theme";
 import { Cam, Layer } from "../Camera";
 import { Earth } from "../elements/Earth";
+import { InfoLabel } from "../elements/Props";
 import { useInk } from "../Ink";
 import { SkyFill, Stars } from "../Sky";
 
@@ -64,21 +65,7 @@ const OrbitContent: React.FC<{ frame: number; labelAt: number; labelUntil: numbe
       {/* Ponto vazio onde estava o Sol */}
       <circle cx={ORBIT.cx} cy={ORBIT.cy} r={95 * pulse} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.4} ${ink * 1.4}`} />
       <circle cx={ORBIT.cx} cy={ORBIT.cy} r={ink * 0.6} fill={colors.amarelo} />
-      {label > 0 ? (
-        <text
-          x={ORBIT.cx}
-          y={labelY}
-          textAnchor="middle"
-          fontFamily={fonts.main}
-          fontWeight={fonts.weight}
-          fontSize={64}
-          fill={colors.amarelo}
-          transform={`translate(${ORBIT.cx} ${labelY}) scale(${label}) translate(${-ORBIT.cx} ${-labelY})`}
-          style={{ WebkitTextStroke: `${ink * 0.75}px ${colors.tinta}`, paintOrder: "stroke fill" }}
-        >
-          onde o Sol estava
-        </text>
-      ) : null}
+      <InfoLabel x={ORBIT.cx} y={labelY} text="onde o Sol estava" s={label} />
       {/* A "gravidade" ainda puxa para o ponto vazio */}
       <path d={`M ${ex} ${ey} L ${ORBIT.cx} ${ORBIT.cy}`} stroke={colors.amarelo} strokeWidth={ink * 0.5} strokeDasharray={`${ink} ${ink}`} opacity={interpolate(frame, [0, 20], [0, 0.8], { extrapolateRight: "clamp" })} />
       {trail}

@@ -1,5 +1,5 @@
 import React from "react";
-import { interpolate, interpolateColors } from "remotion";
+import { interpolate } from "remotion";
 import { colors } from "../theme";
 import { Cam } from "./Camera";
 import { DiagramaOrbita } from "./backgrounds/DiagramaOrbita";
@@ -20,6 +20,19 @@ export const BACKGROUNDS = [
   "diagrama_lua",
 ];
 
+// Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
+// (céu -> intermediário -> noite -> noite cheia); com "seco", cada passo é um corte de cor.
+export const nightLevel = (name: string, frame: number, params: Record<string, number | number[]>, duration: number) => {
+  if (name !== "patio_ceu_escurecendo") return 0;
+  const steps = (Array.isArray(params.passos) ? params.passos : [10, duration * 0.12, duration * 0.24]) as number[];
+  const dry = params.seco === 1;
+  const k = steps.reduce(
+    (acc, at) => acc + (dry ? Number(frame >= at) : interpolate(frame, [at, at + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })),
+    0,
+  );
+  return k / steps.length;
+};
+
 export const Background: React.FC<{
   name: string;
   cam: Cam;
@@ -35,22 +48,8 @@ export const Background: React.FC<{
 }> = ({ name, cam, frame, globalFrame, duration, params, skyElements, shotFrame, shotLength }) => {
   switch (name) {
     case "patio_dia":
-      return <Patio cam={cam} frame={frame} globalFrame={globalFrame} skyColor={colors.ceu} darkness={0} stars={0} skyElements={skyElements} />;
-    case "patio_ceu_escurecendo": {
-      // O céu escurece em três tempos: céu -> intermediário -> noite -> noite escura.
-      // Com "seco", cada passo é um corte de cor (sem transição).
-      const steps = (Array.isArray(params.passos) ? params.passos : [10, duration * 0.12, duration * 0.24]) as number[];
-      const dry = params.seco === 1;
-      const k = steps.reduce(
-        (acc, at) =>
-          acc + (dry ? Number(frame >= at) : interpolate(frame, [at, at + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })),
-        0,
-      );
-      const sky = interpolateColors(k, [0, 1, 2, 3], [colors.ceu, colors.ceuMeio, colors.noite, colors.noiteEscura]);
-      return (
-        <Patio cam={cam} frame={frame} globalFrame={globalFrame} skyColor={sky} darkness={k / 3} stars={Math.max(0, k - 1.5) / 1.5} skyElements={skyElements} />
-      );
-    }
+    case "patio_ceu_escurecendo":
+      return <Patio cam={cam} frame={frame} globalFrame={globalFrame} night={nightLevel(name, frame, params, duration)} skyElements={skyElements} />;
     case "diagrama_orbita":
       return (
         <DiagramaOrbita

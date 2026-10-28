@@ -75,6 +75,7 @@ export const RemotionRoot: React.FC = () => (
           legendas: `src/audio/${ep.id}-words.json`,
           extendTo70s: false,
           narrationSrc: null,
+          stem: "mix",
           captions: null,
         }}
         calculateMetadata={calculateMetadata}

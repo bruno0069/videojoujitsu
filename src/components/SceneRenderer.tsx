@@ -1,13 +1,14 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { colors, idle, loopPhase, shots, sun } from "../theme";
+import { idle, loopPhase, shots, sun } from "../theme";
 import { resolveCue, TimedWord } from "../timing";
 import type { CharacterKey, Cue, Plano, Scene, SceneDirection } from "../types";
-import { Background } from "./Background";
+import { Background, nightLevel } from "./Background";
 import { ORBIT, orbitAngle } from "./backgrounds/DiagramaOrbita";
 import { Cam, Layer, shakeOffset, shotCamera, toScreen } from "./Camera";
+import { headDrop, NightLevel, RIG_CHIN_Y } from "./Character";
 import { Dani } from "./Dani";
-import { DarkOverlay, Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer } from "./elements/Props";
+import { Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer } from "./elements/Props";
 import { Sun } from "./elements/Sun";
 import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { InkScale } from "./Ink";
@@ -20,8 +21,7 @@ const TAG_Y = -1240; // acima do topete
 type Vec = [number, number];
 type CharBase = { id: string; pose: string; expression: string; holding?: string | null; action?: string | null; small?: boolean };
 type Placed = CharBase & { x: number; y: number; s: number; screen: boolean };
-
-const CHAR_COLOR: Record<string, string> = { nico: colors.coral, dani: colors.turquesa };
+type PlanoChar = NonNullable<Plano["personagens"]>[number];
 
 const SHOT_FROM_JSON: Record<string, Plano["enquadramento"]> = {
   close: "close",
@@ -29,11 +29,13 @@ const SHOT_FROM_JSON: Record<string, Plano["enquadramento"]> = {
   plano_aberto: "aberto",
 };
 
-// Posição de cada personagem conforme o enquadramento do plano.
-const place = (chars: CharBase[], plano: Plano): Placed[] => {
+// Posição de cada personagem conforme o enquadramento do plano. `pose` é a pose no começo
+// do plano (o close usa para deixar o queixo sempre na mesma altura da tela).
+const place = (chars: CharBase[], plano: Plano, poseAtStart: (id: string) => string): Placed[] => {
   // "inserto_pequeno" do roteiro só vale em plano aberto; em close/médio o personagem aparece grande
   const isSmall = (c: CharBase) => plano.enquadramento === "inserto_pequeno" || (c.small && plano.enquadramento === "aberto");
   const big = chars.filter((c) => !isSmall(c));
+  const xOf = (id: string): number | undefined => plano.personagens?.find((pc: PlanoChar) => pc.id === id)?.x;
   return chars.flatMap((c): Placed[] => {
     if (isSmall(c)) {
       const p = shots.inserto_pequeno;
@@ -43,14 +45,16 @@ const place = (chars: CharBase[], plano: Plano): Placed[] => {
     switch (plano.enquadramento) {
       case "close": {
         const focus = plano.foco ?? big[0]?.id;
-        return c.id === focus ? [{ ...c, x: shots.close.x, y: shots.close.y, s: shots.close.scale, screen: false }] : [];
+        const { x, chinY, scale } = shots.close;
+        const y = chinY - (RIG_CHIN_Y + headDrop(poseAtStart(c.id))) * scale;
+        return c.id === focus ? [{ ...c, x: xOf(c.id) ?? x, y, s: scale, screen: false }] : [];
       }
       case "aberto":
-        return [{ ...c, x: big.length === 1 ? 540 : shots.aberto.xs[i % 2], y: shots.aberto.y, s: shots.aberto.scale, screen: false }];
+        return [{ ...c, x: xOf(c.id) ?? (big.length === 1 ? 540 : shots.aberto.xs[i % 2]), y: shots.aberto.y, s: shots.aberto.scale, screen: false }];
       case "medio": {
         const m = shots.plano_medio;
-        if (big.length === 1) return [{ ...c, x: 430, y: m.y, s: m.scale, screen: false }];
-        return [{ ...c, x: [330, 770][i % 2], y: m.y, s: m.scale * (c.id === "dani" ? 0.97 : 1), screen: false }];
+        if (big.length === 1) return [{ ...c, x: xOf(c.id) ?? m.x, y: m.y, s: m.scale, screen: false }];
+        return [{ ...c, x: xOf(c.id) ?? m.duo.xs[i % 2], y: m.y, s: m.duo.scale * (c.id === "dani" ? 0.97 : 1), screen: false }];
       }
       default:
         return [];
@@ -101,7 +105,7 @@ const characterState = (
   return { ...s, prevPose, poseAt, prevLook, lookAt };
 };
 
-const centerOf = (focus: string | undefined, placed: Placed[], sceneFrame: number) => {
+const centerOf = (focus: string | undefined, placed: Placed[], sceneFrame: number, close: boolean) => {
   if (focus === "orbita") return { x: ORBIT.cx, y: ORBIT.cy };
   if (focus === "terra") {
     const a = orbitAngle(sceneFrame);
@@ -109,6 +113,8 @@ const centerOf = (focus: string | undefined, placed: Placed[], sceneFrame: numbe
   }
   if (focus === "ceu") return { x: 540, y: 620 };
   const p = placed.find((c) => c.id === focus) ?? placed.find((c) => !c.screen);
+  // No close o zoom cresce a partir do queixo: o rosto nunca desce para a faixa da legenda
+  if (p && close) return { x: p.x, y: shots.close.chinY };
   return p ? { x: p.x, y: p.y + HEAD_Y * p.s } : { x: 540, y: 960 };
 };
 
@@ -152,7 +158,11 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     const pc = plano.personagens?.find((c) => c.id === id);
     return pc ? { pose: pc.pose, expression: pc.expressao, holding: pc.segurando, action: pc.acao } : {};
   };
-  const placed = place(baseChars, plano);
+  const poseAtStart = (id: string) => {
+    const base = baseChars.find((c) => c.id === id)!;
+    return characterState(base, planoFields(id), direction.personagens?.[id], planoStart, planoStart, (c) => cue(c)).pose;
+  };
+  const placed = place(baseChars, plano, poseAtStart);
 
   // Câmera do plano
   const [zFrom, zTo] = plano.zoom ?? [1, 1.08];
@@ -162,7 +172,7 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     fps,
     from: zFrom,
     to: zTo,
-    focus: centerOf(plano.foco, placed, frame),
+    focus: centerOf(plano.foco, placed, frame, plano.enquadramento === "close"),
     punch: plano.entrada === "punch",
     center: plano.centralizar,
   });
@@ -181,6 +191,7 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
   }
   const ownBackground = ["inserto_pao", "raio_luz", "diagrama_lua"].includes(plano.enquadramento);
   const backgroundName = plano.cenario ?? (ownBackground ? plano.enquadramento : scene.visual.background);
+  const nightK = nightLevel(backgroundName, frame, params, duration);
 
   const elements = direction.elementos ?? [];
   const inWindow = (el: { de?: Cue; ate?: Cue }) => frame >= cue(el.de, 0) && frame < cue(el.ate, duration);
@@ -245,9 +256,7 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     return toScreen(cam, p.x, p.y + dy * p.s);
   };
 
-  // "escurecer" fica por baixo dos outros elementos de tela (termômetro, balões) para eles seguirem legíveis
-  const overlayOrder = elements.map((el, i) => ({ el, i })).sort((a, b) => Number(b.el.type === "escurecer") - Number(a.el.type === "escurecer"));
-  const overlay = overlayOrder.map(({ el, i }) => {
+  const overlay = elements.map((el, i) => {
     switch (el.type) {
       case "balao": {
         const a = anchor(el.personagem, HEAD_Y - 120);
@@ -258,16 +267,12 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
       case "etiqueta": {
         const a = anchor(el.personagem, TAG_Y);
         if (!a) return null;
-        return <NameTag key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} text={el.texto} color={CHAR_COLOR[el.personagem] ?? colors.coral} x={a.x} y={a.y} />;
+        return <NameTag key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} text={el.texto} x={a.x} y={a.y} />;
       }
       case "prova":
         return <TestPaper key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} gradeAt={cue(el.notaEm)} grade={el.nota} />;
       case "termometro":
         return <Thermometer key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} big={el.grande} />;
-      case "escurecer":
-        // nos insertos de diagrama, a imagem fica limpa
-        if (ownBackground && plano.enquadramento !== "inserto_pao") return null;
-        return <DarkOverlay key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} max={el.max ?? 0.45} />;
       case "sol": {
         if (!el.flash || el.some === undefined) return null;
         return <Flash key={i} frame={frame} at={cue(el.some) + (el.encolhe ?? 12) - 2} />;
@@ -294,10 +299,12 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
           shotFrame={local}
           shotLength={planoEnd - planoStart}
         />
-        <Layer cam={cam} depth={1}>
-          {worldChars}
-        </Layer>
-        {screenChars}
+        <NightLevel.Provider value={nightK}>
+          <Layer cam={cam} depth={1}>
+            {worldChars}
+          </Layer>
+          {screenChars}
+        </NightLevel.Provider>
         {overlay}
       </svg>
       {showText ? (

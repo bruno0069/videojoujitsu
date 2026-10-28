@@ -9,12 +9,14 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   recreio: { file: "audio/sfx/recreio.wav", loop: true, volume: audio.sfxVolume * 0.45 },
   grilo: { file: "audio/sfx/grilo.wav", loop: true, volume: audio.sfxVolume * 0.5 },
   tique_taque: { file: "audio/sfx/tique_taque.wav", loop: true, volume: audio.sfxVolume * 0.55 },
-  // Impacto grave da virada: -9 dB em relação à versão anterior e no máximo 1,5 s
-  queda_graves: { file: "audio/sfx/queda_graves.wav", loop: false, volume: audio.sfxVolume * 0.42, maxFrames: 45 },
+  // Impacto grave da virada: mais -11 dB sobre a rodada 4 (0,21 -> 0,059) e no máximo 1,5 s.
+  // Entra na pausa antes de "Aí o céu escurece" (cue negativo na direção = antes da cena).
+  queda_graves: { file: "audio/sfx/queda_graves.wav", loop: false, volume: audio.sfxVolume * 0.118, maxFrames: 45 },
   vento_frio: { file: "audio/sfx/vento_frio.wav", loop: true, volume: audio.sfxVolume * 0.55 },
 };
 
+// Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
 export const MUSIC: Record<string, string> = {
-  base_suave: "audio/music/base_suave.wav",
-  suspensa_sem_batida: "audio/music/suspensa_sem_batida.wav",
+  base_suave: "audio/music/base_suave_hp120.wav",
+  suspensa_sem_batida: "audio/music/suspensa_sem_batida_hp120.wav",
 };

@@ -37,6 +37,8 @@ export type EpisodeProps = {
   // Preenchidos por calculateMetadata quando os arquivos existem em public/
   narrationSrc: string | null;
   captions: Caption[] | null;
+  // Stems para medir a mixagem: "voz" só a narração, "fundo" só música + efeitos
+  stem: "mix" | "voz" | "fundo";
 };
 
 // Junta cenas seguidas que usam a mesma música numa faixa contínua.
@@ -66,6 +68,7 @@ export const Episode: React.FC<EpisodeProps> = ({
   direction,
   narrationSrc,
   captions,
+  stem,
 }) => {
   const allCaptions = markSceneBreaks(
     captions ?? estimateEpisodeCaptions(episode),
@@ -106,52 +109,50 @@ export const Episode: React.FC<EpisodeProps> = ({
                   <SceneRenderer scene={scene} direction={dir} words={words} />
                 </SceneOffset>
               </Freeze>
-              {scene.sfx.map((id) => {
-                const sfx = SFX[id];
-                if (!sfx || !sfx.file) return null;
-                const at =
-                  dir.sfx?.[id] !== undefined
-                    ? resolveCue(dir.sfx[id], words)
-                    : 0;
-                const len = Math.min(
-                  scene.durationInFrames - at,
-                  sfx.maxFrames ?? Infinity,
-                );
-                return (
-                  <Sequence
-                    key={id}
-                    from={at}
-                    durationInFrames={sfx.loop ? len : Math.min(len, 90)}
-                    layout="none"
-                    name={`sfx ${id}`}
-                  >
-                    <Audio
-                      src={staticFile(sfx.file)}
-                      loop={sfx.loop}
-                      volume={(f) =>
-                        duck(scene.startFrame + at + f) *
-                        (sfx.loop || sfx.maxFrames
-                          ? sfx.volume *
-                            interpolate(
-                              f,
-                              [0, 2, len - 10, len],
-                              [0, 1, 1, 0],
-                              {
-                                extrapolateLeft: "clamp",
-                                extrapolateRight: "clamp",
-                              },
-                            )
-                          : sfx.volume)
-                      }
-                    />
-                  </Sequence>
-                );
-              })}
             </Sequence>
           );
         })}
 
-        {musicRuns(episode).map((run) => (
+        {/* Efeitos em frames absolutos: um cue negativo põe o efeito antes da cena (numa pausa da fala) */}
+        {stem !== "voz" &&
+          episode.scenes.flatMap((scene) => {
+            const dir = direction.cenas[scene.id] ?? {};
+            const words = sceneWords(allCaptions, scene, episode.fps);
+            return scene.sfx.map((id) => {
+              const sfx = SFX[id];
+              if (!sfx || !sfx.file) return null;
+              const at = dir.sfx?.[id] !== undefined ? resolveCue(dir.sfx[id], words) : 0;
+              const from = scene.startFrame + at;
+              const len = Math.min(scene.durationInFrames - at, sfx.maxFrames ?? Infinity);
+              return (
+                <Sequence
+                  key={`${scene.id}-${id}`}
+                  from={from}
+                  durationInFrames={sfx.loop ? len : Math.min(len, 90)}
+                  layout="none"
+                  name={`sfx ${id}`}
+                >
+                  <Audio
+                    src={staticFile(sfx.file)}
+                    loop={sfx.loop}
+                    volume={(f) =>
+                      duck(from + f) *
+                      (sfx.loop || sfx.maxFrames
+                        ? sfx.volume *
+                          interpolate(f, [0, 2, len - 10, len], [0, 1, 1, 0], {
+                            extrapolateLeft: "clamp",
+                            extrapolateRight: "clamp",
+                          })
+                        : sfx.volume)
+                    }
+                  />
+                </Sequence>
+              );
+            });
+          })}
+
+        {stem !== "voz" &&
+          musicRuns(episode).map((run) => (
           <Sequence
             key={`${run.id}-${run.from}`}
             from={run.from}
@@ -179,7 +180,7 @@ export const Episode: React.FC<EpisodeProps> = ({
           </Sequence>
         ))}
 
-        {narrationSrc ? (
+        {narrationSrc && stem !== "fundo" ? (
           <Audio src={narrationSrc} volume={audio.narrationVolume} />
         ) : null}
 

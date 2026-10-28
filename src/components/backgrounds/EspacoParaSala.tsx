@@ -5,11 +5,11 @@ import { Cam, Layer } from "../Camera";
 import { Earth } from "../elements/Earth";
 import { Sun } from "../elements/Sun";
 import { useInk } from "../Ink";
-import { SkyFill, Stars } from "../Sky";
+import { MilkyWay, SkyFill, Stars } from "../Sky";
 import { ORBIT } from "./DiagramaOrbita";
 
 // Estrelas em 3 camadas de parallax (campo maior que a tela, sem Math.random)
-const FIELD = Array.from({ length: 90 }, (_, i) => {
+const FIELD = Array.from({ length: 200 }, (_, i) => {
   const a = Math.sin(i * 12.9898) * 43758.5453;
   const b = Math.sin(i * 78.233) * 12345.6789;
   return { x: (a - Math.floor(a)) * 2000 - 460, y: (b - Math.floor(b)) * 2800 - 440, layer: i % 3, p: i * 0.7 };
@@ -34,39 +34,56 @@ const ParallaxStars: React.FC<{ frame: number; dx: number; dy: number }> = ({ fr
   </g>
 );
 
-// Fecho: a Terra desliza em linha reta (pela tangente da órbita antiga) até sair do quadro,
-// com a câmera acompanhando um pouco e as estrelas passando em parallax. `exitAt` = frame em que sai.
+// Fecho: a Terra (~30% da largura) desliza em linha reta pela tangente da órbita antiga até sair
+// do quadro, com rastro; ao fundo, o contorno pontilhado do Sol encolhe; estrelas em 3 camadas
+// de parallax passam no sentido contrário. `exitAt` = frame em que a Terra sai.
+// A Terra fica acima da faixa da legenda.
+const GHOST = { x: 330, y: 1300 };
+const OLD_ORBIT_R = 640;
+const EARTH_R = 160;
 export const EspacoEscuro: React.FC<{ cam: Cam; frame: number; exitAt: number }> = ({ cam, frame, exitAt }) => {
-  const a = -Math.PI / 4;
-  const sx = ORBIT.cx + ORBIT.r * Math.cos(a);
-  const sy = ORBIT.cy + ORBIT.r * Math.sin(a);
+  const ink = useInk();
+  const a = (-35 * Math.PI) / 180;
+  const sx = GHOST.x + OLD_ORBIT_R * Math.cos(a);
+  const sy = GHOST.y + OLD_ORBIT_R * Math.sin(a);
   const tx = Math.sin(a);
   const ty = -Math.cos(a);
   const t = interpolate(frame, [0, exitAt], [0, 1], { extrapolateRight: "extend", easing: Easing.in(Easing.quad) });
-  const dist = t * 1150;
+  const dist = t * 1300;
+  const ex = sx + tx * dist;
+  const ey = sy + ty * dist;
+  const ghostR = interpolate(frame, [0, exitAt], [200, 70], { extrapolateRight: "clamp" });
+  const ghostO = interpolate(frame, [0, exitAt], [0.95, 0.45], { extrapolateRight: "clamp" });
   // As estrelas andam no sentido contrário ao da Terra
   const drift = frame * 3.2;
+  const trail = [1, 2, 3].map((i) => {
+    const back = i * 85;
+    if (dist < back) return null;
+    return <circle key={i} cx={ex - tx * back} cy={ey - ty * back} r={EARTH_R * (1 - i * 0.16)} fill={colors.ceu} opacity={0.34 - i * 0.09} />;
+  });
   return (
     <>
       <Layer cam={cam} depth={0.1}>
         <SkyFill color={colors.noiteEscura} />
+        {/* espelhada: a faixa cruza o alto à esquerda, para onde a Terra vai */}
+        <g transform="translate(1080 0) scale(-1 1)">
+          <MilkyWay bg={colors.noiteEscura} />
+        </g>
         <ParallaxStars frame={frame} dx={-tx * drift} dy={-ty * drift} />
       </Layer>
+      <Layer cam={cam} depth={0.35}>
+        <circle cx={GHOST.x} cy={GHOST.y} r={OLD_ORBIT_R} fill="none" stroke={colors.creme} strokeWidth={ink * 0.5} strokeDasharray={`${ink * 2} ${ink * 2}`} opacity={0.3} />
+        <g opacity={ghostO}>
+          <circle cx={GHOST.x} cy={GHOST.y} r={ghostR} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.4} ${ink * 1.4}`} />
+          <circle cx={GHOST.x} cy={GHOST.y} r={ink * 0.6} fill={colors.amarelo} />
+        </g>
+      </Layer>
       <Layer cam={cam} depth={0.8}>
-        <Sliding sx={sx} sy={sy} ex={sx + tx * dist} ey={sy + ty * dist} r={interpolate(t, [0, 1], [66, 44])} />
+        <path d={`M ${sx} ${sy} L ${ex} ${ey}`} stroke={colors.creme} strokeWidth={ink * 0.6} strokeDasharray={`${ink * 1.5} ${ink * 1.5}`} opacity={0.8} />
+        {trail}
+        <Earth x={ex} y={ey} r={EARTH_R} />
       </Layer>
     </>
-  );
-};
-
-const Sliding: React.FC<{ sx: number; sy: number; ex: number; ey: number; r: number }> = ({ sx, sy, ex, ey, r }) => {
-  const ink = useInk();
-  return (
-    <g>
-      <circle cx={ORBIT.cx} cy={ORBIT.cy} r={ORBIT.r} fill="none" stroke={colors.creme} strokeWidth={ink * 0.5} strokeDasharray={`${ink * 2} ${ink * 2}`} opacity={0.25} />
-      <path d={`M ${sx} ${sy} L ${ex} ${ey}`} stroke={colors.creme} strokeWidth={ink * 0.6} strokeDasharray={`${ink * 1.5} ${ink * 1.5}`} opacity={0.8} />
-      <Earth x={ex} y={ey} r={r} />
-    </g>
   );
 };
 

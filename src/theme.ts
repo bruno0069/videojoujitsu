@@ -1,4 +1,5 @@
 import { loadFont } from "@remotion/google-fonts/Baloo2";
+import { interpolateColors } from "remotion";
 
 // Identidade visual v1 (aprovada). Tudo que é cor, fonte ou medida fica aqui.
 
@@ -28,7 +29,31 @@ export const colors = {
   calca: "#3B2F6B",
   cabelo: "#1B1B2F",
   branco: "#FFFFFF",
+  // Fundo do inserto do pão (creme com raios em coral claro)
+  coralClaro: "#FFB7A6",
 } as const;
+
+// Paleta noturna desenhada (substitui o escurecimento por película). Cada cor do pátio vai
+// do dia para a sua versão noturna; a pele do Nico fica mais quente e escura, sem dessaturar.
+export const night = {
+  ceuAlto: "#1B1B2F",
+  ceuBaixo: "#3B2F6B",
+  predio: "#433A7A",
+  predioTelhado: "#B8574F",
+  janela: colors.amarelo, // luzes acesas
+  muro: "#55478F",
+  muroSombra: "#463A78",
+  folha: "#2C6F6A",
+  chao: "#4A4466",
+  chaoSombra: "#3E3858",
+  banco: "#C9584B",
+  pele: "#B07A55",
+  rimLight: colors.turquesa,
+  bochechaFrio: "#8FC9F2",
+};
+
+// Sombra chapada de um tom: a mesma cor puxada 18% para a tinta
+export const sombra = (c: string) => interpolateColors(0.18, [0, 1], [c, colors.tinta]);
 
 export const fonts = {
   main: `${fontFamily}, "DejaVu Sans", sans-serif`,
@@ -48,10 +73,12 @@ export const layout = {
 };
 
 // Legenda palavra por palavra
+// Faixa fixa entre 68% e 76% da altura (y 1306–1459). Nenhum rosto atravessa essa faixa:
+// nos closes o queixo fica acima dela (shots.close.chinY).
 export const captions = {
-  centerY: 1380, // centro do bloco; o bloco termina em ~1474, fora dos 18% inferiores (y > 1574)
-  fontSize: 84,
-  lineHeight: 1.12,
+  centerY: 1382,
+  fontSize: 78,
+  lineHeight: 0.98,
   maxLines: 2,
   wordsPerPage: 3,
   stroke: 20, // contorno da legenda (mais grosso que o do texto na tela)
@@ -71,9 +98,10 @@ export const onScreenText = {
   minFontSize: 52,
   paddingX: 40,
   paddingY: 18,
-  boxColor: colors.noite,
+  boxColor: colors.tinta,
   textColor: colors.creme,
   borderColor: colors.tinta,
+  innerLine: colors.creme, // filete interno: a caixa tinta continua legível sobre a noite
   highlightColor: colors.amarelo,
   radius: 28,
   maxWidth: 1080 - 2 * 90,
@@ -91,16 +119,21 @@ export const sticker = {
   boxColor: colors.coral,
 };
 
-// Enquadramentos: posição dos pés do personagem principal e escala (px por unidade do rig)
+// Rótulo de informação (diagramas, termômetro): mesma caixa tinta do texto na tela
+export const infoLabel = { fontSize: 64, paddingX: 30, paddingY: 12, radius: 22 };
+
+// Enquadramentos: posição dos pés do personagem principal e escala (px por unidade do rig).
+// Close: o queixo fica em chinY (acima da faixa da legenda) e o zoom cresce a partir dele.
+// Médio e aberto: pés no terço inferior (y 1560), sem faixa de chão vazio maior que 20%.
 export const shots = {
-  close: { x: 420, y: 2225, scale: 1.55 },
-  plano_medio: { x: 540, y: 1520, scale: 0.8 },
-  aberto: { y: 1450, scale: 0.6, xs: [340, 740] },
+  close: { x: 420, chinY: 1285, scale: 1.55 },
+  plano_medio: { x: 430, y: 1560, scale: 1.0, duo: { xs: [290, 800], scale: 0.92 } },
+  aberto: { y: 1560, scale: 0.72, xs: [330, 760] },
   inserto_pequeno: { x: 210, y: 1280, scale: 0.4 },
 } as const;
 
 // Posição do Sol no céu (repetida no gancho e na janela da sala para fechar o loop)
-export const sun = { x: 860, y: 630, r: 95 };
+export const sun = { x: 930, y: 590, r: 95 };
 
 // Elementos fixos na tela
 export const hud = {
@@ -126,9 +159,11 @@ export const audio = {
   narrationVolume: 0.7, // folga para a soma não clipar; a masterização leva o mix a -14 LUFS
   musicVolume: 0.22,
   sfxVolume: 0.5,
-  // Duck de música e efeitos sob a voz: -10 dB, com ataque e soltura curtos
-  duckGain: 0.316,
-  duckAttackFrames: 4,
-  duckReleaseFrames: 10,
-  duckGapMs: 350, // pausas menores que isso contam como fala contínua
+  // Duck de música e efeitos guiado pelas palavras: nível baixo durante a fala, nível base
+  // nas pausas maiores que 0,4 s, rampas de 6 frames. A distância final voz/fundo é
+  // acertada na mixagem dos stems (scripts/mixar.sh).
+  duckGain: 0.6, // -4,4 dB sob a fala
+  duckAttackFrames: 6,
+  duckReleaseFrames: 6,
+  duckGapMs: 400, // pausas menores que isso contam como fala contínua
 };

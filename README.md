@@ -6,9 +6,10 @@ Cada episódio é um arquivo de dados; o mesmo componente monta todos.
 ```bash
 npm install
 npm run dev        # abre o Remotion Studio (composição Ep01)
-npm run render     # gera out/ep01.mp4 (H.264, 1080×1920, 30 fps)
+npm run render     # gera out/ep01.mp4 (H.264, 1080×1920, 30 fps) com a mixagem por stems
 npm run render:70s # versão longa (extendTo70s): out/ep01-70s.mp4
 npm run stills     # quadros de verificação em out/stills/
+                   # (PROPS='{"extendTo70s":true}' para a versão longa; OUT=<pasta> muda a saída)
 npm run sons       # regera efeitos e músicas com ffmpeg (síntese local)
 node scripts/check-episode.mjs src/episodes/ep01.json   # confere a soma dos frames
 ```
@@ -52,18 +53,22 @@ Campos por cena:
   (`close`, `medio`, `aberto`, `inserto_pequeno`, `ceu`, `inserto_pao`), `foco` (personagem,
   `"orbita"` ou `"ceu"`), `zoom` `[de, até]` (ex.: `[1, 1.12]` = push-in de 100% a 112%),
   `entrada` (`"corte"` ou `"punch"`), `centralizar` (o foco vai para o centro da tela; com
-  `foco: "terra"` a câmera acompanha a Terra), `personagens` (quem aparece, com pose/expressão;
-  `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
+  `foco: "terra"` a câmera acompanha a Terra), `personagens` (quem aparece, com pose/expressão
+  e `x` opcional para reposicionar; `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
+  No close, o queixo fica sempre em `shots.close.chinY` (acima da faixa da legenda) e o zoom
+  cresce a partir dele.
 - `elementos`: `sol` (com `some`/`encolhe`/`flash`), `lua` (`aparece`/`pisca`/`apaga`),
-  `balao`, `etiqueta`, `prova`, `termometro`, `escurecer` (tela cheia na cor tinta, opacidade
-  crescente até `max`). Todos aceitam `de`/`ate`.
+  `balao`, `etiqueta`, `prova`, `termometro`. Todos aceitam `de`/`ate`. A noite não é uma
+  película escura: o cenário `patio_ceu_escurecendo` troca as cores pela paleta noturna
+  desenhada (`night` em `theme.ts`) e os personagens ganham pele noturna, luz de recorte
+  turquesa e bochechas azuladas.
 - `personagens`: chaves de tempo por personagem (pose, expressão, objeto, ação, `olhar`).
   Ações: `comendo`, `revirar_olhos`, `frio` (tremor + bafo).
 - `tremidas`: `{ de, frames, forca }`.
 - `texto`: `de`/`ate`/`mostrar`/`estilo` (`"sticker"` = chamada grande a 60% da altura). Sem
   `mostrar`, o texto da tela some sozinho quando só repete a fala.
 - `congelar`: frame a partir do qual a imagem da cena fica parada.
-- `sfx`: frame de cada efeito. `fundo`: parâmetros do cenário (`passos` do céu, `seco: 1` para
+- `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala). `fundo`: parâmetros do cenário (`passos` do céu, `seco: 1` para
   trocar a cor sem transição, `rotulo`/`rotuloAte` do diagrama).
 - `sincronia`: pontos de sincronização para a voz (palavra → frame → evento). Quando a
   narração real entrar, confira se cada palavra cai perto do frame indicado e ajuste os
@@ -101,8 +106,11 @@ Fluxo usado no ep01 (voz "Renan Matheus", ElevenLabs `eleven_v4`, configuraçõe
    `src/audio/epNN-transcricao.json`.
 4. `npm run palavras` (`scripts/alinhar-palavras.py`) alinha a transcrição ao texto do roteiro
    e grava `src/audio/epNN-words.json`: `{ text, startMs, endMs, scene }` por palavra.
-5. `npm run render` renderiza e masteriza (`scripts/masterizar.sh`: compressor 3:1, -14 LUFS,
-   LRA ≤ 8 LU, pico real ≤ -1,5 dBTP).
+5. `npm run render` (`scripts/render.sh`) renderiza o vídeo e dois stems de áudio (entrada
+   `stem`: `"voz"` só a narração, `"fundo"` só música + efeitos) e `scripts/mixar.py` faz a
+   mixagem final: voz com compressor 3:1 + limitador em -14 LUFS, fundo em -30 LUFS, mix em
+   -14 LUFS com pico real ≤ -1,5 dBTP e LRA ≤ 8 LU. Os stems processados e as medidas ficam em
+   `out/stems/` (`medidas.json`, incluindo a distância voz/fundo só nos trechos com fala).
 
 **A legenda e os limites de cena derivam do arquivo de palavras.** O caminho é a entrada
 `legendas` da composição (padrão `src/audio/epNN-words.json`; um caminho fora de `src/audio/`
@@ -118,8 +126,11 @@ npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"src/audio/ep01-words
 - Cues por palavra na direção (`"levanta-2"`, `"zero.$"`) seguem a voz real.
 - Sem arquivo de palavras, a legenda usa tempo estimado pelo roteiro
   (`node scripts/gerar-timestamps-estimados.mjs <episódio.json> <saída.json>` gera esse arquivo).
-- Música e efeitos sofrem duck de -10 dB sob a fala (`audio.duck*` em `theme.ts`). Se a cena
-  seguinte não tem música, a faixa sai em fade de 1,5 s dentro dela (sem buraco mudo).
+- Duck guiado pelas palavras: música e efeitos ficam baixos durante a fala e voltam ao nível
+  base nas pausas maiores que 0,4 s, com rampas de 6 frames (`audio.duck*` em `theme.ts`).
+  Sob a fala, o fundo fica 15–18 dB abaixo da voz. Se a cena seguinte não tem música, a faixa
+  sai em fade de 1,5 s dentro dela (sem buraco mudo).
+- As músicas entram com passa-altas em 120 Hz (`*_hp120.wav`, gerados por `npm run sons`).
 
 Campos de topo da direção ligados a isso: `legendaDe` (a legenda só aparece a partir desse
 frame; antes, o título da capa) e `sunReturnsAfterHook` (selo "agora" de 12 frames no início
@@ -129,3 +140,11 @@ da cena seguinte ao gancho).
 
 Cores, fonte (Baloo 2 via `@remotion/google-fonts`), contorno, posição da legenda e
 enquadramentos ficam em `src/theme.ts`.
+
+- Legenda numa faixa fixa entre 68% e 76% da altura (y 1306–1459); nenhum rosto entra nela.
+- Só dois estilos de tipografia além da legenda: caixa tinta (#1B1B2F, com filete creme) para
+  títulos e informação (texto na tela, rótulos dos diagramas, termômetro, timer) e sticker
+  coral (#FF6B57) para a chamada final e as etiquetas de nome. O balão "Ué." é fala do
+  personagem, não texto de informação.
+- Sombra chapada de um tom (a cor puxada 18% para a tinta) no rosto, moletom e calça; textura
+  discreta de pontos no chão.

@@ -43,4 +43,9 @@ gen -f lavfi -i "aevalsrc='0.32*$ENV*(sin(2*PI*$F*t)+0.25*sin(4*PI*$F*t))+$BASS'
 # suspensa_sem_batida: bordão grave que respira, 16 s em loop
 gen -f lavfi -i "aevalsrc='(0.55+0.45*sin(2*PI*t/8))*(0.3*sin(2*PI*110*t)+0.2*sin(2*PI*165*t)+0.12*sin(2*PI*220.5*t))':s=$R:d=16" -ac 1 "$MUS/suspensa_sem_batida.wav"
 
+# Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
+for m in base_suave suspensa_sem_batida; do
+  gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"
+done
+
 ls -la "$SFX" "$MUS"

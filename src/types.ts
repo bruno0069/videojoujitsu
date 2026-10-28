@@ -50,7 +50,6 @@ export type ElementSpec =
   | ({ type: "inserto"; objeto: "pao_de_queijo" } & Window)
   | ({ type: "prova"; nota: string; notaEm: Cue } & Window)
   | ({ type: "termometro"; grande?: boolean } & Window)
-  | ({ type: "escurecer"; max?: number } & Window)
   | ({ type: "relogio"; inicio: string; fim: string } & Window);
 
 export type CharacterKey = {
@@ -68,7 +67,7 @@ export type Plano = {
   de: Cue;
   enquadramento: "close" | "medio" | "aberto" | "inserto_pequeno" | "ceu" | "inserto_pao" | "raio_luz" | "diagrama_lua";
   foco?: string; // personagem em foco (close e zoom)
-  personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null }[];
+  personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null; x?: number }[];
   zoom?: [number, number]; // empurrão do começo ao fim do plano (1 = 100%)
   entrada?: "corte" | "punch";
   centralizar?: boolean; // o foco vai para o centro da tela

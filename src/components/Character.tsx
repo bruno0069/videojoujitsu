@@ -1,6 +1,6 @@
-import React from "react";
-import { interpolate, useCurrentFrame } from "remotion";
-import { colors, loopPhase, idle } from "../theme";
+import React, { createContext, useContext, useId } from "react";
+import { interpolate, interpolateColors, useCurrentFrame } from "remotion";
+import { colors, loopPhase, idle, night, sombra } from "../theme";
 import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { useInk } from "./Ink";
 
@@ -132,6 +132,18 @@ export type CharacterProps = {
   look?: Vec;
 };
 
+// Quanto a cabeça desce na pose (agachar + inclinar), em unidades do rig. Usado pelo close
+// para manter o queixo na mesma altura da tela em qualquer pose.
+export const headDrop = (pose: string | undefined) => {
+  const p = getPose(pose);
+  return p.crouch + p.headDy;
+};
+export const RIG_CHIN_Y = HEAD_Y + HEAD_R;
+
+// Nível de noite do cenário (0 = dia, 1 = noite cheia): pele mais escura e quente,
+// luz de recorte turquesa e bochechas azuladas de frio.
+export const NightLevel = createContext(0);
+
 const getPose = (name: string | undefined): PoseDef => POSES[(name as PoseName) in POSES ? (name as PoseName) : "parado"];
 
 const lerpV = (a: Vec, b: Vec, t: number): Vec => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
@@ -168,13 +180,26 @@ const ik = (s: Vec, t: Vec, [l1, l2]: number[], side: number): Vec => {
   return score(e1) > score(e2) ? e1 : e2;
 };
 
-const Limb: React.FC<{ a: Vec; b: Vec; c: Vec; width: number; color: string }> = ({ a, b, c, width, color }) => {
+// Membro com contorno de tinta. `shade`: sombra chapada de um tom no lado esquerdo
+// (a luz vem do alto à direita, onde fica o Sol).
+const Limb: React.FC<{ a: Vec; b: Vec; c: Vec; width: number; color: string; shade?: boolean }> = ({ a, b, c, width, color, shade }) => {
   const ink = useInk();
   const d = `M ${a[0]} ${a[1]} L ${b[0]} ${b[1]} L ${c[0]} ${c[1]}`;
   return (
     <>
       <path d={d} stroke={colors.tinta} strokeWidth={width + 2 * ink} fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <path d={d} stroke={color} strokeWidth={width} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d={d} stroke={shade ? sombra(color) : color} strokeWidth={width} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      {shade ? (
+        <path
+          d={d}
+          transform={`translate(${width * 0.2} ${-width * 0.06})`}
+          stroke={color}
+          strokeWidth={width * 0.6}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      ) : null}
     </>
   );
 };
@@ -196,6 +221,9 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
   const g = useGlobalFrame();
   const loopFrames = useLoopFrames();
   const ink = useInk();
+  const nightK = useContext(NightLevel);
+  const uid = useId().replace(/:/g, "");
+  const skin = interpolateColors(nightK, [0, 1], [colors.pele, night.pele]);
   const p = fromPose && fromPose !== pose ? blendPose(getPose(fromPose), getPose(pose), poseT) : getPose(pose);
   const e = EXPRESSIONS[(expression as ExpressionName) in EXPRESSIONS ? (expression as ExpressionName) : "neutro"];
 
@@ -207,6 +235,7 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
   const bf = loopPhase(g + style.blinkSeed * 37, blinkCycles, loopFrames) * blinkPeriod;
   const blink = interpolate(bf, [0, 2, 4, 6], [1, 0.08, 0.08, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const cold = action === "frio";
+  const coldCheeks = cold || nightK > 0.5;
   const shiverX = cold ? Math.sin(frame * 2.9) * 7 : p.shiver ? Math.sin(frame * 2.4) * 3 : 0;
 
   // Andar: passo no lugar, com balanço dos braços
@@ -265,38 +294,60 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
 
   const arms = (
     <>
-      <Limb a={shL} b={elbowL} c={handL} width={66} color={style.hoodie} />
-      <circle cx={handL[0]} cy={handL[1]} r={34} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink} />
-      <Limb a={shR} b={elbowR} c={handR} width={66} color={style.hoodie} />
+      <Limb a={shL} b={elbowL} c={handL} width={66} color={style.hoodie} shade />
+      <circle cx={handL[0]} cy={handL[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
+      <Limb a={shR} b={elbowR} c={handR} width={66} color={style.hoodie} shade />
       {p.pointR ? (
         (() => {
           const dx = handR[0] - elbowR[0];
           const dy = handR[1] - elbowR[1];
           const len = Math.hypot(dx, dy) || 1;
           const tip: Vec = [handR[0] + (dx / len) * 62, handR[1] + (dy / len) * 62];
-          return <Limb a={handR} b={handR} c={tip} width={22} color={colors.pele} />;
+          return <Limb a={handR} b={handR} c={tip} width={22} color={skin} />;
         })()
       ) : null}
-      <circle cx={handR[0]} cy={handR[1]} r={34} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink} />
-      {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={colors.pele} /> : null}
+      <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
+      {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={skin} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
     </>
   );
 
+  // Luz de recorte turquesa (noite): faixa por dentro da silhueta, do lado da Lua (alto à direita)
+  const rim = nightK > 0.01;
   return (
-    <g transform={`translate(${shiverX} 0) rotate(${p.lean} 0 -400)`}>
+    <g transform={`translate(${shiverX} 0) rotate(${p.lean} 0 -400)`} filter={rim ? `url(#recorte-${uid})` : undefined}>
+      {rim ? (
+        <filter id={`recorte-${uid}`} x="-20%" y="-20%" width="140%" height="140%" colorInterpolationFilters="sRGB">
+          <feMorphology in="SourceAlpha" operator="erode" radius={ink * 0.6} result="dentro" />
+          <feOffset in="dentro" dx={-ink * 0.95} dy={ink * 0.75} result="deslocado" />
+          <feComposite in="dentro" in2="deslocado" operator="out" result="faixa" />
+          <feFlood floodColor={night.rimLight} floodOpacity={nightK * 0.85} />
+          <feComposite in2="faixa" operator="in" result="luz" />
+          <feMerge>
+            <feMergeNode in="SourceGraphic" />
+            <feMergeNode in="luz" />
+          </feMerge>
+        </filter>
+      ) : null}
       {/* Sombra chapada no chão */}
       <ellipse cx={0} cy={-6} rx={190} ry={30} fill={colors.tinta} opacity={0.18} />
 
       {/* Pernas */}
-      <Limb a={hipL} b={kneeL} c={footL} width={74} color={colors.calca} />
-      <Limb a={hipR} b={kneeR} c={footR} width={74} color={colors.calca} />
+      <Limb a={hipL} b={kneeL} c={footL} width={74} color={colors.calca} shade />
+      <Limb a={hipR} b={kneeR} c={footR} width={74} color={colors.calca} shade />
       <ellipse cx={footL[0] - 14} cy={footL[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
       <ellipse cx={footR[0] + 14} cy={footR[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
 
       {/* Tronco: moletom com bolso (silhueta) */}
       <g transform={`translate(0 ${bodyDy}) translate(0 -262) scale(1 ${torsoScale}) translate(0 262)`}>
-        <path d={hoodiePath} fill={style.hoodie} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
+        <clipPath id={`moletom-${uid}`}>
+          <path d={hoodiePath} />
+        </clipPath>
+        <path d={hoodiePath} fill={sombra(style.hoodie)} />
+        <g clipPath={`url(#moletom-${uid})`}>
+          <path d={hoodiePath} transform="translate(46 -10)" fill={style.hoodie} />
+        </g>
+        <path d={hoodiePath} fill="none" stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
         <path d="M -146 -306 L 146 -306" stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinecap="round" />
         {p.back ? (
           <path
@@ -325,9 +376,16 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
             strokeLinejoin="round"
           />
         ) : null}
-        <circle cx={-224} cy={14} r={44} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink} />
-        <circle cx={224} cy={14} r={44} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink} />
-        <circle r={HEAD_R} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink} />
+        <circle cx={-224} cy={14} r={44} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
+        <circle cx={224} cy={14} r={44} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
+        <clipPath id={`cabeca-${uid}`}>
+          <circle r={HEAD_R} />
+        </clipPath>
+        <circle r={HEAD_R} fill={sombra(skin)} />
+        <g clipPath={`url(#cabeca-${uid})`}>
+          <circle cx={44} cy={-30} r={HEAD_R} fill={skin} />
+        </g>
+        <circle r={HEAD_R} fill="none" stroke={colors.tinta} strokeWidth={ink} />
 
         {p.back ? (
           <path
@@ -337,7 +395,7 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
             strokeWidth={ink}
           />
         ) : (
-          <Face e={e} look={look} blink={blink} mouth={mouth} frame={frame} />
+          <Face e={e} look={look} blink={blink} mouth={mouth} frame={frame} skin={skin} coldCheeks={coldCheeks} />
         )}
 
         {!p.back && style.hair === "topete" ? (
@@ -392,7 +450,14 @@ const Breath: React.FC<{ frame: number; x: number; y: number }> = ({ frame, x, y
   );
 };
 
-const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; frame: number }> = ({ e, look, blink, mouth }) => {
+const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; frame: number; skin: string; coldCheeks: boolean }> = ({
+  e,
+  look,
+  blink,
+  mouth,
+  skin,
+  coldCheeks,
+}) => {
   const ink = useInk();
   const eyeRx = 50;
   const eyeRy = 60 * e.eye;
@@ -403,7 +468,7 @@ const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; fram
       <circle cx={look[0] * 16 + e.pupil * 0.35} cy={look[1] * 20 - e.pupil * 0.4} r={Math.max(5, e.pupil * 0.3)} fill={colors.branco} />
       {e.lid > 0 ? (
         <>
-          <rect x={-eyeRx * e.eye - 14} y={-eyeRy - 16} width={eyeRx * e.eye * 2 + 28} height={16 + eyeRy * 2 * e.lid} fill={colors.pele} />
+          <rect x={-eyeRx * e.eye - 14} y={-eyeRy - 16} width={eyeRx * e.eye * 2 + 28} height={16 + eyeRy * 2 * e.lid} fill={skin} />
           <path
             d={`M ${-eyeRx * e.eye} ${-eyeRy + eyeRy * 2 * e.lid} L ${eyeRx * e.eye} ${-eyeRy + eyeRy * 2 * e.lid}`}
             stroke={colors.tinta}
@@ -450,10 +515,10 @@ const Face: React.FC<{ e: ExprDef; look: Vec; blink: number; mouth: string; fram
 
   return (
     <>
-      {e.blush ? (
+      {e.blush || coldCheeks ? (
         <>
-          <ellipse cx={-140} cy={78} rx={42} ry={22} fill={colors.coral} />
-          <ellipse cx={140} cy={78} rx={42} ry={22} fill={colors.coral} />
+          <ellipse cx={-140} cy={78} rx={42} ry={22} fill={coldCheeks ? night.bochechaFrio : colors.coral} />
+          <ellipse cx={140} cy={78} rx={42} ry={22} fill={coldCheeks ? night.bochechaFrio : colors.coral} />
         </>
       ) : null}
       {eye(-88)}

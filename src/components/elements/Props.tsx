@@ -1,6 +1,6 @@
 import React from "react";
 import { Easing, interpolate, interpolateColors, spring, useVideoConfig } from "remotion";
-import { colors, fonts, hud, ink as inkTheme } from "../../theme";
+import { colors, fonts, hud, infoLabel, ink as inkTheme } from "../../theme";
 import { useInk } from "../Ink";
 
 // Entrada em "pop" com mola; `bouncy` dá mais overshoot. Sai encolhendo em 6 frames.
@@ -19,6 +19,34 @@ const outlined = (stroke: number): React.CSSProperties => ({
   WebkitTextStroke: `${stroke}px ${colors.tinta}`,
   paintOrder: "stroke fill",
 });
+
+// Rótulo de informação: caixa tinta com filete creme (mesmo estilo do texto na tela).
+// Vale dentro de camadas com câmera: o tamanho acompanha o zoom (nunca abaixo de 56 px).
+// anchor "start" = a caixa começa em x; "middle" = centrada em x.
+export const InfoLabel: React.FC<{ x: number; y: number; text: string; s?: number; anchor?: "start" | "middle"; fontSize?: number }> = ({
+  x,
+  y,
+  text,
+  s = 1,
+  anchor = "middle",
+  fontSize = infoLabel.fontSize,
+}) => {
+  const ink = useInk();
+  if (s <= 0) return null;
+  const w = text.length * fontSize * 0.5 + 2 * infoLabel.paddingX;
+  const h = fontSize * 1.05 + 2 * infoLabel.paddingY;
+  const cx = anchor === "start" ? x + w / 2 : x;
+  return (
+    <g transform={`translate(${cx} ${y}) scale(${s})`}>
+      <rect x={-w / 2} y={-h / 2 + ink * 0.6} width={w} height={h} rx={infoLabel.radius} fill={colors.tinta} />
+      <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={infoLabel.radius} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+      <rect x={-w / 2 + 9} y={-h / 2 + 9} width={w - 18} height={h - 18} rx={infoLabel.radius - 8} fill="none" stroke={colors.creme} strokeWidth={4} />
+      <text x={0} y={fontSize * 0.34} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={fontSize} fill={colors.creme}>
+        {text}
+      </text>
+    </g>
+  );
+};
 
 // Balão de fala (tela), com rabicho apontando para (ax, ay)
 export const SpeechBubble: React.FC<{ frame: number; from: number; to: number; text: string; ax: number; ay: number }> = ({
@@ -51,16 +79,16 @@ export const SpeechBubble: React.FC<{ frame: number; from: number; to: number; t
   );
 };
 
-// Etiqueta curta com o nome, na cor do personagem, sobre a cabeça (tela)
-export const NameTag: React.FC<{ frame: number; from: number; to: number; text: string; color: string; x: number; y: number }> = ({
+// Etiqueta curta com o nome sobre a cabeça (tela): sticker coral, o mesmo estilo da chamada final
+export const NameTag: React.FC<{ frame: number; from: number; to: number; text: string; x: number; y: number }> = ({
   frame,
   from,
   to,
   text,
-  color,
   x,
   y,
 }) => {
+  const color = colors.coral;
   const { fps } = useVideoConfig();
   const s = pop(frame, from, to, fps, true);
   if (s <= 0) return null;
@@ -127,7 +155,7 @@ export const Timer: React.FC<{
   return (
     <g transform={`translate(${x} ${y}) scale(${s * pulse})`}>
       <rect x={-230} y={-85} width={460} height={170} rx={30} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} />
-      <rect x={-214} y={-69} width={428} height={138} rx={20} fill={alert ? colors.tinta : colors.noite} />
+      <rect x={-214} y={-69} width={428} height={138} rx={20} fill="none" stroke={colors.creme} strokeWidth={6 / Math.max(0.01, s)} />
       <text x={0} y={48} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={140} fill={digits} style={{ fontVariantNumeric: "tabular-nums" }}>
         {fmt(value)}
       </text>
@@ -161,7 +189,7 @@ export const TestPaper: React.FC<{ frame: number; from: number; to: number; grad
   const s = pop(frame, from, to, fps);
   if (s <= 0) return null;
   const ink = inkTheme.stroke;
-  const cx = 770;
+  const cx = 830;
   const cy = 820;
   const g = frame >= gradeAt ? spring({ frame: frame - gradeAt, fps, config: { damping: 6, mass: 0.5, stiffness: 200 } }) : 0;
   const lines = [0, 1, 2, 3, 4].map((i) => (
@@ -195,7 +223,7 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
   const s = pop(frame, from, to + 10000, fps, true);
   if (s <= 0) return null;
   const ink = inkTheme.stroke;
-  const x = big ? 740 : 790;
+  const x = big ? 800 : 790;
   const top = big ? 520 : 700;
   const bottom = big ? 1110 : 1090;
   const tube = big ? 58 : 38;
@@ -221,10 +249,8 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
       <circle cx={x} cy={bottom + bulb * 0.65} r={bulb} fill={fill} stroke={colors.tinta} strokeWidth={ink} />
       {ticks}
       <path d={`M ${x - tube} ${zeroY} L ${x + tube + 22} ${zeroY}`} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinecap="round" />
-      {/* Etiqueta à direita do tubo, longe da cabeça do Nico */}
-      <text x={x + tube + 36} y={zeroY + 22} textAnchor="start" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={64} fill={colors.amarelo} style={outlined(12)}>
-        0 °C
-      </text>
+      {/* Etiqueta acima do tubo, dentro do quadro e longe da cabeça do Nico */}
+      <InfoLabel x={x} y={top - 110} text="0 °C" />
     </g>
   );
 };
@@ -256,11 +282,4 @@ export const Flash: React.FC<{ frame: number; at: number }> = ({ frame, at }) =>
   const o = interpolate(frame, [at, at + 1, at + 4], [0, 0.95, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   if (o <= 0) return null;
   return <rect x={0} y={0} width={1080} height={1920} fill={colors.branco} opacity={o} />;
-};
-
-// Escurecimento de tela cheia (sem moldura): cor chapada com opacidade crescente
-export const DarkOverlay: React.FC<{ frame: number; from: number; to: number; max: number }> = ({ frame, from, to, max }) => {
-  const o = interpolate(frame, [from, to], [0, max], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  if (o <= 0) return null;
-  return <rect x={-200} y={-200} width={1480} height={2320} fill={colors.tinta} opacity={o} />;
 };

@@ -122,7 +122,7 @@
           "foco": "nico",
           "zoom": [
             1,
-            1.3
+            1.15
           ],
           "entrada": "punch"
         },
@@ -152,8 +152,8 @@
       "elementos": [
         {
           "type": "sol",
-          "x": 880,
-          "y": 500
+          "x": 930,
+          "y": 280
         },
         {
           "type": "etiqueta",
@@ -380,7 +380,8 @@
             {
               "id": "nico",
               "pose": "apontando",
-              "expressao": "vergonha"
+              "expressao": "vergonha",
+              "x": 380
             }
           ]
         },
@@ -573,7 +574,13 @@
             1,
             1.08
           ],
-          "entrada": "corte"
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 330
+            }
+          ]
         }
       ],
       "fundo": {
@@ -586,16 +593,11 @@
       },
       "elementos": [
         {
-          "type": "escurecer",
-          "de": 120,
-          "ate": 260,
-          "max": 0.4
-        },
-        {
           "type": "lua",
           "aparece": "Lua-10",
           "pisca": "apaga-4",
-          "apaga": "junto,"
+          "apaga": "junto,",
+          "ate": 190
         },
         {
           "type": "termometro",
@@ -620,7 +622,7 @@
         ]
       },
       "sfx": {
-        "queda_graves": 6,
+        "queda_graves": -42,
         "vento_frio": 20
       },
       "sincronia": [
@@ -727,7 +729,7 @@
         }
       ],
       "fundo": {
-        "saida": 120
+        "saida": 136
       }
     }
   },

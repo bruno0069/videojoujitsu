@@ -1,20 +1,24 @@
-import React from "react";
-import { colors, loopPhase } from "../../theme";
+import React, { useId } from "react";
+import { interpolateColors } from "remotion";
+import { colors, loopPhase, night as nightColors } from "../../theme";
 import { Cam, Layer } from "../Camera";
 import { useInk } from "../Ink";
 import { useLoopFrames } from "../GlobalFrame";
 import { Cloud, SkyFill, Stars } from "../Sky";
 
+// Cor do pátio entre o dia e a noite desenhada (n = 0..1)
+const mix = (day: string, nightColor: string, n: number) => interpolateColors(n, [0, 1], [day, nightColor]);
+
 // Pátio da escola em 3 planos: prédio e árvores (fundo), muro (meio), chão (frente).
+// `night` (0..1) troca as cores pela paleta noturna: céu em faixas, prédio e muro índigo,
+// chão #4A4466 e janelas acesas. Sem película escura por cima.
 export const Patio: React.FC<{
   cam: Cam;
   frame: number;
   globalFrame: number;
-  skyColor: string;
-  darkness: number;
-  stars: number;
+  night: number;
   skyElements?: React.ReactNode;
-}> = ({ cam, frame, globalFrame, skyColor, darkness, stars, skyElements }) => {
+}> = ({ cam, frame, globalFrame, night, skyElements }) => {
   const loopFrames = useLoopFrames();
   // Nuvens dão uma volta completa por episódio (relógio global), então o loop casa
   const loop = (base: number, speed: number) => {
@@ -22,85 +26,98 @@ export const Patio: React.FC<{
     const v = (base + 300 + loopPhase(globalFrame, speed, loopFrames) * w) % w;
     return v - 300;
   };
-  const cloudOpacity = Math.max(0, 1 - darkness * 1.6);
+  // Céu: dia -> intermediário -> noite -> noite cheia (faixa alta tinta, faixa baixa noite)
+  const skyTop = interpolateColors(night, [0, 1 / 3, 2 / 3, 1], [colors.ceu, colors.ceuMeio, colors.noite, nightColors.ceuAlto]);
+  const skyLow = interpolateColors(night, [0, 1 / 3, 2 / 3, 1], [colors.ceu, colors.ceuMeio, colors.noite, nightColors.ceuBaixo]);
+  const skyMid = interpolateColors(0.5, [0, 1], [skyTop, skyLow]);
+  const cloudOpacity = Math.max(0, 1 - night * 4.8);
+  const stars = Math.max(0, night * 3 - 1.5) / 1.5;
   return (
     <>
       <Layer cam={cam} depth={0.08}>
-        <SkyFill color={skyColor} />
+        <SkyFill color={skyTop} />
+        <rect x={-1000} y={420} width={3080} height={220} fill={skyMid} />
+        <rect x={-1000} y={640} width={3080} height={2400} fill={skyLow} />
         <Stars frame={frame} opacity={stars} maxY={950} />
       </Layer>
       <Layer cam={cam} depth={0.15}>
-        <Cloud x={loop(160, 1)} y={470} s={0.9} opacity={cloudOpacity} />
-        <Cloud x={loop(980, 2)} y={330} s={0.65} opacity={cloudOpacity} />
+        <Cloud x={loop(160, 1)} y={120} s={0.9} opacity={cloudOpacity} />
+        <Cloud x={loop(980, 2)} y={70} s={0.65} opacity={cloudOpacity} />
         {skyElements}
       </Layer>
       <Layer cam={cam} depth={0.4}>
-        <SchoolBuilding />
-        <Darken amount={darkness * 0.7} />
+        <SchoolBuilding n={night} />
       </Layer>
       <Layer cam={cam} depth={0.7}>
-        <Wall />
-        <Darken amount={darkness * 0.65} />
+        <Wall n={night} />
       </Layer>
       <Layer cam={cam} depth={1}>
-        <Floor />
-        <Darken amount={darkness * 0.55} />
+        <Floor n={night} />
       </Layer>
     </>
   );
 };
 
-const Darken: React.FC<{ amount: number }> = ({ amount }) =>
-  amount > 0 ? <rect x={-1000} y={700} width={3080} height={2400} fill={colors.noiteEscura} opacity={amount} /> : null;
-
-const SchoolBuilding: React.FC = () => {
+const SchoolBuilding: React.FC<{ n: number }> = ({ n }) => {
   const ink = useInk();
+  const folha = mix(colors.folha, nightColors.folha, n);
+  const windowColor = mix(colors.ceu, nightColors.janela, n);
   const windows = [];
   for (let r = 0; r < 2; r++) {
     for (let c = 0; c < 5; c++) {
       windows.push(
-        <rect key={`${r}-${c}`} x={-40 + c * 130} y={880 + r * 110} width={80} height={70} rx={10} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink} />,
+        <rect key={`${r}-${c}`} x={-40 + c * 130} y={880 + r * 110} width={80} height={70} rx={10} fill={windowColor} stroke={colors.tinta} strokeWidth={ink} />,
       );
     }
   }
   return (
     <g>
       {/* Árvores */}
-      <circle cx={820} cy={950} r={130} fill={colors.folha} stroke={colors.tinta} strokeWidth={ink} />
-      <circle cx={980} cy={900} r={150} fill={colors.folha} stroke={colors.tinta} strokeWidth={ink} />
-      <circle cx={1180} cy={960} r={130} fill={colors.folha} stroke={colors.tinta} strokeWidth={ink} />
+      <circle cx={820} cy={950} r={130} fill={folha} stroke={colors.tinta} strokeWidth={ink} />
+      <circle cx={980} cy={900} r={150} fill={folha} stroke={colors.tinta} strokeWidth={ink} />
+      <circle cx={1180} cy={960} r={130} fill={folha} stroke={colors.tinta} strokeWidth={ink} />
       {/* Prédio da escola */}
-      <rect x={-120} y={800} width={760} height={420} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
-      <rect x={-140} y={770} width={800} height={50} rx={12} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-120} y={800} width={760} height={420} fill={mix(colors.creme, nightColors.predio, n)} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-140} y={770} width={800} height={50} rx={12} fill={mix(colors.coral, nightColors.predioTelhado, n)} stroke={colors.tinta} strokeWidth={ink} />
       {windows}
     </g>
   );
 };
 
-const Wall: React.FC = () => {
+const Wall: React.FC<{ n: number }> = ({ n }) => {
   const ink = useInk();
+  const shade = mix(colors.muroSombra, nightColors.muroSombra, n);
   const joints = [];
   for (let i = -3; i < 12; i++) {
-    joints.push(<path key={i} d={`M ${i * 160} 1110 L ${i * 160} 1330`} stroke={colors.muroSombra} strokeWidth={ink * 0.8} />);
+    joints.push(<path key={i} d={`M ${i * 160} 1110 L ${i * 160} 1330`} stroke={shade} strokeWidth={ink * 0.8} />);
   }
   return (
     <g>
-      <rect x={-600} y={1080} width={2280} height={260} fill={colors.muro} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-600} y={1080} width={2280} height={260} fill={mix(colors.muro, nightColors.muro, n)} stroke={colors.tinta} strokeWidth={ink} />
       {joints}
-      <rect x={-600} y={1060} width={2280} height={44} fill={colors.muroSombra} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-600} y={1060} width={2280} height={44} fill={shade} stroke={colors.tinta} strokeWidth={ink} />
     </g>
   );
 };
 
-const Floor: React.FC = () => {
+const Floor: React.FC<{ n: number }> = ({ n }) => {
   const ink = useInk();
+  const id = useId().replace(/:/g, "");
+  const shade = mix(colors.chaoSombra, nightColors.chaoSombra, n);
+  const bench = mix(colors.coral, nightColors.banco, n);
   return (
     <g>
-      <rect x={-1000} y={1320} width={3080} height={1400} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} />
-      <path d="M -1000 1480 L 2080 1480" stroke={colors.chaoSombra} strokeWidth={ink} />
-      <path d="M -1000 1700 L 2080 1700" stroke={colors.chaoSombra} strokeWidth={ink} />
+      {/* Textura de pontos discreta no chão */}
+      <pattern id={`pontos-${id}`} x={0} y={1320} width={64} height={56} patternUnits="userSpaceOnUse">
+        <circle cx={14} cy={14} r={5} fill={shade} opacity={0.55} />
+        <circle cx={46} cy={42} r={4} fill={shade} opacity={0.4} />
+      </pattern>
+      <rect x={-1000} y={1320} width={3080} height={1400} fill={mix(colors.chao, nightColors.chao, n)} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-1000} y={1330} width={3080} height={1390} fill={`url(#pontos-${id})`} />
+      <path d="M -1000 1480 L 2080 1480" stroke={shade} strokeWidth={ink} />
+      <path d="M -1000 1700 L 2080 1700" stroke={shade} strokeWidth={ink} />
       {/* Banco do pátio */}
-      <rect x={760} y={1300} width={380} height={34} rx={10} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={760} y={1300} width={380} height={34} rx={10} fill={bench} stroke={colors.tinta} strokeWidth={ink} />
       <rect x={790} y={1330} width={26} height={70} fill={colors.tinta} />
       <rect x={1080} y={1330} width={26} height={70} fill={colors.tinta} />
     </g>

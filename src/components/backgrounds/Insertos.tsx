@@ -1,39 +1,21 @@
 import React from "react";
 import { Easing, interpolate, interpolateColors, spring, useVideoConfig } from "remotion";
-import { colors, fonts } from "../../theme";
+import { colors } from "../../theme";
 import { Cam, Layer } from "../Camera";
 import { Earth } from "../elements/Earth";
 import { Sun } from "../elements/Sun";
+import { InfoLabel } from "../elements/Props";
 import { useInk } from "../Ink";
-import { SkyFill, Stars } from "../Sky";
+import { MilkyWay, SkyFill, Stars } from "../Sky";
 
 // Insertos da versão longa (só imagem, sem fala). `frame` é relativo ao começo do inserto.
-
-const Label: React.FC<{ x: number; y: number; text: string; s: number }> = ({ x, y, text, s }) => {
-  const ink = useInk();
-  if (s <= 0) return null;
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor="middle"
-      fontFamily={fonts.main}
-      fontWeight={fonts.weight}
-      fontSize={64}
-      fill={colors.amarelo}
-      transform={`translate(${x} ${y}) scale(${s}) translate(${-x} ${-y})`}
-      style={{ WebkitTextStroke: `${ink * 0.75}px ${colors.tinta}`, paintOrder: "stroke fill" }}
-    >
-      {text}
-    </text>
-  );
-};
 
 // Raio de luz Sol -> Terra: a última luz ainda viaja enquanto o timer conta.
 export const RaioLuz: React.FC<{ cam: Cam; frame: number; length: number }> = ({ cam, frame, length }) => (
   <>
     <Layer cam={cam} depth={0.1}>
       <SkyFill color={colors.noite} />
+      <MilkyWay bg={colors.noite} />
       <Stars frame={frame} />
     </Layer>
     <Layer cam={cam} depth={1}>
@@ -45,8 +27,8 @@ export const RaioLuz: React.FC<{ cam: Cam; frame: number; length: number }> = ({
 const RaioConteudo: React.FC<{ frame: number; length: number }> = ({ frame, length }) => {
   const ink = useInk();
   const { fps } = useVideoConfig();
-  const sun = { x: 230, y: 760 };
-  const earth = { x: 860, y: 1130 };
+  const sun = { x: 250, y: 860 };
+  const earth = { x: 820, y: 1120 };
   const head = interpolate(frame, [6, length - 14], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.quad) });
   const tail = Math.max(0, head - 0.28);
   const at = (k: number) => ({ x: sun.x + (earth.x - sun.x) * k, y: sun.y + (earth.y - sun.y) * k });
@@ -56,17 +38,19 @@ const RaioConteudo: React.FC<{ frame: number; length: number }> = ({ frame, leng
   const hit = frame >= length - 14 ? 1 + 0.12 * Math.sin(((frame - (length - 14)) / 7) * Math.PI) : 1;
   return (
     <g>
+      {/* órbita da Terra em volta de onde o Sol estava */}
+      <circle cx={sun.x} cy={sun.y} r={Math.hypot(earth.x - sun.x, earth.y - sun.y)} fill="none" stroke={colors.creme} strokeWidth={ink * 0.5} strokeDasharray={`${ink * 2} ${ink * 2}`} opacity={0.3} />
       {/* trajeto */}
       <path d={`M ${sun.x} ${sun.y} L ${earth.x} ${earth.y}`} stroke={colors.creme} strokeWidth={ink * 0.5} strokeDasharray={`${ink * 1.5} ${ink * 1.5}`} opacity={0.5} />
       {/* o Sol já sumiu: só o contorno pontilhado */}
-      <circle cx={sun.x} cy={sun.y} r={95} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.4} ${ink * 1.4}`} />
+      <circle cx={sun.x} cy={sun.y} r={150} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.4} ${ink * 1.4}`} />
       {/* pacote de luz viajando */}
       <path d={`M ${tl.x} ${tl.y} L ${h.x} ${h.y}`} stroke={colors.tinta} strokeWidth={ink * 3.4} strokeLinecap="round" />
       <path d={`M ${tl.x} ${tl.y} L ${h.x} ${h.y}`} stroke={colors.amarelo} strokeWidth={ink * 2} strokeLinecap="round" />
       <g transform={`translate(${earth.x} ${earth.y}) scale(${hit}) translate(${-earth.x} ${-earth.y})`}>
-        <Earth x={earth.x} y={earth.y} r={90} />
+        <Earth x={earth.x} y={earth.y} r={140} />
       </g>
-      <Label x={540} y={650} text="a última luz ainda viaja" s={label} />
+      <InfoLabel x={540} y={640} text="a última luz ainda viaja" s={label} />
     </g>
   );
 };
@@ -115,7 +99,7 @@ const LuaConteudo: React.FC<{ frame: number; length: number }> = ({ frame, lengt
       <circle cx={moon.x} cy={moon.y} r={90} fill={moonFill} stroke={colors.tinta} strokeWidth={ink} />
       <circle cx={moon.x - 28} cy={moon.y - 20} r={18} fill={colors.chaoSombra} opacity={0.6} />
       <Earth x={earth.x} y={earth.y} r={90} />
-      <Label x={560} y={480} text="luz emprestada" s={label} />
+      <InfoLabel x={560} y={460} text="luz emprestada" s={label} />
     </g>
   );
 };
