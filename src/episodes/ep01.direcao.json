@@ -4,11 +4,11 @@
       "type": "relogio",
       "inicio": "08:20",
       "fim": "00:00",
-      "de": 540,
+      "de": 330,
       "ate": 1260,
+      "grandeDe": 540,
       "grandeAte": 660,
-      "zeroEm": 1246,
-      "travaEm": 1254
+      "zeroEm": 1257
     }
   ],
   "cenas": {
@@ -91,21 +91,27 @@
       },
       "sincronia": [
         {
-          "frame": 4,
+          "frame": 2,
           "palavra": "E",
           "evento": "início da fala"
         },
         {
-          "frame": 21,
+          "frame": 22,
           "palavra": "sumisse",
           "evento": "o Sol termina de encolher + flash (22) + tremida (24–30)"
         },
         {
-          "frame": 51,
+          "frame": 59,
           "palavra": "Ninguém",
           "evento": "olhos do Nico procurando o Sol"
         }
-      ]
+      ],
+      "texto": {
+        "mostrar": true,
+        "de": 0,
+        "ate": 46,
+        "animar": false
+      }
     },
     "apresentacao": {
       "planos": [
@@ -199,29 +205,29 @@
             "acao": null
           },
           {
-            "de": 180,
+            "de": "De",
             "acao": "revirar_olhos"
           }
         ]
       },
       "sincronia": [
         {
-          "frame": 22,
+          "frame": 26,
           "palavra": "Nico.",
           "evento": "punch-in no Nico + etiqueta NICO"
         },
         {
-          "frame": 60,
+          "frame": 53,
           "palavra": "recreio,",
           "evento": "corte seco: close da Dani revirando os olhos"
         },
         {
-          "frame": 129,
+          "frame": 114,
           "palavra": "Dani",
           "evento": "plano aberto; Nico ergue o pão de queijo"
         },
         {
-          "frame": 184,
+          "frame": 164,
           "palavra": "De novo.",
           "evento": "Dani revira os olhos de novo"
         }
@@ -261,7 +267,7 @@
         {
           "type": "balao",
           "texto": "Ué.",
-          "de": 58,
+          "de": "repente.$",
           "ate": 140
         }
       ],
@@ -308,17 +314,17 @@
       },
       "sincronia": [
         {
-          "frame": 28,
+          "frame": 32,
           "palavra": "some.",
           "evento": "o Sol some (encolhe 18–30), flash 28–31, tremida 30–36"
         },
         {
-          "frame": 56,
+          "frame": 59,
           "palavra": "repente.",
           "evento": "balão \"Ué.\" entra com bounce (58)"
         },
         {
-          "frame": 163,
+          "frame": 169,
           "palavra": "pão",
           "evento": "inserto do pão de queijo (corte em 150)"
         }
@@ -361,7 +367,7 @@
           ]
         },
         {
-          "de": 235,
+          "de": "Depois-3",
           "enquadramento": "medio",
           "foco": "nico",
           "zoom": [
@@ -378,7 +384,7 @@
           ]
         },
         {
-          "de": 315,
+          "de": "matemática.$+6",
           "enquadramento": "close",
           "foco": "dani",
           "zoom": [
@@ -403,15 +409,15 @@
         {
           "type": "prova",
           "nota": "3,5",
-          "de": 238,
-          "ate": 315,
-          "notaEm": 272
+          "de": "Depois",
+          "ate": "matemática.$+6",
+          "notaEm": "reclama"
         }
       ],
       "personagens": {
         "nico": [
           {
-            "de": 222,
+            "de": "lanche.$",
             "segurando": null,
             "acao": null
           }
@@ -419,22 +425,22 @@
       },
       "sincronia": [
         {
-          "frame": 47,
+          "frame": 41,
           "palavra": "oito",
           "evento": "timer 08:20 grande acima do Nico (vira HUD no canto em 120)"
         },
         {
-          "frame": 229,
+          "frame": 166,
           "palavra": "lanche.",
           "evento": "Nico termina o pão de queijo (222)"
         },
         {
-          "frame": 276,
+          "frame": 206,
           "palavra": "reclama",
           "evento": "corte para a prova (235); nota pula em 272"
         },
         {
-          "frame": 315,
+          "frame": 234,
           "palavra": "matemática.",
           "evento": "reação da Dani"
         }
@@ -491,7 +497,7 @@
         "rotulo": 20,
         "rotuloAte": 120
       },
-      "congelar": 354,
+      "congelar": 357,
       "personagens": {
         "nico": [
           {
@@ -516,17 +522,17 @@
       },
       "sincronia": [
         {
-          "frame": 9,
+          "frame": 5,
           "palavra": "gravidade",
           "evento": "órbita aberta; rótulo \"onde o Sol estava\" em 20"
         },
         {
-          "frame": 186,
+          "frame": 146,
           "palavra": "Terra",
           "evento": "close na Terra e no rastro (corte em 120)"
         },
         {
-          "frame": 307,
+          "frame": 233,
           "palavra": "Ninguém",
           "evento": "corte para o Nico no pátio (240), joinha em 252"
         },
@@ -587,15 +593,15 @@
         },
         {
           "type": "lua",
-          "aparece": 38,
-          "pisca": 56,
-          "apaga": 76
+          "aparece": "Lua-10",
+          "pisca": "apaga-4",
+          "apaga": "junto,"
         },
         {
           "type": "termometro",
           "grande": true,
           "de": 190,
-          "ate": 285
+          "ate": "zero.$"
         }
       ],
       "tremidas": [
@@ -619,22 +625,22 @@
       },
       "sincronia": [
         {
-          "frame": 22,
+          "frame": 23,
           "palavra": "escurece.",
           "evento": "corte: céu escurece em 4 frames (0–3); queda dos graves + tremida em 6"
         },
         {
-          "frame": 55,
+          "frame": 59,
           "palavra": "Lua",
           "evento": "Lua aparece (38), pisca (56) e apaga (76)"
         },
         {
-          "frame": 195,
+          "frame": 173,
           "palavra": "semana,",
           "evento": "termômetro grande entra (190)"
         },
         {
-          "frame": 280,
+          "frame": 245,
           "palavra": "zero.",
           "evento": "mercúrio abaixo de zero (285)"
         }
@@ -665,7 +671,7 @@
         }
       ],
       "texto": {
-        "de": 180,
+        "de": 170,
         "ate": 230,
         "estilo": "sticker"
       },
@@ -686,7 +692,7 @@
             ]
           },
           {
-            "de": 118,
+            "de": "levanta-2",
             "pose": "mao_levantada"
           },
           {
@@ -700,26 +706,28 @@
       },
       "sincronia": [
         {
-          "frame": 8,
+          "frame": 31,
           "palavra": "Terra",
           "evento": "Terra sai pela tangente, em linha reta"
         },
         {
-          "frame": 105,
+          "frame": 124,
           "palavra": "O Nico",
           "evento": "corte para o pátio no enquadramento do frame 0 (90)"
         },
         {
-          "frame": 119,
+          "frame": 134,
           "palavra": "levanta",
           "evento": "Nico levanta a mão (118); abaixa em 210"
         },
         {
-          "frame": 218,
+          "frame": 221,
           "palavra": "agora?",
           "evento": "sticker CTA de 1740 a 1790; último quadro igual ao frame 0, sem texto"
         }
       ]
     }
-  }
+  },
+  "legendaDe": 46,
+  "sunReturnsAfterHook": true
 }

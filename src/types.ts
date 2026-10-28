@@ -92,5 +92,19 @@ export type SceneDirection = {
 export type Direction = {
   cenas: Record<string, SceneDirection>;
   // Elementos que atravessam cenas (frames absolutos do episódio)
-  hud?: { type: "relogio"; inicio: string; fim: string; de: number; ate: number; grandeAte: number; zeroEm: number; travaEm?: number }[];
+  hud?: {
+    type: "relogio";
+    inicio: string;
+    fim: string;
+    de: number;
+    ate: number;
+    grandeDe: number;
+    grandeAte: number;
+    zeroEm: number;
+    travaEm?: number;
+  }[];
+  // Legenda só aparece a partir deste frame (antes disso, o título da capa ocupa a tela)
+  legendaDe?: number;
+  // O Sol "volta" depois do gancho: mostra um selo "agora" de 12 frames no início da cena seguinte
+  sunReturnsAfterHook?: boolean;
 };

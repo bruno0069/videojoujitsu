@@ -127,3 +127,52 @@ export const normalizeWordTimestamps = (raw: unknown): Caption[] => {
     .filter((w) => w.text.length > 0)
     .sort((a, b) => a.startMs - b.startMs);
 };
+
+// Trechos com fala (em frames absolutos), juntando palavras separadas por pausas curtas.
+export const speechIntervals = (caps: Caption[], fps: number, gapMs: number) => {
+  const out: { from: number; to: number }[] = [];
+  for (const c of caps) {
+    const last = out[out.length - 1];
+    if (last && c.startMs - last.to <= gapMs) last.to = Math.max(last.to, c.endMs);
+    else out.push({ from: c.startMs, to: c.endMs });
+  }
+  return out.map((i) => ({ from: (i.from / 1000) * fps, to: (i.to / 1000) * fps }));
+};
+
+// Ganho de duck (1 = sem duck) para um frame absoluto
+export const duckAt = (frame: number, spans: { from: number; to: number }[], gain: number, attack: number, release: number) => {
+  let k = 0;
+  for (const s of spans) {
+    if (frame >= s.from - attack && frame <= s.to + release) {
+      const inK = Math.min(1, (frame - (s.from - attack)) / attack);
+      const outK = Math.min(1, (s.to + release - frame) / release);
+      k = Math.max(k, Math.min(inK, outK));
+    }
+  }
+  return 1 - (1 - gain) * k;
+};
+
+// Limites de cena derivados das palavras. O limite planejado (JSON) é mantido enquanto a
+// fala da cena anterior termina antes dele e a da cena seguinte começa depois; se alguma fala
+// invadir a vizinha, o limite vai para o meio da pausa entre as duas falas (empresta frames).
+// Só vale quando o arquivo traz exatamente as palavras do roteiro (mesma contagem).
+export const deriveSceneBounds = (ep: EpisodeData, caps: Caption[], lead: number): EpisodeData => {
+  const counts = ep.scenes.map((s) => s.narration.split(/\s+/).filter(Boolean).length);
+  if (counts.reduce((a, b) => a + b, 0) !== caps.length) return ep;
+  const toF = (ms: number) => (ms / 1000) * ep.fps;
+  const starts: number[] = [0];
+  let idx = 0;
+  for (let k = 1; k < ep.scenes.length; k++) {
+    const prevEnd = toF(caps[idx + counts[k - 1] - 1].endMs);
+    idx += counts[k - 1];
+    const nextStart = toF(caps[idx].startMs);
+    const planned = ep.scenes[k].startFrame;
+    const fits = prevEnd <= planned && nextStart - lead >= planned;
+    starts.push(fits ? planned : Math.max(starts[k - 1] + 1, Math.round((prevEnd + nextStart) / 2)));
+  }
+  const scenes = ep.scenes.map((s, k) => {
+    const end = k + 1 < starts.length ? starts[k + 1] : ep.totalFrames;
+    return { ...s, startFrame: starts[k], durationInFrames: end - starts[k] };
+  });
+  return { ...ep, scenes };
+};

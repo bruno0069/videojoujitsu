@@ -81,9 +81,9 @@ export const onScreenText = {
 
 // Sticker da chamada final (CTA)
 export const sticker = {
-  centerY: 1152, // 60% da altura (faixa de 55–65%)
-  fontSize: 76,
-  maxWidth: 960,
+  centerY: 300, // acima da cabeça do Nico no close final, longe do rosto e da legenda
+  fontSize: 82,
+  maxWidth: 1000,
   paddingX: 34,
   paddingY: 22,
   radius: 34,
@@ -124,7 +124,12 @@ export const loopPhase = (globalFrame: number, cycles: number) => {
 };
 
 export const audio = {
-  narrationVolume: 1,
-  musicVolume: 0.12,
+  narrationVolume: 0.7, // folga para a soma não clipar; a masterização leva o mix a -14 LUFS
+  musicVolume: 0.22,
   sfxVolume: 0.5,
+  // Duck de música e efeitos sob a voz: -10 dB, com ataque e soltura curtos
+  duckGain: 0.316,
+  duckAttackFrames: 4,
+  duckReleaseFrames: 10,
+  duckGapMs: 350, // pausas menores que isso contam como fala contínua
 };

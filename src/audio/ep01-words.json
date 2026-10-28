@@ -1,0 +1,848 @@
+[
+ {
+  "text": "E",
+  "startMs": 60,
+  "endMs": 100,
+  "scene": "gancho"
+ },
+ {
+  "text": "se",
+  "startMs": 180,
+  "endMs": 260,
+  "scene": "gancho"
+ },
+ {
+  "text": "o",
+  "startMs": 280,
+  "endMs": 320,
+  "scene": "gancho"
+ },
+ {
+  "text": "Sol",
+  "startMs": 460,
+  "endMs": 660,
+  "scene": "gancho"
+ },
+ {
+  "text": "sumisse",
+  "startMs": 740,
+  "endMs": 1100,
+  "scene": "gancho"
+ },
+ {
+  "text": "agora?",
+  "startMs": 1140,
+  "endMs": 1520,
+  "scene": "gancho"
+ },
+ {
+  "text": "Ninguém",
+  "startMs": 1960,
+  "endMs": 2300,
+  "scene": "gancho"
+ },
+ {
+  "text": "perceberia.",
+  "startMs": 2340,
+  "endMs": 2920,
+  "scene": "gancho"
+ },
+ {
+  "text": "Este",
+  "startMs": 3180,
+  "endMs": 3660,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "é",
+  "startMs": 3720,
+  "endMs": 3760,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "o",
+  "startMs": 3780,
+  "endMs": 3820,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Nico.",
+  "startMs": 3880,
+  "endMs": 4200,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "No",
+  "startMs": 4660,
+  "endMs": 4740,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "recreio,",
+  "startMs": 4780,
+  "endMs": 5280,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "ele",
+  "startMs": 5480,
+  "endMs": 5640,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "faz",
+  "startMs": 5680,
+  "endMs": 5820,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "uma",
+  "startMs": 5860,
+  "endMs": 6020,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "pergunta",
+  "startMs": 6040,
+  "endMs": 6520,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "que",
+  "startMs": 6580,
+  "endMs": 6640,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "a",
+  "startMs": 6680,
+  "endMs": 6740,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Dani",
+  "startMs": 6800,
+  "endMs": 7040,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "preferia",
+  "startMs": 7080,
+  "endMs": 7480,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "evitar.",
+  "startMs": 7520,
+  "endMs": 7980,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "De",
+  "startMs": 8480,
+  "endMs": 8540,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "novo.",
+  "startMs": 8640,
+  "endMs": 8980,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Então",
+  "startMs": 10160,
+  "endMs": 10540,
+  "scene": "gatilho"
+ },
+ {
+  "text": "o",
+  "startMs": 10560,
+  "endMs": 10620,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Sol",
+  "startMs": 10740,
+  "endMs": 10900,
+  "scene": "gatilho"
+ },
+ {
+  "text": "some.",
+  "startMs": 11060,
+  "endMs": 11380,
+  "scene": "gatilho"
+ },
+ {
+  "text": "De",
+  "startMs": 11820,
+  "endMs": 11900,
+  "scene": "gatilho"
+ },
+ {
+  "text": "repente.",
+  "startMs": 11960,
+  "endMs": 12560,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Nada",
+  "startMs": 13140,
+  "endMs": 13360,
+  "scene": "gatilho"
+ },
+ {
+  "text": "muda.",
+  "startMs": 13460,
+  "endMs": 13760,
+  "scene": "gatilho"
+ },
+ {
+  "text": "O",
+  "startMs": 14140,
+  "endMs": 14180,
+  "scene": "gatilho"
+ },
+ {
+  "text": "céu",
+  "startMs": 14280,
+  "endMs": 14460,
+  "scene": "gatilho"
+ },
+ {
+  "text": "continua",
+  "startMs": 14480,
+  "endMs": 14860,
+  "scene": "gatilho"
+ },
+ {
+  "text": "azul",
+  "startMs": 14900,
+  "endMs": 15220,
+  "scene": "gatilho"
+ },
+ {
+  "text": "e",
+  "startMs": 15420,
+  "endMs": 15460,
+  "scene": "gatilho"
+ },
+ {
+  "text": "o",
+  "startMs": 15500,
+  "endMs": 15600,
+  "scene": "gatilho"
+ },
+ {
+  "text": "pão",
+  "startMs": 15640,
+  "endMs": 15760,
+  "scene": "gatilho"
+ },
+ {
+  "text": "de",
+  "startMs": 15800,
+  "endMs": 15920,
+  "scene": "gatilho"
+ },
+ {
+  "text": "queijo",
+  "startMs": 15940,
+  "endMs": 16219,
+  "scene": "gatilho"
+ },
+ {
+  "text": "continua",
+  "startMs": 16239,
+  "endMs": 16640,
+  "scene": "gatilho"
+ },
+ {
+  "text": "bem",
+  "startMs": 16840,
+  "endMs": 17000,
+  "scene": "gatilho"
+ },
+ {
+  "text": "quente.",
+  "startMs": 17100,
+  "endMs": 17460,
+  "scene": "gatilho"
+ },
+ {
+  "text": "A",
+  "startMs": 18160,
+  "endMs": 18200,
+  "scene": "escalada1"
+ },
+ {
+  "text": "luz",
+  "startMs": 18240,
+  "endMs": 18400,
+  "scene": "escalada1"
+ },
+ {
+  "text": "do",
+  "startMs": 18440,
+  "endMs": 18500,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Sol",
+  "startMs": 18660,
+  "endMs": 18940,
+  "scene": "escalada1"
+ },
+ {
+  "text": "leva",
+  "startMs": 19000,
+  "endMs": 19320,
+  "scene": "escalada1"
+ },
+ {
+  "text": "oito",
+  "startMs": 19380,
+  "endMs": 19580,
+  "scene": "escalada1"
+ },
+ {
+  "text": "minutos",
+  "startMs": 19640,
+  "endMs": 20080,
+  "scene": "escalada1"
+ },
+ {
+  "text": "e",
+  "startMs": 20120,
+  "endMs": 20160,
+  "scene": "escalada1"
+ },
+ {
+  "text": "vinte",
+  "startMs": 20300,
+  "endMs": 20520,
+  "scene": "escalada1"
+ },
+ {
+  "text": "segundos",
+  "startMs": 20640,
+  "endMs": 21100,
+  "scene": "escalada1"
+ },
+ {
+  "text": "para",
+  "startMs": 21140,
+  "endMs": 21260,
+  "scene": "escalada1"
+ },
+ {
+  "text": "chegar.",
+  "startMs": 21320,
+  "endMs": 21660,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Por",
+  "startMs": 22120,
+  "endMs": 22240,
+  "scene": "escalada1"
+ },
+ {
+  "text": "isso,",
+  "startMs": 22300,
+  "endMs": 22520,
+  "scene": "escalada1"
+ },
+ {
+  "text": "o",
+  "startMs": 22720,
+  "endMs": 22780,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Nico",
+  "startMs": 22840,
+  "endMs": 23040,
+  "scene": "escalada1"
+ },
+ {
+  "text": "termina",
+  "startMs": 23100,
+  "endMs": 23400,
+  "scene": "escalada1"
+ },
+ {
+  "text": "o",
+  "startMs": 23420,
+  "endMs": 23480,
+  "scene": "escalada1"
+ },
+ {
+  "text": "lanche.",
+  "startMs": 23520,
+  "endMs": 23860,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Depois",
+  "startMs": 24280,
+  "endMs": 24740,
+  "scene": "escalada1"
+ },
+ {
+  "text": "reclama",
+  "startMs": 24860,
+  "endMs": 25300,
+  "scene": "escalada1"
+ },
+ {
+  "text": "da",
+  "startMs": 25340,
+  "endMs": 25460,
+  "scene": "escalada1"
+ },
+ {
+  "text": "prova",
+  "startMs": 25480,
+  "endMs": 25660,
+  "scene": "escalada1"
+ },
+ {
+  "text": "de",
+  "startMs": 25700,
+  "endMs": 25760,
+  "scene": "escalada1"
+ },
+ {
+  "text": "matemática.",
+  "startMs": 25800,
+  "endMs": 26400,
+  "scene": "escalada1"
+ },
+ {
+  "text": "A",
+  "startMs": 30100,
+  "endMs": 30140,
+  "scene": "escalada2"
+ },
+ {
+  "text": "gravidade",
+  "startMs": 30180,
+  "endMs": 30780,
+  "scene": "escalada2"
+ },
+ {
+  "text": "também",
+  "startMs": 30840,
+  "endMs": 31080,
+  "scene": "escalada2"
+ },
+ {
+  "text": "demora",
+  "startMs": 31120,
+  "endMs": 31480,
+  "scene": "escalada2"
+ },
+ {
+  "text": "cerca",
+  "startMs": 31520,
+  "endMs": 31780,
+  "scene": "escalada2"
+ },
+ {
+  "text": "de",
+  "startMs": 31840,
+  "endMs": 32020,
+  "scene": "escalada2"
+ },
+ {
+  "text": "oito",
+  "startMs": 32100,
+  "endMs": 32320,
+  "scene": "escalada2"
+ },
+ {
+  "text": "minutos",
+  "startMs": 32360,
+  "endMs": 32800,
+  "scene": "escalada2"
+ },
+ {
+  "text": "para",
+  "startMs": 32820,
+  "endMs": 32980,
+  "scene": "escalada2"
+ },
+ {
+  "text": "perceber.",
+  "startMs": 33020,
+  "endMs": 33460,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Até",
+  "startMs": 34020,
+  "endMs": 34200,
+  "scene": "escalada2"
+ },
+ {
+  "text": "lá,",
+  "startMs": 34240,
+  "endMs": 34420,
+  "scene": "escalada2"
+ },
+ {
+  "text": "a",
+  "startMs": 34740,
+  "endMs": 34760,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Terra",
+  "startMs": 34860,
+  "endMs": 35060,
+  "scene": "escalada2"
+ },
+ {
+  "text": "segue",
+  "startMs": 35200,
+  "endMs": 35400,
+  "scene": "escalada2"
+ },
+ {
+  "text": "orbitando",
+  "startMs": 35440,
+  "endMs": 35900,
+  "scene": "escalada2"
+ },
+ {
+  "text": "um",
+  "startMs": 35940,
+  "endMs": 36080,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Sol",
+  "startMs": 36140,
+  "endMs": 36420,
+  "scene": "escalada2"
+ },
+ {
+  "text": "que",
+  "startMs": 36440,
+  "endMs": 36560,
+  "scene": "escalada2"
+ },
+ {
+  "text": "já",
+  "startMs": 36600,
+  "endMs": 36720,
+  "scene": "escalada2"
+ },
+ {
+  "text": "não",
+  "startMs": 36760,
+  "endMs": 36840,
+  "scene": "escalada2"
+ },
+ {
+  "text": "existe.",
+  "startMs": 36880,
+  "endMs": 37320,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Ninguém",
+  "startMs": 37760,
+  "endMs": 38260,
+  "scene": "escalada2"
+ },
+ {
+  "text": "sente",
+  "startMs": 38320,
+  "endMs": 38620,
+  "scene": "escalada2"
+ },
+ {
+  "text": "nada.",
+  "startMs": 38680,
+  "endMs": 39020,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Aí",
+  "startMs": 42220,
+  "endMs": 42420,
+  "scene": "virada"
+ },
+ {
+  "text": "o",
+  "startMs": 42440,
+  "endMs": 42480,
+  "scene": "virada"
+ },
+ {
+  "text": "céu",
+  "startMs": 42620,
+  "endMs": 42760,
+  "scene": "virada"
+ },
+ {
+  "text": "escurece.",
+  "startMs": 42780,
+  "endMs": 43440,
+  "scene": "virada"
+ },
+ {
+  "text": "A",
+  "startMs": 43860,
+  "endMs": 43880,
+  "scene": "virada"
+ },
+ {
+  "text": "Lua",
+  "startMs": 43960,
+  "endMs": 44120,
+  "scene": "virada"
+ },
+ {
+  "text": "apaga",
+  "startMs": 44160,
+  "endMs": 44460,
+  "scene": "virada"
+ },
+ {
+  "text": "junto,",
+  "startMs": 44600,
+  "endMs": 44900,
+  "scene": "virada"
+ },
+ {
+  "text": "porque",
+  "startMs": 45060,
+  "endMs": 45240,
+  "scene": "virada"
+ },
+ {
+  "text": "ela",
+  "startMs": 45280,
+  "endMs": 45420,
+  "scene": "virada"
+ },
+ {
+  "text": "só",
+  "startMs": 45460,
+  "endMs": 45580,
+  "scene": "virada"
+ },
+ {
+  "text": "brilha",
+  "startMs": 45640,
+  "endMs": 45920,
+  "scene": "virada"
+ },
+ {
+  "text": "com",
+  "startMs": 45940,
+  "endMs": 46060,
+  "scene": "virada"
+ },
+ {
+  "text": "luz",
+  "startMs": 46080,
+  "endMs": 46220,
+  "scene": "virada"
+ },
+ {
+  "text": "emprestada.",
+  "startMs": 46260,
+  "endMs": 46880,
+  "scene": "virada"
+ },
+ {
+  "text": "Em",
+  "startMs": 47360,
+  "endMs": 47500,
+  "scene": "virada"
+ },
+ {
+  "text": "uma",
+  "startMs": 47540,
+  "endMs": 47660,
+  "scene": "virada"
+ },
+ {
+  "text": "semana,",
+  "startMs": 47760,
+  "endMs": 48180,
+  "scene": "virada"
+ },
+ {
+  "text": "a",
+  "startMs": 48320,
+  "endMs": 48360,
+  "scene": "virada"
+ },
+ {
+  "text": "superfície",
+  "startMs": 48420,
+  "endMs": 48980,
+  "scene": "virada"
+ },
+ {
+  "text": "já",
+  "startMs": 49020,
+  "endMs": 49100,
+  "scene": "virada"
+ },
+ {
+  "text": "estaria",
+  "startMs": 49120,
+  "endMs": 49420,
+  "scene": "virada"
+ },
+ {
+  "text": "abaixo",
+  "startMs": 49480,
+  "endMs": 49940,
+  "scene": "virada"
+ },
+ {
+  "text": "de",
+  "startMs": 49980,
+  "endMs": 50040,
+  "scene": "virada"
+ },
+ {
+  "text": "zero.",
+  "startMs": 50160,
+  "endMs": 50460,
+  "scene": "virada"
+ },
+ {
+  "text": "A",
+  "startMs": 52840,
+  "endMs": 52900,
+  "scene": "fecho"
+ },
+ {
+  "text": "Terra",
+  "startMs": 53020,
+  "endMs": 53300,
+  "scene": "fecho"
+ },
+ {
+  "text": "agora",
+  "startMs": 53340,
+  "endMs": 53720,
+  "scene": "fecho"
+ },
+ {
+  "text": "segue",
+  "startMs": 53880,
+  "endMs": 54080,
+  "scene": "fecho"
+ },
+ {
+  "text": "em",
+  "startMs": 54120,
+  "endMs": 54220,
+  "scene": "fecho"
+ },
+ {
+  "text": "linha",
+  "startMs": 54240,
+  "endMs": 54540,
+  "scene": "fecho"
+ },
+ {
+  "text": "reta",
+  "startMs": 54620,
+  "endMs": 54880,
+  "scene": "fecho"
+ },
+ {
+  "text": "pelo",
+  "startMs": 54960,
+  "endMs": 55120,
+  "scene": "fecho"
+ },
+ {
+  "text": "escuro.",
+  "startMs": 55140,
+  "endMs": 55620,
+  "scene": "fecho"
+ },
+ {
+  "text": "O",
+  "startMs": 56120,
+  "endMs": 56200,
+  "scene": "fecho"
+ },
+ {
+  "text": "Nico",
+  "startMs": 56240,
+  "endMs": 56420,
+  "scene": "fecho"
+ },
+ {
+  "text": "levanta",
+  "startMs": 56460,
+  "endMs": 56760,
+  "scene": "fecho"
+ },
+ {
+  "text": "a",
+  "startMs": 56780,
+  "endMs": 56820,
+  "scene": "fecho"
+ },
+ {
+  "text": "mão:",
+  "startMs": 56880,
+  "endMs": 57060,
+  "scene": "fecho"
+ },
+ {
+  "text": "professora,",
+  "startMs": 57400,
+  "endMs": 57940,
+  "scene": "fecho"
+ },
+ {
+  "text": "e",
+  "startMs": 58320,
+  "endMs": 58360,
+  "scene": "fecho"
+ },
+ {
+  "text": "se",
+  "startMs": 58460,
+  "endMs": 58520,
+  "scene": "fecho"
+ },
+ {
+  "text": "o",
+  "startMs": 58560,
+  "endMs": 58580,
+  "scene": "fecho"
+ },
+ {
+  "text": "Sol",
+  "startMs": 58720,
+  "endMs": 58900,
+  "scene": "fecho"
+ },
+ {
+  "text": "sumisse",
+  "startMs": 58980,
+  "endMs": 59320,
+  "scene": "fecho"
+ },
+ {
+  "text": "agora?",
+  "startMs": 59360,
+  "endMs": 59680,
+  "scene": "fecho"
+ }
+]

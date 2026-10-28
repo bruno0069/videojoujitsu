@@ -20,7 +20,11 @@ const toPages = (captions: Caption[], size: number): Page[] => {
 };
 
 // Legenda palavra por palavra; a palavra atual fica em amarelo e dá um pulinho.
-export const Captions: React.FC<{ captions: Caption[]; hideAfterFrame: number }> = ({ captions, hideAfterFrame }) => {
+export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number }> = ({
+  captions,
+  showFromFrame,
+  hideAfterFrame,
+}) => {
   const { fps } = useVideoConfig();
   const pages = useMemo(() => toPages(captions, c.wordsPerPage), [captions]);
 
@@ -28,14 +32,14 @@ export const Captions: React.FC<{ captions: Caption[]; hideAfterFrame: number }>
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       {pages.map((page, index) => {
         const next = pages[index + 1] ?? null;
-        const startFrame = Math.round((page.startMs / 1000) * fps);
+        const startFrame = Math.max(showFromFrame, Math.round((page.startMs / 1000) * fps));
         // Some logo depois da última palavra, para não invadir a cena seguinte nem o quadro final do loop
         const endMs = next ? Math.min(next.startMs, page.endMs + c.holdMs) : page.endMs + c.holdMs;
         const endFrame = Math.min(hideAfterFrame, Math.round((endMs / 1000) * fps));
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
-            <CaptionPage page={page} />
+            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} />
           </Sequence>
         );
       })}
@@ -43,10 +47,10 @@ export const Captions: React.FC<{ captions: Caption[]; hideAfterFrame: number }>
   );
 };
 
-const CaptionPage: React.FC<{ page: Page }> = ({ page }) => {
+const CaptionPage: React.FC<{ page: Page; fromMs: number }> = ({ page, fromMs }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const nowMs = page.startMs + (frame / fps) * 1000;
+  const nowMs = fromMs + (frame / fps) * 1000;
   const enter = spring({ frame, fps, config: { damping: 12, mass: 0.6, stiffness: 160 } });
 
   return (

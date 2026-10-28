@@ -3,7 +3,14 @@ import type { Caption } from "@remotion/captions";
 import { CalculateMetadataFunction, Composition, staticFile } from "remotion";
 import { Episode, EpisodeProps } from "./Episode";
 import { EPISODES } from "./episodes";
-import { normalizeWordTimestamps, validateEpisode } from "./timing";
+import { deriveSceneBounds, normalizeWordTimestamps, validateEpisode } from "./timing";
+
+// Arquivos de timestamps por palavra versionados no projeto (src/audio/epNN-words.json)
+const wordFiles = require.context("./audio", false, /-words\.json$/);
+const fromProject = (path: string): unknown | null => {
+  const key = `./${path.replace(/^src\/audio\//, "")}`;
+  return path.startsWith("src/audio/") && wordFiles.keys().includes(key) ? wordFiles(key) : null;
+};
 
 // Usa o arquivo só se ele existir de verdade em public/ (o servidor pode responder HTML para caminhos inexistentes).
 const fetchIfExists = async (src: string, type: string) => {
@@ -22,18 +29,24 @@ const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = async ({ prop
 
   const narration = staticFile(`audio/${props.id}-narracao.mp3`);
   const hasNarration = (await fetchIfExists(narration, "audio")) !== null;
-  // Legenda: timestamps por palavra vindos de um arquivo (entrada `legendas`).
-  // Sem o arquivo, cai no tempo estimado pelo roteiro e avisa no console.
-  const captionsRes = await fetchIfExists(staticFile(props.legendas || `captions/${props.id}.json`), "json");
-  const captions: Caption[] | null = captionsRes ? normalizeWordTimestamps(await captionsRes.json()) : null;
-  if (!captions) console.warn(`[${props.id}] arquivo de legendas "${props.legendas}" não encontrado; usando tempo estimado.`);
+  // Legenda e limites de cena: timestamps por palavra vindos de um arquivo (entrada `legendas`).
+  // "src/audio/…" vem do projeto; outro caminho é buscado em public/. Sem arquivo, usa tempo estimado.
+  const path = props.legendas || `src/audio/${props.id}-words.json`;
+  let raw = fromProject(path);
+  if (raw === null) {
+    const res = await fetchIfExists(staticFile(path), "json");
+    raw = res ? await res.json() : null;
+  }
+  const captions: Caption[] | null = raw ? normalizeWordTimestamps(raw) : null;
+  if (!captions) console.warn(`[${props.id}] arquivo de palavras "${path}" não encontrado; usando tempo estimado.`);
+  const episode = captions ? deriveSceneBounds(props.episode, captions, 3) : props.episode;
 
   return {
     durationInFrames: props.episode.totalFrames,
     fps: props.episode.fps,
     width: props.episode.width,
     height: props.episode.height,
-    props: { ...props, narrationSrc: hasNarration ? narration : null, captions },
+    props: { ...props, episode, narrationSrc: hasNarration ? narration : null, captions },
   };
 };
 
@@ -54,7 +67,7 @@ export const RemotionRoot: React.FC = () => (
           id: ep.id,
           episode: ep.data,
           direction: ep.direction,
-          legendas: `captions/${ep.id}.json`,
+          legendas: `src/audio/${ep.id}-words.json`,
           narrationSrc: null,
           captions: null,
         }}

@@ -93,40 +93,61 @@ const fmt = (total: number) => {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 };
 
-// Timer em contagem regressiva. Começa grande (close) e vira HUD fixo num canto.
-// Chega a 00:00 em `zeroAt`, pisca em coral e trava em `lockAt` (imagem congelada).
+// Timer em contagem regressiva, fixo num canto (HUD). Entre `bigFrom` e `bigUntil` cresce
+// para o close acima do Nico e depois volta. Chega a 00:00 em `zeroAt` e pisca em coral.
 // `frame` aqui é relativo ao início do timer.
-export const Timer: React.FC<{ frame: number; bigUntil: number; zeroAt: number; lockAt?: number; start: string; end: string }> = ({
-  frame,
-  bigUntil,
-  zeroAt,
-  lockAt,
-  start,
-  end,
-}) => {
+export const Timer: React.FC<{
+  frame: number;
+  bigFrom: number;
+  bigUntil: number;
+  zeroAt: number;
+  lockAt?: number;
+  start: string;
+  end: string;
+}> = ({ frame, bigFrom, bigUntil, zeroAt, lockAt, start, end }) => {
   const { fps } = useVideoConfig();
-  const enter = spring({ frame, fps, config: { damping: 11, mass: 0.7, stiffness: 140 } });
-  const move = spring({ frame: frame - bigUntil, fps, config: { damping: 14, mass: 0.8, stiffness: 120 } });
-  const value = interpolate(frame, [12, zeroAt], [parseClock(start), parseClock(end)], {
+  const enter = spring({ frame, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } });
+  const cfg = { damping: 14, mass: 0.8, stiffness: 120 };
+  const big = spring({ frame: frame - bigFrom, fps, config: cfg }) - spring({ frame: frame - bigUntil, fps, config: cfg });
+  const value = interpolate(frame, [0, zeroAt], [parseClock(start), parseClock(end)], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const big = hud.timerBig;
-  const x = interpolate(move, [0, 1], [big.x, hud.timer.x]);
-  const y = interpolate(move, [0, 1], [big.y, hud.timer.y]);
-  const s = interpolate(move, [0, 1], [big.scale, hud.timer.scale]) * enter;
+  const x = interpolate(big, [0, 1], [hud.timer.x, hud.timerBig.x]);
+  const y = interpolate(big, [0, 1], [hud.timer.y, hud.timerBig.y]);
+  const s = interpolate(big, [0, 1], [hud.timer.scale, hud.timerBig.scale]) * enter;
   // No zero: pisca em coral; depois de travar, fica coral parado
   const locked = lockAt !== undefined && frame >= lockAt;
-  const alert = frame >= zeroAt && (locked || Math.floor((frame - zeroAt) / 3) % 2 === 0);
+  const alert = frame >= zeroAt && (locked || Math.floor((frame - zeroAt) / 2) % 2 === 0);
   const digits = alert ? colors.coral : colors.amarelo;
-  const pulse = frame >= zeroAt && !locked ? 1 + 0.1 * Math.abs(Math.sin(((frame - zeroAt) / 6) * Math.PI)) : 1;
-  const ink = inkTheme.stroke / s;
+  const pulse = frame >= zeroAt && !locked ? 1 + 0.12 * Math.abs(Math.sin(((frame - zeroAt) / 4) * Math.PI)) : 1;
+  const ink = inkTheme.stroke / Math.max(0.01, s);
   return (
     <g transform={`translate(${x} ${y}) scale(${s * pulse})`}>
       <rect x={-230} y={-85} width={460} height={170} rx={30} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} />
       <rect x={-214} y={-69} width={428} height={138} rx={20} fill={alert ? colors.tinta : colors.noite} />
       <text x={0} y={48} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={140} fill={digits} style={{ fontVariantNumeric: "tabular-nums" }}>
         {fmt(value)}
+      </text>
+    </g>
+  );
+};
+
+// Selo curto ("agora") que marca a volta ao presente depois do gancho
+export const Stamp: React.FC<{ frame: number; length: number; text: string }> = ({ frame, length, text }) => {
+  const { fps } = useVideoConfig();
+  const s = pop(frame, 0, length, fps, true);
+  if (s <= 0) return null;
+  const ink = inkTheme.stroke;
+  const cx = 540;
+  const cy = 330;
+  const w = text.length * 96 * 0.62 + 90;
+  return (
+    <g transform={`translate(${cx} ${cy}) scale(${s}) rotate(-8)`}>
+      <rect x={-w / 2} y={-70} width={w} height={140} rx={24} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-w / 2 + 14} y={-56} width={w - 28} height={112} rx={16} fill="none" stroke={colors.tinta} strokeWidth={ink * 0.5} />
+      <text x={0} y={34} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={96} fill={colors.tinta}>
+        {text}
       </text>
     </g>
   );

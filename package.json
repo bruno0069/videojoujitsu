@@ -31,9 +31,11 @@
     "lint": "eslint src && tsc",
     "typecheck": "tsc --noEmit",
     "sons": "bash scripts/gerar-sons.sh",
-    "render": "remotion render Ep01 out/ep01.mp4 --codec=h264",
+    "render": "remotion render Ep01 out/ep01.mp4 --codec=h264 && bash scripts/masterizar.sh out/ep01.mp4",
     "stills": "bash scripts/stills.sh Ep01",
-    "upgrade": "remotion upgrade"
+    "upgrade": "remotion upgrade",
+    "narracao": "bash scripts/montar-narracao.sh",
+    "palavras": "python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json"
   },
   "allowScripts": {
     "esbuild": false

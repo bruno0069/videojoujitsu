@@ -76,25 +76,39 @@ O loop fecha porque as animações ociosas (piscar, respirar, nuvens, giro do So
 ciclos inteiros por episódio (`idle` em `theme.ts`) e o último plano termina no mesmo
 enquadramento do primeiro.
 
-## Narração e legendas
+## Narração, legendas e mixagem
 
-- Coloque a narração em `public/audio/epNN-narracao.mp3`. Ela é detectada sozinha.
-- **A legenda lê os tempos de um arquivo JSON de timestamps por palavra**, nunca do roteiro.
-  O caminho é a entrada `legendas` da composição (relativo a `public/`; padrão
-  `captions/epNN.json`). Para trocar sem mexer em código:
+Fluxo usado no ep01 (voz "Renan Matheus", ElevenLabs `eleven_v4`, configurações padrão):
 
-  ```bash
-  npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"captions/ep01-voz.json"}'
-  ```
+1. Uma fala por cena em `public/audio/voz/epNN-<cena>.mp3` (texto exato do roteiro).
+2. `npm run narracao` (`scripts/montar-narracao.sh`) posiciona cada fala no frame da sua cena
+   (`OFFSETS` no script) e gera `public/audio/epNN-narracao.mp3` com 60 s exatos.
+3. A narração montada é transcrita por palavra (ElevenLabs Scribe) e salva em
+   `src/audio/epNN-transcricao.json`.
+4. `npm run palavras` (`scripts/alinhar-palavras.py`) alinha a transcrição ao texto do roteiro
+   e grava `src/audio/epNN-words.json`: `{ text, startMs, endMs, scene }` por palavra.
+5. `npm run render` renderiza e masteriza (`scripts/masterizar.sh`: -14 LUFS, pico real ≤ -1,5 dBTP).
 
-  No Studio, o campo `legendas` aparece nas props da composição.
-- Formatos aceitos: `[{ "text", "startMs", "endMs" }]` (o mesmo de `@remotion/captions`),
-  `[{ "word", "start", "end" }]` em segundos (ElevenLabs, Whisper e afins) ou `{ "words": [...] }`.
-  A quebra das páginas da legenda acompanha o fim de cada cena automaticamente.
-- Enquanto não há voz, `public/captions/ep01.json` é **estimado** a partir do roteiro:
-  `node scripts/gerar-timestamps-estimados.mjs src/episodes/ep01.json public/captions/ep01.json`.
-  Quando a voz existir, gere o arquivo real (ex.: transcrição por palavra) e aponte `legendas` para ele.
-- Os cues por palavra da direção também passam a seguir esse arquivo.
+**A legenda e os limites de cena derivam do arquivo de palavras.** O caminho é a entrada
+`legendas` da composição (padrão `src/audio/epNN-words.json`; um caminho fora de `src/audio/`
+é buscado em `public/`). Formatos aceitos: `{ text, startMs, endMs }`,
+`{ word | text, start, end }` em segundos ou `{ words: [...] }`.
+
+```bash
+npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"src/audio/ep01-words.json"}'
+```
+
+- Limites de cena: o limite do JSON é mantido enquanto cada fala cabe na sua cena; se uma
+  fala invadir a vizinha, o limite vai para o meio da pausa entre as duas falas.
+- Cues por palavra na direção (`"levanta-2"`, `"zero.$"`) seguem a voz real.
+- Sem arquivo de palavras, a legenda usa tempo estimado pelo roteiro
+  (`node scripts/gerar-timestamps-estimados.mjs <episódio.json> <saída.json>` gera esse arquivo).
+- Música e efeitos sofrem duck de -10 dB sob a fala (`audio.duck*` em `theme.ts`). Se a cena
+  seguinte não tem música, a faixa sai em fade de 1 s dentro dela (sem buraco mudo).
+
+Campos de topo da direção ligados a isso: `legendaDe` (a legenda só aparece a partir desse
+frame; antes, o título da capa) e `sunReturnsAfterHook` (selo "agora" de 12 frames no início
+da cena seguinte ao gancho).
 
 ## Identidade visual
 
