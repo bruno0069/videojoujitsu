@@ -1,0 +1,65 @@
+{
+  "cenas": {
+    "gancho": {
+      "camera": { "inicio": "base" },
+      "texto": { "animar": false },
+      "elementos": [{ "type": "sol", "some": "agora?$", "flash": true }],
+      "sfx": { "estalo": "agora?$" }
+    },
+    "apresentacao": {
+      "elementos": [{ "type": "sol", "x": 880, "y": 500 }],
+      "personagens": {
+        "nico": [{ "de": 0, "segurando": "pao_de_queijo" }]
+      }
+    },
+    "gatilho": {
+      "texto": { "de": "Nada" },
+      "elementos": [
+        { "type": "sol", "some": "some", "x": 860, "y": 500 },
+        { "type": "balao", "texto": "Ué.", "de": "repente.", "ate": "continua" },
+        { "type": "inserto", "objeto": "pao_de_queijo", "de": "pão-6", "ate": 240 }
+      ],
+      "personagens": {
+        "nico": [{ "de": 0, "segurando": "pao_de_queijo" }]
+      },
+      "sfx": { "grilo": "Nada" }
+    },
+    "escalada1": {
+      "texto": { "de": "oito-4" },
+      "elementos": [
+        { "type": "relogio", "inicio": "08:20", "fim": "03:00", "de": "oito-4", "ate": 350 },
+        { "type": "balao", "texto": "x + y = ?!", "de": "reclama", "ate": 360 }
+      ],
+      "personagens": {
+        "nico": [
+          { "de": 0, "segurando": "pao_de_queijo", "acao": "comendo" },
+          { "de": "lanche$", "segurando": null, "acao": null },
+          { "de": "Depois", "pose": "apontando" }
+        ]
+      }
+    },
+    "escalada2": {},
+    "virada": {
+      "texto": { "de": "Lua-4" },
+      "fundo": { "passos": ["Aí", "escurece", "apaga"] },
+      "elementos": [
+        { "type": "lua", "aparece": "Lua-8", "apaga": "apaga" },
+        { "type": "termometro", "de": "semana", "ate": "zero$" }
+      ],
+      "sfx": { "queda_graves": "Aí", "vento_frio": "escurece" }
+    },
+    "fecho": {
+      "camera": { "fim": "base" },
+      "texto": { "de": "Nico-4" },
+      "fundo": { "corte": "Nico-4" },
+      "personagens": {
+        "nico": [
+          { "de": 0, "visivel": false, "pose": "parado" },
+          { "de": "Nico-4", "visivel": true },
+          { "de": "levanta", "pose": "mao_levantada" }
+        ]
+      },
+      "sfx": { "estalo": "Nico-4" }
+    }
+  }
+}

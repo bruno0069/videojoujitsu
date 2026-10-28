@@ -1,0 +1,118 @@
+{
+  "episode": 1,
+  "title": "E se o Sol sumisse agora?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 1800,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 90,
+      "narration": "E se o Sol sumisse agora? Ninguém perceberia.",
+      "onScreenText": "E SE O SOL SUMISSE AGORA?",
+      "visual": {
+        "background": "patio_dia",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "O Sol, um círculo no céu, some com um flash curto e um estalo."
+      },
+      "sfx": ["silencio_1s", "estalo"],
+      "music": null
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 90,
+      "durationInFrames": 210,
+      "narration": "Este é o Nico. No recreio, ele faz uma pergunta que a Dani preferia evitar. De novo.",
+      "onScreenText": "Nico, 15 anos · Dani, 15 anos, cética",
+      "visual": {
+        "background": "patio_dia",
+        "characters": [
+          { "id": "nico", "pose": "parado", "expression": "neutro" },
+          { "id": "dani", "pose": "bracos_cruzados", "expression": "cetica" }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico segura um pão de queijo; Dani olha de lado, de braços cruzados."
+      },
+      "sfx": ["recreio"],
+      "music": "base_suave"
+    },
+    {
+      "id": "gatilho",
+      "startFrame": 300,
+      "durationInFrames": 240,
+      "narration": "Então o Sol some. De repente. Nada muda. O céu continua azul e o pão de queijo continua bem quente.",
+      "onScreenText": "nada muda",
+      "visual": {
+        "background": "patio_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "Balão de fala do Nico com 'Ué.'; céu segue azul; inserto do pão de queijo soltando fumaça."
+      },
+      "sfx": ["grilo"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada1",
+      "startFrame": 540,
+      "durationInFrames": 360,
+      "narration": "A luz do Sol leva oito minutos e vinte segundos para chegar. Por isso, o Nico termina o lanche. Depois reclama da prova de matemática.",
+      "onScreenText": "≈ 8 min 20 s",
+      "visual": {
+        "background": "patio_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "vergonha" }],
+        "camera": "plano_medio",
+        "action": "Relógio digital em contagem regressiva a partir de 08:20 sobre o pátio; Nico come e depois reclama."
+      },
+      "sfx": ["tique_taque"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 900,
+      "durationInFrames": 360,
+      "narration": "A gravidade também demora cerca de oito minutos para perceber. Até lá, a Terra segue orbitando um Sol que já não existe. Ninguém sente nada.",
+      "onScreenText": "a gravidade também demora ≈ 8 min",
+      "visual": {
+        "background": "diagrama_orbita",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Diagrama simples: a Terra percorre sua órbita ao redor de um ponto vazio; Nico, pequeno no canto, tranquilo."
+      },
+      "sfx": [],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "virada",
+      "startFrame": 1260,
+      "durationInFrames": 300,
+      "narration": "Aí o céu escurece. A Lua apaga junto, porque ela só brilha com luz emprestada. Em uma semana, a superfície já estaria abaixo de zero.",
+      "onScreenText": "a Lua também apaga",
+      "visual": {
+        "background": "patio_ceu_escurecendo",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "medo" }],
+        "camera": "plano_medio",
+        "action": "O céu escurece em três tempos; a Lua aparece e apaga; um termômetro desce até abaixo de zero."
+      },
+      "sfx": ["queda_graves", "vento_frio"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1560,
+      "durationInFrames": 240,
+      "narration": "A Terra agora segue em linha reta pelo escuro. O Nico levanta a mão: professora, e se o Sol sumisse agora?",
+      "onScreenText": "E SE… QUAL VAI SER O PRÓXIMO? COMENTA.",
+      "visual": {
+        "background": "espaco_escuro_para_sala_de_aula",
+        "characters": [{ "id": "nico", "pose": "mao_levantada", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "A Terra se afasta em linha reta no escuro; corte para a sala de aula; Nico de mão levantada no mesmo enquadramento do gancho."
+      },
+      "sfx": ["estalo"],
+      "music": null
+    }
+  ]
+}

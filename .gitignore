@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Saídas de render: só o vídeo final do episódio é versionado
+out/*
+!out/ep*.mp4
