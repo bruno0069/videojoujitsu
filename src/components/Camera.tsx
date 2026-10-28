@@ -35,8 +35,10 @@ export const shotCamera = (opts: {
   to: number;
   focus: { x: number; y: number };
   punch: boolean;
+  // true = o foco fica no centro da tela (close que acompanha um objeto em movimento)
+  center?: boolean;
 }): Cam => {
-  const { local, length, fps, from, to, focus, punch } = opts;
+  const { local, length, fps, from, to, focus, punch, center } = opts;
   const zoom = punch
     ? from +
       (to - from) * spring({ frame: local, fps, config: { damping: 12, mass: 0.6, stiffness: 170 } }) +
@@ -46,6 +48,7 @@ export const shotCamera = (opts: {
         extrapolateRight: "clamp",
         easing: Easing.inOut(Easing.quad),
       });
+  if (center) return { zoom, x: focus.x, y: focus.y };
   return {
     zoom,
     x: focus.x - (focus.x - 540) / zoom,

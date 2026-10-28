@@ -93,34 +93,39 @@ const fmt = (total: number) => {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 };
 
-// Timer em contagem regressiva. Começa grande no centro (close) e vira HUD fixo num canto.
+// Timer em contagem regressiva. Começa grande (close) e vira HUD fixo num canto.
+// Chega a 00:00 em `zeroAt`, pisca em coral e trava em `lockAt` (imagem congelada).
 // `frame` aqui é relativo ao início do timer.
-export const Timer: React.FC<{ frame: number; length: number; bigUntil: number; start: string; end: string }> = ({
+export const Timer: React.FC<{ frame: number; bigUntil: number; zeroAt: number; lockAt?: number; start: string; end: string }> = ({
   frame,
-  length,
   bigUntil,
+  zeroAt,
+  lockAt,
   start,
   end,
 }) => {
   const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 11, mass: 0.7, stiffness: 140 } });
   const move = spring({ frame: frame - bigUntil, fps, config: { damping: 14, mass: 0.8, stiffness: 120 } });
-  const value = interpolate(frame, [12, length - 1], [parseClock(start), parseClock(end)], {
+  const value = interpolate(frame, [12, zeroAt], [parseClock(start), parseClock(end)], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const big = { x: 540, y: 760, s: 1.6 };
+  const big = hud.timerBig;
   const x = interpolate(move, [0, 1], [big.x, hud.timer.x]);
   const y = interpolate(move, [0, 1], [big.y, hud.timer.y]);
-  const s = interpolate(move, [0, 1], [big.s, hud.timer.scale]) * enter;
-  // Pulso no zero
-  const zero = frame >= length - 8 ? 1 + 0.12 * Math.sin(((frame - (length - 8)) / 8) * Math.PI) : 1;
+  const s = interpolate(move, [0, 1], [big.scale, hud.timer.scale]) * enter;
+  // No zero: pisca em coral; depois de travar, fica coral parado
+  const locked = lockAt !== undefined && frame >= lockAt;
+  const alert = frame >= zeroAt && (locked || Math.floor((frame - zeroAt) / 3) % 2 === 0);
+  const digits = alert ? colors.coral : colors.amarelo;
+  const pulse = frame >= zeroAt && !locked ? 1 + 0.1 * Math.abs(Math.sin(((frame - zeroAt) / 6) * Math.PI)) : 1;
   const ink = inkTheme.stroke / s;
   return (
-    <g transform={`translate(${x} ${y}) scale(${s * zero})`}>
+    <g transform={`translate(${x} ${y}) scale(${s * pulse})`}>
       <rect x={-230} y={-85} width={460} height={170} rx={30} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} />
-      <rect x={-214} y={-69} width={428} height={138} rx={20} fill={colors.noite} />
-      <text x={0} y={48} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={140} fill={colors.amarelo} style={{ fontVariantNumeric: "tabular-nums" }}>
+      <rect x={-214} y={-69} width={428} height={138} rx={20} fill={alert ? colors.tinta : colors.noite} />
+      <text x={0} y={48} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={140} fill={digits} style={{ fontVariantNumeric: "tabular-nums" }}>
         {fmt(value)}
       </text>
     </g>
@@ -167,7 +172,7 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
   const s = pop(frame, from, to + 10000, fps, true);
   if (s <= 0) return null;
   const ink = inkTheme.stroke;
-  const x = big ? 800 : 790;
+  const x = big ? 740 : 790;
   const top = big ? 520 : 700;
   const bottom = big ? 1110 : 1090;
   const tube = big ? 58 : 38;
@@ -192,8 +197,9 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
       <rect x={x - tube * 0.45} y={liquidTop} width={tube * 0.9} height={bottom - liquidTop + 30} fill={fill} />
       <circle cx={x} cy={bottom + bulb * 0.65} r={bulb} fill={fill} stroke={colors.tinta} strokeWidth={ink} />
       {ticks}
-      <path d={`M ${x - tube} ${zeroY} L ${x + tube + 24} ${zeroY}`} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinecap="round" />
-      <text x={x - tube - 18} y={zeroY + 24} textAnchor="end" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={big ? 72 : 64} fill={colors.amarelo} style={outlined(12)}>
+      <path d={`M ${x - tube} ${zeroY} L ${x + tube + 22} ${zeroY}`} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinecap="round" />
+      {/* Etiqueta à direita do tubo, longe da cabeça do Nico */}
+      <text x={x + tube + 36} y={zeroY + 22} textAnchor="start" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={64} fill={colors.amarelo} style={outlined(12)}>
         0 °C
       </text>
     </g>
@@ -229,12 +235,9 @@ export const Flash: React.FC<{ frame: number; at: number }> = ({ frame, at }) =>
   return <rect x={0} y={0} width={1080} height={1920} fill={colors.branco} opacity={o} />;
 };
 
-// Vinheta chapada (sem gradiente): moldura azul-noite com cantos arredondados que se fecha aos poucos
-export const Vignette: React.FC<{ frame: number; from: number }> = ({ frame, from }) => {
-  if (frame < from) return null;
-  const t = interpolate(frame, [from, from + 60], [0, 1], { extrapolateRight: "clamp", easing: Easing.out(Easing.quad) });
-  const m = 10 + 40 * t;
-  const r = 140;
-  const d = `M 0 0 H 1080 V 1920 H 0 Z M ${m + r} ${m} H ${1080 - m - r} A ${r} ${r} 0 0 1 ${1080 - m} ${m + r} V ${1920 - m - r} A ${r} ${r} 0 0 1 ${1080 - m - r} ${1920 - m} H ${m + r} A ${r} ${r} 0 0 1 ${m} ${1920 - m - r} V ${m + r} A ${r} ${r} 0 0 1 ${m + r} ${m} Z`;
-  return <path d={d} fill={colors.ceuMeio} fillRule="evenodd" opacity={0.4 * t} />;
+// Escurecimento de tela cheia (sem moldura): cor chapada com opacidade crescente
+export const DarkOverlay: React.FC<{ frame: number; from: number; to: number; max: number }> = ({ frame, from, to, max }) => {
+  const o = interpolate(frame, [from, to], [0, max], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  if (o <= 0) return null;
+  return <rect x={-200} y={-200} width={1480} height={2320} fill={colors.tinta} opacity={o} />;
 };

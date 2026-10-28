@@ -79,12 +79,24 @@ export const onScreenText = {
   maxWidth: 1080 - 2 * 90,
 };
 
+// Sticker da chamada final (CTA)
+export const sticker = {
+  centerY: 1152, // 60% da altura (faixa de 55–65%)
+  fontSize: 76,
+  maxWidth: 960,
+  paddingX: 34,
+  paddingY: 22,
+  radius: 34,
+  rotate: -3,
+  boxColor: colors.coral,
+};
+
 // Enquadramentos: posição dos pés do personagem principal e escala (px por unidade do rig)
 export const shots = {
   close: { x: 420, y: 2225, scale: 1.55 },
   plano_medio: { x: 540, y: 1520, scale: 0.8 },
   aberto: { y: 1450, scale: 0.6, xs: [340, 740] },
-  inserto_pequeno: { x: 140, y: 1290, scale: 0.28 },
+  inserto_pequeno: { x: 210, y: 1280, scale: 0.4 },
 } as const;
 
 // Posição do Sol no céu (repetida no gancho e na janela da sala para fechar o loop)
@@ -92,7 +104,8 @@ export const sun = { x: 860, y: 630, r: 95 };
 
 // Elementos fixos na tela
 export const hud = {
-  timer: { x: 205, y: 150, scale: 0.5 }, // canto superior esquerdo
+  timer: { x: 220, y: 160, scale: 0.6 }, // canto superior esquerdo (dígitos de 84 px)
+  timerBig: { x: 540, y: 520, scale: 1.25 }, // timer em close, acima do Nico
 };
 
 // Animação ociosa em ciclos inteiros por episódio. O relógio fecha em `loopFrames`

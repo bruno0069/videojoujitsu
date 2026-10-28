@@ -14,19 +14,24 @@ const END_ANGLE = -Math.PI / 4; // termina no alto à direita, de onde a Terra s
 export const orbitAngle = (frame: number, length = 360) => END_ANGLE + (length - frame) * SPEED;
 
 // Diagrama: a Terra percorre a órbita ao redor de um ponto vazio.
-export const DiagramaOrbita: React.FC<{ cam: Cam; frame: number; labelAt?: number }> = ({ cam, frame, labelAt = 20 }) => (
+export const DiagramaOrbita: React.FC<{ cam: Cam; frame: number; labelAt?: number; labelUntil?: number }> = ({
+  cam,
+  frame,
+  labelAt = 20,
+  labelUntil = Infinity,
+}) => (
   <>
     <Layer cam={cam} depth={0.1}>
       <SkyFill color={colors.noite} />
       <Stars frame={frame} />
     </Layer>
     <Layer cam={cam} depth={1}>
-      <OrbitContent frame={frame} labelAt={labelAt} />
+      <OrbitContent frame={frame} labelAt={labelAt} labelUntil={labelUntil} />
     </Layer>
   </>
 );
 
-const OrbitContent: React.FC<{ frame: number; labelAt: number }> = ({ frame, labelAt }) => {
+const OrbitContent: React.FC<{ frame: number; labelAt: number; labelUntil: number }> = ({ frame, labelAt, labelUntil }) => {
   const ink = useInk();
   const { fps } = useVideoConfig();
   const angle = orbitAngle(frame);
@@ -51,8 +56,8 @@ const OrbitContent: React.FC<{ frame: number; labelAt: number }> = ({ frame, lab
       />
     );
   });
-  const label = frame >= labelAt ? spring({ frame: frame - labelAt, fps, config: { damping: 7, mass: 0.6, stiffness: 180 } }) : 0;
-  const labelY = ORBIT.cy + 175;
+  const label = frame >= labelAt && frame < labelUntil ? spring({ frame: frame - labelAt, fps, config: { damping: 7, mass: 0.6, stiffness: 180 } }) : 0;
+  const labelY = ORBIT.cy - 135; // acima do círculo vazio, longe do Nico
   return (
     <g>
       <circle cx={ORBIT.cx} cy={ORBIT.cy} r={ORBIT.r} fill="none" stroke={colors.creme} strokeWidth={ink * 0.6} strokeDasharray={`${ink * 2} ${ink * 2}`} opacity={0.7} />
@@ -66,7 +71,7 @@ const OrbitContent: React.FC<{ frame: number; labelAt: number }> = ({ frame, lab
           textAnchor="middle"
           fontFamily={fonts.main}
           fontWeight={fonts.weight}
-          fontSize={52}
+          fontSize={64}
           fill={colors.amarelo}
           transform={`translate(${ORBIT.cx} ${labelY}) scale(${label}) translate(${-ORBIT.cx} ${-labelY})`}
           style={{ WebkitTextStroke: `${ink * 0.75}px ${colors.tinta}`, paintOrder: "stroke fill" }}

@@ -1,20 +1,22 @@
 import React from "react";
 import type { Caption } from "@remotion/captions";
 import { Audio } from "@remotion/media";
-import { AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Freeze, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { MUSIC, SFX } from "./audioLibrary";
 import { Captions } from "./components/Captions";
 import { Timer } from "./components/elements/Props";
 import { SceneOffset } from "./components/GlobalFrame";
 import { SceneRenderer } from "./components/SceneRenderer";
 import { audio, colors } from "./theme";
-import { estimateEpisodeCaptions, resolveCue, sceneWords } from "./timing";
+import { estimateEpisodeCaptions, markSceneBreaks, resolveCue, sceneWords } from "./timing";
 import type { Direction, EpisodeData } from "./types";
 
 export type EpisodeProps = {
   id: string;
   episode: EpisodeData;
   direction: Direction;
+  // Entrada: arquivo de timestamps por palavra (JSON, relativo a public/). Ver README.
+  legendas: string;
   // Preenchidos por calculateMetadata quando os arquivos existem em public/
   narrationSrc: string | null;
   captions: Caption[] | null;
@@ -32,7 +34,7 @@ const musicRuns = (ep: EpisodeData) => {
 };
 
 export const Episode: React.FC<EpisodeProps> = ({ episode, direction, narrationSrc, captions }) => {
-  const allCaptions = captions ?? estimateEpisodeCaptions(episode);
+  const allCaptions = markSceneBreaks(captions ?? estimateEpisodeCaptions(episode), episode);
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.creme }}>
@@ -41,9 +43,11 @@ export const Episode: React.FC<EpisodeProps> = ({ episode, direction, narrationS
         const words = sceneWords(allCaptions, scene, episode.fps);
         return (
           <Sequence key={scene.id} name={scene.id} from={scene.startFrame} durationInFrames={scene.durationInFrames}>
-            <SceneOffset offset={scene.startFrame}>
-              <SceneRenderer scene={scene} direction={dir} words={words} />
-            </SceneOffset>
+            <Freeze frame={dir.congelar ?? 0} active={(f) => dir.congelar !== undefined && f >= dir.congelar}>
+              <SceneOffset offset={scene.startFrame}>
+                <SceneRenderer scene={scene} direction={dir} words={words} />
+              </SceneOffset>
+            </Freeze>
             {scene.sfx.map((id) => {
               const sfx = SFX[id];
               if (!sfx || !sfx.file) return null;
@@ -87,7 +91,13 @@ export const Episode: React.FC<EpisodeProps> = ({ episode, direction, narrationS
 
       {(direction.hud ?? []).map((h, i) => (
         <Sequence key={`hud-${i}`} from={h.de} durationInFrames={h.ate - h.de} layout="none" name={`hud ${h.type}`}>
-          <HudTimer length={h.ate - h.de} bigUntil={h.grandeAte - h.de} start={h.inicio} end={h.fim} />
+          <HudTimer
+            bigUntil={h.grandeAte - h.de}
+            zeroAt={h.zeroEm - h.de}
+            lockAt={h.travaEm !== undefined ? h.travaEm - h.de : undefined}
+            start={h.inicio}
+            end={h.fim}
+          />
         </Sequence>
       ))}
 
@@ -96,7 +106,7 @@ export const Episode: React.FC<EpisodeProps> = ({ episode, direction, narrationS
   );
 };
 
-const HudTimer: React.FC<{ length: number; bigUntil: number; start: string; end: string }> = (props) => {
+const HudTimer: React.FC<{ bigUntil: number; zeroAt: number; lockAt?: number; start: string; end: string }> = (props) => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill>

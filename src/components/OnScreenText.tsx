@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useVideoConfig } from "remotion";
-import { colors, fonts, ink, onScreenText as t } from "../theme";
+import { colors, fonts, ink, onScreenText as t, sticker as stickerTheme } from "../theme";
 
 // Quebra em no máximo 2 linhas: " · " vira quebra; texto longo é dividido no espaço mais equilibrado.
 export const splitLines = (text: string): string[] => {
@@ -53,15 +53,17 @@ const renderLine = (line: string) =>
     ),
   );
 
-export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean }> = ({
+export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean }> = ({
   text,
   frame,
   from,
   to,
   animate,
+  sticker,
 }) => {
   const { fps } = useVideoConfig();
   if (!text || frame < from || frame >= to) return null;
+  if (sticker) return <Sticker text={text} frame={frame} from={from} to={to} />;
   const enter = animate ? spring({ frame: frame - from, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } }) : 1;
   const exit = interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const s = enter * exit;
@@ -88,6 +90,47 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
           lineHeight: 1.08,
           color: t.textColor,
           WebkitTextStroke: `${ink.textStroke}px ${colors.tinta}`,
+          paintOrder: "stroke fill",
+          whiteSpace: "pre",
+        }}
+      >
+        {lines.map((l, i) => (
+          <div key={i}>{renderLine(l)}</div>
+        ))}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Sticker grande de chamada (CTA): entra em pop com bounce na faixa de 55–65% da altura
+const Sticker: React.FC<{ text: string; frame: number; from: number; to: number }> = ({ text, frame, from, to }) => {
+  const { fps } = useVideoConfig();
+  const enter = spring({ frame: frame - from, fps, config: { damping: 7, mass: 0.6, stiffness: 190 } });
+  const exit = interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const lines = splitLines(text);
+  const st = stickerTheme;
+  return (
+    <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: st.centerY,
+          translate: "0 -50%",
+          maxWidth: st.maxWidth,
+          padding: `${st.paddingY}px ${st.paddingX}px`,
+          backgroundColor: st.boxColor,
+          border: `${ink.stroke * 0.7}px solid ${colors.tinta}`,
+          borderRadius: st.radius,
+          boxShadow: `0 ${ink.stroke}px 0 ${colors.tinta}`,
+          scale: String(enter * exit),
+          rotate: `${st.rotate}deg`,
+          textAlign: "center",
+          fontFamily: fonts.main,
+          fontWeight: fonts.weight,
+          fontSize: st.fontSize,
+          lineHeight: 1.06,
+          color: colors.creme,
+          WebkitTextStroke: `${ink.textStroke + 2}px ${colors.tinta}`,
           paintOrder: "stroke fill",
           whiteSpace: "pre",
         }}

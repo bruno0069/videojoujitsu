@@ -50,20 +50,27 @@ Campos por cena:
 - `planos`: cortes secos dentro da cena. Cada plano tem `de`, `enquadramento`
   (`close`, `medio`, `aberto`, `inserto_pequeno`, `ceu`, `inserto_pao`), `foco` (personagem,
   `"orbita"` ou `"ceu"`), `zoom` `[de, até]` (ex.: `[1, 1.12]` = push-in de 100% a 112%),
-  `entrada` (`"corte"` ou `"punch"`), `personagens` (quem aparece, com pose/expressão) e
-  `cenario` (troca o cenário só naquele plano).
+  `entrada` (`"corte"` ou `"punch"`), `centralizar` (o foco vai para o centro da tela; com
+  `foco: "terra"` a câmera acompanha a Terra), `personagens` (quem aparece, com pose/expressão;
+  `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
 - `elementos`: `sol` (com `some`/`encolhe`/`flash`), `lua` (`aparece`/`pisca`/`apaga`),
-  `balao`, `etiqueta`, `prova`, `termometro`, `vinheta`. Todos aceitam `de`/`ate`.
+  `balao`, `etiqueta`, `prova`, `termometro`, `escurecer` (tela cheia na cor tinta, opacidade
+  crescente até `max`). Todos aceitam `de`/`ate`.
 - `personagens`: chaves de tempo por personagem (pose, expressão, objeto, ação, `olhar`).
   Ações: `comendo`, `revirar_olhos`, `frio` (tremor + bafo).
 - `tremidas`: `{ de, frames, forca }`.
-- `texto`: `de`/`ate`/`mostrar`. Sem `mostrar`, o texto da tela some sozinho quando só repete a fala.
-- `sfx`: frame de cada efeito. `fundo`: parâmetros do cenário (`passos` do céu, `rotulo`).
+- `texto`: `de`/`ate`/`mostrar`/`estilo` (`"sticker"` = chamada grande a 60% da altura). Sem
+  `mostrar`, o texto da tela some sozinho quando só repete a fala.
+- `congelar`: frame a partir do qual a imagem da cena fica parada.
+- `sfx`: frame de cada efeito. `fundo`: parâmetros do cenário (`passos` do céu, `seco: 1` para
+  trocar a cor sem transição, `rotulo`/`rotuloAte` do diagrama).
 - `sincronia`: pontos de sincronização para a voz (palavra → frame → evento). Quando a
   narração real entrar, confira se cada palavra cai perto do frame indicado e ajuste os
   frames da direção, ou troque os números por cues de palavra.
 
-No topo do arquivo, `hud` guarda elementos que atravessam cenas (ex.: o timer de 540 a 1260).
+No topo do arquivo, `hud` guarda elementos que atravessam cenas. O timer usa `de`/`ate`
+(frames absolutos), `grandeAte` (quando sai do close para o canto), `zeroEm` (quando chega a
+00:00 e pisca em coral) e `travaEm` (quando para de piscar, junto com o `congelar` da cena).
 
 O loop fecha porque as animações ociosas (piscar, respirar, nuvens, giro do Sol) rodam em
 ciclos inteiros por episódio (`idle` em `theme.ts`) e o último plano termina no mesmo
@@ -72,13 +79,22 @@ enquadramento do primeiro.
 ## Narração e legendas
 
 - Coloque a narração em `public/audio/epNN-narracao.mp3`. Ela é detectada sozinha.
-- Sem áudio, a legenda usa tempo **estimado** (palavras distribuídas pelo número de
-  caracteres de cada cena).
-- Com áudio, gere `public/captions/epNN.json` no formato `Caption[]` de
-  `@remotion/captions` (por exemplo, transcrevendo com `@remotion/install-whisper-cpp`).
-  A legenda e todos os cues por palavra passam a seguir a fala real.
-- Para casar a fala com as cenas sem mexer no JSON, gere um áudio por cena e posicione
-  cada um no `startFrame` da cena ao montar o MP3 único (ffmpeg `adelay` + `amix`).
+- **A legenda lê os tempos de um arquivo JSON de timestamps por palavra**, nunca do roteiro.
+  O caminho é a entrada `legendas` da composição (relativo a `public/`; padrão
+  `captions/epNN.json`). Para trocar sem mexer em código:
+
+  ```bash
+  npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"captions/ep01-voz.json"}'
+  ```
+
+  No Studio, o campo `legendas` aparece nas props da composição.
+- Formatos aceitos: `[{ "text", "startMs", "endMs" }]` (o mesmo de `@remotion/captions`),
+  `[{ "word", "start", "end" }]` em segundos (ElevenLabs, Whisper e afins) ou `{ "words": [...] }`.
+  A quebra das páginas da legenda acompanha o fim de cada cena automaticamente.
+- Enquanto não há voz, `public/captions/ep01.json` é **estimado** a partir do roteiro:
+  `node scripts/gerar-timestamps-estimados.mjs src/episodes/ep01.json public/captions/ep01.json`.
+  Quando a voz existir, gere o arquivo real (ex.: transcrição por palavra) e aponte `legendas` para ele.
+- Os cues por palavra da direção também passam a seguir esse arquivo.
 
 ## Identidade visual
 

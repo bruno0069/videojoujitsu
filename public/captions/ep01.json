@@ -1,0 +1,707 @@
+[
+ {
+  "text": "E",
+  "startMs": 133,
+  "endMs": 235
+ },
+ {
+  "text": "se",
+  "startMs": 235,
+  "endMs": 388
+ },
+ {
+  "text": "o",
+  "startMs": 388,
+  "endMs": 490
+ },
+ {
+  "text": "Sol",
+  "startMs": 490,
+  "endMs": 694
+ },
+ {
+  "text": "sumisse",
+  "startMs": 694,
+  "endMs": 1102
+ },
+ {
+  "text": "agora?",
+  "startMs": 1102,
+  "endMs": 1459
+ },
+ {
+  "text": "Ninguém",
+  "startMs": 1714,
+  "endMs": 2122
+ },
+ {
+  "text": "perceberia.",
+  "startMs": 2122,
+  "endMs": 2733
+ },
+ {
+  "text": "Este",
+  "startMs": 3133,
+  "endMs": 3474
+ },
+ {
+  "text": "é",
+  "startMs": 3474,
+  "endMs": 3610
+ },
+ {
+  "text": "o",
+  "startMs": 3610,
+  "endMs": 3746
+ },
+ {
+  "text": "Nico.",
+  "startMs": 3746,
+  "endMs": 4154
+ },
+ {
+  "text": "No",
+  "startMs": 4494,
+  "endMs": 4698
+ },
+ {
+  "text": "recreio,",
+  "startMs": 4698,
+  "endMs": 5311
+ },
+ {
+  "text": "ele",
+  "startMs": 5447,
+  "endMs": 5719
+ },
+ {
+  "text": "faz",
+  "startMs": 5719,
+  "endMs": 5991
+ },
+ {
+  "text": "uma",
+  "startMs": 5991,
+  "endMs": 6263
+ },
+ {
+  "text": "pergunta",
+  "startMs": 6263,
+  "endMs": 6876
+ },
+ {
+  "text": "que",
+  "startMs": 6876,
+  "endMs": 7148
+ },
+ {
+  "text": "a",
+  "startMs": 7148,
+  "endMs": 7284
+ },
+ {
+  "text": "Dani",
+  "startMs": 7284,
+  "endMs": 7624
+ },
+ {
+  "text": "preferia",
+  "startMs": 7624,
+  "endMs": 8236
+ },
+ {
+  "text": "evitar.",
+  "startMs": 8236,
+  "endMs": 8781
+ },
+ {
+  "text": "De",
+  "startMs": 9121,
+  "endMs": 9325
+ },
+ {
+  "text": "novo.",
+  "startMs": 9325,
+  "endMs": 9733
+ },
+ {
+  "text": "Então",
+  "startMs": 10133,
+  "endMs": 10530
+ },
+ {
+  "text": "o",
+  "startMs": 10530,
+  "endMs": 10662
+ },
+ {
+  "text": "Sol",
+  "startMs": 10662,
+  "endMs": 10926
+ },
+ {
+  "text": "some.",
+  "startMs": 10926,
+  "endMs": 11323
+ },
+ {
+  "text": "De",
+  "startMs": 11653,
+  "endMs": 11852
+ },
+ {
+  "text": "repente.",
+  "startMs": 11852,
+  "endMs": 12446
+ },
+ {
+  "text": "Nada",
+  "startMs": 12777,
+  "endMs": 13107
+ },
+ {
+  "text": "muda.",
+  "startMs": 13107,
+  "endMs": 13504
+ },
+ {
+  "text": "O",
+  "startMs": 13834,
+  "endMs": 13966
+ },
+ {
+  "text": "céu",
+  "startMs": 13966,
+  "endMs": 14231
+ },
+ {
+  "text": "continua",
+  "startMs": 14231,
+  "endMs": 14826
+ },
+ {
+  "text": "azul",
+  "startMs": 14826,
+  "endMs": 15156
+ },
+ {
+  "text": "e",
+  "startMs": 15156,
+  "endMs": 15288
+ },
+ {
+  "text": "o",
+  "startMs": 15288,
+  "endMs": 15420
+ },
+ {
+  "text": "pão",
+  "startMs": 15420,
+  "endMs": 15685
+ },
+ {
+  "text": "de",
+  "startMs": 15685,
+  "endMs": 15883
+ },
+ {
+  "text": "queijo",
+  "startMs": 15883,
+  "endMs": 16346
+ },
+ {
+  "text": "continua",
+  "startMs": 16346,
+  "endMs": 16940
+ },
+ {
+  "text": "bem",
+  "startMs": 16940,
+  "endMs": 17205
+ },
+ {
+  "text": "quente.",
+  "startMs": 17205,
+  "endMs": 17733
+ },
+ {
+  "text": "A",
+  "startMs": 18133,
+  "endMs": 18291
+ },
+ {
+  "text": "luz",
+  "startMs": 18291,
+  "endMs": 18607
+ },
+ {
+  "text": "do",
+  "startMs": 18607,
+  "endMs": 18844
+ },
+ {
+  "text": "Sol",
+  "startMs": 18844,
+  "endMs": 19159
+ },
+ {
+  "text": "leva",
+  "startMs": 19159,
+  "endMs": 19554
+ },
+ {
+  "text": "oito",
+  "startMs": 19554,
+  "endMs": 19948
+ },
+ {
+  "text": "minutos",
+  "startMs": 19948,
+  "endMs": 20580
+ },
+ {
+  "text": "e",
+  "startMs": 20580,
+  "endMs": 20737
+ },
+ {
+  "text": "vinte",
+  "startMs": 20737,
+  "endMs": 21211
+ },
+ {
+  "text": "segundos",
+  "startMs": 21211,
+  "endMs": 21921
+ },
+ {
+  "text": "para",
+  "startMs": 21921,
+  "endMs": 22316
+ },
+ {
+  "text": "chegar.",
+  "startMs": 22316,
+  "endMs": 22947
+ },
+ {
+  "text": "Por",
+  "startMs": 23341,
+  "endMs": 23657
+ },
+ {
+  "text": "isso,",
+  "startMs": 23657,
+  "endMs": 24131
+ },
+ {
+  "text": "o",
+  "startMs": 24288,
+  "endMs": 24446
+ },
+ {
+  "text": "Nico",
+  "startMs": 24446,
+  "endMs": 24841
+ },
+ {
+  "text": "termina",
+  "startMs": 24841,
+  "endMs": 25472
+ },
+ {
+  "text": "o",
+  "startMs": 25472,
+  "endMs": 25630
+ },
+ {
+  "text": "lanche.",
+  "startMs": 25630,
+  "endMs": 26261
+ },
+ {
+  "text": "Depois",
+  "startMs": 26656,
+  "endMs": 27208
+ },
+ {
+  "text": "reclama",
+  "startMs": 27208,
+  "endMs": 27839
+ },
+ {
+  "text": "da",
+  "startMs": 27839,
+  "endMs": 28076
+ },
+ {
+  "text": "prova",
+  "startMs": 28076,
+  "endMs": 28550
+ },
+ {
+  "text": "de",
+  "startMs": 28550,
+  "endMs": 28786
+ },
+ {
+  "text": "matemática.",
+  "startMs": 28786,
+  "endMs": 29733
+ },
+ {
+  "text": "A",
+  "startMs": 30133,
+  "endMs": 30285
+ },
+ {
+  "text": "gravidade",
+  "startMs": 30285,
+  "endMs": 31043
+ },
+ {
+  "text": "também",
+  "startMs": 31043,
+  "endMs": 31574
+ },
+ {
+  "text": "demora",
+  "startMs": 31574,
+  "endMs": 32105
+ },
+ {
+  "text": "cerca",
+  "startMs": 32105,
+  "endMs": 32559
+ },
+ {
+  "text": "de",
+  "startMs": 32559,
+  "endMs": 32787
+ },
+ {
+  "text": "oito",
+  "startMs": 32787,
+  "endMs": 33166
+ },
+ {
+  "text": "minutos",
+  "startMs": 33166,
+  "endMs": 33773
+ },
+ {
+  "text": "para",
+  "startMs": 33773,
+  "endMs": 34152
+ },
+ {
+  "text": "perceber.",
+  "startMs": 34152,
+  "endMs": 34910
+ },
+ {
+  "text": "Até",
+  "startMs": 35289,
+  "endMs": 35592
+ },
+ {
+  "text": "lá,",
+  "startMs": 35592,
+  "endMs": 35895
+ },
+ {
+  "text": "a",
+  "startMs": 36047,
+  "endMs": 36199
+ },
+ {
+  "text": "Terra",
+  "startMs": 36199,
+  "endMs": 36654
+ },
+ {
+  "text": "segue",
+  "startMs": 36654,
+  "endMs": 37108
+ },
+ {
+  "text": "orbitando",
+  "startMs": 37108,
+  "endMs": 37867
+ },
+ {
+  "text": "um",
+  "startMs": 37867,
+  "endMs": 38094
+ },
+ {
+  "text": "Sol",
+  "startMs": 38094,
+  "endMs": 38397
+ },
+ {
+  "text": "que",
+  "startMs": 38397,
+  "endMs": 38701
+ },
+ {
+  "text": "já",
+  "startMs": 38701,
+  "endMs": 38928
+ },
+ {
+  "text": "não",
+  "startMs": 38928,
+  "endMs": 39231
+ },
+ {
+  "text": "existe.",
+  "startMs": 39231,
+  "endMs": 39838
+ },
+ {
+  "text": "Ninguém",
+  "startMs": 40217,
+  "endMs": 40824
+ },
+ {
+  "text": "sente",
+  "startMs": 40824,
+  "endMs": 41278
+ },
+ {
+  "text": "nada.",
+  "startMs": 41278,
+  "endMs": 41733
+ },
+ {
+  "text": "Aí",
+  "startMs": 42133,
+  "endMs": 42328
+ },
+ {
+  "text": "o",
+  "startMs": 42328,
+  "endMs": 42458
+ },
+ {
+  "text": "céu",
+  "startMs": 42458,
+  "endMs": 42717
+ },
+ {
+  "text": "escurece.",
+  "startMs": 42717,
+  "endMs": 43366
+ },
+ {
+  "text": "A",
+  "startMs": 43690,
+  "endMs": 43820
+ },
+ {
+  "text": "Lua",
+  "startMs": 43820,
+  "endMs": 44079
+ },
+ {
+  "text": "apaga",
+  "startMs": 44079,
+  "endMs": 44468
+ },
+ {
+  "text": "junto,",
+  "startMs": 44468,
+  "endMs": 44923
+ },
+ {
+  "text": "porque",
+  "startMs": 45052,
+  "endMs": 45506
+ },
+ {
+  "text": "ela",
+  "startMs": 45506,
+  "endMs": 45766
+ },
+ {
+  "text": "só",
+  "startMs": 45766,
+  "endMs": 45960
+ },
+ {
+  "text": "brilha",
+  "startMs": 45960,
+  "endMs": 46414
+ },
+ {
+  "text": "com",
+  "startMs": 46414,
+  "endMs": 46674
+ },
+ {
+  "text": "luz",
+  "startMs": 46674,
+  "endMs": 46933
+ },
+ {
+  "text": "emprestada.",
+  "startMs": 46933,
+  "endMs": 47712
+ },
+ {
+  "text": "Em",
+  "startMs": 48036,
+  "endMs": 48231
+ },
+ {
+  "text": "uma",
+  "startMs": 48231,
+  "endMs": 48490
+ },
+ {
+  "text": "semana,",
+  "startMs": 48490,
+  "endMs": 49009
+ },
+ {
+  "text": "a",
+  "startMs": 49139,
+  "endMs": 49268
+ },
+ {
+  "text": "superfície",
+  "startMs": 49268,
+  "endMs": 49982
+ },
+ {
+  "text": "já",
+  "startMs": 49982,
+  "endMs": 50177
+ },
+ {
+  "text": "estaria",
+  "startMs": 50177,
+  "endMs": 50695
+ },
+ {
+  "text": "abaixo",
+  "startMs": 50695,
+  "endMs": 51150
+ },
+ {
+  "text": "de",
+  "startMs": 51150,
+  "endMs": 51344
+ },
+ {
+  "text": "zero.",
+  "startMs": 51344,
+  "endMs": 51733
+ },
+ {
+  "text": "A",
+  "startMs": 52133,
+  "endMs": 52263
+ },
+ {
+  "text": "Terra",
+  "startMs": 52263,
+  "endMs": 52653
+ },
+ {
+  "text": "agora",
+  "startMs": 52653,
+  "endMs": 53043
+ },
+ {
+  "text": "segue",
+  "startMs": 53043,
+  "endMs": 53432
+ },
+ {
+  "text": "em",
+  "startMs": 53432,
+  "endMs": 53627
+ },
+ {
+  "text": "linha",
+  "startMs": 53627,
+  "endMs": 54017
+ },
+ {
+  "text": "reta",
+  "startMs": 54017,
+  "endMs": 54342
+ },
+ {
+  "text": "pelo",
+  "startMs": 54342,
+  "endMs": 54667
+ },
+ {
+  "text": "escuro.",
+  "startMs": 54667,
+  "endMs": 55186
+ },
+ {
+  "text": "O",
+  "startMs": 55511,
+  "endMs": 55641
+ },
+ {
+  "text": "Nico",
+  "startMs": 55641,
+  "endMs": 55966
+ },
+ {
+  "text": "levanta",
+  "startMs": 55966,
+  "endMs": 56485
+ },
+ {
+  "text": "a",
+  "startMs": 56485,
+  "endMs": 56615
+ },
+ {
+  "text": "mão:",
+  "startMs": 56615,
+  "endMs": 56940
+ },
+ {
+  "text": "professora,",
+  "startMs": 57135,
+  "endMs": 57915
+ },
+ {
+  "text": "e",
+  "startMs": 58044,
+  "endMs": 58174
+ },
+ {
+  "text": "se",
+  "startMs": 58174,
+  "endMs": 58369
+ },
+ {
+  "text": "o",
+  "startMs": 58369,
+  "endMs": 58499
+ },
+ {
+  "text": "Sol",
+  "startMs": 58499,
+  "endMs": 58759
+ },
+ {
+  "text": "sumisse",
+  "startMs": 58759,
+  "endMs": 59279
+ },
+ {
+  "text": "agora?",
+  "startMs": 59279,
+  "endMs": 59733
+ }
+]

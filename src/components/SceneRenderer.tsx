@@ -4,10 +4,10 @@ import { colors, idle, loopPhase, shots, sun } from "../theme";
 import { resolveCue, TimedWord } from "../timing";
 import type { CharacterKey, Cue, Plano, Scene, SceneDirection } from "../types";
 import { Background } from "./Background";
-import { ORBIT } from "./backgrounds/DiagramaOrbita";
+import { ORBIT, orbitAngle } from "./backgrounds/DiagramaOrbita";
 import { Cam, Layer, shakeOffset, shotCamera, toScreen } from "./Camera";
 import { Dani } from "./Dani";
-import { Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer, Vignette } from "./elements/Props";
+import { DarkOverlay, Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer } from "./elements/Props";
 import { Sun } from "./elements/Sun";
 import { useGlobalFrame } from "./GlobalFrame";
 import { InkScale } from "./Ink";
@@ -31,9 +31,11 @@ const SHOT_FROM_JSON: Record<string, Plano["enquadramento"]> = {
 
 // Posição de cada personagem conforme o enquadramento do plano.
 const place = (chars: CharBase[], plano: Plano): Placed[] => {
-  const big = chars.filter((c) => !c.small && plano.enquadramento !== "inserto_pequeno");
+  // "inserto_pequeno" do roteiro só vale em plano aberto; em close/médio o personagem aparece grande
+  const isSmall = (c: CharBase) => plano.enquadramento === "inserto_pequeno" || (c.small && plano.enquadramento === "aberto");
+  const big = chars.filter((c) => !isSmall(c));
   return chars.flatMap((c): Placed[] => {
-    if (c.small || plano.enquadramento === "inserto_pequeno") {
+    if (isSmall(c)) {
       const p = shots.inserto_pequeno;
       return [{ ...c, x: p.x, y: p.y, s: p.scale, screen: true }];
     }
@@ -99,8 +101,12 @@ const characterState = (
   return { ...s, prevPose, poseAt, prevLook, lookAt };
 };
 
-const centerOf = (focus: string | undefined, placed: Placed[]) => {
+const centerOf = (focus: string | undefined, placed: Placed[], sceneFrame: number) => {
   if (focus === "orbita") return { x: ORBIT.cx, y: ORBIT.cy };
+  if (focus === "terra") {
+    const a = orbitAngle(sceneFrame);
+    return { x: ORBIT.cx + ORBIT.r * Math.cos(a), y: ORBIT.cy + ORBIT.r * Math.sin(a) };
+  }
   if (focus === "ceu") return { x: 540, y: 620 };
   const p = placed.find((c) => c.id === focus) ?? placed.find((c) => !c.screen);
   return p ? { x: p.x, y: p.y + HEAD_Y * p.s } : { x: 540, y: 960 };
@@ -155,8 +161,9 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     fps,
     from: zFrom,
     to: zTo,
-    focus: centerOf(plano.foco, placed),
+    focus: centerOf(plano.foco, placed, frame),
     punch: plano.entrada === "punch",
+    center: plano.centralizar,
   });
   const shake = (direction.tremidas ?? []).reduce(
     (acc, t) => {
@@ -236,7 +243,9 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     return toScreen(cam, p.x, p.y + dy * p.s);
   };
 
-  const overlay = elements.map((el, i) => {
+  // "escurecer" fica por baixo dos outros elementos de tela (termômetro, balões) para eles seguirem legíveis
+  const overlayOrder = elements.map((el, i) => ({ el, i })).sort((a, b) => Number(b.el.type === "escurecer") - Number(a.el.type === "escurecer"));
+  const overlay = overlayOrder.map(({ el, i }) => {
     switch (el.type) {
       case "balao": {
         const a = anchor(el.personagem, HEAD_Y - 120);
@@ -253,8 +262,8 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
         return <TestPaper key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} gradeAt={cue(el.notaEm)} grade={el.nota} />;
       case "termometro":
         return <Thermometer key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} big={el.grande} />;
-      case "vinheta":
-        return <Vignette key={i} frame={frame} from={cue(el.de)} />;
+      case "escurecer":
+        return <DarkOverlay key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} max={el.max ?? 0.45} />;
       case "sol": {
         if (!el.flash || el.some === undefined) return null;
         return <Flash key={i} frame={frame} at={cue(el.some) + (el.encolhe ?? 12) - 2} />;
@@ -284,6 +293,7 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
           from={cue(direction.texto?.de, 0)}
           to={cue(direction.texto?.ate, duration)}
           animate={direction.texto?.animar !== false}
+          sticker={direction.texto?.estilo === "sticker"}
         />
       ) : null}
     </AbsoluteFill>

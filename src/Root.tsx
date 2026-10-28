@@ -3,7 +3,7 @@ import type { Caption } from "@remotion/captions";
 import { CalculateMetadataFunction, Composition, staticFile } from "remotion";
 import { Episode, EpisodeProps } from "./Episode";
 import { EPISODES } from "./episodes";
-import { validateEpisode } from "./timing";
+import { normalizeWordTimestamps, validateEpisode } from "./timing";
 
 // Usa o arquivo só se ele existir de verdade em public/ (o servidor pode responder HTML para caminhos inexistentes).
 const fetchIfExists = async (src: string, type: string) => {
@@ -22,8 +22,11 @@ const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = async ({ prop
 
   const narration = staticFile(`audio/${props.id}-narracao.mp3`);
   const hasNarration = (await fetchIfExists(narration, "audio")) !== null;
-  const captionsRes = await fetchIfExists(staticFile(`captions/${props.id}.json`), "json");
-  const captions = captionsRes ? ((await captionsRes.json()) as Caption[]) : null;
+  // Legenda: timestamps por palavra vindos de um arquivo (entrada `legendas`).
+  // Sem o arquivo, cai no tempo estimado pelo roteiro e avisa no console.
+  const captionsRes = await fetchIfExists(staticFile(props.legendas || `captions/${props.id}.json`), "json");
+  const captions: Caption[] | null = captionsRes ? normalizeWordTimestamps(await captionsRes.json()) : null;
+  if (!captions) console.warn(`[${props.id}] arquivo de legendas "${props.legendas}" não encontrado; usando tempo estimado.`);
 
   return {
     durationInFrames: props.episode.totalFrames,
@@ -47,7 +50,14 @@ export const RemotionRoot: React.FC = () => (
         fps={ep.data.fps}
         width={ep.data.width}
         height={ep.data.height}
-        defaultProps={{ id: ep.id, episode: ep.data, direction: ep.direction, narrationSrc: null, captions: null }}
+        defaultProps={{
+          id: ep.id,
+          episode: ep.data,
+          direction: ep.direction,
+          legendas: `captions/${ep.id}.json`,
+          narrationSrc: null,
+          captions: null,
+        }}
         calculateMetadata={calculateMetadata}
       />
     ))}

@@ -31,10 +31,13 @@ export const Background: React.FC<{
     case "patio_dia":
       return <Patio cam={cam} frame={frame} globalFrame={globalFrame} skyColor={colors.ceu} darkness={0} stars={0} skyElements={skyElements} />;
     case "patio_ceu_escurecendo": {
-      // O céu escurece em três tempos: céu -> intermediário -> noite -> noite escura
+      // O céu escurece em três tempos: céu -> intermediário -> noite -> noite escura.
+      // Com "seco", cada passo é um corte de cor (sem transição).
       const steps = (Array.isArray(params.passos) ? params.passos : [10, duration * 0.12, duration * 0.24]) as number[];
+      const dry = params.seco === 1;
       const k = steps.reduce(
-        (acc, at) => acc + interpolate(frame, [at, at + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
+        (acc, at) =>
+          acc + (dry ? Number(frame >= at) : interpolate(frame, [at, at + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })),
         0,
       );
       const sky = interpolateColors(k, [0, 1, 2, 3], [colors.ceu, colors.ceuMeio, colors.noite, colors.noiteEscura]);
@@ -43,7 +46,14 @@ export const Background: React.FC<{
       );
     }
     case "diagrama_orbita":
-      return <DiagramaOrbita cam={cam} frame={frame} labelAt={typeof params.rotulo === "number" ? params.rotulo : 20} />;
+      return (
+        <DiagramaOrbita
+          cam={cam}
+          frame={frame}
+          labelAt={typeof params.rotulo === "number" ? params.rotulo : 20}
+          labelUntil={typeof params.rotuloAte === "number" ? params.rotuloAte : Infinity}
+        />
+      );
     case "espaco_escuro":
       return <EspacoEscuro cam={cam} frame={frame} />;
     case "espaco_escuro_para_sala_de_aula": {

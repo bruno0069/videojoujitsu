@@ -97,3 +97,33 @@ export const validateEpisode = (ep: EpisodeData): string[] => {
   if (sum !== ep.totalFrames) errors.push(`Soma das cenas = ${sum}, totalFrames = ${ep.totalFrames}.`);
   return errors;
 };
+
+// Marca quebra de página da legenda onde a próxima palavra já é de outra cena.
+export const markSceneBreaks = (caps: Caption[], ep: EpisodeData): Caption[] => {
+  const sceneOf = (ms: number) => {
+    const f = (ms / 1000) * ep.fps;
+    return ep.scenes.findIndex((s) => f >= s.startFrame && f < s.startFrame + s.durationInFrames);
+  };
+  return caps.map((c, i) => {
+    const next = caps[i + 1];
+    return { ...c, pageBreakAfter: c.pageBreakAfter || (next !== undefined && sceneOf(next.startMs) !== sceneOf(c.startMs)) };
+  });
+};
+
+// Aceita timestamps por palavra em formatos comuns e converte para Caption[]:
+//  - { text, startMs, endMs }            (formato @remotion/captions)
+//  - { word | text, start, end }         (segundos: ElevenLabs, Whisper e afins)
+//  - { words: [...] }                    (lista dentro de um objeto)
+type RawWord = { text?: string; word?: string; startMs?: number; endMs?: number; start?: number; end?: number };
+export const normalizeWordTimestamps = (raw: unknown): Caption[] => {
+  const list = (Array.isArray(raw) ? raw : (raw as { words?: unknown[] })?.words ?? []) as RawWord[];
+  return list
+    .map((w) => {
+      const text = (w.text ?? w.word ?? "").trim();
+      const startMs = w.startMs ?? Math.round((w.start ?? 0) * 1000);
+      const endMs = w.endMs ?? Math.round((w.end ?? 0) * 1000);
+      return { text, startMs, endMs, timestampMs: null, confidence: null };
+    })
+    .filter((w) => w.text.length > 0)
+    .sort((a, b) => a.startMs - b.startMs);
+};

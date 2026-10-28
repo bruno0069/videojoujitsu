@@ -50,7 +50,7 @@ export type ElementSpec =
   | ({ type: "inserto"; objeto: "pao_de_queijo" } & Window)
   | ({ type: "prova"; nota: string; notaEm: Cue } & Window)
   | ({ type: "termometro"; grande?: boolean } & Window)
-  | ({ type: "vinheta" } & Window)
+  | ({ type: "escurecer"; max?: number } & Window)
   | ({ type: "relogio"; inicio: string; fim: string } & Window);
 
 export type CharacterKey = {
@@ -71,6 +71,7 @@ export type Plano = {
   personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null }[];
   zoom?: [number, number]; // empurrão do começo ao fim do plano (1 = 100%)
   entrada?: "corte" | "punch";
+  centralizar?: boolean; // o foco vai para o centro da tela
   cenario?: string; // troca o cenário só neste plano
 };
 
@@ -81,7 +82,9 @@ export type SceneDirection = {
   sfx?: Record<string, Cue>;
   fundo?: Record<string, Cue | Cue[]>;
   tremidas?: { de: Cue; frames: number; forca: number }[];
-  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean };
+  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" };
+  // Congela a imagem da cena a partir deste frame (até o fim da cena)
+  congelar?: number;
   // Pontos de sincronização para quando a voz entrar: a palavra deve cair neste frame da cena.
   sincronia?: { frame: number; palavra: string; evento: string }[];
 };
@@ -89,5 +92,5 @@ export type SceneDirection = {
 export type Direction = {
   cenas: Record<string, SceneDirection>;
   // Elementos que atravessam cenas (frames absolutos do episódio)
-  hud?: ({ type: "relogio"; inicio: string; fim: string; de: number; ate: number; grandeAte: number })[];
+  hud?: { type: "relogio"; inicio: string; fim: string; de: number; ate: number; grandeAte: number; zeroEm: number; travaEm?: number }[];
 };
