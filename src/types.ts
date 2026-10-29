@@ -50,7 +50,13 @@ export type ElementSpec =
   | ({ type: "inserto"; objeto: "pao_de_queijo" } & Window)
   | ({ type: "prova"; nota: string; notaEm: Cue } & Window)
   | ({ type: "termometro"; grande?: boolean } & Window)
-  | ({ type: "relogio"; inicio: string; fim: string } & Window);
+  | ({ type: "relogio"; inicio: string; fim: string } & Window)
+  // Globo de mesa (na carteira de `personagem`): gira a `velocidade` graus por frame; `trava`
+  // para com solavanco (e `flash`); `volta` volta a girar e chega no último frame do episódio
+  // na mesma posição do frame 0 (fecha o loop).
+  | ({ type: "globo"; personagem?: string; velocidade?: number; trava?: Cue; volta?: Cue; flash?: boolean } & Window)
+  // Linhas de vento atravessando a tela (da esquerda para a direita); `papeis` = folhas voando
+  | ({ type: "vento"; forca?: number; papeis?: boolean } & Window);
 
 export type CharacterKey = {
   de: Cue;
@@ -67,18 +73,21 @@ export type Plano = {
   de: Cue;
   enquadramento: "close" | "medio" | "aberto" | "inserto_pequeno" | "ceu" | "inserto_pao" | "raio_luz" | "diagrama_lua";
   foco?: string; // personagem em foco (close e zoom)
-  personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null; x?: number }[];
+  personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null; x?: number; soMesa?: boolean }[];
   zoom?: [number, number]; // empurrão do começo ao fim do plano (1 = 100%)
   entrada?: "corte" | "punch";
   centralizar?: boolean; // o foco vai para o centro da tela
   cenario?: string; // troca o cenário só neste plano
+  // Desloca os personagens na horizontal entre `de` e `ate` (ex.: arrastado para fora do quadro)
+  deslocar?: { x: number; de?: Cue; ate?: Cue };
 };
 
 export type SceneDirection = {
   planos?: Plano[];
   elementos?: ElementSpec[];
   personagens?: Record<string, CharacterKey[]>;
-  sfx?: Record<string, Cue>;
+  // Frame de cada efeito do roteiro; com { de, ate } o efeito em loop para em `ate`
+  sfx?: Record<string, Cue | { de: Cue; ate?: Cue }>;
   // Efeitos curtos extras (transições nas pausas da fala), além dos sfx do roteiro
   efeitos?: { id: string; de: Cue }[];
   fundo?: Record<string, Cue | Cue[]>;
@@ -105,6 +114,8 @@ export type Direction = {
     zeroEm: number;
     travaEm?: number;
   }[];
+  // Mantém os limites de cena do roteiro mesmo quando uma fala passa um pouco do corte
+  limitesFixos?: boolean;
   // Legenda só aparece a partir deste frame (antes disso, o título da capa ocupa a tela)
   legendaDe?: number;
   // O Sol "volta" depois do gancho: mostra um selo "agora" de 12 frames no início da cena seguinte

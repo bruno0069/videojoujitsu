@@ -117,15 +117,22 @@ export const Episode: React.FC<EpisodeProps> = ({
           episode.scenes.flatMap((scene) => {
             const dir = direction.cenas[scene.id] ?? {};
             const words = sceneWords(allCaptions, scene, episode.fps);
+            const cueOf = (id: string) => {
+              const c = dir.sfx?.[id];
+              if (c === undefined) return { at: 0, until: undefined };
+              if (typeof c === "object" && c !== null) return { at: resolveCue(c.de, words), until: c.ate !== undefined ? resolveCue(c.ate, words) : undefined };
+              return { at: resolveCue(c, words), until: undefined };
+            };
             const list = [
-              ...scene.sfx.map((id) => ({ id, at: dir.sfx?.[id] !== undefined ? resolveCue(dir.sfx[id], words) : 0 })),
-              ...(dir.efeitos ?? []).map((e) => ({ id: e.id, at: resolveCue(e.de, words) })),
+              ...scene.sfx.map((id) => ({ id, ...cueOf(id) })),
+              ...(dir.efeitos ?? []).map((e) => ({ id: e.id, at: resolveCue(e.de, words), until: undefined as number | undefined })),
             ];
-            return list.map(({ id, at }, k) => {
+            return list.map(({ id, at, until }, k) => {
               const sfx = SFX[id];
               if (!sfx || !sfx.file) return null;
               const from = scene.startFrame + at;
-              const len = Math.min(scene.durationInFrames - at, sfx.maxFrames ?? Infinity);
+              const len = Math.min((until ?? scene.durationInFrames) - at, sfx.maxFrames ?? Infinity);
+              if (len <= 0) return null;
               return (
                 <Sequence
                   key={`${scene.id}-${id}-${k}`}

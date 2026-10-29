@@ -2,6 +2,7 @@ import React, { createContext, useContext, useId } from "react";
 import { interpolate, interpolateColors, useCurrentFrame } from "remotion";
 import { colors, loopPhase, idle, night, sombra } from "../theme";
 import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
+import { Globe } from "./elements/Globe";
 import { useInk } from "./Ink";
 
 // Rig 2D em camadas. Origem nos pés (0,0); y negativo para cima.
@@ -19,9 +20,24 @@ export type PoseName =
   | "olhando_para_cima"
   | "mao_levantada"
   | "bracos_cruzados"
-  | "joinha";
+  | "joinha"
+  | "sentado"
+  | "sentado_mesa"
+  | "sentado_do_lado"
+  | "olhando_janela"
+  | "sendo_arrastado";
 
-export type ExpressionName = "neutro" | "surpresa" | "medo" | "vergonha" | "cetica";
+export type ExpressionName =
+  | "neutro"
+  | "surpresa"
+  | "medo"
+  | "vergonha"
+  | "cetica"
+  | "curiosidade"
+  | "atento"
+  | "confusao"
+  | "preocupacao"
+  | "susto";
 
 type PoseDef = {
   handL: Vec;
@@ -37,6 +53,8 @@ type PoseDef = {
   pointR?: boolean;
   thumbR?: boolean;
   shiver?: boolean;
+  sit?: boolean; // sentado atrás de uma carteira (a mesa cobre as pernas; braços apoiados nela)
+  flail?: boolean; // braços se debatendo
 };
 
 const SHOULDER_L: Vec = [-125, -530];
@@ -85,6 +103,28 @@ const POSES: Record<PoseName, PoseDef> = {
     handL: [-170, -250], handR: [175, -520], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 5, headDy: 0, look: [0.3, 0.1], thumbR: true,
   },
+  // Sentado na carteira: corpo desce 120 e os antebraços ficam apoiados no tampo (y -300)
+  sentado: {
+    handL: [-55, -432], handR: [55, -432], footL: [-80, -22], footR: [80, -22],
+    crouch: 120, lean: 0, headTilt: 0, headDy: 0, look: [0, 0], sit: true,
+  },
+  sentado_mesa: {
+    handL: [-55, -432], handR: [55, -432], footL: [-80, -22], footR: [80, -22],
+    crouch: 120, lean: 0, headTilt: 0, headDy: 0, look: [0, 0], sit: true,
+  },
+  sentado_do_lado: {
+    handL: [-55, -432], handR: [55, -432], footL: [-80, -22], footR: [80, -22],
+    crouch: 120, lean: 0, headTilt: -3, headDy: 0, look: [-0.6, 0], sit: true,
+  },
+  olhando_janela: {
+    handL: [-55, -432], handR: [55, -432], footL: [-80, -22], footR: [80, -22],
+    crouch: 120, lean: 0, headTilt: -8, headDy: -6, look: [-0.95, -0.35], sit: true,
+  },
+  // Arrastado pela inércia: corpo inclinado, pés ficando para trás, braços para o alto
+  sendo_arrastado: {
+    handL: [-330, -820], handR: [300, -880], footL: [-190, -60], footR: [-70, -10],
+    crouch: 30, lean: 24, headTilt: 14, headDy: 0, look: [-0.9, -0.2], flail: true,
+  },
   bracos_cruzados: {
     handL: [110, -410], handR: [-110, -428], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 3, headDy: 0, look: [-0.9, 0],
@@ -110,6 +150,11 @@ const EXPRESSIONS: Record<ExpressionName, ExprDef> = {
   medo: { browL: { dy: -18, rot: 20 }, browR: { dy: -18, rot: 20 }, eye: 1.05, pupil: 15, lid: 0, mouth: "ondulada", sweat: true },
   vergonha: { browL: { dy: -4, rot: 14 }, browR: { dy: -4, rot: 14 }, eye: 0.95, pupil: 23, lid: 0.2, mouth: "ondulada", blush: true, look: [-0.6, 0.6] },
   cetica: { browL: { dy: -30, rot: -12 }, browR: { dy: 8, rot: -14 }, eye: 1, pupil: 24, lid: 0.45, mouth: "canto" },
+  curiosidade: { browL: { dy: -30, rot: -8 }, browR: { dy: -4, rot: 0 }, eye: 1.06, pupil: 24, lid: 0, mouth: "sorriso" },
+  atento: { browL: { dy: -12, rot: 4 }, browR: { dy: -12, rot: 4 }, eye: 1, pupil: 27, lid: 0.1, mouth: "reta" },
+  confusao: { browL: { dy: -32, rot: -10 }, browR: { dy: 6, rot: 14 }, eye: 1.04, pupil: 22, lid: 0, mouth: "ondulada" },
+  preocupacao: { browL: { dy: -16, rot: 18 }, browR: { dy: -16, rot: 18 }, eye: 1, pupil: 19, lid: 0, mouth: "ondulada" },
+  susto: { browL: { dy: -42, rot: 10 }, browR: { dy: -42, rot: 10 }, eye: 1.18, pupil: 14, lid: 0, mouth: "o", sweat: true },
 };
 
 export type CharacterStyle = {
@@ -130,6 +175,10 @@ export type CharacterProps = {
   poseT?: number;
   // Direção do olhar (-1..1), já suavizada por quem chama; sobrepõe a da pose
   look?: Vec;
+  // Globo giratório sobre a carteira (só nas poses sentadas): longitude visível e solavanco (0..1)
+  globe?: { lon: number; jolt: number } | null;
+  // Só a carteira (e o globo), sem o personagem: insertos do globo de mesa
+  deskOnly?: boolean;
 };
 
 // Quanto a cabeça desce na pose (agachar + inclinar), em unidades do rig. Usado pelo close
@@ -216,7 +265,7 @@ const PaoDeQueijo: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r })
   );
 };
 
-export const Character: React.FC<CharacterProps> = ({ style, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride }) => {
+export const Character: React.FC<CharacterProps> = ({ style, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly }) => {
   const frame = useCurrentFrame();
   const g = useGlobalFrame();
   const loopFrames = useLoopFrames();
@@ -268,9 +317,18 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
   const bites = action === "comendo" ? Math.floor((frame + eatCycle * 0.5) / eatCycle) : 0;
   const breadR = 58 * Math.max(0.45, 1 - bites * 0.14);
 
-  const elbowL = ik(shL, handL, ARM, -1);
+  // Debatendo os braços (arrastado): as mãos oscilam em volta da pose
+  if (p.flail) {
+    handL[0] += Math.sin(frame * 0.9) * 50;
+    handL[1] += Math.cos(frame * 1.1) * 40;
+    handR[0] += Math.sin(frame * 1.2 + 1) * 50;
+    handR[1] += Math.cos(frame * 0.8 + 2) * 40;
+  }
+  // Sentado: cotovelos abertos sobre o tampo da carteira, antebraços deitados
+  const sitElbow = (sh: Vec, side: number): Vec => [sh[0] + side * 78, -318 + breathDy * 0.3];
+  const elbowL = p.sit ? sitElbow(shL, -1) : ik(shL, handL, ARM, -1);
   // Segurando à frente do peito: cotovelo junto ao corpo e antebraço em escorço
-  const elbowR: Vec = holdUp || p.thumbR ? [shR[0] + 40, shR[1] + 160] : ik(shR, handR, ARM, 1);
+  const elbowR: Vec = p.sit ? sitElbow(shR, 1) : holdUp || p.thumbR ? [shR[0] + 40, shR[1] + 160] : ik(shR, handR, ARM, 1);
   const kneeL = ik(hipL, footL, LEG, -1);
   const kneeR = ik(hipR, footR, LEG, 1);
 
@@ -311,6 +369,7 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
     </>
   );
 
+  if (deskOnly) return <Desk globe={globe ?? null} />;
   // Luz de recorte turquesa (noite): faixa por dentro da silhueta, do lado da Lua (alto à direita)
   const rim = nightK > 0.01;
   return (
@@ -426,8 +485,37 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
         ) : null}
       </g>
 
+      {p.sit ? <Desk globe={globe ?? null} /> : null}
       {arms}
       {cold ? <Breath frame={frame} x={40 + p.headTilt * 2} y={headY + 128} /> : null}
+    </g>
+  );
+};
+
+// Carteira da sala de aula (coordenadas do rig): tampo em y -300 e painel que esconde as pernas.
+// Com `globe`, o globo giratório fica sobre o tampo, à direita.
+export const DESK_TOP = -300;
+export const GLOBE_ON_DESK = { x: 300, y: -575, r: 96 };
+const Desk: React.FC<{ globe: { lon: number; jolt: number } | null }> = ({ globe }) => {
+  const ink = useInk();
+  const g = GLOBE_ON_DESK;
+  const shake = globe ? Math.sin(globe.jolt * Math.PI * 6) * 10 * globe.jolt : 0;
+  return (
+    <g>
+      <rect x={-300} y={DESK_TOP + 20} width={600} height={420} fill={colors.muro} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-300} y={DESK_TOP + 20} width={130} height={420} fill={sombra(colors.muro)} />
+      <rect x={-300} y={DESK_TOP + 20} width={600} height={420} fill="none" stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-345} y={DESK_TOP - 12} width={690} height={44} rx={14} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} />
+      {globe ? (
+        <g transform={`translate(${shake} 0)`}>
+          {/* pé e meia-lua do globo de mesa */}
+          <ellipse cx={g.x} cy={DESK_TOP - 10} rx={62} ry={16} fill={colors.tinta} />
+          <rect x={g.x - 9} y={g.y + g.r - 4} width={18} height={DESK_TOP - 10 - (g.y + g.r - 4)} fill={colors.tinta} />
+          <path d={`M ${g.x - 30} ${g.y - g.r - 22} A ${g.r + 26} ${g.r + 26} 0 0 1 ${g.x + 26} ${g.y + g.r + 22}`} fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.6} />
+          <path d={`M ${g.x - 30} ${g.y - g.r - 22} A ${g.r + 26} ${g.r + 26} 0 0 1 ${g.x + 26} ${g.y + g.r + 22}`} fill="none" stroke={colors.tinta} strokeWidth={ink * 0.5} />
+          <Globe x={g.x} y={g.y} r={g.r} lon={globe.lon} tilt={20} />
+        </g>
+      ) : null}
     </g>
   );
 };

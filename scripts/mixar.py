@@ -7,7 +7,7 @@ pelo Remotion (entrada `stem`: "voz" e "fundo") e grava o vídeo com o áudio fi
   mix   -> voz + fundo, limitador, ajuste fino até -14 LUFS, pico real <= -1,5 dBTP, LRA <= 8
 
 Também mede o fundo e a voz só nos trechos com fala (distância voz/fundo sob a fala).
-Os stems processados e as medidas ficam em out/stems/.
+Os stems processados e as medidas ficam em out/stems/<episódio>/.
 
 Uso: python3 scripts/mixar.py out/ep01.mp4 out/stems/voz.wav out/stems/fundo.wav
 """
@@ -17,11 +17,12 @@ import subprocess
 import sys
 
 video, voz_in, fundo_in = sys.argv[1:4]
-EP = "ep01"
-OUT = "out/stems"
+EP = __import__("os").path.basename(video).split(".")[0].split("-")[0]  # out/ep02.mp4 -> ep02
+OUT = f"out/stems/{EP}"
 VOZ_ALVO, FUNDO_ALVO, MIX_ALVO, PICO_MAX = -14.0, -30.0, -14.0, -1.5
 COMP = "acompressor=threshold=-26dB:ratio=3:attack=5:release=150"
-LIM = "alimiter=limit=0.75:attack=1:release=60:level=disabled"
+LIM = lambda limit: f"alimiter=limit={limit:.3f}:attack=1:release=60:level=disabled"
+PICO_MIX = -1.8  # margem para a codificação AAC não passar de -1,5 dBTP no mp4
 
 
 def ff(*args):
@@ -40,14 +41,18 @@ def medir(path, af=None):
 
 
 def ajustar(nome, entrada, saida, cadeia, alvo, pico=True):
-    """Procura o ganho que leva `entrada` ao alvo (até 5 passadas) e grava `saida`."""
-    i0, _, _ = medir(entrada, cadeia("0"))
+    """Procura o ganho que leva `entrada` ao alvo e grava `saida`. Se o volume já está no alvo
+    mas o pico real passa do limite, baixa o teto do limitador em 1 dB e tenta de novo."""
+    limit = 0.75
+    i0, _, _ = medir(entrada, cadeia("0", limit))
     ganho = alvo - i0
-    for _ in range(5):
-        ff("-i", entrada, "-af", cadeia(f"{ganho:.2f}"), "-ar", "48000", "-c:a", "pcm_s24le", saida)
+    for _ in range(10):
+        ff("-i", entrada, "-af", cadeia(f"{ganho:.2f}", limit), "-ar", "48000", "-c:a", "pcm_s24le", saida)
         i, lra, tp = medir(saida)
         if abs(i - alvo) <= 0.3 and (not pico or tp <= PICO_MAX):
             break
+        if abs(i - alvo) <= 0.3:
+            limit *= 0.89
         ganho += alvo - i
     print(f"{nome}: ganho {ganho:+.2f} dB -> I={i:.1f} LUFS, LRA={lra:.1f} LU, pico real={tp:.1f} dBTP")
     return i, lra, tp
@@ -67,18 +72,20 @@ so_fala = "aselect='" + "+".join(f"between(t,{a / 1000:.3f},{b / 1000:.3f})" for
 voz = f"{OUT}/voz-final.wav"
 fundo = f"{OUT}/fundo-final.wav"
 mix = f"{OUT}/mix-final.wav"
-rv = ajustar("voz", voz_in, voz, lambda g: f"{COMP},volume={g}dB,{LIM}", VOZ_ALVO)
-rf = ajustar("fundo", fundo_in, fundo, lambda g: f"volume={g}dB", FUNDO_ALVO, pico=False)
+rv = ajustar("voz", voz_in, voz, lambda g, lim: f"{COMP},volume={g}dB,{LIM(lim)}", VOZ_ALVO)
+rf = ajustar("fundo", fundo_in, fundo, lambda g, lim: f"volume={g}dB", FUNDO_ALVO, pico=False)
 
 # Mix: soma sem normalizar, limitador e ajuste fino de ganho
-ganho = 0.0
-for _ in range(5):
+ganho, limit = 0.0, 0.75
+for _ in range(10):
     ff("-i", voz, "-i", fundo, "-filter_complex",
-       f"[0:a][1:a]amix=inputs=2:normalize=0:duration=longest,volume={ganho:.2f}dB,{LIM}[m]",
+       f"[0:a][1:a]amix=inputs=2:normalize=0:duration=longest,volume={ganho:.2f}dB,{LIM(limit)}[m]",
        "-map", "[m]", "-ar", "48000", "-c:a", "pcm_s24le", mix)
     rm = medir(mix)
-    if abs(rm[0] - MIX_ALVO) <= 0.1 and rm[2] <= PICO_MAX:
+    if abs(rm[0] - MIX_ALVO) <= 0.1 and rm[2] <= PICO_MIX:
         break
+    if abs(rm[0] - MIX_ALVO) <= 0.1:
+        limit *= 0.89
     ganho += MIX_ALVO - rm[0]
 print(f"mix: ajuste {ganho:+.2f} dB -> I={rm[0]:.1f} LUFS, LRA={rm[1]:.1f} LU, pico real={rm[2]:.1f} dBTP")
 

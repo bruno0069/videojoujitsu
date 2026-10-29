@@ -7,6 +7,7 @@ Cada episódio é um arquivo de dados; o mesmo componente monta todos.
 npm install
 npm run dev        # abre o Remotion Studio (composição Ep01)
 npm run render     # gera out/ep01.mp4 (H.264, 1080×1920, 30 fps) com a mixagem por stems
+npm run render:ep02 # out/ep02.mp4 (bash scripts/render.sh epNN serve para qualquer episódio)
 npm run stills     # quadros de verificação em out/stills/ (OUT=<pasta> muda a saída)
 npm run sons       # regera efeitos e músicas com ffmpeg (síntese local)
 node scripts/check-episode.mjs src/episodes/ep01.json   # confere a soma dos frames
@@ -14,13 +15,13 @@ node scripts/check-episode.mjs src/episodes/ep01.json   # confere a soma dos fra
 
 ## Criar um episódio novo
 
-1. Copie `src/episodes/ep01.json` para `src/episodes/ep02.json` e troque título, narração,
+1. Copie `src/episodes/ep01.json` para `src/episodes/ep03.json` e troque título, narração,
    textos e cenas. As cenas precisam ser contíguas (`startFrame` de uma = fim da anterior) e
    somar `totalFrames`; o Studio recusa o episódio se não somarem.
-2. (Opcional) Crie `src/episodes/ep02.direcao.json` com os elementos de cena e os tempos
+2. (Opcional) Crie `src/episodes/ep03.direcao.json` com os elementos de cena e os tempos
    (veja abaixo). Sem ele, o episódio já roda: cenário, personagens, câmera, texto e legenda.
-3. Pronto: a composição `Ep02` aparece sozinha no Studio. Para renderizar:
-   `npx remotion render Ep02 out/ep02.mp4 --codec=h264`.
+3. Pronto: a composição `Ep03` aparece sozinha no Studio. Para renderizar:
+   `npx remotion render Ep03 out/ep03.mp4 --codec=h264`.
 
 Nenhum código novo é necessário, a não ser que o episódio peça um **cenário** novo
 (`src/components/backgrounds/` + uma linha em `src/components/Background.tsx`).
@@ -28,10 +29,15 @@ Nenhum código novo é necessário, a não ser que o episódio peça um **cenár
 ### O que o JSON do episódio controla
 
 - `visual.background`: `patio_dia`, `patio_ceu_escurecendo`, `diagrama_orbita`,
-  `espaco_escuro_para_sala_de_aula`.
+  `espaco_escuro_para_sala_de_aula`, `sala_aula_dia` (janela com árvores, quadro com mapa e
+  globo; parâmetros `vento` e `ponteiro`), `diagrama_globo` (globo girando com o equador;
+  `seta`, `para`, `vento`), `mapa_onda` (continente com a água avançando; `onda`, `ondaAte`,
+  `pino`) e `globo_metade_dia_metade_noite` (`rotulos`).
 - `visual.characters`: `nico` ou `dani`, com `pose` (`parado`, `andando`, `caindo`, `apontando`,
-  `de_costas`, `encolhido`, `olhando_para_cima`, `mao_levantada`, `bracos_cruzados`) e
-  `expression` (`neutro`, `surpresa`, `medo`, `vergonha`, `cetica`). `"scale": "inserto_pequeno"`
+  `de_costas`, `encolhido`, `olhando_para_cima`, `mao_levantada`, `bracos_cruzados`, `joinha`,
+  `sentado` / `sentado_mesa` / `sentado_do_lado` / `olhando_janela` (atrás de uma carteira, que
+  vem junto com a pose), `sendo_arrastado`) e `expression` (`neutro`, `surpresa`, `medo`,
+  `vergonha`, `cetica`, `curiosidade`, `atento`, `confusao`, `preocupacao`, `susto`). `"scale": "inserto_pequeno"`
   põe o personagem pequeno no canto.
 - `visual.camera`: `close`, `plano_medio`, `plano_aberto`. É o plano padrão da cena (com um
   push-in leve); para cortes e enquadramentos dentro da cena, use `planos` na direção.
@@ -50,13 +56,15 @@ Campos por cena:
 - `planos`: cortes secos dentro da cena. Cada plano tem `de`, `enquadramento`
   (`close`, `medio`, `aberto`, `inserto_pequeno`, `ceu`, `inserto_pao`), `foco` (personagem,
   `"orbita"` ou `"ceu"`), `zoom` `[de, até]` (ex.: `[1, 1.12]` = push-in de 100% a 112%),
-  `entrada` (`"corte"` ou `"punch"`), `centralizar` (o foco vai para o centro da tela; com
+  `entrada` (`"corte"` ou `"punch"`), `deslocar` (`{ x, de, ate }`: arrasta os personagens), `centralizar` (o foco vai para o centro da tela; com
   `foco: "terra"` a câmera acompanha a Terra), `personagens` (quem aparece, com pose/expressão
-  e `x` opcional para reposicionar; `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
+  e `x` opcional para reposicionar; `soMesa: true` mostra só a carteira e o globo; `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
   No close, o queixo fica sempre em `shots.close.chinY` (acima da faixa da legenda) e o zoom
   cresce a partir dele.
 - `elementos`: `sol` (com `some`/`encolhe`/`flash`), `lua` (`aparece`/`pisca`/`apaga`),
-  `balao`, `etiqueta`, `prova`, `termometro`. Todos aceitam `de`/`ate`. A noite não é uma
+  `balao`, `etiqueta`, `prova`, `termometro`, `globo` (globo de mesa: `velocidade`, `trava` com
+  solavanco e `flash`, `volta` = volta a girar e chega no último frame na posição do frame 0) e
+  `vento` (traços de vento por trás dos personagens; `forca`, `papeis`). Todos aceitam `de`/`ate`. A noite não é uma
   película escura: o cenário `patio_ceu_escurecendo` troca as cores pela paleta noturna
   desenhada (`night` em `theme.ts`) e os personagens ganham pele noturna e luz de recorte
   turquesa. O frio aparece no bafo saindo da boca (ação `frio`).
@@ -66,14 +74,17 @@ Campos por cena:
 - `texto`: `de`/`ate`/`mostrar`/`estilo` (`"sticker"` = chamada grande a 60% da altura). Sem
   `mostrar`, o texto da tela some sozinho quando só repete a fala.
 - `congelar`: frame a partir do qual a imagem da cena fica parada.
-- `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala).
+- `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala);
+  `{ de, ate }` faz um efeito em loop parar em `ate`.
   `efeitos`: lista extra `{ id, de }` para efeitos curtos repetidos (ex.: `whoosh` nas pausas). `fundo`: parâmetros do cenário (`passos` do céu, `seco: 1` para
   trocar a cor sem transição, `rotulo`/`rotuloAte` do diagrama).
 - `sincronia`: pontos de sincronização para a voz (palavra → frame → evento). Quando a
   narração real entrar, confira se cada palavra cai perto do frame indicado e ajuste os
   frames da direção, ou troque os números por cues de palavra.
 
-No topo do arquivo, `hud` guarda elementos que atravessam cenas. O timer usa `de`/`ate`
+No topo do arquivo, `limitesFixos: true` mantém os limites de cena do roteiro mesmo quando uma
+fala passa um pouco do corte (ep02: o fim de "Ninguém fica de pé." entra 8 frames na
+apresentação). `hud` guarda elementos que atravessam cenas. O timer usa `de`/`ate`
 (frames absolutos), `grandeDe`/`grandeAte` (janela em que fica grande, acima do Nico),
 `seguraAte` (fica parado no valor inicial até aqui; só então conta), `zeroEm` (chega a 00:00
 e pisca em coral) e `travaEm` (opcional: para de piscar).
@@ -115,7 +126,14 @@ Fluxo usado no ep01 (voz "Renan Matheus", ElevenLabs `eleven_v4`, configuraçõe
    `stem`: `"voz"` só a narração, `"fundo"` só música + efeitos) e `scripts/mixar.py` faz a
    mixagem final: voz com compressor 3:1 + limitador em -14 LUFS, fundo em -30 LUFS, mix em
    -14 LUFS com pico real ≤ -1,5 dBTP e LRA ≤ 8 LU. Os stems processados e as medidas ficam em
-   `out/stems/` (`medidas.json`, incluindo a distância voz/fundo só nos trechos com fala).
+   `out/stems/epNN/` (`medidas.json`, incluindo a distância voz/fundo só nos trechos com fala).
+
+No ep02 a montagem é por trechos (`npm run narracao:ep02`, `scripts/montar-voz.py`): cada
+tomada escolhida (`public/audio/voz/ep02-<cena>.mp3`) foi transcrita sozinha
+(`src/audio/ep02-transcricao.json`) e `src/episodes/ep02.voz.json` diz que trecho de cada
+tomada entra em que segundo (`{ cena, de, ate, em, tempo? }`), cortando nas pausas da própria
+fala. O script grava a narração e `src/audio/ep02-words.json` de uma vez; nenhuma pausa sem
+voz passa de 0,85 s.
 
 **A legenda e os limites de cena derivam do arquivo de palavras.** O caminho é a entrada
 `legendas` da composição (padrão `src/audio/epNN-words.json`; um caminho fora de `src/audio/`

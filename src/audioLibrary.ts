@@ -14,6 +14,14 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   queda_graves: { file: "audio/sfx/queda_graves.wav", loop: false, volume: audio.sfxVolume * 0.118, maxFrames: 26 },
   // Transição curta (0,6 s) nas pausas da fala
   whoosh: { file: "audio/sfx/whoosh.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  // ep02
+  giro_globo: { file: "audio/sfx/giro_globo.wav", loop: true, volume: audio.sfxVolume * 1.2 },
+  sala_de_aula: { file: "audio/sfx/sala_de_aula.wav", loop: true, volume: audio.sfxVolume * 0.45 },
+  vento_comeca: { file: "audio/sfx/vento_comeca.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  vento_forte: { file: "audio/sfx/vento_forte.wav", loop: true, volume: audio.sfxVolume * 0.5 },
+  agua_avancando: { file: "audio/sfx/agua_avancando.wav", loop: false, volume: audio.sfxVolume * 0.45 },
+  sopro_vento: { file: "audio/sfx/sopro_vento.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  deslize: { file: "audio/sfx/deslize.wav", loop: false, volume: audio.sfxVolume * 0.6 },
   vento_frio: { file: "audio/sfx/vento_frio.wav", loop: true, volume: audio.sfxVolume * 0.55 },
 };
 

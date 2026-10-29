@@ -47,6 +47,31 @@ gen -f lavfi -i "aevalsrc='0.32*$ENV*(sin(2*PI*$F*t)+0.25*sin(4*PI*$F*t))+$BASS'
 # suspensa_sem_batida: bordão grave que respira, 16 s em loop
 gen -f lavfi -i "aevalsrc='(0.55+0.45*sin(2*PI*t/8))*(0.3*sin(2*PI*110*t)+0.2*sin(2*PI*165*t)+0.12*sin(2*PI*220.5*t))':s=$R:d=16" -ac 1 "$MUS/suspensa_sem_batida.wav"
 
+# --- ep02 ---
+# giro_globo: zumbido do globo de mesa girando (ruído filtrado pulsando + tique do eixo), loop de 2 s
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.6:sample_rate=$R:duration=2:seed=21" \
+  -f lavfi -i "aevalsrc='0.35*exp(-mod(t,0.125)*90)*sin(2*PI*900*t)':s=$R:d=2" \
+  -filter_complex "[0]bandpass=f=1100:width_type=h:w=900,tremolo=f=8:d=0.6[a];[1]volume=0.6[b];[a][b]amix=inputs=2:normalize=0" -ac 1 "$SFX/giro_globo.wav"
+# sala_de_aula: burburinho baixo de sala (ruído marrom filtrado), loop de 8 s
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=0.7:sample_rate=$R:duration=8:seed=5" \
+  -af "bandpass=f=650:width_type=h:w=600,tremolo=f=1.3:d=0.3,volume=1.6,afade=t=in:d=0.05,afade=t=out:st=7.95:d=0.05" -ac 1 "$SFX/sala_de_aula.wav"
+# vento_comeca: vento crescendo do nada (4 s)
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.9:sample_rate=$R:duration=4:seed=8" \
+  -af "highpass=f=200,lowpass=f=1800,tremolo=f=0.6:d=0.4,afade=t=in:d=3,afade=t=out:st=3.6:d=0.4,volume=1.8" -ac 1 "$SFX/vento_comeca.wav"
+# vento_forte: vendaval contínuo, loop de 6 s
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=1:sample_rate=$R:duration=6:seed=13" \
+  -af "highpass=f=150,lowpass=f=2600,tremolo=f=0.45:d=0.5,volume=1.8,afade=t=in:d=0.05,afade=t=out:st=5.95:d=0.05" -ac 1 "$SFX/vento_forte.wav"
+# agua_avancando: água correndo em ondas (4 s)
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=1:sample_rate=$R:duration=4:seed=17" \
+  -af "lowpass=f=1000,highpass=f=90,tremolo=f=0.7:d=0.6,volume=2.2,afade=t=in:d=0.5,afade=t=out:st=3.2:d=0.8" -ac 1 "$SFX/agua_avancando.wav"
+# sopro_vento: rajada curta (1,5 s)
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=1:sample_rate=$R:duration=1.5:seed=23" \
+  -af "volume='pow(sin(PI*t/1.5),2)':eval=frame,bandpass=f=750:width_type=h:w=900,volume=2" -ac 1 "$SFX/sopro_vento.wav"
+# deslize: arrasto rápido (0,9 s), chiado com tom descendo
+gen -f lavfi -i "anoisesrc=color=white:amplitude=0.5:sample_rate=$R:duration=0.9:seed=29" \
+  -f lavfi -i "aevalsrc='0.25*sin(2*PI*(600*t-220*t*t))':s=$R:d=0.9" \
+  -filter_complex "[0]highpass=f=1500,lowpass=f=4200[a];[a][1]amix=inputs=2:normalize=0,volume='pow(sin(PI*t/0.9),2)':eval=frame" -ac 1 "$SFX/deslize.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

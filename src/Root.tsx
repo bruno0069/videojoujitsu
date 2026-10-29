@@ -39,7 +39,7 @@ const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = async ({ prop
   }
   const captions: Caption[] | null = raw ? normalizeWordTimestamps(raw) : null;
   if (!captions) console.warn(`[${props.id}] arquivo de palavras "${path}" não encontrado; usando tempo estimado.`);
-  const episode = captions ? deriveSceneBounds(props.episode, captions, 3) : props.episode;
+  const episode = captions && !props.direction.limitesFixos ? deriveSceneBounds(props.episode, captions, 3) : props.episode;
 
   return {
     durationInFrames: episode.totalFrames,

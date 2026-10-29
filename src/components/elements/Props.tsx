@@ -283,3 +283,51 @@ export const Flash: React.FC<{ frame: number; at: number }> = ({ frame, at }) =>
   if (o <= 0) return null;
   return <rect x={0} y={0} width={1080} height={1920} fill={colors.branco} opacity={o} />;
 };
+
+// Vento atravessando a tela (da esquerda para a direita): traços creme com contorno de tinta
+// e, opcionalmente, folhas de papel girando. `forca` 0..1 controla quantos traços aparecem.
+export const WindStreaks: React.FC<{ frame: number; from: number; to: number; forca?: number; papeis?: boolean }> = ({
+  frame,
+  from,
+  to,
+  forca = 1,
+  papeis,
+}) => {
+  if (frame < from || frame >= to) return null;
+  const ink = inkTheme.stroke;
+  const k = interpolate(frame, [from, from + 12, to - 6, to], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const count = Math.round(4 + 8 * forca);
+  const streaks = Array.from({ length: count }, (_, i) => {
+    const y = 180 + ((i * 397) % 1500);
+    const speed = 38 + (i % 4) * 10;
+    const len = 160 + (i % 3) * 110;
+    const x = ((frame - from) * speed + i * 263) % 1700 - 450;
+    const curl = i % 4 === 1 ? " q 46 -8 34 -44 q -14 -28 -40 -6" : "";
+    const d = `M ${x} ${y} l ${len} ${-len * 0.06}${curl}`;
+    return (
+      <g key={i} opacity={k * 0.9}>
+        <path d={d} fill="none" stroke={colors.tinta} strokeWidth={ink * 1.9} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={d} fill="none" stroke={colors.creme} strokeWidth={ink * 0.8} strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    );
+  });
+  const sheets = papeis
+    ? [0, 1, 2].map((i) => {
+        const t = (((frame - from) * (0.011 + i * 0.003) + i * 0.31) % 1) * 1.4 - 0.2;
+        const x = t * 1300 - 100;
+        const y = [300, 1640, 1780][i] + Math.sin(frame / 6 + i * 2) * 50; // longe dos rostos e da legenda
+        return (
+          <g key={`p${i}`} transform={`translate(${x} ${y}) rotate(${frame * (9 + i * 4)}) scale(1 ${0.6 + 0.4 * Math.sin(frame / 5 + i)})`} opacity={k}>
+            <rect x={-46} y={-60} width={92} height={120} rx={6} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.7} />
+            <path d="M -28 -30 L 28 -30 M -28 -6 L 22 -6 M -28 18 L 14 18" stroke={colors.tinta} strokeWidth={ink * 0.35} opacity={0.5} />
+          </g>
+        );
+      })
+    : null;
+  return (
+    <g>
+      {streaks}
+      {sheets}
+    </g>
+  );
+};

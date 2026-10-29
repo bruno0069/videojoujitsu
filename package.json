@@ -31,11 +31,13 @@
     "lint": "eslint src && tsc",
     "typecheck": "tsc --noEmit",
     "sons": "bash scripts/gerar-sons.sh",
-    "render": "bash scripts/render.sh",
+    "render": "bash scripts/render.sh ep01",
     "stills": "bash scripts/stills.sh Ep01",
     "upgrade": "remotion upgrade",
     "narracao": "bash scripts/montar-narracao.sh",
-    "palavras": "python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json apresentacao=200"
+    "palavras": "python3 scripts/alinhar-palavras.py src/episodes/ep01.json src/audio/ep01-transcricao.json src/audio/ep01-words.json apresentacao=200",
+    "render:ep02": "bash scripts/render.sh ep02",
+    "narracao:ep02": "python3 scripts/montar-voz.py ep02"
   },
   "allowScripts": {
     "esbuild": false

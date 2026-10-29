@@ -1,14 +1,16 @@
 import React from "react";
-import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { idle, loopPhase, shots, sun } from "../theme";
 import { resolveCue, TimedWord } from "../timing";
 import type { CharacterKey, Cue, Plano, Scene, SceneDirection } from "../types";
 import { Background, nightLevel } from "./Background";
 import { ORBIT, orbitAngle } from "./backgrounds/DiagramaOrbita";
 import { Cam, Layer, shakeOffset, shotCamera, toScreen } from "./Camera";
-import { headDrop, NightLevel, RIG_CHIN_Y } from "./Character";
+import { GLOBE_ON_DESK, headDrop, NightLevel, RIG_CHIN_Y } from "./Character";
+import { GLOBO_DIA_NOITE, GLOBO_DIAGRAMA, MAPA } from "./backgrounds/DiagramasTerra";
+import { GLOBO_QUADRO, JANELA, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
-import { Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer } from "./elements/Props";
+import { Flash, Moon, NameTag, SpeechBubble, TestPaper, Thermometer, WindStreaks } from "./elements/Props";
 import { Sun } from "./elements/Sun";
 import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { InkScale } from "./Ink";
@@ -112,6 +114,19 @@ const centerOf = (focus: string | undefined, placed: Placed[], sceneFrame: numbe
     return { x: ORBIT.cx + ORBIT.r * Math.cos(a), y: ORBIT.cy + ORBIT.r * Math.sin(a) };
   }
   if (focus === "ceu") return { x: 540, y: 620 };
+  // Pontos de cenários desenhados numa camada de fundo (profundidade d): o equivalente em
+  // profundidade 1 para a câmera centralizar neles
+  const atDepth = (x: number, y: number, d: number) => ({ x: 540 + (x - 540) / d, y: 960 + (y - 960) / d });
+  if (focus === "janela") return atDepth(JANELA.x + JANELA.w / 2, JANELA.y + JANELA.h / 2, SALA_DEPTH);
+  if (focus === "quadro") return atDepth(GLOBO_QUADRO.x - 60, GLOBO_QUADRO.y, SALA_DEPTH);
+  if (focus === "equador") return { x: GLOBO_DIAGRAMA.x + GLOBO_DIAGRAMA.r * 0.55, y: GLOBO_DIAGRAMA.y };
+  if (focus === "noite") return { x: GLOBO_DIA_NOITE.x + GLOBO_DIA_NOITE.r * 0.5, y: GLOBO_DIA_NOITE.y };
+  if (focus === "costa") return { x: MAPA.costaX + 160, y: 900 };
+  if (focus === "pino") return { x: MAPA.pino.x - 40, y: MAPA.pino.y - 60 };
+  if (focus === "globo_mesa") {
+    const n = placed.find((c) => c.id === "nico");
+    if (n) return { x: n.x + GLOBE_ON_DESK.x * n.s, y: n.y + GLOBE_ON_DESK.y * n.s };
+  }
   const p = placed.find((c) => c.id === focus) ?? placed.find((c) => !c.screen);
   // No close o zoom cresce a partir do queixo: o rosto nunca desce para a faixa da legenda
   if (p && close) return { x: p.x, y: shots.close.chinY };
@@ -222,6 +237,29 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
     p,
     st: characterState(p, planoFields(p.id), direction.personagens?.[p.id], frame, planoStart, (c) => cue(c)),
   }));
+  // Globo de mesa: longitude no frame (gira, trava com solavanco, volta a girar fechando o loop)
+  const GLOBE_LON0 = 30;
+  const globeFor = (id: string) => {
+    const el = elements.find((e) => e.type === "globo" && (e.personagem ?? "nico") === id && inWindow(e));
+    if (!el || el.type !== "globo") return null;
+    const vel = el.velocidade ?? 5;
+    const sceneG = g - frame; // frame global do começo da cena
+    if (el.volta !== undefined) {
+      const v = cue(el.volta);
+      return { lon: GLOBE_LON0 + vel * (loopFrames - (sceneG + Math.max(frame, v))), jolt: 0 };
+    }
+    const t = el.trava !== undefined ? cue(el.trava) : Infinity;
+    const jolt = frame >= t ? Math.max(0, 1 - (frame - t) / 14) : 0;
+    return { lon: GLOBE_LON0 - vel * (sceneG + Math.min(frame, t)), jolt };
+  };
+  // Deslocamento horizontal do plano (personagem arrastado para fora do quadro)
+  const slide = plano.deslocar
+    ? interpolate(frame, [cue(plano.deslocar.de, planoStart), cue(plano.deslocar.ate, planoEnd)], [0, plano.deslocar.x], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+        easing: Easing.in(Easing.cubic),
+      })
+    : 0;
   const drawChar = ({ p, st }: (typeof states)[number]) => {
     if (!st.visible) return null;
     const poseT = Number.isFinite(st.poseAt) ? spring({ frame: frame - st.poseAt, fps, config: { damping: 12, mass: 0.6, stiffness: 150 } }) : 1;
@@ -238,9 +276,11 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
       holding: st.holding ?? null,
       action: st.action ?? null,
       look,
+      globe: globeFor(p.id),
+      deskOnly: plano.personagens?.find((c) => c.id === p.id)?.soMesa === true,
     };
     return (
-      <g key={p.id} transform={`translate(${p.x} ${p.y}) scale(${p.s})`}>
+      <g key={p.id} transform={`translate(${p.x + (p.screen ? 0 : slide)} ${p.y}) scale(${p.s})`}>
         <InkScale scale={p.s}>{p.id === "dani" ? <Dani {...props} /> : <Nico {...props} />}</InkScale>
       </g>
     );
@@ -273,6 +313,8 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
         return <TestPaper key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} gradeAt={cue(el.notaEm)} grade={el.nota} />;
       case "termometro":
         return <Thermometer key={i} frame={frame} from={cue(el.de)} to={cue(el.ate, duration)} big={el.grande} />;
+      case "globo":
+        return el.flash && el.trava !== undefined ? <Flash key={i} frame={frame} at={cue(el.trava)} /> : null;
       case "sol": {
         if (!el.flash || el.some === undefined) return null;
         return <Flash key={i} frame={frame} at={cue(el.some) + (el.encolhe ?? 12) - 2} />;
@@ -299,6 +341,10 @@ export const SceneRenderer: React.FC<{ scene: Scene; direction: SceneDirection; 
           shotFrame={local}
           shotLength={planoEnd - planoStart}
         />
+        {/* vento por trás dos personagens */}
+        {elements.map((el, i) =>
+          el.type === "vento" ? <WindStreaks key={`v${i}`} frame={frame} from={cue(el.de, 0)} to={cue(el.ate, duration)} forca={el.forca} papeis={el.papeis} /> : null,
+        )}
         <NightLevel.Provider value={nightK}>
           <Layer cam={cam} depth={1}>
             {worldChars}

@@ -1,0 +1,139 @@
+{
+ "_sobre": "Montagem da narração do ep02 (scripts/montar-voz.py): cada trecho é a fala [de, ate] (segundos, dentro da tomada public/audio/voz/ep02-<cena>.mp3) posta com o início da fala em `em` (segundos do episódio), com `tempo` = aceleração (atempo). Os cortes caem nas pausas da própria tomada; nenhuma voz é regenerada.",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "ate": 2.285,
+   "em": 0.04,
+   "tempo": 1.1
+  },
+  {
+   "cena": "gancho",
+   "de": 2.803,
+   "ate": 3.878,
+   "em": 2.277,
+   "tempo": 1.1
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0,
+   "ate": 1.025,
+   "em": 3.95
+  },
+  {
+   "cena": "apresentacao",
+   "de": 1.421,
+   "ate": 4.46,
+   "em": 5.755
+  },
+  {
+   "cena": "gatilho",
+   "de": 0,
+   "ate": 1.202,
+   "em": 9.55
+  },
+  {
+   "cena": "gatilho",
+   "de": 1.571,
+   "ate": 2.286,
+   "em": 11.552
+  },
+  {
+   "cena": "gatilho",
+   "de": 2.72,
+   "ate": 5.136,
+   "em": 13.067
+  },
+  {
+   "cena": "escalada1",
+   "de": 0,
+   "ate": 0.712,
+   "em": 16.2
+  },
+  {
+   "cena": "escalada1",
+   "de": 0.939,
+   "ate": 4.63,
+   "em": 17.139
+  },
+  {
+   "cena": "escalada1",
+   "de": 5.12,
+   "ate": 7.498,
+   "em": 21.58
+  },
+  {
+   "cena": "escalada1",
+   "de": 7.84,
+   "ate": 8.851,
+   "em": 24.675
+  },
+  {
+   "cena": "escalada2",
+   "de": 0,
+   "ate": 1.883,
+   "em": 26.4
+  },
+  {
+   "cena": "escalada2",
+   "de": 2.309,
+   "ate": 3.831,
+   "em": 29.083
+  },
+  {
+   "cena": "escalada2",
+   "de": 4.048,
+   "ate": 5.544,
+   "em": 30.822
+  },
+  {
+   "cena": "escalada2",
+   "de": 5.92,
+   "ate": 6.859,
+   "em": 33.118
+  },
+  {
+   "cena": "escalada2",
+   "de": 7.028,
+   "ate": 8.166,
+   "em": 34.206
+  },
+  {
+   "cena": "virada",
+   "de": 0,
+   "ate": 2.716,
+   "em": 36.1
+  },
+  {
+   "cena": "virada",
+   "de": 3.13,
+   "ate": 5.412,
+   "em": 39.266
+  },
+  {
+   "cena": "virada",
+   "de": 5.859,
+   "ate": 7.797,
+   "em": 41.998
+  },
+  {
+   "cena": "fecho",
+   "de": 0,
+   "ate": 0.503,
+   "em": 44.05
+  },
+  {
+   "cena": "fecho",
+   "de": 0.88,
+   "ate": 2.775,
+   "em": 45.103
+  },
+  {
+   "cena": "fecho",
+   "de": 3.28,
+   "ate": 5.406,
+   "em": 47.499
+  }
+ ]
+}

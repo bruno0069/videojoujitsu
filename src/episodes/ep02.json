@@ -1,0 +1,118 @@
+{
+  "episode": 2,
+  "title": "E se a Terra parasse de girar agora?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 1500,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 90,
+      "narration": "E se a Terra parasse de girar agora? Ninguém fica de pé.",
+      "onScreenText": "E SE A TERRA PARASSE DE GIRAR?",
+      "visual": {
+        "background": "sala_aula_dia",
+        "characters": [{ "id": "nico", "pose": "sentado_mesa", "expression": "curiosidade" }],
+        "camera": "close",
+        "action": "Globo giratório na mesa do Nico gira normalmente e trava com um solavanco e um flash curto."
+      },
+      "sfx": ["giro_globo", "estalo"],
+      "music": null
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 90,
+      "durationInFrames": 180,
+      "narration": "Este é o Nico. Na aula de geografia, a professora fala de rotação.",
+      "onScreenText": "Nico, 15 anos · aula de geografia",
+      "visual": {
+        "background": "sala_aula_dia",
+        "characters": [
+          { "id": "nico", "pose": "sentado", "expression": "atento" },
+          { "id": "dani", "pose": "sentado_do_lado", "expression": "cetica" }
+        ],
+        "camera": "plano_medio",
+        "action": "Professora (fora de quadro) aponta o globo no quadro; Nico presta atenção, Dani revira os olhos."
+      },
+      "sfx": ["sala_de_aula"],
+      "music": "base_suave"
+    },
+    {
+      "id": "gatilho",
+      "startFrame": 270,
+      "durationInFrames": 210,
+      "narration": "Então a Terra para. De repente. O chão continua parado, mas o ar não.",
+      "onScreenText": "a Terra para",
+      "visual": {
+        "background": "sala_aula_dia",
+        "characters": [{ "id": "nico", "pose": "olhando_janela", "expression": "confusao" }],
+        "camera": "plano_medio",
+        "action": "Pela janela, árvores começam a se curvar com um vento que surge do nada."
+      },
+      "sfx": ["vento_comeca"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada1",
+      "startFrame": 480,
+      "durationInFrames": 300,
+      "narration": "No equador, a superfície já girava a quase 1.700 quilômetros por hora. Essa velocidade não desaparece com a Terra. Ela vira vento.",
+      "onScreenText": "≈ 1.700 km/h",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "surpresa", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Diagrama do globo com uma seta no equador mostrando a velocidade; a seta vira uma linha de vento varrendo o globo."
+      },
+      "sfx": ["vento_forte"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 780,
+      "durationInFrames": 300,
+      "narration": "O oceano segue a mesma lógica. A água continua se movendo, e avança sobre o continente. Onde o Nico mora, viraria costa nova.",
+      "onScreenText": "o oceano também segue",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "preocupacao", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Uma onda azul avança sobre o contorno de um continente simplificado no diagrama."
+      },
+      "sfx": ["agua_avancando"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "virada",
+      "startFrame": 1080,
+      "durationInFrames": 240,
+      "narration": "O dia dura para sempre em metade do planeta. Do outro lado, a noite nunca termina. E o Nico seria jogado longe.",
+      "onScreenText": "metade dia, metade noite — para sempre",
+      "visual": {
+        "background": "globo_metade_dia_metade_noite",
+        "characters": [{ "id": "nico", "pose": "sendo_arrastado", "expression": "susto" }],
+        "camera": "close",
+        "action": "Globo com metade iluminada e metade escura, estáticas; um Nico pequeno desliza para fora do quadro, puxado pela inércia."
+      },
+      "sfx": ["sopro_vento", "deslize"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1320,
+      "durationInFrames": 180,
+      "narration": "Comenta: você ficaria de pé ou cairia? E se a Terra parasse de girar, agora?",
+      "onScreenText": "VOCÊ FICARIA DE PÉ OU CAIRIA? COMENTA.",
+      "visual": {
+        "background": "sala_aula_dia",
+        "characters": [{ "id": "nico", "pose": "sentado_mesa", "expression": "curiosidade" }],
+        "camera": "close",
+        "action": "Corte para a sala de aula normal, MESMO enquadramento do frame 0; o globo volta a girar devagar; Nico olha pra câmera."
+      },
+      "sfx": ["giro_globo"],
+      "music": null
+    }
+  ]
+}
