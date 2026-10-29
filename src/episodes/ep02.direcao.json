@@ -369,19 +369,26 @@
         {
           "de": 0,
           "enquadramento": "aberto",
-          "cenario": "mapa_onda",
+          "cenario": "mapa_rio",
           "zoom": [
             1,
             1.05
           ],
-          "entrada": "corte"
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 150,
+              "y": 1410
+            }
+          ]
         },
         {
-          "de": "A-2",
+          "de": "água-4",
           "enquadramento": "close",
-          "foco": "costa",
+          "foco": "orla",
           "centralizar": true,
-          "cenario": "mapa_onda",
+          "cenario": "mapa_rio",
           "zoom": [
             1.6,
             1.7
@@ -392,19 +399,33 @@
         {
           "de": "avança-2",
           "enquadramento": "aberto",
-          "cenario": "mapa_onda",
+          "cenario": "mapa_rio",
           "zoom": [
             1.05,
             1.1
           ],
-          "entrada": "corte"
+          "entrada": "corte",
+          "personagens": []
         },
         {
-          "de": "Onde-2",
-          "enquadramento": "close",
-          "foco": "pino",
+          "de": "Rio-4",
+          "enquadramento": "medio",
+          "foco": "morros",
           "centralizar": true,
-          "cenario": "mapa_onda",
+          "cenario": "mapa_rio",
+          "zoom": [
+            1.25,
+            1.3
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": "onde-2",
+          "enquadramento": "close",
+          "foco": "casa",
+          "centralizar": true,
+          "cenario": "mapa_rio",
           "zoom": [
             1.5,
             1.6
@@ -416,7 +437,7 @@
       "fundo": {
         "onda": "água",
         "ondaAte": "continente.$",
-        "pino": "Nico"
+        "cobre": "costa"
       },
       "sfx": {
         "agua_avancando": "água"
@@ -424,9 +445,14 @@
       "efeitos": [
         {
           "id": "whoosh",
-          "de": "Onde-4"
+          "de": "onde-4"
         }
-      ]
+      ],
+      "texto": {
+        "mostrar": true,
+        "de": 0,
+        "estilo": "canto"
+      }
     },
     "virada": {
       "planos": [
@@ -507,7 +533,7 @@
           ]
         },
         {
-          "de": "E-2",
+          "de": "você-2",
           "enquadramento": "medio",
           "foco": "globo_mesa",
           "centralizar": true,
@@ -525,7 +551,7 @@
           ]
         },
         {
-          "de": "Terra+6",
+          "de": "Comenta-2",
           "enquadramento": "close",
           "foco": "nico",
           "zoom": [
@@ -545,7 +571,7 @@
         {
           "type": "globo",
           "velocidade": 3,
-          "volta": "E"
+          "volta": "você"
         }
       ],
       "personagens": {
@@ -561,13 +587,13 @@
       },
       "sfx": {
         "giro_globo": {
-          "de": "E",
-          "ate": 180
+          "de": "você",
+          "ate": 155
         }
       },
       "texto": {
         "de": 2,
-        "ate": "E-2",
+        "ate": 150,
         "estilo": "sticker",
         "mostrar": true
       }

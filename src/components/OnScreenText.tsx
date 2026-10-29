@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useVideoConfig } from "remotion";
-import { colors, fonts, ink, onScreenText as t, sticker as stickerTheme } from "../theme";
+import { colors, cornerText, fonts, ink, onScreenText as t, sticker as stickerTheme } from "../theme";
 
 // Quebra em no máximo 2 linhas: " · " vira quebra; texto longo é dividido no espaço mais equilibrado.
 export const splitLines = (text: string): string[] => {
@@ -53,18 +53,20 @@ const renderLine = (line: string) =>
     ),
   );
 
-export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean; top?: number }> = ({
+export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean; corner?: boolean; top?: number }> = ({
   text,
   frame,
   from,
   to,
   animate,
   sticker,
+  corner,
   top,
 }) => {
   const { fps } = useVideoConfig();
   if (!text || frame < from || frame >= to) return null;
   if (sticker) return <Sticker text={text} frame={frame} from={from} to={to} />;
+  if (corner) return <Corner text={text} />;
   const enter = animate ? spring({ frame: frame - from, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } }) : 1;
   // Sem animação (título de capa), o texto entra e sai seco
   const exit = animate ? interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;
@@ -100,6 +102,35 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
         {lines.map((l, i) => (
           <div key={i}>{renderLine(l)}</div>
         ))}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Selo pequeno de lugar (caixa tinta com filete creme), parado no canto superior esquerdo
+const Corner: React.FC<{ text: string }> = ({ text }) => {
+  const c = cornerText;
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: c.top,
+          left: c.left,
+          padding: `${c.paddingY}px ${c.paddingX}px`,
+          backgroundColor: t.boxColor,
+          border: `${ink.stroke * 0.5}px solid ${t.borderColor}`,
+          borderRadius: c.radius,
+          boxShadow: `inset 0 0 0 6px ${t.boxColor}, inset 0 0 0 9px ${t.innerLine}, 0 ${ink.stroke * 0.5}px 0 ${t.borderColor}`,
+          fontFamily: fonts.main,
+          fontWeight: fonts.weight,
+          fontSize: c.fontSize,
+          lineHeight: 1.1,
+          color: t.textColor,
+          whiteSpace: "pre",
+        }}
+      >
+        {text}
       </div>
     </AbsoluteFill>
   );

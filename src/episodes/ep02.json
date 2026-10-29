@@ -4,13 +4,13 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 1516,
+  "totalFrames": 1508,
   "scenes": [
     {
       "id": "gancho",
       "startFrame": 0,
-      "durationInFrames": 106,
-      "narration": "E se a Terra parasse de girar agora? Ninguém fica de pé.",
+      "durationInFrames": 111,
+      "narration": "E se a Terra parasse de girar agora? Ninguém ficaria de pé.",
       "onScreenText": "E SE A TERRA PARASSE DE GIRAR?",
       "visual": {
         "background": "sala_aula_dia",
@@ -23,7 +23,7 @@
     },
     {
       "id": "apresentacao",
-      "startFrame": 106,
+      "startFrame": 111,
       "durationInFrames": 180,
       "narration": "Este é o Nico. Na aula de geografia, a professora fala de rotação.",
       "onScreenText": "Nico, 15 anos · aula de geografia",
@@ -41,7 +41,7 @@
     },
     {
       "id": "gatilho",
-      "startFrame": 286,
+      "startFrame": 291,
       "durationInFrames": 210,
       "narration": "Então a Terra para. De repente. O chão continua parado, mas o ar não.",
       "onScreenText": "a Terra para",
@@ -56,7 +56,7 @@
     },
     {
       "id": "escalada1",
-      "startFrame": 496,
+      "startFrame": 501,
       "durationInFrames": 300,
       "narration": "No equador, a superfície já girava a quase 1.700 quilômetros por hora. Essa velocidade não desaparece com a Terra. Ela vira vento.",
       "onScreenText": "≈ 1.700 km/h",
@@ -71,22 +71,22 @@
     },
     {
       "id": "escalada2",
-      "startFrame": 796,
-      "durationInFrames": 300,
-      "narration": "O oceano segue a mesma lógica. A água continua se movendo, e avança sobre o continente. Onde o Nico mora, viraria costa nova.",
-      "onScreenText": "o oceano também segue",
+      "startFrame": 801,
+      "durationInFrames": 312,
+      "narration": "O oceano segue a mesma lógica. A água continua se movendo, e avança sobre o continente. O Rio de Janeiro, onde o Nico mora, viraria costa nova.",
+      "onScreenText": "RIO DE JANEIRO",
       "visual": {
-        "background": "diagrama_globo",
+        "background": "mapa_rio",
         "characters": [{ "id": "nico", "pose": "parado", "expression": "preocupacao", "scale": "inserto_pequeno" }],
         "camera": "plano_aberto",
-        "action": "Uma onda azul avança sobre o contorno de um continente simplificado no diagrama."
+        "action": "Mapa estilizado da orla do Rio de Janeiro com o Pão de Açúcar e o Cristo Redentor ao fundo; casa do Nico na orla com o pino \"aqui mora o Nico\"; a água avança, cobre a casa e a etiqueta vira \"costa nova\"."
       },
       "sfx": ["agua_avancando"],
       "music": "suspensa_sem_batida"
     },
     {
       "id": "virada",
-      "startFrame": 1096,
+      "startFrame": 1113,
       "durationInFrames": 240,
       "narration": "O dia dura para sempre em metade do planeta. Do outro lado, a noite nunca termina. E o Nico seria jogado longe.",
       "onScreenText": "metade dia, metade noite — para sempre",
@@ -101,15 +101,15 @@
     },
     {
       "id": "fecho",
-      "startFrame": 1336,
-      "durationInFrames": 180,
-      "narration": "Comenta: você corria pro Equador ou pro Polo? E se a Terra parasse de girar, agora?",
-      "onScreenText": "VOCÊ CORRIA PRO EQUADOR OU PRO POLO? COMENTA.",
+      "startFrame": 1353,
+      "durationInFrames": 155,
+      "narration": "Se a Terra parasse de girar, você iria pro Equador ou pro Polo? Comenta aí.",
+      "onScreenText": "VOCÊ IRIA PRO EQUADOR OU PRO POLO? COMENTA AÍ.",
       "visual": {
         "background": "sala_aula_dia",
         "characters": [{ "id": "nico", "pose": "sentado_mesa", "expression": "curiosidade" }],
         "camera": "close",
-        "action": "Corte para a sala de aula normal, MESMO enquadramento do frame 0; o globo volta a girar devagar; Nico olha pra câmera."
+        "action": "Corte para a sala de aula normal, MESMO enquadramento do frame 0; na pergunta, inserto do globo da mesa voltando a girar; Nico olha pra câmera no \"Comenta aí\"."
       },
       "sfx": ["giro_globo"],
       "music": null

@@ -19,6 +19,7 @@ import {
   GLOBO_DIAGRAMA,
   MAPA,
 } from "./backgrounds/DiagramasTerra";
+import { MAPA_RIO, RIO_DEPTH } from "./backgrounds/MapaRio";
 import { GLOBO_QUADRO, JANELA, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
 import {
@@ -79,7 +80,7 @@ const place = (
   return chars.flatMap((c): Placed[] => {
     if (isSmall(c)) {
       const p = shots.inserto_pequeno;
-      return [{ ...c, x: p.x, y: p.y, s: p.scale, screen: true }];
+      return [{ ...c, x: xOf(c.id) ?? p.x, y: yOf(c.id) ?? p.y, s: p.scale, screen: true }];
     }
     const i = big.indexOf(c);
     switch (plano.enquadramento) {
@@ -218,6 +219,9 @@ const centerOf = (
     };
   if (focus === "costa") return { x: MAPA.costaX + 160, y: 900 };
   if (focus === "pino") return { x: MAPA.pino.x - 40, y: MAPA.pino.y - 60 };
+  if (focus === "orla") return MAPA_RIO.orla;
+  if (focus === "casa") return { x: MAPA_RIO.pino.x, y: MAPA_RIO.pino.y + 20 };
+  if (focus === "morros") return atDepth(MAPA_RIO.morros.x, MAPA_RIO.morros.y, RIO_DEPTH);
   if (focus === "globo_mesa") {
     const n = placed.find((c) => c.id === "nico");
     if (n)
@@ -638,6 +642,7 @@ export const SceneRenderer: React.FC<{
           to={cue(direction.texto?.ate, duration)}
           animate={direction.texto?.animar !== false}
           sticker={direction.texto?.estilo === "sticker"}
+          corner={direction.texto?.estilo === "canto"}
           top={direction.texto?.topo}
         />
       ) : null}

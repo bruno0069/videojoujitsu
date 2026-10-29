@@ -21,8 +21,14 @@ const toPages = (captions: Caption[], size: number): Page[] => {
 
 // Legenda palavra por palavra; a palavra atual fica em amarelo e dá um pulinho.
 // Sem pontuação na tela: tira ponto, vírgula, dois-pontos e ponto e vírgula do fim de cada
-// palavra (o "1.700" fica como está). O texto da narração não muda.
+// palavra (o "1.700" fica como está) e a maiúscula que sobrava no meio do bloco. O texto da
+// narração não muda.
 const semPontuacao = (t: string) => t.replace(/[.,:;]+$/, "");
+// Depois de um ponto tirado, a palavra seguinte do bloco fica minúscula (menos nomes próprios)
+const semMaiuscula = (t: string, prev: string | undefined) =>
+  prev !== undefined && /[.:;]$/.test(prev.trim()) && !c.nomesProprios.includes(t.replace(/[^\p{L}]/gu, ""))
+    ? t.charAt(0).toLowerCase() + t.slice(1)
+    : t;
 
 export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean }> = ({
   captions,
@@ -93,7 +99,7 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean }> = ({
               key={`${token.startMs}-${i}`}
               style={{ display: "inline-block", margin: "0 0.26em", color: active ? c.activeColor : c.textColor, scale: String(bump) }}
             >
-              {strip ? semPontuacao(token.text.trim()) : token.text.trim()}
+              {strip ? semMaiuscula(semPontuacao(token.text.trim()), page.tokens[i - 1]?.text) : token.text.trim()}
             </span>
           );
         })}

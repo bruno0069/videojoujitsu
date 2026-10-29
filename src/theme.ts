@@ -87,6 +87,8 @@ export const captions = {
   textColor: colors.creme,
   activeColor: colors.amarelo,
   strokeColor: colors.tinta,
+  // Com a pontuação tirada, a palavra depois de um ponto perde a maiúscula, menos estes nomes
+  nomesProprios: ["Nico", "Dani", "Terra", "Equador", "Polo", "Rio", "Janeiro"],
   // Folga no começo e no fim de cada cena quando o tempo é estimado
   leadFrames: 4,
   tailFrames: 8,
@@ -106,6 +108,16 @@ export const onScreenText = {
   highlightColor: colors.amarelo,
   radius: 28,
   maxWidth: 1080 - 2 * 90,
+};
+
+// Selo pequeno de lugar, fixo no canto superior esquerdo
+export const cornerText = {
+  top: 64,
+  left: 48,
+  fontSize: 44,
+  paddingX: 22,
+  paddingY: 8,
+  radius: 18,
 };
 
 // Sticker da chamada final (CTA)

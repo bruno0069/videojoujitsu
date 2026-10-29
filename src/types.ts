@@ -94,7 +94,7 @@ export type SceneDirection = {
   fundo?: Record<string, Cue | Cue[]>;
   tremidas?: { de: Cue; frames: number; forca: number }[];
   // `topo`: altura da caixa (px), para não cobrir o cabelo num close
-  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker"; topo?: number };
+  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" | "canto"; topo?: number };
   // Congela a imagem da cena a partir deste frame (até o fim da cena)
   congelar?: number;
   // Pontos de sincronização para quando a voz entrar: a palavra deve cair neste frame da cena.

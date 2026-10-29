@@ -35,6 +35,10 @@ Nenhum código novo é necessário, a não ser que o episódio peça um **cenár
   `pino`) e `globo_metade_dia_metade_noite` (`rotulos`). Todos os globos usam o mesmo
   componente (`elements/Globe.tsx`): continentes em longitude/latitude, projeção ortográfica e
   recorte pelo hemisfério visível (onde o contorno passa para trás, a borda segue o limbo).
+  `mapa_rio`: orla do Rio de Janeiro (desenho original) com o Corcovado e o Cristo e o Pão de
+  Açúcar ao fundo, prédios, calçadão, areia e mar, e a casa do Nico com o pino; parâmetros
+  `onda` (a água começa a avançar), `ondaAte` (chega ao calçadão) e `cobre` (cobre a casa e a
+  etiqueta "aqui mora o Nico" vira "costa nova", no mesmo pino). Focos: `orla`, `casa`, `morros`.
 - `visual.characters`: `nico`, `dani` ou `professora` (adulta, coque, blusa roxa #8B7FD1; mesmo
   rig com proporção de adulto), com `pose` (`parado`, `andando`, `caindo`, `apontando`,
   `de_costas`, `encolhido`, `olhando_para_cima`, `mao_levantada`, `bracos_cruzados`, `joinha`,
@@ -76,7 +80,7 @@ Campos por cena:
 - `personagens`: chaves de tempo por personagem (pose, expressão, objeto, ação, `olhar`).
   Ações: `comendo`, `revirar_olhos`, `frio` (tremor + bafo).
 - `tremidas`: `{ de, frames, forca }`.
-- `texto`: `de`/`ate`/`mostrar`/`estilo`/`topo` (altura da caixa, para não cobrir o cabelo num close) (`"sticker"` = chamada grande a 60% da altura). Sem
+- `texto`: `de`/`ate`/`mostrar`/`estilo`/`topo` (altura da caixa, para não cobrir o cabelo num close) (`"sticker"` = chamada grande a 60% da altura; `"canto"` = selo pequeno de lugar, fixo no canto superior esquerdo). Sem
   `mostrar`, o texto da tela some sozinho quando só repete a fala.
 - `congelar`: frame a partir do qual a imagem da cena fica parada.
 - `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala);
@@ -138,7 +142,8 @@ tomada escolhida (`public/audio/voz/ep02-<cena>.mp3`) foi transcrita sozinha
 (`src/audio/ep02-transcricao.json`) e `src/episodes/ep02.voz.json` diz que trecho de cada
 tomada entra em que segundo (`{ cena, de, ate, em, tempo? }`), cortando nas pausas da própria
 fala. O script grava a narração e `src/audio/ep02-words.json` de uma vez; nenhuma pausa sem
-voz passa de 0,85 s.
+voz passa de 0,85 s. `cena` é o nome da tomada, não da cena: `gancho2` é a tomada regravada só
+para a segunda frase do gancho ("Ninguém ficaria de pé."); a cena de cada palavra vem do roteiro.
 
 **A legenda e os limites de cena derivam do arquivo de palavras.** O caminho é a entrada
 `legendas` da composição (padrão `src/audio/epNN-words.json`; um caminho fora de `src/audio/`
@@ -163,7 +168,8 @@ npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"src/audio/ep01-words
 
 Campos de topo da direção ligados a isso: `legendaDe` (a legenda só aparece a partir desse
 frame; antes, o título da capa), `legendaSemPontuacao` (tira `.`, `,`, `:` e `;` do fim das
-palavras na legenda; o texto da narração, o título e o CTA não mudam) e `sunReturnsAfterHook`
+palavras na legenda e a maiúscula que sobrava no meio do bloco depois de um ponto, menos nos
+nomes de `captions.nomesProprios` em `theme.ts`; o texto da narração, o título e o CTA não mudam) e `sunReturnsAfterHook`
 (selo "agora" de 12 frames no início da cena seguinte ao gancho).
 A página da legenda quebra no fim de cada cena e depois de uma pergunta seguida de pausa de
 0,6 s ou mais (a resposta não aparece na tela antes de ser dita).

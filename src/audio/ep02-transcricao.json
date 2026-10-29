@@ -1,5 +1,5 @@
 {
- "_sobre": "Transcrição ElevenLabs Scribe (eleven_scribe_v1) de cada tomada escolhida, tempos em segundos dentro do arquivo public/audio/voz/ep02-<cena>.mp3. Fluxo ElevenLabs Zp2zhU0CDBZYu7k3awWq.",
+ "_sobre": "Transcri\u00e7\u00e3o ElevenLabs Scribe (eleven_scribe_v1) de cada tomada escolhida, tempos em segundos dentro do arquivo public/audio/voz/ep02-<cena>.mp3. Fluxo ElevenLabs Zp2zhU0CDBZYu7k3awWq.",
  "cenas": {
   "gancho": {
    "tomada": "A",
@@ -46,7 +46,7 @@
      "end": 2.32
     },
     {
-     "text": "Ninguém",
+     "text": "Ningu\u00e9m",
      "start": 2.8,
      "end": 3.2
     },
@@ -61,9 +61,75 @@
      "end": 3.6
     },
     {
-     "text": "pé.",
+     "text": "p\u00e9.",
      "start": 3.68,
      "end": 4.16
+    }
+   ]
+  },
+  "gancho2": {
+   "tomada": "A (gancho v2, s\u00f3 a 2\u00aa frase \u00e9 usada)",
+   "generation_id": "ox4cSIYaJSMYKzeAZX82",
+   "words": [
+    {
+     "text": "E",
+     "start": 0,
+     "end": 0.16
+    },
+    {
+     "text": "se",
+     "start": 0.2,
+     "end": 0.24
+    },
+    {
+     "text": "a",
+     "start": 0.32,
+     "end": 0.4
+    },
+    {
+     "text": "Terra",
+     "start": 0.44,
+     "end": 0.72
+    },
+    {
+     "text": "parasse",
+     "start": 0.88,
+     "end": 1.28
+    },
+    {
+     "text": "de",
+     "start": 1.36,
+     "end": 1.44
+    },
+    {
+     "text": "girar",
+     "start": 1.48,
+     "end": 1.76
+    },
+    {
+     "text": "agora?",
+     "start": 1.88,
+     "end": 2.32
+    },
+    {
+     "text": "Ningu\u00e9m",
+     "start": 2.8,
+     "end": 3.2
+    },
+    {
+     "text": "ficaria",
+     "start": 3.28,
+     "end": 3.6
+    },
+    {
+     "text": "de",
+     "start": 3.68,
+     "end": 3.76
+    },
+    {
+     "text": "p\u00e9.",
+     "start": 3.84,
+     "end": 4.32
     }
    ]
   },
@@ -77,7 +143,7 @@
      "end": 0.4
     },
     {
-     "text": "é",
+     "text": "\u00e9",
      "start": 0.48,
      "end": 0.56
     },
@@ -132,7 +198,7 @@
      "end": 3.76
     },
     {
-     "text": "rotação.",
+     "text": "rota\u00e7\u00e3o.",
      "start": 3.84,
      "end": 4.72
     }
@@ -143,7 +209,7 @@
    "generation_id": "z6L6tUGZSKpBZsMHHvRr",
    "words": [
     {
-     "text": "Então",
+     "text": "Ent\u00e3o",
      "start": 0,
      "end": 0.32
     },
@@ -178,7 +244,7 @@
      "end": 2.8
     },
     {
-     "text": "chão",
+     "text": "ch\u00e3o",
      "start": 2.88,
      "end": 3.12
     },
@@ -208,7 +274,7 @@
      "end": 4.8
     },
     {
-     "text": "não.",
+     "text": "n\u00e3o.",
      "start": 4.88,
      "end": 5.28
     }
@@ -234,12 +300,12 @@
      "end": 0.96
     },
     {
-     "text": "superfície",
+     "text": "superf\u00edcie",
      "start": 1.04,
      "end": 1.6
     },
     {
-     "text": "já",
+     "text": "j\u00e1",
      "start": 1.64,
      "end": 1.72
     },
@@ -264,7 +330,7 @@
      "end": 3.6
     },
     {
-     "text": "quilômetros",
+     "text": "quil\u00f4metros",
      "start": 3.68,
      "end": 4.16
     },
@@ -289,7 +355,7 @@
      "end": 6
     },
     {
-     "text": "não",
+     "text": "n\u00e3o",
      "start": 6.16,
      "end": 6.24
     },
@@ -331,8 +397,8 @@
    ]
   },
   "escalada2": {
-   "tomada": "A",
-   "generation_id": "BWr0Ku59VoHyJsZ6cgAI",
+   "tomada": "A (Rio)",
+   "generation_id": "owfOctXYfcIp8wEi94MS",
    "words": [
     {
      "text": "O",
@@ -351,8 +417,8 @@
     },
     {
      "text": "a",
-     "start": 1,
-     "end": 1.04
+     "start": 1.013,
+     "end": 1.067
     },
     {
      "text": "mesma",
@@ -360,7 +426,7 @@
      "end": 1.44
     },
     {
-     "text": "lógica.",
+     "text": "l\u00f3gica.",
      "start": 1.68,
      "end": 2.12
     },
@@ -370,84 +436,104 @@
      "end": 2.4
     },
     {
-     "text": "água",
+     "text": "\u00e1gua",
      "start": 2.48,
      "end": 2.72
     },
     {
      "text": "continua",
-     "start": 2.88,
-     "end": 3.2
+     "start": 2.8,
+     "end": 3.28
     },
     {
      "text": "se",
-     "start": 3.28,
-     "end": 3.36
+     "start": 3.36,
+     "end": 3.44
     },
     {
      "text": "movendo,",
-     "start": 3.44,
-     "end": 4
-    },
-    {
-     "text": "e",
-     "start": 4.04,
+     "start": 3.52,
      "end": 4.08
     },
     {
-     "text": "avança",
-     "start": 4.28,
-     "end": 4.64
+     "text": "e",
+     "start": 4.12,
+     "end": 4.16
+    },
+    {
+     "text": "avan\u00e7a",
+     "start": 4.36,
+     "end": 4.72
     },
     {
      "text": "sobre",
-     "start": 4.68,
-     "end": 4.88
+     "start": 4.76,
+     "end": 4.96
     },
     {
      "text": "o",
-     "start": 4.907,
-     "end": 4.933
+     "start": 4.987,
+     "end": 5.013
     },
     {
      "text": "continente.",
-     "start": 4.96,
-     "end": 5.72
+     "start": 5.04,
+     "end": 5.68
     },
     {
-     "text": "Onde",
-     "start": 5.92,
-     "end": 6.08
-    },
-    {
-     "text": "o",
-     "start": 6.12,
+     "text": "O",
+     "start": 6.08,
      "end": 6.16
     },
     {
-     "text": "Nico",
-     "start": 6.2,
+     "text": "Rio",
+     "start": 6.24,
+     "end": 6.32
+    },
+    {
+     "text": "de",
+     "start": 6.36,
      "end": 6.4
     },
     {
-     "text": "mora,",
+     "text": "Janeiro,",
      "start": 6.48,
-     "end": 6.96
+     "end": 7.04
+    },
+    {
+     "text": "onde",
+     "start": 7.12,
+     "end": 7.2
+    },
+    {
+     "text": "o",
+     "start": 7.24,
+     "end": 7.28
+    },
+    {
+     "text": "Nico",
+     "start": 7.32,
+     "end": 7.52
+    },
+    {
+     "text": "mora,",
+     "start": 7.56,
+     "end": 8.08
     },
     {
      "text": "viraria",
-     "start": 7.04,
-     "end": 7.44
+     "start": 8.16,
+     "end": 8.56
     },
     {
      "text": "costa",
-     "start": 7.56,
-     "end": 7.76
+     "start": 8.64,
+     "end": 8.96
     },
     {
      "text": "nova.",
-     "start": 7.84,
-     "end": 8.48
+     "start": 9.04,
+     "end": 9.6
     }
    ]
   },
@@ -568,88 +654,83 @@
    ]
   },
   "fecho": {
-   "tomada": "A (CTA v2)",
-   "generation_id": "aKaAwJMFXjrm8ukG1Qup",
+   "tomada": "A (CTA v3)",
+   "generation_id": "zvWlzU0f2W9gxovMVAnt",
    "words": [
     {
-     "text": "Comenta:",
+     "text": "Se",
      "start": 0,
-     "end": 0.76
-    },
-    {
-     "text": "você",
-     "start": 0.96,
-     "end": 1.12
-    },
-    {
-     "text": "corria",
-     "start": 1.2,
-     "end": 1.6
-    },
-    {
-     "text": "pro",
-     "start": 1.64,
-     "end": 1.68
-    },
-    {
-     "text": "Equador",
-     "start": 1.76,
-     "end": 2.32
-    },
-    {
-     "text": "ou",
-     "start": 2.48,
-     "end": 2.56
-    },
-    {
-     "text": "pro",
-     "start": 2.64,
-     "end": 2.72
-    },
-    {
-     "text": "Polo?",
-     "start": 2.8,
-     "end": 3.2
-    },
-    {
-     "text": "E",
-     "start": 3.6,
-     "end": 3.68
-    },
-    {
-     "text": "se",
-     "start": 3.72,
-     "end": 3.76
+     "end": 0.16
     },
     {
      "text": "a",
-     "start": 3.8,
-     "end": 3.84
+     "start": 0.213,
+     "end": 0.267
     },
     {
      "text": "Terra",
-     "start": 3.92,
-     "end": 4.08
+     "start": 0.32,
+     "end": 0.48
     },
     {
      "text": "parasse",
-     "start": 4.16,
-     "end": 4.48
+     "start": 0.56,
+     "end": 0.96
     },
     {
      "text": "de",
-     "start": 4.56,
-     "end": 4.64
+     "start": 1,
+     "end": 1.04
     },
     {
      "text": "girar,",
-     "start": 4.68,
-     "end": 5.28
+     "start": 1.12,
+     "end": 1.68
     },
     {
-     "text": "agora?",
-     "start": 5.4,
-     "end": 6.0
+     "text": "voc\u00ea",
+     "start": 1.72,
+     "end": 2
+    },
+    {
+     "text": "iria",
+     "start": 2.04,
+     "end": 2.32
+    },
+    {
+     "text": "pro",
+     "start": 2.36,
+     "end": 2.4
+    },
+    {
+     "text": "Equador",
+     "start": 2.48,
+     "end": 3.12
+    },
+    {
+     "text": "ou",
+     "start": 3.2,
+     "end": 3.28
+    },
+    {
+     "text": "pro",
+     "start": 3.36,
+     "end": 3.44
+    },
+    {
+     "text": "Polo?",
+     "start": 3.52,
+     "end": 4.16
+    },
+    {
+     "text": "Comenta",
+     "start": 4.24,
+     "end": 4.56
+    },
+    {
+     "text": "a\u00ed.",
+     "start": 4.6,
+     "end": 4.96
     }
    ]
   }

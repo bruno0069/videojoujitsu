@@ -7,6 +7,7 @@ import { DiagramaOrbita } from "./backgrounds/DiagramaOrbita";
 import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
 import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { InsertoPao } from "./backgrounds/InsertoPao";
+import { MapaRio } from "./backgrounds/MapaRio";
 import { Patio } from "./backgrounds/Patio";
 import { SalaAula } from "./backgrounds/SalaAula";
 
@@ -23,6 +24,7 @@ export const BACKGROUNDS = [
   "sala_aula_dia",
   "diagrama_globo",
   "mapa_onda",
+  "mapa_rio",
   "globo_metade_dia_metade_noite",
 ];
 
@@ -83,6 +85,8 @@ export const Background: React.FC<{
       return <DiagramaGlobo cam={cam} frame={frame} params={params} />;
     case "mapa_onda":
       return <MapaOnda cam={cam} frame={frame} params={params} />;
+    case "mapa_rio":
+      return <MapaRio cam={cam} frame={frame} params={params} />;
     case "globo_metade_dia_metade_noite":
       return <GloboDiaNoite cam={cam} frame={frame} params={params} />;
     default:
