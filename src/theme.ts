@@ -29,6 +29,7 @@ export const colors = {
   calca: "#3B2F6B",
   cabelo: "#1B1B2F",
   branco: "#FFFFFF",
+  roxo: "#8B7FD1", // blusa da professora (ep02)
   // Fundo do inserto do pão (creme com raios em coral claro)
   coralClaro: "#FFB7A6",
 } as const;

@@ -25,7 +25,8 @@ export type PoseName =
   | "sentado_mesa"
   | "sentado_do_lado"
   | "olhando_janela"
-  | "sendo_arrastado";
+  | "sendo_arrastado"
+  | "apontando_quadro";
 
 export type ExpressionName =
   | "neutro"
@@ -37,7 +38,9 @@ export type ExpressionName =
   | "atento"
   | "confusao"
   | "preocupacao"
-  | "susto";
+  | "susto"
+  | "neutra"
+  | "explicando";
 
 type PoseDef = {
   handL: Vec;
@@ -125,6 +128,11 @@ const POSES: Record<PoseName, PoseDef> = {
     handL: [-330, -820], handR: [300, -880], footL: [-190, -60], footR: [-70, -10],
     crouch: 30, lean: 24, headTilt: 14, headDy: 0, look: [-0.9, -0.2], flail: true,
   },
+  // Apontando para o alto (adulto mostrando algo no quadro)
+  apontando_quadro: {
+    handL: [-150, -260], handR: [340, -902], footL: [-58, -22], footR: [58, -22],
+    crouch: 0, lean: 0, headTilt: -5, headDy: 0, look: [0.75, -0.7], pointR: true,
+  },
   bracos_cruzados: {
     handL: [110, -410], handR: [-110, -428], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 3, headDy: 0, look: [-0.9, 0],
@@ -138,7 +146,7 @@ type ExprDef = {
   eye: number;
   pupil: number;
   lid: number;
-  mouth: "sorriso" | "o" | "ondulada" | "reta" | "canto";
+  mouth: "sorriso" | "o" | "ondulada" | "reta" | "canto" | "falando";
   blush?: boolean;
   sweat?: boolean;
   look?: Vec;
@@ -155,13 +163,20 @@ const EXPRESSIONS: Record<ExpressionName, ExprDef> = {
   confusao: { browL: { dy: -32, rot: -10 }, browR: { dy: 6, rot: 14 }, eye: 1.04, pupil: 22, lid: 0, mouth: "ondulada" },
   preocupacao: { browL: { dy: -16, rot: 18 }, browR: { dy: -16, rot: 18 }, eye: 1, pupil: 19, lid: 0, mouth: "ondulada" },
   susto: { browL: { dy: -42, rot: 10 }, browR: { dy: -42, rot: 10 }, eye: 1.18, pupil: 14, lid: 0, mouth: "o", sweat: true },
+  neutra: { browL: { dy: 0, rot: 0 }, browR: { dy: 0, rot: 0 }, eye: 1, pupil: 25, lid: 0, mouth: "reta" },
+  // Explicando: sobrancelhas erguidas e boca falando (abre e fecha)
+  explicando: { browL: { dy: -20, rot: -6 }, browR: { dy: -14, rot: -2 }, eye: 1, pupil: 24, lid: 0, mouth: "falando" },
 };
 
 export type CharacterStyle = {
   hoodie: string;
-  hair: "topete" | "longo";
+  hair: "topete" | "longo" | "coque";
   pocket: boolean;
   blinkSeed: number;
+  // Calça (padrão: índigo dos adolescentes)
+  calca?: string;
+  // Proporção de adulto: tronco e cabeça sobem `lift`, braços e pernas mais longos, cabeça menor
+  adulto?: { lift: number; arm: number; leg: number; headScale: number };
 };
 
 export type CharacterProps = {
@@ -289,7 +304,10 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
   // Andar: passo no lugar, com balanço dos braços
   const walk = pose === "andando" ? Math.sin((frame / 9) * Math.PI) : 0;
   const crouch = p.crouch + (pose === "andando" ? Math.abs(walk) * 8 : 0);
-  const bodyDy = crouch;
+  const adult = style.adulto;
+  const bodyDy = crouch - (adult?.lift ?? 0);
+  const armLen = adult ? [adult.arm, adult.arm] : ARM;
+  const legLen = adult ? [adult.leg, adult.leg] : LEG;
 
   const footL: Vec = [p.footL[0], p.footL[1] - Math.max(0, walk) * 36];
   const footR: Vec = [p.footR[0], p.footR[1] - Math.max(0, -walk) * 36];
@@ -326,14 +344,15 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
   }
   // Sentado: cotovelos abertos sobre o tampo da carteira, antebraços deitados
   const sitElbow = (sh: Vec, side: number): Vec => [sh[0] + side * 78, -318 + breathDy * 0.3];
-  const elbowL = p.sit ? sitElbow(shL, -1) : ik(shL, handL, ARM, -1);
+  const elbowL = p.sit ? sitElbow(shL, -1) : ik(shL, handL, armLen, -1);
   // Segurando à frente do peito: cotovelo junto ao corpo e antebraço em escorço
-  const elbowR: Vec = p.sit ? sitElbow(shR, 1) : holdUp || p.thumbR ? [shR[0] + 40, shR[1] + 160] : ik(shR, handR, ARM, 1);
-  const kneeL = ik(hipL, footL, LEG, -1);
-  const kneeR = ik(hipR, footR, LEG, 1);
+  const elbowR: Vec = p.sit ? sitElbow(shR, 1) : holdUp || p.thumbR ? [shR[0] + 40, shR[1] + 160] : ik(shR, handR, armLen, 1);
+  const kneeL = ik(hipL, footL, legLen, -1);
+  const kneeR = ik(hipR, footR, legLen, 1);
 
   const chewing = action === "comendo" && eatPhase > 0.45 && Math.floor(frame / 5) % 2 === 0;
-  const mouth = chewing ? "aberta" : e.mouth;
+  const talking = e.mouth === "falando" ? (Math.floor(frame / 4) % 3 === 2 ? "reta" : "aberta") : e.mouth;
+  const mouth = chewing ? "aberta" : talking;
   // Revirar os olhos: as pupilas dão a volta por cima, de um lado ao outro
   const rollT = (frame % 54) / 54;
   const rollA = interpolate(rollT, [0, 0.6, 1], [Math.PI, 2 * Math.PI, 2 * Math.PI], { extrapolateRight: "clamp" });
@@ -391,8 +410,8 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
       <ellipse cx={0} cy={-6} rx={190} ry={30} fill={colors.tinta} opacity={0.18} />
 
       {/* Pernas */}
-      <Limb a={hipL} b={kneeL} c={footL} width={74} color={colors.calca} shade />
-      <Limb a={hipR} b={kneeR} c={footR} width={74} color={colors.calca} shade />
+      <Limb a={hipL} b={kneeL} c={footL} width={74} color={style.calca ?? colors.calca} shade />
+      <Limb a={hipR} b={kneeR} c={footR} width={74} color={style.calca ?? colors.calca} shade />
       <ellipse cx={footL[0] - 14} cy={footL[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
       <ellipse cx={footR[0] + 14} cy={footR[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
 
@@ -424,7 +443,14 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
       <ellipse cx={0} cy={-575 + bodyDy + breathDy} rx={138} ry={56} fill={style.hoodie} stroke={colors.tinta} strokeWidth={ink} />
 
       {/* Cabeça */}
-      <g transform={`translate(0 ${headY}) rotate(${p.headTilt})`}>
+      <g transform={`translate(0 ${headY}) rotate(${p.headTilt}) scale(${adult?.headScale ?? 1})`}>
+        {style.hair === "coque" ? (
+          // coque preso no alto da cabeça (atrás do rosto)
+          <>
+            <circle cx={30} cy={-262} r={86} fill={colors.cabelo} stroke={colors.tinta} strokeWidth={ink} />
+            <path d="M -30 -200 Q 30 -230 90 -196" fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.4} strokeLinecap="round" />
+          </>
+        ) : null}
         {style.hair === "longo" ? (
           <path
             d="M -262 -10 C -285 -260 -130 -282 0 -282 C 130 -282 285 -260 262 -10 L 272 290 Q 205 330 150 288 L 150 80 L -150 80 L -150 288 Q -205 330 -272 290 Z"
@@ -473,6 +499,15 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
               strokeLinejoin="round"
             />
           </>
+        ) : null}
+        {!p.back && style.hair === "coque" ? (
+          <path
+            d="M -233 30 C -252 -170 -130 -250 0 -250 C 140 -250 252 -170 233 30 C 226 -60 190 -130 120 -160 C 40 -190 -60 -186 -130 -150 C -190 -110 -224 -50 -233 30 Z"
+            fill={colors.cabelo}
+            stroke={colors.tinta}
+            strokeWidth={ink}
+            strokeLinejoin="round"
+          />
         ) : null}
         {!p.back && style.hair === "longo" ? (
           <path

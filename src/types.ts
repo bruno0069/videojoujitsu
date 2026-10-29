@@ -54,7 +54,8 @@ export type ElementSpec =
   // Globo de mesa (na carteira de `personagem`): gira a `velocidade` graus por frame; `trava`
   // para com solavanco (e `flash`); `volta` volta a girar e chega no último frame do episódio
   // na mesma posição do frame 0 (fecha o loop).
-  | ({ type: "globo"; personagem?: string; velocidade?: number; trava?: Cue; volta?: Cue; flash?: boolean } & Window)
+  // `giro`: volta extra visível (`voltas`) entre `de` e `ate`, antes de travar
+  | ({ type: "globo"; personagem?: string; velocidade?: number; trava?: Cue; volta?: Cue; flash?: boolean; giro?: { de: Cue; ate: Cue; voltas: number } } & Window)
   // Linhas de vento atravessando a tela (da esquerda para a direita); `papeis` = folhas voando
   | ({ type: "vento"; forca?: number; papeis?: boolean } & Window);
 
@@ -73,7 +74,7 @@ export type Plano = {
   de: Cue;
   enquadramento: "close" | "medio" | "aberto" | "inserto_pequeno" | "ceu" | "inserto_pao" | "raio_luz" | "diagrama_lua";
   foco?: string; // personagem em foco (close e zoom)
-  personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null; x?: number; soMesa?: boolean }[];
+  personagens?: { id: string; pose?: string; expressao?: string; segurando?: string | null; acao?: string | null; x?: number; y?: number; escala?: number; soMesa?: boolean; espelhar?: boolean }[];
   zoom?: [number, number]; // empurrão do começo ao fim do plano (1 = 100%)
   entrada?: "corte" | "punch";
   centralizar?: boolean; // o foco vai para o centro da tela
@@ -92,7 +93,8 @@ export type SceneDirection = {
   efeitos?: { id: string; de: Cue }[];
   fundo?: Record<string, Cue | Cue[]>;
   tremidas?: { de: Cue; frames: number; forca: number }[];
-  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" };
+  // `topo`: altura da caixa (px), para não cobrir o cabelo num close
+  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker"; topo?: number };
   // Congela a imagem da cena a partir deste frame (até o fim da cena)
   congelar?: number;
   // Pontos de sincronização para quando a voz entrar: a palavra deve cair neste frame da cena.

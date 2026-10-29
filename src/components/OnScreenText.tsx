@@ -53,19 +53,21 @@ const renderLine = (line: string) =>
     ),
   );
 
-export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean }> = ({
+export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean; top?: number }> = ({
   text,
   frame,
   from,
   to,
   animate,
   sticker,
+  top,
 }) => {
   const { fps } = useVideoConfig();
   if (!text || frame < from || frame >= to) return null;
   if (sticker) return <Sticker text={text} frame={frame} from={from} to={to} />;
   const enter = animate ? spring({ frame: frame - from, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } }) : 1;
-  const exit = interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  // Sem animação (título de capa), o texto entra e sai seco
+  const exit = animate ? interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;
   const s = enter * exit;
   const lines = splitLines(text);
   const fontSize = fitFontSize(lines);
@@ -74,7 +76,7 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
       <div
         style={{
           position: "absolute",
-          top: t.top,
+          top: top ?? t.top,
           maxWidth: t.maxWidth,
           padding: `${t.paddingY}px ${t.paddingX}px`,
           backgroundColor: t.boxColor,

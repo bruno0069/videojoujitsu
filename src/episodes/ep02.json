@@ -30,11 +30,11 @@
       "visual": {
         "background": "sala_aula_dia",
         "characters": [
-          { "id": "nico", "pose": "sentado", "expression": "atento" },
-          { "id": "dani", "pose": "sentado_do_lado", "expression": "cetica" }
+          { "id": "professora", "pose": "apontando_quadro", "expression": "explicando" },
+          { "id": "nico", "pose": "sentado", "expression": "atento" }
         ],
         "camera": "plano_medio",
-        "action": "Professora (fora de quadro) aponta o globo no quadro; Nico presta atenção, Dani revira os olhos."
+        "action": "Professora aponta o mapa-múndi no quadro enquanto fala; Nico presta atenção."
       },
       "sfx": ["sala_de_aula"],
       "music": "base_suave"

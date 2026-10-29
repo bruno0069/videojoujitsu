@@ -25,9 +25,14 @@
       "elementos": [
         {
           "type": "globo",
-          "velocidade": 6,
+          "velocidade": 2,
           "trava": "girar",
-          "flash": true
+          "flash": true,
+          "giro": {
+            "de": 10,
+            "ate": 38,
+            "voltas": 0.75
+          }
         }
       ],
       "personagens": {
@@ -77,7 +82,8 @@
         "mostrar": true,
         "de": 0,
         "ate": 46,
-        "animar": false
+        "animar": false,
+        "topo": 70
       }
     },
     "apresentacao": {
@@ -90,32 +96,54 @@
             1,
             1.06
           ],
-          "entrada": "corte"
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "professora",
+              "x": 900,
+              "y": 1300,
+              "escala": 0.72,
+              "espelhar": true
+            },
+            {
+              "id": "nico",
+              "x": 240,
+              "escala": 0.95
+            }
+          ]
         },
         {
           "de": "Na-3",
-          "enquadramento": "close",
-          "foco": "quadro",
-          "centralizar": true,
+          "enquadramento": "medio",
+          "foco": "professora",
           "zoom": [
-            3.6,
-            3.8
-          ],
-          "entrada": "corte",
-          "personagens": []
-        },
-        {
-          "de": "fala",
-          "enquadramento": "close",
-          "foco": "dani",
-          "zoom": [
-            1,
-            1.08
+            1.12,
+            1.18
           ],
           "entrada": "corte",
           "personagens": [
             {
-              "id": "dani"
+              "id": "professora",
+              "x": 890,
+              "y": 1300,
+              "escala": 0.72,
+              "espelhar": true
+            }
+          ]
+        },
+        {
+          "de": "fala",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
             }
           ]
         }
@@ -124,13 +152,6 @@
         {
           "type": "globo",
           "velocidade": 6
-        },
-        {
-          "type": "etiqueta",
-          "texto": "DANI",
-          "personagem": "dani",
-          "de": "fala+4",
-          "ate": 180
         }
       ],
       "personagens": {
@@ -142,16 +163,7 @@
               -0.5
             ]
           }
-        ],
-        "dani": [
-          {
-            "de": "fala",
-            "acao": "revirar_olhos"
-          }
         ]
-      },
-      "fundo": {
-        "ponteiro": "geografia,"
       },
       "texto": {
         "mostrar": true,

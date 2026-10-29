@@ -33,11 +33,13 @@ Nenhum código novo é necessário, a não ser que o episódio peça um **cenár
   globo; parâmetros `vento` e `ponteiro`), `diagrama_globo` (globo girando com o equador;
   `seta`, `para`, `vento`), `mapa_onda` (continente com a água avançando; `onda`, `ondaAte`,
   `pino`) e `globo_metade_dia_metade_noite` (`rotulos`).
-- `visual.characters`: `nico` ou `dani`, com `pose` (`parado`, `andando`, `caindo`, `apontando`,
+- `visual.characters`: `nico`, `dani` ou `professora` (adulta, coque, blusa roxa #8B7FD1; mesmo
+  rig com proporção de adulto), com `pose` (`parado`, `andando`, `caindo`, `apontando`,
   `de_costas`, `encolhido`, `olhando_para_cima`, `mao_levantada`, `bracos_cruzados`, `joinha`,
   `sentado` / `sentado_mesa` / `sentado_do_lado` / `olhando_janela` (atrás de uma carteira, que
-  vem junto com a pose), `sendo_arrastado`) e `expression` (`neutro`, `surpresa`, `medo`,
-  `vergonha`, `cetica`, `curiosidade`, `atento`, `confusao`, `preocupacao`, `susto`). `"scale": "inserto_pequeno"`
+  vem junto com a pose), `sendo_arrastado`, `apontando_quadro`) e `expression` (`neutro`, `surpresa`, `medo`,
+  `vergonha`, `cetica`, `curiosidade`, `atento`, `confusao`, `preocupacao`, `susto`, `neutra`,
+  `explicando` — boca falando). `"scale": "inserto_pequeno"`
   põe o personagem pequeno no canto.
 - `visual.camera`: `close`, `plano_medio`, `plano_aberto`. É o plano padrão da cena (com um
   push-in leve); para cortes e enquadramentos dentro da cena, use `planos` na direção.
@@ -58,12 +60,13 @@ Campos por cena:
   `"orbita"` ou `"ceu"`), `zoom` `[de, até]` (ex.: `[1, 1.12]` = push-in de 100% a 112%),
   `entrada` (`"corte"` ou `"punch"`), `deslocar` (`{ x, de, ate }`: arrasta os personagens), `centralizar` (o foco vai para o centro da tela; com
   `foco: "terra"` a câmera acompanha a Terra), `personagens` (quem aparece, com pose/expressão
-  e `x` opcional para reposicionar; `soMesa: true` mostra só a carteira e o globo; `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
+  e `x` opcional para reposicionar; `y`/`escala` para quem fica mais ao fundo, `espelhar: true`, `soMesa: true` mostra só a carteira
+  e o globo; `[]` = ninguém) e `cenario` (troca o cenário só naquele plano).
   No close, o queixo fica sempre em `shots.close.chinY` (acima da faixa da legenda) e o zoom
   cresce a partir dele.
 - `elementos`: `sol` (com `some`/`encolhe`/`flash`), `lua` (`aparece`/`pisca`/`apaga`),
   `balao`, `etiqueta`, `prova`, `termometro`, `globo` (globo de mesa: `velocidade`, `trava` com
-  solavanco e `flash`, `volta` = volta a girar e chega no último frame na posição do frame 0) e
+  solavanco e `flash`, `giro: { de, ate, voltas }` = volta extra visível antes de travar, `volta` = volta a girar e chega no último frame na posição do frame 0) e
   `vento` (traços de vento por trás dos personagens; `forca`, `papeis`). Todos aceitam `de`/`ate`. A noite não é uma
   película escura: o cenário `patio_ceu_escurecendo` troca as cores pela paleta noturna
   desenhada (`night` em `theme.ts`) e os personagens ganham pele noturna e luz de recorte
@@ -71,7 +74,7 @@ Campos por cena:
 - `personagens`: chaves de tempo por personagem (pose, expressão, objeto, ação, `olhar`).
   Ações: `comendo`, `revirar_olhos`, `frio` (tremor + bafo).
 - `tremidas`: `{ de, frames, forca }`.
-- `texto`: `de`/`ate`/`mostrar`/`estilo` (`"sticker"` = chamada grande a 60% da altura). Sem
+- `texto`: `de`/`ate`/`mostrar`/`estilo`/`topo` (altura da caixa, para não cobrir o cabelo num close) (`"sticker"` = chamada grande a 60% da altura). Sem
   `mostrar`, o texto da tela some sozinho quando só repete a fala.
 - `congelar`: frame a partir do qual a imagem da cena fica parada.
 - `sfx`: frame de cada efeito (negativo = antes do começo da cena, para cair numa pausa da fala);
