@@ -33,7 +33,9 @@ export const InfoLabel: React.FC<{ x: number; y: number; text: string; s?: numbe
 }) => {
   const ink = useInk();
   if (s <= 0) return null;
-  const w = text.length * fontSize * 0.5 + 2 * infoLabel.paddingX;
+  // maiúsculas são mais largas (rótulo todo em caixa alta, ex.: "EQUADOR")
+  const upper = text.replace(/[^A-ZÀ-Ý]/g, "").length > text.length / 2;
+  const w = text.length * fontSize * (upper ? 0.64 : 0.5) + 2 * infoLabel.paddingX;
   const h = fontSize * 1.05 + 2 * infoLabel.paddingY;
   const cx = anchor === "start" ? x + w / 2 : x;
   return (

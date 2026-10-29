@@ -21,6 +21,7 @@ const ramp = (frame: number, a: number, b: number, opts: Parameters<typeof inter
 
 // Globo girando com o equador e a seta da velocidade. `para`: a Terra para (a seta não);
 // `seta`: a seta aparece; `vento`: a seta vira linhas de vento varrendo o globo.
+// `rotuloEquador`: rótulo "EQUADOR" encostado na linha pontilhada.
 // ep05: `brilho` (faixa brilhante no equador), `giro` (graus por frame), `polo` (ponto no Polo Norte), `numeros` (velocidades subindo ao
 // lado do equador e do polo), `pulsaEquador`/`pulsaPolo` (destaque pulsando, com rótulo),
 // `numerosPolo` (o ≈ 0 do polo entra depois), `ventoEquador` (vento saindo da faixa do equador), `seca` (o mar escorre para os polos).
@@ -46,6 +47,7 @@ export const DiagramaGlobo: React.FC<{ cam: Cam; frame: number; params: Record<s
         <MaresPolos frame={frame} at={n(params.seca)} />
         <PontoPolo frame={frame} at={n(params.polo)} pulsa={n(params.pulsaPolo)} />
         <Numeros frame={frame} at={n(params.numeros)} polo={n(params.numerosPolo, n(params.numeros))} />
+        {frame >= n(params.rotuloEquador) ? <InfoLabel x={g.x + g.r * 0.62} y={g.y - 90} text="EQUADOR" s={ramp(frame, n(params.rotuloEquador), n(params.rotuloEquador) + 8, { ...clamp, easing: Easing.out(Easing.back(2)) })} /> : null}
         <RotuloPulso frame={frame} at={n(params.pulsaEquador)} x={g.x - g.r - 20} y={g.y - 70} text="Equador" />
         <RotuloPulso frame={frame} at={n(params.pulsaPolo)} x={g.x + 60} y={g.y - g.r - 10} text="Polo" />
       </Layer>
@@ -248,11 +250,27 @@ export const MapaOnda: React.FC<{ cam: Cam; frame: number; params: Record<string
   );
 };
 
+// "POLO" acima do globo, com um traço até o topo (o polo)
+const RotuloPolo: React.FC<{ g: { x: number; y: number; r: number }; s: number }> = ({ g, s }) => {
+  const ink = useInk();
+  const top = g.y - g.r;
+  const ly = top - 170;
+  return (
+    <g>
+      <path d={`M ${g.x} ${ly + 40} L ${g.x} ${top - 6}`} stroke={colors.tinta} strokeWidth={ink * 1.6} strokeLinecap="round" opacity={s > 0.5 ? 1 : s * 2} />
+      <path d={`M ${g.x} ${ly + 40} L ${g.x} ${top - 6}`} stroke={colors.creme} strokeWidth={ink * 0.6} strokeLinecap="round" opacity={s > 0.5 ? 1 : s * 2} />
+      <InfoLabel x={g.x} y={ly} text="POLO" s={s} />
+    </g>
+  );
+};
+
 // Globo parado: metade dia (esquerda, com o Sol) e metade noite (direita), para sempre.
+// `rotulos`: "dia" e "noite"; `rotuloPolo`: "POLO" apontando para o topo do globo.
 export const GLOBO_DIA_NOITE = { x: 540, y: 880, r: 380 };
 export const GloboDiaNoite: React.FC<{ cam: Cam; frame: number; params: Record<string, number | number[]> }> = ({ cam, frame, params }) => {
   const g = GLOBO_DIA_NOITE;
   const rotulos = n(params.rotulos);
+  const polo = n(params.rotuloPolo);
   const s = (at: number) => interpolate(frame, [at, at + 8], [0, 1], { ...clamp, easing: Easing.out(Easing.back(2)) });
   return (
     <>
@@ -271,6 +289,7 @@ export const GloboDiaNoite: React.FC<{ cam: Cam; frame: number; params: Record<s
             <InfoLabel x={g.x + g.r * 0.5} y={g.y - g.r - 70} text="noite" s={s(rotulos + 6)} />
           </>
         ) : null}
+        {frame >= polo ? <RotuloPolo g={g} s={s(polo)} /> : null}
       </Layer>
     </>
   );

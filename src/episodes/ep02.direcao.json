@@ -340,7 +340,8 @@
       "fundo": {
         "seta": "1.700",
         "para": "Essa",
-        "vento": "Ela"
+        "vento": "Ela",
+        "rotuloEquador": "equador,"
       },
       "elementos": [
         {
@@ -500,7 +501,8 @@
         }
       ],
       "fundo": {
-        "rotulos": "dia"
+        "rotulos": "dia",
+        "rotuloPolo": "E-2"
       },
       "elementos": [
         {
