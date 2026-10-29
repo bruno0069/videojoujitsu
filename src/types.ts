@@ -116,6 +116,8 @@ export type Direction = {
     zeroEm: number;
     travaEm?: number;
   }[];
+  // Legenda sem ponto, vírgula e dois-pontos (a narração continua com a pontuação)
+  legendaSemPontuacao?: boolean;
   // Mantém os limites de cena do roteiro mesmo quando uma fala passa um pouco do corte
   limitesFixos?: boolean;
   // Legenda só aparece a partir deste frame (antes disso, o título da capa ocupa a tela)

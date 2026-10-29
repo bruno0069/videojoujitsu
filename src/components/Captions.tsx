@@ -20,10 +20,15 @@ const toPages = (captions: Caption[], size: number): Page[] => {
 };
 
 // Legenda palavra por palavra; a palavra atual fica em amarelo e dá um pulinho.
-export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number }> = ({
+// Sem pontuação na tela: tira ponto, vírgula, dois-pontos e ponto e vírgula do fim de cada
+// palavra (o "1.700" fica como está). O texto da narração não muda.
+const semPontuacao = (t: string) => t.replace(/[.,:;]+$/, "");
+
+export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean }> = ({
   captions,
   showFromFrame,
   hideAfterFrame,
+  stripPunctuation,
 }) => {
   const { fps } = useVideoConfig();
   const pages = useMemo(() => toPages(captions, c.wordsPerPage), [captions]);
@@ -39,7 +44,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
-            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} />
+            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} />
           </Sequence>
         );
       })}
@@ -47,7 +52,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
   );
 };
 
-const CaptionPage: React.FC<{ page: Page; fromMs: number }> = ({ page, fromMs }) => {
+const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean }> = ({ page, fromMs, strip }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const nowMs = fromMs + (frame / fps) * 1000;
@@ -88,7 +93,7 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number }> = ({ page, fromMs })
               key={`${token.startMs}-${i}`}
               style={{ display: "inline-block", margin: "0 0.26em", color: active ? c.activeColor : c.textColor, scale: String(bump) }}
             >
-              {token.text.trim()}
+              {strip ? semPontuacao(token.text.trim()) : token.text.trim()}
             </span>
           );
         })}

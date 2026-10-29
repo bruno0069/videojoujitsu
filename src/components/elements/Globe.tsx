@@ -24,7 +24,9 @@ export const CONTINENTES: LonLat[][] = [
 
 const RAD = Math.PI / 180;
 
-// Projeta um contorno na esfera. Pontos do lado de trás são puxados para a borda.
+// Projeta um contorno na esfera e recorta pelo hemisfério visível: onde o contorno passa
+// para trás da esfera, ele é cortado no limbo e a borda segue o arco do círculo (nunca uma
+// reta atravessando o globo).
 const project = (poly: LonLat[], lon0: number, r: number) => {
   const dense: LonLat[] = [];
   poly.forEach((p, i) => {
@@ -32,16 +34,49 @@ const project = (poly: LonLat[], lon0: number, r: number) => {
     const n = Math.max(1, Math.ceil(Math.hypot(q[0] - p[0], q[1] - p[1]) / 6));
     for (let k = 0; k < n; k++) dense.push([p[0] + ((q[0] - p[0]) * k) / n, p[1] + ((q[1] - p[1]) * k) / n]);
   });
-  let front = 0;
+  // coordenadas na esfera unitária (x para a direita, y para baixo, z para a câmera)
   const pts = dense.map(([lo, la]) => {
     const d = (lo - lon0) * RAD;
     const c = Math.cos(la * RAD);
-    const vis = Math.cos(d) >= 0;
-    if (vis) front++;
-    const x = vis ? r * c * Math.sin(d) : Math.sign(Math.sin(d)) * r * c;
-    return [x, -r * Math.sin(la * RAD)];
+    return { x: c * Math.sin(d), y: -Math.sin(la * RAD), z: c * Math.cos(d) };
   });
-  return front === 0 ? null : `M ${pts.map((p) => `${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" L ")} Z`;
+  const first = pts.findIndex((p) => p.z >= 0);
+  if (first < 0) return null;
+  const ring = [...pts.slice(first), ...pts.slice(0, first)];
+  const out: [number, number][] = [[ring[0].x, ring[0].y]];
+  const onLimb = (p: (typeof ring)[number], q: (typeof ring)[number]) => {
+    const t = p.z / (p.z - q.z);
+    const x = p.x + (q.x - p.x) * t;
+    const y = p.y + (q.y - p.y) * t;
+    const len = Math.hypot(x, y) || 1;
+    return [x / len, y / len] as [number, number];
+  };
+  let exit: number | null = null;
+  for (let i = 0; i < ring.length; i++) {
+    const p = ring[i];
+    const q = ring[(i + 1) % ring.length];
+    const pv = p.z >= 0;
+    const qv = q.z >= 0;
+    if (pv && qv) out.push([q.x, q.y]);
+    else if (pv && !qv) {
+      const e = onLimb(p, q);
+      out.push(e);
+      exit = Math.atan2(e[1], e[0]);
+    } else if (!pv && qv) {
+      const e = onLimb(p, q);
+      const entry = Math.atan2(e[1], e[0]);
+      if (exit !== null) {
+        let delta = entry - exit;
+        while (delta > Math.PI) delta -= 2 * Math.PI;
+        while (delta < -Math.PI) delta += 2 * Math.PI;
+        const steps = Math.ceil(Math.abs(delta) / (4 * RAD));
+        for (let k = 1; k < steps; k++) out.push([Math.cos(exit + (delta * k) / steps), Math.sin(exit + (delta * k) / steps)]);
+      }
+      out.push(e, [q.x, q.y]);
+      exit = null;
+    }
+  }
+  return `M ${out.map((p) => `${(p[0] * r).toFixed(1)} ${(p[1] * r).toFixed(1)}`).join(" L ")} Z`;
 };
 
 export const Globe: React.FC<{

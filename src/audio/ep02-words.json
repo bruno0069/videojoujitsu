@@ -638,91 +638,97 @@
  {
   "text": "Comenta:",
   "startMs": 44050,
-  "endMs": 44553,
+  "endMs": 44810,
   "scene": "fecho"
  },
  {
   "text": "você",
-  "startMs": 45103,
-  "endMs": 45343,
+  "startMs": 45010,
+  "endMs": 45170,
   "scene": "fecho"
  },
  {
-  "text": "ficaria",
-  "startMs": 45423,
-  "endMs": 45743,
+  "text": "corria",
+  "startMs": 45250,
+  "endMs": 45650,
   "scene": "fecho"
  },
  {
-  "text": "de",
-  "startMs": 45783,
-  "endMs": 45823,
+  "text": "pro",
+  "startMs": 45690,
+  "endMs": 45730,
   "scene": "fecho"
  },
  {
-  "text": "pé",
-  "startMs": 45983,
-  "endMs": 46143,
+  "text": "Equador",
+  "startMs": 45810,
+  "endMs": 46370,
   "scene": "fecho"
  },
  {
   "text": "ou",
-  "startMs": 46383,
-  "endMs": 46463,
+  "startMs": 46530,
+  "endMs": 46610,
   "scene": "fecho"
  },
  {
-  "text": "cairia?",
-  "startMs": 46543,
-  "endMs": 46998,
+  "text": "pro",
+  "startMs": 46690,
+  "endMs": 46770,
+  "scene": "fecho"
+ },
+ {
+  "text": "Polo?",
+  "startMs": 46850,
+  "endMs": 47250,
   "scene": "fecho"
  },
  {
   "text": "E",
-  "startMs": 47499,
-  "endMs": 47579,
+  "startMs": 47650,
+  "endMs": 47730,
   "scene": "fecho"
  },
  {
   "text": "se",
-  "startMs": 47619,
-  "endMs": 47659,
+  "startMs": 47770,
+  "endMs": 47810,
   "scene": "fecho"
  },
  {
   "text": "a",
-  "startMs": 47699,
-  "endMs": 47739,
+  "startMs": 47850,
+  "endMs": 47890,
   "scene": "fecho"
  },
  {
   "text": "Terra",
-  "startMs": 47819,
-  "endMs": 47979,
+  "startMs": 47970,
+  "endMs": 48130,
   "scene": "fecho"
  },
  {
   "text": "parasse",
-  "startMs": 48059,
-  "endMs": 48379,
+  "startMs": 48210,
+  "endMs": 48530,
   "scene": "fecho"
  },
  {
   "text": "de",
-  "startMs": 48459,
-  "endMs": 48539,
+  "startMs": 48610,
+  "endMs": 48690,
   "scene": "fecho"
  },
  {
   "text": "girar,",
-  "startMs": 48579,
-  "endMs": 49179,
+  "startMs": 48730,
+  "endMs": 49330,
   "scene": "fecho"
  },
  {
   "text": "agora?",
-  "startMs": 49259,
-  "endMs": 49625,
+  "startMs": 49450,
+  "endMs": 49787,
   "scene": "fecho"
  }
 ]

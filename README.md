@@ -32,7 +32,9 @@ Nenhum código novo é necessário, a não ser que o episódio peça um **cenár
   `espaco_escuro_para_sala_de_aula`, `sala_aula_dia` (janela com árvores, quadro com mapa e
   globo; parâmetros `vento` e `ponteiro`), `diagrama_globo` (globo girando com o equador;
   `seta`, `para`, `vento`), `mapa_onda` (continente com a água avançando; `onda`, `ondaAte`,
-  `pino`) e `globo_metade_dia_metade_noite` (`rotulos`).
+  `pino`) e `globo_metade_dia_metade_noite` (`rotulos`). Todos os globos usam o mesmo
+  componente (`elements/Globe.tsx`): continentes em longitude/latitude, projeção ortográfica e
+  recorte pelo hemisfério visível (onde o contorno passa para trás, a borda segue o limbo).
 - `visual.characters`: `nico`, `dani` ou `professora` (adulta, coque, blusa roxa #8B7FD1; mesmo
   rig com proporção de adulto), com `pose` (`parado`, `andando`, `caindo`, `apontando`,
   `de_costas`, `encolhido`, `olhando_para_cima`, `mao_levantada`, `bracos_cruzados`, `joinha`,
@@ -160,8 +162,9 @@ npx remotion render Ep01 out/ep01.mp4 --props='{"legendas":"src/audio/ep01-words
 - As músicas entram com passa-altas em 120 Hz (`*_hp120.wav`, gerados por `npm run sons`).
 
 Campos de topo da direção ligados a isso: `legendaDe` (a legenda só aparece a partir desse
-frame; antes, o título da capa) e `sunReturnsAfterHook` (selo "agora" de 12 frames no início
-da cena seguinte ao gancho).
+frame; antes, o título da capa), `legendaSemPontuacao` (tira `.`, `,`, `:` e `;` do fim das
+palavras na legenda; o texto da narração, o título e o CTA não mudam) e `sunReturnsAfterHook`
+(selo "agora" de 12 frames no início da cena seguinte ao gancho).
 
 ## Identidade visual
 

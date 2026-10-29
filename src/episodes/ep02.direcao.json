@@ -1,5 +1,6 @@
 {
   "limitesFixos": true,
+  "legendaSemPontuacao": true,
   "legendaDe": 46,
   "sunReturnsAfterHook": false,
   "cenas": {

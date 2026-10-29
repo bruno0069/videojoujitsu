@@ -103,8 +103,8 @@
       "id": "fecho",
       "startFrame": 1320,
       "durationInFrames": 180,
-      "narration": "Comenta: você ficaria de pé ou cairia? E se a Terra parasse de girar, agora?",
-      "onScreenText": "VOCÊ FICARIA DE PÉ OU CAIRIA? COMENTA.",
+      "narration": "Comenta: você corria pro Equador ou pro Polo? E se a Terra parasse de girar, agora?",
+      "onScreenText": "VOCÊ CORRIA PRO EQUADOR OU PRO POLO? COMENTA.",
       "visual": {
         "background": "sala_aula_dia",
         "characters": [{ "id": "nico", "pose": "sentado_mesa", "expression": "curiosidade" }],
