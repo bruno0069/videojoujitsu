@@ -365,6 +365,58 @@
         "ate": 300
       }
     },
+    "contexto_equador_polo": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.04
+          ],
+          "entrada": "corte"
+        },
+        {
+          "de": "Equador-2",
+          "enquadramento": "close",
+          "foco": "equador",
+          "centralizar": true,
+          "zoom": [
+            1.5,
+            1.6
+          ],
+          "entrada": "corte"
+        },
+        {
+          "de": "Polo-2",
+          "enquadramento": "close",
+          "foco": "polo",
+          "centralizar": true,
+          "zoom": [
+            1.3,
+            1.36
+          ],
+          "entrada": "punch"
+        },
+        {
+          "de": "quase-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1.04,
+            1
+          ],
+          "entrada": "corte"
+        }
+      ],
+      "fundo": {
+        "destaque": "Equador",
+        "rotuloEquador": "Equador",
+        "rotuloPolo": "Polo"
+      },
+      "texto": {
+        "mostrar": false
+      }
+    },
     "escalada2": {
       "planos": [
         {

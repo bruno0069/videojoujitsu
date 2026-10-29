@@ -21,7 +21,8 @@ const ramp = (frame: number, a: number, b: number, opts: Parameters<typeof inter
 
 // Globo girando com o equador e a seta da velocidade. `para`: a Terra para (a seta não);
 // `seta`: a seta aparece; `vento`: a seta vira linhas de vento varrendo o globo.
-// `rotuloEquador`: rótulo "EQUADOR" encostado na linha pontilhada.
+// `rotuloEquador`: rótulo "EQUADOR" encostado na linha pontilhada; `destaque`: a linha pulsa;
+// `rotuloPolo`: rótulo "POLO" apontando para o topo do globo.
 // ep05: `brilho` (faixa brilhante no equador), `giro` (graus por frame), `polo` (ponto no Polo Norte), `numeros` (velocidades subindo ao
 // lado do equador e do polo), `pulsaEquador`/`pulsaPolo` (destaque pulsando, com rótulo),
 // `numerosPolo` (o ≈ 0 do polo entra depois), `ventoEquador` (vento saindo da faixa do equador), `seca` (o mar escorre para os polos).
@@ -39,7 +40,9 @@ export const DiagramaGlobo: React.FC<{ cam: Cam; frame: number; params: Record<s
         <Stars frame={frame} />
       </Layer>
       <Layer cam={cam} depth={1}>
-        {Number.isFinite(n(params.brilho)) || Number.isFinite(n(params.pulsaEquador)) ? <BrilhoEquador frame={frame} pulsa={n(params.pulsaEquador)} /> : null}
+        {Number.isFinite(n(params.brilho)) || Number.isFinite(n(params.pulsaEquador)) || Number.isFinite(n(params.destaque)) ? (
+          <BrilhoEquador frame={frame} pulsa={Math.min(n(params.pulsaEquador), n(params.destaque))} />
+        ) : null}
         <Globe x={g.x} y={g.y} r={g.r} lon={lon} equador seca={seca} />
         <SetaEquador frame={frame} seta={n(params.seta)} para={para} vento={n(params.vento)} />
         <VentoGlobo frame={frame} at={n(params.vento)} />
@@ -50,6 +53,7 @@ export const DiagramaGlobo: React.FC<{ cam: Cam; frame: number; params: Record<s
         {frame >= n(params.rotuloEquador) ? <InfoLabel x={g.x + g.r * 0.62} y={g.y - 90} text="EQUADOR" s={ramp(frame, n(params.rotuloEquador), n(params.rotuloEquador) + 8, { ...clamp, easing: Easing.out(Easing.back(2)) })} /> : null}
         <RotuloPulso frame={frame} at={n(params.pulsaEquador)} x={g.x - g.r - 20} y={g.y - 70} text="Equador" />
         <RotuloPulso frame={frame} at={n(params.pulsaPolo)} x={g.x + 60} y={g.y - g.r - 10} text="Polo" />
+        {frame >= n(params.rotuloPolo) ? <RotuloPolo g={g} s={ramp(frame, n(params.rotuloPolo), n(params.rotuloPolo) + 8, { ...clamp, easing: Easing.out(Easing.back(2)) })} /> : null}
       </Layer>
     </>
   );

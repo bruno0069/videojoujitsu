@@ -4,7 +4,7 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 1508,
+  "totalFrames": 1810,
   "scenes": [
     {
       "id": "gancho",
@@ -70,8 +70,23 @@
       "music": "suspensa_sem_batida"
     },
     {
-      "id": "escalada2",
+      "id": "contexto_equador_polo",
       "startFrame": 801,
+      "durationInFrames": 302,
+      "narration": "Pra quem esqueceu a geografia: o Equador é a linha no meio do planeta, onde a Terra gira mais rápido. O Polo é a ponta do eixo, onde ela quase não se move.",
+      "onScreenText": "EQUADOR · POLO",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "O mesmo globo do diagrama gira; a linha pontilhada amarela do Equador pulsa com o rótulo \"EQUADOR\"; depois o topo do globo ganha o rótulo \"POLO\"."
+      },
+      "sfx": [],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 1103,
       "durationInFrames": 312,
       "narration": "O oceano segue a mesma lógica. A água continua se movendo, e avança sobre o continente. O Rio de Janeiro, onde o Nico mora, viraria costa nova.",
       "onScreenText": "RIO DE JANEIRO",
@@ -86,7 +101,7 @@
     },
     {
       "id": "virada",
-      "startFrame": 1113,
+      "startFrame": 1415,
       "durationInFrames": 240,
       "narration": "O dia dura para sempre em metade do planeta. Do outro lado, a noite nunca termina. E o Nico seria jogado longe.",
       "onScreenText": "metade dia, metade noite — para sempre",
@@ -101,7 +116,7 @@
     },
     {
       "id": "fecho",
-      "startFrame": 1353,
+      "startFrame": 1655,
       "durationInFrames": 155,
       "narration": "Se a Terra parasse de girar, você iria pro Equador ou pro Polo? Comenta aí.",
       "onScreenText": "VOCÊ IRIA PRO EQUADOR OU PRO POLO? COMENTA AÍ.",
