@@ -1,0 +1,133 @@
+{
+  "episode": 5,
+  "title": "E se a Terra parasse de girar?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 1800,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 90,
+      "narration": "E se a Terra parasse de girar agora? A resposta certa depende de onde você está.",
+      "onScreenText": "E SE A TERRA PARASSE DE GIRAR?",
+      "visual": {
+        "background": "sala_de_aula",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Um globo giratório na mesa da professora para de repente, com um estalo."
+      },
+      "sfx": ["estalo"],
+      "music": null
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 90,
+      "durationInFrames": 210,
+      "narration": "Aula de geografia. A professora faz a pergunta do exercício. O Nico já levanta a mão antes de ela terminar.",
+      "onScreenText": "Nico, 15 anos · Dani, 15 anos, cética",
+      "visual": {
+        "background": "sala_de_aula",
+        "characters": [
+          { "id": "nico", "pose": "mao_levantada", "expression": "neutro" },
+          { "id": "dani", "pose": "bracos_cruzados", "expression": "cetica" }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico com a mão levantada; Dani olha de lado, de braços cruzados."
+      },
+      "sfx": ["sala_ambiente"],
+      "music": "base_suave"
+    },
+    {
+      "id": "gatilho",
+      "startFrame": 300,
+      "durationInFrames": 240,
+      "narration": "Então a Terra para. De repente. Por um instante, nada parece diferente.",
+      "onScreenText": "nada muda... ainda",
+      "visual": {
+        "background": "sala_de_aula",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "Balão de fala do Nico com 'Ué.'; o globo na mesa está parado."
+      },
+      "sfx": ["grilo"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada1",
+      "startFrame": 540,
+      "durationInFrames": 300,
+      "narration": "No Equador, a superfície da Terra girava a quase mil setecentos quilômetros por hora. Nos polos, essa velocidade já era quase zero.",
+      "onScreenText": "≈ 1.675 km/h no Equador",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Globo girando com uma linha brilhante marcando o Equador e um ponto marcando o Polo; números sobem ao lado de cada um."
+      },
+      "sfx": ["zumbido_leve"],
+      "music": "base_suave"
+    },
+    {
+      "id": "contexto_equador_polo",
+      "startFrame": 840,
+      "durationInFrames": 270,
+      "narration": "Pra quem esqueceu a geografia: o Equador é a linha no meio do planeta, onde a Terra gira mais rápido. O Polo é a ponta do eixo, onde ela quase não se move, só gira em torno de si mesma.",
+      "onScreenText": "Equador: meio do planeta · Polo: ponta do eixo",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "O globo gira devagar; a linha do Equador pulsa em destaque no meio; depois um ponto pulsa em destaque no Polo."
+      },
+      "sfx": [],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 1110,
+      "durationInFrames": 300,
+      "narration": "Só que o ar e a água não param com ela. Pela inércia, o vento chegaria a mil seiscentos e setenta quilômetros por hora — mais forte exatamente no Equador.",
+      "onScreenText": "ventos de até 1.670 km/h",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "medo", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Linhas de vento disparam a partir da faixa do Equador no globo; o inserto do Nico se encolhe."
+      },
+      "sfx": ["vento_forte"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "virada",
+      "startFrame": 1410,
+      "durationInFrames": 240,
+      "narration": "Os oceanos, sem a força que os mantinha no lugar, avançariam para os polos. O Equador ficaria exposto, virando terra nova.",
+      "onScreenText": "os oceanos mudam de lugar",
+      "visual": {
+        "background": "diagrama_globo",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "medo" }],
+        "camera": "plano_medio",
+        "action": "A água do globo escorre da linha do Equador em direção aos dois polos, deixando uma faixa seca no meio."
+      },
+      "sfx": ["agua_correndo"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1650,
+      "durationInFrames": 150,
+      "narration": "A professora repete a pergunta do exercício: Equador ou Polo? O Nico levanta a mão de novo.",
+      "onScreenText": "EQUADOR OU POLO? COMENTA.",
+      "visual": {
+        "background": "sala_de_aula",
+        "characters": [{ "id": "nico", "pose": "mao_levantada", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Corte para o mesmo enquadramento do gancho: Nico de mão levantada, globo parado na mesa."
+      },
+      "sfx": ["estalo"],
+      "music": null
+    }
+  ]
+}

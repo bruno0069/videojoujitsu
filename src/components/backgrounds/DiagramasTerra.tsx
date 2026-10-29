@@ -21,10 +21,15 @@ const ramp = (frame: number, a: number, b: number, opts: Parameters<typeof inter
 
 // Globo girando com o equador e a seta da velocidade. `para`: a Terra para (a seta não);
 // `seta`: a seta aparece; `vento`: a seta vira linhas de vento varrendo o globo.
+// ep05: `brilho` (faixa brilhante no equador), `giro` (graus por frame), `polo` (ponto no Polo Norte), `numeros` (velocidades subindo ao
+// lado do equador e do polo), `pulsaEquador`/`pulsaPolo` (destaque pulsando, com rótulo),
+// `numerosPolo` (o ≈ 0 do polo entra depois), `ventoEquador` (vento saindo da faixa do equador), `seca` (o mar escorre para os polos).
 export const DiagramaGlobo: React.FC<{ cam: Cam; frame: number; params: Record<string, number | number[]> }> = ({ cam, frame, params }) => {
   const para = n(params.para);
-  const lon = -20 - SPIN * Math.min(frame, para);
+  const spin = n(params.giro, SPIN);
+  const lon = -20 - spin * Math.min(frame, para);
   const g = GLOBO_DIAGRAMA;
+  const seca = ramp(frame, n(params.seca), n(params.seca) + 90, { ...clamp, easing: Easing.inOut(Easing.quad) });
   return (
     <>
       <Layer cam={cam} depth={0.1}>
@@ -33,9 +38,16 @@ export const DiagramaGlobo: React.FC<{ cam: Cam; frame: number; params: Record<s
         <Stars frame={frame} />
       </Layer>
       <Layer cam={cam} depth={1}>
-        <Globe x={g.x} y={g.y} r={g.r} lon={lon} equador />
+        {Number.isFinite(n(params.brilho)) || Number.isFinite(n(params.pulsaEquador)) ? <BrilhoEquador frame={frame} pulsa={n(params.pulsaEquador)} /> : null}
+        <Globe x={g.x} y={g.y} r={g.r} lon={lon} equador seca={seca} />
         <SetaEquador frame={frame} seta={n(params.seta)} para={para} vento={n(params.vento)} />
         <VentoGlobo frame={frame} at={n(params.vento)} />
+        <VentoEquador frame={frame} at={n(params.ventoEquador)} />
+        <MaresPolos frame={frame} at={n(params.seca)} />
+        <PontoPolo frame={frame} at={n(params.polo)} pulsa={n(params.pulsaPolo)} />
+        <Numeros frame={frame} at={n(params.numeros)} polo={n(params.numerosPolo, n(params.numeros))} />
+        <RotuloPulso frame={frame} at={n(params.pulsaEquador)} x={g.x - g.r - 20} y={g.y - 70} text="Equador" />
+        <RotuloPulso frame={frame} at={n(params.pulsaPolo)} x={g.x + 60} y={g.y - g.r - 10} text="Polo" />
       </Layer>
     </>
   );
@@ -60,6 +72,102 @@ const SetaEquador: React.FC<{ frame: number; seta: number; para: number; vento: 
       <path d={`M ${x1 - 46} ${g.y - 40} L ${x1 + 14} ${g.y} L ${x1 - 46} ${g.y + 40} Z`} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinejoin="round" />
     </g>
   );
+};
+
+// Pulso de destaque (0..1) que começa em `at` e repete a cada 30 frames
+const pulse = (frame: number, at: number) => (frame < at ? 0 : 0.5 - 0.5 * Math.cos(((frame - at) / 30) * 2 * Math.PI));
+
+// Faixa brilhante do equador (por trás da linha tracejada): sempre acesa, pulsa com `pulsa`
+const BrilhoEquador: React.FC<{ frame: number; pulsa: number }> = ({ frame, pulsa }) => {
+  const ink = useInk();
+  const g = GLOBO_DIAGRAMA;
+  const k = pulse(frame, pulsa);
+  return (
+    <g>
+      <path d={`M ${g.x - g.r - 40} ${g.y} L ${g.x + g.r + 40} ${g.y}`} stroke={colors.amarelo} strokeWidth={ink * (2.4 + 3 * k)} strokeLinecap="round" opacity={0.35 + 0.4 * k} />
+    </g>
+  );
+};
+
+// Ponto no Polo Norte (topo do globo), com pulso opcional
+const PontoPolo: React.FC<{ frame: number; at: number; pulsa: number }> = ({ frame, at, pulsa }) => {
+  const ink = useInk();
+  const g = GLOBO_DIAGRAMA;
+  const start = Math.min(at, pulsa);
+  if (frame < start) return null;
+  const s = ramp(frame, start, start + 8, { ...clamp, easing: Easing.out(Easing.back(2)) });
+  const k = pulse(frame, pulsa);
+  return (
+    <g transform={`translate(${g.x} ${g.y - g.r}) scale(${s})`}>
+      {k > 0 ? <circle r={34 + 30 * k} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.9} opacity={1 - k * 0.6} /> : null}
+      <circle r={22} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} />
+      <circle r={8} fill={colors.creme} />
+    </g>
+  );
+};
+
+// Rótulo que entra junto com o pulso
+const RotuloPulso: React.FC<{ frame: number; at: number; x: number; y: number; text: string }> = ({ frame, at, x, y, text }) => {
+  if (frame < at) return null;
+  const s = ramp(frame, at, at + 8, { ...clamp, easing: Easing.out(Easing.back(2)) });
+  return <InfoLabel x={x} y={y} text={text} s={s} anchor="start" />;
+};
+
+// Velocidades subindo ao lado do equador (até ≈ 1.675 km/h) e do polo (fica em ≈ 0)
+const Numeros: React.FC<{ frame: number; at: number; polo: number }> = ({ frame, at, polo }) => {
+  const g = GLOBO_DIAGRAMA;
+  if (frame < at) return null;
+  const k = ramp(frame, at, at + 45, { ...clamp, easing: Easing.out(Easing.cubic) });
+  const v = Math.round(1675 * k).toLocaleString("pt-BR");
+  const s = ramp(frame, at, at + 8, { ...clamp, easing: Easing.out(Easing.back(2)) });
+  return (
+    <>
+      <InfoLabel x={g.x + 60} y={g.y + 80} text={`${v} km/h`} s={s} />
+      {frame >= polo ? <InfoLabel x={g.x - 170} y={g.y - g.r + 70} text="≈ 0 km/h" s={ramp(frame, polo, polo + 8, { ...clamp, easing: Easing.out(Easing.back(2)) })} /> : null}
+    </>
+  );
+};
+
+// Vento disparando da faixa do equador para os dois lados
+const VentoEquador: React.FC<{ frame: number; at: number }> = ({ frame, at }) => {
+  const ink = useInk();
+  const g = GLOBO_DIAGRAMA;
+  if (frame < at) return null;
+  const k = interpolate(frame, [at, at + 12], [0, 1], clamp);
+  const lines = Array.from({ length: 24 }, (_, i) => {
+    const dir = i % 2 ? 1 : -1;
+    const y = g.y + ((i % 8) - 3.5) * 26;
+    const speed = 18 + (i % 3) * 6;
+    const d = ((frame - at) * speed + i * 97) % 650;
+    const x = g.x + dir * (g.r * 0.2 + d);
+    const l = 170 + (i % 2) * 90;
+    return (
+      <g key={i} opacity={k}>
+        <path d={`M ${x} ${y} l ${dir * l} 0`} fill="none" stroke={colors.tinta} strokeWidth={ink * 2.2} strokeLinecap="round" />
+        <path d={`M ${x} ${y} l ${dir * l} 0`} fill="none" stroke={colors.creme} strokeWidth={ink * 1.0} strokeLinecap="round" />
+      </g>
+    );
+  });
+  return <g>{lines}</g>;
+};
+
+// Setas da água indo do equador para os polos
+const MaresPolos: React.FC<{ frame: number; at: number }> = ({ frame, at }) => {
+  const ink = useInk();
+  const g = GLOBO_DIAGRAMA;
+  if (frame < at) return null;
+  const k = ramp(frame, at, at + 12);
+  const t = ((frame - at) % 45) / 45; // as setas escorrem em ciclo
+  const seta = (dir: number, dx: number) => {
+    const y0 = g.y + dir * (g.r * 0.2 + t * g.r * 0.45);
+    return (
+      <g key={`${dir}${dx}`} opacity={k * (1 - t * 0.6)}>
+        <path d={`M ${g.x + dx} ${y0} l 0 ${dir * 90} m -26 ${-dir * 30} l 26 ${dir * 30} l 26 ${-dir * 30}`} fill="none" stroke={colors.tinta} strokeWidth={ink * 2.4} strokeLinecap="round" strokeLinejoin="round" />
+        <path d={`M ${g.x + dx} ${y0} l 0 ${dir * 90} m -26 ${-dir * 30} l 26 ${dir * 30} l 26 ${-dir * 30}`} fill="none" stroke={colors.ceu} strokeWidth={ink * 1.1} strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    );
+  };
+  return <g>{[-1, 1].flatMap((dir) => [seta(dir, -120), seta(dir, 120)])}</g>;
 };
 
 // Linhas de vento atravessando o globo da esquerda para a direita

@@ -20,7 +20,7 @@ import {
   MAPA,
 } from "./backgrounds/DiagramasTerra";
 import { MAPA_RIO, RIO_DEPTH } from "./backgrounds/MapaRio";
-import { GLOBO_QUADRO, JANELA, SALA_DEPTH } from "./backgrounds/SalaAula";
+import { GLOBO_QUADRO, JANELA, MESA_DEPTH, MESA_PROF, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
 import {
   Flash,
@@ -212,6 +212,8 @@ const centerOf = (
       x: GLOBO_DIAGRAMA.x + GLOBO_DIAGRAMA.r * 0.55,
       y: GLOBO_DIAGRAMA.y,
     };
+  if (focus === "polo") return { x: GLOBO_DIAGRAMA.x, y: GLOBO_DIAGRAMA.y - GLOBO_DIAGRAMA.r + 60 };
+  if (focus === "mesa_globo") return atDepth(MESA_PROF.globo.x, MESA_PROF.globo.y + 40, MESA_DEPTH);
   if (focus === "noite")
     return {
       x: GLOBO_DIA_NOITE.x + GLOBO_DIA_NOITE.r * 0.5,

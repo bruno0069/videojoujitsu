@@ -72,6 +72,14 @@ gen -f lavfi -i "anoisesrc=color=white:amplitude=0.5:sample_rate=$R:duration=0.9
   -f lavfi -i "aevalsrc='0.25*sin(2*PI*(600*t-220*t*t))':s=$R:d=0.9" \
   -filter_complex "[0]highpass=f=1500,lowpass=f=4200[a];[a][1]amix=inputs=2:normalize=0,volume='pow(sin(PI*t/0.9),2)':eval=frame" -ac 1 "$SFX/deslize.wav"
 
+# ep05
+# zumbido_leve: zumbido baixo e contínuo do diagrama (dois senos com batimento lento), loop de 4 s
+gen -f lavfi -i "aevalsrc='0.16*sin(2*PI*110*t)+0.1*sin(2*PI*111.5*t)+0.05*sin(2*PI*220*t)':s=$R:d=4" \
+  -af "highpass=f=90,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/zumbido_leve.wav"
+# agua_correndo: água escorrendo contínua (ruído marrom filtrado com ondulação), loop de 4 s
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=1:sample_rate=$R:duration=4:seed=31" \
+  -af "lowpass=f=1400,highpass=f=120,tremolo=f=1.1:d=0.4,volume=2,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/agua_correndo.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

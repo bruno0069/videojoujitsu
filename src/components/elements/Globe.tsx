@@ -88,7 +88,8 @@ export const Globe: React.FC<{
   noite?: number;
   grade?: boolean; // equador e meridianos
   equador?: boolean; // equador destacado em amarelo
-}> = ({ x, y, r, lon, tilt = 0, noite = 0, grade = true, equador = false }) => {
+  seca?: number; // 0..1: o mar some numa faixa em volta do equador (terra nova)
+}> = ({ x, y, r, lon, tilt = 0, noite = 0, grade = true, equador = false, seca = 0 }) => {
   const ink = useInk();
   const id = useId().replace(/:/g, "");
   const meridians = grade
@@ -105,6 +106,7 @@ export const Globe: React.FC<{
       </clipPath>
       <circle r={r} fill={colors.ceu} />
       <g clipPath={`url(#globo-${id})`}>
+        {seca > 0 ? <rect x={-r} y={-r * 0.42 * seca} width={2 * r} height={r * 0.84 * seca} fill={colors.chao} /> : null}
         {CONTINENTES.map((c, i) => {
           const d = project(c, lon, r);
           return d ? <path key={i} d={d} fill={colors.turquesa} stroke={colors.tinta} strokeWidth={ink * 0.6} strokeLinejoin="round" /> : null;

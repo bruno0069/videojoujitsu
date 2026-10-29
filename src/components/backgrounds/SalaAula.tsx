@@ -11,11 +11,16 @@ import { Cloud, SkyFill } from "../Sky";
 // mapa-múndi e um globo desenhado (à direita); chão na frente. As carteiras vêm com os
 // personagens sentados (Character). Parâmetros: `vento` (frame em que o vento começa lá fora),
 // `ponteiro` (frame em que o ponteiro da professora entra, vindo de fora do quadro).
+// `mesa` (ep05): mesa da professora com um globo giratório, à direita; `mesaGira` = o globo gira a
+// cena toda, `mesaTrava` = frame em que ele trava com um solavanco (dá uma volta inteira antes,
+// então o quadro de antes da trava casa com o globo parado: o loop fecha). Sem os dois, parado.
 
 export const SALA_DEPTH = 0.6; // profundidade da parede (parallax)
 export const JANELA = { x: 60, y: 380, w: 380, h: 500 };
 export const QUADRO = { x: 520, y: 330, w: 760, h: 520 };
 export const GLOBO_QUADRO = { x: 1010, y: 600, r: 150 };
+export const MESA_DEPTH = 0.8;
+export const MESA_PROF = { x: 930, y: 1110, globo: { x: 930, y: 900, r: 100 } };
 
 export const SalaAula: React.FC<{ cam: Cam; frame: number; globalFrame: number; params: Record<string, number | number[]> }> = ({
   cam,
@@ -46,6 +51,11 @@ export const SalaAula: React.FC<{ cam: Cam; frame: number; globalFrame: number; 
       <Layer cam={cam} depth={1}>
         <Piso />
       </Layer>
+      {params.mesa ? (
+        <Layer cam={cam} depth={MESA_DEPTH}>
+          <MesaProfessora frame={frame} gira={params.mesaGira === 1} trava={typeof params.mesaTrava === "number" ? params.mesaTrava : null} />
+        </Layer>
+      ) : null}
     </>
   );
 };
@@ -128,6 +138,35 @@ const Quadro: React.FC<{ lon: number }> = ({ lon }) => {
       <path d={`M ${g.x + g.r + 30} ${g.y + 40} l -40 -6 m 40 6 l -18 36`} fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.1} strokeLinecap="round" />
       {/* calha do giz */}
       <rect x={x - 10} y={y + h + 6} width={w + 20} height={22} rx={8} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} />
+    </g>
+  );
+};
+
+// Mesa da professora com o globo giratório (ep05)
+const MesaProfessora: React.FC<{ frame: number; gira: boolean; trava: number | null }> = ({ frame, gira, trava }) => {
+  const ink = useInk();
+  const { x, y, globo: g } = MESA_PROF;
+  const LON0 = -40;
+  let lon = LON0;
+  let jolt = 0;
+  if (trava !== null) {
+    // uma volta inteira até a trava: no frame 0 e depois da trava o globo está no mesmo ângulo
+    lon = LON0 + (360 * Math.max(0, trava - frame)) / Math.max(1, trava);
+    jolt = frame >= trava ? Math.max(0, 1 - (frame - trava) / 14) : 0;
+  } else if (gira) lon = LON0 - 4 * frame;
+  const shake = Math.sin(jolt * Math.PI * 6) * 12 * jolt;
+  return (
+    <g>
+      <rect x={x - 250} y={y} width={500} height={330} fill={colors.muro} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={x - 250} y={y} width={110} height={330} fill={sombra(colors.muro)} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={x - 285} y={y - 34} width={570} height={42} rx={14} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} />
+      <g transform={`translate(${shake} 0)`}>
+        <ellipse cx={g.x} cy={y - 34} rx={64} ry={16} fill={colors.tinta} />
+        <rect x={g.x - 9} y={g.y + g.r - 4} width={18} height={y - 34 - (g.y + g.r - 4)} fill={colors.tinta} />
+        <path d={`M ${g.x - 30} ${g.y - g.r - 22} A ${g.r + 26} ${g.r + 26} 0 0 1 ${g.x + 26} ${g.y + g.r + 22}`} fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.6} />
+        <path d={`M ${g.x - 30} ${g.y - g.r - 22} A ${g.r + 26} ${g.r + 26} 0 0 1 ${g.x + 26} ${g.y + g.r + 22}`} fill="none" stroke={colors.tinta} strokeWidth={ink * 0.5} />
+        <Globe x={g.x} y={g.y} r={g.r} lon={lon} tilt={20} />
+      </g>
     </g>
   );
 };

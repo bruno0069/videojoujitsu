@@ -22,6 +22,7 @@ export const BACKGROUNDS = [
   "raio_luz",
   "diagrama_lua",
   "sala_aula_dia",
+  "sala_de_aula",
   "diagrama_globo",
   "mapa_onda",
   "mapa_rio",
@@ -80,6 +81,7 @@ export const Background: React.FC<{
     case "diagrama_lua":
       return <DiagramaLua cam={cam} frame={shotFrame} length={shotLength} />;
     case "sala_aula_dia":
+    case "sala_de_aula":
       return <SalaAula cam={cam} frame={frame} globalFrame={globalFrame} params={params} />;
     case "diagrama_globo":
       return <DiagramaGlobo cam={cam} frame={frame} params={params} />;

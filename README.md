@@ -32,7 +32,11 @@ Nenhum código novo é necessário, a não ser que o episódio peça um **cenár
   `espaco_escuro_para_sala_de_aula`, `sala_aula_dia` (janela com árvores, quadro com mapa e
   globo; parâmetros `vento` e `ponteiro`), `diagrama_globo` (globo girando com o equador;
   `seta`, `para`, `vento`), `mapa_onda` (continente com a água avançando; `onda`, `ondaAte`,
-  `pino`) e `globo_metade_dia_metade_noite` (`rotulos`). Todos os globos usam o mesmo
+  `pino`) e `globo_metade_dia_metade_noite` (`rotulos`).
+  ep05: `sala_de_aula` é o mesmo cenário de `sala_aula_dia`, com a mesa da professora e o globo
+  giratório (`mesa`, `mesaGira`, `mesaTrava`: dá uma volta inteira até travar, então o loop fecha);
+  `diagrama_globo` ganhou `brilho`, `giro`, `polo`, `numeros`/`numerosPolo`, `pulsaEquador`/
+  `pulsaPolo`, `ventoEquador` e `seca` (o mar escorre para os polos). Focos: `polo`, `mesa_globo`. Todos os globos usam o mesmo
   componente (`elements/Globe.tsx`): continentes em longitude/latitude, projeção ortográfica e
   recorte pelo hemisfério visível (onde o contorno passa para trás, a borda segue o limbo).
   `mapa_rio`: orla do Rio de Janeiro (desenho original) com o Corcovado e o Cristo e o Pão de

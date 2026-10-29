@@ -23,6 +23,10 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   sopro_vento: { file: "audio/sfx/sopro_vento.wav", loop: false, volume: audio.sfxVolume * 0.8 },
   deslize: { file: "audio/sfx/deslize.wav", loop: false, volume: audio.sfxVolume * 0.6 },
   vento_frio: { file: "audio/sfx/vento_frio.wav", loop: true, volume: audio.sfxVolume * 0.55 },
+  // ep05
+  sala_ambiente: { file: "audio/sfx/sala_de_aula.wav", loop: true, volume: audio.sfxVolume * 0.45 },
+  zumbido_leve: { file: "audio/sfx/zumbido_leve.wav", loop: true, volume: audio.sfxVolume * 0.4 },
+  agua_correndo: { file: "audio/sfx/agua_correndo.wav", loop: true, volume: audio.sfxVolume * 0.45 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
