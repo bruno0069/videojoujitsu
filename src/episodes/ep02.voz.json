@@ -12,116 +12,116 @@
    "cena": "gancho",
    "de": 2.803,
    "ate": 3.878,
-   "em": 2.277,
+   "em": 2.81,
    "tempo": 1.1
   },
   {
    "cena": "apresentacao",
    "de": 0,
    "ate": 1.025,
-   "em": 3.95
+   "em": 4.483
   },
   {
    "cena": "apresentacao",
    "de": 1.421,
    "ate": 4.46,
-   "em": 5.755
+   "em": 6.288
   },
   {
    "cena": "gatilho",
    "de": 0,
    "ate": 1.202,
-   "em": 9.55
+   "em": 10.083
   },
   {
    "cena": "gatilho",
    "de": 1.571,
    "ate": 2.286,
-   "em": 11.552
+   "em": 12.085
   },
   {
    "cena": "gatilho",
    "de": 2.72,
    "ate": 5.136,
-   "em": 13.067
+   "em": 13.6
   },
   {
    "cena": "escalada1",
    "de": 0,
    "ate": 0.712,
-   "em": 16.2
+   "em": 16.733
   },
   {
    "cena": "escalada1",
    "de": 0.939,
    "ate": 4.63,
-   "em": 17.139
+   "em": 17.672
   },
   {
    "cena": "escalada1",
    "de": 5.12,
    "ate": 7.498,
-   "em": 21.58
+   "em": 22.113
   },
   {
    "cena": "escalada1",
    "de": 7.84,
    "ate": 8.851,
-   "em": 24.675
+   "em": 25.208
   },
   {
    "cena": "escalada2",
    "de": 0,
    "ate": 1.883,
-   "em": 26.4
+   "em": 26.933
   },
   {
    "cena": "escalada2",
    "de": 2.309,
    "ate": 3.831,
-   "em": 29.083
+   "em": 29.616
   },
   {
    "cena": "escalada2",
    "de": 4.048,
    "ate": 5.544,
-   "em": 30.822
+   "em": 31.355
   },
   {
    "cena": "escalada2",
    "de": 5.92,
    "ate": 6.859,
-   "em": 33.118
+   "em": 33.651
   },
   {
    "cena": "escalada2",
    "de": 7.028,
    "ate": 8.166,
-   "em": 34.206
+   "em": 34.739
   },
   {
    "cena": "virada",
    "de": 0,
    "ate": 2.716,
-   "em": 36.1
+   "em": 36.633
   },
   {
    "cena": "virada",
    "de": 3.13,
    "ate": 5.412,
-   "em": 39.266
+   "em": 39.799
   },
   {
    "cena": "virada",
    "de": 5.859,
    "ate": 7.797,
-   "em": 41.998
+   "em": 42.531
   },
   {
    "cena": "fecho",
    "de": 0,
    "ate": 5.737,
-   "em": 44.05
+   "em": 44.583
   }
  ]
 }

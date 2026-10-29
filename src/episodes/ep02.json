@@ -4,12 +4,12 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 1500,
+  "totalFrames": 1516,
   "scenes": [
     {
       "id": "gancho",
       "startFrame": 0,
-      "durationInFrames": 90,
+      "durationInFrames": 106,
       "narration": "E se a Terra parasse de girar agora? Ninguém fica de pé.",
       "onScreenText": "E SE A TERRA PARASSE DE GIRAR?",
       "visual": {
@@ -23,7 +23,7 @@
     },
     {
       "id": "apresentacao",
-      "startFrame": 90,
+      "startFrame": 106,
       "durationInFrames": 180,
       "narration": "Este é o Nico. Na aula de geografia, a professora fala de rotação.",
       "onScreenText": "Nico, 15 anos · aula de geografia",
@@ -41,7 +41,7 @@
     },
     {
       "id": "gatilho",
-      "startFrame": 270,
+      "startFrame": 286,
       "durationInFrames": 210,
       "narration": "Então a Terra para. De repente. O chão continua parado, mas o ar não.",
       "onScreenText": "a Terra para",
@@ -56,7 +56,7 @@
     },
     {
       "id": "escalada1",
-      "startFrame": 480,
+      "startFrame": 496,
       "durationInFrames": 300,
       "narration": "No equador, a superfície já girava a quase 1.700 quilômetros por hora. Essa velocidade não desaparece com a Terra. Ela vira vento.",
       "onScreenText": "≈ 1.700 km/h",
@@ -71,7 +71,7 @@
     },
     {
       "id": "escalada2",
-      "startFrame": 780,
+      "startFrame": 796,
       "durationInFrames": 300,
       "narration": "O oceano segue a mesma lógica. A água continua se movendo, e avança sobre o continente. Onde o Nico mora, viraria costa nova.",
       "onScreenText": "o oceano também segue",
@@ -86,7 +86,7 @@
     },
     {
       "id": "virada",
-      "startFrame": 1080,
+      "startFrame": 1096,
       "durationInFrames": 240,
       "narration": "O dia dura para sempre em metade do planeta. Do outro lado, a noite nunca termina. E o Nico seria jogado longe.",
       "onScreenText": "metade dia, metade noite — para sempre",
@@ -101,7 +101,7 @@
     },
     {
       "id": "fecho",
-      "startFrame": 1320,
+      "startFrame": 1336,
       "durationInFrames": 180,
       "narration": "Comenta: você corria pro Equador ou pro Polo? E se a Terra parasse de girar, agora?",
       "onScreenText": "VOCÊ CORRIA PRO EQUADOR OU PRO POLO? COMENTA.",

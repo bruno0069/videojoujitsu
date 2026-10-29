@@ -93,10 +93,17 @@ vf = medir(voz, so_fala)[0]
 ff_ = medir(fundo, so_fala)[0]
 print(f"sob a fala: voz {vf:.1f} LUFS, fundo {ff_:.1f} LUFS -> fundo {vf - ff_:.1f} dB abaixo da voz")
 
-ff("-i", video, "-i", mix, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
-   "-shortest", video + ".tmp.mp4")
+# A codificação AAC pode passar o pico real do limite: se passar, baixa o teto e codifica de novo
+teto = None
+for _ in range(5):
+    af = ["-af", LIM(teto)] if teto else []
+    ff("-i", video, "-i", mix, "-map", "0:v", "-map", "1:a", *af, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+       "-ar", "48000", "-shortest", video + ".tmp.mp4")
+    rmp4 = medir(video + ".tmp.mp4")
+    if rmp4[2] <= PICO_MAX:
+        break
+    teto = (teto or 0.75) * 0.93
 subprocess.run(["mv", video + ".tmp.mp4", video], check=True)
-rmp4 = medir(video)
 print(f"{video}: I={rmp4[0]:.1f} LUFS, LRA={rmp4[1]:.1f} LU, pico real={rmp4[2]:.1f} dBTP")
 
 with open(f"{OUT}/medidas.json", "w", encoding="utf-8") as f:

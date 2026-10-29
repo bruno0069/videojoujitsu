@@ -98,7 +98,9 @@ export const validateEpisode = (ep: EpisodeData): string[] => {
   return errors;
 };
 
-// Marca quebra de página da legenda onde a próxima palavra já é de outra cena.
+// Marca quebra de página da legenda onde a próxima palavra já é de outra cena, e depois de uma
+// pergunta seguida de pausa longa (a resposta não aparece na tela antes de ser dita).
+const PAUSA_PERGUNTA_MS = 600;
 export const markSceneBreaks = (caps: Caption[], ep: EpisodeData): Caption[] => {
   const sceneOf = (ms: number) => {
     const f = (ms / 1000) * ep.fps;
@@ -106,7 +108,8 @@ export const markSceneBreaks = (caps: Caption[], ep: EpisodeData): Caption[] => 
   };
   return caps.map((c, i) => {
     const next = caps[i + 1];
-    return { ...c, pageBreakAfter: c.pageBreakAfter || (next !== undefined && sceneOf(next.startMs) !== sceneOf(c.startMs)) };
+    const pergunta = next !== undefined && c.text.trim().endsWith("?") && next.startMs - c.endMs >= PAUSA_PERGUNTA_MS;
+    return { ...c, pageBreakAfter: c.pageBreakAfter || pergunta || (next !== undefined && sceneOf(next.startMs) !== sceneOf(c.startMs)) };
   });
 };
 

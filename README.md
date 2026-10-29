@@ -165,6 +165,8 @@ Campos de topo da direção ligados a isso: `legendaDe` (a legenda só aparece a
 frame; antes, o título da capa), `legendaSemPontuacao` (tira `.`, `,`, `:` e `;` do fim das
 palavras na legenda; o texto da narração, o título e o CTA não mudam) e `sunReturnsAfterHook`
 (selo "agora" de 12 frames no início da cena seguinte ao gancho).
+A página da legenda quebra no fim de cada cena e depois de uma pergunta seguida de pausa de
+0,6 s ou mais (a resposta não aparece na tela antes de ser dita).
 
 ## Identidade visual
 
