@@ -84,6 +84,12 @@
         "ate": 46,
         "animar": false,
         "topo": 70
+      },
+      "fundo": {
+        "giroQuadro": [
+          6,
+          36
+        ]
       }
     },
     "apresentacao": {

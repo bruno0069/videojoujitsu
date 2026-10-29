@@ -25,6 +25,13 @@ export const SalaAula: React.FC<{ cam: Cam; frame: number; globalFrame: number; 
 }) => {
   const vento = typeof params.vento === "number" ? params.vento : Infinity;
   const ponteiro = typeof params.ponteiro === "number" ? params.ponteiro : Infinity;
+  // `giroQuadro: [de, ate]`: o globo desenhado no quadro gira (0,6 volta) nesse intervalo e para
+  const gq = Array.isArray(params.giroQuadro) ? params.giroQuadro : null;
+  const boardLon =
+    -50 -
+    (gq
+      ? 216 * interpolate(frame, [gq[0], Math.max(gq[0] + 1, gq[1])], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.sin) })
+      : 0);
   const wind = Number.isFinite(vento)
     ? interpolate(frame, [vento, vento + 40], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.quad) })
     : 0;
@@ -33,7 +40,7 @@ export const SalaAula: React.FC<{ cam: Cam; frame: number; globalFrame: number; 
       <Layer cam={cam} depth={SALA_DEPTH}>
         <Parede />
         <Janela frame={frame} globalFrame={globalFrame} wind={wind} />
-        <Quadro />
+        <Quadro lon={boardLon} />
         <Ponteiro frame={frame} at={ponteiro} />
       </Layer>
       <Layer cam={cam} depth={1}>
@@ -101,7 +108,7 @@ const Janela: React.FC<{ frame: number; globalFrame: number; wind: number }> = (
   );
 };
 
-const Quadro: React.FC = () => {
+const Quadro: React.FC<{ lon: number }> = ({ lon }) => {
   const ink = useInk();
   const { x, y, w, h } = QUADRO;
   const g = GLOBO_QUADRO;
@@ -116,7 +123,7 @@ const Quadro: React.FC = () => {
       <rect x={x + 40} y={y + 330} width={360} height={10} rx={5} fill={colors.creme} opacity={0.55} />
       <rect x={x + 40} y={y + 370} width={250} height={10} rx={5} fill={colors.creme} opacity={0.55} />
       {/* globo desenhado com a seta de rotação */}
-      <Globe x={g.x} y={g.y} r={g.r} lon={-50} tilt={20} />
+      <Globe x={g.x} y={g.y} r={g.r} lon={lon} tilt={20} />
       <path d={`M ${g.x - g.r - 30} ${g.y + 40} Q ${g.x} ${g.y + g.r + 70} ${g.x + g.r + 30} ${g.y + 40}`} fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.1} strokeLinecap="round" />
       <path d={`M ${g.x + g.r + 30} ${g.y + 40} l -40 -6 m 40 6 l -18 36`} fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.1} strokeLinecap="round" />
       {/* calha do giz */}
