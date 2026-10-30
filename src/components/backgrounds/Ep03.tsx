@@ -111,11 +111,30 @@ const Mala: React.FC<{ frame: number; params: Record<string, number | number[]> 
   const casaco = item("casaco");
   const celular = item("celular");
   const escova = item("escova");
+  // ep03 longo: mais coisas jogadas na mala e a tampa que não fecha
+  const videogame = pop(frame, n(params.videogame));
+  const biscoito = pop(frame, n(params.biscoito));
+  const fecha = n(params.fecha);
+  const abre = n(params.abre);
+  const fechada = frame >= fecha && frame < abre;
+  const tranco = frame >= abre ? Math.max(0, 1 - (frame - abre) / 12) : 0;
   return (
-    <g>
+    <g transform={`translate(${Math.sin(tranco * 20) * 10 * tranco} 0)`}>
       {/* tampa aberta, encostada atrás */}
-      <path d={`M ${x - w / 2 + 6} ${y - h} L ${x - w / 2 + 30} ${y - h - 190} L ${x + w / 2 - 30} ${y - h - 190} L ${x + w / 2 - 6} ${y - h} Z`} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
-      <path d={`M ${x - w / 2 + 40} ${y - h - 20} L ${x - w / 2 + 52} ${y - h - 170} L ${x + w / 2 - 52} ${y - h - 170} L ${x + w / 2 - 40} ${y - h - 20} Z`} fill={sombra(colors.roxo)} />
+      {fechada ? null : <path d={`M ${x - w / 2 + 6} ${y - h} L ${x - w / 2 + 30} ${y - h - 190} L ${x + w / 2 - 30} ${y - h - 190} L ${x + w / 2 - 6} ${y - h} Z`} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />}
+      {fechada ? null : <path d={`M ${x - w / 2 + 40} ${y - h - 20} L ${x - w / 2 + 52} ${y - h - 170} L ${x + w / 2 - 52} ${y - h - 170} L ${x + w / 2 - 40} ${y - h - 20} Z`} fill={sombra(colors.roxo)} />}
+      {videogame > 0 ? (
+        <g transform={`translate(${x + 40} ${y - h + 4}) rotate(10) scale(${videogame})`}>
+          <path d="M -56 -20 Q -60 -52 -30 -52 L 30 -52 Q 60 -52 56 -20 Q 62 14 40 14 Q 26 14 18 -6 L -18 -6 Q -26 14 -40 14 Q -62 14 -56 -20 Z" fill={colors.noite} stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinejoin="round" />
+          <circle cx={26} cy={-30} r={8} fill={colors.coral} />
+          <path d="M -36 -30 L -18 -30 M -27 -39 L -27 -21" stroke={colors.creme} strokeWidth={ink * 0.5} strokeLinecap="round" />
+        </g>
+      ) : null}
+      {biscoito > 0 ? (
+        <g transform={`translate(${x - 10} ${y - h - 8}) rotate(-8) scale(${biscoito * 0.8})`}>
+          <PacoteBiscoito />
+        </g>
+      ) : null}
       {/* coisas dentro da mala (aparecem por cima da borda) */}
       {casaco > 0 ? (
         <g transform={`translate(${x - 80} ${y - h + 6}) scale(${casaco})`}>
@@ -139,6 +158,24 @@ const Mala: React.FC<{ frame: number; params: Record<string, number | number[]> 
       <rect x={x - w / 2} y={y - h} width={w} height={h} rx={14} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} />
       <rect x={x - w / 2} y={y - h + 30} width={w} height={14} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.5} />
       <rect x={x - 30} y={y - h - 2} width={60} height={14} rx={6} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.5} />
+      {fechada ? <rect x={x - w / 2 - 6} y={y - h - 40} width={w + 12} height={46} rx={14} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} transform={`rotate(${Math.sin(frame / 2) * 2} ${x} ${y - h})`} /> : null}
+    </g>
+  );
+};
+
+// Pacote de biscoitos (piada corrente do ep03 longo: na mala, flutuando na nave, quase vazio
+// no habitat). `quantos`: biscoitos aparecendo na boca do pacote (3 = cheio).
+export const PacoteBiscoito: React.FC<{ quantos?: number }> = ({ quantos = 3 }) => {
+  const ink = useInk();
+  return (
+    <g>
+      {Array.from({ length: quantos }, (_, i) => (
+        <circle key={i} cx={-30 + i * 30} cy={-62} r={22} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink * 0.5} />
+      ))}
+      <path d="M -60 -60 L 60 -60 L 54 60 L -54 60 Z" fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinejoin="round" />
+      <rect x={-44} y={-20} width={88} height={40} rx={10} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.5} />
+      <circle cx={0} cy={0} r={12} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink * 0.4} />
+      <path d="M -60 -60 L 60 -60" stroke={colors.tinta} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 0.5} ${ink * 0.5}`} />
     </g>
   );
 };
@@ -312,6 +349,26 @@ export const CapsulaInterior: React.FC<{ cam: Cam; frame: number; params: Record
 // ---------------------------------------------------------------- marte_superficie
 // Chão alaranjado, céu cor de poeira, morros ao fundo, pedras, um Sol pequeno e a Terra como um
 // pontinho azul no céu. Poeira passando devagar.
+// Módulo de pouso (ep03 longo): `pouso` = desce do céu e pousa à direita; `porta` = abre a porta.
+const Modulo: React.FC<{ frame: number; pouso: number; porta: number }> = ({ frame, pouso, porta }) => {
+  const ink = useInk();
+  if (!Number.isFinite(pouso)) return null;
+  const k = ramp(frame, pouso, pouso + 45, { ...clamp, easing: Easing.out(Easing.cubic) });
+  const y = 1190 - 1500 * (1 - k);
+  const aberta = ramp(frame, porta, porta + 10);
+  return (
+    <g transform={`translate(880 ${y})`}>
+      {k < 1 ? <path d={`M -40 0 L 0 ${120 + Math.sin(frame) * 20} L 40 0 Z`} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.6} /> : null}
+      <path d="M -120 0 L -160 60 M 120 0 L 160 60" stroke={colors.tinta} strokeWidth={ink * 1.4} strokeLinecap="round" />
+      <path d="M -130 0 L -100 -260 Q 0 -330 100 -260 L 130 0 Z" fill={colors.branco} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
+      <rect x={-130} y={-70} width={260} height={30} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+      <circle cx={0} cy={-200} r={36} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+      <rect x={-50} y={-150} width={100} height={150} rx={10} fill={aberta > 0 ? colors.tinta : sombra(colors.branco)} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+      {aberta > 0 ? <rect x={-50} y={-150 + 150 * aberta} width={100} height={150 * (1 - aberta)} rx={10} fill={sombra(colors.branco)} stroke={colors.tinta} strokeWidth={ink * 0.8} /> : null}
+    </g>
+  );
+};
+
 // `alturaTerra`: a partir deste frame, linha tracejada na altura que a cabeça do Nico chegaria
 // pulando na Terra (o pulo em Marte passa bem acima dela).
 export const ALTURA_TERRA_Y = 610;
@@ -345,6 +402,7 @@ export const MarteSuperficie: React.FC<{ cam: Cam; frame: number; params: Record
         {[300, 520, 860].map((x, i) => (
           <ellipse key={x} cx={x} cy={1290 + i * 30} rx={70} ry={12} fill={sombra(colors.muroSombra)} opacity={0.7} />
         ))}
+        <Modulo frame={frame} pouso={n(params.pouso)} porta={n(params.porta)} />
         {frame >= n(params.alturaTerra) && frame < n(params.alturaTerraAte) ? (
           <g opacity={ramp(frame, n(params.alturaTerra), n(params.alturaTerra) + 8)}>
             <path d={`M -100 ${ALTURA_TERRA_Y} L 1180 ${ALTURA_TERRA_Y}`} stroke={colors.tinta} strokeWidth={ink * 1.5} strokeDasharray={`${ink * 1.6} ${ink * 1.2}`} />

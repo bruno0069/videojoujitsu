@@ -5,6 +5,7 @@ export type SceneCharacter = {
   pose: string;
   expression: string;
   scale?: string;
+  traje?: boolean; // traje espacial (ep03 longo)
 };
 
 export type Scene = {
@@ -24,7 +25,7 @@ export type Scene = {
 };
 
 export type EpisodeData = {
-  episode: number;
+  episode: number | string;
   title: string;
   fps: number;
   width: number;
@@ -49,7 +50,7 @@ export type ElementSpec =
   | ({ type: "etiqueta"; texto: string; personagem: string } & Window)
   | ({ type: "inserto"; objeto: "pao_de_queijo" } & Window)
   | ({ type: "prova"; nota: string; notaEm: Cue } & Window)
-  | ({ type: "termometro"; grande?: boolean; texto?: string } & Window)
+  | ({ type: "termometro"; grande?: boolean; texto?: string; frio?: boolean } & Window)
   | ({ type: "relogio"; inicio: string; fim: string } & Window)
   // Globo de mesa (na carteira de `personagem`): gira a `velocidade` graus por frame; `trava`
   // para com solavanco (e `flash`); `volta` volta a girar e chega no último frame do episódio
@@ -67,6 +68,8 @@ export type CharacterKey = {
   acao?: string | null;
   visivel?: boolean;
   olhar?: [number, number];
+  traje?: boolean;
+  capacete?: boolean;
 };
 
 // Um plano dentro da cena. Troca de plano = corte seco.
@@ -83,6 +86,8 @@ export type Plano = {
   deslocar?: { x: number; de?: Cue; ate?: Cue };
   // Pulo: sobe `altura` px e volta ao chão entre `de` e `ate` (ep03, gravidade de Marte)
   pulo?: { altura: number; de: Cue; ate: Cue };
+  // Flutuando (microgravidade): sobe e desce devagar e gira um pouco
+  flutuar?: boolean;
 };
 
 export type SceneDirection = {

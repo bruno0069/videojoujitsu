@@ -20,6 +20,7 @@ import {
   MAPA,
 } from "./backgrounds/DiagramasTerra";
 import { CALENDARIO, ESPACO, MALA, QUARTO_DEPTH } from "./backgrounds/Ep03";
+import { HABITAT, NAVE } from "./backgrounds/Ep03Longo";
 import { MAPA_RIO, RIO_DEPTH } from "./backgrounds/MapaRio";
 import { GLOBO_QUADRO, JANELA, MESA_DEPTH, MESA_PROF, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
@@ -50,6 +51,8 @@ type CharBase = {
   holding?: string | null;
   action?: string | null;
   small?: boolean;
+  traje?: boolean;
+  capacete?: boolean;
 };
 type Placed = CharBase & { x: number; y: number; s: number; screen: boolean };
 type PlanoChar = NonNullable<Plano["personagens"]>[number];
@@ -156,6 +159,8 @@ const characterState = (
     if (k.acao !== undefined) s.action = k.acao;
     if (k.pose) s.pose = k.pose;
     if (k.olhar) s.look = k.olhar;
+    if (k.traje !== undefined) s.traje = k.traje;
+    if (k.capacete !== undefined) s.capacete = k.capacete;
   };
   resolved.filter((k) => k.at <= planoStart).forEach(apply);
   for (const [k, v] of Object.entries(plano)) {
@@ -216,6 +221,12 @@ const centerOf = (
   if (focus === "mala") return atDepth(MALA.x, MALA.y - 80, QUARTO_DEPTH);
   if (focus === "calendario") return atDepth(CALENDARIO.x, CALENDARIO.y, 0.7);
   if (focus === "marte") return ESPACO.marte;
+  if (focus === "escotilha") return atDepth(NAVE.escotilha.x, NAVE.escotilha.y, 0.7);
+  if (focus === "biscoito_nave") return NAVE.biscoito;
+  if (focus === "calendario_nave") return atDepth(NAVE.calendario.x, NAVE.calendario.y, 0.7);
+  if (focus === "painel_hab") return atDepth(HABITAT.painel.x, HABITAT.painel.y, 0.6);
+  if (focus === "biscoito_hab") return atDepth(HABITAT.biscoito.x, HABITAT.biscoito.y, 0.6);
+  if (focus === "janela_hab") return atDepth(HABITAT.janela.x + HABITAT.janela.w / 2, HABITAT.janela.y + HABITAT.janela.h / 2, 0.6);
   if (focus === "terra_espaco") return ESPACO.terra;
   if (focus === "polo") return { x: GLOBO_DIAGRAMA.x, y: GLOBO_DIAGRAMA.y - GLOBO_DIAGRAMA.r + 60 };
   if (focus === "mesa_globo") return atDepth(MESA_PROF.globo.x, MESA_PROF.globo.y + 40, MESA_DEPTH);
@@ -272,6 +283,7 @@ export const SceneRenderer: React.FC<{
     pose: c.pose,
     expression: c.expression,
     small: c.scale === "inserto_pequeno",
+    traje: c.traje,
   }));
   const noChars = ["ceu", "inserto_pao", "raio_luz", "diagrama_lua"].includes(
     plano.enquadramento,
@@ -284,6 +296,7 @@ export const SceneRenderer: React.FC<{
           pose: fromScene?.pose ?? "parado",
           expression: fromScene?.expression ?? "neutro",
           small: fromScene?.small,
+          traje: fromScene?.traje,
         };
       })
     : noChars
@@ -465,6 +478,8 @@ export const SceneRenderer: React.FC<{
           }),
       )
     : 0;
+  const bob = plano.flutuar ? Math.sin(frame / 16) * 26 : 0;
+  const spinF = plano.flutuar ? Math.sin(frame / 23) * 6 : 0;
   // Personagem espelhado no plano (ex.: professora apontando para a esquerda)
   const flipOf = (id: string) =>
     plano.personagens?.find((c) => c.id === id)?.espelhar === true;
@@ -501,11 +516,12 @@ export const SceneRenderer: React.FC<{
       look,
       globe: globeFor(p.id),
       deskOnly: plano.personagens?.find((c) => c.id === p.id)?.soMesa === true,
+      traje: st.traje ? { capacete: st.capacete !== false } : null,
     };
     return (
       <g
         key={p.id}
-        transform={`translate(${p.x + (p.screen ? 0 : slide)} ${p.y + (p.screen ? 0 : jump)}) scale(${flipOf(p.id) ? -p.s : p.s} ${p.s})`}
+        transform={`translate(${p.x + (p.screen ? 0 : slide)} ${p.y + (p.screen ? 0 : jump + bob)}) rotate(${p.screen ? 0 : spinF}) scale(${flipOf(p.id) ? -p.s : p.s} ${p.s})`}
       >
         <InkScale scale={p.s}>
           {p.id === "dani" ? (
@@ -583,6 +599,7 @@ export const SceneRenderer: React.FC<{
             to={cue(el.ate, duration)}
             big={el.grande}
             rotulo={el.texto}
+            frio={el.frio}
           />
         );
       case "globo":

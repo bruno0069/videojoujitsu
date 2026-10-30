@@ -220,7 +220,7 @@ export const TestPaper: React.FC<{ frame: number; from: number; to: number; grad
 };
 
 // Termômetro (tela) que desce até abaixo de zero
-export const Thermometer: React.FC<{ frame: number; from: number; to: number; big?: boolean; rotulo?: string }> = ({ frame, from, to, big, rotulo = "0 °C" }) => {
+export const Thermometer: React.FC<{ frame: number; from: number; to: number; big?: boolean; rotulo?: string; frio?: boolean }> = ({ frame, from, to, big, rotulo = "0 °C", frio }) => {
   const { fps } = useVideoConfig();
   const s = pop(frame, from, to + 10000, fps, true);
   if (s <= 0) return null;
@@ -231,7 +231,8 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
   const tube = big ? 58 : 38;
   const bulb = big ? 92 : 62;
   const zeroLevel = 0.3;
-  const level = interpolate(frame, [from + 12, to], [0.88, 0.1], {
+  // `frio`: já começa abaixo de zero (líquido azul desde o primeiro frame, nunca vermelho)
+  const level = interpolate(frame, [from + 12, to], [frio ? 0.26 : 0.88, 0.1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.inOut(Easing.quad),

@@ -5,7 +5,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 EP=${1:-ep01}
-COMP="E${EP:1}" # ep02 -> Ep02
+# ep02 -> Ep02; ep03_v3 -> Ep03V3
+COMP=$(python3 -c "import re,sys; e=sys.argv[1]; print(re.sub(r'_(\\w)', lambda m: m.group(1).upper(), e[0].upper()+e[1:]))" "$EP")
 EXTRA=()
 if [ -n "${REMOTION_BROWSER:-}" ]; then EXTRA=(--browser-executable="$REMOTION_BROWSER" --chrome-mode=chrome-for-testing); fi
 OUTV="out/$EP.mp4"

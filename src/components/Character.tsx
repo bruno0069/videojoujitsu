@@ -26,7 +26,8 @@ export type PoseName =
   | "sentado_do_lado"
   | "olhando_janela"
   | "sendo_arrastado"
-  | "apontando_quadro";
+  | "apontando_quadro"
+  | "flutuando";
 
 export type ExpressionName =
   | "neutro"
@@ -137,6 +138,11 @@ const POSES: Record<PoseName, PoseDef> = {
     handL: [110, -410], handR: [-110, -428], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 3, headDy: 0, look: [-0.9, 0],
   },
+  // Flutuando em microgravidade (ep03): braços soltos para os lados, pernas dobradas
+  flutuando: {
+    handL: [-300, -560], handR: [290, -620], footL: [-110, -70], footR: [70, -120],
+    crouch: 20, lean: 8, headTilt: -5, headDy: 0, look: [0.4, -0.2],
+  },
 };
 
 type Brow = { dy: number; rot: number };
@@ -194,6 +200,8 @@ export type CharacterProps = {
   globe?: { lon: number; jolt: number } | null;
   // Só a carteira (e o globo), sem o personagem: insertos do globo de mesa
   deskOnly?: boolean;
+  // Traje espacial (ep03 longo): traje claro com detalhe coral; `capacete` = viseira transparente
+  traje?: { capacete: boolean } | null;
 };
 
 // Quanto a cabeça desce na pose (agachar + inclinar), em unidades do rig. Usado pelo close
@@ -280,10 +288,14 @@ const PaoDeQueijo: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r })
   );
 };
 
-export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly }) => {
+export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly, traje }) => {
   const frame = useCurrentFrame();
   // Ação "casaco" (ep03): veste o casaco verde que estava na mala no lugar do moletom
-  const style = action === "casaco" ? { ...baseStyle, hoodie: colors.folhaSombra, pocket: false } : baseStyle;
+  const style = traje
+    ? { ...baseStyle, hoodie: colors.branco, calca: colors.creme, pocket: false }
+    : action === "casaco"
+      ? { ...baseStyle, hoodie: colors.folhaSombra, pocket: false }
+      : baseStyle;
   const g = useGlobalFrame();
   const loopFrames = useLoopFrames();
   const ink = useInk();
@@ -387,7 +399,7 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
       <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
       {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={skin} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
-      {holding === "celular" || holding === "celular_enviando" ? <Celular x={handR[0]} y={handR[1] - 60} frame={frame} enviando={holding === "celular_enviando"} /> : null}
+      {holding === "celular" || holding === "celular_enviando" || holding === "celular_notificacao" ? <Celular x={handR[0]} y={handR[1] - 60} frame={frame} enviando={holding === "celular_enviando"} notificacao={holding === "celular_notificacao"} /> : null}
     </>
   );
 
@@ -437,6 +449,12 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
             strokeWidth={ink}
             strokeLinejoin="round"
           />
+        ) : traje ? (
+          // detalhe coral do traje (faixa no peito e emblema)
+          <>
+            <path d="M -150 -470 L 150 -470 L 150 -432 L -150 -432 Z" fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.7} />
+            <circle cx={-70} cy={-370} r={26} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+          </>
         ) : style.pocket ? (
           <path d="M -92 -306 L -72 -410 L 72 -410 L 92 -306 Z" fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
         ) : null}
@@ -523,6 +541,16 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
         ) : null}
       </g>
 
+      {/* Capacete do traje: viseira transparente, o rosto continua à mostra */}
+      {traje?.capacete ? (
+        <g transform={`translate(0 ${headY}) rotate(${p.headTilt})`}>
+          <circle r={HEAD_R + 92} fill={colors.ceu} opacity={0.16} />
+          <path d={`M ${-(HEAD_R + 40)} ${-120} A ${HEAD_R + 40} ${HEAD_R + 40} 0 0 1 ${-60} ${-(HEAD_R + 36)}`} fill="none" stroke={colors.creme} strokeWidth={ink * 1.4} strokeLinecap="round" opacity={0.85} />
+          <circle r={HEAD_R + 92} fill="none" stroke={colors.tinta} strokeWidth={ink * 1.2} />
+          <circle r={HEAD_R + 92} fill="none" stroke={colors.branco} strokeWidth={ink * 0.5} opacity={0.6} />
+        </g>
+      ) : null}
+      {traje ? <ellipse cx={0} cy={-575 + bodyDy + breathDy} rx={150} ry={50} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} /> : null}
       {p.sit ? <Desk globe={globe ?? null} /> : null}
       {arms}
       {cold ? <Breath frame={frame} x={40 + p.headTilt * 2} y={headY + 128} /> : null}
@@ -531,12 +559,19 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
 };
 
 // Celular na mão (ep03). Com `enviando`, um balãozinho de mensagem com o indicador girando
-const Celular: React.FC<{ x: number; y: number; frame: number; enviando: boolean }> = ({ x, y, frame, enviando }) => {
+const Celular: React.FC<{ x: number; y: number; frame: number; enviando: boolean; notificacao?: boolean }> = ({ x, y, frame, enviando, notificacao }) => {
   const ink = useInk();
   return (
     <g transform={`translate(${x} ${y})`}>
       <rect x={-44} y={-80} width={88} height={160} rx={16} fill={colors.tinta} />
       <rect x={-33} y={-64} width={66} height={120} rx={8} fill={colors.ceu} />
+      {notificacao ? (
+        <g transform={`translate(40 -84) scale(${1 + 0.12 * Math.max(0, Math.sin(frame / 3))})`}>
+          <circle r={30} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+          <rect x={-5} y={-18} width={10} height={22} rx={4} fill={colors.creme} />
+          <circle cy={13} r={5} fill={colors.creme} />
+        </g>
+      ) : null}
       {enviando ? (
         <g transform="translate(120 -170)">
           <path d="M -90 -60 L 90 -60 Q 110 -60 110 -40 L 110 30 Q 110 50 90 50 L -30 50 L -70 90 L -60 50 L -90 50 Q -110 50 -110 30 L -110 -40 Q -110 -60 -90 -60 Z" fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />

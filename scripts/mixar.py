@@ -10,6 +10,7 @@ Também mede o fundo e a voz só nos trechos com fala (distância voz/fundo sob 
 Os stems processados e as medidas ficam em out/stems/<episódio>/.
 
 Uso: python3 scripts/mixar.py out/ep01.mp4 out/stems/voz.wav out/stems/fundo.wav
+No fim, normalização em duas passadas de loudnorm (-14 LUFS) antes de juntar ao vídeo.
 """
 import json
 import re
@@ -92,6 +93,24 @@ print(f"mix: ajuste {ganho:+.2f} dB -> I={rm[0]:.1f} LUFS, LRA={rm[1]:.1f} LU, p
 vf = medir(voz, so_fala)[0]
 ff_ = medir(fundo, so_fala)[0]
 print(f"sob a fala: voz {vf:.1f} LUFS, fundo {ff_:.1f} LUFS -> fundo {vf - ff_:.1f} dB abaixo da voz")
+
+# Normalização final em duas passadas de loudnorm (mede, depois aplica com os valores medidos,
+# em modo linear): o arquivo final fica em -14 LUFS integrados em qualquer episódio
+def loudnorm2(src, dst, alvo=MIX_ALVO, tp=PICO_MIX):
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", src, "-af", f"loudnorm=I={alvo}:TP={tp}:LRA=11:print_format=json",
+                        "-f", "null", "-"], capture_output=True, text=True).stderr
+    m = json.loads(r[r.rindex("{"):r.rindex("}") + 1])
+    ff("-i", src, "-af",
+       f"loudnorm=I={alvo}:TP={tp}:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+       f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true",
+       "-ar", "48000", "-c:a", "pcm_s24le", dst)
+    return float(m["input_i"])
+
+
+antes = loudnorm2(mix, f"{OUT}/mix-norm.wav")
+subprocess.run(["mv", f"{OUT}/mix-norm.wav", mix], check=True)
+rm = medir(mix)
+print(f"loudnorm (2 passadas): {antes:.1f} -> I={rm[0]:.1f} LUFS, pico real={rm[2]:.1f} dBTP")
 
 # A codificação AAC pode passar o pico real do limite: se passar, baixa o teto e codifica de novo
 teto = None

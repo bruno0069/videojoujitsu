@@ -1,0 +1,963 @@
+{
+  "legendaDe": 60,
+  "legendaSemPontuacao": true,
+  "cenas": {
+    "a_noticia": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
+            }
+          ]
+        },
+        {
+          "de": "Para-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 400
+            }
+          ]
+        },
+        {
+          "de": "Ele-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1.04,
+            1.12
+          ],
+          "entrada": "punch",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
+            }
+          ]
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "segurando": "celular_notificacao",
+            "olhar": [
+              -0.7,
+              0.1
+            ]
+          },
+          {
+            "de": 20,
+            "olhar": [
+              0.6,
+              0.5
+            ],
+            "expressao": "surpresa"
+          },
+          {
+            "de": "Para",
+            "segurando": "celular"
+          },
+          {
+            "de": "aventura",
+            "pose": "mao_levantada",
+            "expressao": "curiosidade",
+            "olhar": [
+              0.4,
+              -0.6
+            ]
+          },
+          {
+            "de": "Ele",
+            "pose": "parado",
+            "expressao": "curiosidade",
+            "olhar": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sfx": {
+        "notificacao": 12
+      },
+      "texto": {
+        "mostrar": true,
+        "de": 0,
+        "ate": 60,
+        "animar": false,
+        "topo": 70
+      }
+    },
+    "fazendo_malas": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 330
+            }
+          ]
+        },
+        {
+          "de": "fim-2",
+          "enquadramento": "medio",
+          "foco": "mala",
+          "centralizar": true,
+          "zoom": [
+            2.1,
+            2.2
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": "Só-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1.02,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 330
+            }
+          ]
+        },
+        {
+          "de": "dezenas-2",
+          "enquadramento": "medio",
+          "foco": "mala",
+          "centralizar": true,
+          "zoom": [
+            2.0,
+            2.1
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": "E-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "punch",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
+            }
+          ]
+        }
+      ],
+      "texto": {
+        "mostrar": false
+      },
+      "elementos": [
+        {
+          "type": "etiqueta",
+          "texto": "Nico, 15 anos",
+          "personagem": "nico",
+          "de": 6,
+          "ate": "fim-2"
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "olhar": [
+              0.8,
+              0.2
+            ]
+          },
+          {
+            "de": "Só",
+            "expressao": "curiosidade"
+          },
+          {
+            "de": "E",
+            "expressao": "susto",
+            "olhar": [
+              0.6,
+              0.3
+            ]
+          }
+        ]
+      },
+      "fundo": {
+        "casaco": "arrumar",
+        "videogame": "fim",
+        "escova": "semana",
+        "biscoito": "praia.",
+        "fecha": "dezenas",
+        "abre": "Terra.$-8"
+      },
+      "sfx": {
+        "ziper": "dezenas",
+        "mala_abrindo": "Terra.$-8"
+      }
+    },
+    "viagem_interminavel": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 330
+            }
+          ],
+          "flutuar": true
+        },
+        {
+          "de": "sete-2",
+          "enquadramento": "medio",
+          "foco": "calendario_nave",
+          "centralizar": true,
+          "zoom": [
+            1.6,
+            1.7
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": "Meses-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 400
+            }
+          ],
+          "flutuar": true
+        },
+        {
+          "de": "Sem-2",
+          "enquadramento": "medio",
+          "foco": "escotilha",
+          "centralizar": true,
+          "zoom": [
+            1.4,
+            1.5
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": "microgravidade-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1.04,
+            1.1
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 380
+            }
+          ],
+          "flutuar": true
+        },
+        {
+          "de": "missão-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "punch",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
+            }
+          ],
+          "flutuar": true
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "olhar": [
+              0.7,
+              -0.2
+            ]
+          },
+          {
+            "de": "microgravidade",
+            "olhar": [
+              0.9,
+              0.1
+            ],
+            "expressao": "curiosidade"
+          },
+          {
+            "de": "biscoito",
+            "expressao": "surpresa"
+          },
+          {
+            "de": "missão",
+            "expressao": "confusao",
+            "olhar": [
+              0.6,
+              -0.3
+            ]
+          }
+        ]
+      },
+      "fundo": {
+        "terra": 0,
+        "calendario": "sete",
+        "calendarioAte": "Sem",
+        "migalhas": "biscoito"
+      },
+      "sfx": {
+        "zumbido_leve": 0,
+        "foguete_distante": {
+          "de": 0,
+          "ate": "Meses"
+        }
+      },
+      "texto": {
+        "mostrar": true,
+        "de": "sete",
+        "ate": "Sem-2"
+      }
+    },
+    "finalmente_marte": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.04
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 640
+            }
+          ]
+        },
+        {
+          "de": "O-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 420
+            }
+          ]
+        },
+        {
+          "de": "Nico-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.04
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 480
+            }
+          ],
+          "pulo": {
+            "altura": 520,
+            "de": "conquistar",
+            "ate": "lar.$"
+          }
+        },
+        {
+          "de": "lar.$",
+          "enquadramento": "aberto",
+          "zoom": [
+            1.04,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 480
+            }
+          ],
+          "pulo": {
+            "altura": 260,
+            "de": "lar.$+2",
+            "ate": "Bom-4"
+          }
+        },
+        {
+          "de": "quase-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "punch",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 420
+            }
+          ]
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "visivel": false
+          },
+          {
+            "de": "finalmente+12",
+            "visivel": true,
+            "olhar": [
+              -0.5,
+              -0.3
+            ]
+          },
+          {
+            "de": "conquistar",
+            "pose": "caindo",
+            "expressao": "curiosidade"
+          },
+          {
+            "de": "lar.$",
+            "pose": "caindo"
+          },
+          {
+            "de": "Bom-4",
+            "pose": "encolhido",
+            "expressao": "vergonha"
+          }
+        ]
+      },
+      "fundo": {
+        "pouso": 0,
+        "porta": "finalmente"
+      },
+      "tremidas": [
+        {
+          "de": "Bom-4",
+          "frames": 6,
+          "forca": 12
+        }
+      ],
+      "sfx": {
+        "porta_metalica": "finalmente",
+        "pulo": "conquistar",
+        "queda_leve": "Bom-4"
+      },
+      "texto": {
+        "mostrar": true,
+        "de": "chega",
+        "ate": "O-2"
+      }
+    },
+    "planeta_nao_e_legal": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 380
+            }
+          ]
+        },
+        {
+          "de": "atmosfera-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
+            }
+          ]
+        },
+        {
+          "de": "Sem-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1.04,
+            1.1
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 380
+            }
+          ]
+        },
+        {
+          "de": "acabaria-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.03
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 420
+            }
+          ],
+          "deslocar": {
+            "x": 900,
+            "de": "acabaria",
+            "ate": 450
+          }
+        }
+      ],
+      "elementos": [
+        {
+          "type": "termometro",
+          "de": "temperatura",
+          "ate": "negativos.$",
+          "texto": "",
+          "frio": true
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "olhar": [
+              -0.4,
+              -0.3
+            ]
+          },
+          {
+            "de": "Sem",
+            "olhar": [
+              0,
+              0.9
+            ],
+            "expressao": "susto"
+          },
+          {
+            "de": "acabaria",
+            "pose": "andando",
+            "expressao": "medo",
+            "olhar": [
+              0.9,
+              0
+            ]
+          }
+        ]
+      },
+      "sfx": {
+        "vento_frio": 0
+      },
+      "texto": {
+        "mostrar": true,
+        "de": "temperatura"
+      }
+    },
+    "casa_nova": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 560
+            }
+          ]
+        },
+        {
+          "de": "precisaria-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 560
+            }
+          ]
+        },
+        {
+          "de": "Em-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.04
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 560
+            }
+          ]
+        },
+        {
+          "de": "dependem-2",
+          "enquadramento": "medio",
+          "foco": "painel_hab",
+          "centralizar": true,
+          "zoom": [
+            1.4,
+            1.5
+          ],
+          "entrada": "corte",
+          "personagens": []
+        },
+        {
+          "de": "Talvez-8",
+          "enquadramento": "medio",
+          "foco": "biscoito_hab",
+          "centralizar": true,
+          "zoom": [
+            1.8,
+            1.9
+          ],
+          "entrada": "punch",
+          "personagens": []
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "olhar": [
+              -0.6,
+              -0.2
+            ]
+          },
+          {
+            "de": "dormir.$",
+            "capacete": false,
+            "olhar": [
+              0.4,
+              0
+            ]
+          },
+          {
+            "de": "Em",
+            "olhar": [
+              -0.8,
+              -0.2
+            ],
+            "expressao": "preocupacao"
+          }
+        ]
+      },
+      "fundo": {
+        "biscoito": "Talvez-8"
+      },
+      "sfx": {
+        "porta_pressurizada": 0,
+        "maquinario": {
+          "de": 0,
+          "ate": 450
+        }
+      },
+      "texto": {
+        "mostrar": true,
+        "de": "oxigênio",
+        "ate": "Em-2"
+      }
+    },
+    "saudade_da_terra": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "aberto",
+          "zoom": [
+            1,
+            1.04
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 560
+            }
+          ]
+        },
+        {
+          "de": "Dependendo-2",
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 560
+            }
+          ]
+        },
+        {
+          "de": "mensagem-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.06
+          ],
+          "entrada": "punch",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 400
+            }
+          ]
+        },
+        {
+          "de": "resposta-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1.04,
+            1.1
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 560
+            }
+          ]
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "traje": true,
+            "capacete": false,
+            "olhar": [
+              -0.9,
+              -0.3
+            ]
+          },
+          {
+            "de": "Dependendo",
+            "segurando": "celular",
+            "olhar": [
+              0.4,
+              0.3
+            ]
+          },
+          {
+            "de": "mensagem",
+            "segurando": "celular_enviando"
+          },
+          {
+            "de": "resposta",
+            "segurando": null,
+            "olhar": [
+              -0.9,
+              -0.3
+            ],
+            "expressao": "preocupacao"
+          }
+        ]
+      },
+      "sfx": {
+        "envio_mensagem": "mensagem"
+      },
+      "texto": {
+        "mostrar": true,
+        "de": "vinte"
+      }
+    },
+    "descoberta_final": {
+      "planos": [
+        {
+          "de": 0,
+          "enquadramento": "medio",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.05
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 420
+            }
+          ]
+        },
+        {
+          "de": "A-2",
+          "enquadramento": "close",
+          "foco": "nico",
+          "zoom": [
+            1,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 360
+            }
+          ]
+        },
+        {
+          "de": "E#2-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1.06,
+            1
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 400
+            }
+          ]
+        }
+      ],
+      "personagens": {
+        "nico": [
+          {
+            "de": 0,
+            "traje": true,
+            "capacete": false,
+            "expressao": "neutro",
+            "olhar": [
+              0.8,
+              -0.2
+            ]
+          },
+          {
+            "de": "voltar",
+            "expressao": "preocupacao"
+          },
+          {
+            "de": "condições",
+            "expressao": "medo",
+            "olhar": [
+              0.9,
+              -0.2
+            ]
+          },
+          {
+            "de": "retorno.$",
+            "olhar": [
+              -0.9,
+              -0.4
+            ]
+          },
+          {
+            "de": "E#2",
+            "expressao": "susto",
+            "olhar": [
+              -0.9,
+              -0.4
+            ]
+          }
+        ]
+      },
+      "fundo": {
+        "retorno": "voltar"
+      },
+      "sfx": {
+        "painel_alerta": "voltar"
+      },
+      "texto": {
+        "de": "Terra$+15",
+        "ate": 420,
+        "estilo": "sticker",
+        "mostrar": true
+      }
+    }
+  }
+}

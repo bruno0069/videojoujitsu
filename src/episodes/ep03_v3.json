@@ -1,0 +1,130 @@
+{
+  "episode": "3-v3",
+  "title": "E se o Nico tivesse que abandonar a Terra amanhã?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 3300,
+  "scenes": [
+    {
+      "id": "a_noticia",
+      "startFrame": 0,
+      "durationInFrames": 300,
+      "narration": "E se você descobrisse que precisa abandonar a Terra amanhã… e passar a morar em Marte? Para o Nico, isso parecia a aventura da vida. Ele só não fazia ideia do que estava prestes a enfrentar.",
+      "onScreenText": "E SE VOCÊ TIVESSE QUE ABANDONAR A TERRA AMANHÃ?",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "close",
+        "action": "O Nico está distraído no quarto. O celular apita com uma notificação. Ele lê a tela e a expressão passa de surpresa para empolgação absurda."
+      },
+      "sfx": ["notificacao"],
+      "music": "base_suave"
+    },
+    {
+      "id": "fazendo_malas",
+      "startFrame": 300,
+      "durationInFrames": 390,
+      "narration": "Ele começou a arrumar as malas como se estivesse indo passar o fim de semana na praia. Só que Marte fica a dezenas de milhões de quilômetros da Terra. E não existe aplicativo de transporte para voltar rapidinho.",
+      "onScreenText": "Nico, 15 anos",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [{ "id": "nico", "pose": "apontando", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "O Nico joga roupas, videogame, escova de dentes e um pacote de biscoitos dentro da mala. Tenta fechar, senta em cima e quase cai quando ela abre de novo."
+      },
+      "sfx": ["ziper", "mala_abrindo"],
+      "music": "base_suave"
+    },
+    {
+      "id": "viagem_interminavel",
+      "startFrame": 690,
+      "durationInFrames": 480,
+      "narration": "Dependendo da trajetória, a viagem pode levar de sete a dez meses. Meses dentro de uma nave! Sem poder simplesmente abrir a janela para tomar um ar. E, em microgravidade, até comer um biscoito pode virar uma missão espacial.",
+      "onScreenText": "7 a 10 meses",
+      "visual": {
+        "background": "nave_interior",
+        "characters": [{ "id": "nico", "pose": "flutuando", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "A nave deixa a Terra e o planeta encolhe pela escotilha. Um calendário na parede avança. O Nico flutua, tenta morder um biscoito e as migalhas escapam flutuando em todas as direções."
+      },
+      "sfx": ["zumbido_leve", "foguete_distante"],
+      "music": "base_suave"
+    },
+    {
+      "id": "finalmente_marte",
+      "startFrame": 1170,
+      "durationInFrames": 390,
+      "narration": "Depois de uma eternidade, ele finalmente chega! O solo vermelho, as montanhas, a paisagem alienígena… Nico estava pronto para conquistar seu novo lar. Bom… quase pronto.",
+      "onScreenText": "chegada",
+      "visual": {
+        "background": "marte_superficie",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "surpresa", "traje": true }],
+        "camera": "plano_aberto",
+        "action": "A nave pousa. O Nico desce de traje espacial e contempla a paisagem. Abre os braços e dá um salto exagerado. Tenta um segundo salto, perde o equilíbrio e cai sentado, bem na pausa antes de 'Bom… quase pronto'."
+      },
+      "sfx": ["porta_metalica", "pulo", "queda_leve"],
+      "music": "base_suave"
+    },
+    {
+      "id": "planeta_nao_e_legal",
+      "startFrame": 1560,
+      "durationInFrames": 450,
+      "narration": "Aí vem a realidade: Marte tem temperatura média de aproximadamente cinquenta e três graus negativos e uma atmosfera composta principalmente por dióxido de carbono. Sem traje espacial e abrigo adequado, essa aventura acabaria muito rápido.",
+      "onScreenText": "−53 °C · 95% CO₂",
+      "visual": {
+        "background": "marte_superficie",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "medo", "traje": true }],
+        "camera": "plano_medio",
+        "action": "O Nico observa a paisagem. Um indicador de temperatura aparece e desce até −53 °C. O termômetro tem líquido AZUL e nível BAIXO, nunca vermelho. Ele olha para o próprio traje e sai correndo em direção à base."
+      },
+      "sfx": ["vento_frio"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "casa_nova",
+      "startFrame": 2010,
+      "durationInFrames": 450,
+      "narration": "E não basta encontrar um lugar para dormir. Ele precisaria de oxigênio, água, comida e sistemas que mantivessem tudo funcionando. Em Marte, até as coisas mais básicas da vida dependem de tecnologia. Talvez trazer mais lanche não fosse uma ideia tão ruim.",
+      "onScreenText": "oxigênio · água · comida",
+      "visual": {
+        "background": "habitat_interior",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro", "traje": true }],
+        "camera": "plano_medio",
+        "action": "O Nico entra no habitat e tira o capacete. O lugar é apertado, cheio de equipamentos e painéis, com a janela mostrando o deserto. Ele tenta se acomodar e olha em volta. Na pausa antes da última frase, olha para o pacote de biscoitos quase vazio."
+      },
+      "sfx": ["porta_pressurizada", "maquinario"],
+      "music": "base_suave"
+    },
+    {
+      "id": "saudade_da_terra",
+      "startFrame": 2460,
+      "durationInFrames": 450,
+      "narration": "E falar com a família também seria diferente. Dependendo da posição dos planetas, uma mensagem pode levar mais de vinte minutos para chegar à Terra. E a resposta ainda precisa fazer todo o caminho de volta.",
+      "onScreenText": "+20 min só na ida",
+      "visual": {
+        "background": "habitat_interior",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "O Nico olha a Terra pela janela e pega o celular. Na tela, uma mensagem enviada para casa com indicador girando sem resposta. Ele se senta diante da janela, olhando o pequeno planeta azul."
+      },
+      "sfx": ["envio_mensagem"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "descoberta_final",
+      "startFrame": 2910,
+      "durationInFrames": 390,
+      "narration": "E tem um último detalhe: voltar para casa não seria tão simples. A missão precisaria de condições adequadas para a viagem de retorno. E aí, encararia essa aventura ou ficaria na Terra?",
+      "onScreenText": "VOCÊ IRIA PARA MARTE?",
+      "visual": {
+        "background": "habitat_interior",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "medo" }],
+        "camera": "close",
+        "action": "O Nico abre o documento da missão no painel. Surge a informação 'RETORNO: NÃO PROGRAMADO'. Ele congela, olha para a tela e depois para a Terra na janela. A expressão vai de tranquila a desesperada devagar. Depois da última frase, meio segundo de silêncio seco, e então o card 'VOCÊ IRIA PARA MARTE?' entra sobre a imagem do Nico pequeno diante da janela, que continua viva até o fim. NÃO corte para preto em nenhum momento."
+      },
+      "sfx": ["painel_alerta"],
+      "music": null
+    }
+  ]
+}

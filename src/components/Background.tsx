@@ -7,6 +7,7 @@ import { DiagramaOrbita } from "./backgrounds/DiagramaOrbita";
 import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
 import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { CapsulaInterior, DiagramaEspaco, MarteSuperficie, QuartoDia } from "./backgrounds/Ep03";
+import { HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
 import { Patio } from "./backgrounds/Patio";
@@ -31,6 +32,8 @@ export const BACKGROUNDS = [
   "diagrama_espaco",
   "capsula_interior",
   "marte_superficie",
+  "nave_interior",
+  "habitat_interior",
   "globo_metade_dia_metade_noite",
 ];
 
@@ -100,6 +103,10 @@ export const Background: React.FC<{
       return <CapsulaInterior cam={cam} frame={frame} params={params} />;
     case "marte_superficie":
       return <MarteSuperficie cam={cam} frame={frame} params={params} />;
+    case "nave_interior":
+      return <NaveInterior cam={cam} frame={frame} params={params} />;
+    case "habitat_interior":
+      return <HabitatInterior cam={cam} frame={frame} params={params} />;
     case "mapa_rio":
       return <MapaRio cam={cam} frame={frame} params={params} />;
     case "globo_metade_dia_metade_noite":

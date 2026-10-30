@@ -90,6 +90,17 @@ gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.35:sample_rate=$R:duration=8:s
 # pulo: impulso de pulo (0,5 s), "boing" grave subindo
 gen -f lavfi -i "aevalsrc='0.4*sin(2*PI*(140*t+500*t*t))*exp(-t*5)':s=$R:d=0.5" -ac 1 "$SFX/pulo.wav"
 
+# ep03 longo
+gen -f lavfi -i "aevalsrc='0.35*sin(2*PI*1320*t)*exp(-t*14)+0.3*sin(2*PI*1760*(t-0.12))*exp(-(t-0.12)*14)*gt(t,0.12)':s=$R:d=0.5" -ac 1 "$SFX/notificacao.wav"
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=0.8:sample_rate=$R:duration=0.5:seed=51" -af "lowpass=f=900,volume='exp(-t*9)':eval=frame,volume=2" -ac 1 "$SFX/mala_abrindo.wav"
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=0.8:sample_rate=$R:duration=6:seed=53" -af "lowpass=f=260,highpass=f=40,tremolo=f=6:d=0.2,volume=2,afade=t=in:d=0.05,afade=t=out:st=5.95:d=0.05" -ac 1 "$SFX/foguete_distante.wav"
+gen -f lavfi -i "aevalsrc='0.4*sin(2*PI*220*t)*exp(-t*6)+(random(0)*2-1)*0.25*exp(-t*30)':s=$R:d=0.6" -ac 1 "$SFX/porta_metalica.wav"
+gen -f lavfi -i "aevalsrc='0.45*sin(2*PI*90*t)*exp(-t*12)+(random(0)*2-1)*0.18*exp(-t*25)':s=$R:d=0.45" -ac 1 "$SFX/queda_leve.wav"
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.7:sample_rate=$R:duration=1.2:seed=57" -af "highpass=f=900,volume='exp(-t*3)':eval=frame,volume=1.6" -ac 1 "$SFX/porta_pressurizada.wav"
+gen -f lavfi -i "aevalsrc='0.12*sin(2*PI*60*t)+0.06*sin(2*PI*180*t)':s=$R:d=4" -af "highpass=f=50,tremolo=f=2:d=0.2,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/maquinario.wav"
+gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(600+900*t)*t)*exp(-t*6)':s=$R:d=0.5" -ac 1 "$SFX/envio_mensagem.wav"
+gen -f lavfi -i "aevalsrc='0.22*sin(2*PI*880*t)*gt(sin(2*PI*3*t),0)*exp(-t*1.5)':s=$R:d=1.2" -ac 1 "$SFX/painel_alerta.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

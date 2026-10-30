@@ -4,7 +4,11 @@ import { colors, cornerText, fonts, ink, onScreenText as t, sticker as stickerTh
 
 // Quebra em no máximo 2 linhas: " · " vira quebra; texto longo é dividido no espaço mais equilibrado.
 export const splitLines = (text: string): string[] => {
-  if (text.includes(" · ")) return text.split(" · ").slice(0, 2);
+  if (text.includes(" · ")) {
+    const parts = text.split(" · ");
+    // três itens ou mais: os primeiros na linha de cima, o último embaixo (nunca some texto)
+    return parts.length > 2 ? [parts.slice(0, -1).join(" · "), parts[parts.length - 1]] : parts;
+  }
   if (text.length <= 18) return [text];
   const spaces = [...text.matchAll(/ /g)].map((m) => m.index ?? 0);
   let best = spaces[0] ?? text.length;

@@ -31,6 +31,16 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   ziper: { file: "audio/sfx/ziper.wav", loop: false, volume: audio.sfxVolume * 0.8 },
   quarto_ambiente: { file: "audio/sfx/quarto_ambiente.wav", loop: true, volume: audio.sfxVolume * 0.35 },
   pulo: { file: "audio/sfx/pulo.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  // ep03 longo
+  notificacao: { file: "audio/sfx/notificacao.wav", loop: false, volume: audio.sfxVolume * 0.9 },
+  mala_abrindo: { file: "audio/sfx/mala_abrindo.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  foguete_distante: { file: "audio/sfx/foguete_distante.wav", loop: true, volume: audio.sfxVolume * 0.5 },
+  porta_metalica: { file: "audio/sfx/porta_metalica.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  queda_leve: { file: "audio/sfx/queda_leve.wav", loop: false, volume: audio.sfxVolume * 0.9 },
+  porta_pressurizada: { file: "audio/sfx/porta_pressurizada.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  maquinario: { file: "audio/sfx/maquinario.wav", loop: true, volume: audio.sfxVolume * 0.4 },
+  envio_mensagem: { file: "audio/sfx/envio_mensagem.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  painel_alerta: { file: "audio/sfx/painel_alerta.wav", loop: false, volume: audio.sfxVolume * 0.5 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
