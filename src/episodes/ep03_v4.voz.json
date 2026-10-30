@@ -11,43 +11,43 @@
    "cena": "mala",
    "de": 0,
    "ate": 9.34,
-   "em": 8.3
+   "em": 7.033
   },
   {
    "cena": "embarque",
    "de": 0,
    "ate": 5.471,
-   "em": 22.3
+   "em": 17.1
   },
   {
    "cena": "viagem",
    "de": 0,
    "ate": 15.357,
-   "em": 30.3
+   "em": 23.5
   },
   {
    "cena": "chegada",
    "de": 0,
    "ate": 9.884,
-   "em": 48.3
+   "em": 39.567
   },
   {
    "cena": "a_conta_chega",
    "de": 0,
    "ate": 14.732,
-   "em": 62.3
+   "em": 50.167
   },
   {
    "cena": "o_controle",
    "de": 0,
    "ate": 14.301,
-   "em": 80.3
+   "em": 65.6
   },
   {
    "cena": "ele_le_a_tela",
    "de": 0,
    "ate": 6.472,
-   "em": 100.3
+   "em": 80.933
   }
  ]
 }

@@ -4,12 +4,12 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 3300,
+  "totalFrames": 2713,
   "scenes": [
     {
       "id": "notificacao",
       "startFrame": 0,
-      "durationInFrames": 240,
+      "durationInFrames": 202,
       "narration": "Terça-feira, oito da noite. O Nico recebe uma notificação: ele vai morar em Marte. Amanhã.",
       "onScreenText": "E SE VOCÊ TIVESSE QUE ABANDONAR A TERRA AMANHÃ?",
       "visual": {
@@ -23,8 +23,8 @@
     },
     {
       "id": "mala",
-      "startFrame": 240,
-      "durationInFrames": 420,
+      "startFrame": 202,
+      "durationInFrames": 302,
       "narration": "Ele arruma a mala como quem vai passar o fim de semana na praia. Roupa, biscoito, escova de dente. E o controle, porque toda noite ele joga online com a Dani.",
       "onScreenText": "Nico, 15 anos",
       "visual": {
@@ -38,8 +38,8 @@
     },
     {
       "id": "embarque",
-      "startFrame": 660,
-      "durationInFrames": 240,
+      "startFrame": 504,
+      "durationInFrames": 192,
       "narration": "No painel de embarque, a missão lista tudo. O Nico assina sem ler. Ele estava com pressa.",
       "onScreenText": "",
       "visual": {
@@ -53,8 +53,8 @@
     },
     {
       "id": "viagem",
-      "startFrame": 900,
-      "durationInFrames": 540,
+      "startFrame": 696,
+      "durationInFrames": 482,
       "narration": "Dependendo da trajetória, a viagem leva de sete a dez meses. Meses dentro de uma nave, sem poder abrir a janela para tomar um ar. Em microgravidade, até comer um biscoito vira missão. Dia duzentos e vinte e oito: chegou.",
       "onScreenText": "7 a 10 meses",
       "visual": {
@@ -68,8 +68,8 @@
     },
     {
       "id": "chegada",
-      "startFrame": 1440,
-      "durationInFrames": 420,
+      "startFrame": 1178,
+      "durationInFrames": 318,
       "narration": "E aí ele chega. A gravidade é trinta e oito por cento da nossa: o Nico pula três vezes mais alto que na Terra. Por alguns minutos, é tudo o que ele imaginou.",
       "onScreenText": "gravidade: 38%",
       "visual": {
@@ -83,8 +83,8 @@
     },
     {
       "id": "a_conta_chega",
-      "startFrame": 1860,
-      "durationInFrames": 540,
+      "startFrame": 1496,
+      "durationInFrames": 463,
       "narration": "Aí a conta chega. Lá fora são cinquenta e três graus negativos e o ar é noventa e cinco por cento gás carbônico. Dentro, oxigênio, água e comida dependem de máquina. Em Marte, respirar é item de manutenção.",
       "onScreenText": "−53 °C · 95% CO₂",
       "visual": {
@@ -98,8 +98,8 @@
     },
     {
       "id": "o_controle",
-      "startFrame": 2400,
-      "durationInFrames": 600,
+      "startFrame": 1959,
+      "durationInFrames": 460,
       "narration": "À noite, ele liga o controle e chama a Dani. A mensagem sai da base, atravessa o sistema solar e chega vinte minutos depois. A resposta dela leva outros vinte. Nenhum jogo funciona assim. Nenhuma conversa funciona assim.",
       "onScreenText": "+20 min na ida · +20 min na volta",
       "visual": {
@@ -113,8 +113,8 @@
     },
     {
       "id": "ele_le_a_tela",
-      "startFrame": 3000,
-      "durationInFrames": 300,
+      "startFrame": 2419,
+      "durationInFrames": 294,
       "narration": "Só então ele volta no painel e lê a linha que estava lá desde o começo. E aí: você iria para Marte?",
       "onScreenText": "VOCÊ IRIA PARA MARTE?",
       "visual": {
