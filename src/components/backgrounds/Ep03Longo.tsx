@@ -28,7 +28,15 @@ export const NaveInterior: React.FC<{ cam: Cam; frame: number; params: Record<st
   const terraR = 150 - 130 * terra;
   const de = n(params.calendario);
   const k = ramp(frame, de, n(params.calendarioAte, de + 240), { ...clamp, easing: Easing.in(Easing.cubic) });
-  const dia = Math.max(1, Math.round(1 + (n(params.dias, 228) - 1) * k));
+  const paradas = Array.isArray(params.diasEm) && Array.isArray(params.diasValores) ? params.diasEm.map((f, i) => [f, (params.diasValores as number[])[i]]) : null;
+  const dia = paradas
+    ? Math.round(
+        paradas.reduce((v, [f, alvo], i) => {
+          const antes = i === 0 ? 1 : paradas[i - 1][1];
+          return frame >= f ? antes + (alvo - antes) * ramp(frame, f, f + 24, { ...clamp, easing: Easing.out(Easing.cubic) }) : v;
+        }, 1),
+      )
+    : Math.max(1, Math.round(1 + (n(params.dias, 228) - 1) * k));
   const mig = n(params.migalhas);
   const b = NAVE.biscoito;
   const c = NAVE.calendario;
@@ -115,6 +123,13 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
   const retorno = n(params.retorno);
   const mostra = frame >= retorno;
   const pisca = mostra && Math.floor((frame - retorno) / 8) % 2 === 0;
+  const suporte = params.suporte === 1;
+  // eclusa (ep03 v4): `eclusa` = a porta desce e fecha; `pressao` = luz verde + PRESSURIZADO;
+  // `eclusaAte` = a partir daí volta o painel normal no lugar da porta
+  const eclusa = n(params.eclusa);
+  const comPorta = frame >= eclusa && frame < n(params.eclusaAte);
+  const fecha = ramp(frame, eclusa, eclusa + 18, { ...clamp, easing: Easing.out(Easing.bounce) });
+  const pressao = frame >= n(params.pressao);
   return (
     <>
       <Layer cam={cam} depth={0.6}>
@@ -144,7 +159,20 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
         <g transform={`translate(${p.x} ${p.y})`}>
           <rect x={-160} y={-170} width={320} height={300} rx={18} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} />
           <rect x={-136} y={-146} width={272} height={200} rx={10} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-          {mostra ? (
+          {suporte && !mostra ? (
+            <>
+              {[
+                ["O₂", 0.72, colors.turquesa],
+                ["H₂O", 0.48, colors.ceu],
+              ].map(([rot, nivel, cor], i) => (
+                <g key={i} transform={`translate(${-60 + i * 120} 0)`}>
+                  <text x={0} y={-104} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={34} fill={colors.tinta}>{rot as string}</text>
+                  <rect x={-26} y={-90} width={52} height={130} rx={10} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.5} />
+                  <rect x={-20} y={34 - 118 * (nivel as number) * (0.96 + 0.04 * Math.sin(frame / 8 + i))} width={40} height={118 * (nivel as number) * (0.96 + 0.04 * Math.sin(frame / 8 + i))} rx={6} fill={cor as string} />
+                </g>
+              ))}
+            </>
+          ) : mostra ? (
             <>
               <text x={0} y={-82} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={40} fill={colors.tinta}>RETORNO:</text>
               <text x={0} y={-30} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={34} fill={colors.coral} stroke={colors.tinta} strokeWidth={1.2} paintOrder="stroke">NÃO</text>
@@ -157,6 +185,22 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
             <circle key={i} cx={-80 + i * 80} cy={92} r={16} fill={i === 0 && pisca ? colors.coral : [colors.coral, colors.amarelo, colors.turquesa][i]} stroke={colors.tinta} strokeWidth={ink * 0.5} opacity={i === 0 ? (pisca ? 1 : 0.4) : 0.6} />
           ))}
         </g>
+        {comPorta ? (
+          <g>
+            <rect x={730} y={240} width={350} height={1080} rx={30} fill={colors.muroSombra} stroke={colors.tinta} strokeWidth={ink} />
+            <rect x={760} y={260 - 700 * (1 - fecha)} width={290} height={760} rx={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+            <circle cx={905} cy={560 - 700 * (1 - fecha)} r={70} fill={colors.coralClaro} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+            <rect x={790} y={940 - 700 * (1 - fecha)} width={230} height={30} rx={12} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+            <circle cx={905} cy={200} r={30} fill={pressao ? colors.turquesa : colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.7} />
+            {pressao ? <circle cx={905} cy={200} r={44 + 8 * Math.sin(frame / 5)} fill="none" stroke={colors.turquesa} strokeWidth={ink * 0.6} opacity={0.7} /> : null}
+            {pressao ? (
+              <g transform="translate(905 120)">
+                <rect x={-190} y={-34} width={380} height={68} rx={20} fill={colors.tinta} stroke={colors.creme} strokeWidth={4} />
+                <text x={0} y={14} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={40} fill={colors.creme}>PRESSURIZADO</text>
+              </g>
+            ) : null}
+          </g>
+        ) : null}
         {/* prateleira com o pacote de biscoitos quase vazio */}
         <rect x={760} y={1000} width={300} height={22} rx={8} fill={colors.muroSombra} stroke={colors.tinta} strokeWidth={ink * 0.6} />
       </Layer>
@@ -172,6 +216,56 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
           {[0, 1, 2, 3, 4].map((i) => (
             <circle key={i} cx={60} cy={-220 + i * 60} r={10} fill={i % 2 ? colors.turquesa : colors.amarelo} opacity={(Math.floor(frame / 9) + i) % 3 === 0 ? 1 : 0.4} />
           ))}
+        </g>
+      </Layer>
+    </>
+  );
+};
+
+// ---------------------------------------------------------------- foguete_interior
+// Embarque (ep03 v4): parede de hangar, escotilha com o foguete e o painel da missão com a
+// lista. `assina` = a assinatura é rabiscada; a linha "RETORNO: NÃO PROGRAMADO" está sempre lá.
+export const EMBARQUE = { painel: { x: 760, y: 760 }, retorno: { x: 760, y: 1010 } };
+export const FogueteInterior: React.FC<{ cam: Cam; frame: number; params: Record<string, number | number[]> }> = ({ cam, frame, params }) => {
+  const ink = useInk();
+  const p = EMBARQUE.painel;
+  const assina = ramp(frame, n(params.assina), n(params.assina) + 30);
+  const linha = (y: number, t: string, cor: string = colors.tinta, tam = 40) => (
+    <text x={-220} y={y} fontFamily={fonts.main} fontWeight={800} fontSize={tam} fill={cor}>{t}</text>
+  );
+  return (
+    <>
+      <Layer cam={cam} depth={0.6}>
+        <rect x={-1000} y={-1000} width={3080} height={3700} fill={sombra(colors.creme)} />
+        {[-300, 60, 1180].map((px) => (
+          <rect key={px} x={px} y={220} width={330} height={1100} rx={40} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+        ))}
+        <circle cx={230} cy={520} r={150} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 2.6} />
+        <g transform="translate(230 560)">
+          <path d="M 0 -120 C 40 -80 44 0 34 80 L -34 80 C -44 0 -40 -80 0 -120 Z" fill={colors.branco} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+          <path d="M -34 40 L -64 100 L -30 86 Z M 34 40 L 64 100 L 30 86 Z" fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.6} strokeLinejoin="round" />
+          <circle cx={0} cy={-30} r={16} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+        </g>
+        <circle cx={230} cy={520} r={150} fill="none" stroke={colors.amarelo} strokeWidth={ink * 1.1} />
+      </Layer>
+      <Layer cam={cam} depth={1}>
+        <rect x={-1000} y={1300} width={3080} height={1400} fill={colors.chaoSombra} stroke={colors.tinta} strokeWidth={ink} />
+        <g transform={`translate(${p.x} ${p.y})`}>
+          <rect x={-270} y={-420} width={540} height={760} rx={26} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} />
+          <rect x={-240} y={-390} width={480} height={640} rx={14} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+          {linha(-320, "MISSÃO MARTE-1", colors.coral, 46)}
+          {linha(-240, "DESTINO: MARTE")}
+          {linha(-180, "VIAGEM: 7 A 10 MESES")}
+          {linha(-120, "TRIPULAÇÃO: 1")}
+          {linha(-60, "BAGAGEM: 1 MALA")}
+          <rect x={-232} y={210} width={464} height={84} rx={14} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+          <text x={0} y={238} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={34} fill={colors.tinta}>RETORNO:</text>
+          <text x={0} y={280} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={40} fill={colors.coral} stroke={colors.tinta} strokeWidth={1.4} paintOrder="stroke">NÃO PROGRAMADO</text>
+          <text x={-220} y={60} fontFamily={fonts.main} fontWeight={800} fontSize={30} fill={colors.tinta}>ASSINATURA:</text>
+          <path d="M -220 130 L 220 130" stroke={colors.tinta} strokeWidth={ink * 0.5} />
+          {assina > 0 ? (
+            <path d="M -200 120 C -160 60 -140 150 -100 100 C -60 50 -40 150 0 100 C 40 60 60 140 120 90" fill="none" stroke={colors.ceuMeio} strokeWidth={ink * 0.8} strokeLinecap="round" strokeDasharray="700" strokeDashoffset={700 * (1 - assina)} />
+          ) : null}
         </g>
       </Layer>
     </>

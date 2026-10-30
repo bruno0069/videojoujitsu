@@ -41,10 +41,16 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   maquinario: { file: "audio/sfx/maquinario.wav", loop: true, volume: audio.sfxVolume * 0.4 },
   envio_mensagem: { file: "audio/sfx/envio_mensagem.wav", loop: false, volume: audio.sfxVolume * 0.7 },
   painel_alerta: { file: "audio/sfx/painel_alerta.wav", loop: false, volume: audio.sfxVolume * 0.5 },
+  // ep03 v4
+  painel_bip: { file: "audio/sfx/painel_bip.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  controle_ligando: { file: "audio/sfx/controle_ligando.wav", loop: false, volume: audio.sfxVolume * 0.7 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
 export const MUSIC: Record<string, string> = {
   base_suave: "audio/music/base_suave_hp120.wav",
   suspensa_sem_batida: "audio/music/suspensa_sem_batida_hp120.wav",
+  tensao_leve: "audio/music/tensao_leve_hp120.wav",
+  alegre_curta: "audio/music/alegre_curta_hp120.wav",
+  melancolica_suave: "audio/music/melancolica_suave_hp120.wav",
 };

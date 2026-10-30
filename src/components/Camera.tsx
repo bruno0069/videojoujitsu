@@ -42,7 +42,7 @@ export const shotCamera = (opts: {
   const zoom = punch
     ? from +
       (to - from) * spring({ frame: local, fps, config: { damping: 12, mass: 0.6, stiffness: 170 } }) +
-      interpolate(local, [12, length], [0, to * 0.03], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
+      interpolate(local, [12, Math.max(13, length)], [0, to * 0.03], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })
     : interpolate(local, [0, Math.max(1, length - 1)], [from, to], {
         extrapolateLeft: "clamp",
         extrapolateRight: "clamp",

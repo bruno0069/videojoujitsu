@@ -1,0 +1,130 @@
+{
+  "episode": "3-v4",
+  "title": "E se o Nico tivesse que abandonar a Terra amanhã?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 3300,
+  "scenes": [
+    {
+      "id": "notificacao",
+      "startFrame": 0,
+      "durationInFrames": 240,
+      "narration": "Terça-feira, oito da noite. O Nico recebe uma notificação: ele vai morar em Marte. Amanhã.",
+      "onScreenText": "E SE VOCÊ TIVESSE QUE ABANDONAR A TERRA AMANHÃ?",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "close",
+        "action": "Três planos: close no rosto distraído; inserto fechado na tela do celular com a notificação chegando; volta ao rosto na virada para empolgação absurda. O primeiro corte acontece antes dos 3 segundos."
+      },
+      "sfx": ["notificacao"],
+      "music": "base_suave"
+    },
+    {
+      "id": "mala",
+      "startFrame": 240,
+      "durationInFrames": 420,
+      "narration": "Ele arruma a mala como quem vai passar o fim de semana na praia. Roupa, biscoito, escova de dente. E o controle, porque toda noite ele joga online com a Dani.",
+      "onScreenText": "Nico, 15 anos",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [{ "id": "nico", "pose": "apontando", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "O Nico joga as coisas na mala em insertos rápidos: roupa, pacote de biscoito, escova. Tenta fechar, senta em cima, a mala abre e ele quase cai. No fim da cena, inserto do celular apoiado na mala com a Dani numa janela de chamada de vídeo, e a mão dele guardando o controle. O Nico precisa estar visível e em ação em todos os frames desta cena."
+      },
+      "sfx": ["ziper", "mala_abrindo"],
+      "music": "base_suave"
+    },
+    {
+      "id": "embarque",
+      "startFrame": 660,
+      "durationInFrames": 240,
+      "narration": "No painel de embarque, a missão lista tudo. O Nico assina sem ler. Ele estava com pressa.",
+      "onScreenText": "",
+      "visual": {
+        "background": "foguete_interior",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro", "traje": true }],
+        "camera": "plano_medio",
+        "action": "O Nico diante do painel de embarque, assinando rápido. A câmera deixa ele e fecha sozinha na lista da missão, onde se lê 'RETORNO: NÃO PROGRAMADO' em destaque. A linha fica nítida e grande no quadro por pelo menos 1,5 segundo. O Nico não olha, não reage, e sai de quadro empolgado. A narração NÃO menciona o retorno em momento nenhum: quem lê é o público."
+      },
+      "sfx": ["painel_bip"],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "viagem",
+      "startFrame": 900,
+      "durationInFrames": 540,
+      "narration": "Dependendo da trajetória, a viagem leva de sete a dez meses. Meses dentro de uma nave, sem poder abrir a janela para tomar um ar. Em microgravidade, até comer um biscoito vira missão. Dia duzentos e vinte e oito: chegou.",
+      "onScreenText": "7 a 10 meses",
+      "visual": {
+        "background": "nave_interior",
+        "characters": [{ "id": "nico", "pose": "flutuando", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "O Nico flutua pela cabine. O contador de dias sobe em três paradas: 40, 120, 228, e a expressão piora a cada uma. No meio, inserto das migalhas de biscoito escapando flutuando enquanto ele tenta morder."
+      },
+      "sfx": ["zumbido_leve"],
+      "music": "base_suave"
+    },
+    {
+      "id": "chegada",
+      "startFrame": 1440,
+      "durationInFrames": 420,
+      "narration": "E aí ele chega. A gravidade é trinta e oito por cento da nossa: o Nico pula três vezes mais alto que na Terra. Por alguns minutos, é tudo o que ele imaginou.",
+      "onScreenText": "gravidade: 38%",
+      "visual": {
+        "background": "marte_superficie",
+        "characters": [{ "id": "nico", "pose": "caindo", "expression": "surpresa", "traje": true }],
+        "camera": "plano_aberto",
+        "action": "Esta cena é a vitória dele: ele desce da nave, olha em volta e pula. Linha tracejada com o rótulo 'pulo na Terra' e ele passando bem acima. Ele pula de novo, rindo. É o ponto mais alto do episódio e precisa parecer divertido de verdade."
+      },
+      "sfx": ["pulo"],
+      "music": "alegre_curta"
+    },
+    {
+      "id": "a_conta_chega",
+      "startFrame": 1860,
+      "durationInFrames": 540,
+      "narration": "Aí a conta chega. Lá fora são cinquenta e três graus negativos e o ar é noventa e cinco por cento gás carbônico. Dentro, oxigênio, água e comida dependem de máquina. Em Marte, respirar é item de manutenção.",
+      "onScreenText": "−53 °C · 95% CO₂",
+      "visual": {
+        "background": "marte_superficie",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "medo", "traje": true }],
+        "camera": "plano_medio",
+        "action": "Primeira metade fora: o Nico se encolhe, termômetro com líquido AZUL e nível BAIXO descendo até −53 °C, nunca vermelho. Ele corre para a base. BEAT OBRIGATÓRIO DE TRANSIÇÃO: porta do habitat fecha, indicador de pressurização acende, o capacete sai. Segunda metade dentro: plano aberto do habitat apertado, inserto dos painéis de oxigênio e água, e close no pacote de biscoito quase vazio na mão dele."
+      },
+      "sfx": ["vento_frio", "porta_pressurizada"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "o_controle",
+      "startFrame": 2400,
+      "durationInFrames": 600,
+      "narration": "À noite, ele liga o controle e chama a Dani. A mensagem sai da base, atravessa o sistema solar e chega vinte minutos depois. A resposta dela leva outros vinte. Nenhum jogo funciona assim. Nenhuma conversa funciona assim.",
+      "onScreenText": "+20 min na ida · +20 min na volta",
+      "visual": {
+        "background": "habitat_interior",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "Close nas mãos ligando o controle. Inserto da tela chamando a Dani, com o indicador girando. Diagrama simples e rápido: a mensagem saindo de Marte, cruzando o espaço, chegando na Terra, e o contador de 20 minutos. Volta para o Nico esperando, sentado, pequeno no quadro, o controle no colo. Esta é a cena emocional do episódio: a pausa de espera é o ponto, e a cama sonora continua tocando durante ela."
+      },
+      "sfx": ["controle_ligando", "envio_mensagem"],
+      "music": "melancolica_suave"
+    },
+    {
+      "id": "ele_le_a_tela",
+      "startFrame": 3000,
+      "durationInFrames": 300,
+      "narration": "Só então ele volta no painel e lê a linha que estava lá desde o começo. E aí: você iria para Marte?",
+      "onScreenText": "VOCÊ IRIA PARA MARTE?",
+      "visual": {
+        "background": "habitat_interior",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "medo" }],
+        "camera": "close",
+        "action": "Ele se levanta e abre o painel da missão. CLOSE GRANDE em 'RETORNO: NÃO PROGRAMADO', ocupando boa parte do quadro — é a mesma linha da cena 3, e agora ele está lendo. Close no rosto dele registrando. Plano aberto final com ele pequeno diante da janela. O card 'VOCÊ IRIA PARA MARTE?' entra por cima da imagem e segura até o último frame. NADA de corte para preto."
+      },
+      "sfx": ["painel_alerta"],
+      "music": "melancolica_suave"
+    }
+  ]
+}

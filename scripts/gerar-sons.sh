@@ -101,8 +101,24 @@ gen -f lavfi -i "aevalsrc='0.12*sin(2*PI*60*t)+0.06*sin(2*PI*180*t)':s=$R:d=4" -
 gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(600+900*t)*t)*exp(-t*6)':s=$R:d=0.5" -ac 1 "$SFX/envio_mensagem.wav"
 gen -f lavfi -i "aevalsrc='0.22*sin(2*PI*880*t)*gt(sin(2*PI*3*t),0)*exp(-t*1.5)':s=$R:d=1.2" -ac 1 "$SFX/painel_alerta.wav"
 
+# ep03 v4 — trilhas (síntese local, loops) e efeitos
+# tensao_leve: pulso grave em semínimas com nota suspensa por cima, 8 s
+gen -f lavfi -i "aevalsrc='0.28*exp(-mod(t,0.5)*6)*sin(2*PI*73.42*t)+0.12*(0.6+0.4*sin(2*PI*t/4))*sin(2*PI*293.66*t)+0.08*sin(2*PI*311.13*t)*(0.5+0.5*sin(2*PI*t/8))':s=$R:d=8" -ac 1 "$MUS/tensao_leve.wav"
+# alegre_curta: arpejo maior saltitante (C, F, G, C), 4 s
+AN="mod(floor(t*6),6)"
+AK="if(eq($AN,0),0,if(eq($AN,1),4,if(eq($AN,2),7,if(eq($AN,3),12,if(eq($AN,4),7,4)))))"
+AR="if(lt(mod(t,4),1),0,if(lt(mod(t,4),2),5,if(lt(mod(t,4),3),7,0)))"
+gen -f lavfi -i "aevalsrc='0.3*exp(-mod(t,1/6)*10)*sin(2*PI*392*pow(2,($AR+$AK)/12)*t)+0.2*sin(2*PI*98*pow(2,($AR)/12)*t)*exp(-mod(t,0.5)*4)':s=$R:d=4" -ac 1 "$MUS/alegre_curta.wav"
+# melancolica_suave: arpejo lento menor (Am, F, C, G), 16 s
+MR="if(lt(mod(t,16),4),-3,if(lt(mod(t,16),8),-7,if(lt(mod(t,16),12),0,-5)))"
+MN="mod(floor(t*2),4)"
+MK="if(eq($MN,0),0,if(eq($MN,1),if(lt(mod(t,16),4),3,4),if(eq($MN,2),7,12)))"
+gen -f lavfi -i "aevalsrc='0.26*exp(-mod(t,0.5)*3)*sin(2*PI*261.63*pow(2,($MR+$MK)/12)*t)+0.16*sin(2*PI*65.41*pow(2,($MR)/12)*t)':s=$R:d=16" -ac 1 "$MUS/melancolica_suave.wav"
+gen -f lavfi -i "aevalsrc='0.25*sin(2*PI*1050*t)*lt(mod(t,0.18),0.09)*lt(t,0.45)':s=$R:d=0.5" -ac 1 "$SFX/painel_bip.wav"
+gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(500+700*t)*t)*exp(-t*5)+0.2*sin(2*PI*1400*t)*exp(-(t-0.3)*12)*gt(t,0.3)':s=$R:d=0.6" -ac 1 "$SFX/controle_ligando.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
-for m in base_suave suspensa_sem_batida; do
+for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"
 done
 

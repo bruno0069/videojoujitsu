@@ -125,9 +125,7 @@ const Mala: React.FC<{ frame: number; params: Record<string, number | number[]> 
       {fechada ? null : <path d={`M ${x - w / 2 + 40} ${y - h - 20} L ${x - w / 2 + 52} ${y - h - 170} L ${x + w / 2 - 52} ${y - h - 170} L ${x + w / 2 - 40} ${y - h - 20} Z`} fill={sombra(colors.roxo)} />}
       {videogame > 0 ? (
         <g transform={`translate(${x + 40} ${y - h + 4}) rotate(10) scale(${videogame})`}>
-          <path d="M -56 -20 Q -60 -52 -30 -52 L 30 -52 Q 60 -52 56 -20 Q 62 14 40 14 Q 26 14 18 -6 L -18 -6 Q -26 14 -40 14 Q -62 14 -56 -20 Z" fill={colors.noite} stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinejoin="round" />
-          <circle cx={26} cy={-30} r={8} fill={colors.coral} />
-          <path d="M -36 -30 L -18 -30 M -27 -39 L -27 -21" stroke={colors.creme} strokeWidth={ink * 0.5} strokeLinecap="round" />
+          <Controle />
         </g>
       ) : null}
       {biscoito > 0 ? (
@@ -159,6 +157,19 @@ const Mala: React.FC<{ frame: number; params: Record<string, number | number[]> 
       <rect x={x - w / 2} y={y - h + 30} width={w} height={14} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.5} />
       <rect x={x - 30} y={y - h - 2} width={60} height={14} rx={6} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.5} />
       {fechada ? <rect x={x - w / 2 - 6} y={y - h - 40} width={w + 12} height={46} rx={14} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} transform={`rotate(${Math.sin(frame / 2) * 2} ${x} ${y - h})`} /> : null}
+    </g>
+  );
+};
+
+// Controle de videogame (ep03 v4: na mala e na mão do Nico)
+export const Controle: React.FC = () => {
+  const ink = useInk();
+  return (
+    <g>
+      <path d="M -56 -20 Q -60 -52 -30 -52 L 30 -52 Q 60 -52 56 -20 Q 62 14 40 14 Q 26 14 18 -6 L -18 -6 Q -26 14 -40 14 Q -62 14 -56 -20 Z" fill={colors.noite} stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinejoin="round" />
+      <circle cx={26} cy={-30} r={8} fill={colors.coral} />
+      <circle cx={38} cy={-40} r={6} fill={colors.amarelo} />
+      <path d="M -36 -30 L -18 -30 M -27 -39 L -27 -21" stroke={colors.creme} strokeWidth={ink * 0.5} strokeLinecap="round" />
     </g>
   );
 };
@@ -212,6 +223,10 @@ export const DiagramaEspaco: React.FC<{ cam: Cam; frame: number; params: Record<
   const fade = 1 - ramp(frame, some, some + 8);
   const puff = ramp(frame, some, some + 14);
   const pts = Array.from({ length: 41 }, (_, i) => arco(i / 40));
+  // ep03 v4: `mensagem` = um envelope sai de Marte e chega à Terra; o contador sobe até 20 min
+  const msg = n(params.mensagem);
+  const tm = ramp(frame, msg, n(params.mensagemAte, msg + 75), { ...clamp, easing: Easing.inOut(Easing.quad) });
+  const pm = arco(1 - tm);
   return (
     <>
       <Layer cam={cam} depth={0.1}>
@@ -229,6 +244,15 @@ export const DiagramaEspaco: React.FC<{ cam: Cam; frame: number; params: Record<
           <g transform={`translate(${p.x} ${p.y}) rotate(${ang}) scale(${fade})`}>
             <Aviao />
           </g>
+        ) : null}
+        {Number.isFinite(msg) && frame >= msg ? (
+          <>
+            <g transform={`translate(${pm.x} ${pm.y})`}>
+              <rect x={-44} y={-30} width={88} height={60} rx={8} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.8} />
+              <path d="M -44 -30 L 0 6 L 44 -30" fill="none" stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinejoin="round" />
+            </g>
+            <InfoLabel x={540} y={1180} text={`${Math.round(20 * tm)} min`} fontSize={64} />
+          </>
         ) : null}
         {puff > 0 && puff < 1 ? (
           <g transform={`translate(${p.x} ${p.y})`} opacity={1 - puff}>

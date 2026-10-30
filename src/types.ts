@@ -58,7 +58,10 @@ export type ElementSpec =
   // `giro`: volta extra visível (`voltas`) entre `de` e `ate`, antes de travar
   | ({ type: "globo"; personagem?: string; velocidade?: number; trava?: Cue; volta?: Cue; flash?: boolean; giro?: { de: Cue; ate: Cue; voltas: number } } & Window)
   // Linhas de vento atravessando a tela (da esquerda para a direita); `papeis` = folhas voando
-  | ({ type: "vento"; forca?: number; papeis?: boolean } & Window);
+  | ({ type: "vento"; forca?: number; papeis?: boolean } & Window)
+  // Celular apoiado com a Dani numa chamada de vídeo (ep03 v4), em coordenadas do mundo;
+  // `chamando` = a imagem dela some e fica o indicador girando
+  | ({ type: "videochamada"; x: number; y: number; escala?: number; chamando?: boolean } & Window);
 
 export type CharacterKey = {
   de: Cue;
@@ -125,6 +128,8 @@ export type Direction = {
   }[];
   // Legenda sem ponto, vírgula e dois-pontos (a narração continua com a pontuação)
   legendaSemPontuacao?: boolean;
+  // Legenda com placa de fundo, uma linha, destaque só em palavra de conteúdo (ep03 v4 em diante)
+  legendaPlaca?: boolean;
   // Mantém os limites de cena do roteiro mesmo quando uma fala passa um pouco do corte
   limitesFixos?: boolean;
   // Legenda só aparece a partir deste frame (antes disso, o título da capa ocupa a tela)

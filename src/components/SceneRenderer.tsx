@@ -7,7 +7,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { idle, loopPhase, shots, sun } from "../theme";
+import { colors, idle, loopPhase, shots, sun } from "../theme";
 import { resolveCue, TimedWord } from "../timing";
 import type { CharacterKey, Cue, Plano, Scene, SceneDirection } from "../types";
 import { Background, nightLevel } from "./Background";
@@ -20,7 +20,7 @@ import {
   MAPA,
 } from "./backgrounds/DiagramasTerra";
 import { CALENDARIO, ESPACO, MALA, QUARTO_DEPTH } from "./backgrounds/Ep03";
-import { HABITAT, NAVE } from "./backgrounds/Ep03Longo";
+import { EMBARQUE, HABITAT, NAVE } from "./backgrounds/Ep03Longo";
 import { MAPA_RIO, RIO_DEPTH } from "./backgrounds/MapaRio";
 import { GLOBO_QUADRO, JANELA, MESA_DEPTH, MESA_PROF, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
@@ -221,6 +221,8 @@ const centerOf = (
   if (focus === "mala") return atDepth(MALA.x, MALA.y - 80, QUARTO_DEPTH);
   if (focus === "calendario") return atDepth(CALENDARIO.x, CALENDARIO.y, 0.7);
   if (focus === "marte") return ESPACO.marte;
+  if (focus === "painel_embarque") return EMBARQUE.painel;
+  if (focus === "linha_retorno") return EMBARQUE.retorno;
   if (focus === "escotilha") return atDepth(NAVE.escotilha.x, NAVE.escotilha.y, 0.7);
   if (focus === "biscoito_nave") return NAVE.biscoito;
   if (focus === "calendario_nave") return atDepth(NAVE.calendario.x, NAVE.calendario.y, 0.7);
@@ -464,7 +466,8 @@ export const SceneRenderer: React.FC<{
   const slide = plano.deslocar
     ? interpolate(
         frame,
-        [cue(plano.deslocar.de, planoStart), cue(plano.deslocar.ate, planoEnd)],
+        // fim nunca antes do começo (com tempo estimado, duas palavras podem quase colar)
+        [cue(plano.deslocar.de, planoStart), Math.max(cue(plano.deslocar.de, planoStart) + 1, cue(plano.deslocar.ate, planoEnd))],
         [0, plano.deslocar.x],
         {
           extrapolateLeft: "clamp",
@@ -477,7 +480,7 @@ export const SceneRenderer: React.FC<{
     ? -plano.pulo.altura *
       Math.sin(
         Math.PI *
-          interpolate(frame, [cue(plano.pulo.de), cue(plano.pulo.ate)], [0, 1], {
+          interpolate(frame, [cue(plano.pulo.de), Math.max(cue(plano.pulo.de) + 1, cue(plano.pulo.ate))], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
@@ -567,6 +570,35 @@ export const SceneRenderer: React.FC<{
             ax={a.x + 170 * p.s * cam.zoom}
             ay={a.y}
           />
+        );
+      }
+      case "videochamada": {
+        if (frame < cue(el.de, 0) || frame >= cue(el.ate, duration)) return null;
+        const at = toScreen(cam, el.x, el.y);
+        const k = (el.escala ?? 1) * cam.zoom;
+        const chamando = el.chamando === true;
+        return (
+          <g key={i} transform={`translate(${at.x} ${at.y}) scale(${k})`}>
+            <rect x={-130} y={-230} width={260} height={460} rx={34} fill={colors.tinta} />
+            <clipPath id={`tela-${i}`}>
+              <rect x={-110} y={-200} width={220} height={390} rx={18} />
+            </clipPath>
+            <rect x={-110} y={-200} width={220} height={390} rx={18} fill={chamando ? colors.noite : colors.ceu} />
+            {chamando ? (
+              <g transform={`rotate(${frame * 9})`}>
+                <path d="M 0 -46 A 46 46 0 1 1 -46 0" fill="none" stroke={colors.coral} strokeWidth={16} strokeLinecap="round" />
+              </g>
+            ) : (
+              <g clipPath={`url(#tela-${i})`}>
+                <g transform="translate(0 330) scale(0.34)">
+                  <InkScale scale={0.34 * k}>
+                    <Dani pose="parado" expression="neutro" />
+                  </InkScale>
+                </g>
+              </g>
+            )}
+            <rect x={-40} y={200} width={80} height={12} rx={6} fill={colors.creme} opacity={0.5} />
+          </g>
         );
       }
       case "etiqueta": {

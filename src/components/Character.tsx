@@ -4,7 +4,7 @@ import { colors, loopPhase, idle, night, sombra } from "../theme";
 import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { Globe } from "./elements/Globe";
 import { useInk } from "./Ink";
-import { PacoteBiscoito } from "./backgrounds/Ep03";
+import { Controle, PacoteBiscoito } from "./backgrounds/Ep03";
 
 // Rig 2D em camadas. Origem nos pés (0,0); y negativo para cima.
 // Unidades do rig: cabeça com raio 230, altura total ~1150.
@@ -28,7 +28,8 @@ export type PoseName =
   | "olhando_janela"
   | "sendo_arrastado"
   | "apontando_quadro"
-  | "flutuando";
+  | "flutuando"
+  | "sentado_livre";
 
 export type ExpressionName =
   | "neutro"
@@ -138,6 +139,11 @@ const POSES: Record<PoseName, PoseDef> = {
   bracos_cruzados: {
     handL: [110, -410], handR: [-110, -428], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 3, headDy: 0, look: [-0.9, 0],
+  },
+  // Sentado sem carteira (ep03 v4): em cima da mala ou no chão, pernas para a frente
+  sentado_livre: {
+    handL: [-120, -360], handR: [120, -360], footL: [-200, -40], footR: [150, -40],
+    crouch: 150, lean: 0, headTilt: 0, headDy: 0, look: [0, 0],
   },
   // Flutuando em microgravidade (ep03): braços soltos para os lados, pernas dobradas
   flutuando: {
@@ -400,6 +406,7 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
       <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
       {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={skin} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
+      {holding === "controle" ? <g transform={`translate(${handR[0] - 20} ${handR[1] - 30}) scale(1.4)`}><Controle /></g> : null}
       {holding === "biscoito_vazio" ? <g transform={`translate(${handR[0]} ${handR[1] - 70}) rotate(-12)`}><PacoteBiscoito quantos={0} /></g> : null}
       {holding === "celular" || holding === "celular_enviando" || holding === "celular_notificacao" ? <Celular x={handR[0]} y={handR[1] - 60} frame={frame} enviando={holding === "celular_enviando"} notificacao={holding === "celular_notificacao"} /> : null}
     </>
@@ -429,8 +436,23 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
       {/* Pernas */}
       <Limb a={hipL} b={kneeL} c={footL} width={74} color={style.calca ?? colors.calca} shade />
       <Limb a={hipR} b={kneeR} c={footR} width={74} color={style.calca ?? colors.calca} shade />
-      <ellipse cx={footL[0] - 14} cy={footL[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
-      <ellipse cx={footR[0] + 14} cy={footR[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+      {traje ? (
+        // botas do traje: tornozelo coral separando a perna, bota cor de areia com contorno fechado
+        [
+          [footL, -16],
+          [footR, 16],
+        ].map(([f, dx], i) => (
+          <g key={i}>
+            <rect x={(f as Vec)[0] - 46} y={(f as Vec)[1] - 64} width={92} height={30} rx={12} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} />
+            <path d={`M ${(f as Vec)[0] - 60 + (dx as number)} ${(f as Vec)[1] + 46} Q ${(f as Vec)[0] - 66 + (dx as number)} ${(f as Vec)[1] - 40} ${(f as Vec)[0] - 30 + (dx as number)} ${(f as Vec)[1] - 42} L ${(f as Vec)[0] + 34 + (dx as number)} ${(f as Vec)[1] - 42} Q ${(f as Vec)[0] + 76 + (dx as number)} ${(f as Vec)[1] - 34} ${(f as Vec)[0] + 76 + (dx as number)} ${(f as Vec)[1] + 46} Q ${(f as Vec)[0] + 8 + (dx as number)} ${(f as Vec)[1] + 58} ${(f as Vec)[0] - 60 + (dx as number)} ${(f as Vec)[1] + 46} Z`} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
+          </g>
+        ))
+      ) : (
+        <>
+          <ellipse cx={footL[0] - 14} cy={footL[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+          <ellipse cx={footR[0] + 14} cy={footR[1]} rx={54} ry={26} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+        </>
+      )}
 
       {/* Tronco: moletom com bolso (silhueta) */}
       <g transform={`translate(0 ${bodyDy}) translate(0 -262) scale(1 ${torsoScale}) translate(0 262)`}>
@@ -462,6 +484,8 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
         ) : null}
       </g>
 
+      {/* Capacete do traje (vidro traseiro): fica atrás da cabeça */}
+      {traje?.capacete ? <circle cx={0} cy={headY} r={HEAD_R + 92} fill={colors.ceu} opacity={0.16} /> : null}
       {/* Gola do capuz */}
       <ellipse cx={0} cy={-575 + bodyDy + breathDy} rx={138} ry={56} fill={style.hoodie} stroke={colors.tinta} strokeWidth={ink} />
       {/* gola coral do traje: por baixo da cabeça, nunca sobre o queixo */}
@@ -507,8 +531,13 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
           <Face e={e} look={look} blink={blink} mouth={mouth} frame={frame} skin={skin} />
         )}
 
+        {traje?.capacete ? (
+          <clipPath id={`capacete-${uid}`}>
+            <circle r={HEAD_R + 74} />
+          </clipPath>
+        ) : null}
         {!p.back && style.hair === "topete" ? (
-          <>
+          <g clipPath={traje?.capacete ? `url(#capacete-${uid})` : undefined}>
             <path
               d="M -233 20 C -252 -170 -130 -252 0 -252 C 140 -252 252 -170 233 20 C 222 -90 165 -168 70 -184 C -20 -198 -165 -165 -233 20 Z"
               fill={colors.cabelo}
@@ -523,7 +552,7 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
               strokeWidth={ink}
               strokeLinejoin="round"
             />
-          </>
+          </g>
         ) : null}
         {!p.back && style.hair === "coque" ? (
           <path
@@ -545,17 +574,16 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
         ) : null}
       </g>
 
-      {/* Capacete do traje: viseira transparente, o rosto continua à mostra */}
+      {p.sit ? <Desk globe={globe ?? null} /> : null}
+      {arms}
+      {/* Capacete do traje (frente): reflexo e aro por cima de tudo */}
       {traje?.capacete ? (
         <g transform={`translate(0 ${headY}) rotate(${p.headTilt})`}>
-          <circle r={HEAD_R + 92} fill={colors.ceu} opacity={0.16} />
           <path d={`M ${-(HEAD_R + 40)} ${-120} A ${HEAD_R + 40} ${HEAD_R + 40} 0 0 1 ${-60} ${-(HEAD_R + 36)}`} fill="none" stroke={colors.creme} strokeWidth={ink * 1.4} strokeLinecap="round" opacity={0.85} />
           <circle r={HEAD_R + 92} fill="none" stroke={colors.tinta} strokeWidth={ink * 1.2} />
           <circle r={HEAD_R + 92} fill="none" stroke={colors.branco} strokeWidth={ink * 0.5} opacity={0.6} />
         </g>
       ) : null}
-      {p.sit ? <Desk globe={globe ?? null} /> : null}
-      {arms}
       {cold ? <Breath frame={frame} x={40 + p.headTilt * 2} y={headY + 128} /> : null}
     </g>
   );

@@ -19,6 +19,37 @@ const toPages = (captions: Caption[], size: number): Page[] => {
   return pages;
 };
 
+// Estilo "placa" (ep03 v4 em diante): uma linha só, até 4 palavras, quebra em fronteira de
+// sentido (depois de pontuação, nunca deixando artigo/preposição/conjunção no fim da página),
+// placa de tinta translúcida atrás e destaque amarelo só em palavra de conteúdo.
+const FUNCIONAIS = new Set(
+  "a o as os um uma uns umas de da do das dos em na no nas nos e ou mas que se por para pra pro com sem ao à aos às num numa nem como".split(" "),
+);
+const nua = (t: string) => t.toLowerCase().replace(/[^\p{L}\d]/gu, "");
+const funcional = (t: string) => FUNCIONAIS.has(nua(t));
+const toPagesPlaca = (captions: Caption[], size: number): Page[] => {
+  const pages: Page[] = [];
+  let cur: Caption[] = [];
+  const flush = () => {
+    if (cur.length) pages.push({ startMs: cur[0].startMs, endMs: cur[cur.length - 1].endMs, tokens: cur });
+    cur = [];
+  };
+  captions.forEach((cap, i) => {
+    cur.push(cap);
+    const fim = cap.pageBreakAfter || i === captions.length - 1 || /[.,:;?!…]$/.test(cap.text.trim());
+    if (fim) return flush();
+    if (cur.length >= size) {
+      // não termina a página em palavra funcional: ela passa para a próxima
+      const carry: Caption[] = [];
+      while (cur.length > 1 && funcional(cur[cur.length - 1].text)) carry.unshift(cur.pop() as Caption);
+      flush();
+      cur = carry;
+    }
+  });
+  flush();
+  return pages;
+};
+
 // Legenda palavra por palavra; a palavra atual fica em amarelo e dá um pulinho.
 // Sem pontuação na tela: tira ponto, vírgula, dois-pontos e ponto e vírgula do fim de cada
 // palavra (o "1.700" fica como está) e a maiúscula que sobrava no meio do bloco. O texto da
@@ -30,14 +61,15 @@ const semMaiuscula = (t: string, prev: string | undefined) =>
     ? t.charAt(0).toLowerCase() + t.slice(1)
     : t;
 
-export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean }> = ({
+export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean }> = ({
   captions,
   showFromFrame,
   hideAfterFrame,
   stripPunctuation,
+  placa,
 }) => {
   const { fps } = useVideoConfig();
-  const pages = useMemo(() => toPages(captions, c.wordsPerPage), [captions]);
+  const pages = useMemo(() => (placa ? toPagesPlaca(captions, 4) : toPages(captions, c.wordsPerPage)), [captions, placa]);
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
@@ -50,7 +82,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
-            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} />
+            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} />
           </Sequence>
         );
       })}
@@ -58,11 +90,15 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
   );
 };
 
-const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean }> = ({ page, fromMs, strip }) => {
+const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean }> = ({ page, fromMs, strip, placa }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const nowMs = fromMs + (frame / fps) * 1000;
   const enter = spring({ frame, fps, config: { damping: 12, mass: 0.6, stiffness: 160 } });
+  const textos = page.tokens.map((token, i) => (strip ? semMaiuscula(semPontuacao(token.text.trim()), page.tokens[i - 1]?.text) : token.text.trim()));
+  // placa: uma linha só; a fonte diminui se as palavras não couberem
+  const chars = textos.join(" ").length;
+  const fontSize = placa ? Math.min(c.fontSize, Math.floor((1080 - 2 * layout.sideMargin - 80) / (chars * 0.56))) : c.fontSize;
 
   return (
     <AbsoluteFill
@@ -80,18 +116,23 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean }> = ({
         style={{
           fontFamily: fonts.main,
           fontWeight: fonts.weight,
-          fontSize: c.fontSize,
+          fontSize,
           lineHeight: c.lineHeight,
           textAlign: "center",
           color: c.textColor,
-          WebkitTextStroke: `${c.stroke}px ${c.strokeColor}`,
+          WebkitTextStroke: `${placa ? 7 : c.stroke}px ${c.strokeColor}`,
           paintOrder: "stroke fill",
           scale: String(0.85 + 0.15 * enter),
+          ...(placa
+            ? { whiteSpace: "nowrap", backgroundColor: "rgba(27, 27, 47, 0.7)", borderRadius: 28, padding: "12px 26px 16px" }
+            : {}),
         }}
       >
         {page.tokens.map((token, i) => {
           const nextToken = page.tokens[i + 1];
-          const active = token.startMs <= nowMs && (nextToken ? nextToken.startMs > nowMs : token.endMs > nowMs);
+          const falando = token.startMs <= nowMs && (nextToken ? nextToken.startMs > nowMs : token.endMs > nowMs);
+          // no estilo placa, o destaque só cai em palavra de conteúdo
+          const active = falando && !(placa && funcional(token.text));
           const since = ((nowMs - token.startMs) / 1000) * fps;
           const bump = active ? 1 + 0.18 * (1 - spring({ frame: since, fps, config: { damping: 9, mass: 0.4, stiffness: 220 } })) + 0.06 : 1;
           return (
@@ -99,7 +140,7 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean }> = ({
               key={`${token.startMs}-${i}`}
               style={{ display: "inline-block", margin: "0 0.26em", color: active ? c.activeColor : c.textColor, scale: String(bump) }}
             >
-              {strip ? semMaiuscula(semPontuacao(token.text.trim()), page.tokens[i - 1]?.text) : token.text.trim()}
+              {textos[i]}
             </span>
           );
         })}
