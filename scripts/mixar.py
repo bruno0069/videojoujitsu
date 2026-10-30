@@ -61,7 +61,11 @@ def ajustar(nome, entrada, saida, cadeia, alvo, pico=True):
 
 # Trechos com fala (mesma regra do duck: pausas < 0,4 s contam como fala contínua)
 ep = json.load(open(f"src/episodes/{EP}.json", encoding="utf-8"))
-words = json.load(open(f"src/audio/{EP}-words.json", encoding="utf-8"))
+# Sem arquivo de palavras = episódio ainda sem narração gravada: mixa só o fundo (e avisa)
+sem_voz = not __import__("os").path.exists(f"src/audio/{EP}-words.json")
+words = [] if sem_voz else json.load(open(f"src/audio/{EP}-words.json", encoding="utf-8"))
+if sem_voz:
+    print("ATENÇÃO: sem narração (src/audio/%s-words.json não existe) — o mix é só música e efeitos" % EP)
 spans = []
 for w in sorted(words, key=lambda w: w["startMs"]):
     if spans and w["startMs"] - spans[-1][1] <= 400:
@@ -73,14 +77,17 @@ so_fala = "aselect='" + "+".join(f"between(t,{a / 1000:.3f},{b / 1000:.3f})" for
 voz = f"{OUT}/voz-final.wav"
 fundo = f"{OUT}/fundo-final.wav"
 mix = f"{OUT}/mix-final.wav"
-rv = ajustar("voz", voz_in, voz, lambda g, lim: f"{COMP},volume={g}dB,{LIM(lim)}", VOZ_ALVO)
+rv = (0, 0, 0) if sem_voz else ajustar("voz", voz_in, voz, lambda g, lim: f"{COMP},volume={g}dB,{LIM(lim)}", VOZ_ALVO)
 rf = ajustar("fundo", fundo_in, fundo, lambda g, lim: f"volume={g}dB", FUNDO_ALVO, pico=False)
+if sem_voz:
+    voz = fundo  # amix de fundo + silêncio não muda nada; abaixo o fundo vira o mix
 
 # Mix: soma sem normalizar, limitador e ajuste fino de ganho
 ganho, limit = 0.0, 0.75
 for _ in range(10):
     ff("-i", voz, "-i", fundo, "-filter_complex",
-       f"[0:a][1:a]amix=inputs=2:normalize=0:duration=longest,volume={ganho:.2f}dB,{LIM(limit)}[m]",
+       (f"[1:a]volume={ganho:.2f}dB,{LIM(limit)}[m]" if sem_voz else
+        f"[0:a][1:a]amix=inputs=2:normalize=0:duration=longest,volume={ganho:.2f}dB,{LIM(limit)}[m]"),
        "-map", "[m]", "-ar", "48000", "-c:a", "pcm_s24le", mix)
     rm = medir(mix)
     if abs(rm[0] - MIX_ALVO) <= 0.1 and rm[2] <= PICO_MIX:
@@ -90,9 +97,11 @@ for _ in range(10):
     ganho += MIX_ALVO - rm[0]
 print(f"mix: ajuste {ganho:+.2f} dB -> I={rm[0]:.1f} LUFS, LRA={rm[1]:.1f} LU, pico real={rm[2]:.1f} dBTP")
 
-vf = medir(voz, so_fala)[0]
-ff_ = medir(fundo, so_fala)[0]
-print(f"sob a fala: voz {vf:.1f} LUFS, fundo {ff_:.1f} LUFS -> fundo {vf - ff_:.1f} dB abaixo da voz")
+vf = ff_ = float("nan")
+if not sem_voz:
+    vf = medir(voz, so_fala)[0]
+    ff_ = medir(fundo, so_fala)[0]
+    print(f"sob a fala: voz {vf:.1f} LUFS, fundo {ff_:.1f} LUFS -> fundo {vf - ff_:.1f} dB abaixo da voz")
 
 # Normalização final em duas passadas de loudnorm (mede, depois aplica com os valores medidos,
 # em modo linear): o arquivo final fica em -14 LUFS integrados em qualquer episódio

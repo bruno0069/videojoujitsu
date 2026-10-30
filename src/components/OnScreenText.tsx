@@ -69,7 +69,7 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
 }) => {
   const { fps } = useVideoConfig();
   if (!text || frame < from || frame >= to) return null;
-  if (sticker) return <Sticker text={text} frame={frame} from={from} to={to} />;
+  if (sticker) return <Sticker text={text} frame={frame} from={from} to={to} centerY={top} />;
   if (corner) return <Corner text={text} />;
   const enter = animate ? spring({ frame: frame - from, fps, config: { damping: 9, mass: 0.6, stiffness: 170 } }) : 1;
   // Sem animação (título de capa), o texto entra e sai seco
@@ -141,7 +141,8 @@ const Corner: React.FC<{ text: string }> = ({ text }) => {
 };
 
 // Sticker grande de chamada (CTA): entra em pop com bounce na faixa de 55–65% da altura
-const Sticker: React.FC<{ text: string; frame: number; from: number; to: number }> = ({ text, frame, from, to }) => {
+// `centerY` (opcional): altura do centro do sticker (ex.: card final no meio do quadro)
+const Sticker: React.FC<{ text: string; frame: number; from: number; to: number; centerY?: number }> = ({ text, frame, from, to, centerY }) => {
   const { fps } = useVideoConfig();
   const enter = spring({ frame: frame - from, fps, config: { damping: 7, mass: 0.6, stiffness: 190 } });
   const exit = interpolate(frame, [to - 5, to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -155,7 +156,7 @@ const Sticker: React.FC<{ text: string; frame: number; from: number; to: number 
       <div
         style={{
           position: "absolute",
-          top: st.centerY,
+          top: centerY ?? st.centerY,
           translate: "0 -50%",
           maxWidth: st.maxWidth,
           padding: `${st.paddingY}px ${st.paddingX}px`,

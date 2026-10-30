@@ -4,6 +4,7 @@ import { colors, loopPhase, idle, night, sombra } from "../theme";
 import { useGlobalFrame, useLoopFrames } from "./GlobalFrame";
 import { Globe } from "./elements/Globe";
 import { useInk } from "./Ink";
+import { PacoteBiscoito } from "./backgrounds/Ep03";
 
 // Rig 2D em camadas. Origem nos pés (0,0); y negativo para cima.
 // Unidades do rig: cabeça com raio 230, altura total ~1150.
@@ -399,6 +400,7 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
       <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
       {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={skin} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
+      {holding === "biscoito_vazio" ? <g transform={`translate(${handR[0]} ${handR[1] - 70}) rotate(-12)`}><PacoteBiscoito quantos={0} /></g> : null}
       {holding === "celular" || holding === "celular_enviando" || holding === "celular_notificacao" ? <Celular x={handR[0]} y={handR[1] - 60} frame={frame} enviando={holding === "celular_enviando"} notificacao={holding === "celular_notificacao"} /> : null}
     </>
   );
@@ -462,6 +464,8 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
 
       {/* Gola do capuz */}
       <ellipse cx={0} cy={-575 + bodyDy + breathDy} rx={138} ry={56} fill={style.hoodie} stroke={colors.tinta} strokeWidth={ink} />
+      {/* gola coral do traje: por baixo da cabeça, nunca sobre o queixo */}
+      {traje ? <ellipse cx={0} cy={-560 + bodyDy + breathDy} rx={150} ry={46} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} /> : null}
 
       {/* Cabeça */}
       <g transform={`translate(0 ${headY}) rotate(${p.headTilt}) scale(${adult?.headScale ?? 1})`}>
@@ -550,7 +554,6 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
           <circle r={HEAD_R + 92} fill="none" stroke={colors.branco} strokeWidth={ink * 0.5} opacity={0.6} />
         </g>
       ) : null}
-      {traje ? <ellipse cx={0} cy={-575 + bodyDy + breathDy} rx={150} ry={50} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} /> : null}
       {p.sit ? <Desk globe={globe ?? null} /> : null}
       {arms}
       {cold ? <Breath frame={frame} x={40 + p.headTilt * 2} y={headY + 128} /> : null}

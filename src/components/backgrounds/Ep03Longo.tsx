@@ -112,11 +112,9 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
   const id = useId().replace(/:/g, "");
   const j = HABITAT.janela;
   const p = HABITAT.painel;
-  const b = HABITAT.biscoito;
   const retorno = n(params.retorno);
   const mostra = frame >= retorno;
   const pisca = mostra && Math.floor((frame - retorno) / 8) % 2 === 0;
-  const destaque = ramp(frame, n(params.biscoito), n(params.biscoito) + 8);
   return (
     <>
       <Layer cam={cam} depth={0.6}>
@@ -132,7 +130,7 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
           <rect x={j.x} y={j.y} width={j.w} height={j.h} fill={colors.coralClaro} />
           <rect x={j.x} y={j.y + j.h * 0.45} width={j.w} height={j.h * 0.2} fill={colors.muro} opacity={0.45} />
           <Sun x={j.x + 120} y={j.y + 130} r={34} />
-          <circle cx={j.x + j.w - 140} cy={j.y + 110} r={12} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.5} />
+          <circle cx={j.x + j.w - 140} cy={j.y + 110} r={20} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.5} />
           <circle cx={j.x + j.w - 140} cy={j.y + 110} r={22 + 6 * Math.sin(frame / 12)} fill="none" stroke={colors.ceu} strokeWidth={ink * 0.4} opacity={0.6} />
           <path d={`M ${j.x - 20} ${j.y + j.h * 0.62} C ${j.x + 120} ${j.y + j.h * 0.5} ${j.x + 260} ${j.y + j.h * 0.55} ${j.x + 360} ${j.y + j.h * 0.6} C ${j.x + 460} ${j.y + j.h * 0.5} ${j.x + 560} ${j.y + j.h * 0.52} ${j.x + j.w + 20} ${j.y + j.h * 0.6} L ${j.x + j.w + 20} ${j.y + j.h} L ${j.x - 20} ${j.y + j.h} Z`} fill={sombra(colors.muro)} stroke={colors.tinta} strokeWidth={ink * 0.8} />
           <rect x={j.x} y={j.y + j.h * 0.72} width={j.w} height={j.h * 0.3} fill={colors.muroSombra} />
@@ -161,9 +159,6 @@ export const HabitatInterior: React.FC<{ cam: Cam; frame: number; params: Record
         </g>
         {/* prateleira com o pacote de biscoitos quase vazio */}
         <rect x={760} y={1000} width={300} height={22} rx={8} fill={colors.muroSombra} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-        <g transform={`translate(${b.x} ${b.y}) rotate(-14) scale(${0.62 + 0.12 * destaque})`}>
-          <PacoteBiscoito quantos={0} />
-        </g>
       </Layer>
       <Layer cam={cam} depth={1}>
         <rect x={-1000} y={1300} width={3080} height={1400} fill={colors.chaoSombra} stroke={colors.tinta} strokeWidth={ink} />

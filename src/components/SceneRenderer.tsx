@@ -240,6 +240,11 @@ const centerOf = (
   if (focus === "orla") return MAPA_RIO.orla;
   if (focus === "casa") return { x: MAPA_RIO.pino.x, y: MAPA_RIO.pino.y + 20 };
   if (focus === "morros") return atDepth(MAPA_RIO.morros.x, MAPA_RIO.morros.y, RIO_DEPTH);
+  // a mão direita do Nico (insertos do celular / do pacote), na pose em pé
+  if (focus === "mao") {
+    const n = placed.find((c) => c.id === "nico");
+    if (n) return { x: n.x + 200 * n.s, y: n.y - 330 * n.s };
+  }
   if (focus === "globo_mesa") {
     const n = placed.find((c) => c.id === "nico");
     if (n)
