@@ -349,7 +349,7 @@ export const MarteSuperficie: React.FC<{ cam: Cam; frame: number; params: Record
           <g opacity={ramp(frame, n(params.alturaTerra), n(params.alturaTerra) + 8)}>
             <path d={`M -100 ${ALTURA_TERRA_Y} L 1180 ${ALTURA_TERRA_Y}`} stroke={colors.tinta} strokeWidth={ink * 1.5} strokeDasharray={`${ink * 1.6} ${ink * 1.2}`} />
             <path d={`M -100 ${ALTURA_TERRA_Y} L 1180 ${ALTURA_TERRA_Y}`} stroke={colors.amarelo} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.6} ${ink * 1.2}`} />
-            <InfoLabel x={200} y={ALTURA_TERRA_Y - 60} text="pulo na Terra" />
+            <InfoLabel x={16} y={ALTURA_TERRA_Y - 50} text="pulo na Terra" anchor="start" fontSize={40} />
           </g>
         ) : null}
         {/* poeira */}
