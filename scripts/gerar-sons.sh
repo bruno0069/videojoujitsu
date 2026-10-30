@@ -80,6 +80,16 @@ gen -f lavfi -i "aevalsrc='0.16*sin(2*PI*110*t)+0.1*sin(2*PI*111.5*t)+0.05*sin(2
 gen -f lavfi -i "anoisesrc=color=brown:amplitude=1:sample_rate=$R:duration=4:seed=31" \
   -af "lowpass=f=1400,highpass=f=120,tremolo=f=1.1:d=0.4,volume=2,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/agua_correndo.wav"
 
+# ep03
+# ziper: zíper de mala (0,8 s), cliques rápidos de ruído subindo de tom
+gen -f lavfi -i "anoisesrc=color=white:amplitude=0.6:sample_rate=$R:duration=0.8:seed=41" \
+  -af "highpass=f=1800,lowpass=f=6000,volume='0.5+0.5*gt(sin(2*PI*(60*t+40*t*t)),0.2)':eval=frame,afade=t=in:d=0.04,afade=t=out:st=0.7:d=0.1" -ac 1 "$SFX/ziper.wav"
+# quarto_ambiente: quarto silencioso (ruído rosa bem baixo e abafado), loop de 8 s
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.35:sample_rate=$R:duration=8:seed=43" \
+  -af "lowpass=f=700,highpass=f=80,afade=t=in:d=0.05,afade=t=out:st=7.95:d=0.05" -ac 1 "$SFX/quarto_ambiente.wav"
+# pulo: impulso de pulo (0,5 s), "boing" grave subindo
+gen -f lavfi -i "aevalsrc='0.4*sin(2*PI*(140*t+500*t*t))*exp(-t*5)':s=$R:d=0.5" -ac 1 "$SFX/pulo.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

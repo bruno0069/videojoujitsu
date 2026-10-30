@@ -1,0 +1,118 @@
+{
+  "episode": 3,
+  "title": "E se o Nico tivesse que sair da Terra amanhã?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 1800,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 90,
+      "narration": "E se o Nico tivesse que sair da Terra amanhã? Ele começou arrumando a mala.",
+      "onScreenText": "E SE VOCÊ TIVESSE QUE SAIR DA TERRA AMANHÃ?",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Mala aberta sobre a cama; o Nico olha para ela de pé, parado."
+      },
+      "sfx": ["ziper"],
+      "music": null
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 90,
+      "durationInFrames": 210,
+      "narration": "Este é o Nico. Ele separou uma mala, um casaco e um celular. A Dani avisou que faltava alguma coisa.",
+      "onScreenText": "Nico, 15 anos · Dani, 15 anos, cética",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [
+          { "id": "nico", "pose": "apontando", "expression": "neutro" },
+          { "id": "dani", "pose": "bracos_cruzados", "expression": "cetica" }
+        ],
+        "camera": "plano_medio",
+        "action": "Três insertos entram em sequência sobre a mala: casaco, celular, escova de dente. A Dani olha de lado."
+      },
+      "sfx": ["quarto_ambiente"],
+      "music": "base_suave"
+    },
+    {
+      "id": "gatilho",
+      "startFrame": 300,
+      "durationInFrames": 240,
+      "narration": "O destino é Marte. Não é um voo de doze horas. A viagem leva de sete a dez meses.",
+      "onScreenText": "7 a 10 meses",
+      "visual": {
+        "background": "diagrama_espaco",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "Diagrama simples: a Terra de um lado, Marte do outro, e uma linha pontilhada curva ligando os dois. Um avioãzinho tenta percorrer a linha e some."
+      },
+      "sfx": ["estalo"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada1",
+      "startFrame": 540,
+      "durationInFrames": 360,
+      "narration": "A sonda da NASA que foi para lá levou sete meses e meio. O Nico passaria esse tempo inteiro dentro de uma cápsula do tamanho do quarto dele. Sem sair.",
+      "onScreenText": "≈ 7 meses e meio",
+      "visual": {
+        "background": "capsula_interior",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "Um calendário na parede da cápsula vira páginas cada vez mais rápido; o Nico continua na mesma posição, só a barba e o cabelo crescem um pouco."
+      },
+      "sfx": ["tique_taque", "zumbido_leve"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 900,
+      "durationInFrames": 360,
+      "narration": "Chegando, ele não poderia respirar. O ar de Marte é noventa e cinco por cento gás carbônico. E a temperatura média da superfície é cinquenta e três graus abaixo de zero.",
+      "onScreenText": "95% CO₂ · −53 °C",
+      "visual": {
+        "background": "marte_superficie",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "medo" }],
+        "camera": "plano_medio",
+        "action": "O Nico de casaco em pé no chão alaranjado; um termômetro ao lado desce até −53 °C e o casaco se mostra claramente insuficiente."
+      },
+      "sfx": ["vento_frio"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "virada",
+      "startFrame": 1260,
+      "durationInFrames": 300,
+      "narration": "A gravidade é só trinta e oito por cento da nossa, então ele pularia quase três vezes mais alto. Mas cada mensagem para a Terra levaria minutos para chegar. Não teria com quem conversar na hora.",
+      "onScreenText": "mensagem: minutos de atraso",
+      "visual": {
+        "background": "marte_superficie",
+        "characters": [{ "id": "nico", "pose": "caindo", "expression": "surpresa" }],
+        "camera": "plano_aberto",
+        "action": "O Nico dá um pulo alto e desce devagar; no ar, segura o celular com um baloãozinho de mensagem que fica girando sem entregar."
+      },
+      "sfx": ["pulo"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1560,
+      "durationInFrames": 240,
+      "narration": "De volta ao quarto, o Nico tira o celular da mala. E se você tivesse que sair da Terra amanhã?",
+      "onScreenText": "CELULAR OU CASACO? COMENTA.",
+      "visual": {
+        "background": "quarto_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Corte para o mesmo enquadramento do gancho: mala aberta na cama, o Nico de pé olhando para ela, mesma expressão do primeiro frame."
+      },
+      "sfx": ["ziper"],
+      "music": null
+    }
+  ]
+}

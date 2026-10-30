@@ -19,6 +19,7 @@ import {
   GLOBO_DIAGRAMA,
   MAPA,
 } from "./backgrounds/DiagramasTerra";
+import { CALENDARIO, ESPACO, MALA, QUARTO_DEPTH } from "./backgrounds/Ep03";
 import { MAPA_RIO, RIO_DEPTH } from "./backgrounds/MapaRio";
 import { GLOBO_QUADRO, JANELA, MESA_DEPTH, MESA_PROF, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
@@ -212,6 +213,10 @@ const centerOf = (
       x: GLOBO_DIAGRAMA.x + GLOBO_DIAGRAMA.r * 0.55,
       y: GLOBO_DIAGRAMA.y,
     };
+  if (focus === "mala") return atDepth(MALA.x, MALA.y - 120, QUARTO_DEPTH);
+  if (focus === "calendario") return atDepth(CALENDARIO.x, CALENDARIO.y, 0.7);
+  if (focus === "marte") return ESPACO.marte;
+  if (focus === "terra_espaco") return ESPACO.terra;
   if (focus === "polo") return { x: GLOBO_DIAGRAMA.x, y: GLOBO_DIAGRAMA.y - GLOBO_DIAGRAMA.r + 60 };
   if (focus === "mesa_globo") return atDepth(MESA_PROF.globo.x, MESA_PROF.globo.y + 40, MESA_DEPTH);
   if (focus === "noite")
@@ -450,6 +455,16 @@ export const SceneRenderer: React.FC<{
         },
       )
     : 0;
+  const jump = plano.pulo
+    ? -plano.pulo.altura *
+      Math.sin(
+        Math.PI *
+          interpolate(frame, [cue(plano.pulo.de), cue(plano.pulo.ate)], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          }),
+      )
+    : 0;
   // Personagem espelhado no plano (ex.: professora apontando para a esquerda)
   const flipOf = (id: string) =>
     plano.personagens?.find((c) => c.id === id)?.espelhar === true;
@@ -490,7 +505,7 @@ export const SceneRenderer: React.FC<{
     return (
       <g
         key={p.id}
-        transform={`translate(${p.x + (p.screen ? 0 : slide)} ${p.y}) scale(${flipOf(p.id) ? -p.s : p.s} ${p.s})`}
+        transform={`translate(${p.x + (p.screen ? 0 : slide)} ${p.y + (p.screen ? 0 : jump)}) scale(${flipOf(p.id) ? -p.s : p.s} ${p.s})`}
       >
         <InkScale scale={p.s}>
           {p.id === "dani" ? (
@@ -567,6 +582,7 @@ export const SceneRenderer: React.FC<{
             from={cue(el.de)}
             to={cue(el.ate, duration)}
             big={el.grande}
+            rotulo={el.texto}
           />
         );
       case "globo":

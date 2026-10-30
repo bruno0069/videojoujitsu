@@ -6,6 +6,7 @@ import { DiagramaGlobo, GloboDiaNoite, MapaOnda } from "./backgrounds/DiagramasT
 import { DiagramaOrbita } from "./backgrounds/DiagramaOrbita";
 import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
 import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
+import { CapsulaInterior, DiagramaEspaco, MarteSuperficie, QuartoDia } from "./backgrounds/Ep03";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
 import { Patio } from "./backgrounds/Patio";
@@ -26,6 +27,10 @@ export const BACKGROUNDS = [
   "diagrama_globo",
   "mapa_onda",
   "mapa_rio",
+  "quarto_dia",
+  "diagrama_espaco",
+  "capsula_interior",
+  "marte_superficie",
   "globo_metade_dia_metade_noite",
 ];
 
@@ -87,6 +92,14 @@ export const Background: React.FC<{
       return <DiagramaGlobo cam={cam} frame={frame} params={params} />;
     case "mapa_onda":
       return <MapaOnda cam={cam} frame={frame} params={params} />;
+    case "quarto_dia":
+      return <QuartoDia cam={cam} frame={frame} globalFrame={globalFrame} params={params} />;
+    case "diagrama_espaco":
+      return <DiagramaEspaco cam={cam} frame={frame} params={params} />;
+    case "capsula_interior":
+      return <CapsulaInterior cam={cam} frame={frame} params={params} />;
+    case "marte_superficie":
+      return <MarteSuperficie cam={cam} frame={frame} />;
     case "mapa_rio":
       return <MapaRio cam={cam} frame={frame} params={params} />;
     case "globo_metade_dia_metade_noite":

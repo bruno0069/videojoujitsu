@@ -385,6 +385,7 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
       <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
       {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={skin} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
+      {holding === "celular" || holding === "celular_enviando" ? <Celular x={handR[0]} y={handR[1] - 60} frame={frame} enviando={holding === "celular_enviando"} /> : null}
     </>
   );
 
@@ -523,6 +524,25 @@ export const Character: React.FC<CharacterProps> = ({ style, pose, expression, h
       {p.sit ? <Desk globe={globe ?? null} /> : null}
       {arms}
       {cold ? <Breath frame={frame} x={40 + p.headTilt * 2} y={headY + 128} /> : null}
+    </g>
+  );
+};
+
+// Celular na mão (ep03). Com `enviando`, um balãozinho de mensagem com o indicador girando
+const Celular: React.FC<{ x: number; y: number; frame: number; enviando: boolean }> = ({ x, y, frame, enviando }) => {
+  const ink = useInk();
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <rect x={-44} y={-80} width={88} height={160} rx={16} fill={colors.tinta} />
+      <rect x={-33} y={-64} width={66} height={120} rx={8} fill={colors.ceu} />
+      {enviando ? (
+        <g transform="translate(120 -170)">
+          <path d="M -90 -60 L 90 -60 Q 110 -60 110 -40 L 110 30 Q 110 50 90 50 L -30 50 L -70 90 L -60 50 L -90 50 Q -110 50 -110 30 L -110 -40 Q -110 -60 -90 -60 Z" fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
+          <g transform={`rotate(${frame * 9})`}>
+            <path d="M 0 -30 A 30 30 0 1 1 -30 0" fill="none" stroke={colors.coral} strokeWidth={ink * 1.1} strokeLinecap="round" />
+          </g>
+        </g>
+      ) : null}
     </g>
   );
 };

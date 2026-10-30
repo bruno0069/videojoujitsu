@@ -220,7 +220,7 @@ export const TestPaper: React.FC<{ frame: number; from: number; to: number; grad
 };
 
 // Termômetro (tela) que desce até abaixo de zero
-export const Thermometer: React.FC<{ frame: number; from: number; to: number; big?: boolean }> = ({ frame, from, to, big }) => {
+export const Thermometer: React.FC<{ frame: number; from: number; to: number; big?: boolean; rotulo?: string }> = ({ frame, from, to, big, rotulo = "0 °C" }) => {
   const { fps } = useVideoConfig();
   const s = pop(frame, from, to + 10000, fps, true);
   if (s <= 0) return null;
@@ -252,7 +252,7 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
       {ticks}
       <path d={`M ${x - tube} ${zeroY} L ${x + tube + 22} ${zeroY}`} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinecap="round" />
       {/* Etiqueta acima do tubo, dentro do quadro e longe da cabeça do Nico */}
-      <InfoLabel x={x} y={top - 110} text="0 °C" />
+      <InfoLabel x={x} y={top - 110} text={rotulo} />
     </g>
   );
 };

@@ -49,7 +49,7 @@ export type ElementSpec =
   | ({ type: "etiqueta"; texto: string; personagem: string } & Window)
   | ({ type: "inserto"; objeto: "pao_de_queijo" } & Window)
   | ({ type: "prova"; nota: string; notaEm: Cue } & Window)
-  | ({ type: "termometro"; grande?: boolean } & Window)
+  | ({ type: "termometro"; grande?: boolean; texto?: string } & Window)
   | ({ type: "relogio"; inicio: string; fim: string } & Window)
   // Globo de mesa (na carteira de `personagem`): gira a `velocidade` graus por frame; `trava`
   // para com solavanco (e `flash`); `volta` volta a girar e chega no último frame do episódio
@@ -81,6 +81,8 @@ export type Plano = {
   cenario?: string; // troca o cenário só neste plano
   // Desloca os personagens na horizontal entre `de` e `ate` (ex.: arrastado para fora do quadro)
   deslocar?: { x: number; de?: Cue; ate?: Cue };
+  // Pulo: sobe `altura` px e volta ao chão entre `de` e `ate` (ep03, gravidade de Marte)
+  pulo?: { altura: number; de: Cue; ate: Cue };
 };
 
 export type SceneDirection = {
