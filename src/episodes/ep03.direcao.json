@@ -64,11 +64,7 @@
           "personagens": [
             {
               "id": "nico",
-              "x": 270
-            },
-            {
-              "id": "dani",
-              "x": 790
+              "x": 330
             }
           ]
         },
@@ -78,33 +74,27 @@
           "foco": "mala",
           "centralizar": true,
           "zoom": [
-            1.7,
-            1.8
+            2.1,
+            2.2
           ],
           "entrada": "corte",
           "personagens": []
         },
         {
-          "de": "Dani-2",
-          "enquadramento": "close",
-          "foco": "dani",
-          "zoom": [
-            1,
-            1.08
-          ],
-          "entrada": "corte"
-        },
-        {
-          "de": "alguma-3",
+          "de": "achou-2",
           "enquadramento": "medio",
-          "foco": "mala",
-          "centralizar": true,
+          "foco": "nico",
           "zoom": [
-            1.75,
-            1.85
+            1.04,
+            1.1
           ],
           "entrada": "corte",
-          "personagens": []
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 330
+            }
+          ]
         }
       ],
       "texto": {
@@ -113,16 +103,9 @@
       "elementos": [
         {
           "type": "etiqueta",
-          "texto": "NICO",
+          "texto": "Nico, 15 anos",
           "personagem": "nico",
           "de": 6,
-          "ate": "casaco-3"
-        },
-        {
-          "type": "etiqueta",
-          "texto": "DANI",
-          "personagem": "dani",
-          "de": 12,
           "ate": "casaco-3"
         }
       ],
@@ -134,19 +117,21 @@
               0.8,
               0.2
             ]
-          }
-        ],
-        "dani": [
+          },
           {
-            "de": "Dani",
-            "acao": "revirar_olhos"
+            "de": "achou",
+            "olhar": [
+              0,
+              0
+            ],
+            "expressao": "neutro"
           }
         ]
       },
       "fundo": {
         "casaco": "casaco",
         "celular": "celular",
-        "escova": "alguma"
+        "escova": "pronto"
       },
       "sfx": {
         "quarto_ambiente": 0
@@ -269,14 +254,28 @@
             "olhar": [
               0.6,
               -0.2
-            ]
+            ],
+            "expressao": "neutro"
+          },
+          {
+            "de": "inteiro",
+            "expressao": "neutra"
           },
           {
             "de": "cápsula",
             "olhar": [
               0,
-              0
-            ]
+              0.3
+            ],
+            "expressao": "preocupacao"
+          },
+          {
+            "de": "Sem",
+            "olhar": [
+              0,
+              0.5
+            ],
+            "expressao": "medo"
           }
         ]
       },
@@ -347,14 +346,14 @@
           "type": "termometro",
           "de": "temperatura",
           "ate": "zero.$",
-          "texto": "−53 °C"
+          "texto": ""
         }
       ],
       "personagens": {
         "nico": [
           {
             "de": 0,
-            "acao": "frio",
+            "acao": "casaco",
             "olhar": [
               0.3,
               -0.3
@@ -436,11 +435,13 @@
         "nico": [
           {
             "de": 0,
-            "pose": "parado"
+            "pose": "parado",
+            "acao": "casaco"
           },
           {
             "de": "então",
-            "pose": "caindo"
+            "pose": "caindo",
+            "acao": "casaco"
           },
           {
             "de": "Mas-2",
@@ -449,7 +450,8 @@
             "olhar": [
               0.5,
               -0.4
-            ]
+            ],
+            "acao": "casaco"
           },
           {
             "de": "Não-2",
@@ -458,7 +460,8 @@
             "olhar": [
               0.4,
               -0.5
-            ]
+            ],
+            "acao": "casaco"
           }
         ]
       },
@@ -468,6 +471,10 @@
       "texto": {
         "mostrar": true,
         "de": "mensagem"
+      },
+      "fundo": {
+        "alturaTerra": "então-12",
+        "alturaTerraAte": "Mas-2"
       }
     },
     "fecho": {
@@ -494,8 +501,8 @@
           "foco": "mala",
           "centralizar": true,
           "zoom": [
-            1.7,
-            1.8
+            2.1,
+            2.2
           ],
           "entrada": "corte",
           "personagens": []

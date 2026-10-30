@@ -187,7 +187,7 @@ export const DiagramaEspaco: React.FC<{ cam: Cam; frame: number; params: Record<
         <Globe x={e.terra.x} y={e.terra.y} r={e.terra.r} lon={-50 - frame * 0.6} />
         <Marte x={e.marte.x} y={e.marte.y} r={e.marte.r} />
         <InfoLabel x={e.terra.x} y={e.terra.y - e.terra.r - 60} text="Terra" />
-        <InfoLabel x={e.marte.x} y={e.marte.y - e.marte.r - 60} text="Marte" />
+        <InfoLabel x={e.marte.x - e.marte.r - 110} y={e.marte.y} text="Marte" />
         {Number.isFinite(aviao) && frame >= aviao && fade > 0 ? (
           <g transform={`translate(${p.x} ${p.y}) rotate(${ang}) scale(${fade})`}>
             <Aviao />
@@ -251,8 +251,6 @@ export const CapsulaInterior: React.FC<{ cam: Cam; frame: number; params: Record
   const dia = Math.max(1, Math.round(1 + (total - 1) * k));
   const terraR = 70 - 50 * k;
   const c = CALENDARIO;
-  // folha voando: a cada troca de número sai uma folha (mais rápida conforme acelera)
-  const folha = Number.isFinite(de) && frame >= de && k < 1 ? ((1 + (total - 1) * k) % 1) : 0;
   return (
     <>
       <Layer cam={cam} depth={0.7}>
@@ -261,16 +259,34 @@ export const CapsulaInterior: React.FC<{ cam: Cam; frame: number; params: Record
         {[-200, 160, 520, 880, 1240].map((px) => (
           <rect key={px} x={px} y={260} width={330} height={960} rx={30} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
         ))}
-        {[300, 1140].map((py) => (
-          <rect key={py} x={-1000} y={py} width={3080} height={22} fill={colors.muroSombra} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-        ))}
+        {/* painel de controle */}
+        <g transform="translate(300 960)">
+          <rect x={-200} y={-90} width={400} height={180} rx={20} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} />
+          <rect x={-170} y={-62} width={150} height={92} rx={10} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+          <path d={`M -160 0 L -130 -20 L -100 10 L -70 -30 L -36 -6`} fill="none" stroke={colors.creme} strokeWidth={ink * 0.6} strokeLinecap="round" strokeLinejoin="round" />
+          {[0, 1, 2].map((i) => (
+            <circle key={i} cx={30 + i * 52} cy={-40} r={16} fill={[colors.coral, colors.amarelo, colors.turquesa][i]} stroke={colors.tinta} strokeWidth={ink * 0.5} opacity={i === Math.floor(frame / 12) % 3 ? 1 : 0.55} />
+          ))}
+          {[0, 1, 2].map((i) => (
+            <rect key={i} x={14 + i * 52} y={10} width={32} height={50} rx={8} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.5} />
+          ))}
+        </g>
+        {/* objetos flutuando (sem gravidade) */}
+        <g transform={`translate(560 ${420 + Math.sin(frame / 18) * 18}) rotate(${frame * 0.8})`}>
+          <rect x={-60} y={-9} width={120} height={18} rx={9} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+          <path d="M 60 -9 L 82 0 L 60 9 Z" fill={colors.chao} stroke={colors.tinta} strokeWidth={ink * 0.5} strokeLinejoin="round" />
+        </g>
+        <circle cx={980} cy={880 + Math.sin(frame / 14 + 1) * 14} r={20} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.6} opacity={0.85} />
+        <circle cx={1020} cy={830 + Math.sin(frame / 11) * 12} r={11} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.5} opacity={0.85} />
         {/* escotilha */}
         <clipPath id={`esc-${id}`}>
           <circle cx={300} cy={620} r={150} />
         </clipPath>
         <g clipPath={`url(#esc-${id})`}>
           <rect x={100} y={420} width={400} height={400} fill={colors.noite} />
-          <Stars frame={frame} />
+          {[[180, 520], [250, 590], [400, 520], [330, 480], [200, 700], [420, 720], [290, 760], [460, 610]].map(([sx, sy], i) => (
+            <circle key={i} cx={sx} cy={sy} r={4 + (i % 3) * 2} fill={colors.creme} opacity={0.6 + 0.4 * Math.sin(frame / 10 + i)} />
+          ))}
           <Globe x={360} y={680} r={terraR} lon={-40 - frame * 0.5} grade={false} />
         </g>
         <circle cx={300} cy={620} r={150} fill="none" stroke={colors.tinta} strokeWidth={ink * 2.6} />
@@ -281,11 +297,6 @@ export const CapsulaInterior: React.FC<{ cam: Cam; frame: number; params: Record
           <rect x={-120} y={-130} width={240} height={70} rx={14} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} />
           <text x={0} y={-82} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={40} fill={colors.creme}>DIA</text>
           <text x={0} y={70} textAnchor="middle" fontFamily={fonts.main} fontWeight={800} fontSize={dia > 99 ? 104 : 120} fill={colors.tinta}>{dia}</text>
-          {dia > 1 && folha > 0.3 ? (
-            <g transform={`translate(${80 + folha * 160} ${-80 - folha * 220}) rotate(${20 + folha * 60})`} opacity={1 - folha}>
-              <rect x={-110} y={-60} width={220} height={180} rx={10} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.7} />
-            </g>
-          ) : null}
         </g>
       </Layer>
       <Layer cam={cam} depth={1}>
@@ -301,15 +312,18 @@ export const CapsulaInterior: React.FC<{ cam: Cam; frame: number; params: Record
 // ---------------------------------------------------------------- marte_superficie
 // Chão alaranjado, céu cor de poeira, morros ao fundo, pedras, um Sol pequeno e a Terra como um
 // pontinho azul no céu. Poeira passando devagar.
-export const MarteSuperficie: React.FC<{ cam: Cam; frame: number }> = ({ cam, frame }) => {
+// `alturaTerra`: a partir deste frame, linha tracejada na altura que a cabeça do Nico chegaria
+// pulando na Terra (o pulo em Marte passa bem acima dela).
+export const ALTURA_TERRA_Y = 610;
+export const MarteSuperficie: React.FC<{ cam: Cam; frame: number; params: Record<string, number | number[]> }> = ({ cam, frame, params }) => {
   const ink = useInk();
   return (
     <>
       <Layer cam={cam} depth={0.15}>
         <SkyFill color={colors.coralClaro} />
         <rect x={-1000} y={700} width={3080} height={600} fill={colors.muro} opacity={0.45} />
-        <Sun x={860} y={330} r={46} />
-        <circle cx={220} cy={260} r={9} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.4} />
+        <Sun x={170} y={330} r={46} />
+        <circle cx={900} cy={240} r={9} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink * 0.4} />
       </Layer>
       <Layer cam={cam} depth={0.5}>
         <path d="M -500 1120 C -200 980 0 1000 200 1060 C 400 960 600 980 760 1050 C 900 990 1100 980 1600 1100 L 1600 1400 L -500 1400 Z" fill={sombra(colors.muro)} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
@@ -331,6 +345,13 @@ export const MarteSuperficie: React.FC<{ cam: Cam; frame: number }> = ({ cam, fr
         {[300, 520, 860].map((x, i) => (
           <ellipse key={x} cx={x} cy={1290 + i * 30} rx={70} ry={12} fill={sombra(colors.muroSombra)} opacity={0.7} />
         ))}
+        {frame >= n(params.alturaTerra) && frame < n(params.alturaTerraAte) ? (
+          <g opacity={ramp(frame, n(params.alturaTerra), n(params.alturaTerra) + 8)}>
+            <path d={`M -100 ${ALTURA_TERRA_Y} L 1180 ${ALTURA_TERRA_Y}`} stroke={colors.tinta} strokeWidth={ink * 1.5} strokeDasharray={`${ink * 1.6} ${ink * 1.2}`} />
+            <path d={`M -100 ${ALTURA_TERRA_Y} L 1180 ${ALTURA_TERRA_Y}`} stroke={colors.amarelo} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.6} ${ink * 1.2}`} />
+            <InfoLabel x={200} y={ALTURA_TERRA_Y - 60} text="pulo na Terra" />
+          </g>
+        ) : null}
         {/* poeira */}
         {Array.from({ length: 12 }, (_, i) => {
           const t = ((frame * (2 + (i % 3)) + i * 173) % 1300) / 1300;

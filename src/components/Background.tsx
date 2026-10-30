@@ -99,7 +99,7 @@ export const Background: React.FC<{
     case "capsula_interior":
       return <CapsulaInterior cam={cam} frame={frame} params={params} />;
     case "marte_superficie":
-      return <MarteSuperficie cam={cam} frame={frame} />;
+      return <MarteSuperficie cam={cam} frame={frame} params={params} />;
     case "mapa_rio":
       return <MapaRio cam={cam} frame={frame} params={params} />;
     case "globo_metade_dia_metade_noite":

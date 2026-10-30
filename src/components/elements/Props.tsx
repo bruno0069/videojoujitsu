@@ -252,7 +252,7 @@ export const Thermometer: React.FC<{ frame: number; from: number; to: number; bi
       {ticks}
       <path d={`M ${x - tube} ${zeroY} L ${x + tube + 22} ${zeroY}`} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinecap="round" />
       {/* Etiqueta acima do tubo, dentro do quadro e longe da cabeça do Nico */}
-      <InfoLabel x={x} y={top - 110} text={rotulo} />
+      {rotulo ? <InfoLabel x={x} y={top - 110} text={rotulo} /> : null}
     </g>
   );
 };

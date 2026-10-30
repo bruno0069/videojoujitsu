@@ -213,7 +213,7 @@ const centerOf = (
       x: GLOBO_DIAGRAMA.x + GLOBO_DIAGRAMA.r * 0.55,
       y: GLOBO_DIAGRAMA.y,
     };
-  if (focus === "mala") return atDepth(MALA.x, MALA.y - 120, QUARTO_DEPTH);
+  if (focus === "mala") return atDepth(MALA.x, MALA.y - 80, QUARTO_DEPTH);
   if (focus === "calendario") return atDepth(CALENDARIO.x, CALENDARIO.y, 0.7);
   if (focus === "marte") return ESPACO.marte;
   if (focus === "terra_espaco") return ESPACO.terra;

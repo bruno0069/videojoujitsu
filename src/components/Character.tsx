@@ -280,8 +280,10 @@ const PaoDeQueijo: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r })
   );
 };
 
-export const Character: React.FC<CharacterProps> = ({ style, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly }) => {
+export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly }) => {
   const frame = useCurrentFrame();
+  // Ação "casaco" (ep03): veste o casaco verde que estava na mala no lugar do moletom
+  const style = action === "casaco" ? { ...baseStyle, hoodie: colors.folhaSombra, pocket: false } : baseStyle;
   const g = useGlobalFrame();
   const loopFrames = useLoopFrames();
   const ink = useInk();

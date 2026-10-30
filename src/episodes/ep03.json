@@ -24,24 +24,21 @@
     {
       "id": "apresentacao",
       "startFrame": 90,
-      "durationInFrames": 210,
-      "narration": "Este é o Nico. Ele separou uma mala, um casaco e um celular. A Dani avisou que faltava alguma coisa.",
-      "onScreenText": "Nico, 15 anos · Dani, 15 anos, cética",
+      "durationInFrames": 150,
+      "narration": "Este é o Nico. Ele separou uma mala, um casaco e um celular. Ele achou que estava pronto.",
+      "onScreenText": "Nico, 15 anos",
       "visual": {
         "background": "quarto_dia",
-        "characters": [
-          { "id": "nico", "pose": "apontando", "expression": "neutro" },
-          { "id": "dani", "pose": "bracos_cruzados", "expression": "cetica" }
-        ],
+        "characters": [{ "id": "nico", "pose": "apontando", "expression": "neutro" }],
         "camera": "plano_medio",
-        "action": "Três insertos entram em sequência sobre a mala: casaco, celular, escova de dente. A Dani olha de lado."
+        "action": "Três insertos entram em sequência sobre a mala: casaco, celular, escova de dente. O Nico aponta para a mala, satisfeito consigo mesmo."
       },
       "sfx": ["quarto_ambiente"],
       "music": "base_suave"
     },
     {
       "id": "gatilho",
-      "startFrame": 300,
+      "startFrame": 240,
       "durationInFrames": 240,
       "narration": "O destino é Marte. Não é um voo de doze horas. A viagem leva de sete a dez meses.",
       "onScreenText": "7 a 10 meses",
@@ -56,7 +53,7 @@
     },
     {
       "id": "escalada1",
-      "startFrame": 540,
+      "startFrame": 480,
       "durationInFrames": 360,
       "narration": "A sonda da NASA que foi para lá levou sete meses e meio. O Nico passaria esse tempo inteiro dentro de uma cápsula do tamanho do quarto dele. Sem sair.",
       "onScreenText": "≈ 7 meses e meio",
@@ -71,7 +68,7 @@
     },
     {
       "id": "escalada2",
-      "startFrame": 900,
+      "startFrame": 840,
       "durationInFrames": 360,
       "narration": "Chegando, ele não poderia respirar. O ar de Marte é noventa e cinco por cento gás carbônico. E a temperatura média da superfície é cinquenta e três graus abaixo de zero.",
       "onScreenText": "95% CO₂ · −53 °C",
@@ -86,8 +83,8 @@
     },
     {
       "id": "virada",
-      "startFrame": 1260,
-      "durationInFrames": 300,
+      "startFrame": 1200,
+      "durationInFrames": 360,
       "narration": "A gravidade é só trinta e oito por cento da nossa, então ele pularia quase três vezes mais alto. Mas cada mensagem para a Terra levaria minutos para chegar. Não teria com quem conversar na hora.",
       "onScreenText": "mensagem: minutos de atraso",
       "visual": {
