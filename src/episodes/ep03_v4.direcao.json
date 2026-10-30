@@ -1,4 +1,5 @@
 {
+  "limitesFixos": true,
   "legendaDe": 60,
   "legendaSemPontuacao": true,
   "legendaPlaca": true,
@@ -150,6 +151,23 @@
               "id": "nico",
               "x": 860,
               "y": 1240
+            }
+          ]
+        },
+        {
+          "de": "controle-6",
+          "enquadramento": "medio",
+          "foco": "mala",
+          "centralizar": true,
+          "zoom": [
+            1.32,
+            1.38
+          ],
+          "entrada": "punch",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 820
             }
           ]
         },
@@ -577,6 +595,26 @@
           }
         },
         {
+          "de": "mais-2",
+          "enquadramento": "aberto",
+          "zoom": [
+            1.12,
+            1.16
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 540
+            }
+          ],
+          "pulo": {
+            "altura": 560,
+            "de": "pula",
+            "ate": "Terra.$"
+          }
+        },
+        {
           "de": "Por-2",
           "enquadramento": "aberto",
           "zoom": [
@@ -988,6 +1026,21 @@
               "x": 360
             }
           ]
+        },
+        {
+          "de": "assim.#2$+20",
+          "enquadramento": "aberto",
+          "zoom": [
+            1.02,
+            1.08
+          ],
+          "entrada": "corte",
+          "personagens": [
+            {
+              "id": "nico",
+              "x": 440
+            }
+          ]
         }
       ],
       "elementos": [
@@ -1048,6 +1101,16 @@
               0,
               0.4
             ]
+          },
+          {
+            "de": "assim.#2$+20",
+            "pose": "sentado_livre",
+            "segurando": "controle",
+            "olhar": [
+              -0.8,
+              -0.4
+            ],
+            "expressao": "preocupacao"
           }
         ]
       },
@@ -1089,7 +1152,7 @@
           ]
         },
         {
-          "de": "lê-2",
+          "de": "volta-2",
           "enquadramento": "medio",
           "foco": "painel_hab",
           "centralizar": true,
@@ -1101,7 +1164,7 @@
           "personagens": []
         },
         {
-          "de": "começo.$-10",
+          "de": "começo.$+6",
           "enquadramento": "close",
           "foco": "nico",
           "zoom": [
@@ -1117,7 +1180,7 @@
           ]
         },
         {
-          "de": "E-2",
+          "de": "Marte?$+15",
           "enquadramento": "aberto",
           "zoom": [
             1.06,
@@ -1150,7 +1213,7 @@
             "pose": "apontando"
           },
           {
-            "de": "começo.$-10",
+            "de": "começo.$+6",
             "pose": "parado",
             "expressao": "medo",
             "olhar": [
@@ -1159,7 +1222,7 @@
             ]
           },
           {
-            "de": "E-2",
+            "de": "aí",
             "expressao": "susto",
             "olhar": [
               -0.9,
@@ -1181,8 +1244,8 @@
         }
       ],
       "texto": {
-        "de": 225,
-        "ate": 340,
+        "de": "Marte?$+15",
+        "ate": 400,
         "estilo": "sticker",
         "mostrar": true,
         "topo": 660

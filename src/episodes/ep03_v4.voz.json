@@ -1,0 +1,53 @@
+{
+ "_sobre": "Montagem da narração do ep03 v4 (scripts/montar-voz.py): uma tomada por cena, posta com o início da fala em `em`.",
+ "trechos": [
+  {
+   "cena": "notificacao",
+   "de": 0,
+   "ate": 6.255,
+   "em": 0.05
+  },
+  {
+   "cena": "mala",
+   "de": 0,
+   "ate": 9.34,
+   "em": 8.3
+  },
+  {
+   "cena": "embarque",
+   "de": 0,
+   "ate": 5.471,
+   "em": 22.3
+  },
+  {
+   "cena": "viagem",
+   "de": 0,
+   "ate": 15.357,
+   "em": 30.3
+  },
+  {
+   "cena": "chegada",
+   "de": 0,
+   "ate": 9.884,
+   "em": 48.3
+  },
+  {
+   "cena": "a_conta_chega",
+   "de": 0,
+   "ate": 14.732,
+   "em": 62.3
+  },
+  {
+   "cena": "o_controle",
+   "de": 0,
+   "ate": 14.301,
+   "em": 80.3
+  },
+  {
+   "cena": "ele_le_a_tela",
+   "de": 0,
+   "ate": 6.472,
+   "em": 100.3
+  }
+ ]
+}
