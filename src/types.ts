@@ -104,7 +104,10 @@ export type SceneDirection = {
   fundo?: Record<string, Cue | Cue[]>;
   tremidas?: { de: Cue; frames: number; forca: number }[];
   // `topo`: altura da caixa (px), para não cobrir o cabelo num close
-  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" | "canto"; topo?: number };
+  // `partes`: os itens separados por " · " entram um de cada vez (cada um com até 2 linhas)
+  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" | "canto"; topo?: number; partes?: Cue[] };
+  // Música da cena só entra neste momento (ep04: silêncio antes da contagem)
+  musicaDe?: Cue;
   // Congela a imagem da cena a partir deste frame (até o fim da cena)
   congelar?: number;
   // Pontos de sincronização para quando a voz entrar: a palavra deve cair neste frame da cena.

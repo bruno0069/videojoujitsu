@@ -1,0 +1,131 @@
+{
+ "_sobre": "Plano de montagem da voz do ep04 (gera src/episodes/ep04.voz.json e os limites de cena em ep04.json).",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "ate": 6.21,
+   "em": 0.1,
+   "tempo": 1.04
+  },
+  {
+   "cena": "proposta",
+   "de": 0.0,
+   "ate": 1.65,
+   "em": 6.371,
+   "tempo": 1.04
+  },
+  {
+   "cena": "proposta",
+   "de": 2.05,
+   "ate": 5.373,
+   "em": 8.208,
+   "tempo": 1.04
+  },
+  {
+   "cena": "proposta",
+   "de": 5.89,
+   "ate": 9.01,
+   "em": 11.653,
+   "tempo": 1.04
+  },
+  {
+   "cena": "dimensao",
+   "de": 0.0,
+   "ate": 6.4,
+   "em": 14.953,
+   "tempo": 1.04
+  },
+  {
+   "cena": "dimensao",
+   "de": 6.8,
+   "ate": 9.67,
+   "em": 21.357,
+   "tempo": 1.04
+  },
+  {
+   "cena": "escalada_cientifica",
+   "de": 0.0,
+   "ate": 6.08,
+   "em": 24.416,
+   "tempo": 1.04
+  },
+  {
+   "cena": "escalada_cientifica",
+   "de": 6.5,
+   "ate": 9.185,
+   "em": 30.512,
+   "tempo": 1.04
+  },
+  {
+   "cena": "escalada_cientifica",
+   "de": 9.665,
+   "ate": 11.35,
+   "em": 33.344,
+   "tempo": 1.04
+  },
+  {
+   "cena": "escalada_cientifica",
+   "de": 11.65,
+   "ate": 16.78,
+   "em": 35.214,
+   "tempo": 1.04
+  },
+  {
+   "cena": "grande_momento",
+   "de": 0.0,
+   "ate": 3.27,
+   "em": 40.947,
+   "tempo": 1.04
+  },
+  {
+   "cena": "grande_momento",
+   "de": 3.7,
+   "ate": 6.72,
+   "em": 44.341,
+   "tempo": 1.04
+  },
+  {
+   "cena": "grande_momento",
+   "de": 7.25,
+   "ate": 11.63,
+   "em": 47.495,
+   "tempo": 1.04
+  },
+  {
+   "cena": "virada",
+   "de": 0.0,
+   "ate": 4.62,
+   "em": 52.007,
+   "tempo": 1.04
+  },
+  {
+   "cena": "virada",
+   "de": 5.16,
+   "ate": 8.84,
+   "em": 56.699,
+   "tempo": 1.04
+  },
+  {
+   "cena": "virada",
+   "de": 9.33,
+   "ate": 12.79,
+   "em": 60.487,
+   "tempo": 1.04
+  },
+  {
+   "cena": "fechamento",
+   "de": 0.0,
+   "ate": 2.7,
+   "em": 64.114,
+   "tempo": 1.04
+  },
+  {
+   "cena": "fechamento",
+   "de": 3.1,
+   "ate": 5.71,
+   "em": 66.961,
+   "tempo": 1.04
+  }
+ ]
+}

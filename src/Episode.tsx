@@ -40,7 +40,7 @@ export type EpisodeProps = {
 };
 
 // Junta cenas seguidas que usam a mesma música numa faixa contínua.
-const musicRuns = (ep: EpisodeData) => {
+const musicRuns = (ep: EpisodeData, startOf: (sceneId: string) => number = () => 0) => {
   const runs: { id: string; from: number; to: number }[] = [];
   for (const s of ep.scenes) {
     const last = runs[runs.length - 1];
@@ -57,6 +57,11 @@ const musicRuns = (ep: EpisodeData) => {
   for (const r of runs) {
     const next = ep.scenes.find((s) => s.startFrame === r.to);
     if (next && !next.music) r.to = Math.min(ep.totalFrames, r.to + Math.round(ep.fps * 1.5));
+  }
+  // `musicaDe` na direção atrasa a entrada da faixa que começa naquela cena
+  for (const r of runs) {
+    const s = ep.scenes.find((x) => x.startFrame === r.from);
+    if (s) r.from = Math.min(r.to - 1, r.from + startOf(s.id));
   }
   return runs;
 };
@@ -161,7 +166,11 @@ export const Episode: React.FC<EpisodeProps> = ({
           })}
 
         {stem !== "voz" &&
-          musicRuns(episode).map((run) => (
+          musicRuns(episode, (id) => {
+            const scene = episode.scenes.find((x) => x.id === id)!;
+            const c = direction.cenas[id]?.musicaDe;
+            return c === undefined ? 0 : Math.max(0, resolveCue(c, sceneWords(allCaptions, scene, episode.fps)));
+          }).map((run) => (
           <Sequence
             key={`${run.id}-${run.from}`}
             from={run.from}

@@ -1,0 +1,115 @@
+{
+  "episode": 4,
+  "title": "E se todo mundo pulasse ao mesmo tempo?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 2100,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 188,
+      "narration": "E se os 8 bilhões de humanos pulassem ao mesmo tempo... será que conseguiríamos tirar a Terra do lugar?",
+      "onScreenText": "8 BILHÕES DE PESSOAS",
+      "visual": {
+        "background": "quadra_dia",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Nico na quadra, olhando para cima, como quem imagina algo absurdo. A câmera começa perto do rosto e recua rápido; a quadra desaparece e dá lugar à Terra, ocupando boa parte da tela e girando devagar. Silhuetas de pessoas surgem ao redor do planeta. Pequena pausa visual antes da pergunta. Transição rápida para a próxima cena."
+      },
+      "sfx": ["silencio_1s", "whoosh"],
+      "music": "curiosidade_suave"
+    },
+    {
+      "id": "proposta",
+      "startFrame": 188,
+      "durationInFrames": 257,
+      "narration": "Nico teve essa ideia na quadra. Mas, para funcionar, todo mundo precisaria estar junto. Sim... a humanidade inteira no mesmo lugar.",
+      "onScreenText": "TODOS NO MESMO LUGAR",
+      "visual": {
+        "background": "quadra_dia",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "Nico no centro da quadra, observando uma multidão que começa a aparecer ao redor. Primeiro poucas pessoas; depois a câmera se afasta e revela centenas, milhares e, visualmente, milhões, por repetição de silhuetas em camadas com perspectiva. Nico minúsculo diante da quantidade, sempre como referência visual."
+      },
+      "sfx": ["passos_multidao", "whoosh"],
+      "music": "crescendo_leve"
+    },
+    {
+      "id": "dimensao",
+      "startFrame": 445,
+      "durationInFrames": 284,
+      "narration": "Espremidos, bilhões de pessoas ocupariam uma área gigantesca, comparável à cidade de Los Angeles. Seria a maior concentração humana da história.",
+      "onScreenText": "A MAIOR REUNIÃO DA HISTÓRIA",
+      "visual": {
+        "background": "multidao_vista_de_cima",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "surpresa", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Visão aérea de uma região urbana gigantesca (cidade genérica, sem reproduzir o mapa de Los Angeles). A câmera sobe cada vez mais e revela a multidão ocupando uma área enorme. Comparação visual entre a área ocupada pelas pessoas e o tamanho da cidade. Nico num pequeno destaque circular, observando tudo."
+      },
+      "sfx": ["whoosh", "passos_multidao"],
+      "music": "crescendo_leve"
+    },
+    {
+      "id": "escalada_cientifica",
+      "startFrame": 729,
+      "durationInFrames": 480,
+      "narration": "Somando todo mundo, seriam mais de 287 milhões de toneladas de seres humanos. Parece suficiente para balançar qualquer coisa, não é? Mas existe um pequeno detalhe: a Terra pesa mais de 10 trilhões de vezes mais que todos nós juntos.",
+      "onScreenText": "MAIS DE 10 TRILHÕES DE VEZES MAIS PESADA",
+      "visual": {
+        "background": "balanca_terra",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "vergonha", "scale": "inserto_pequeno" }],
+        "camera": "plano_medio",
+        "action": "Começa com a multidão vista de cima; a câmera se aproxima e surge um contador gigante que sobe até '287.000.000 TONELADAS', com impacto de informação monumental. Transição para a Terra no espaço, gigantesca, dominando a composição; ao lado, toda a humanidade como um pequeno punhado de pontos (pode usar a balança gigante: a Terra desce até o chão e a pilha de silhuetas dispara para o alto). Nico numa pequena composição lateral, olhando a comparação."
+      },
+      "sfx": ["rangido_balanca"],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "grande_momento",
+      "startFrame": 1209,
+      "durationInFrames": 348,
+      "narration": "Três... dois... um... PULEM! Bilhões de corpos deixam o chão ao mesmo tempo. E, por uma fração de segundo, a Terra realmente se move na direção contrária.",
+      "onScreenText": "3... 2... 1... PULEM!",
+      "visual": {
+        "background": "diagrama_espaco",
+        "characters": [{ "id": "nico", "pose": "pulando", "expression": "surpresa", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Sequência principal do vídeo. A multidão inteira posicionada para pular, parada por um instante (redução brusca da trilha e cerca de 1 s de silêncio). Contagem regressiva cinematográfica 3, 2, 1 em número grande. No 'PULEM!', todas as pessoas saltam ao mesmo tempo, a câmera acompanha o movimento para cima, vibração curta de câmera, efeito de impacto visual e impacto grave. Corte para a Terra no espaço: ela se desloca um tanto quase imperceptível na direção contrária, com uma linha ou marcação gráfica de referência indicando que houve movimento. NÃO represente a Terra sendo lançada nem sofrendo grande movimentação."
+      },
+      "sfx": ["contagem", "silencio_1s", "pulo_massivo"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "virada",
+      "startFrame": 1557,
+      "durationInFrames": 363,
+      "narration": "Mas sabe quanto? Menos de um milionésimo da largura de um fio de cabelo. Na verdade, pelo menos cem vezes menos que a largura de um átomo. E quando todos aterrissam, o planeta volta à posição original.",
+      "onScreenText": "MENOS QUE 1 ÁTOMO",
+      "visual": {
+        "background": "diagrama_espaco",
+        "characters": [{ "id": "nico", "pose": "caindo", "expression": "surpresa", "scale": "inserto_pequeno" }],
+        "camera": "plano_medio",
+        "action": "Começa com a Terra no espaço; a câmera aproxima o ponto do deslocamento. Zoom microscópico pela escala_comparacao: um fio de cabelo, depois sua espessura, depois a escala atômica, terminando num átomo como referência, com a seta de deslocamento visivelmente menor que ele. Corte para a multidão: todos caem juntos e, quando os pés tocam o chão, uma pequena onda de impacto chapada se espalha. Inserto breve do sismógrafo rabiscando um tremor pequeno e voltando à linha reta. Volta à Terra no espaço, agora estável, na posição original."
+      },
+      "sfx": ["whoosh", "pouso_massivo", "rabisco_sismografo"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "fechamento",
+      "startFrame": 1920,
+      "durationInFrames": 180,
+      "narration": "Nico tentou fazer a humanidade mover o planeta. Mas a Terra mal percebeu que estávamos ali.",
+      "onScreenText": "A HUMANIDADE CONSEGUIRIA MOVER A TERRA? · VOCÊ PULARIA?",
+      "visual": {
+        "background": "quadra_dia",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Volta à quadra original: Nico sozinho no centro, olha para o chão, se prepara e dá um pequeno salto; a câmera acompanha. Quando ele aterrissa, corte rápido para a Terra no espaço, completamente tranquila. Termina com Nico olhando para cima, como se pensasse em outra experiência absurda, no MESMO enquadramento e expressão do primeiro frame do gancho. Transição visual que conecta o final ao início, criando loop natural."
+      },
+      "sfx": ["quica", "whoosh"],
+      "music": "leve_divertida"
+    }
+  ]
+}

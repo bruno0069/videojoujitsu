@@ -7,6 +7,7 @@ import { DiagramaOrbita } from "./backgrounds/DiagramaOrbita";
 import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
 import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { CapsulaInterior, DiagramaEspaco, MarteSuperficie, QuartoDia } from "./backgrounds/Ep03";
+import { BalancaTerra, EscalaComparacao, EspacoTerra, MultidaoCima, QuadraDia, Sismografo } from "./backgrounds/Ep04";
 import { FogueteInterior, HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
@@ -36,6 +37,12 @@ export const BACKGROUNDS = [
   "habitat_interior",
   "foguete_interior",
   "globo_metade_dia_metade_noite",
+  "quadra_dia",
+  "multidao_vista_de_cima",
+  "balanca_terra",
+  "espaco_terra",
+  "escala_comparacao",
+  "sismografo",
 ];
 
 // Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
@@ -114,6 +121,18 @@ export const Background: React.FC<{
       return <MapaRio cam={cam} frame={frame} params={params} />;
     case "globo_metade_dia_metade_noite":
       return <GloboDiaNoite cam={cam} frame={frame} params={params} />;
+    case "quadra_dia":
+      return <QuadraDia cam={cam} frame={frame} params={params} />;
+    case "multidao_vista_de_cima":
+      return <MultidaoCima cam={cam} frame={frame} params={params} />;
+    case "balanca_terra":
+      return <BalancaTerra cam={cam} frame={frame} params={params} />;
+    case "espaco_terra":
+      return <EspacoTerra cam={cam} frame={frame} params={params} />;
+    case "escala_comparacao":
+      return <EscalaComparacao cam={cam} frame={frame} params={params} />;
+    case "sismografo":
+      return <Sismografo cam={cam} frame={frame} params={params} />;
     default:
       return <rect x={0} y={0} width={1080} height={1920} fill={colors.creme} />;
   }

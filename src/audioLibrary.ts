@@ -44,6 +44,16 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   // ep03 v4
   painel_bip: { file: "audio/sfx/painel_bip.wav", loop: false, volume: audio.sfxVolume * 0.6 },
   controle_ligando: { file: "audio/sfx/controle_ligando.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  // ep04
+  passos_multidao: { file: "audio/sfx/passos_multidao.wav", loop: true, volume: audio.sfxVolume * 0.4 },
+  rangido_balanca: { file: "audio/sfx/rangido_balanca.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  contagem: { file: "audio/sfx/contagem.wav", loop: false, volume: audio.sfxVolume * 1.2 },
+  pulo_massivo: { file: "audio/sfx/pulo_massivo.wav", loop: false, volume: audio.sfxVolume * 1.3 },
+  pouso_massivo: { file: "audio/sfx/pouso_massivo.wav", loop: false, volume: audio.sfxVolume * 1.2 },
+  impacto_grave: { file: "audio/sfx/impacto_grave.wav", loop: false, volume: audio.sfxVolume * 1.0 },
+  rabisco_sismografo: { file: "audio/sfx/rabisco_sismografo.wav", loop: false, volume: audio.sfxVolume * 0.5 },
+  quica: { file: "audio/sfx/quica.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  micro_zoom: { file: "audio/sfx/micro_zoom.wav", loop: false, volume: audio.sfxVolume * 0.6 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
@@ -53,4 +63,7 @@ export const MUSIC: Record<string, string> = {
   tensao_leve: "audio/music/tensao_leve_hp120.wav",
   alegre_curta: "audio/music/alegre_curta_hp120.wav",
   melancolica_suave: "audio/music/melancolica_suave_hp120.wav",
+  curiosidade_suave: "audio/music/curiosidade_suave_hp120.wav",
+  crescendo_leve: "audio/music/crescendo_leve_hp120.wav",
+  leve_divertida: "audio/music/leve_divertida_hp120.wav",
 };

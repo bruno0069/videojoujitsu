@@ -1,0 +1,938 @@
+{
+ "_sobre": "Transcrição por palavra (ElevenLabs Scribe) das tomadas do ep04, uma por cena, com a grafia do roteiro.",
+ "cenas": {
+  "gancho": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0,
+     "end": 0.08
+    },
+    {
+     "text": "se",
+     "start": 0.16,
+     "end": 0.24
+    },
+    {
+     "text": "os",
+     "start": 0.36,
+     "end": 0.48
+    },
+    {
+     "text": "8",
+     "start": 0.52,
+     "end": 0.72
+    },
+    {
+     "text": "bilhões",
+     "start": 0.88,
+     "end": 1.28
+    },
+    {
+     "text": "de",
+     "start": 1.36,
+     "end": 1.44
+    },
+    {
+     "text": "humanos",
+     "start": 1.6,
+     "end": 1.84
+    },
+    {
+     "text": "pulassem",
+     "start": 1.92,
+     "end": 2.4
+    },
+    {
+     "text": "ao",
+     "start": 2.48,
+     "end": 2.56
+    },
+    {
+     "text": "mesmo",
+     "start": 2.64,
+     "end": 2.96
+    },
+    {
+     "text": "tempo...",
+     "start": 3.04,
+     "end": 3.92
+    },
+    {
+     "text": "será",
+     "start": 4,
+     "end": 4.12
+    },
+    {
+     "text": "que",
+     "start": 4.16,
+     "end": 4.24
+    },
+    {
+     "text": "conseguiríamos",
+     "start": 4.32,
+     "end": 4.96
+    },
+    {
+     "text": "tirar",
+     "start": 5.04,
+     "end": 5.28
+    },
+    {
+     "text": "a",
+     "start": 5.36,
+     "end": 5.44
+    },
+    {
+     "text": "Terra",
+     "start": 5.52,
+     "end": 5.68
+    },
+    {
+     "text": "do",
+     "start": 5.76,
+     "end": 5.8
+    },
+    {
+     "text": "lugar?",
+     "start": 5.84,
+     "end": 6.48
+    }
+   ]
+  },
+  "proposta": {
+   "words": [
+    {
+     "text": "Nico",
+     "start": 0,
+     "end": 0.32
+    },
+    {
+     "text": "teve",
+     "start": 0.4,
+     "end": 0.56
+    },
+    {
+     "text": "essa",
+     "start": 0.64,
+     "end": 0.72
+    },
+    {
+     "text": "ideia",
+     "start": 0.84,
+     "end": 1.04
+    },
+    {
+     "text": "na",
+     "start": 1.12,
+     "end": 1.2
+    },
+    {
+     "text": "quadra.",
+     "start": 1.32,
+     "end": 1.68
+    },
+    {
+     "text": "Mas,",
+     "start": 2.08,
+     "end": 2.56
+    },
+    {
+     "text": "para",
+     "start": 2.64,
+     "end": 2.72
+    },
+    {
+     "text": "funcionar,",
+     "start": 2.8,
+     "end": 3.6
+    },
+    {
+     "text": "todo",
+     "start": 3.76,
+     "end": 3.92
+    },
+    {
+     "text": "mundo",
+     "start": 4,
+     "end": 4.24
+    },
+    {
+     "text": "precisaria",
+     "start": 4.36,
+     "end": 4.8
+    },
+    {
+     "text": "estar",
+     "start": 4.92,
+     "end": 5.04
+    },
+    {
+     "text": "junto.",
+     "start": 5.12,
+     "end": 5.72
+    },
+    {
+     "text": "Sim...",
+     "start": 6,
+     "end": 6.8
+    },
+    {
+     "text": "a",
+     "start": 6.827,
+     "end": 6.853
+    },
+    {
+     "text": "humanidade",
+     "start": 6.88,
+     "end": 7.52
+    },
+    {
+     "text": "inteira",
+     "start": 7.72,
+     "end": 8.08
+    },
+    {
+     "text": "no",
+     "start": 8.16,
+     "end": 8.32
+    },
+    {
+     "text": "mesmo",
+     "start": 8.44,
+     "end": 8.64
+    },
+    {
+     "text": "lugar.",
+     "start": 8.72,
+     "end": 9.36
+    }
+   ]
+  },
+  "dimensao": {
+   "words": [
+    {
+     "text": "Espremidos,",
+     "start": 0,
+     "end": 1.12
+    },
+    {
+     "text": "bilhões",
+     "start": 1.2,
+     "end": 1.68
+    },
+    {
+     "text": "de",
+     "start": 1.76,
+     "end": 1.8
+    },
+    {
+     "text": "pessoas",
+     "start": 1.84,
+     "end": 2.32
+    },
+    {
+     "text": "ocupariam",
+     "start": 2.4,
+     "end": 2.88
+    },
+    {
+     "text": "uma",
+     "start": 3,
+     "end": 3.12
+    },
+    {
+     "text": "área",
+     "start": 3.16,
+     "end": 3.36
+    },
+    {
+     "text": "gigantesca,",
+     "start": 3.52,
+     "end": 4.48
+    },
+    {
+     "text": "comparável",
+     "start": 4.56,
+     "end": 4.96
+    },
+    {
+     "text": "à",
+     "start": 5.04,
+     "end": 5.08
+    },
+    {
+     "text": "cidade",
+     "start": 5.12,
+     "end": 5.44
+    },
+    {
+     "text": "de",
+     "start": 5.52,
+     "end": 5.56
+    },
+    {
+     "text": "Los",
+     "start": 5.6,
+     "end": 5.84
+    },
+    {
+     "text": "Angeles.",
+     "start": 5.92,
+     "end": 6.6
+    },
+    {
+     "text": "Seria",
+     "start": 6.8,
+     "end": 7.2
+    },
+    {
+     "text": "a",
+     "start": 7.24,
+     "end": 7.28
+    },
+    {
+     "text": "maior",
+     "start": 7.36,
+     "end": 7.76
+    },
+    {
+     "text": "concentração",
+     "start": 7.84,
+     "end": 8.48
+    },
+    {
+     "text": "humana",
+     "start": 8.56,
+     "end": 8.88
+    },
+    {
+     "text": "da",
+     "start": 8.96,
+     "end": 9.04
+    },
+    {
+     "text": "história.",
+     "start": 9.2,
+     "end": 9.92
+    }
+   ]
+  },
+  "escalada_cientifica": {
+   "words": [
+    {
+     "text": "Somando",
+     "start": 0,
+     "end": 0.4
+    },
+    {
+     "text": "todo",
+     "start": 0.56,
+     "end": 0.72
+    },
+    {
+     "text": "mundo,",
+     "start": 0.88,
+     "end": 1.36
+    },
+    {
+     "text": "seriam",
+     "start": 1.44,
+     "end": 1.76
+    },
+    {
+     "text": "mais",
+     "start": 1.8,
+     "end": 2
+    },
+    {
+     "text": "de",
+     "start": 2.04,
+     "end": 2.08
+    },
+    {
+     "text": "287",
+     "start": 2.16,
+     "end": 2.72
+    },
+    {
+     "text": "milhões",
+     "start": 2.8,
+     "end": 4.24
+    },
+    {
+     "text": "de",
+     "start": 4.32,
+     "end": 4.4
+    },
+    {
+     "text": "toneladas",
+     "start": 4.48,
+     "end": 5.12
+    },
+    {
+     "text": "de",
+     "start": 5.16,
+     "end": 5.2
+    },
+    {
+     "text": "seres",
+     "start": 5.28,
+     "end": 5.52
+    },
+    {
+     "text": "humanos.",
+     "start": 5.6,
+     "end": 6.28
+    },
+    {
+     "text": "Parece",
+     "start": 6.48,
+     "end": 6.8
+    },
+    {
+     "text": "suficiente",
+     "start": 6.84,
+     "end": 7.44
+    },
+    {
+     "text": "para",
+     "start": 7.52,
+     "end": 7.6
+    },
+    {
+     "text": "balançar",
+     "start": 7.68,
+     "end": 8.08
+    },
+    {
+     "text": "qualquer",
+     "start": 8.2,
+     "end": 8.48
+    },
+    {
+     "text": "coisa,",
+     "start": 8.56,
+     "end": 8.88
+    },
+    {
+     "text": "não",
+     "start": 8.907,
+     "end": 8.96
+    },
+    {
+     "text": "é?",
+     "start": 9.04,
+     "end": 9.2
+    },
+    {
+     "text": "Mas",
+     "start": 9.68,
+     "end": 9.84
+    },
+    {
+     "text": "existe",
+     "start": 9.92,
+     "end": 10.16
+    },
+    {
+     "text": "um",
+     "start": 10.24,
+     "end": 10.32
+    },
+    {
+     "text": "pequeno",
+     "start": 10.44,
+     "end": 10.8
+    },
+    {
+     "text": "detalhe:",
+     "start": 10.88,
+     "end": 11.76
+    },
+    {
+     "text": "a",
+     "start": 11.8,
+     "end": 11.84
+    },
+    {
+     "text": "Terra",
+     "start": 12,
+     "end": 12.32
+    },
+    {
+     "text": "pesa",
+     "start": 12.4,
+     "end": 12.64
+    },
+    {
+     "text": "mais",
+     "start": 12.72,
+     "end": 12.88
+    },
+    {
+     "text": "de",
+     "start": 12.96,
+     "end": 13.04
+    },
+    {
+     "text": "10",
+     "start": 13.2,
+     "end": 13.44
+    },
+    {
+     "text": "trilhões",
+     "start": 13.6,
+     "end": 14.16
+    },
+    {
+     "text": "de",
+     "start": 14.24,
+     "end": 14.32
+    },
+    {
+     "text": "vezes",
+     "start": 14.4,
+     "end": 14.72
+    },
+    {
+     "text": "mais",
+     "start": 14.88,
+     "end": 15.2
+    },
+    {
+     "text": "que",
+     "start": 15.28,
+     "end": 15.36
+    },
+    {
+     "text": "todos",
+     "start": 15.52,
+     "end": 15.84
+    },
+    {
+     "text": "nós",
+     "start": 15.92,
+     "end": 16.16
+    },
+    {
+     "text": "juntos.",
+     "start": 16.24,
+     "end": 16.96
+    }
+   ]
+  },
+  "grande_momento": {
+   "words": [
+    {
+     "text": "Três...",
+     "start": 0,
+     "end": 1.04
+    },
+    {
+     "text": "dois...",
+     "start": 1.12,
+     "end": 2
+    },
+    {
+     "text": "um...",
+     "start": 2.16,
+     "end": 2.8
+    },
+    {
+     "text": "PULEM!",
+     "start": 2.88,
+     "end": 3.36
+    },
+    {
+     "text": "Bilhões",
+     "start": 3.92,
+     "end": 4.4
+    },
+    {
+     "text": "de",
+     "start": 4.48,
+     "end": 4.56
+    },
+    {
+     "text": "corpos",
+     "start": 4.64,
+     "end": 5.04
+    },
+    {
+     "text": "deixam",
+     "start": 5.12,
+     "end": 5.36
+    },
+    {
+     "text": "o",
+     "start": 5.44,
+     "end": 5.52
+    },
+    {
+     "text": "chão",
+     "start": 5.6,
+     "end": 5.76
+    },
+    {
+     "text": "ao",
+     "start": 5.84,
+     "end": 5.92
+    },
+    {
+     "text": "mesmo",
+     "start": 6,
+     "end": 6.32
+    },
+    {
+     "text": "tempo.",
+     "start": 6.4,
+     "end": 6.8
+    },
+    {
+     "text": "E,",
+     "start": 7.2,
+     "end": 7.44
+    },
+    {
+     "text": "por",
+     "start": 7.48,
+     "end": 7.52
+    },
+    {
+     "text": "uma",
+     "start": 7.6,
+     "end": 7.68
+    },
+    {
+     "text": "fração",
+     "start": 7.76,
+     "end": 8.16
+    },
+    {
+     "text": "de",
+     "start": 8.2,
+     "end": 8.24
+    },
+    {
+     "text": "segundo,",
+     "start": 8.32,
+     "end": 8.96
+    },
+    {
+     "text": "a",
+     "start": 9.04,
+     "end": 9.12
+    },
+    {
+     "text": "Terra",
+     "start": 9.2,
+     "end": 9.44
+    },
+    {
+     "text": "realmente",
+     "start": 9.52,
+     "end": 10.08
+    },
+    {
+     "text": "se",
+     "start": 10.16,
+     "end": 10.24
+    },
+    {
+     "text": "move",
+     "start": 10.32,
+     "end": 10.56
+    },
+    {
+     "text": "na",
+     "start": 10.6,
+     "end": 10.64
+    },
+    {
+     "text": "direção",
+     "start": 10.72,
+     "end": 11.04
+    },
+    {
+     "text": "contrária.",
+     "start": 11.12,
+     "end": 11.92
+    }
+   ]
+  },
+  "virada": {
+   "words": [
+    {
+     "text": "Mas",
+     "start": 0,
+     "end": 0.133
+    },
+    {
+     "text": "sabe",
+     "start": 0.16,
+     "end": 0.347
+    },
+    {
+     "text": "quanto?",
+     "start": 0.4,
+     "end": 0.88
+    },
+    {
+     "text": "Menos",
+     "start": 1.36,
+     "end": 1.6
+    },
+    {
+     "text": "de",
+     "start": 1.68,
+     "end": 1.92
+    },
+    {
+     "text": "um",
+     "start": 2,
+     "end": 2.08
+    },
+    {
+     "text": "milionésimo",
+     "start": 2.16,
+     "end": 2.96
+    },
+    {
+     "text": "da",
+     "start": 3,
+     "end": 3.04
+    },
+    {
+     "text": "largura",
+     "start": 3.12,
+     "end": 3.44
+    },
+    {
+     "text": "de",
+     "start": 3.52,
+     "end": 3.56
+    },
+    {
+     "text": "um",
+     "start": 3.6,
+     "end": 3.68
+    },
+    {
+     "text": "fio",
+     "start": 3.84,
+     "end": 4
+    },
+    {
+     "text": "de",
+     "start": 4.08,
+     "end": 4.12
+    },
+    {
+     "text": "cabelo.",
+     "start": 4.16,
+     "end": 4.88
+    },
+    {
+     "text": "Na",
+     "start": 5.12,
+     "end": 5.2
+    },
+    {
+     "text": "verdade,",
+     "start": 5.28,
+     "end": 5.92
+    },
+    {
+     "text": "pelo",
+     "start": 5.973,
+     "end": 6.08
+    },
+    {
+     "text": "menos",
+     "start": 6.16,
+     "end": 6.48
+    },
+    {
+     "text": "cem",
+     "start": 6.6,
+     "end": 6.72
+    },
+    {
+     "text": "vezes",
+     "start": 6.8,
+     "end": 7.2
+    },
+    {
+     "text": "menos",
+     "start": 7.28,
+     "end": 7.68
+    },
+    {
+     "text": "que",
+     "start": 7.72,
+     "end": 7.76
+    },
+    {
+     "text": "a",
+     "start": 7.787,
+     "end": 7.813
+    },
+    {
+     "text": "largura",
+     "start": 7.84,
+     "end": 8.16
+    },
+    {
+     "text": "de",
+     "start": 8.24,
+     "end": 8.28
+    },
+    {
+     "text": "um",
+     "start": 8.32,
+     "end": 8.4
+    },
+    {
+     "text": "átomo.",
+     "start": 8.48,
+     "end": 9.08
+    },
+    {
+     "text": "E",
+     "start": 9.28,
+     "end": 9.36
+    },
+    {
+     "text": "quando",
+     "start": 9.44,
+     "end": 9.68
+    },
+    {
+     "text": "todos",
+     "start": 9.76,
+     "end": 10.08
+    },
+    {
+     "text": "aterrissam,",
+     "start": 10.16,
+     "end": 10.88
+    },
+    {
+     "text": "o",
+     "start": 10.92,
+     "end": 10.96
+    },
+    {
+     "text": "planeta",
+     "start": 11.04,
+     "end": 11.44
+    },
+    {
+     "text": "volta",
+     "start": 11.52,
+     "end": 11.76
+    },
+    {
+     "text": "à",
+     "start": 11.8,
+     "end": 11.84
+    },
+    {
+     "text": "posição",
+     "start": 12.04,
+     "end": 12.24
+    },
+    {
+     "text": "original.",
+     "start": 12.32,
+     "end": 12.96
+    }
+   ]
+  },
+  "fechamento": {
+   "words": [
+    {
+     "text": "Nico",
+     "start": 0,
+     "end": 0.32
+    },
+    {
+     "text": "tentou",
+     "start": 0.4,
+     "end": 0.64
+    },
+    {
+     "text": "fazer",
+     "start": 0.72,
+     "end": 0.96
+    },
+    {
+     "text": "a",
+     "start": 1,
+     "end": 1.04
+    },
+    {
+     "text": "humanidade",
+     "start": 1.16,
+     "end": 1.68
+    },
+    {
+     "text": "mover",
+     "start": 1.72,
+     "end": 2.08
+    },
+    {
+     "text": "o",
+     "start": 2.16,
+     "end": 2.2
+    },
+    {
+     "text": "planeta.",
+     "start": 2.24,
+     "end": 2.92
+    },
+    {
+     "text": "Mas",
+     "start": 3.12,
+     "end": 3.28
+    },
+    {
+     "text": "a",
+     "start": 3.36,
+     "end": 3.44
+    },
+    {
+     "text": "Terra",
+     "start": 3.52,
+     "end": 3.84
+    },
+    {
+     "text": "mal",
+     "start": 4,
+     "end": 4.16
+    },
+    {
+     "text": "percebeu",
+     "start": 4.24,
+     "end": 4.8
+    },
+    {
+     "text": "que",
+     "start": 4.84,
+     "end": 4.88
+    },
+    {
+     "text": "estávamos",
+     "start": 4.96,
+     "end": 5.44
+    },
+    {
+     "text": "ali.",
+     "start": 5.56,
+     "end": 6.0
+    }
+   ]
+  }
+ }
+}

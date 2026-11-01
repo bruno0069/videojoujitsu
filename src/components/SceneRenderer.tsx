@@ -21,6 +21,7 @@ import {
 } from "./backgrounds/DiagramasTerra";
 import { CALENDARIO, ESPACO, MALA, QUARTO_DEPTH } from "./backgrounds/Ep03";
 import { EMBARQUE, HABITAT, NAVE } from "./backgrounds/Ep03Longo";
+import { BALANCA, PONTO_RECUO, TERRA } from "./backgrounds/Ep04";
 import { MAPA_RIO, RIO_DEPTH } from "./backgrounds/MapaRio";
 import { GLOBO_QUADRO, JANELA, MESA_DEPTH, MESA_PROF, SALA_DEPTH } from "./backgrounds/SalaAula";
 import { Dani } from "./Dani";
@@ -230,6 +231,10 @@ const centerOf = (
   if (focus === "biscoito_hab") return atDepth(HABITAT.biscoito.x, HABITAT.biscoito.y, 0.6);
   if (focus === "janela_hab") return atDepth(HABITAT.janela.x + HABITAT.janela.w / 2, HABITAT.janela.y + HABITAT.janela.h / 2, 0.6);
   if (focus === "terra_espaco") return ESPACO.terra;
+  // ep04: a Terra grande no espaço, o ponto da seta do recuo e o pivô da balança
+  if (focus === "terra4") return TERRA;
+  if (focus === "recuo4") return PONTO_RECUO;
+  if (focus === "balanca") return { x: BALANCA.x, y: BALANCA.y + 200 };
   if (focus === "polo") return { x: GLOBO_DIAGRAMA.x, y: GLOBO_DIAGRAMA.y - GLOBO_DIAGRAMA.r + 60 };
   if (focus === "mesa_globo") return atDepth(MESA_PROF.globo.x, MESA_PROF.globo.y + 40, MESA_DEPTH);
   if (focus === "noite")
@@ -663,6 +668,21 @@ export const SceneRenderer: React.FC<{
     direction.texto?.mostrar ??
     !repeatsNarration(scene.onScreenText, scene.narration);
 
+  // Texto em partes: cada item " · " entra no seu cue e fica até o próximo
+  const textPart = (() => {
+    const from = cue(direction.texto?.de, 0);
+    const to = cue(direction.texto?.ate, duration);
+    const partes = direction.texto?.partes;
+    if (!partes) return { i: 0, text: scene.onScreenText, from, to };
+    const items = scene.onScreenText.split(" · ");
+    const starts = partes.map((p) => cue(p));
+    let i = 0;
+    starts.forEach((st, k) => {
+      if (frame >= st) i = k;
+    });
+    return { i, text: items[i] ?? "", from: starts[i], to: starts[i + 1] ?? to };
+  })();
+
   return (
     <AbsoluteFill>
       {/* a tremida mexe a imagem; o texto na tela fica parado */}
@@ -708,10 +728,11 @@ export const SceneRenderer: React.FC<{
       </AbsoluteFill>
       {showText ? (
         <OnScreenText
-          text={scene.onScreenText}
+          key={textPart.i}
+          text={textPart.text}
           frame={frame}
-          from={cue(direction.texto?.de, 0)}
-          to={cue(direction.texto?.ate, duration)}
+          from={textPart.from}
+          to={textPart.to}
           animate={direction.texto?.animar !== false}
           sticker={direction.texto?.estilo === "sticker"}
           corner={direction.texto?.estilo === "canto"}

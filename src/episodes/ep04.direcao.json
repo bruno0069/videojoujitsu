@@ -1,0 +1,129 @@
+{
+  "_sobre": "Direção do ep04. Cues por palavra da narração gravada (src/audio/ep04-words.json). A Terra nunca muda de posição: o recuo é uma seta mínima com linha de referência.",
+  "limitesFixos": true,
+  "legendaDe": 0,
+  "legendaSemPontuacao": true,
+  "legendaPlaca": true,
+  "cenas": {
+    "gancho": {
+      "planos": [
+        { "de": 0, "enquadramento": "close", "zoom": [1, 1] },
+        { "de": 10, "enquadramento": "medio", "personagens": [{ "id": "nico", "pose": "olhando_para_cima", "expressao": "surpresa", "x": 540, "escala": 1 }], "zoom": [1.0, 0.5] },
+        { "de": "bilhoes-2", "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "terra4", "zoom": [1.55, 1.0] },
+        { "de": "sera-2", "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "terra4", "zoom": [1.0, 1.14], "entrada": "punch" }
+      ],
+      "fundo": { "gente": "humanos-4" },
+      "texto": { "de": "8", "ate": "tempo$", "mostrar": true },
+      "sfx": { "whoosh": "bilhoes-8" },
+      "efeitos": [{ "id": "whoosh", "de": 8 }, { "id": "zumbido_leve", "de": "sera-2" }]
+    },
+    "proposta": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 540, "escala": 0.85 }], "zoom": [1.06, 1.0] },
+        { "de": "mas-2", "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 540, "escala": 0.85 }], "zoom": [0.96, 0.6] },
+        { "de": "sim-4", "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 540, "escala": 0.85 }], "zoom": [0.46, 0.36] }
+      ],
+      "personagens": {
+        "nico": [
+          { "de": "ideia", "olhar": [-0.8, 0.1] },
+          { "de": "funcionar", "olhar": [0.8, 0.1], "expressao": "curiosidade" },
+          { "de": "precisaria", "olhar": [-0.6, -0.3], "expressao": "atento" },
+          { "de": "sim-4", "expressao": "surpresa", "olhar": [0, -0.2] }
+        ]
+      },
+      "elementos": [{ "type": "etiqueta", "texto": "Nico", "personagem": "nico", "de": "sim", "ate": "lugar$" }],
+      "fundo": { "etapas": ["ideia", "funcionar", "precisaria", "sim-4"] },
+      "texto": { "de": "inteira", "mostrar": true },
+      "sfx": { "passos_multidao": { "de": "ideia" }, "whoosh": "sim-6" }
+    },
+    "dimensao": {
+      "planos": [
+        { "de": 0, "enquadramento": "aberto", "zoom": [1.25, 1.0] },
+        { "de": "area-4", "enquadramento": "aberto", "zoom": [1.0, 0.42] },
+        { "de": "seria-2", "enquadramento": "aberto", "zoom": [1.5, 1.8], "entrada": "punch" }
+      ],
+      "personagens": { "nico": [{ "de": "area", "olhar": [0.9, -0.5] }, { "de": "seria", "olhar": [0.6, 0.3] }] },
+      "fundo": { "chega": 2, "chegaAte": "pessoas$", "contorno": "comparavel", "selo": 4, "seloAte": 284 },
+      "texto": { "de": "maior", "mostrar": true },
+      "sfx": { "whoosh": "area-6", "passos_multidao": { "de": 0, "ate": "seria" } }
+    },
+    "escalada_cientifica": {
+      "planos": [
+        { "de": 0, "enquadramento": "aberto", "cenario": "multidao_vista_de_cima", "zoom": [0.5, 0.8] },
+        { "de": "287-4", "enquadramento": "aberto", "cenario": "multidao_vista_de_cima", "zoom": [0.85, 1.0], "entrada": "punch" },
+        { "de": "parece-2", "enquadramento": "aberto", "personagens": [], "foco": "balanca", "zoom": [0.92, 0.98] },
+        { "de": "mas-2", "enquadramento": "aberto", "personagens": [], "foco": "balanca", "zoom": [1.0, 1.1] },
+        { "de": "terra-10", "enquadramento": "aberto", "personagens": [{ "id": "nico", "x": 870, "y": 830 }], "foco": "balanca", "zoom": [0.8, 0.84] },
+        { "de": "10-8", "enquadramento": "aberto", "personagens": [{ "id": "nico", "x": 870, "y": 830 }], "foco": "balanca", "zoom": [0.86, 0.76] }
+      ],
+      "personagens": { "nico": [{ "de": "terra+6", "expressao": "susto" }, { "de": "trilhoes", "expressao": "vergonha", "olhar": [0.8, -0.4] }] },
+      "fundo": { "cheia": 0, "selo": 0, "seloAte": "parece-2", "contador": "287", "contadorAte": "milhoes$", "contadorSome": "parece-2", "pesa": "balancar", "terra": "terra+4", "pontos": "10" },
+      "tremidas": [{ "de": "terra+4", "frames": 14, "forca": 24 }],
+      "texto": { "de": "10", "mostrar": true },
+      "sfx": { "rangido_balanca": "balancar" },
+      "efeitos": [{ "id": "impacto_grave", "de": "terra+4" }, { "id": "whoosh", "de": "parece-6" }]
+    },
+    "grande_momento": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "cenario": "quadra_dia", "personagens": [{ "id": "nico", "pose": "parado", "expressao": "atento", "x": 540, "escala": 0.85 }], "zoom": [0.5, 0.48] },
+        { "de": "dois-2", "enquadramento": "medio", "cenario": "quadra_dia", "personagens": [{ "id": "nico", "pose": "parado", "expressao": "atento", "x": 540, "escala": 0.85 }], "zoom": [0.62, 0.64], "entrada": "punch" },
+        { "de": "um-2", "enquadramento": "medio", "cenario": "quadra_dia", "personagens": [{ "id": "nico", "pose": "parado", "expressao": "preocupacao", "x": 540, "escala": 0.85 }], "zoom": [0.78, 0.8], "entrada": "punch" },
+        { "de": "pulem", "enquadramento": "medio", "cenario": "quadra_dia", "personagens": [{ "id": "nico", "pose": "pulando", "expressao": "surpresa", "x": 540, "escala": 0.85 }], "zoom": [0.62, 0.44], "pulo": { "altura": 230, "de": "pulem", "ate": "pulem+224" } },
+        { "de": "corpos-4", "enquadramento": "medio", "cenario": "quadra_dia", "personagens": [{ "id": "nico", "pose": "pulando", "expressao": "surpresa", "x": 540, "escala": 0.85 }], "zoom": [0.36, 0.33], "pulo": { "altura": 230, "de": "pulem", "ate": "pulem+224" } },
+        { "de": "e-2", "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "terra4", "zoom": [1.0, 1.04] },
+        { "de": "realmente-4", "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "recuo4", "zoom": [1.0, 1.5] }
+      ],
+      "fundo": {
+        "cheia": 0, "agacha": 6, "conta": ["tres", "dois", "um", "pulem"],
+        "pulo": "pulem", "puloAte": "pulem+224", "altura": 230,
+        "gente": 0, "pulam": "e-2", "pulamAte": "e+110", "recua": "move"
+      },
+      "tremidas": [{ "de": "pulem", "frames": 14, "forca": 26 }],
+      "texto": { "mostrar": false },
+      "musicaDe": "pulem",
+      "sfx": { "pulo_massivo": "pulem", "passos_multidao": { "de": 0, "ate": 4 } },
+      "efeitos": [
+        { "id": "contagem", "de": "tres" }, { "id": "contagem", "de": "dois" }, { "id": "contagem", "de": "um" },
+        { "id": "whoosh", "de": "e-6" }, { "id": "zumbido_leve", "de": "move-4" }
+      ]
+    },
+    "virada": {
+      "planos": [
+        { "de": 0, "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "recuo4", "zoom": [1.5, 2.2] },
+        { "de": "menos-2", "enquadramento": "aberto", "cenario": "escala_comparacao", "personagens": [] },
+        { "de": "quando-2", "enquadramento": "medio", "cenario": "quadra_dia", "personagens": [{ "id": "nico", "pose": "pulando", "expressao": "surpresa", "x": 540, "escala": 0.85 }], "zoom": [0.5, 0.47], "pulo": { "altura": 230, "de": "aterrissam-82", "ate": "aterrissam+6" } },
+        { "de": "aterrissam+10", "enquadramento": "aberto", "cenario": "sismografo", "personagens": [] },
+        { "de": "volta-4", "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "terra4", "zoom": [1.04, 1.0] }
+      ],
+      "personagens": { "nico": [{ "de": "aterrissam+6", "pose": "parado", "expressao": "surpresa" }] },
+      "fundo": {
+        "recua": 0, "volta": "volta-4",
+        "de": "menos", "fio": "fio", "mergulho": "verdade", "atomo": "menos#3", "seta": "atomo",
+        "cheia": 0, "pulo": "aterrissam-82", "puloAte": "aterrissam+6", "altura": 230, "impacto": "aterrissam+6",
+        "tremor": "aterrissam+12"
+      },
+      "tremidas": [{ "de": "aterrissam+6", "frames": 10, "forca": 14 }],
+      "texto": { "de": "menos#3", "ate": "e", "mostrar": true },
+      "sfx": { "whoosh": "menos-6", "pouso_massivo": "aterrissam+6", "rabisco_sismografo": "aterrissam+12" },
+      "efeitos": [{ "id": "micro_zoom", "de": "verdade" }, { "id": "whoosh", "de": "quando-6" }, { "id": "zumbido_leve", "de": "volta-4" }]
+    },
+    "fechamento": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "personagens": [{ "id": "nico", "pose": "parado", "expressao": "neutro", "x": 540, "escala": 1 }], "zoom": [1.0, 1.05], "pulo": { "altura": 150, "de": "humanidade+2", "ate": "mover$" } },
+        { "de": "planeta-2", "enquadramento": "aberto", "cenario": "espaco_terra", "personagens": [], "foco": "terra4", "zoom": [1.06, 1.0] },
+        { "de": "ali-14", "enquadramento": "close", "zoom": [1.05, 1] }
+      ],
+      "personagens": {
+        "nico": [
+          { "de": 0, "olhar": [0, 0.9] },
+          { "de": "humanidade", "pose": "pulando", "expressao": "curiosidade" },
+          { "de": "mover$", "pose": "parado", "expressao": "neutro", "olhar": [0.2, 0.8] },
+          { "de": "ali-14", "pose": "olhando_para_cima", "expressao": "surpresa", "olhar": [0.7, -0.9] }
+        ]
+      },
+      "texto": { "de": "mas", "ate": "ali-14", "mostrar": true, "partes": ["mas", "percebeu"] },
+      "sfx": { "quica": "mover$", "whoosh": "planeta-4" },
+      "efeitos": [{ "id": "whoosh", "de": "ali-16" }]
+    }
+  }
+}

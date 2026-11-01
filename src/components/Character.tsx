@@ -29,7 +29,8 @@ export type PoseName =
   | "sendo_arrastado"
   | "apontando_quadro"
   | "flutuando"
-  | "sentado_livre";
+  | "sentado_livre"
+  | "pulando";
 
 export type ExpressionName =
   | "neutro"
@@ -149,6 +150,11 @@ const POSES: Record<PoseName, PoseDef> = {
   flutuando: {
     handL: [-300, -560], handR: [290, -620], footL: [-110, -70], footR: [70, -120],
     crouch: 20, lean: 8, headTilt: -5, headDy: 0, look: [0.4, -0.2],
+  },
+  // Pulando (ep04): variação de `caindo` com os dois braços para o alto e os pés recolhidos
+  pulando: {
+    handL: [-250, -860], handR: [250, -870], footL: [-90, -70], footR: [90, -60],
+    crouch: 0, lean: 0, headTilt: -4, headDy: 0, look: [0, -0.6],
   },
 };
 

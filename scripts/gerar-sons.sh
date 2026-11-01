@@ -117,8 +117,44 @@ gen -f lavfi -i "aevalsrc='0.26*exp(-mod(t,0.5)*3)*sin(2*PI*261.63*pow(2,($MR+$M
 gen -f lavfi -i "aevalsrc='0.25*sin(2*PI*1050*t)*lt(mod(t,0.18),0.09)*lt(t,0.45)':s=$R:d=0.5" -ac 1 "$SFX/painel_bip.wav"
 gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(500+700*t)*t)*exp(-t*5)+0.2*sin(2*PI*1400*t)*exp(-(t-0.3)*12)*gt(t,0.3)':s=$R:d=0.6" -ac 1 "$SFX/controle_ligando.wav"
 
+# ep04 — efeitos e trilhas (síntese local)
+# passos_multidao: multidão andando (murmúrio grave + passos curtos aleatórios), loop de 4 s
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=0.8:sample_rate=$R:duration=4:seed=61" \
+  -f lavfi -i "aevalsrc='0.5*sin(2*PI*80*t)*exp(-mod(t*7.3,1)*14)*gt(sin(2*PI*1.9*t+sin(5*t)),-0.3)':s=$R:d=4" \
+  -filter_complex "[0]bandpass=f=420:width_type=h:w=500,tremolo=f=2.3:d=0.4,volume=1.6[a];[1]lowpass=f=300[b];[a][b]amix=inputs=2:normalize=0,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/passos_multidao.wav"
+# rangido_balanca: rangido de metal (tom com vibrato lento), 1,2 s
+gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(170+40*sin(2*PI*3*t))*t)*(0.5+0.5*sin(2*PI*9*t))*exp(-t*1.2)':s=$R:d=1.2" -af "afade=t=in:d=0.05,afade=t=out:st=1.0:d=0.2" -ac 1 "$SFX/rangido_balanca.wav"
+# contagem: batida grave de suspense (um coração), 0,6 s
+gen -f lavfi -i "aevalsrc='0.8*sin(2*PI*58*t)*exp(-t*9)+0.5*sin(2*PI*52*(t-0.16))*exp(-(t-0.16)*10)*gt(t,0.16)':s=$R:d=0.6" -ac 1 "$SFX/contagem.wav"
+# pulo_massivo: impacto grave do pulo (varredura grave + ruído curto), 1,6 s
+gen -f lavfi -i "aevalsrc='0.9*sin(2*PI*(70/0.9)*(1-exp(-0.9*t)))*exp(-t*2.2)+(random(0)*2-1)*0.25*exp(-t*18)':s=$R:d=1.6" -af "lowpass=f=900,afade=t=out:st=1.3:d=0.3" -ac 1 "$SFX/pulo_massivo.wav"
+# pouso_massivo: pancada de bilhões de pés no chão (grave + ruído), 1,4 s
+gen -f lavfi -i "aevalsrc='0.9*sin(2*PI*48*t)*exp(-t*3.5)+(random(0)*2-1)*0.45*exp(-t*9)':s=$R:d=1.4" -af "lowpass=f=700,afade=t=out:st=1.1:d=0.3" -ac 1 "$SFX/pouso_massivo.wav"
+# impacto_grave: a Terra caindo no prato da balança, 1,2 s
+gen -f lavfi -i "aevalsrc='0.9*sin(2*PI*40*t)*exp(-t*3)+0.4*sin(2*PI*120*t)*exp(-t*10)+(random(0)*2-1)*0.2*exp(-t*14)':s=$R:d=1.2" -af "lowpass=f=600" -ac 1 "$SFX/impacto_grave.wav"
+# rabisco_sismografo: caneta riscando o papel (chiado agudo tremendo), 1 s
+gen -f lavfi -i "anoisesrc=color=white:amplitude=0.5:sample_rate=$R:duration=1:seed=67" -af "highpass=f=2500,lowpass=f=7000,tremolo=f=24:d=0.8,volume='exp(-t*2)':eval=frame,afade=t=out:st=0.85:d=0.15" -ac 1 "$SFX/rabisco_sismografo.wav"
+# quica: pulinho do Nico pousando, 0,35 s
+gen -f lavfi -i "aevalsrc='0.45*sin(2*PI*(220-260*t)*t)*exp(-t*12)':s=$R:d=0.35" -ac 1 "$SFX/quica.wav"
+# micro_zoom: transição microscópica (tom subindo com brilho), 1,4 s
+gen -f lavfi -i "aevalsrc='0.22*sin(2*PI*(500*t+700*t*t))*(0.6+0.4*sin(2*PI*14*t))*sin(PI*t/1.4)':s=$R:d=1.4" -ac 1 "$SFX/micro_zoom.wav"
+# curiosidade_suave: notas soltas de pentatônica maior, 8 s em loop
+CN="mod(floor(t*2),8)"
+CK="if(eq($CN,0),0,if(eq($CN,1),4,if(eq($CN,2),7,if(eq($CN,3),9,if(eq($CN,4),12,if(eq($CN,5),9,if(eq($CN,6),7,2)))))))"
+gen -f lavfi -i "aevalsrc='0.3*exp(-mod(t,0.5)*7)*sin(2*PI*392*pow(2,($CK)/12)*t)+0.1*sin(2*PI*98*t)*(0.6+0.4*sin(2*PI*t/4))':s=$R:d=8" -ac 1 "$MUS/curiosidade_suave.wav"
+# crescendo_leve: arpejo que cresce em volume e densidade ao longo de 18 s
+GN="mod(floor(t*(4+2*t/18)),4)"
+GK="if(eq($GN,0),0,if(eq($GN,1),4,if(eq($GN,2),7,12)))"
+GR="if(lt(mod(t,8),4),0,-3)"
+gen -f lavfi -i "aevalsrc='(0.35+0.65*t/18)*(0.28*exp(-mod(t,0.25)*9)*sin(2*PI*261.63*pow(2,($GR+$GK)/12)*t)+0.14*sin(2*PI*65.41*pow(2,($GR)/12)*t))':s=$R:d=18" -ac 1 "$MUS/crescendo_leve.wav"
+# leve_divertida: saltitante e curta (maior), 6 s em loop
+LN="mod(floor(t*4),4)"
+LK="if(eq($LN,0),0,if(eq($LN,1),7,if(eq($LN,2),4,12)))"
+LR="if(lt(mod(t,6),3),0,5)"
+gen -f lavfi -i "aevalsrc='0.28*exp(-mod(t,0.25)*12)*sin(2*PI*329.63*pow(2,($LR+$LK)/12)*t)+0.16*sin(2*PI*82.41*pow(2,($LR)/12)*t)*exp(-mod(t,0.5)*5)':s=$R:d=6" -ac 1 "$MUS/leve_divertida.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
-for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave; do
+for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"
 done
 
