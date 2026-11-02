@@ -144,7 +144,7 @@ const ReguaMare: React.FC<{ frame: number; de: number; oito: number; ate: number
   const ink = useInk();
   if (!Number.isFinite(de) || frame < de || frame >= ate) return null;
   const s = pop(frame, de) * (1 - ramp(frame, ate - 6, ate));
-  const base = 960;
+  const base = 1050;
   const unidade = 52;
   const topoRegua = base - 380; // a régua só vai até ~7×: o 8× passa do limite
   const h1 = unidade * pop(frame, de + 6);
@@ -152,7 +152,7 @@ const ReguaMare: React.FC<{ frame: number; de: number; oito: number; ate: number
   const h8 = unidade * 8 * k8;
   return (
     <g transform={`translate(860 ${base}) scale(${s}) translate(-860 ${-base})`}>
-      <rect x={680} y={topoRegua - 40} width={360} height={base - topoRegua + 130} rx={24} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={680} y={topoRegua - 40} width={360} height={base - topoRegua + 150} rx={24} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
       <path d={`M 700 ${topoRegua} L 1020 ${topoRegua}`} stroke={colors.coral} strokeWidth={ink * 0.6} strokeDasharray={`${ink} ${ink * 0.7}`} />
       {Array.from({ length: 8 }, (_, i) => (
         <path key={i} d={`M 700 ${base - i * unidade} L 724 ${base - i * unidade}`} stroke={colors.tinta} strokeWidth={ink * 0.4} />
@@ -162,8 +162,11 @@ const ReguaMare: React.FC<{ frame: number; de: number; oito: number; ate: number
       {h8 > (base - topoRegua) ? (
         <path d={`M 935 ${base - h8 - 30} l -26 30 l 52 0 z`} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink * 0.5} strokeLinejoin="round" />
       ) : null}
-      <text x={795} y={base + 52} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={40} fill={colors.tinta}>hoje 1×</text>
-      <text x={935} y={base + 52} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={34} fill={colors.tinta} opacity={k8 > 0.05 ? 1 : 0}>Lua maior 8×</text>
+      <text x={795} y={base + 56} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={50} fill={colors.tinta}>1×</text>
+      <text x={935} y={base + 56} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={50} fill={colors.coral} opacity={k8 > 0.05 ? 1 : 0}>8×</text>
+      <text x={795} y={base + 96} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={30} fill={colors.tinta}>hoje</text>
+      <text x={935} y={base + 96} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={30} fill={colors.tinta} opacity={k8 > 0.05 ? 1 : 0}>Lua 2×</text>
+      <text x={690} y={topoRegua - 62} fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={40} fill={colors.creme} stroke={colors.tinta} strokeWidth={10} paintOrder="stroke">força da maré</text>
     </g>
   );
 };
@@ -236,7 +239,7 @@ export const CeuLuaGrande: React.FC<{ cam: Cam; frame: number; params: Params }>
             <path d="M -40 0 L -14 0 M 14 0 L 40 0 M 0 -40 L 0 -14 M 0 14 L 0 40" />
           </g>
         ) : null}
-        {lugar > 0.01 ? <InfoLabel x={Math.max(170, L.x - r - 150)} y={L.y + r + 50} text="mesmo lugar" fontSize={50} s={lugar} /> : null}
+        {lugar > 0.01 ? <InfoLabel x={L.x - 40} y={L.y - r - 56} text="mesmo lugar" fontSize={50} s={lugar} /> : null}
       </Layer>
     </>
   );
@@ -346,13 +349,13 @@ export const CeuEclipse: React.FC<{ cam: Cam; frame: number; params: Params }> =
         {!dois ? <circle cx={S.x} cy={S.y} r={S.r + 22} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.6} opacity={0.5} /> : null}
         <circle cx={luaX} cy={S.y} r={luaR} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} />
         <circle cx={luaX - luaR * 0.3} cy={S.y - luaR * 0.25} r={luaR * 0.16} fill={nightColors.ceuBaixo} />
-        <InfoLabel x={S.x} y={S.y - 380} text={dois ? "LUA 2×" : "HOJE"} />
+        <InfoLabel x={S.x} y={S.y - 380} text={dois ? "LUA 2×" : "HOJE"} s={1 - ramp(frame, n(params.rotuloAte) - 6, n(params.rotuloAte))} />
         {!dois && passa > 0.95 ? <InfoLabel x={S.x} y={S.y + S.r + 110} text="anel de fogo" fontSize={52} s={pop(frame, n(params.passa, 0) + 50)} /> : null}
         {dois && coroa > 0.5 ? <InfoLabel x={S.x} y={S.y + 340} text="coroa" fontSize={52} s={coroa} /> : null}
       </Layer>
       {/* quadrinho: o anel de hoje, riscado */}
       {anel > 0.01 ? (
-        <g transform={`translate(850 400) scale(${anel})`}>
+        <g transform={`translate(890 610) scale(${anel * 0.78})`}>
           <rect x={-150} y={-150} width={300} height={300} rx={28} fill={colors.noite} stroke={colors.tinta} strokeWidth={ink} />
           <circle r={80} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.6} />
           <circle r={68} fill={colors.tinta} />
@@ -410,11 +413,11 @@ export const DiagramaBaricentro: React.FC<{ cam: Cam; frame: number; params: Par
       <Layer cam={cam} depth={1}>
         {emLado ? (
           <>
-            <QuadroBaricentro q={{ hoje: true, cx: 600, cy: interpolate(t, [0, 1], [-400, 560]), s: 0.5 }} frame={frame} />
-            <QuadroBaricentro q={{ hoje: false, cx: 600, cy: interpolate(t, [0, 1], [760, 1060]), s: interpolate(t, [0, 1], [0.8, 0.5]) }} frame={frame} />
+            <QuadroBaricentro q={{ hoje: true, cx: 600, cy: interpolate(t, [0, 1], [-400, 640]), s: 0.5 }} frame={frame} />
+            <QuadroBaricentro q={{ hoje: false, cx: 600, cy: interpolate(t, [0, 1], [870, 1090]), s: interpolate(t, [0, 1], [0.8, 0.5]) }} frame={frame} />
           </>
         ) : (
-          <QuadroBaricentro q={{ hoje: !(Number.isFinite(dois) && frame >= dois), cx: 620, cy: 760, s: 0.8 }} frame={frame} />
+          <QuadroBaricentro q={{ hoje: !(Number.isFinite(dois) && frame >= dois), cx: 620, cy: 910, s: 0.8 }} frame={frame} />
         )}
       </Layer>
       <SeloNico frame={frame} de={n(params.selo)} ate={n(params.seloAte)} />

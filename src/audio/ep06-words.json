@@ -73,938 +73,938 @@
  },
  {
   "text": "Este",
-  "startMs": 5917,
-  "endMs": 6317,
+  "startMs": 5260,
+  "endMs": 5660,
   "scene": "apresentacao"
  },
  {
   "text": "é",
-  "startMs": 6477,
-  "endMs": 6504,
+  "startMs": 5820,
+  "endMs": 5847,
   "scene": "apresentacao"
  },
  {
   "text": "o",
-  "startMs": 6530,
-  "endMs": 6557,
+  "startMs": 5873,
+  "endMs": 5900,
   "scene": "apresentacao"
  },
  {
   "text": "Nico.",
-  "startMs": 6637,
-  "endMs": 7197,
+  "startMs": 5980,
+  "endMs": 6540,
   "scene": "apresentacao"
  },
  {
   "text": "Passeio",
-  "startMs": 7437,
-  "endMs": 7757,
+  "startMs": 6780,
+  "endMs": 7100,
   "scene": "apresentacao"
  },
  {
   "text": "da",
-  "startMs": 7797,
-  "endMs": 7837,
+  "startMs": 7140,
+  "endMs": 7180,
   "scene": "apresentacao"
  },
  {
   "text": "escola,",
-  "startMs": 7917,
-  "endMs": 8477,
+  "startMs": 7260,
+  "endMs": 7820,
   "scene": "apresentacao"
  },
  {
   "text": "orla",
-  "startMs": 8717,
-  "endMs": 8957,
+  "startMs": 8060,
+  "endMs": 8300,
   "scene": "apresentacao"
  },
  {
   "text": "do",
-  "startMs": 8997,
-  "endMs": 9037,
+  "startMs": 8340,
+  "endMs": 8380,
   "scene": "apresentacao"
  },
  {
   "text": "Rio,",
-  "startMs": 9117,
-  "endMs": 9677,
+  "startMs": 8460,
+  "endMs": 9020,
   "scene": "apresentacao"
  },
  {
   "text": "fim",
-  "startMs": 9757,
-  "endMs": 9837,
+  "startMs": 9100,
+  "endMs": 9180,
   "scene": "apresentacao"
  },
  {
   "text": "de",
-  "startMs": 9917,
-  "endMs": 9997,
+  "startMs": 9260,
+  "endMs": 9340,
   "scene": "apresentacao"
  },
  {
   "text": "tarde.",
-  "startMs": 10077,
-  "endMs": 10717,
+  "startMs": 9420,
+  "endMs": 10060,
   "scene": "apresentacao"
  },
  {
   "text": "A",
-  "startMs": 10957,
-  "endMs": 11037,
+  "startMs": 10300,
+  "endMs": 10380,
   "scene": "apresentacao"
  },
  {
   "text": "Dani",
-  "startMs": 11117,
-  "endMs": 11437,
+  "startMs": 10460,
+  "endMs": 10780,
   "scene": "apresentacao"
  },
  {
   "text": "pede",
-  "startMs": 11517,
-  "endMs": 11717,
+  "startMs": 10860,
+  "endMs": 11060,
   "scene": "apresentacao"
  },
  {
   "text": "que",
-  "startMs": 11757,
-  "endMs": 11837,
+  "startMs": 11100,
+  "endMs": 11180,
   "scene": "apresentacao"
  },
  {
   "text": "ele",
-  "startMs": 11917,
-  "endMs": 11997,
+  "startMs": 11260,
+  "endMs": 11340,
   "scene": "apresentacao"
  },
  {
   "text": "não",
-  "startMs": 12077,
-  "endMs": 12237,
+  "startMs": 11420,
+  "endMs": 11580,
   "scene": "apresentacao"
  },
  {
   "text": "mexa",
-  "startMs": 12317,
-  "endMs": 12597,
+  "startMs": 11660,
+  "endMs": 11940,
   "scene": "apresentacao"
  },
  {
   "text": "na",
-  "startMs": 12637,
-  "endMs": 12717,
+  "startMs": 11980,
+  "endMs": 12060,
   "scene": "apresentacao"
  },
  {
   "text": "Lua.",
-  "startMs": 12797,
-  "endMs": 13437,
+  "startMs": 12140,
+  "endMs": 12780,
   "scene": "apresentacao"
  },
  {
   "text": "Ele",
-  "startMs": 13517,
-  "endMs": 13597,
+  "startMs": 12860,
+  "endMs": 12940,
   "scene": "apresentacao"
  },
  {
   "text": "não",
-  "startMs": 13677,
-  "endMs": 13757,
+  "startMs": 13020,
+  "endMs": 13100,
   "scene": "apresentacao"
  },
  {
   "text": "promete",
-  "startMs": 13837,
-  "endMs": 14157,
+  "startMs": 13180,
+  "endMs": 13500,
   "scene": "apresentacao"
  },
  {
   "text": "nada.",
-  "startMs": 14237,
-  "endMs": 14797,
+  "startMs": 13580,
+  "endMs": 14140,
   "scene": "apresentacao"
  },
  {
   "text": "Então",
-  "startMs": 15917,
-  "endMs": 16237,
+  "startMs": 14740,
+  "endMs": 15060,
   "scene": "lua_cresce"
  },
  {
   "text": "a",
-  "startMs": 16277,
-  "endMs": 16317,
+  "startMs": 15100,
+  "endMs": 15140,
   "scene": "lua_cresce"
  },
  {
   "text": "Lua",
-  "startMs": 16397,
-  "endMs": 16637,
+  "startMs": 15220,
+  "endMs": 15460,
   "scene": "lua_cresce"
  },
  {
   "text": "dobra",
-  "startMs": 16877,
-  "endMs": 17197,
+  "startMs": 15700,
+  "endMs": 16020,
   "scene": "lua_cresce"
  },
  {
   "text": "de",
-  "startMs": 17237,
-  "endMs": 17277,
+  "startMs": 16060,
+  "endMs": 16100,
   "scene": "lua_cresce"
  },
  {
   "text": "largura.",
-  "startMs": 17357,
-  "endMs": 18037,
+  "startMs": 16180,
+  "endMs": 16860,
   "scene": "lua_cresce"
  },
  {
   "text": "Mesmo",
-  "startMs": 18237,
-  "endMs": 18477,
+  "startMs": 17060,
+  "endMs": 17300,
   "scene": "lua_cresce"
  },
  {
   "text": "lugar,",
-  "startMs": 18557,
-  "endMs": 19197,
+  "startMs": 17380,
+  "endMs": 18020,
   "scene": "lua_cresce"
  },
  {
   "text": "mesma",
-  "startMs": 19277,
-  "endMs": 19517,
+  "startMs": 18100,
+  "endMs": 18340,
   "scene": "lua_cresce"
  },
  {
   "text": "distância.",
-  "startMs": 19597,
-  "endMs": 20357,
+  "startMs": 18420,
+  "endMs": 19180,
   "scene": "lua_cresce"
  },
  {
   "text": "No",
-  "startMs": 20557,
-  "endMs": 20637,
+  "startMs": 19380,
+  "endMs": 19460,
   "scene": "lua_cresce"
  },
  {
   "text": "céu,",
-  "startMs": 20717,
-  "endMs": 21197,
+  "startMs": 19540,
+  "endMs": 20020,
   "scene": "lua_cresce"
  },
  {
   "text": "ela",
-  "startMs": 21317,
-  "endMs": 21437,
+  "startMs": 20140,
+  "endMs": 20260,
   "scene": "lua_cresce"
  },
  {
   "text": "passa",
-  "startMs": 21517,
-  "endMs": 21677,
+  "startMs": 20340,
+  "endMs": 20500,
   "scene": "lua_cresce"
  },
  {
   "text": "de",
-  "startMs": 21757,
-  "endMs": 21917,
+  "startMs": 20580,
+  "endMs": 20740,
   "scene": "lua_cresce"
  },
  {
   "text": "meio",
-  "startMs": 21997,
-  "endMs": 22157,
+  "startMs": 20820,
+  "endMs": 20980,
   "scene": "lua_cresce"
  },
  {
   "text": "grau",
-  "startMs": 22237,
-  "endMs": 22557,
+  "startMs": 21060,
+  "endMs": 21380,
   "scene": "lua_cresce"
  },
  {
   "text": "para",
-  "startMs": 22637,
-  "endMs": 22797,
+  "startMs": 21460,
+  "endMs": 21620,
   "scene": "lua_cresce"
  },
  {
   "text": "cerca",
-  "startMs": 22957,
-  "endMs": 23197,
+  "startMs": 21780,
+  "endMs": 22020,
   "scene": "lua_cresce"
  },
  {
   "text": "de",
-  "startMs": 23357,
-  "endMs": 23437,
+  "startMs": 22180,
+  "endMs": 22260,
   "scene": "lua_cresce"
  },
  {
   "text": "um",
-  "startMs": 23517,
-  "endMs": 23677,
+  "startMs": 22340,
+  "endMs": 22500,
   "scene": "lua_cresce"
  },
  {
   "text": "grau.",
-  "startMs": 23757,
-  "endMs": 24317,
+  "startMs": 22580,
+  "endMs": 23140,
   "scene": "lua_cresce"
  },
  {
   "text": "Dobrar",
-  "startMs": 25917,
-  "endMs": 26317,
+  "startMs": 24240,
+  "endMs": 24640,
   "scene": "peso_da_lua"
  },
  {
   "text": "a",
-  "startMs": 26357,
-  "endMs": 26397,
+  "startMs": 24680,
+  "endMs": 24720,
   "scene": "peso_da_lua"
  },
  {
   "text": "largura",
-  "startMs": 26557,
-  "endMs": 26957,
+  "startMs": 24880,
+  "endMs": 25280,
   "scene": "peso_da_lua"
  },
  {
   "text": "não",
-  "startMs": 27037,
-  "endMs": 27197,
+  "startMs": 25360,
+  "endMs": 25520,
   "scene": "peso_da_lua"
  },
  {
   "text": "dobra",
-  "startMs": 27277,
-  "endMs": 27517,
+  "startMs": 25600,
+  "endMs": 25840,
   "scene": "peso_da_lua"
  },
  {
   "text": "a",
-  "startMs": 27557,
-  "endMs": 27597,
+  "startMs": 25880,
+  "endMs": 25920,
   "scene": "peso_da_lua"
  },
  {
   "text": "Lua.",
-  "startMs": 27677,
-  "endMs": 27997,
+  "startMs": 26000,
+  "endMs": 26320,
   "scene": "peso_da_lua"
  },
  {
   "text": "Ela",
-  "startMs": 28317,
-  "endMs": 28477,
+  "startMs": 26640,
+  "endMs": 26800,
   "scene": "peso_da_lua"
  },
  {
   "text": "ocupa",
-  "startMs": 28557,
-  "endMs": 28957,
+  "startMs": 26880,
+  "endMs": 27280,
   "scene": "peso_da_lua"
  },
  {
   "text": "oito",
-  "startMs": 29037,
-  "endMs": 29357,
+  "startMs": 27360,
+  "endMs": 27680,
   "scene": "peso_da_lua"
  },
  {
   "text": "vezes",
-  "startMs": 29437,
-  "endMs": 29757,
+  "startMs": 27760,
+  "endMs": 28080,
   "scene": "peso_da_lua"
  },
  {
   "text": "mais",
-  "startMs": 29837,
-  "endMs": 29917,
+  "startMs": 28160,
+  "endMs": 28240,
   "scene": "peso_da_lua"
  },
  {
   "text": "espaço.",
-  "startMs": 29997,
-  "endMs": 30757,
+  "startMs": 28320,
+  "endMs": 29080,
   "scene": "peso_da_lua"
  },
  {
   "text": "Com",
-  "startMs": 30957,
-  "endMs": 31037,
+  "startMs": 29280,
+  "endMs": 29360,
   "scene": "peso_da_lua"
  },
  {
   "text": "a",
-  "startMs": 31077,
-  "endMs": 31117,
+  "startMs": 29400,
+  "endMs": 29440,
   "scene": "peso_da_lua"
  },
  {
   "text": "mesma",
-  "startMs": 31197,
-  "endMs": 31437,
+  "startMs": 29520,
+  "endMs": 29760,
   "scene": "peso_da_lua"
  },
  {
   "text": "rocha,",
-  "startMs": 31517,
-  "endMs": 32077,
+  "startMs": 29840,
+  "endMs": 30400,
   "scene": "peso_da_lua"
  },
  {
   "text": "pesa",
-  "startMs": 32197,
-  "endMs": 32477,
+  "startMs": 30520,
+  "endMs": 30800,
   "scene": "peso_da_lua"
  },
  {
   "text": "oito",
-  "startMs": 32557,
-  "endMs": 32797,
+  "startMs": 30880,
+  "endMs": 31120,
   "scene": "peso_da_lua"
  },
  {
   "text": "vezes",
-  "startMs": 32957,
-  "endMs": 33197,
+  "startMs": 31280,
+  "endMs": 31520,
   "scene": "peso_da_lua"
  },
  {
   "text": "mais.",
-  "startMs": 33277,
-  "endMs": 33917,
+  "startMs": 31600,
+  "endMs": 32240,
   "scene": "peso_da_lua"
  },
  {
   "text": "A",
-  "startMs": 34917,
-  "endMs": 34997,
+  "startMs": 32840,
+  "endMs": 32920,
   "scene": "forca_da_mare"
  },
  {
   "text": "maré",
-  "startMs": 35077,
-  "endMs": 35397,
+  "startMs": 33000,
+  "endMs": 33320,
   "scene": "forca_da_mare"
  },
  {
   "text": "depende",
-  "startMs": 35477,
-  "endMs": 35957,
+  "startMs": 33400,
+  "endMs": 33880,
   "scene": "forca_da_mare"
  },
  {
   "text": "dessa",
-  "startMs": 35997,
-  "endMs": 36197,
+  "startMs": 33920,
+  "endMs": 34120,
   "scene": "forca_da_mare"
  },
  {
   "text": "massa.",
-  "startMs": 36277,
-  "endMs": 36757,
+  "startMs": 34200,
+  "endMs": 34680,
   "scene": "forca_da_mare"
  },
  {
   "text": "A",
-  "startMs": 37077,
-  "endMs": 37157,
+  "startMs": 35000,
+  "endMs": 35080,
   "scene": "forca_da_mare"
  },
  {
   "text": "força",
-  "startMs": 37237,
-  "endMs": 37477,
+  "startMs": 35160,
+  "endMs": 35400,
   "scene": "forca_da_mare"
  },
  {
   "text": "da",
-  "startMs": 37557,
-  "endMs": 37637,
+  "startMs": 35480,
+  "endMs": 35560,
   "scene": "forca_da_mare"
  },
  {
   "text": "Lua",
-  "startMs": 37717,
-  "endMs": 37877,
+  "startMs": 35640,
+  "endMs": 35800,
   "scene": "forca_da_mare"
  },
  {
   "text": "sobre",
-  "startMs": 37957,
-  "endMs": 38117,
+  "startMs": 35880,
+  "endMs": 36040,
   "scene": "forca_da_mare"
  },
  {
   "text": "o",
-  "startMs": 38157,
-  "endMs": 38197,
+  "startMs": 36080,
+  "endMs": 36120,
   "scene": "forca_da_mare"
  },
  {
   "text": "mar",
-  "startMs": 38357,
-  "endMs": 38517,
+  "startMs": 36280,
+  "endMs": 36440,
   "scene": "forca_da_mare"
  },
  {
   "text": "seria",
-  "startMs": 38597,
-  "endMs": 38997,
+  "startMs": 36520,
+  "endMs": 36920,
   "scene": "forca_da_mare"
  },
  {
   "text": "oito",
-  "startMs": 39077,
-  "endMs": 39317,
+  "startMs": 37000,
+  "endMs": 37240,
   "scene": "forca_da_mare"
  },
  {
   "text": "vezes",
-  "startMs": 39477,
-  "endMs": 39717,
+  "startMs": 37400,
+  "endMs": 37640,
   "scene": "forca_da_mare"
  },
  {
   "text": "maior.",
-  "startMs": 39797,
-  "endMs": 40437,
+  "startMs": 37720,
+  "endMs": 38360,
   "scene": "forca_da_mare"
  },
  {
   "text": "O",
-  "startMs": 40677,
-  "endMs": 40717,
+  "startMs": 38600,
+  "endMs": 38640,
   "scene": "forca_da_mare"
  },
  {
   "text": "Nico",
-  "startMs": 40757,
-  "endMs": 41157,
+  "startMs": 38680,
+  "endMs": 39080,
   "scene": "forca_da_mare"
  },
  {
   "text": "vê",
-  "startMs": 41237,
-  "endMs": 41397,
+  "startMs": 39160,
+  "endMs": 39320,
   "scene": "forca_da_mare"
  },
  {
   "text": "a",
-  "startMs": 41437,
-  "endMs": 41477,
+  "startMs": 39360,
+  "endMs": 39400,
   "scene": "forca_da_mare"
  },
  {
   "text": "água",
-  "startMs": 41557,
-  "endMs": 41797,
+  "startMs": 39480,
+  "endMs": 39720,
   "scene": "forca_da_mare"
  },
  {
   "text": "subir",
-  "startMs": 41877,
-  "endMs": 42197,
+  "startMs": 39800,
+  "endMs": 40120,
   "scene": "forca_da_mare"
  },
  {
   "text": "pela",
-  "startMs": 42277,
-  "endMs": 42437,
+  "startMs": 40200,
+  "endMs": 40360,
   "scene": "forca_da_mare"
  },
  {
   "text": "calçada.",
-  "startMs": 42517,
-  "endMs": 43397,
+  "startMs": 40440,
+  "endMs": 41320,
   "scene": "forca_da_mare"
  },
  {
   "text": "No",
-  "startMs": 44917,
-  "endMs": 45077,
+  "startMs": 42720,
+  "endMs": 42880,
   "scene": "eclipse"
  },
  {
   "text": "céu,",
-  "startMs": 45157,
-  "endMs": 45717,
+  "startMs": 42960,
+  "endMs": 43520,
   "scene": "eclipse"
  },
  {
   "text": "algo",
-  "startMs": 45837,
-  "endMs": 45957,
+  "startMs": 43640,
+  "endMs": 43760,
   "scene": "eclipse"
  },
  {
   "text": "melhora.",
-  "startMs": 46037,
-  "endMs": 46717,
+  "startMs": 43840,
+  "endMs": 44520,
   "scene": "eclipse"
  },
  {
   "text": "Alinhada",
-  "startMs": 46917,
-  "endMs": 47317,
+  "startMs": 44720,
+  "endMs": 45120,
   "scene": "eclipse"
  },
  {
   "text": "ao",
-  "startMs": 47357,
-  "endMs": 47397,
+  "startMs": 45160,
+  "endMs": 45200,
   "scene": "eclipse"
  },
  {
   "text": "Sol,",
-  "startMs": 47557,
-  "endMs": 48037,
+  "startMs": 45360,
+  "endMs": 45840,
   "scene": "eclipse"
  },
  {
   "text": "a",
-  "startMs": 48077,
-  "endMs": 48117,
+  "startMs": 45880,
+  "endMs": 45920,
   "scene": "eclipse"
  },
  {
   "text": "Lua",
-  "startMs": 48197,
-  "endMs": 48437,
+  "startMs": 46000,
+  "endMs": 46240,
   "scene": "eclipse"
  },
  {
   "text": "sempre",
-  "startMs": 48517,
-  "endMs": 48784,
+  "startMs": 46320,
+  "endMs": 46587,
   "scene": "eclipse"
  },
  {
   "text": "o",
-  "startMs": 48810,
-  "endMs": 48837,
+  "startMs": 46613,
+  "endMs": 46640,
   "scene": "eclipse"
  },
  {
   "text": "cobriria",
-  "startMs": 48917,
-  "endMs": 49317,
+  "startMs": 46720,
+  "endMs": 47120,
   "scene": "eclipse"
  },
  {
   "text": "por",
-  "startMs": 49397,
-  "endMs": 49477,
+  "startMs": 47200,
+  "endMs": 47280,
   "scene": "eclipse"
  },
  {
   "text": "inteiro.",
-  "startMs": 49557,
-  "endMs": 50357,
+  "startMs": 47360,
+  "endMs": 48160,
   "scene": "eclipse"
  },
  {
   "text": "O",
-  "startMs": 50397,
-  "endMs": 50437,
+  "startMs": 48200,
+  "endMs": 48240,
   "scene": "eclipse"
  },
  {
   "text": "anel",
-  "startMs": 50557,
-  "endMs": 50677,
+  "startMs": 48360,
+  "endMs": 48480,
   "scene": "eclipse"
  },
  {
   "text": "de",
-  "startMs": 50717,
-  "endMs": 50757,
+  "startMs": 48520,
+  "endMs": 48560,
   "scene": "eclipse"
  },
  {
   "text": "fogo",
-  "startMs": 50917,
-  "endMs": 51237,
+  "startMs": 48720,
+  "endMs": 49040,
   "scene": "eclipse"
  },
  {
   "text": "deixaria",
-  "startMs": 51277,
-  "endMs": 51797,
+  "startMs": 49080,
+  "endMs": 49600,
   "scene": "eclipse"
  },
  {
   "text": "de",
-  "startMs": 51837,
-  "endMs": 51877,
+  "startMs": 49640,
+  "endMs": 49680,
   "scene": "eclipse"
  },
  {
   "text": "existir.",
-  "startMs": 52037,
-  "endMs": 52597,
+  "startMs": 49840,
+  "endMs": 50400,
   "scene": "eclipse"
  },
  {
   "text": "Mas",
-  "startMs": 53250,
-  "endMs": 53490,
+  "startMs": 51300,
+  "endMs": 51540,
   "scene": "centro_da_danca"
  },
  {
   "text": "há",
-  "startMs": 53530,
-  "endMs": 53597,
+  "startMs": 51580,
+  "endMs": 51647,
   "scene": "centro_da_danca"
  },
  {
   "text": "um",
-  "startMs": 53623,
-  "endMs": 53650,
+  "startMs": 51673,
+  "endMs": 51700,
   "scene": "centro_da_danca"
  },
  {
   "text": "detalhe.",
-  "startMs": 53730,
-  "endMs": 54450,
+  "startMs": 51780,
+  "endMs": 52500,
   "scene": "centro_da_danca"
  },
  {
   "text": "Terra",
-  "startMs": 54690,
-  "endMs": 54930,
+  "startMs": 52740,
+  "endMs": 52980,
   "scene": "centro_da_danca"
  },
  {
   "text": "e",
-  "startMs": 55010,
-  "endMs": 55090,
+  "startMs": 53060,
+  "endMs": 53140,
   "scene": "centro_da_danca"
  },
  {
   "text": "Lua",
-  "startMs": 55170,
-  "endMs": 55490,
+  "startMs": 53220,
+  "endMs": 53540,
   "scene": "centro_da_danca"
  },
  {
   "text": "orbitariam",
-  "startMs": 55570,
-  "endMs": 56210,
+  "startMs": 53620,
+  "endMs": 54260,
   "scene": "centro_da_danca"
  },
  {
   "text": "um",
-  "startMs": 56290,
-  "endMs": 56370,
+  "startMs": 54340,
+  "endMs": 54420,
   "scene": "centro_da_danca"
  },
  {
   "text": "ponto",
-  "startMs": 56410,
-  "endMs": 56690,
+  "startMs": 54460,
+  "endMs": 54740,
   "scene": "centro_da_danca"
  },
  {
   "text": "no",
-  "startMs": 56730,
-  "endMs": 56770,
+  "startMs": 54780,
+  "endMs": 54820,
   "scene": "centro_da_danca"
  },
  {
   "text": "espaço",
-  "startMs": 56850,
-  "endMs": 57170,
+  "startMs": 54900,
+  "endMs": 55220,
   "scene": "centro_da_danca"
  },
  {
   "text": "vazio,",
-  "startMs": 57250,
-  "endMs": 57970,
+  "startMs": 55300,
+  "endMs": 56020,
   "scene": "centro_da_danca"
  },
  {
   "text": "fora",
-  "startMs": 58090,
-  "endMs": 58250,
+  "startMs": 56140,
+  "endMs": 56300,
   "scene": "centro_da_danca"
  },
  {
   "text": "da",
-  "startMs": 58290,
-  "endMs": 58370,
+  "startMs": 56340,
+  "endMs": 56420,
   "scene": "centro_da_danca"
  },
  {
   "text": "Terra.",
-  "startMs": 58450,
-  "endMs": 59010,
+  "startMs": 56500,
+  "endMs": 57060,
   "scene": "centro_da_danca"
  },
  {
   "text": "Hoje,",
-  "startMs": 59250,
-  "endMs": 59810,
+  "startMs": 57300,
+  "endMs": 57860,
   "scene": "centro_da_danca"
  },
  {
   "text": "esse",
-  "startMs": 59930,
-  "endMs": 60050,
+  "startMs": 57980,
+  "endMs": 58100,
   "scene": "centro_da_danca"
  },
  {
   "text": "ponto",
-  "startMs": 60130,
-  "endMs": 60370,
+  "startMs": 58180,
+  "endMs": 58420,
   "scene": "centro_da_danca"
  },
  {
   "text": "fica",
-  "startMs": 60450,
-  "endMs": 60770,
+  "startMs": 58500,
+  "endMs": 58820,
   "scene": "centro_da_danca"
  },
  {
   "text": "dentro",
-  "startMs": 60890,
-  "endMs": 61090,
+  "startMs": 58940,
+  "endMs": 59140,
   "scene": "centro_da_danca"
  },
  {
   "text": "dela.",
-  "startMs": 61170,
-  "endMs": 61730,
+  "startMs": 59220,
+  "endMs": 59780,
   "scene": "centro_da_danca"
  },
  {
   "text": "De",
-  "startMs": 62250,
-  "endMs": 62410,
+  "startMs": 60380,
+  "endMs": 60540,
   "scene": "fechamento"
  },
  {
   "text": "volta",
-  "startMs": 62490,
-  "endMs": 62650,
+  "startMs": 60620,
+  "endMs": 60780,
   "scene": "fechamento"
  },
  {
   "text": "ao",
-  "startMs": 62690,
-  "endMs": 62730,
+  "startMs": 60820,
+  "endMs": 60860,
   "scene": "fechamento"
  },
  {
   "text": "passeio,",
-  "startMs": 62770,
-  "endMs": 63530,
+  "startMs": 60900,
+  "endMs": 61660,
   "scene": "fechamento"
  },
  {
   "text": "a",
-  "startMs": 63610,
-  "endMs": 63690,
+  "startMs": 61740,
+  "endMs": 61820,
   "scene": "fechamento"
  },
  {
   "text": "Lua",
-  "startMs": 63770,
-  "endMs": 64010,
+  "startMs": 61900,
+  "endMs": 62140,
   "scene": "fechamento"
  },
  {
   "text": "é",
-  "startMs": 64170,
-  "endMs": 64250,
+  "startMs": 62300,
+  "endMs": 62380,
   "scene": "fechamento"
  },
  {
   "text": "a",
-  "startMs": 64277,
-  "endMs": 64303,
+  "startMs": 62407,
+  "endMs": 62433,
   "scene": "fechamento"
  },
  {
   "text": "de",
-  "startMs": 64330,
-  "endMs": 64490,
+  "startMs": 62460,
+  "endMs": 62620,
   "scene": "fechamento"
  },
  {
   "text": "sempre.",
-  "startMs": 64570,
-  "endMs": 65050,
+  "startMs": 62700,
+  "endMs": 63180,
   "scene": "fechamento"
  },
  {
   "text": "O",
-  "startMs": 65210,
-  "endMs": 65290,
+  "startMs": 63340,
+  "endMs": 63420,
   "scene": "fechamento"
  },
  {
   "text": "mar",
-  "startMs": 65370,
-  "endMs": 65530,
+  "startMs": 63500,
+  "endMs": 63660,
   "scene": "fechamento"
  },
  {
   "text": "também.",
-  "startMs": 65610,
-  "endMs": 66290,
+  "startMs": 63740,
+  "endMs": 64420,
   "scene": "fechamento"
  },
  {
   "text": "E",
-  "startMs": 66570,
-  "endMs": 66650,
+  "startMs": 64700,
+  "endMs": 64780,
   "scene": "fechamento"
  },
  {
   "text": "se",
-  "startMs": 66690,
-  "endMs": 66730,
+  "startMs": 64820,
+  "endMs": 64860,
   "scene": "fechamento"
  },
  {
   "text": "ela",
-  "startMs": 66810,
-  "endMs": 66970,
+  "startMs": 64940,
+  "endMs": 65100,
   "scene": "fechamento"
  },
  {
   "text": "fosse",
-  "startMs": 67090,
-  "endMs": 67450,
+  "startMs": 65220,
+  "endMs": 65580,
   "scene": "fechamento"
  },
  {
   "text": "duas",
-  "startMs": 67690,
-  "endMs": 68010,
+  "startMs": 65820,
+  "endMs": 66140,
   "scene": "fechamento"
  },
  {
   "text": "vezes",
-  "startMs": 68090,
-  "endMs": 68330,
+  "startMs": 66220,
+  "endMs": 66460,
   "scene": "fechamento"
  },
  {
   "text": "maior?",
-  "startMs": 68410,
-  "endMs": 69050,
+  "startMs": 66540,
+  "endMs": 67180,
   "scene": "fechamento"
  }
 ]

@@ -4,6 +4,7 @@
   "legendaDe": 0,
   "legendaSemPontuacao": true,
   "legendaPlaca": true,
+  "duckGanho": 0.2,
   "cenas": {
     "gancho": {
       "planos": [
@@ -12,6 +13,7 @@
         { "de": "o-3", "enquadramento": "medio", "zoom": [0.62, 0.68] }
       ],
       "fundo": { "onda": "mar" },
+      "texto": { "de": 2, "ate": "o-2", "mostrar": true },
       "sfx": { "mar_calmo": { "de": 0 }, "onda_pequena": "mar", "whoosh": "fosse-4" },
       "efeitos": [{ "id": "whoosh", "de": 162 }]
     },
@@ -26,6 +28,7 @@
         "nico": [{ "de": "ele#2+2", "pose": "mao_nas_costas", "expressao": "curiosidade" }],
         "dani": [{ "de": "dani", "olhar": [-0.9, 0.05] }]
       },
+      "texto": { "de": 2, "ate": "lua$+6", "mostrar": true },
       "sfx": { "mar_calmo": { "de": 0 } }
     },
     "lua_cresce": {
@@ -35,7 +38,7 @@
         { "de": "ceu-2", "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 330, "escala": 0.7 }], "zoom": [1.0, 0.94] }
       ],
       "personagens": { "nico": [{ "de": "dobra+6", "expressao": "susto" }, { "de": "mesmo", "expressao": "surpresa" }] },
-      "elementos": [{ "type": "balao", "texto": "Ué.", "personagem": "nico", "de": "largura$+2", "ate": "mesma" }],
+      "elementos": [{ "type": "balao", "texto": "Ué.", "personagem": "nico", "de": "largura$+2", "ate": "ceu" }],
       "fundo": { "cresce": "dobra", "lugar": "mesmo", "lugarAte": "ceu", "distancia": "distancia", "angulo": "meio" },
       "texto": { "de": "meio", "mostrar": true },
       "sfx": { "crescer_lua": "dobra" }
@@ -46,8 +49,8 @@
         { "de": "ocupa-2", "enquadramento": "aberto", "zoom": [1.0, 1.08] },
         { "de": "pesa-2", "enquadramento": "aberto", "zoom": [1.04, 1.1], "entrada": "punch" }
       ],
-      "fundo": { "largura": "largura", "abre": "ocupa", "oito": "ocupa+6", "passo": 7, "pesa": "pesa", "selo": 4, "seloAte": 270 },
-      "texto": { "de": "pesa", "mostrar": true },
+      "fundo": { "largura": "largura", "abre": "ocupa", "oito": "ocupa+6", "passo": 7, "pesa": "pesa", "selo": 4, "seloAte": 258 },
+      "texto": { "de": "dobrar", "mostrar": true },
       "sfx": { "encaixe": "ocupa+6" },
       "efeitos": [
         { "id": "encaixe", "de": "ocupa+13" }, { "id": "encaixe", "de": "ocupa+20" }, { "id": "encaixe", "de": "ocupa+27" },
@@ -69,7 +72,7 @@
         ]
       },
       "fundo": { "barras": "forca", "barraOito": "oito", "barrasAte": "subir", "mare": "maior", "mareAte": "calcada$", "joelho": "calcada$+10" },
-      "texto": { "de": "forca", "mostrar": true },
+      "texto": { "de": "forca", "mostrar": true, "topo": 430 },
       "sfx": { "mar_calmo": { "de": 0 }, "agua_avancando": "maior" }
     },
     "eclipse": {
@@ -78,8 +81,10 @@
         { "de": "alinhada-2", "enquadramento": "aberto", "zoom": [1.15, 1.0] },
         { "de": "anel-2", "enquadramento": "aberto", "zoom": [1.0, 1.06] }
       ],
-      "fundo": { "passa": 4, "troca": "alinhada-2", "anel": "anel", "selo": 6, "seloAte": 250 },
-      "sfx": { "whoosh": "alinhada-6" }
+      "fundo": { "passa": 4, "troca": "alinhada-2", "anel": "anel", "rotuloAte": "anel", "selo": 6, "seloAte": 257 },
+      "texto": { "de": "anel", "mostrar": true },
+      "sfx": { "whoosh": "alinhada-6" },
+      "efeitos": [{ "id": "zumbido_leve", "de": 0 }]
     },
     "centro_da_danca": {
       "planos": [
@@ -88,6 +93,7 @@
         { "de": "hoje-2", "enquadramento": "aberto", "personagens": [{ "id": "nico", "x": 150, "y": 1290 }], "zoom": [1.0, 1.04] }
       ],
       "fundo": { "dois": "terra", "lado": "hoje" },
+      "texto": { "de": "terra", "ate": "hoje-2", "mostrar": true },
       "sfx": { "zumbido_leve": { "de": 0 } },
       "efeitos": [{ "id": "whoosh", "de": "terra-4" }, { "id": "whoosh", "de": "hoje-4" }]
     },
@@ -97,7 +103,7 @@
         { "de": "mar-2", "enquadramento": "medio", "zoom": [0.82, 0.94] },
         { "de": "e-2", "enquadramento": "close", "zoom": [1.12, 1] }
       ],
-      "texto": { "de": "tambem$", "ate": 226, "mostrar": true },
+      "texto": { "de": "tambem$", "ate": 278, "mostrar": true },
       "sfx": { "mar_calmo": { "de": 0 }, "whoosh": "e-4" }
     }
   }

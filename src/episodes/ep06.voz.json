@@ -1,5 +1,5 @@
 {
- "_sobre": "Montagem da narração do ep06 (episódio 5): uma tomada por cena, inteira, sem acelerar nem cortar; o início da fala fica em `em`.",
+ "_sobre": "Montagem da narração do ep06 (episódio 5): uma tomada por cena, inteira, sem acelerar nem cortar (scripts/layout-ep06.py).",
  "trechos": [
   {
    "cena": "gancho",
@@ -11,43 +11,43 @@
    "cena": "apresentacao",
    "de": 0.0,
    "ate": 8.94,
-   "em": 5.917
+   "em": 5.26
   },
   {
    "cena": "lua_cresce",
    "de": 0.0,
    "ate": 8.46,
-   "em": 15.917
+   "em": 14.74
   },
   {
    "cena": "peso_da_lua",
    "de": 0.0,
    "ate": 8.06,
-   "em": 25.917
+   "em": 24.24
   },
   {
    "cena": "forca_da_mare",
    "de": 0.0,
    "ate": 8.54,
-   "em": 34.917
+   "em": 32.84
   },
   {
    "cena": "eclipse",
    "de": 0.0,
    "ate": 7.74,
-   "em": 44.917
+   "em": 42.72
   },
   {
    "cena": "centro_da_danca",
    "de": 0.0,
    "ate": 8.54,
-   "em": 53.25
+   "em": 51.3
   },
   {
    "cena": "fechamento",
    "de": 0.0,
    "ate": 6.86,
-   "em": 62.25
+   "em": 60.38
   }
  ]
 }

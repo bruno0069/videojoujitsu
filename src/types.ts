@@ -133,6 +133,8 @@ export type Direction = {
   legendaSemPontuacao?: boolean;
   // Legenda com placa de fundo, uma linha, destaque só em palavra de conteúdo (ep03 v4 em diante)
   legendaPlaca?: boolean;
+  // Ganho da trilha e dos efeitos sob a fala (padrão audio.duckGain; ep06: 0,2 ≈ -14 dB)
+  duckGanho?: number;
   // Mantém os limites de cena do roteiro mesmo quando uma fala passa um pouco do corte
   limitesFixos?: boolean;
   // Legenda só aparece a partir deste frame (antes disso, o título da capa ocupa a tela)

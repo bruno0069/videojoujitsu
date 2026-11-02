@@ -85,7 +85,7 @@ export const Episode: React.FC<EpisodeProps> = ({
     duckAt(
       absFrame,
       spans,
-      audio.duckGain,
+      direction.duckGanho ?? audio.duckGain,
       audio.duckAttackFrames,
       audio.duckReleaseFrames,
     );
