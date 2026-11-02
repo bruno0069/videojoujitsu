@@ -1,5 +1,6 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
+import { PessoaDefs } from "./components/backgrounds/Ep04";
 import { Globe } from "./components/elements/Globe";
 import { InfoLabel } from "./components/elements/Props";
 import { InkScale } from "./components/Ink";
@@ -51,6 +52,67 @@ export const Capa02: React.FC = () => {
         E SE A TERRA
         <br />
         PARASSE DE <span style={{ color: t.highlightColor }}>GIRAR?</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Capa do ep04: a Terra com a humanidade pulando em volta (as mesmas silhuetas do vídeo) e o
+// Nico pulando na frente, com a mesma pose `pulando`. Título no terço de cima.
+export const Capa04: React.FC = () => {
+  const g = { x: 640, y: 1000, r: 310 };
+  const nico = { x: 270, y: 1660, s: 0.72 };
+  const N = 30;
+  return (
+    <AbsoluteFill style={{ backgroundColor: colors.noite }}>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0 }}>
+        <SkyFill color={colors.noite} />
+        <MilkyWay bg={colors.noite} />
+        <Stars frame={0} />
+        <InkScale scale={1}>
+          <PessoaDefs id="capa04" />
+          {/* a humanidade em volta do planeta, todos no ar com os braços para cima */}
+          {Array.from({ length: N }, (_, i) => {
+            const a = (i / N) * 360;
+            return (
+              <g key={i} transform={`rotate(${a} ${g.x} ${g.y}) translate(${g.x} ${g.y - g.r - 22}) scale(0.085)`}>
+                <use href={`#capa04-b${i % 3}`} />
+              </g>
+            );
+          })}
+          <Globe x={g.x} y={g.y} r={g.r} lon={-55} />
+          {/* risquinhos de movimento sob o Nico */}
+          {[-70, 0, 70].map((dx, i) => (
+            <path key={i} d={`M ${nico.x + dx * 0.8} ${nico.y + 30} L ${nico.x + dx * 0.8} ${nico.y + 120}`} stroke={colors.amarelo} strokeWidth={ink.stroke * 1.4} strokeLinecap="round" />
+          ))}
+          <g transform={`translate(${nico.x} ${nico.y}) scale(${nico.s})`}>
+            <Nico pose="pulando" expression="surpresa" look={[0.6, -0.8]} />
+          </g>
+          <InfoLabel x={g.x + 90} y={g.y + g.r + 170} text="8 bilhões de pessoas" fontSize={52} />
+        </InkScale>
+      </svg>
+      <div
+        style={{
+          position: "absolute",
+          top: 110,
+          left: 60,
+          right: 60,
+          padding: "26px 40px",
+          backgroundColor: t.boxColor,
+          border: `${ink.stroke * 0.6}px solid ${t.borderColor}`,
+          borderRadius: t.radius,
+          boxShadow: `inset 0 0 0 10px ${t.boxColor}, inset 0 0 0 15px ${t.innerLine}, 0 ${ink.stroke * 0.8}px 0 ${t.borderColor}`,
+          textAlign: "center",
+          fontFamily: fonts.main,
+          fontWeight: fonts.weight,
+          fontSize: 104,
+          lineHeight: 1.02,
+          color: t.textColor,
+        }}
+      >
+        E SE TODO MUNDO
+        <br />
+        <span style={{ color: t.highlightColor }}>PULASSE</span> JUNTO?
       </div>
     </AbsoluteFill>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import type { Caption } from "@remotion/captions";
 import { CalculateMetadataFunction, Composition, staticFile, Still } from "remotion";
-import { Capa02 } from "./Capa";
+import { Capa02, Capa04 } from "./Capa";
 import { Episode, EpisodeProps } from "./Episode";
 import { EPISODES } from "./episodes";
 import { deriveSceneBounds, normalizeWordTimestamps, validateEpisode } from "./timing";
@@ -57,6 +57,7 @@ const compositionId = (id: string) => (id.charAt(0).toUpperCase() + id.slice(1))
 export const RemotionRoot: React.FC = () => (
   <>
     <Still id="Capa02" component={Capa02} width={1080} height={1920} />
+    <Still id="Capa04" component={Capa04} width={1080} height={1920} />
     {EPISODES.map((ep) => (
       <Composition
         key={ep.id}

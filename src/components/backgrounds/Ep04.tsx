@@ -54,7 +54,7 @@ const SeloNico: React.FC<{ frame: number; de: number; ate: number }> = ({ frame,
 // `bracos`: versão com os braços para cima (pulo).
 const CORPO = "M -165 -880 Q -165 -1010 -55 -1010 L 55 -1010 Q 165 -1010 165 -880 L 165 -470 L 118 -470 L 108 0 L 18 0 L 0 -380 L -18 0 L -108 0 L -118 -470 L -165 -470 Z";
 const BRACOS = "M -150 -960 L -290 -1420 L -210 -1450 L -90 -1010 Z M 150 -960 L 290 -1420 L 210 -1450 L 90 -1010 Z";
-const PessoaDefs: React.FC<{ id: string }> = ({ id }) => {
+export const PessoaDefs: React.FC<{ id: string }> = ({ id }) => {
   const cores = [colors.noite, nightColors.predio, colors.roxo];
   return (
     <defs>
