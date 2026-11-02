@@ -8,6 +8,7 @@ import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
 import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { CapsulaInterior, DiagramaEspaco, MarteSuperficie, QuartoDia } from "./backgrounds/Ep03";
 import { BalancaTerra, EscalaComparacao, EspacoTerra, MultidaoCima, QuadraDia, Sismografo } from "./backgrounds/Ep04";
+import { CeuEclipse, CeuLuaGrande, ComparacaoEsferas, DiagramaBaricentro, OrlaFrente, OrlaRio } from "./backgrounds/Ep06";
 import { FogueteInterior, HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
@@ -43,6 +44,12 @@ export const BACKGROUNDS = [
   "espaco_terra",
   "escala_comparacao",
   "sismografo",
+  "orla_rio_fim_tarde",
+  "mare_orla",
+  "ceu_lua_grande",
+  "comparacao_esferas",
+  "ceu_eclipse",
+  "diagrama_baricentro",
 ];
 
 // Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
@@ -133,7 +140,29 @@ export const Background: React.FC<{
       return <EscalaComparacao cam={cam} frame={frame} params={params} />;
     case "sismografo":
       return <Sismografo cam={cam} frame={frame} params={params} />;
+    case "orla_rio_fim_tarde":
+    case "mare_orla":
+      return <OrlaRio cam={cam} frame={frame} params={params} />;
+    case "ceu_lua_grande":
+      return <CeuLuaGrande cam={cam} frame={frame} params={params} />;
+    case "comparacao_esferas":
+      return <ComparacaoEsferas cam={cam} frame={frame} params={params} />;
+    case "ceu_eclipse":
+      return <CeuEclipse cam={cam} frame={frame} params={params} />;
+    case "diagrama_baricentro":
+      return <DiagramaBaricentro cam={cam} frame={frame} params={params} />;
     default:
       return <rect x={0} y={0} width={1080} height={1920} fill={colors.creme} />;
+  }
+};
+
+// Camada do cenário que fica NA FRENTE dos personagens (ex.: a água da maré cobrindo as pernas).
+// Cenários sem frente não desenham nada aqui.
+export const Foreground: React.FC<{ name: string; cam: Cam; frame: number; params: Record<string, number | number[]> }> = ({ name, cam, frame, params }) => {
+  switch (name) {
+    case "mare_orla":
+      return <OrlaFrente cam={cam} frame={frame} params={params} />;
+    default:
+      return null;
   }
 };

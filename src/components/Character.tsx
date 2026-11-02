@@ -30,7 +30,8 @@ export type PoseName =
   | "apontando_quadro"
   | "flutuando"
   | "sentado_livre"
-  | "pulando";
+  | "pulando"
+  | "mao_nas_costas";
 
 export type ExpressionName =
   | "neutro"
@@ -62,6 +63,7 @@ type PoseDef = {
   shiver?: boolean;
   sit?: boolean; // sentado atrás de uma carteira (a mesa cobre as pernas; braços apoiados nela)
   flail?: boolean; // braços se debatendo
+  handRBehind?: boolean; // braço direito desenhado atrás do corpo (mão escondida nas costas)
 };
 
 const SHOULDER_L: Vec = [-125, -530];
@@ -155,6 +157,11 @@ const POSES: Record<PoseName, PoseDef> = {
   pulando: {
     handL: [-250, -860], handR: [250, -870], footL: [-90, -70], footR: [90, -60],
     crouch: 0, lean: 0, headTilt: -4, headDy: 0, look: [0, -0.6],
+  },
+  // Mão nas costas (ep06): variação de `parado` com a mão direita escondida atrás do corpo
+  mao_nas_costas: {
+    handL: [-170, -250], handR: [90, -330], footL: [-58, -22], footR: [58, -22],
+    crouch: 0, lean: 0, headTilt: 6, headDy: 0, look: [-0.5, -0.1], handRBehind: true,
   },
 };
 
@@ -395,11 +402,17 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
   const hoodiePath =
     "M -150 -280 L -140 -500 Q -135 -578 -60 -580 L 60 -580 Q 135 -578 140 -500 L 150 -280 Q 150 -262 132 -262 L -132 -262 Q -150 -262 -150 -280 Z";
 
+  const armBehind = p.handRBehind ? (
+    <>
+      <Limb a={shR} b={elbowR} c={handR} width={66} color={style.hoodie} shade />
+      <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
+    </>
+  ) : null;
   const arms = (
     <>
       <Limb a={shL} b={elbowL} c={handL} width={66} color={style.hoodie} shade />
       <circle cx={handL[0]} cy={handL[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
-      <Limb a={shR} b={elbowR} c={handR} width={66} color={style.hoodie} shade />
+      {p.handRBehind ? null : <Limb a={shR} b={elbowR} c={handR} width={66} color={style.hoodie} shade />}
       {p.pointR ? (
         (() => {
           const dx = handR[0] - elbowR[0];
@@ -409,7 +422,7 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
           return <Limb a={handR} b={handR} c={tip} width={22} color={skin} />;
         })()
       ) : null}
-      <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />
+      {p.handRBehind ? null : <circle cx={handR[0]} cy={handR[1]} r={34} fill={skin} stroke={colors.tinta} strokeWidth={ink} />}
       {p.thumbR ? <Limb a={[handR[0] - 6, handR[1] - 20]} b={[handR[0] - 6, handR[1] - 20]} c={[handR[0] - 6, handR[1] - 78]} width={26} color={skin} /> : null}
       {holding === "pao_de_queijo" ? <PaoDeQueijo x={handR[0] - 8} y={handR[1] - 40} r={breadR} /> : null}
       {holding === "controle" ? <g transform={`translate(${handR[0] - 20} ${handR[1] - 30}) scale(1.4)`}><Controle /></g> : null}
@@ -438,6 +451,7 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
       ) : null}
       {/* Sombra chapada no chão */}
       <ellipse cx={0} cy={-6} rx={190} ry={30} fill={colors.tinta} opacity={0.18} />
+      {armBehind}
 
       {/* Pernas */}
       <Limb a={hipL} b={kneeL} c={footL} width={74} color={style.calca ?? colors.calca} shade />

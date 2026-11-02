@@ -153,6 +153,16 @@ LK="if(eq($LN,0),0,if(eq($LN,1),7,if(eq($LN,2),4,12)))"
 LR="if(lt(mod(t,6),3),0,5)"
 gen -f lavfi -i "aevalsrc='0.28*exp(-mod(t,0.25)*12)*sin(2*PI*329.63*pow(2,($LR+$LK)/12)*t)+0.16*sin(2*PI*82.41*pow(2,($LR)/12)*t)*exp(-mod(t,0.5)*5)':s=$R:d=6" -ac 1 "$MUS/leve_divertida.wav"
 
+# ep06 (episódio 5) — mar e Lua
+# mar_calmo: arrebentação suave e lenta (ruído marrom com ondulação de 6 s), loop de 12 s
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=0.8:sample_rate=$R:duration=12:seed=71" -af "lowpass=f=900,highpass=f=80,volume='0.5+0.5*pow(sin(PI*t/6),2)':eval=frame,volume=1.4,afade=t=in:d=0.1,afade=t=out:st=11.9:d=0.1" -ac 1 "$SFX/mar_calmo.wav"
+# onda_pequena: uma onda que sobe e recua (1,6 s)
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.8:sample_rate=$R:duration=1.6:seed=73" -af "lowpass=f=1600,highpass=f=150,volume='pow(sin(PI*t/1.6),2)':eval=frame,volume=1.6" -ac 1 "$SFX/onda_pequena.wav"
+# crescer_lua: tom grave subindo devagar, com mola no fim (1,4 s)
+gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(110*t+90*t*t))*(1-exp(-t*6))*exp(-t*1.2)':s=$R:d=1.4" -af "afade=t=out:st=1.2:d=0.2" -ac 1 "$SFX/crescer_lua.wav"
+# encaixe: "toc" curto de uma esfera encaixando (0,25 s)
+gen -f lavfi -i "aevalsrc='0.45*sin(2*PI*520*t)*exp(-t*28)+0.25*sin(2*PI*260*t)*exp(-t*20)':s=$R:d=0.25" -ac 1 "$SFX/encaixe.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

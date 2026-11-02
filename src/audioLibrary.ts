@@ -54,6 +54,11 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   rabisco_sismografo: { file: "audio/sfx/rabisco_sismografo.wav", loop: false, volume: audio.sfxVolume * 0.5 },
   quica: { file: "audio/sfx/quica.wav", loop: false, volume: audio.sfxVolume * 0.8 },
   micro_zoom: { file: "audio/sfx/micro_zoom.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  // ep06 (episódio 5)
+  mar_calmo: { file: "audio/sfx/mar_calmo.wav", loop: true, volume: audio.sfxVolume * 0.35 },
+  onda_pequena: { file: "audio/sfx/onda_pequena.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  crescer_lua: { file: "audio/sfx/crescer_lua.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  encaixe: { file: "audio/sfx/encaixe.wav", loop: false, volume: audio.sfxVolume * 0.6 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz

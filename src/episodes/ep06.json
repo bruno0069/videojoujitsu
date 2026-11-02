@@ -1,0 +1,133 @@
+{
+  "episode": 5,
+  "title": "E se a Lua fosse duas vezes maior?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 2100,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 170,
+      "narration": "E se a Lua fosse duas vezes maior? O mar descobriria primeiro.",
+      "onScreenText": "",
+      "visual": {
+        "background": "orla_rio_fim_tarde",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Close do rosto do Nico olhando para cima, surpreso. A câmera recua rápido e revela a orla do Rio em silhuetas chapadas, o mar calmo, a Lua de tamanho normal e o céu de fim de tarde. Em 'O mar descobriria primeiro', uma pequena onda sobe e recua. Corte rápido."
+      },
+      "sfx": ["mar_calmo", "onda_pequena", "whoosh"],
+      "music": "curiosidade_suave"
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 170,
+      "durationInFrames": 300,
+      "narration": "Este é o Nico. Passeio da escola, orla do Rio, fim de tarde. A Dani pede que ele não mexa na Lua. Ele não promete nada.",
+      "onScreenText": "",
+      "visual": {
+        "background": "orla_rio_fim_tarde",
+        "characters": [
+          { "id": "nico", "pose": "apontando", "expression": "neutro" },
+          { "id": "dani", "pose": "bracos_cruzados", "expression": "cetica" }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico aponta para a Lua. Dani ao lado, braços cruzados, cética. A câmera recua devagar e revela o morro de topo arredondado, o calçadão de faixas onduladas, o mar e o céu. Em 'Ele não promete nada', Nico esconde uma das mãos atrás das costas."
+      },
+      "sfx": ["mar_calmo"],
+      "music": "base_suave"
+    },
+    {
+      "id": "lua_cresce",
+      "startFrame": 470,
+      "durationInFrames": 300,
+      "narration": "Então a Lua dobra de largura. Mesmo lugar, mesma distância. No céu, ela passa de meio grau para cerca de um grau.",
+      "onScreenText": "0,5° → ≈ 1°",
+      "visual": {
+        "background": "ceu_lua_grande",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "plano_medio",
+        "action": "Nico olha para cima. A Lua dobra de largura com mola, no mesmo lugar e à mesma distância (sem simular aproximação). Contorno tracejado da Lua antiga dentro da nova. Indicador angular '0,5° → ≈ 1°'. Balão 'Ué.' do Nico."
+      },
+      "sfx": ["crescer_lua"],
+      "music": "base_suave"
+    },
+    {
+      "id": "peso_da_lua",
+      "startFrame": 770,
+      "durationInFrames": 270,
+      "narration": "Dobrar a largura não dobra a Lua. Ela ocupa oito vezes mais espaço. Com a mesma rocha, pesa oito vezes mais.",
+      "onScreenText": "2× LARGURA = 8× MASSA",
+      "visual": {
+        "background": "comparacao_esferas",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "vergonha", "scale": "inserto_pequeno" }],
+        "camera": "plano_medio",
+        "action": "Lua atual ao lado da Lua com o dobro da largura. A maior se abre em camadas e oito esferas pequenas entram uma a uma, empilhadas em 2×2×2 (volume). Texto '2× LARGURA = 8× MASSA'. Nico pequeno num canto, com vergonha."
+      },
+      "sfx": ["encaixe"],
+      "music": "base_suave"
+    },
+    {
+      "id": "forca_da_mare",
+      "startFrame": 1040,
+      "durationInFrames": 300,
+      "narration": "A maré depende dessa massa. A força da Lua sobre o mar seria oito vezes maior. O Nico vê a água subir pela calçada.",
+      "onScreenText": "FORÇA DA MARÉ: 8×",
+      "visual": {
+        "background": "mare_orla",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "neutro" }],
+        "camera": "plano_medio",
+        "action": "Orla do Rio, Nico observando o mar. Barras 'Hoje: 1×' e 'Lua maior: 8×'; a barra de 8× passa do topo da régua. Rótulo 'FORÇA DA MARÉ: 8×' (força, não altura). O mar avança sobre o calçadão em ondas chapadas até os joelhos do Nico, que recua encolhido, com medo. Sem altura em metros."
+      },
+      "sfx": ["mar_calmo", "agua_avancando"],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "eclipse",
+      "startFrame": 1340,
+      "durationInFrames": 250,
+      "narration": "No céu, algo melhora. Alinhada ao Sol, a Lua sempre o cobriria por inteiro. O anel de fogo deixaria de existir.",
+      "onScreenText": "",
+      "visual": {
+        "background": "ceu_eclipse",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "'HOJE': a Lua menor passa na frente do Sol e deixa o anel de fogo. Whoosh. 'LUA 2×': a Lua maior cobre o Sol por inteiro, com a coroa solar em volta e sem anel. Nico pequeno no canto, olhando para cima, surpreso."
+      },
+      "sfx": ["whoosh"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "centro_da_danca",
+      "startFrame": 1590,
+      "durationInFrames": 270,
+      "narration": "Mas há um detalhe. Terra e Lua orbitariam um ponto no espaço vazio, fora da Terra. Hoje, esse ponto fica dentro dela.",
+      "onScreenText": "",
+      "visual": {
+        "background": "diagrama_baricentro",
+        "characters": [{ "id": "nico", "pose": "de_costas", "expression": "neutro", "scale": "inserto_pequeno" }],
+        "camera": "plano_aberto",
+        "action": "Diagrama Terra-Lua. 'HOJE': ponto de referência dentro da Terra, as duas orbitando esse ponto. 'LUA 2×': Lua maior, ponto fora da Terra, a Terra faz uma pequena órbita em volta dele. O ponto pisca discretamente. Sem escala numérica. Nico pequeno, de costas, observando."
+      },
+      "sfx": ["zumbido_leve"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "fechamento",
+      "startFrame": 1860,
+      "durationInFrames": 240,
+      "narration": "De volta ao passeio, a Lua é a de sempre. O mar também. E se ela fosse duas vezes maior?",
+      "onScreenText": "FORÇA DA MARÉ: 2×, 4× OU 8×? COMENTA.",
+      "visual": {
+        "background": "orla_rio_fim_tarde",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "De volta à orla: Lua de tamanho normal, mar calmo. Nico olha para cima, mesma expressão da abertura. A câmera volta aos poucos ao enquadramento inicial; o último frame repete o primeiro."
+      },
+      "sfx": ["mar_calmo", "whoosh"],
+      "music": "leve_divertida"
+    }
+  ]
+}

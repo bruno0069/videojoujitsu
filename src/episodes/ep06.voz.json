@@ -1,0 +1,53 @@
+{
+ "_sobre": "Montagem da narração do ep06 (episódio 5): uma tomada por cena, inteira, sem acelerar nem cortar; o início da fala fica em `em`.",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "ate": 4.62,
+   "em": 0.1
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0.0,
+   "ate": 8.94,
+   "em": 5.917
+  },
+  {
+   "cena": "lua_cresce",
+   "de": 0.0,
+   "ate": 8.46,
+   "em": 15.917
+  },
+  {
+   "cena": "peso_da_lua",
+   "de": 0.0,
+   "ate": 8.06,
+   "em": 25.917
+  },
+  {
+   "cena": "forca_da_mare",
+   "de": 0.0,
+   "ate": 8.54,
+   "em": 34.917
+  },
+  {
+   "cena": "eclipse",
+   "de": 0.0,
+   "ate": 7.74,
+   "em": 44.917
+  },
+  {
+   "cena": "centro_da_danca",
+   "de": 0.0,
+   "ate": 8.54,
+   "em": 53.25
+  },
+  {
+   "cena": "fechamento",
+   "de": 0.0,
+   "ate": 6.86,
+   "em": 62.25
+  }
+ ]
+}

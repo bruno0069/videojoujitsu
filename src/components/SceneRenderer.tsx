@@ -10,7 +10,7 @@ import {
 import { colors, idle, loopPhase, shots, sun } from "../theme";
 import { resolveCue, TimedWord } from "../timing";
 import type { CharacterKey, Cue, Plano, Scene, SceneDirection } from "../types";
-import { Background, nightLevel } from "./Background";
+import { Background, Foreground, nightLevel } from "./Background";
 import { ORBIT, orbitAngle } from "./backgrounds/DiagramaOrbita";
 import { Cam, Layer, shakeOffset, shotCamera, toScreen } from "./Camera";
 import { GLOBE_ON_DESK, headDrop, NightLevel, RIG_CHIN_Y } from "./Character";
@@ -723,6 +723,7 @@ export const SceneRenderer: React.FC<{
             </Layer>
             {screenChars}
           </NightLevel.Provider>
+          <Foreground name={backgroundName} cam={cam} frame={frame} params={params} />
           {overlay}
         </svg>
       </AbsoluteFill>

@@ -35,7 +35,7 @@ export const arcoPulo = (frame: number, de: number, ate: number, altura: number)
 
 // Destaque circular para o Nico pequeno (inserto_pequeno: pés em 210, 1280, escala 0,4)
 export const SELO = { x: 210, y: 1072, r: 226 };
-const SeloNico: React.FC<{ frame: number; de: number; ate: number }> = ({ frame, de, ate }) => {
+export const SeloNico: React.FC<{ frame: number; de: number; ate: number }> = ({ frame, de, ate }) => {
   if (!Number.isFinite(de) || frame < de || frame >= ate) return null;
   const s = pop(frame, de) * (1 - ramp(frame, ate - 6, ate));
   return (
