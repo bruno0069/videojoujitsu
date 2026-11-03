@@ -1,6 +1,8 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { PessoaDefs } from "./components/backgrounds/Ep04";
+import { LuaDisco, OrlaRio } from "./components/backgrounds/Ep06";
+import { BASE_CAM } from "./components/Camera";
 import { Globe } from "./components/elements/Globe";
 import { InfoLabel } from "./components/elements/Props";
 import { InkScale } from "./components/Ink";
@@ -113,6 +115,49 @@ export const Capa04: React.FC = () => {
         E SE TODO MUNDO
         <br />
         <span style={{ color: t.highlightColor }}>PULASSE</span> JUNTO?
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Capa do ep06 v07 (episódio 5): a orla do fim de tarde do vídeo, a Lua com o dobro da largura
+// (contorno tracejado da Lua de hoje por dentro) e o Nico olhando para cima, como na abertura.
+export const Capa06: React.FC = () => {
+  const lua = { x: 720, y: 660, r: 220 };
+  return (
+    <AbsoluteFill style={{ backgroundColor: colors.noite }}>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0 }}>
+        <InkScale scale={1}>
+          <OrlaRio cam={BASE_CAM} frame={0} params={{ semLua: 1 }} />
+          <LuaDisco x={lua.x} y={lua.y} r={lua.r} />
+          <circle cx={lua.x} cy={lua.y} r={lua.r / 2} fill="none" stroke={colors.tinta} strokeWidth={ink.stroke * 0.8} strokeDasharray={`${ink.stroke * 1.4} ${ink.stroke * 1.1}`} />
+          <g transform="translate(300 1800) scale(0.98)">
+            <Nico pose="olhando_para_cima" expression="surpresa" look={[0.8, -0.9]} />
+          </g>
+        </InkScale>
+      </svg>
+      <div
+        style={{
+          position: "absolute",
+          top: 110,
+          left: 60,
+          right: 60,
+          padding: "26px 40px",
+          backgroundColor: t.boxColor,
+          border: `${ink.stroke * 0.6}px solid ${t.borderColor}`,
+          borderRadius: t.radius,
+          boxShadow: `inset 0 0 0 10px ${t.boxColor}, inset 0 0 0 15px ${t.innerLine}, 0 ${ink.stroke * 0.8}px 0 ${t.borderColor}`,
+          textAlign: "center",
+          fontFamily: fonts.main,
+          fontWeight: fonts.weight,
+          fontSize: 108,
+          lineHeight: 1.02,
+          color: t.textColor,
+        }}
+      >
+        E SE A LUA
+        <br />
+        FOSSE <span style={{ color: t.highlightColor }}>2×</span> MAIOR?
       </div>
     </AbsoluteFill>
   );

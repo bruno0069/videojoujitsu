@@ -25,7 +25,7 @@ const pop = (frame: number, at: number, bouncy = false) =>
     : 0;
 
 // Disco da Lua (chapado, crateras de uma cor só)
-const LuaDisco: React.FC<{ x: number; y: number; r: number; cor?: string }> = ({ x, y, r, cor = colors.creme }) => {
+export const LuaDisco: React.FC<{ x: number; y: number; r: number; cor?: string }> = ({ x, y, r, cor = colors.creme }) => {
   const ink = useInk();
   return (
     <g transform={`translate(${x} ${y})`}>
@@ -73,7 +73,7 @@ export const OrlaRio: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
         <Sun x={160} y={1010} r={70} />
       </Layer>
       <Layer cam={cam} depth={0.12}>
-        <LuaDisco x={LUA_ORLA.x} y={LUA_ORLA.y} r={LUA_ORLA.r} />
+        {params.semLua === 1 ? null : <LuaDisco x={LUA_ORLA.x} y={LUA_ORLA.y} r={LUA_ORLA.r} />}
       </Layer>
       <Layer cam={cam} depth={0.35}>
         {/* morro de topo arredondado e um morrinho ao lado (silhuetas genéricas) */}
