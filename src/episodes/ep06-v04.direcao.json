@@ -447,11 +447,11 @@
    "fundo": {
     "passa": 4,
     "troca": "todo-2",
-    "solY": 940,
+    "solY": 905,
     "semRotuloAnel": 1,
     "selo": 6,
     "seloAte": 283,
-    "rotuloY": 570
+    "rotuloY": 540
    },
    "texto": {
     "de": "todo",
