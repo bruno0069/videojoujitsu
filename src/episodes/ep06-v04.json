@@ -4,12 +4,12 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 1649,
+  "totalFrames": 1624,
   "scenes": [
     {
       "id": "gancho",
       "startFrame": 0,
-      "durationInFrames": 145,
+      "durationInFrames": 143,
       "narration": "E se a Lua ficasse duas vezes maior? O mar ia levar um susto.",
       "onScreenText": "E SE A LUA FOSSE 2× MAIOR?",
       "visual": {
@@ -23,8 +23,8 @@
     },
     {
       "id": "apresentacao",
-      "startFrame": 145,
-      "durationInFrames": 251,
+      "startFrame": 143,
+      "durationInFrames": 245,
       "narration": "Este é o Nico. Ele está na praia com a escola e olha pra Lua. A Dani quer ir embora. O Nico quer saber de tudo.",
       "onScreenText": "",
       "visual": {
@@ -41,7 +41,7 @@
     },
     {
       "id": "gatilho",
-      "startFrame": 396,
+      "startFrame": 388,
       "durationInFrames": 191,
       "narration": "Então a Lua dobra de largura. Ela continua no mesmo lugar, mas agora parece gigante.",
       "onScreenText": "DOBRO DA LARGURA",
@@ -56,7 +56,7 @@
     },
     {
       "id": "escalada1",
-      "startFrame": 587,
+      "startFrame": 579,
       "durationInFrames": 324,
       "narration": "Só que dobrar a largura não dobra a Lua. Num cubo de Lego, dobrou cada lado, cabem oito cubinhos. Com a Lua é igual. Ela fica oito vezes mais pesada.",
       "onScreenText": "2× LARGURA = 8× MASSA",
@@ -71,8 +71,8 @@
     },
     {
       "id": "escalada2",
-      "startFrame": 911,
-      "durationInFrames": 325,
+      "startFrame": 903,
+      "durationInFrames": 314,
       "narration": "A Lua puxa o mar. É isso que faz a maré. Com oito vezes mais Lua, o puxão fica oito vezes mais forte. O Nico vê a água subir pela calçada.",
       "onScreenText": "FORÇA DA MARÉ: 8×",
       "visual": {
@@ -86,8 +86,8 @@
     },
     {
       "id": "eclipse",
-      "startFrame": 1236,
-      "durationInFrames": 216,
+      "startFrame": 1217,
+      "durationInFrames": 215,
       "narration": "No céu, tem uma vantagem. Todo eclipse do Sol seria total. A Lua taparia o Sol inteirinho.",
       "onScreenText": "TODO ECLIPSE SERIA TOTAL",
       "visual": {
@@ -101,8 +101,8 @@
     },
     {
       "id": "fecho",
-      "startFrame": 1452,
-      "durationInFrames": 197,
+      "startFrame": 1432,
+      "durationInFrames": 192,
       "narration": "De volta à praia, a Lua é a de sempre. O mar também. E se ela fosse duas vezes maior?",
       "onScreenText": "FORÇA DA MARÉ: 2×, 4× OU 8×? COMENTA.",
       "visual": {

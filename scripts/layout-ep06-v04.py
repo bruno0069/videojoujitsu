@@ -7,7 +7,7 @@ frames e o totalFrames de ep06-v04.json."""
 import json, re, subprocess
 
 EP, FPS = "ep06-v04", 30
-LEAD, TAIL, PAUSA, MAXP = 0.15, 0.35, 0.35, 0.5
+LEAD, TAIL, PAUSA, MAXP = 0.15, 0.35, 0.33, 0.42
 ARQ = {"gancho": "ep06-v03-narracao-01-gancho", "apresentacao": "ep06-v04-narracao-02-apresentacao",
        "gatilho": "ep06-v03-narracao-03-gatilho", "escalada1": "ep06-v03-narracao-04-escalada1",
        "escalada2": "ep06-v03-narracao-05-escalada2", "eclipse": "ep06-v03-narracao-06-eclipse", "fecho": "ep06-v03-narracao-07-fecho"}
@@ -32,16 +32,17 @@ for i, s in enumerate(ep["scenes"]):
     cortes = [(x, y) for x, y in pausas(arq) if x > a0 + 0.05 and y < a1 - 0.05]
     if i:
         starts.append(t - LEAD)
-    de = a0
+    de = palavras_de = a0
     for x, y in cortes + [(a1, None)]:
-        trechos.append({"cena": s["id"], "de": round(de, 3), "ate": round(x if y is not None else a1 + 0.04, 3), "em": round(t, 3), "arquivo": arq})
+        trechos.append({"cena": s["id"], "de": round(de, 3), "palavrasDe": round(palavras_de, 3), "ate": round(x if y is not None else a1 + 0.04, 3), "em": round(t, 3), "arquivo": arq})
         t += (x - de) if y is not None else (a1 + 0.04 - de)
         if y is not None:
             t += PAUSA
             # a transcrição às vezes marca o começo da palavra um pouco antes do fim do silêncio:
             # o trecho começa no que vier primeiro, para nenhuma palavra cair fora
             prox = min([q["start"] for q in w if q["start"] >= x - 0.05] or [y])
-            de = min(y - 0.02, prox)
+            de = y - 0.02
+            palavras_de = min(de, prox)
     t += TAIL + LEAD  # fim da cena + começo da próxima
 total = round((t - LEAD) * FPS)
 frames = [round(x * FPS) for x in starts] + [total]

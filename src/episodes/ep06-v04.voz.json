@@ -4,85 +4,145 @@
   {
    "cena": "gancho",
    "de": 0,
+   "palavrasDe": 0,
    "ate": 2.345,
    "em": 0.1,
    "arquivo": "public/audio/ep06-v03-narracao-01-gancho.mp3"
   },
   {
    "cena": "gancho",
-   "de": 2.8,
+   "de": 2.859,
+   "palavrasDe": 2.8,
    "ate": 4.493,
-   "em": 2.795,
+   "em": 2.775,
    "arquivo": "public/audio/ep06-v03-narracao-01-gancho.mp3"
   },
   {
    "cena": "apresentacao",
    "de": 0,
+   "palavrasDe": 0,
+   "ate": 1.165,
+   "em": 4.909,
+   "arquivo": "public/audio/ep06-v04-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 1.588,
+   "palavrasDe": 1.588,
    "ate": 4.07,
-   "em": 4.988,
+   "em": 6.404,
    "arquivo": "public/audio/ep06-v04-narracao-02-apresentacao.mp3"
   },
   {
    "cena": "apresentacao",
    "de": 4.56,
+   "palavrasDe": 4.56,
+   "ate": 5.869,
+   "em": 9.215,
+   "arquivo": "public/audio/ep06-v04-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 6.276,
+   "palavrasDe": 6.24,
    "ate": 8.014,
-   "em": 9.408,
+   "em": 10.854,
    "arquivo": "public/audio/ep06-v04-narracao-02-apresentacao.mp3"
   },
   {
    "cena": "gatilho",
    "de": 0,
+   "palavrasDe": 0,
    "ate": 5.859,
-   "em": 13.361,
+   "em": 13.092,
    "arquivo": "public/audio/ep06-v03-narracao-03-gatilho.mp3"
   },
   {
    "cena": "escalada1",
    "de": 0,
+   "palavrasDe": 0,
    "ate": 2.524,
-   "em": 19.72,
+   "em": 19.451,
    "arquivo": "public/audio/ep06-v03-narracao-04-escalada1.mp3"
   },
   {
    "cena": "escalada1",
    "de": 3.032,
+   "palavrasDe": 3.032,
    "ate": 10.47,
-   "em": 22.595,
+   "em": 22.305,
    "arquivo": "public/audio/ep06-v03-narracao-04-escalada1.mp3"
   },
   {
    "cena": "escalada2",
    "de": 0,
+   "palavrasDe": 0,
+   "ate": 1.434,
+   "em": 30.243,
+   "arquivo": "public/audio/ep06-v03-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 1.848,
+   "palavrasDe": 1.52,
+   "ate": 2.923,
+   "em": 32.006,
+   "arquivo": "public/audio/ep06-v03-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 3.38,
+   "palavrasDe": 3.36,
+   "ate": 7.368,
+   "em": 33.411,
+   "arquivo": "public/audio/ep06-v03-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 7.813,
+   "palavrasDe": 7.813,
    "ate": 10.307,
-   "em": 30.532,
+   "em": 37.729,
    "arquivo": "public/audio/ep06-v03-narracao-05-escalada2.mp3"
   },
   {
    "cena": "eclipse",
    "de": 0,
+   "palavrasDe": 0,
    "ate": 1.649,
-   "em": 41.339,
+   "em": 40.723,
    "arquivo": "public/audio/ep06-v03-narracao-06-eclipse.mp3"
   },
   {
    "cena": "eclipse",
-   "de": 2.16,
+   "de": 2.189,
+   "palavrasDe": 2.16,
    "ate": 6.881,
-   "em": 43.338,
+   "em": 42.703,
    "arquivo": "public/audio/ep06-v03-narracao-06-eclipse.mp3"
   },
   {
    "cena": "fecho",
    "de": 0,
-   "ate": 3.668,
-   "em": 48.559,
+   "palavrasDe": 0,
+   "ate": 2.538,
+   "em": 47.895,
    "arquivo": "public/audio/ep06-v03-narracao-07-fecho.mp3"
   },
   {
    "cena": "fecho",
-   "de": 4.32,
+   "de": 2.985,
+   "palavrasDe": 2.96,
+   "ate": 3.668,
+   "em": 50.762,
+   "arquivo": "public/audio/ep06-v03-narracao-07-fecho.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 4.361,
+   "palavrasDe": 4.32,
    "ate": 6.365,
-   "em": 52.577,
+   "em": 51.775,
    "arquivo": "public/audio/ep06-v03-narracao-07-fecho.mp3"
   }
  ]

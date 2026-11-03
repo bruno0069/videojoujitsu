@@ -37,8 +37,10 @@ for i, t in enumerate(plan):
     filters.append(f"{chain},aresample=44100,adelay={round(start * 1000)}:all=1[a{i}]")
     labels.append(f"[a{i}]")
     for w in tr[t["cena"]]["words"]:
-        if t["de"] - 0.05 <= w["start"] < t["ate"]:
-            s = t["em"] + (w["start"] - t["de"]) / k
+        # `palavrasDe` (opcional): palavras que a transcrição marca um pouco antes do corte
+        # também pertencem a este trecho (começam no início dele)
+        if t.get("palavrasDe", t["de"]) - 0.05 <= w["start"] < t["ate"]:
+            s = t["em"] + (max(w["start"], t["de"]) - t["de"]) / k
             e = t["em"] + (min(w["end"], t["ate"]) - t["de"]) / k
             words.append({"text": w["text"], "startMs": round(s * 1000), "endMs": round(e * 1000), "scene": t["cena"]})
 
