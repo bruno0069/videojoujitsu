@@ -8,7 +8,7 @@ import { Sun } from "../elements/Sun";
 import { useGlobalFrame, useLoopFrames } from "../GlobalFrame";
 import { useInk } from "../Ink";
 import { MilkyWay, SkyFill, Stars } from "../Sky";
-import { SeloNico } from "./Ep04";
+import { SELO, SeloNico } from "./Ep04";
 
 // Cenários do ep06 (episódio 5: E se a Lua fosse duas vezes maior?). Mesma paleta e traço dos
 // episódios anteriores. A orla do Rio é genérica (morro de topo arredondado, calçadão de ondas,
@@ -541,6 +541,21 @@ export const CuboLego: React.FC<{ cam: Cam; frame: number; params: Params }> = (
         )}
       </Layer>
       <SeloNico frame={frame} de={n(params.selo)} ate={n(params.seloAte)} />
+      <PecaSobrando frame={frame} de={n(params.sobra)} bolso={n(params.bolso)} />
     </>
+  );
+};
+
+// A peça que sobrou (ep06 v05): sai do topo do cubo, quica e voa até o bolso do Nico (no selo)
+const PecaSobrando: React.FC<{ frame: number; de: number; bolso: number }> = ({ frame, de, bolso }) => {
+  if (!Number.isFinite(de) || frame < de || frame >= bolso + 4) return null;
+  const t = interpolate(frame, [de, bolso], [0, 1], { ...clamp, easing: Easing.inOut(Easing.quad) });
+  const x = interpolate(t, [0, 1], [780, SELO.x + 40]);
+  const y = interpolate(t, [0, 1], [520, SELO.y + 70]) - Math.sin(Math.PI * t) * 260;
+  const s = frame >= bolso ? 1 - (frame - bolso) / 4 : 1;
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${t * 540}) scale(${s})`}>
+      <Cubinho ox={0} oy={0} a={70} i={-0.5} j={-0.5} k={-0.5} cor={colors.amarelo} />
+    </g>
   );
 };

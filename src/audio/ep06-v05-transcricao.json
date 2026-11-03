@@ -1,0 +1,813 @@
+{
+ "_sobre": "Transcrição por palavra das tomadas da v05 (cena 2 nova; as outras são as da v03).",
+ "cenas": {
+  "gancho": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0,
+     "end": 0.16
+    },
+    {
+     "text": "se",
+     "start": 0.2,
+     "end": 0.24
+    },
+    {
+     "text": "a",
+     "start": 0.28,
+     "end": 0.32
+    },
+    {
+     "text": "Lua",
+     "start": 0.4,
+     "end": 0.56
+    },
+    {
+     "text": "ficasse",
+     "start": 0.64,
+     "end": 1.2
+    },
+    {
+     "text": "duas",
+     "start": 1.28,
+     "end": 1.6
+    },
+    {
+     "text": "vezes",
+     "start": 1.68,
+     "end": 1.92
+    },
+    {
+     "text": "maior?",
+     "start": 2,
+     "end": 2.6
+    },
+    {
+     "text": "O",
+     "start": 2.8,
+     "end": 2.96
+    },
+    {
+     "text": "mar",
+     "start": 3.04,
+     "end": 3.2
+    },
+    {
+     "text": "ia",
+     "start": 3.28,
+     "end": 3.36
+    },
+    {
+     "text": "levar",
+     "start": 3.44,
+     "end": 3.68
+    },
+    {
+     "text": "um",
+     "start": 3.8,
+     "end": 3.92
+    },
+    {
+     "text": "susto.",
+     "start": 3.96,
+     "end": 4.64
+    }
+   ]
+  },
+  "apresentacao": {
+   "words": [
+    {
+     "text": "Este",
+     "start": 0,
+     "end": 0.32
+    },
+    {
+     "text": "é",
+     "start": 0.347,
+     "end": 0.373
+    },
+    {
+     "text": "o",
+     "start": 0.4,
+     "end": 0.44
+    },
+    {
+     "text": "Nico,",
+     "start": 0.48,
+     "end": 1.04
+    },
+    {
+     "text": "o",
+     "start": 1.08,
+     "end": 1.12
+    },
+    {
+     "text": "cria",
+     "start": 1.2,
+     "end": 1.44
+    },
+    {
+     "text": "mais",
+     "start": 1.52,
+     "end": 1.84
+    },
+    {
+     "text": "nerd",
+     "start": 1.96,
+     "end": 2.24
+    },
+    {
+     "text": "do",
+     "start": 2.28,
+     "end": 2.32
+    },
+    {
+     "text": "RJ.",
+     "start": 2.4,
+     "end": 2.96
+    },
+    {
+     "text": "A",
+     "start": 3.36,
+     "end": 3.44
+    },
+    {
+     "text": "Dani",
+     "start": 3.52,
+     "end": 3.76
+    },
+    {
+     "text": "veio",
+     "start": 3.84,
+     "end": 4
+    },
+    {
+     "text": "pegar",
+     "start": 4.08,
+     "end": 4.32
+    },
+    {
+     "text": "sol.",
+     "start": 4.4,
+     "end": 5.04
+    },
+    {
+     "text": "O",
+     "start": 5.08,
+     "end": 5.12
+    },
+    {
+     "text": "Nico",
+     "start": 5.2,
+     "end": 5.52
+    },
+    {
+     "text": "veio",
+     "start": 5.56,
+     "end": 5.68
+    },
+    {
+     "text": "encarar",
+     "start": 5.76,
+     "end": 6.08
+    },
+    {
+     "text": "a",
+     "start": 6.12,
+     "end": 6.16
+    },
+    {
+     "text": "Lua.",
+     "start": 6.24,
+     "end": 6.88
+    },
+    {
+     "text": "A",
+     "start": 6.96,
+     "end": 7.04
+    },
+    {
+     "text": "Dani",
+     "start": 7.12,
+     "end": 7.36
+    },
+    {
+     "text": "já",
+     "start": 7.44,
+     "end": 7.6
+    },
+    {
+     "text": "sabe",
+     "start": 7.84,
+     "end": 8.08
+    },
+    {
+     "text": "que",
+     "start": 8.16,
+     "end": 8.24
+    },
+    {
+     "text": "vai",
+     "start": 8.28,
+     "end": 8.4
+    },
+    {
+     "text": "dar",
+     "start": 8.48,
+     "end": 8.56
+    },
+    {
+     "text": "ruim.",
+     "start": 8.64,
+     "end": 9.12
+    }
+   ]
+  },
+  "gatilho": {
+   "words": [
+    {
+     "text": "Então",
+     "start": 0,
+     "end": 0.32
+    },
+    {
+     "text": "a",
+     "start": 0.36,
+     "end": 0.4
+    },
+    {
+     "text": "Lua",
+     "start": 0.48,
+     "end": 0.72
+    },
+    {
+     "text": "dobra",
+     "start": 0.96,
+     "end": 1.28
+    },
+    {
+     "text": "de",
+     "start": 1.32,
+     "end": 1.36
+    },
+    {
+     "text": "largura.",
+     "start": 1.44,
+     "end": 2
+    },
+    {
+     "text": "Ela",
+     "start": 2.32,
+     "end": 2.4
+    },
+    {
+     "text": "continua",
+     "start": 2.48,
+     "end": 2.88
+    },
+    {
+     "text": "no",
+     "start": 2.96,
+     "end": 3.04
+    },
+    {
+     "text": "mesmo",
+     "start": 3.16,
+     "end": 3.36
+    },
+    {
+     "text": "lugar,",
+     "start": 3.493,
+     "end": 4
+    },
+    {
+     "text": "mas",
+     "start": 4.08,
+     "end": 4.16
+    },
+    {
+     "text": "agora",
+     "start": 4.28,
+     "end": 4.56
+    },
+    {
+     "text": "parece",
+     "start": 4.64,
+     "end": 4.96
+    },
+    {
+     "text": "gigante.",
+     "start": 5.04,
+     "end": 6
+    }
+   ]
+  },
+  "escalada1": {
+   "words": [
+    {
+     "text": "Só",
+     "start": 0,
+     "end": 0.16
+    },
+    {
+     "text": "que",
+     "start": 0.24,
+     "end": 0.32
+    },
+    {
+     "text": "dobrar",
+     "start": 0.44,
+     "end": 0.72
+    },
+    {
+     "text": "a",
+     "start": 0.8,
+     "end": 0.84
+    },
+    {
+     "text": "largura",
+     "start": 0.88,
+     "end": 1.44
+    },
+    {
+     "text": "não",
+     "start": 1.6,
+     "end": 1.76
+    },
+    {
+     "text": "dobra",
+     "start": 1.84,
+     "end": 2.16
+    },
+    {
+     "text": "a",
+     "start": 2.187,
+     "end": 2.213
+    },
+    {
+     "text": "Lua.",
+     "start": 2.24,
+     "end": 2.8
+    },
+    {
+     "text": "Num",
+     "start": 3.04,
+     "end": 3.12
+    },
+    {
+     "text": "cubo",
+     "start": 3.2,
+     "end": 3.36
+    },
+    {
+     "text": "de",
+     "start": 3.44,
+     "end": 3.52
+    },
+    {
+     "text": "Lego,",
+     "start": 3.56,
+     "end": 4.08
+    },
+    {
+     "text": "dobrou",
+     "start": 4.16,
+     "end": 4.48
+    },
+    {
+     "text": "cada",
+     "start": 4.56,
+     "end": 4.8
+    },
+    {
+     "text": "lado,",
+     "start": 4.88,
+     "end": 5.36
+    },
+    {
+     "text": "cabem",
+     "start": 5.44,
+     "end": 5.76
+    },
+    {
+     "text": "oito",
+     "start": 5.84,
+     "end": 6.08
+    },
+    {
+     "text": "cubinhos.",
+     "start": 6.12,
+     "end": 6.72
+    },
+    {
+     "text": "Com",
+     "start": 7.04,
+     "end": 7.12
+    },
+    {
+     "text": "a",
+     "start": 7.16,
+     "end": 7.2
+    },
+    {
+     "text": "Lua",
+     "start": 7.28,
+     "end": 7.44
+    },
+    {
+     "text": "é",
+     "start": 7.48,
+     "end": 7.52
+    },
+    {
+     "text": "igual.",
+     "start": 7.6,
+     "end": 7.92
+    },
+    {
+     "text": "Ela",
+     "start": 8.24,
+     "end": 8.4
+    },
+    {
+     "text": "fica",
+     "start": 8.48,
+     "end": 8.8
+    },
+    {
+     "text": "oito",
+     "start": 8.88,
+     "end": 9.12
+    },
+    {
+     "text": "vezes",
+     "start": 9.28,
+     "end": 9.6
+    },
+    {
+     "text": "mais",
+     "start": 9.68,
+     "end": 9.84
+    },
+    {
+     "text": "pesada.",
+     "start": 9.92,
+     "end": 10.64
+    }
+   ]
+  },
+  "escalada2": {
+   "words": [
+    {
+     "text": "A",
+     "start": 0,
+     "end": 0.08
+    },
+    {
+     "text": "Lua",
+     "start": 0.16,
+     "end": 0.427
+    },
+    {
+     "text": "puxa",
+     "start": 0.48,
+     "end": 0.96
+    },
+    {
+     "text": "o",
+     "start": 1,
+     "end": 1.04
+    },
+    {
+     "text": "mar.",
+     "start": 1.12,
+     "end": 1.44
+    },
+    {
+     "text": "É",
+     "start": 1.52,
+     "end": 1.84
+    },
+    {
+     "text": "isso",
+     "start": 1.92,
+     "end": 2.16
+    },
+    {
+     "text": "que",
+     "start": 2.2,
+     "end": 2.24
+    },
+    {
+     "text": "faz",
+     "start": 2.32,
+     "end": 2.48
+    },
+    {
+     "text": "a",
+     "start": 2.52,
+     "end": 2.56
+    },
+    {
+     "text": "maré.",
+     "start": 2.68,
+     "end": 3.16
+    },
+    {
+     "text": "Com",
+     "start": 3.36,
+     "end": 3.52
+    },
+    {
+     "text": "oito",
+     "start": 3.6,
+     "end": 3.84
+    },
+    {
+     "text": "vezes",
+     "start": 3.92,
+     "end": 4.24
+    },
+    {
+     "text": "mais",
+     "start": 4.32,
+     "end": 4.56
+    },
+    {
+     "text": "Lua,",
+     "start": 4.64,
+     "end": 5.12
+    },
+    {
+     "text": "o",
+     "start": 5.16,
+     "end": 5.2
+    },
+    {
+     "text": "puxão",
+     "start": 5.24,
+     "end": 5.6
+    },
+    {
+     "text": "fica",
+     "start": 5.64,
+     "end": 5.92
+    },
+    {
+     "text": "oito",
+     "start": 6,
+     "end": 6.32
+    },
+    {
+     "text": "vezes",
+     "start": 6.4,
+     "end": 6.72
+    },
+    {
+     "text": "mais",
+     "start": 6.76,
+     "end": 6.88
+    },
+    {
+     "text": "forte.",
+     "start": 6.96,
+     "end": 7.6
+    },
+    {
+     "text": "O",
+     "start": 7.84,
+     "end": 7.88
+    },
+    {
+     "text": "Nico",
+     "start": 7.92,
+     "end": 8.32
+    },
+    {
+     "text": "vê",
+     "start": 8.4,
+     "end": 8.56
+    },
+    {
+     "text": "a",
+     "start": 8.6,
+     "end": 8.64
+    },
+    {
+     "text": "água",
+     "start": 8.72,
+     "end": 8.88
+    },
+    {
+     "text": "subir",
+     "start": 9.04,
+     "end": 9.36
+    },
+    {
+     "text": "pela",
+     "start": 9.44,
+     "end": 9.6
+    },
+    {
+     "text": "calçada.",
+     "start": 9.68,
+     "end": 10.4
+    }
+   ]
+  },
+  "eclipse": {
+   "words": [
+    {
+     "text": "No",
+     "start": 0,
+     "end": 0.16
+    },
+    {
+     "text": "céu,",
+     "start": 0.24,
+     "end": 0.72
+    },
+    {
+     "text": "tem",
+     "start": 0.8,
+     "end": 0.88
+    },
+    {
+     "text": "uma",
+     "start": 0.96,
+     "end": 1.04
+    },
+    {
+     "text": "vantagem.",
+     "start": 1.12,
+     "end": 1.92
+    },
+    {
+     "text": "Todo",
+     "start": 2.16,
+     "end": 2.4
+    },
+    {
+     "text": "eclipse",
+     "start": 2.44,
+     "end": 2.8
+    },
+    {
+     "text": "do",
+     "start": 2.88,
+     "end": 2.96
+    },
+    {
+     "text": "Sol",
+     "start": 3.04,
+     "end": 3.28
+    },
+    {
+     "text": "seria",
+     "start": 3.36,
+     "end": 3.6
+    },
+    {
+     "text": "total.",
+     "start": 3.76,
+     "end": 4.44
+    },
+    {
+     "text": "A",
+     "start": 4.64,
+     "end": 4.72
+    },
+    {
+     "text": "Lua",
+     "start": 4.8,
+     "end": 5.04
+    },
+    {
+     "text": "taparia",
+     "start": 5.12,
+     "end": 5.52
+    },
+    {
+     "text": "o",
+     "start": 5.573,
+     "end": 5.627
+    },
+    {
+     "text": "Sol",
+     "start": 5.68,
+     "end": 5.84
+    },
+    {
+     "text": "inteirinho.",
+     "start": 6,
+     "end": 7.04
+    }
+   ]
+  },
+  "fecho": {
+   "words": [
+    {
+     "text": "De",
+     "start": 0,
+     "end": 0.16
+    },
+    {
+     "text": "volta",
+     "start": 0.28,
+     "end": 0.453
+    },
+    {
+     "text": "à",
+     "start": 0.507,
+     "end": 0.56
+    },
+    {
+     "text": "praia,",
+     "start": 0.68,
+     "end": 1.2
+    },
+    {
+     "text": "a",
+     "start": 1.24,
+     "end": 1.28
+    },
+    {
+     "text": "Lua",
+     "start": 1.36,
+     "end": 1.68
+    },
+    {
+     "text": "é",
+     "start": 1.84,
+     "end": 1.92
+    },
+    {
+     "text": "a",
+     "start": 1.947,
+     "end": 1.973
+    },
+    {
+     "text": "de",
+     "start": 2,
+     "end": 2.16
+    },
+    {
+     "text": "sempre.",
+     "start": 2.24,
+     "end": 2.64
+    },
+    {
+     "text": "O",
+     "start": 2.96,
+     "end": 3.04
+    },
+    {
+     "text": "mar",
+     "start": 3.16,
+     "end": 3.28
+    },
+    {
+     "text": "também.",
+     "start": 3.32,
+     "end": 4
+    },
+    {
+     "text": "E",
+     "start": 4.32,
+     "end": 4.4
+    },
+    {
+     "text": "se",
+     "start": 4.44,
+     "end": 4.48
+    },
+    {
+     "text": "ela",
+     "start": 4.56,
+     "end": 4.72
+    },
+    {
+     "text": "fosse",
+     "start": 4.84,
+     "end": 5.2
+    },
+    {
+     "text": "duas",
+     "start": 5.28,
+     "end": 5.52
+    },
+    {
+     "text": "vezes",
+     "start": 5.6,
+     "end": 5.84
+    },
+    {
+     "text": "maior?",
+     "start": 5.92,
+     "end": 6.56
+    }
+   ]
+  }
+ }
+}

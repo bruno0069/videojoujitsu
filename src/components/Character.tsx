@@ -45,7 +45,8 @@ export type ExpressionName =
   | "preocupacao"
   | "susto"
   | "neutra"
-  | "explicando";
+  | "explicando"
+  | "malandro";
 
 type PoseDef = {
   handL: Vec;
@@ -192,6 +193,8 @@ const EXPRESSIONS: Record<ExpressionName, ExprDef> = {
   neutra: { browL: { dy: 0, rot: 0 }, browR: { dy: 0, rot: 0 }, eye: 1, pupil: 25, lid: 0, mouth: "reta" },
   // Explicando: sobrancelhas erguidas e boca falando (abre e fecha)
   explicando: { browL: { dy: -20, rot: -6 }, browR: { dy: -14, rot: -2 }, eye: 1, pupil: 24, lid: 0, mouth: "falando" },
+  // Malandro (ep06 v05): variação de `cetica` com olhar de lado e sorriso de canto
+  malandro: { browL: { dy: -30, rot: -12 }, browR: { dy: -4, rot: 6 }, eye: 1, pupil: 22, lid: 0.4, mouth: "canto", look: [0.8, 0.15] },
 };
 
 export type CharacterStyle = {
