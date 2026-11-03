@@ -1,0 +1,89 @@
+{
+ "_sobre": "Linha do tempo da v04 do ep06 pela fala (a duração do vídeo segue a fala, não fecha 70 s).",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0,
+   "ate": 2.345,
+   "em": 0.1,
+   "arquivo": "public/audio/ep06-v03-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "gancho",
+   "de": 2.8,
+   "ate": 4.493,
+   "em": 2.795,
+   "arquivo": "public/audio/ep06-v03-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0,
+   "ate": 4.07,
+   "em": 4.988,
+   "arquivo": "public/audio/ep06-v04-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 4.56,
+   "ate": 8.014,
+   "em": 9.408,
+   "arquivo": "public/audio/ep06-v04-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "gatilho",
+   "de": 0,
+   "ate": 5.859,
+   "em": 13.361,
+   "arquivo": "public/audio/ep06-v03-narracao-03-gatilho.mp3"
+  },
+  {
+   "cena": "escalada1",
+   "de": 0,
+   "ate": 2.524,
+   "em": 19.72,
+   "arquivo": "public/audio/ep06-v03-narracao-04-escalada1.mp3"
+  },
+  {
+   "cena": "escalada1",
+   "de": 3.032,
+   "ate": 10.47,
+   "em": 22.595,
+   "arquivo": "public/audio/ep06-v03-narracao-04-escalada1.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 0,
+   "ate": 10.307,
+   "em": 30.532,
+   "arquivo": "public/audio/ep06-v03-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "eclipse",
+   "de": 0,
+   "ate": 1.649,
+   "em": 41.339,
+   "arquivo": "public/audio/ep06-v03-narracao-06-eclipse.mp3"
+  },
+  {
+   "cena": "eclipse",
+   "de": 2.16,
+   "ate": 6.881,
+   "em": 43.338,
+   "arquivo": "public/audio/ep06-v03-narracao-06-eclipse.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 0,
+   "ate": 3.668,
+   "em": 48.559,
+   "arquivo": "public/audio/ep06-v03-narracao-07-fecho.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 4.32,
+   "ate": 6.365,
+   "em": 52.577,
+   "arquivo": "public/audio/ep06-v03-narracao-07-fecho.mp3"
+  }
+ ]
+}

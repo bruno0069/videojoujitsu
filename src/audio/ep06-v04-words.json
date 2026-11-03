@@ -1,0 +1,920 @@
+[
+ {
+  "text": "E",
+  "startMs": 100,
+  "endMs": 260,
+  "scene": "gancho"
+ },
+ {
+  "text": "se",
+  "startMs": 300,
+  "endMs": 340,
+  "scene": "gancho"
+ },
+ {
+  "text": "a",
+  "startMs": 380,
+  "endMs": 420,
+  "scene": "gancho"
+ },
+ {
+  "text": "Lua",
+  "startMs": 500,
+  "endMs": 660,
+  "scene": "gancho"
+ },
+ {
+  "text": "ficasse",
+  "startMs": 740,
+  "endMs": 1300,
+  "scene": "gancho"
+ },
+ {
+  "text": "duas",
+  "startMs": 1380,
+  "endMs": 1700,
+  "scene": "gancho"
+ },
+ {
+  "text": "vezes",
+  "startMs": 1780,
+  "endMs": 2020,
+  "scene": "gancho"
+ },
+ {
+  "text": "maior?",
+  "startMs": 2100,
+  "endMs": 2445,
+  "scene": "gancho"
+ },
+ {
+  "text": "O",
+  "startMs": 2795,
+  "endMs": 2955,
+  "scene": "gancho"
+ },
+ {
+  "text": "mar",
+  "startMs": 3035,
+  "endMs": 3195,
+  "scene": "gancho"
+ },
+ {
+  "text": "ia",
+  "startMs": 3275,
+  "endMs": 3355,
+  "scene": "gancho"
+ },
+ {
+  "text": "levar",
+  "startMs": 3435,
+  "endMs": 3675,
+  "scene": "gancho"
+ },
+ {
+  "text": "um",
+  "startMs": 3795,
+  "endMs": 3915,
+  "scene": "gancho"
+ },
+ {
+  "text": "susto.",
+  "startMs": 3955,
+  "endMs": 4488,
+  "scene": "gancho"
+ },
+ {
+  "text": "Este",
+  "startMs": 4988,
+  "endMs": 5408,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "é",
+  "startMs": 5468,
+  "endMs": 5628,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "o",
+  "startMs": 5668,
+  "endMs": 5708,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Nico.",
+  "startMs": 5748,
+  "endMs": 6388,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Ele",
+  "startMs": 6588,
+  "endMs": 6668,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "está",
+  "startMs": 6748,
+  "endMs": 6908,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "na",
+  "startMs": 6988,
+  "endMs": 7068,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "praia",
+  "startMs": 7148,
+  "endMs": 7388,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "com",
+  "startMs": 7428,
+  "endMs": 7468,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "a",
+  "startMs": 7548,
+  "endMs": 7628,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "escola",
+  "startMs": 7708,
+  "endMs": 8108,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "e",
+  "startMs": 8268,
+  "endMs": 8348,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "olha",
+  "startMs": 8428,
+  "endMs": 8588,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "pra",
+  "startMs": 8668,
+  "endMs": 8748,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Lua.",
+  "startMs": 8828,
+  "endMs": 9058,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "A",
+  "startMs": 9408,
+  "endMs": 9488,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Dani",
+  "startMs": 9568,
+  "endMs": 9888,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "quer",
+  "startMs": 9968,
+  "endMs": 10128,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "ir",
+  "startMs": 10168,
+  "endMs": 10208,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "embora.",
+  "startMs": 10328,
+  "endMs": 10888,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "O",
+  "startMs": 11088,
+  "endMs": 11168,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Nico",
+  "startMs": 11248,
+  "endMs": 11568,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "quer",
+  "startMs": 11648,
+  "endMs": 11728,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "saber",
+  "startMs": 11808,
+  "endMs": 12048,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "de",
+  "startMs": 12128,
+  "endMs": 12288,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "tudo.",
+  "startMs": 12448,
+  "endMs": 12862,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Então",
+  "startMs": 13361,
+  "endMs": 13681,
+  "scene": "gatilho"
+ },
+ {
+  "text": "a",
+  "startMs": 13721,
+  "endMs": 13761,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Lua",
+  "startMs": 13841,
+  "endMs": 14081,
+  "scene": "gatilho"
+ },
+ {
+  "text": "dobra",
+  "startMs": 14321,
+  "endMs": 14641,
+  "scene": "gatilho"
+ },
+ {
+  "text": "de",
+  "startMs": 14681,
+  "endMs": 14721,
+  "scene": "gatilho"
+ },
+ {
+  "text": "largura.",
+  "startMs": 14801,
+  "endMs": 15361,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Ela",
+  "startMs": 15681,
+  "endMs": 15761,
+  "scene": "gatilho"
+ },
+ {
+  "text": "continua",
+  "startMs": 15841,
+  "endMs": 16241,
+  "scene": "gatilho"
+ },
+ {
+  "text": "no",
+  "startMs": 16321,
+  "endMs": 16401,
+  "scene": "gatilho"
+ },
+ {
+  "text": "mesmo",
+  "startMs": 16521,
+  "endMs": 16721,
+  "scene": "gatilho"
+ },
+ {
+  "text": "lugar,",
+  "startMs": 16854,
+  "endMs": 17361,
+  "scene": "gatilho"
+ },
+ {
+  "text": "mas",
+  "startMs": 17441,
+  "endMs": 17521,
+  "scene": "gatilho"
+ },
+ {
+  "text": "agora",
+  "startMs": 17641,
+  "endMs": 17921,
+  "scene": "gatilho"
+ },
+ {
+  "text": "parece",
+  "startMs": 18001,
+  "endMs": 18321,
+  "scene": "gatilho"
+ },
+ {
+  "text": "gigante.",
+  "startMs": 18401,
+  "endMs": 19220,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Só",
+  "startMs": 19720,
+  "endMs": 19880,
+  "scene": "escalada1"
+ },
+ {
+  "text": "que",
+  "startMs": 19960,
+  "endMs": 20040,
+  "scene": "escalada1"
+ },
+ {
+  "text": "dobrar",
+  "startMs": 20160,
+  "endMs": 20440,
+  "scene": "escalada1"
+ },
+ {
+  "text": "a",
+  "startMs": 20520,
+  "endMs": 20560,
+  "scene": "escalada1"
+ },
+ {
+  "text": "largura",
+  "startMs": 20600,
+  "endMs": 21160,
+  "scene": "escalada1"
+ },
+ {
+  "text": "não",
+  "startMs": 21320,
+  "endMs": 21480,
+  "scene": "escalada1"
+ },
+ {
+  "text": "dobra",
+  "startMs": 21560,
+  "endMs": 21880,
+  "scene": "escalada1"
+ },
+ {
+  "text": "a",
+  "startMs": 21907,
+  "endMs": 21933,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Lua.",
+  "startMs": 21960,
+  "endMs": 22244,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Num",
+  "startMs": 22603,
+  "endMs": 22683,
+  "scene": "escalada1"
+ },
+ {
+  "text": "cubo",
+  "startMs": 22763,
+  "endMs": 22923,
+  "scene": "escalada1"
+ },
+ {
+  "text": "de",
+  "startMs": 23003,
+  "endMs": 23083,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Lego,",
+  "startMs": 23123,
+  "endMs": 23643,
+  "scene": "escalada1"
+ },
+ {
+  "text": "dobrou",
+  "startMs": 23723,
+  "endMs": 24043,
+  "scene": "escalada1"
+ },
+ {
+  "text": "cada",
+  "startMs": 24123,
+  "endMs": 24363,
+  "scene": "escalada1"
+ },
+ {
+  "text": "lado,",
+  "startMs": 24443,
+  "endMs": 24923,
+  "scene": "escalada1"
+ },
+ {
+  "text": "cabem",
+  "startMs": 25003,
+  "endMs": 25323,
+  "scene": "escalada1"
+ },
+ {
+  "text": "oito",
+  "startMs": 25403,
+  "endMs": 25643,
+  "scene": "escalada1"
+ },
+ {
+  "text": "cubinhos.",
+  "startMs": 25683,
+  "endMs": 26283,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Com",
+  "startMs": 26603,
+  "endMs": 26683,
+  "scene": "escalada1"
+ },
+ {
+  "text": "a",
+  "startMs": 26723,
+  "endMs": 26763,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Lua",
+  "startMs": 26843,
+  "endMs": 27003,
+  "scene": "escalada1"
+ },
+ {
+  "text": "é",
+  "startMs": 27043,
+  "endMs": 27083,
+  "scene": "escalada1"
+ },
+ {
+  "text": "igual.",
+  "startMs": 27163,
+  "endMs": 27483,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Ela",
+  "startMs": 27803,
+  "endMs": 27963,
+  "scene": "escalada1"
+ },
+ {
+  "text": "fica",
+  "startMs": 28043,
+  "endMs": 28363,
+  "scene": "escalada1"
+ },
+ {
+  "text": "oito",
+  "startMs": 28443,
+  "endMs": 28683,
+  "scene": "escalada1"
+ },
+ {
+  "text": "vezes",
+  "startMs": 28843,
+  "endMs": 29163,
+  "scene": "escalada1"
+ },
+ {
+  "text": "mais",
+  "startMs": 29243,
+  "endMs": 29403,
+  "scene": "escalada1"
+ },
+ {
+  "text": "pesada.",
+  "startMs": 29483,
+  "endMs": 30033,
+  "scene": "escalada1"
+ },
+ {
+  "text": "A",
+  "startMs": 30532,
+  "endMs": 30612,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Lua",
+  "startMs": 30692,
+  "endMs": 30959,
+  "scene": "escalada2"
+ },
+ {
+  "text": "puxa",
+  "startMs": 31012,
+  "endMs": 31492,
+  "scene": "escalada2"
+ },
+ {
+  "text": "o",
+  "startMs": 31532,
+  "endMs": 31572,
+  "scene": "escalada2"
+ },
+ {
+  "text": "mar.",
+  "startMs": 31652,
+  "endMs": 31972,
+  "scene": "escalada2"
+ },
+ {
+  "text": "É",
+  "startMs": 32052,
+  "endMs": 32372,
+  "scene": "escalada2"
+ },
+ {
+  "text": "isso",
+  "startMs": 32452,
+  "endMs": 32692,
+  "scene": "escalada2"
+ },
+ {
+  "text": "que",
+  "startMs": 32732,
+  "endMs": 32772,
+  "scene": "escalada2"
+ },
+ {
+  "text": "faz",
+  "startMs": 32852,
+  "endMs": 33012,
+  "scene": "escalada2"
+ },
+ {
+  "text": "a",
+  "startMs": 33052,
+  "endMs": 33092,
+  "scene": "escalada2"
+ },
+ {
+  "text": "maré.",
+  "startMs": 33212,
+  "endMs": 33692,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Com",
+  "startMs": 33892,
+  "endMs": 34052,
+  "scene": "escalada2"
+ },
+ {
+  "text": "oito",
+  "startMs": 34132,
+  "endMs": 34372,
+  "scene": "escalada2"
+ },
+ {
+  "text": "vezes",
+  "startMs": 34452,
+  "endMs": 34772,
+  "scene": "escalada2"
+ },
+ {
+  "text": "mais",
+  "startMs": 34852,
+  "endMs": 35092,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Lua,",
+  "startMs": 35172,
+  "endMs": 35652,
+  "scene": "escalada2"
+ },
+ {
+  "text": "o",
+  "startMs": 35692,
+  "endMs": 35732,
+  "scene": "escalada2"
+ },
+ {
+  "text": "puxão",
+  "startMs": 35772,
+  "endMs": 36132,
+  "scene": "escalada2"
+ },
+ {
+  "text": "fica",
+  "startMs": 36172,
+  "endMs": 36452,
+  "scene": "escalada2"
+ },
+ {
+  "text": "oito",
+  "startMs": 36532,
+  "endMs": 36852,
+  "scene": "escalada2"
+ },
+ {
+  "text": "vezes",
+  "startMs": 36932,
+  "endMs": 37252,
+  "scene": "escalada2"
+ },
+ {
+  "text": "mais",
+  "startMs": 37292,
+  "endMs": 37412,
+  "scene": "escalada2"
+ },
+ {
+  "text": "forte.",
+  "startMs": 37492,
+  "endMs": 38132,
+  "scene": "escalada2"
+ },
+ {
+  "text": "O",
+  "startMs": 38372,
+  "endMs": 38412,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Nico",
+  "startMs": 38452,
+  "endMs": 38852,
+  "scene": "escalada2"
+ },
+ {
+  "text": "vê",
+  "startMs": 38932,
+  "endMs": 39092,
+  "scene": "escalada2"
+ },
+ {
+  "text": "a",
+  "startMs": 39132,
+  "endMs": 39172,
+  "scene": "escalada2"
+ },
+ {
+  "text": "água",
+  "startMs": 39252,
+  "endMs": 39412,
+  "scene": "escalada2"
+ },
+ {
+  "text": "subir",
+  "startMs": 39572,
+  "endMs": 39892,
+  "scene": "escalada2"
+ },
+ {
+  "text": "pela",
+  "startMs": 39972,
+  "endMs": 40132,
+  "scene": "escalada2"
+ },
+ {
+  "text": "calçada.",
+  "startMs": 40212,
+  "endMs": 40839,
+  "scene": "escalada2"
+ },
+ {
+  "text": "No",
+  "startMs": 41339,
+  "endMs": 41499,
+  "scene": "eclipse"
+ },
+ {
+  "text": "céu,",
+  "startMs": 41579,
+  "endMs": 42059,
+  "scene": "eclipse"
+ },
+ {
+  "text": "tem",
+  "startMs": 42139,
+  "endMs": 42219,
+  "scene": "eclipse"
+ },
+ {
+  "text": "uma",
+  "startMs": 42299,
+  "endMs": 42379,
+  "scene": "eclipse"
+ },
+ {
+  "text": "vantagem.",
+  "startMs": 42459,
+  "endMs": 42988,
+  "scene": "eclipse"
+ },
+ {
+  "text": "Todo",
+  "startMs": 43338,
+  "endMs": 43578,
+  "scene": "eclipse"
+ },
+ {
+  "text": "eclipse",
+  "startMs": 43618,
+  "endMs": 43978,
+  "scene": "eclipse"
+ },
+ {
+  "text": "do",
+  "startMs": 44058,
+  "endMs": 44138,
+  "scene": "eclipse"
+ },
+ {
+  "text": "Sol",
+  "startMs": 44218,
+  "endMs": 44458,
+  "scene": "eclipse"
+ },
+ {
+  "text": "seria",
+  "startMs": 44538,
+  "endMs": 44778,
+  "scene": "eclipse"
+ },
+ {
+  "text": "total.",
+  "startMs": 44938,
+  "endMs": 45618,
+  "scene": "eclipse"
+ },
+ {
+  "text": "A",
+  "startMs": 45818,
+  "endMs": 45898,
+  "scene": "eclipse"
+ },
+ {
+  "text": "Lua",
+  "startMs": 45978,
+  "endMs": 46218,
+  "scene": "eclipse"
+ },
+ {
+  "text": "taparia",
+  "startMs": 46298,
+  "endMs": 46698,
+  "scene": "eclipse"
+ },
+ {
+  "text": "o",
+  "startMs": 46751,
+  "endMs": 46805,
+  "scene": "eclipse"
+ },
+ {
+  "text": "Sol",
+  "startMs": 46858,
+  "endMs": 47018,
+  "scene": "eclipse"
+ },
+ {
+  "text": "inteirinho.",
+  "startMs": 47178,
+  "endMs": 48059,
+  "scene": "eclipse"
+ },
+ {
+  "text": "De",
+  "startMs": 48559,
+  "endMs": 48719,
+  "scene": "fecho"
+ },
+ {
+  "text": "volta",
+  "startMs": 48839,
+  "endMs": 49012,
+  "scene": "fecho"
+ },
+ {
+  "text": "à",
+  "startMs": 49066,
+  "endMs": 49119,
+  "scene": "fecho"
+ },
+ {
+  "text": "praia,",
+  "startMs": 49239,
+  "endMs": 49759,
+  "scene": "fecho"
+ },
+ {
+  "text": "a",
+  "startMs": 49799,
+  "endMs": 49839,
+  "scene": "fecho"
+ },
+ {
+  "text": "Lua",
+  "startMs": 49919,
+  "endMs": 50239,
+  "scene": "fecho"
+ },
+ {
+  "text": "é",
+  "startMs": 50399,
+  "endMs": 50479,
+  "scene": "fecho"
+ },
+ {
+  "text": "a",
+  "startMs": 50506,
+  "endMs": 50532,
+  "scene": "fecho"
+ },
+ {
+  "text": "de",
+  "startMs": 50559,
+  "endMs": 50719,
+  "scene": "fecho"
+ },
+ {
+  "text": "sempre.",
+  "startMs": 50799,
+  "endMs": 51199,
+  "scene": "fecho"
+ },
+ {
+  "text": "O",
+  "startMs": 51519,
+  "endMs": 51599,
+  "scene": "fecho"
+ },
+ {
+  "text": "mar",
+  "startMs": 51719,
+  "endMs": 51839,
+  "scene": "fecho"
+ },
+ {
+  "text": "também.",
+  "startMs": 51879,
+  "endMs": 52227,
+  "scene": "fecho"
+ },
+ {
+  "text": "E",
+  "startMs": 52577,
+  "endMs": 52657,
+  "scene": "fecho"
+ },
+ {
+  "text": "se",
+  "startMs": 52697,
+  "endMs": 52737,
+  "scene": "fecho"
+ },
+ {
+  "text": "ela",
+  "startMs": 52817,
+  "endMs": 52977,
+  "scene": "fecho"
+ },
+ {
+  "text": "fosse",
+  "startMs": 53097,
+  "endMs": 53457,
+  "scene": "fecho"
+ },
+ {
+  "text": "duas",
+  "startMs": 53537,
+  "endMs": 53777,
+  "scene": "fecho"
+ },
+ {
+  "text": "vezes",
+  "startMs": 53857,
+  "endMs": 54097,
+  "scene": "fecho"
+ },
+ {
+  "text": "maior?",
+  "startMs": 54177,
+  "endMs": 54622,
+  "scene": "fecho"
+ }
+]

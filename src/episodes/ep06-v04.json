@@ -1,0 +1,118 @@
+{
+  "episode": 5,
+  "title": "E se a Lua ficasse duas vezes maior?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 1649,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 145,
+      "narration": "E se a Lua ficasse duas vezes maior? O mar ia levar um susto.",
+      "onScreenText": "E SE A LUA FOSSE 2× MAIOR?",
+      "visual": {
+        "background": "orla_rio_fim_tarde",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Close do rosto do Nico olhando para cima. A câmera recua rápido e revela a orla no fim da tarde, a Lua de tamanho normal no céu e o mar calmo. Pausa curta antes de 'O mar ia levar um susto': uma onda pequena sobe e recua de repente, como quem se assusta. Corte rápido."
+      },
+      "sfx": ["silencio_1s", "whoosh"],
+      "music": "curiosidade_suave"
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 145,
+      "durationInFrames": 251,
+      "narration": "Este é o Nico. Ele está na praia com a escola e olha pra Lua. A Dani quer ir embora. O Nico quer saber de tudo.",
+      "onScreenText": "",
+      "visual": {
+        "background": "orla_rio_fim_tarde",
+        "characters": [
+          { "id": "nico", "pose": "apontando", "expression": "neutro" },
+          { "id": "dani", "pose": "bracos_cruzados", "expression": "cetica" }
+        ],
+        "camera": "plano_medio",
+        "action": "Passeio da escola: o Nico olha e aponta para a Lua, animado. A Dani, de braços cruzados, olha para o outro lado, impaciente. Ao fundo, a silhueta chapada de um morro de topo arredondado. A câmera recua devagar. Ninguém toca na Lua."
+      },
+      "sfx": ["orla_ambiente"],
+      "music": "base_suave"
+    },
+    {
+      "id": "gatilho",
+      "startFrame": 396,
+      "durationInFrames": 191,
+      "narration": "Então a Lua dobra de largura. Ela continua no mesmo lugar, mas agora parece gigante.",
+      "onScreenText": "DOBRO DA LARGURA",
+      "visual": {
+        "background": "ceu_lua_grande",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "plano_medio",
+        "action": "A Lua cresce com spring até o dobro da largura, com o contorno tracejado do tamanho antigo ficando dentro dela. O Nico diz 'Ué.' num balão legível, perto da cabeça e sem cobrir o rosto."
+      },
+      "sfx": ["estalo", "whoosh"],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada1",
+      "startFrame": 587,
+      "durationInFrames": 324,
+      "narration": "Só que dobrar a largura não dobra a Lua. Num cubo de Lego, dobrou cada lado, cabem oito cubinhos. Com a Lua é igual. Ela fica oito vezes mais pesada.",
+      "onScreenText": "2× LARGURA = 8× MASSA",
+      "visual": {
+        "background": "cubo_lego",
+        "characters": [{ "id": "nico", "pose": "parado", "expression": "vergonha", "scale": "inserto_pequeno" }],
+        "camera": "plano_medio",
+        "action": "Um cubinho de Lego aparece sozinho. Cada lado dobra de tamanho e surge um cubo grande, que se abre e mostra exatamente oito cubinhos (2 × 2 × 2) entrando um a um, com contador de 1 a 8. Depois o cubo grande vira a Lua grande, ao lado da Lua pequena, e o '8×' bate na tela. NUNCA mostre esferas pequenas 'cabendo' dentro de uma esfera grande: isso é geometricamente falso. O Nico, pequeno, olha no canto."
+      },
+      "sfx": ["pop_contagem"],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 911,
+      "durationInFrames": 325,
+      "narration": "A Lua puxa o mar. É isso que faz a maré. Com oito vezes mais Lua, o puxão fica oito vezes mais forte. O Nico vê a água subir pela calçada.",
+      "onScreenText": "FORÇA DA MARÉ: 8×",
+      "visual": {
+        "background": "mare_orla",
+        "characters": [{ "id": "nico", "pose": "encolhido", "expression": "medo" }],
+        "camera": "plano_aberto",
+        "action": "Setas chapadas da Lua puxando o mar (sem brilho). Uma régua rotulada 'força da maré' mostra duas barras: '1×' hoje e '8×' com a Lua grande, com os rótulos separados e sem se tocar. O mar avança sobre o calçadão em ondas chapadas e a água sobe até os joelhos do Nico, com o rosto dele visível e assustado enquanto a narração fala dele. A barra de 8× estoura o topo da régua."
+      },
+      "sfx": ["mar_subindo"],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "eclipse",
+      "startFrame": 1236,
+      "durationInFrames": 216,
+      "narration": "No céu, tem uma vantagem. Todo eclipse do Sol seria total. A Lua taparia o Sol inteirinho.",
+      "onScreenText": "TODO ECLIPSE SERIA TOTAL",
+      "visual": {
+        "background": "ceu_eclipse",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa", "scale": "inserto_pequeno" }],
+        "camera": "plano_medio",
+        "action": "Rótulo 'hoje': uma Lua pequena na frente do Sol deixa um anel de fogo. Corte com whoosh para o rótulo 'Lua 2×': a Lua grande cobre o Sol por inteiro e a coroa aparece em volta, sem anel. O Nico olha para cima, no canto, sem tocar a Lua nem o Sol."
+      },
+      "sfx": ["whoosh"],
+      "music": "base_suave"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1452,
+      "durationInFrames": 197,
+      "narration": "De volta à praia, a Lua é a de sempre. O mar também. E se ela fosse duas vezes maior?",
+      "onScreenText": "FORÇA DA MARÉ: 2×, 4× OU 8×? COMENTA.",
+      "visual": {
+        "background": "orla_rio_fim_tarde",
+        "characters": [{ "id": "nico", "pose": "olhando_para_cima", "expression": "surpresa" }],
+        "camera": "close",
+        "action": "Volta à orla com a Lua de tamanho normal e o mar calmo, na mesma luz do começo. O Nico olha de lado para a Lua e volta ao MESMO enquadramento do gancho: close do rosto olhando para cima, mesma expressão do primeiro frame, para o loop encaixar."
+      },
+      "sfx": ["onda_suave", "whoosh"],
+      "music": "leve_divertida"
+    }
+  ]
+}

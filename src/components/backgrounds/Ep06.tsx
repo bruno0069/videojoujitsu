@@ -375,7 +375,7 @@ export const CeuEclipse: React.FC<{ cam: Cam; frame: number; params: Params }> =
         {!dois ? <circle cx={S.x} cy={S.y} r={S.r + 22} fill="none" stroke={colors.amarelo} strokeWidth={ink * 0.6} opacity={0.5} /> : null}
         <circle cx={luaX} cy={S.y} r={luaR} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} />
         <circle cx={luaX - luaR * 0.3} cy={S.y - luaR * 0.25} r={luaR * 0.16} fill={nightColors.ceuBaixo} />
-        <InfoLabel x={S.x} y={S.y - 380} text={dois ? "LUA 2×" : "HOJE"} s={1 - ramp(frame, n(params.rotuloAte) - 6, n(params.rotuloAte))} />
+        <InfoLabel x={S.x} y={n(params.rotuloY, S.y - 380)} text={dois ? "LUA 2×" : "HOJE"} s={1 - ramp(frame, n(params.rotuloAte) - 6, n(params.rotuloAte))} />
         {!dois && passa > 0.95 && params.semRotuloAnel !== 1 ? <InfoLabel x={S.x} y={S.y + S.r + 110} text="anel de fogo" fontSize={52} s={pop(frame, n(params.passa, 0) + 50)} /> : null}
         {dois && coroa > 0.5 ? <InfoLabel x={S.x} y={S.y + 340} text="coroa" fontSize={52} s={coroa} /> : null}
       </Layer>
