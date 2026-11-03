@@ -1,0 +1,54 @@
+{
+ "_sobre": "Linha do tempo da v03 do ep06 pela fala real. A fala soma ~53 s e o episódio tem 70 s: entre as",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "ate": 4.7,
+   "em": 0.1,
+   "arquivo": "public/audio/ep06-v03-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0.0,
+   "ate": 7.74,
+   "em": 6.14,
+   "arquivo": "public/audio/ep06-v03-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "gatilho",
+   "de": 0.0,
+   "ate": 6.06,
+   "em": 15.22,
+   "arquivo": "public/audio/ep06-v03-narracao-03-gatilho.mp3"
+  },
+  {
+   "cena": "escalada1",
+   "de": 0.0,
+   "ate": 10.7,
+   "em": 23.62,
+   "arquivo": "public/audio/ep06-v03-narracao-04-escalada1.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 0.0,
+   "ate": 10.46,
+   "em": 37.56,
+   "arquivo": "public/audio/ep06-v03-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "eclipse",
+   "de": 0.0,
+   "ate": 7.1,
+   "em": 51.26,
+   "arquivo": "public/audio/ep06-v03-narracao-06-eclipse.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 0.0,
+   "ate": 6.62,
+   "em": 60.7,
+   "arquivo": "public/audio/ep06-v03-narracao-07-fecho.mp3"
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+  "_sobre": "Direção da v03 do ep06 (episódio 5). Cues por palavra da narração gravada (src/audio/ep06-v03-words.json). Sem esferas dentro de esferas: o volume é explicado com cubinhos 2 × 2 × 2.",
+  "limitesFixos": true,
+  "legendaDe": 0,
+  "legendaSemPontuacao": true,
+  "legendaPlaca": true,
+  "duckGanho": 0.2,
+  "cenas": {
+    "gancho": {
+      "planos": [
+        { "de": 0, "enquadramento": "close", "zoom": [1, 1.04] },
+        { "de": "ficasse", "enquadramento": "medio", "zoom": [1.05, 0.62] },
+        { "de": "o-3", "enquadramento": "medio", "zoom": [0.62, 0.68] }
+      ],
+      "personagens": { "nico": [{ "de": "susto", "expressao": "susto" }] },
+      "fundo": { "onda": "susto-4" },
+      "texto": { "de": 2, "ate": "o-2", "mostrar": true },
+      "sfx": { "whoosh": "ficasse-4" },
+      "efeitos": [{ "id": "mar_calmo", "de": 0 }, { "id": "onda_pequena", "de": "susto-4" }, { "id": "whoosh", "de": 168 }]
+    },
+    "apresentacao": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "zoom": [1.06, 1.0] },
+        { "de": "ele-2", "enquadramento": "medio", "zoom": [1.0, 0.72] },
+        { "de": "dani-4", "enquadramento": "medio", "foco": "dani", "zoom": [0.92, 1.0] },
+        { "de": "ele#2-2", "enquadramento": "medio", "foco": "nico", "zoom": [0.94, 1.0], "entrada": "punch" }
+      ],
+      "personagens": {
+        "nico": [{ "de": "ele#2+2", "pose": "mao_nas_costas", "expressao": "curiosidade" }],
+        "dani": [
+          { "de": "nao", "olhar": [-0.9, 0.05] },
+          { "de": "mexe", "olhar": [0.6, 0.05] },
+          { "de": "lua", "olhar": [-0.9, 0.05] }
+        ]
+      },
+      "texto": { "de": 2, "ate": "nao-4", "mostrar": true },
+      "sfx": { "orla_ambiente": { "de": 0 } }
+    },
+    "gatilho": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 330, "escala": 0.7 }], "zoom": [1.06, 1.0] },
+        { "de": "ela-2", "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 330, "escala": 0.7 }], "zoom": [0.94, 1.0] },
+        { "de": "parece-2", "enquadramento": "medio", "personagens": [{ "id": "nico", "x": 330, "escala": 0.7 }], "zoom": [1.0, 0.93], "entrada": "punch" }
+      ],
+      "personagens": { "nico": [{ "de": "dobra+6", "expressao": "susto" }, { "de": "ela", "expressao": "surpresa" }] },
+      "elementos": [{ "type": "balao", "texto": "Ué.", "personagem": "nico", "de": "largura$+2", "ate": "parece" }],
+      "fundo": { "cresce": "dobra" },
+      "texto": { "de": "dobra", "mostrar": true },
+      "sfx": { "estalo": "dobra+8", "whoosh": "dobra-4" },
+      "efeitos": [{ "id": "orla_ambiente", "de": 0 }]
+    },
+    "escalada1": {
+      "planos": [
+        { "de": 0, "enquadramento": "aberto", "zoom": [1.08, 1.0] },
+        { "de": "num-2", "enquadramento": "aberto", "zoom": [1.0, 1.05] },
+        { "de": "cabem-2", "enquadramento": "aberto", "zoom": [1.04, 1.1] },
+        { "de": "com-2", "enquadramento": "aberto", "zoom": [1.0, 1.04] },
+        { "de": "oito#2-2", "enquadramento": "aberto", "zoom": [1.05, 1.1], "entrada": "punch" }
+      ],
+      "fundo": { "luasAte": "num-2", "cubinho": "cubo", "dobra": "dobrou", "cubos": "cabem", "passo": 5, "igual": "com-2", "oito": "oito#2", "selo": 4, "seloAte": 418 },
+      "texto": { "de": "dobrar", "mostrar": true },
+      "sfx": { "pop_contagem": "cabem" },
+      "efeitos": [
+        { "id": "pop_contagem", "de": "cabem+5" }, { "id": "pop_contagem", "de": "cabem+10" }, { "id": "pop_contagem", "de": "cabem+15" },
+        { "id": "pop_contagem", "de": "cabem+20" }, { "id": "pop_contagem", "de": "cabem+25" }, { "id": "pop_contagem", "de": "cabem+30" },
+        { "id": "pop_contagem", "de": "cabem+35" }, { "id": "whoosh", "de": "com-4" }, { "id": "estalo", "de": "oito#2" }
+      ]
+    },
+    "escalada2": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "zoom": [0.78, 0.84] },
+        { "de": "com-2", "enquadramento": "medio", "zoom": [0.86, 0.9] },
+        { "de": "nico-2", "enquadramento": "medio", "zoom": [0.92, 1.0], "deslocar": { "x": -150, "de": "subir", "ate": "calcada$+30" } }
+      ],
+      "personagens": {
+        "nico": [
+          { "de": 0, "pose": "parado", "expressao": "atento", "olhar": [0.6, -0.7] },
+          { "de": "forte", "expressao": "preocupacao" },
+          { "de": "agua", "pose": "encolhido", "expressao": "medo", "olhar": [0, 0.6] }
+        ]
+      },
+      "fundo": { "setas": "puxa", "setasAte": "com", "barras": "mare", "barraOito": "oito#2", "barrasAte": "nico", "mare": "nico-10", "mareAte": "calcada$+20", "joelho": "calcada$+40" },
+      "texto": { "de": 2, "mostrar": true, "topo": 430 },
+      "sfx": { "mar_subindo": "nico-10" },
+      "efeitos": [{ "id": "mar_calmo", "de": 0 }]
+    },
+    "eclipse": {
+      "planos": [
+        { "de": 0, "enquadramento": "aberto", "zoom": [1.1, 1.0] },
+        { "de": "todo-2", "enquadramento": "aberto", "zoom": [1.15, 1.0] },
+        { "de": "a-2", "enquadramento": "aberto", "zoom": [1.0, 1.06] }
+      ],
+      "fundo": { "passa": 4, "troca": "todo-2", "solY": 900, "semRotuloAnel": 1, "selo": 6, "seloAte": 283 },
+      "texto": { "de": "todo", "mostrar": true },
+      "sfx": { "whoosh": "todo-6" },
+      "efeitos": [{ "id": "zumbido_leve", "de": 0 }]
+    },
+    "fecho": {
+      "planos": [
+        { "de": 0, "enquadramento": "medio", "zoom": [0.7, 0.8] },
+        { "de": "mar-2", "enquadramento": "medio", "zoom": [0.82, 0.94] },
+        { "de": "e-2", "enquadramento": "close", "zoom": [1.12, 1] }
+      ],
+      "personagens": { "nico": [{ "de": "lua", "olhar": [0.9, -0.4] }, { "de": "e-2", "olhar": [0.7, -0.9] }] },
+      "texto": { "de": 2, "ate": 266, "mostrar": true },
+      "sfx": { "onda_suave": "mar", "whoosh": "e-4" },
+      "efeitos": [{ "id": "mar_calmo", "de": 0 }]
+    }
+  }
+}

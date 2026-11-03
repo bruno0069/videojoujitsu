@@ -18,7 +18,9 @@ import subprocess
 import sys
 
 video, voz_in, fundo_in = sys.argv[1:4]
-EP = __import__("os").path.basename(video).split(".")[0].split("-")[0]  # out/ep02.mp4 -> ep02
+_base = __import__("os").path.basename(video).split(".")[0]
+# out/ep02.mp4 -> ep02; out/ep06-v03.mp4 -> ep06-v03 (se existir esse JSON); senão corta o sufixo depois do "-"
+EP = _base if __import__("os").path.exists(f"src/episodes/{_base}.json") else _base.split("-")[0]
 OUT = f"out/stems/{EP}"
 VOZ_ALVO, FUNDO_ALVO, MIX_ALVO, PICO_MAX = -14.0, -30.0, -14.0, -1.5
 COMP = "acompressor=threshold=-26dB:ratio=3:attack=5:release=150"

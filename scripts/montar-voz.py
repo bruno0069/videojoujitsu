@@ -30,7 +30,7 @@ for i, t in enumerate(plan):
     k = t.get("tempo", 1.0)
     a, b = max(0.0, t["de"] - PRE), t["ate"] + POS
     start = t["em"] - (t["de"] - a) / k
-    inputs += ["-i", f"public/audio/voz/{EP}-{t['cena']}.mp3"]
+    inputs += ["-i", t.get("arquivo", f"public/audio/voz/{EP}-{t['cena']}.mp3")]
     chain = f"[{i}:a]atrim={a}:{b},asetpts=PTS-STARTPTS,afade=t=in:d=0.01,afade=t=out:st={b - a - 0.02}:d=0.02"
     if k != 1.0:
         chain += f",atempo={k}"

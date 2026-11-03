@@ -113,8 +113,34 @@ export const OrlaRio: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
           </g>
         ) : null}
       </Layer>
+      <SetasPuxao cam={cam} frame={frame} de={n(params.setas)} ate={n(params.setasAte)} />
       <ReguaMare frame={frame} de={n(params.barras)} oito={n(params.barraOito)} ate={n(params.barrasAte)} />
     </>
+  );
+};
+
+// Setas chapadas da Lua puxando o mar (ep06 v03): três setas que descem da Lua até a água
+const SetasPuxao: React.FC<{ cam: Cam; frame: number; de: number; ate: number }> = ({ cam, frame, de, ate }) => {
+  const ink = useInk();
+  if (!Number.isFinite(de) || frame < de || frame >= ate) return null;
+  const k = pop(frame, de) * (1 - ramp(frame, ate - 8, ate));
+  const vai = (frame - de) % 30 / 30; // as setas "puxam" em ciclos de 1 s
+  return (
+    <Layer cam={cam} depth={0.5}>
+      {[-150, 0, 150].map((dx, i) => {
+        const x0 = LUA_ORLA.x + dx * 0.4;
+        const y0 = LUA_ORLA.y + LUA_ORLA.r + 30;
+        const x1 = LUA_ORLA.x + dx;
+        const y1 = ORLA.horizonte - 40 - vai * 30;
+        const ang = (Math.atan2(y0 - y1, x0 - x1) * 180) / Math.PI;
+        return (
+          <g key={i} opacity={k}>
+            <path d={`M ${x1} ${y1} L ${x0} ${y0}`} stroke={colors.amarelo} strokeWidth={ink * 1.1} strokeLinecap="round" />
+            <path transform={`translate(${x0} ${y0}) rotate(${ang})`} d="M 0 0 L -44 -24 L -44 24 Z" fill={colors.amarelo} stroke={colors.tinta} strokeWidth={ink * 0.5} strokeLinejoin="round" />
+          </g>
+        );
+      })}
+    </Layer>
   );
 };
 
@@ -318,7 +344,7 @@ export const ComparacaoEsferas: React.FC<{ cam: Cam; frame: number; params: Para
 export const SOL_ECLIPSE = { x: 540, y: 800, r: 190 };
 export const CeuEclipse: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ cam, frame, params }) => {
   const ink = useInk();
-  const S = SOL_ECLIPSE;
+  const S = { ...SOL_ECLIPSE, y: n(params.solY, SOL_ECLIPSE.y) };
   const troca = n(params.troca);
   const dois = Number.isFinite(troca) && frame >= troca;
   const passa = ramp(frame, n(params.passa, 0), n(params.passa, 0) + 50, { ...clamp, easing: Easing.out(Easing.cubic) });
@@ -350,7 +376,7 @@ export const CeuEclipse: React.FC<{ cam: Cam; frame: number; params: Params }> =
         <circle cx={luaX} cy={S.y} r={luaR} fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} />
         <circle cx={luaX - luaR * 0.3} cy={S.y - luaR * 0.25} r={luaR * 0.16} fill={nightColors.ceuBaixo} />
         <InfoLabel x={S.x} y={S.y - 380} text={dois ? "LUA 2×" : "HOJE"} s={1 - ramp(frame, n(params.rotuloAte) - 6, n(params.rotuloAte))} />
-        {!dois && passa > 0.95 ? <InfoLabel x={S.x} y={S.y + S.r + 110} text="anel de fogo" fontSize={52} s={pop(frame, n(params.passa, 0) + 50)} /> : null}
+        {!dois && passa > 0.95 && params.semRotuloAnel !== 1 ? <InfoLabel x={S.x} y={S.y + S.r + 110} text="anel de fogo" fontSize={52} s={pop(frame, n(params.passa, 0) + 50)} /> : null}
         {dois && coroa > 0.5 ? <InfoLabel x={S.x} y={S.y + 340} text="coroa" fontSize={52} s={coroa} /> : null}
       </Layer>
       {/* quadrinho: o anel de hoje, riscado */}
@@ -418,6 +444,100 @@ export const DiagramaBaricentro: React.FC<{ cam: Cam; frame: number; params: Par
           </>
         ) : (
           <QuadroBaricentro q={{ hoje: !(Number.isFinite(dois) && frame >= dois), cx: 620, cy: 910, s: 0.8 }} frame={frame} />
+        )}
+      </Layer>
+      <SeloNico frame={frame} de={n(params.selo)} ate={n(params.seloAte)} />
+    </>
+  );
+};
+
+// ---------------------------------------------------------------- cubo_lego (ep06 v03)
+// Explica o volume com cubinhos: um cubinho sozinho; o cubo com o dobro de cada lado (contorno
+// tracejado); OITO cubinhos (2 × 2 × 2) entram um a um, com contador; depois as duas Luas lado a
+// lado e o "8×" bate na Lua grande. Nunca esferas dentro de esferas.
+//   `luas`/`luasAte`: as duas Luas (começo); `cubinho`: o cubinho sozinho; `dobra`: o contorno do
+//   cubo grande; `cubos`/`passo`: entrada dos oito; `igual`: volta às Luas; `oito`: carimbo 8×
+const ISO = { c: Math.cos(Math.PI / 6), s: 0.5 };
+const proj = (ox: number, oy: number, a: number, i: number, j: number, k: number): [number, number] => [ox + (i - j) * a * ISO.c, oy + (i + j) * a * ISO.s - k * a];
+const CORES_LEGO = [colors.coral, colors.amarelo, colors.turquesa, colors.ceu];
+const Cubinho: React.FC<{ ox: number; oy: number; a: number; i: number; j: number; k: number; cor: string }> = ({ ox, oy, a, i, j, k, cor }) => {
+  const ink = useInk();
+  const P = (x: number, y: number, z: number) => proj(ox, oy, a, x, y, z).join(" ");
+  const topo = `M ${P(i, j, k + 1)} L ${P(i + 1, j, k + 1)} L ${P(i + 1, j + 1, k + 1)} L ${P(i, j + 1, k + 1)} Z`;
+  const dir = `M ${P(i + 1, j, k)} L ${P(i + 1, j + 1, k)} L ${P(i + 1, j + 1, k + 1)} L ${P(i + 1, j, k + 1)} Z`;
+  const esq = `M ${P(i, j + 1, k)} L ${P(i + 1, j + 1, k)} L ${P(i + 1, j + 1, k + 1)} L ${P(i, j + 1, k + 1)} Z`;
+  const [cx, cy] = proj(ox, oy, a, i + 0.5, j + 0.5, k + 1);
+  return (
+    <g stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinejoin="round">
+      <path d={dir} fill={sombra(sombra(cor))} />
+      <path d={esq} fill={sombra(cor)} />
+      <path d={topo} fill={cor} />
+      {/* pino do Lego */}
+      <ellipse cx={cx} cy={cy + a * 0.06} rx={a * 0.3} ry={a * 0.17} fill={sombra(cor)} />
+      <ellipse cx={cx} cy={cy - a * 0.04} rx={a * 0.3} ry={a * 0.17} fill={cor} />
+    </g>
+  );
+};
+export const CuboLego: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ cam, frame, params }) => {
+  const ink = useInk();
+  const luasAte = n(params.luasAte);
+  const igual = n(params.igual);
+  const mostraLuas = frame < luasAte || (Number.isFinite(igual) && frame >= igual);
+  const a = 120; // aresta do cubinho
+  const pequeno = { ox: 230, oy: 760 };
+  const grande = { ox: 650, oy: 820 };
+  const cubinho = pop(frame, n(params.cubinho));
+  const dobra = pop(frame, n(params.dobra));
+  const cubos = n(params.cubos);
+  const passo = n(params.passo, 8);
+  // ordem de desenho de trás para a frente: k, depois i + j
+  const ordem: [number, number, number][] = [];
+  for (const k of [0, 1]) for (const s of [0, 1, 2]) for (let i = 0; i < 2; i++) { const j = s - i; if (j >= 0 && j < 2) ordem.push([i, j, k]); }
+  const entrados = Number.isFinite(cubos) ? Math.max(0, Math.min(8, Math.floor((frame - cubos) / passo) + 1)) : 0;
+  const oito = pop(frame, n(params.oito), true);
+  const P = (x: number, y: number, z: number) => proj(grande.ox, grande.oy, a, x, y, z).join(" ");
+  const contorno = `M ${P(0, 0, 2)} L ${P(2, 0, 2)} L ${P(2, 0, 0)} L ${P(2, 2, 0)} L ${P(0, 2, 0)} L ${P(0, 2, 2)} Z M ${P(2, 2, 2)} L ${P(2, 0, 2)} M ${P(2, 2, 2)} L ${P(0, 2, 2)} M ${P(2, 2, 2)} L ${P(2, 2, 0)}`;
+  return (
+    <>
+      <Layer cam={cam} depth={0.1}>
+        <SkyFill color={colors.noite} />
+        <MilkyWay bg={colors.noite} />
+        <Stars frame={frame} />
+      </Layer>
+      <Layer cam={cam} depth={1}>
+        {mostraLuas ? (
+          <g>
+            <LuaDisco x={270} y={740} r={95} />
+            <InfoLabel x={270} y={600} text="hoje" fontSize={52} />
+            <LuaDisco x={700} y={820} r={190} />
+            <InfoLabel x={700} y={580} text="Lua 2×" fontSize={52} />
+            {oito > 0.01 ? (
+              <text x={700} y={880} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={170 * oito} fill={colors.coral} stroke={colors.tinta} strokeWidth={14} paintOrder="stroke" transform={`rotate(-8 700 820)`}>8×</text>
+            ) : null}
+          </g>
+        ) : (
+          <g>
+            {cubinho > 0.01 ? (
+              <g transform={`translate(${pequeno.ox} ${pequeno.oy}) scale(${cubinho}) translate(${-pequeno.ox} ${-pequeno.oy})`}>
+                <Cubinho ox={pequeno.ox} oy={pequeno.oy} a={a * 0.8} i={0} j={0} k={0} cor={colors.coral} />
+              </g>
+            ) : null}
+            {dobra > 0.01 ? (
+              <path d={contorno} fill="none" stroke={colors.creme} strokeWidth={ink * 0.8} strokeDasharray={`${ink * 1.6} ${ink * 1.1}`} strokeLinejoin="round" opacity={Math.min(1, dobra)} />
+            ) : null}
+            {ordem.slice(0, entrados).map(([i, j, k], q) => {
+              const at = cubos + q * passo;
+              const s = spring({ frame: frame - at, fps: 30, config: { damping: 11, mass: 0.5, stiffness: 190 } });
+              return (
+                <g key={q} transform={`translate(0 ${(1 - s) * -200})`} opacity={Math.min(1, s * 2)}>
+                  <Cubinho ox={grande.ox} oy={grande.oy} a={a} i={i} j={j} k={k} cor={CORES_LEGO[q % 4]} />
+                </g>
+              );
+            })}
+            {entrados > 0 ? (
+              <text x={grande.ox} y={grande.oy + 2 * a + 190} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={130} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={14} paintOrder="stroke">{entrados}</text>
+            ) : null}
+          </g>
         )}
       </Layer>
       <SeloNico frame={frame} de={n(params.selo)} ate={n(params.seloAte)} />

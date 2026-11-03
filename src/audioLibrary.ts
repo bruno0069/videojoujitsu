@@ -59,6 +59,11 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   onda_pequena: { file: "audio/sfx/onda_pequena.wav", loop: false, volume: audio.sfxVolume * 0.8 },
   crescer_lua: { file: "audio/sfx/crescer_lua.wav", loop: false, volume: audio.sfxVolume * 0.8 },
   encaixe: { file: "audio/sfx/encaixe.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  // ep06 v03: nomes do roteiro novo para os mesmos sons
+  orla_ambiente: { file: "audio/sfx/mar_calmo.wav", loop: true, volume: audio.sfxVolume * 0.35 },
+  pop_contagem: { file: "audio/sfx/encaixe.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  mar_subindo: { file: "audio/sfx/agua_avancando.wav", loop: false, volume: audio.sfxVolume * 0.5 },
+  onda_suave: { file: "audio/sfx/onda_pequena.wav", loop: false, volume: audio.sfxVolume * 0.6 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz

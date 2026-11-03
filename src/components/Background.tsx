@@ -8,7 +8,7 @@ import { EspacoEscuro, EspacoParaSala } from "./backgrounds/EspacoParaSala";
 import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { CapsulaInterior, DiagramaEspaco, MarteSuperficie, QuartoDia } from "./backgrounds/Ep03";
 import { BalancaTerra, EscalaComparacao, EspacoTerra, MultidaoCima, QuadraDia, Sismografo } from "./backgrounds/Ep04";
-import { CeuEclipse, CeuLuaGrande, ComparacaoEsferas, DiagramaBaricentro, OrlaFrente, OrlaRio } from "./backgrounds/Ep06";
+import { CeuEclipse, CeuLuaGrande, ComparacaoEsferas, CuboLego, DiagramaBaricentro, OrlaFrente, OrlaRio } from "./backgrounds/Ep06";
 import { FogueteInterior, HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
@@ -50,6 +50,7 @@ export const BACKGROUNDS = [
   "comparacao_esferas",
   "ceu_eclipse",
   "diagrama_baricentro",
+  "cubo_lego",
 ];
 
 // Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
@@ -149,6 +150,8 @@ export const Background: React.FC<{
       return <ComparacaoEsferas cam={cam} frame={frame} params={params} />;
     case "ceu_eclipse":
       return <CeuEclipse cam={cam} frame={frame} params={params} />;
+    case "cubo_lego":
+      return <CuboLego cam={cam} frame={frame} params={params} />;
     case "diagrama_baricentro":
       return <DiagramaBaricentro cam={cam} frame={frame} params={params} />;
     default:

@@ -51,8 +51,8 @@ const calculateMetadata: CalculateMetadataFunction<EpisodeProps> = async ({ prop
   };
 };
 
-// ep01 -> Ep01; ep03_v3 -> Ep03V3
-const compositionId = (id: string) => (id.charAt(0).toUpperCase() + id.slice(1)).replace(/_(\w)/g, (_, c: string) => c.toUpperCase());
+// ep01 -> Ep01; ep03_v3 -> Ep03V3; ep06-v03 -> Ep06V03
+const compositionId = (id: string) => (id.charAt(0).toUpperCase() + id.slice(1)).replace(/[_-](\w)/g, (_, c: string) => c.toUpperCase());
 
 export const RemotionRoot: React.FC = () => (
   <>
