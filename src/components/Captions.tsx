@@ -61,12 +61,13 @@ const semMaiuscula = (t: string, prev: string | undefined) =>
     ? t.charAt(0).toLowerCase() + t.slice(1)
     : t;
 
-export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean }> = ({
+export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean; destaques?: string[] }> = ({
   captions,
   showFromFrame,
   hideAfterFrame,
   stripPunctuation,
   placa,
+  destaques,
 }) => {
   const { fps } = useVideoConfig();
   const pages = useMemo(() => (placa ? toPagesPlaca(captions, 4) : toPages(captions, c.wordsPerPage)), [captions, placa]);
@@ -82,7 +83,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
-            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} />
+            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} destaques={destaques} />
           </Sequence>
         );
       })}
@@ -90,7 +91,9 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
   );
 };
 
-const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean }> = ({ page, fromMs, strip, placa }) => {
+// `destaques` (opcional, ep06 v07): palavras-chave que ficam sempre em amarelo, além da palavra falada
+const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean; destaques?: string[] }> = ({ page, fromMs, strip, placa, destaques }) => {
+  const chave = new Set((destaques ?? []).map(nua));
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const nowMs = fromMs + (frame / fps) * 1000;
@@ -138,7 +141,7 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa:
           return (
             <span
               key={`${token.startMs}-${i}`}
-              style={{ display: "inline-block", margin: "0 0.26em", color: active ? c.activeColor : c.textColor, scale: String(bump) }}
+              style={{ display: "inline-block", margin: "0 0.26em", color: active || chave.has(nua(token.text)) ? c.activeColor : c.textColor, scale: String(bump) }}
             >
               {textos[i]}
             </span>

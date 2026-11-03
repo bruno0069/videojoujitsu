@@ -239,6 +239,7 @@ export const Episode: React.FC<EpisodeProps> = ({
           hideAfterFrame={episode.totalFrames - 6}
           stripPunctuation={direction.legendaSemPontuacao}
           placa={direction.legendaPlaca}
+          destaques={direction.legendaDestaques}
         />
       </AbsoluteFill>
     </LoopLength>

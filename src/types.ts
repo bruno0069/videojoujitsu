@@ -105,7 +105,7 @@ export type SceneDirection = {
   tremidas?: { de: Cue; frames: number; forca: number }[];
   // `topo`: altura da caixa (px), para não cobrir o cabelo num close
   // `partes`: os itens separados por " · " entram um de cada vez (cada um com até 2 linhas)
-  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" | "canto"; topo?: number; partes?: Cue[] };
+  texto?: { de?: Cue; ate?: Cue; animar?: boolean; mostrar?: boolean; estilo?: "faixa" | "sticker" | "canto"; topo?: number; partes?: Cue[]; destaques?: string[] };
   // Música da cena só entra neste momento (ep04: silêncio antes da contagem)
   musicaDe?: Cue;
   // Congela a imagem da cena a partir deste frame (até o fim da cena)
@@ -133,6 +133,8 @@ export type Direction = {
   legendaSemPontuacao?: boolean;
   // Legenda com placa de fundo, uma linha, destaque só em palavra de conteúdo (ep03 v4 em diante)
   legendaPlaca?: boolean;
+  // Palavras-chave sempre em amarelo na legenda (ep06 v07)
+  legendaDestaques?: string[];
   // Ganho da trilha e dos efeitos sob a fala (padrão audio.duckGain; ep06: 0,2 ≈ -14 dB)
   duckGanho?: number;
   // Mantém os limites de cena do roteiro mesmo quando uma fala passa um pouco do corte

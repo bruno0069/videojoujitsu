@@ -45,8 +45,24 @@ export const repeatsNarration = (text: string, narration: string) => {
   return t.filter((w) => n.has(w)).length / t.length >= 0.75;
 };
 
-// Números ficam em amarelo (destaque)
-const renderLine = (line: string) =>
+// Números ficam em amarelo (destaque). Com `destaques` (ep06 v07), o "×" depois do número e as
+// palavras-chave da lista também ficam em amarelo.
+const renderLine = (line: string, destaques?: string[]) => {
+  if (destaques && destaques.length > 0) {
+    const chave = new Set(destaques.map((d) => d.toLowerCase()));
+    return line.split(/(\d+×?|[\p{L}]+)/u).map((part, i) =>
+      /^\d+×?$/.test(part) || chave.has(part.toLowerCase()) ? (
+        <span key={i} style={{ color: t.highlightColor }}>
+          {part}
+        </span>
+      ) : (
+        <span key={i}>{part}</span>
+      ),
+    );
+  }
+  return renderLineNumeros(line);
+};
+const renderLineNumeros = (line: string) =>
   line.split(/(\d+)/).map((part, i) =>
     /^\d+$/.test(part) ? (
       <span key={i} style={{ color: t.highlightColor }}>
@@ -57,7 +73,7 @@ const renderLine = (line: string) =>
     ),
   );
 
-export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean; corner?: boolean; top?: number }> = ({
+export const OnScreenText: React.FC<{ text: string; frame: number; from: number; to: number; animate: boolean; sticker?: boolean; corner?: boolean; top?: number; destaques?: string[] }> = ({
   text,
   frame,
   from,
@@ -66,6 +82,7 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
   sticker,
   corner,
   top,
+  destaques,
 }) => {
   const { fps } = useVideoConfig();
   if (!text || frame < from || frame >= to) return null;
@@ -104,7 +121,7 @@ export const OnScreenText: React.FC<{ text: string; frame: number; from: number;
         }}
       >
         {lines.map((l, i) => (
-          <div key={i}>{renderLine(l)}</div>
+          <div key={i}>{renderLine(l, destaques)}</div>
         ))}
       </div>
     </AbsoluteFill>

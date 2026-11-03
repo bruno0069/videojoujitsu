@@ -738,6 +738,7 @@ export const SceneRenderer: React.FC<{
           sticker={direction.texto?.estilo === "sticker"}
           corner={direction.texto?.estilo === "canto"}
           top={direction.texto?.topo}
+          destaques={direction.texto?.destaques}
         />
       ) : null}
     </AbsoluteFill>

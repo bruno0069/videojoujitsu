@@ -64,6 +64,10 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   pop_contagem: { file: "audio/sfx/encaixe.wav", loop: false, volume: audio.sfxVolume * 0.6 },
   mar_subindo: { file: "audio/sfx/agua_avancando.wav", loop: false, volume: audio.sfxVolume * 0.5 },
   onda_suave: { file: "audio/sfx/onda_pequena.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  // ep06 v07
+  clique_lego: { file: "audio/sfx/clique_lego.wav", loop: false, volume: audio.sfxVolume * 0.9 },
+  whoosh_grande: { file: "audio/sfx/whoosh_grande.wav", loop: false, volume: audio.sfxVolume * 0.9 },
+  agua_subindo: { file: "audio/sfx/agua_correndo.wav", loop: true, volume: audio.sfxVolume * 0.6 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
@@ -76,4 +80,5 @@ export const MUSIC: Record<string, string> = {
   curiosidade_suave: "audio/music/curiosidade_suave_hp120.wav",
   crescendo_leve: "audio/music/crescendo_leve_hp120.wav",
   leve_divertida: "audio/music/leve_divertida_hp120.wav",
+  lofi_espacial: "audio/music/lofi_espacial_hp120.wav",
 };

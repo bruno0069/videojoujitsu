@@ -163,8 +163,22 @@ gen -f lavfi -i "aevalsrc='0.3*sin(2*PI*(110*t+90*t*t))*(1-exp(-t*6))*exp(-t*1.2
 # encaixe: "toc" curto de uma esfera encaixando (0,25 s)
 gen -f lavfi -i "aevalsrc='0.45*sin(2*PI*520*t)*exp(-t*28)+0.25*sin(2*PI*260*t)*exp(-t*20)':s=$R:d=0.25" -ac 1 "$SFX/encaixe.wav"
 
+# ep06 v07 — clique de Lego, whoosh da Lua e trilha lo-fi espacial
+# clique_lego: encaixe de plástico (estalo agudo curtinho + batida seca), 0,18 s
+gen -f lavfi -i "aevalsrc='(random(0)*2-1)*0.7*exp(-t*260)+0.5*sin(2*PI*2400*t)*exp(-t*90)+0.35*sin(2*PI*320*t)*exp(-t*45)':s=$R:d=0.18" -af "highpass=f=180" -ac 1 "$SFX/clique_lego.wav"
+# whoosh_grande: whoosh mais longo e encorpado (1 s), filtro subindo
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.9:sample_rate=$R:duration=1.0:seed=81" \
+  -af "volume='pow(sin(PI*t/1.0),2)':eval=frame,highpass=f=180,lowpass=f=3200,afade=t=out:st=0.9:d=0.1,volume=1.8" -ac 1 "$SFX/whoosh_grande.wav"
+# lofi_espacial: acordes suaves (Am7, Fmaj7, Cmaj7, G6) com batida lo-fi bem baixa, 16 s em loop
+LR="if(lt(mod(t,16),4),-3,if(lt(mod(t,16),8),-7,if(lt(mod(t,16),12),0,-5)))"
+PAD="0.07*(sin(2*PI*220*pow(2,($LR)/12)*t)+sin(2*PI*220*pow(2,($LR+7)/12)*t)+0.8*sin(2*PI*220*pow(2,($LR+10)/12)*t)+0.7*sin(2*PI*220*pow(2,($LR+16)/12)*t))*(0.75+0.25*sin(2*PI*t/4))"
+BAIXO="0.16*sin(2*PI*55*pow(2,($LR)/12)*t)*(0.6+0.4*exp(-mod(t,2)*2))"
+BATIDA="0.22*sin(2*PI*(60+40*exp(-mod(t,0.75)*30))*mod(t,0.75))*exp(-mod(t,0.75)*14)"
+CHIADO="0.03*(random(0)*2-1)*exp(-mod(t+0.375,0.75)*40)"
+gen -f lavfi -i "aevalsrc='$PAD+$BAIXO+$BATIDA+$CHIADO':s=$R:d=16" -af "lowpass=f=5000" -ac 1 "$MUS/lofi_espacial.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
-for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida; do
+for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida lofi_espacial; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"
 done
 
