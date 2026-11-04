@@ -1,0 +1,136 @@
+{
+  "episode": 6,
+  "title": "E se você pudesse cair até o centro da Terra?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 3512,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 371,
+      "narration": "E se você pudesse cavar um buraco até o centro da Terra... e simplesmente pular? O Nico achou que seria uma experiência radical. O problema é que ele tem o instinto de sobrevivência de uma batata.",
+      "onScreenText": "E SE VOCÊ PULASSE ATÉ O CENTRO DA TERRA?",
+      "visual": {
+        "background": "ep07_superficie",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "Close do Nico de óculos escuros (acessório), confiança absurda. Corte para a Terra em corte com um túnel atravessando o planeta. Volta ao Nico na beira do buraco em pose de herói, com um mapa de guardanapo na mão; o guardanapo cai quando ele se prepara para pular. Na 'batata', uma batata de óculos aparece ao lado com o sinal de igual."
+      },
+      "sfx": [
+        "whoosh",
+        "whoosh_grande",
+        "estalo",
+        "deslize",
+        "quica"
+      ],
+      "music": "energia_queda"
+    },
+    {
+      "id": "queda",
+      "startFrame": 371,
+      "durationInFrames": 537,
+      "narration": "Imagine um túnel atravessando o planeta inteiro. Você pula e começa a cair... 10 metros... 100 metros... 1 quilômetro... E a velocidade só aumenta! Nico já está se sentindo o próprio Homem-Aranha. Só que sem poderes, sem plano e com uma inteligência emocional de uma torradeira.",
+      "onScreenText": "A VELOCIDADE SÓ AUMENTA",
+      "visual": {
+        "background": "ep07_queda",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "Queda dentro do túnel: paredes de rocha passando para cima, linhas de velocidade, Nico caindo. Placar de profundidade 10 m, 100 m, 1 km nas palavras; velocímetro subindo. Selo pequeno 'túnel hipotético'. Confiante no 'Homem-Aranha' (pose de super-herói, sem desenhar personagem real); desespero na 'torradeira', que aparece num inserto."
+      },
+      "sfx": [
+        "vento_queda",
+        "whoosh_grande",
+        "whoosh",
+        "torrada_pop"
+      ],
+      "music": "energia_queda"
+    },
+    {
+      "id": "calor",
+      "startFrame": 908,
+      "durationInFrames": 592,
+      "narration": "Mas aí vem o pequeno detalhe que o Google Maps não mostra: Quanto mais fundo você vai, maior fica a temperatura e a pressão. A crosta terrestre já ficou para trás. Agora você está chegando ao manto, onde as rochas podem passar de mil graus! Nico começa a perceber que talvez tenha escolhido o pior Uber da história.",
+      "onScreenText": "MAIS FUNDO = MAIS CALOR E PRESSÃO",
+      "visual": {
+        "background": "ep07_calor",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "As paredes passam da crosta (marrom) para o manto (laranja e vermelho), com o tom subindo. Mini corte da Terra no canto mostra onde ele está. Placa '1.000 °C+'. Nico suando. No 'pior Uber', um card de app de corrida genérico (sem marca) com 1 estrela."
+      },
+      "sfx": [
+        "vento_queda",
+        "calor_chiado",
+        "painel_alerta",
+        "falha"
+      ],
+      "music": "energia_queda"
+    },
+    {
+      "id": "nucleo",
+      "startFrame": 1500,
+      "durationInFrames": 522,
+      "narration": "E tem mais! No caminho, você ainda teria que enfrentar o núcleo externo, formado principalmente por ferro e níquel líquidos. Temperaturas entre 4 mil e 5 mil graus! É basicamente entrar numa panela de pressão do capeta. E o Nico? Já virou um miojo premium.",
+      "onScreenText": "NÚCLEO EXTERNO: FERRO E NÍQUEL LÍQUIDOS",
+      "visual": {
+        "background": "ep07_nucleo",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "Metal líquido laranja e amarelo com bolhas e partículas subindo; rótulo ferro + níquel; placa '4.000–5.000 °C'. Nico desesperado. Panela de pressão com chifrinhos apitando. No 'miojo premium', puf de fumaça cartunesco e o Nico vira um copo de miojo com o topete e os óculos, sem violência."
+      },
+      "sfx": [
+        "vento_queda",
+        "lava_borbulha",
+        "impacto_grave",
+        "apito_panela",
+        "puf",
+        "brilho"
+      ],
+      "music": "energia_queda"
+    },
+    {
+      "id": "centro",
+      "startFrame": 2022,
+      "durationInFrames": 733,
+      "narration": "Mas, num cenário completamente impossível, com um túnel protegido e sem ar... A gravidade continuaria puxando você em direção ao centro. E aqui vem a parte mais maluca: Lá no fundo, depois do manto, a gravidade começa a diminuir! Exatamente no centro da Terra, ela seria praticamente zero. Você ficaria flutuando! Nico finalmente conseguiu ficar parado na vida.",
+      "onScreenText": "NO CENTRO: GRAVIDADE ≈ ZERO",
+      "visual": {
+        "background": "ep07_centro",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "Selo 'cenário impossível' e 'túnel protegido, sem ar'. Indicador de gravidade ao lado do corte da Terra: quase constante pelo manto e caindo só no núcleo, até zero no centro. Objetos flutuando e o Nico de cabeça para baixo, surpreso e depois em paz."
+      },
+      "sfx": [
+        "puf",
+        "estalo",
+        "suspense_grave",
+        "flutua",
+        "conquista"
+      ],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "final",
+      "startFrame": 2755,
+      "durationInFrames": 757,
+      "narration": "E sabe o pior? Se você conseguisse atravessar a Terra inteira num túnel sem atrito, levaria aproximadamente 42 minutos para chegar ao outro lado. Ou seja... Você poderia fazer uma viagem intercontinental sem pagar passagem. Só precisaria sobreviver a uma experiência que nem o seguro de vida aceitaria cobrir. Nico já está procurando um buraco no Rio. Mas dessa vez... ele vai de metrô.",
+      "onScreenText": "NÃO TENTE ISSO. NEM SE SEU AMIGO DUVIDAR.",
+      "visual": {
+        "background": "ep07_globo",
+        "characters": [],
+        "camera": "plano_aberto",
+        "action": "Terra inteira com o túnel reto do Rio ao outro lado; cronômetro até ~42 min (modelo de densidade uniforme) e o Nico cruzando, com a velocidade máxima no centro. Bilhete R$ 0,00. Notificação 'Solicitação recusada' do seguro de vida. Celular: busca 'Como chegar ao centro da Terra' apagada e trocada por 'Metrô mais próximo'. Alívio; volta ao close de óculos do começo para o loop, com o aviso final."
+      },
+      "sfx": [
+        "tique_taque",
+        "whoosh_grande",
+        "quica",
+        "recusado",
+        "apagar",
+        "metro_chegando"
+      ],
+      "music": "energia_queda"
+    }
+  ]
+}

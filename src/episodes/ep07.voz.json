@@ -1,0 +1,197 @@
+{
+ "_sobre": "Linha do tempo do ep07 pela fala (a duração segue a voz; nada é acelerado nem cortado).",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 3.091,
+   "em": 0.1,
+   "arquivo": "public/audio/ep07-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "gancho",
+   "de": 3.53,
+   "palavrasDe": 3.53,
+   "ate": 5.019,
+   "em": 3.521,
+   "arquivo": "public/audio/ep07-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "gancho",
+   "de": 5.608,
+   "palavrasDe": 5.6,
+   "ate": 8.031,
+   "em": 5.34,
+   "arquivo": "public/audio/ep07-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "gancho",
+   "de": 8.497,
+   "palavrasDe": 8.48,
+   "ate": 12.16,
+   "em": 8.093,
+   "arquivo": "public/audio/ep07-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "queda",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 2.532,
+   "em": 12.506,
+   "arquivo": "public/audio/ep07-narracao-02-queda.mp3"
+  },
+  {
+   "cena": "queda",
+   "de": 3.036,
+   "palavrasDe": 3.036,
+   "ate": 4.632,
+   "em": 15.368,
+   "arquivo": "public/audio/ep07-narracao-02-queda.mp3"
+  },
+  {
+   "cena": "queda",
+   "de": 5.196,
+   "palavrasDe": 5.196,
+   "ate": 10.179,
+   "em": 17.294,
+   "arquivo": "public/audio/ep07-narracao-02-queda.mp3"
+  },
+  {
+   "cena": "queda",
+   "de": 10.658,
+   "palavrasDe": 10.658,
+   "ate": 17.723,
+   "em": 22.607,
+   "arquivo": "public/audio/ep07-narracao-02-queda.mp3"
+  },
+  {
+   "cena": "calor",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 3.189,
+   "em": 30.421,
+   "arquivo": "public/audio/ep07-narracao-03-calor.mp3"
+  },
+  {
+   "cena": "calor",
+   "de": 3.681,
+   "palavrasDe": 3.64,
+   "ate": 7.433,
+   "em": 33.94,
+   "arquivo": "public/audio/ep07-narracao-03-calor.mp3"
+  },
+  {
+   "cena": "calor",
+   "de": 7.941,
+   "palavrasDe": 7.92,
+   "ate": 15.024,
+   "em": 38.022,
+   "arquivo": "public/audio/ep07-narracao-03-calor.mp3"
+  },
+  {
+   "cena": "calor",
+   "de": 15.513,
+   "palavrasDe": 15.513,
+   "ate": 19.48,
+   "em": 45.434,
+   "arquivo": "public/audio/ep07-narracao-03-calor.mp3"
+  },
+  {
+   "cena": "nucleo",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 13.874,
+   "em": 50.152,
+   "arquivo": "public/audio/ep07-narracao-04-nucleo.mp3"
+  },
+  {
+   "cena": "nucleo",
+   "de": 14.313,
+   "palavrasDe": 14.313,
+   "ate": 16.768,
+   "em": 64.356,
+   "arquivo": "public/audio/ep07-narracao-04-nucleo.mp3"
+  },
+  {
+   "cena": "centro",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 5.06,
+   "em": 67.562,
+   "arquivo": "public/audio/ep07-narracao-05-centro.mp3"
+  },
+  {
+   "cena": "centro",
+   "de": 5.599,
+   "palavrasDe": 5.599,
+   "ate": 8.711,
+   "em": 72.952,
+   "arquivo": "public/audio/ep07-narracao-05-centro.mp3"
+  },
+  {
+   "cena": "centro",
+   "de": 9.149,
+   "palavrasDe": 9.149,
+   "ate": 15.072,
+   "em": 76.394,
+   "arquivo": "public/audio/ep07-narracao-05-centro.mp3"
+  },
+  {
+   "cena": "centro",
+   "de": 15.476,
+   "palavrasDe": 15.476,
+   "ate": 20.827,
+   "em": 82.647,
+   "arquivo": "public/audio/ep07-narracao-05-centro.mp3"
+  },
+  {
+   "cena": "centro",
+   "de": 21.229,
+   "palavrasDe": 21.229,
+   "ate": 24.119,
+   "em": 88.328,
+   "arquivo": "public/audio/ep07-narracao-05-centro.mp3"
+  },
+  {
+   "cena": "final",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 0.759,
+   "em": 91.968,
+   "arquivo": "public/audio/ep07-narracao-06-final.mp3"
+  },
+  {
+   "cena": "final",
+   "de": 1.247,
+   "palavrasDe": 1.247,
+   "ate": 8.718,
+   "em": 93.057,
+   "arquivo": "public/audio/ep07-narracao-06-final.mp3"
+  },
+  {
+   "cena": "final",
+   "de": 9.245,
+   "palavrasDe": 9.245,
+   "ate": 9.806,
+   "em": 100.858,
+   "arquivo": "public/audio/ep07-narracao-06-final.mp3"
+  },
+  {
+   "cena": "final",
+   "de": 10.274,
+   "palavrasDe": 10.274,
+   "ate": 18.82,
+   "em": 101.75,
+   "arquivo": "public/audio/ep07-narracao-06-final.mp3"
+  },
+  {
+   "cena": "final",
+   "de": 19.477,
+   "palavrasDe": 19.477,
+   "ate": 23.923,
+   "em": 110.626,
+   "arquivo": "public/audio/ep07-narracao-06-final.mp3"
+  }
+ ]
+}

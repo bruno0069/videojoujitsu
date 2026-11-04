@@ -31,7 +31,8 @@ export type PoseName =
   | "flutuando"
   | "sentado_livre"
   | "pulando"
-  | "mao_nas_costas";
+  | "mao_nas_costas"
+  | "heroi";
 
 export type ExpressionName =
   | "neutro"
@@ -164,6 +165,11 @@ const POSES: Record<PoseName, PoseDef> = {
     handL: [-170, -250], handR: [90, -330], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 6, headDy: 0, look: [-0.5, -0.1], handRBehind: true,
   },
+  // Herói (ep07): mãos na cintura, peito estufado, queixo erguido
+  heroi: {
+    handL: [-250, -380], handR: [250, -380], footL: [-92, -22], footR: [92, -22],
+    crouch: 0, lean: 0, headTilt: -5, headDy: -6, look: [0.2, -0.2],
+  },
 };
 
 type Brow = { dy: number; rot: number };
@@ -225,6 +231,9 @@ export type CharacterProps = {
   deskOnly?: boolean;
   // Traje espacial (ep03 longo): traje claro com detalhe coral; `capacete` = viseira transparente
   traje?: { capacete: boolean } | null;
+  // ep07: óculos escuros (acessório, cobre os olhos) e gotas de suor saindo da testa
+  oculos?: boolean;
+  suor?: boolean;
 };
 
 // Quanto a cabeça desce na pose (agachar + inclinar), em unidades do rig. Usado pelo close
@@ -311,7 +320,7 @@ const PaoDeQueijo: React.FC<{ x: number; y: number; r: number }> = ({ x, y, r })
   );
 };
 
-export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly, traje }) => {
+export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, expression, holding, action, fromPose, poseT = 1, look: lookOverride, globe, deskOnly, traje, oculos, suor }) => {
   const frame = useCurrentFrame();
   // Ação "casaco" (ep03): veste o casaco verde que estava na mala no lugar do moletom
   const style = traje
@@ -595,6 +604,36 @@ export const Character: React.FC<CharacterProps> = ({ style: baseStyle, pose, ex
             strokeLinejoin="round"
           />
         ) : null}
+        {oculos && !p.back ? (
+          // óculos escuros chapados: duas lentes com ponte e um reflexo creme em cada uma
+          <g>
+            <path d="M -200 -22 L 200 -22" stroke={colors.tinta} strokeWidth={ink * 1.2} strokeLinecap="round" />
+            {[-1, 1].map((side) => (
+              <g key={side} transform={`translate(${side * 98} 6)`}>
+                <path d="M -84 -34 L 84 -34 Q 86 30 30 52 Q 0 60 -30 52 Q -86 30 -84 -34 Z" fill={colors.tinta} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
+                <path d="M -52 -14 L -14 -14" stroke={colors.creme} strokeWidth={ink * 0.9} strokeLinecap="round" />
+              </g>
+            ))}
+          </g>
+        ) : null}
+        {suor && !p.back
+          ? [0, 1].map((k) => {
+              // duas gotas defasadas escorrendo da testa
+              const c = ((frame + k * 17) % 34) / 34;
+              const x = k ? 205 : -190;
+              return (
+                <path
+                  key={k}
+                  d="M 0 -34 Q 26 0 0 22 Q -26 0 0 -34 Z"
+                  transform={`translate(${x} ${-120 + c * 150}) scale(${0.9 + c * 0.3})`}
+                  fill={colors.ceu}
+                  stroke={colors.tinta}
+                  strokeWidth={ink * 0.7}
+                  opacity={c < 0.85 ? 1 : (1 - c) / 0.15}
+                />
+              );
+            })
+          : null}
       </g>
 
       {p.sit ? <Desk globe={globe ?? null} /> : null}

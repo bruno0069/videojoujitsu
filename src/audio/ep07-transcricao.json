@@ -1,0 +1,1564 @@
+{
+ "_sobre": "Transcrição por palavra das 6 tomadas do ep07 (eleven_scribe_v1, 1 tomada por cena).",
+ "cenas": {
+  "gancho": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "se",
+     "start": 0.12,
+     "end": 0.16
+    },
+    {
+     "text": "você",
+     "start": 0.24,
+     "end": 0.4
+    },
+    {
+     "text": "pudesse",
+     "start": 0.48,
+     "end": 0.8
+    },
+    {
+     "text": "cavar",
+     "start": 0.88,
+     "end": 1.12
+    },
+    {
+     "text": "um",
+     "start": 1.16,
+     "end": 1.2
+    },
+    {
+     "text": "buraco",
+     "start": 1.32,
+     "end": 1.6
+    },
+    {
+     "text": "até",
+     "start": 1.72,
+     "end": 1.92
+    },
+    {
+     "text": "o",
+     "start": 2.04,
+     "end": 2.16
+    },
+    {
+     "text": "centro",
+     "start": 2.28,
+     "end": 2.48
+    },
+    {
+     "text": "da",
+     "start": 2.56,
+     "end": 2.64
+    },
+    {
+     "text": "Terra...",
+     "start": 2.72,
+     "end": 3.52
+    },
+    {
+     "text": "e",
+     "start": 3.64,
+     "end": 3.76
+    },
+    {
+     "text": "simplesmente",
+     "start": 3.92,
+     "end": 4.48
+    },
+    {
+     "text": "pular?",
+     "start": 4.64,
+     "end": 5.32
+    },
+    {
+     "text": "O",
+     "start": 5.6,
+     "end": 5.68
+    },
+    {
+     "text": "Nico",
+     "start": 5.72,
+     "end": 5.92
+    },
+    {
+     "text": "achou",
+     "start": 6.04,
+     "end": 6.24
+    },
+    {
+     "text": "que",
+     "start": 6.32,
+     "end": 6.4
+    },
+    {
+     "text": "seria",
+     "start": 6.48,
+     "end": 6.64
+    },
+    {
+     "text": "uma",
+     "start": 6.68,
+     "end": 6.72
+    },
+    {
+     "text": "experiência",
+     "start": 6.8,
+     "end": 7.36
+    },
+    {
+     "text": "radical.",
+     "start": 7.44,
+     "end": 8.28
+    },
+    {
+     "text": "O",
+     "start": 8.48,
+     "end": 8.56
+    },
+    {
+     "text": "problema",
+     "start": 8.68,
+     "end": 9.2
+    },
+    {
+     "text": "é",
+     "start": 9.28,
+     "end": 9.36
+    },
+    {
+     "text": "que",
+     "start": 9.4,
+     "end": 9.44
+    },
+    {
+     "text": "ele",
+     "start": 9.52,
+     "end": 9.6
+    },
+    {
+     "text": "tem",
+     "start": 9.68,
+     "end": 9.76
+    },
+    {
+     "text": "o",
+     "start": 9.8,
+     "end": 9.84
+    },
+    {
+     "text": "instinto",
+     "start": 9.96,
+     "end": 10.32
+    },
+    {
+     "text": "de",
+     "start": 10.36,
+     "end": 10.4
+    },
+    {
+     "text": "sobrevivência",
+     "start": 10.44,
+     "end": 11.12
+    },
+    {
+     "text": "de",
+     "start": 11.16,
+     "end": 11.2
+    },
+    {
+     "text": "uma",
+     "start": 11.28,
+     "end": 11.36
+    },
+    {
+     "text": "batata.",
+     "start": 11.44,
+     "end": 12.32
+    }
+   ]
+  },
+  "queda": {
+   "words": [
+    {
+     "text": "Imagine",
+     "start": 0.0,
+     "end": 0.48
+    },
+    {
+     "text": "um",
+     "start": 0.52,
+     "end": 0.56
+    },
+    {
+     "text": "túnel",
+     "start": 0.72,
+     "end": 0.96
+    },
+    {
+     "text": "atravessando",
+     "start": 1.04,
+     "end": 1.6
+    },
+    {
+     "text": "o",
+     "start": 1.627,
+     "end": 1.653
+    },
+    {
+     "text": "planeta",
+     "start": 1.68,
+     "end": 2.08
+    },
+    {
+     "text": "inteiro.",
+     "start": 2.24,
+     "end": 2.84
+    },
+    {
+     "text": "Você",
+     "start": 3.04,
+     "end": 3.28
+    },
+    {
+     "text": "pula",
+     "start": 3.44,
+     "end": 3.76
+    },
+    {
+     "text": "e",
+     "start": 3.92,
+     "end": 3.96
+    },
+    {
+     "text": "começa",
+     "start": 4.0,
+     "end": 4.24
+    },
+    {
+     "text": "a",
+     "start": 4.28,
+     "end": 4.32
+    },
+    {
+     "text": "cair...",
+     "start": 4.4,
+     "end": 5.2
+    },
+    {
+     "text": "10",
+     "start": 5.32,
+     "end": 5.44
+    },
+    {
+     "text": "metros...",
+     "start": 5.52,
+     "end": 6.4
+    },
+    {
+     "text": "100",
+     "start": 6.48,
+     "end": 6.56
+    },
+    {
+     "text": "metros...",
+     "start": 6.64,
+     "end": 7.52
+    },
+    {
+     "text": "1",
+     "start": 7.56,
+     "end": 7.6
+    },
+    {
+     "text": "quilômetro...",
+     "start": 7.68,
+     "end": 8.72
+    },
+    {
+     "text": "E",
+     "start": 8.747,
+     "end": 8.773
+    },
+    {
+     "text": "a",
+     "start": 8.8,
+     "end": 8.84
+    },
+    {
+     "text": "velocidade",
+     "start": 8.88,
+     "end": 9.44
+    },
+    {
+     "text": "só",
+     "start": 9.52,
+     "end": 9.64
+    },
+    {
+     "text": "aumenta!",
+     "start": 9.68,
+     "end": 10.24
+    },
+    {
+     "text": "Nico",
+     "start": 10.72,
+     "end": 10.96
+    },
+    {
+     "text": "já",
+     "start": 11.0,
+     "end": 11.08
+    },
+    {
+     "text": "está",
+     "start": 11.12,
+     "end": 11.28
+    },
+    {
+     "text": "se",
+     "start": 11.36,
+     "end": 11.44
+    },
+    {
+     "text": "sentindo",
+     "start": 11.56,
+     "end": 11.84
+    },
+    {
+     "text": "o",
+     "start": 11.92,
+     "end": 12.0
+    },
+    {
+     "text": "próprio",
+     "start": 12.04,
+     "end": 12.32
+    },
+    {
+     "text": "Homem-Aranha.",
+     "start": 12.4,
+     "end": 13.04
+    },
+    {
+     "text": "Só",
+     "start": 13.28,
+     "end": 13.4
+    },
+    {
+     "text": "que",
+     "start": 13.44,
+     "end": 13.52
+    },
+    {
+     "text": "sem",
+     "start": 13.6,
+     "end": 13.76
+    },
+    {
+     "text": "poderes,",
+     "start": 13.84,
+     "end": 14.48
+    },
+    {
+     "text": "sem",
+     "start": 14.56,
+     "end": 14.72
+    },
+    {
+     "text": "plano",
+     "start": 14.8,
+     "end": 15.12
+    },
+    {
+     "text": "e",
+     "start": 15.28,
+     "end": 15.32
+    },
+    {
+     "text": "com",
+     "start": 15.36,
+     "end": 15.44
+    },
+    {
+     "text": "uma",
+     "start": 15.52,
+     "end": 15.6
+    },
+    {
+     "text": "inteligência",
+     "start": 15.64,
+     "end": 16.16
+    },
+    {
+     "text": "emocional",
+     "start": 16.2,
+     "end": 16.64
+    },
+    {
+     "text": "de",
+     "start": 16.72,
+     "end": 16.76
+    },
+    {
+     "text": "uma",
+     "start": 16.8,
+     "end": 16.88
+    },
+    {
+     "text": "torradeira.",
+     "start": 17.04,
+     "end": 17.92
+    }
+   ]
+  },
+  "calor": {
+   "words": [
+    {
+     "text": "Mas",
+     "start": 0.0,
+     "end": 0.133
+    },
+    {
+     "text": "aí",
+     "start": 0.16,
+     "end": 0.32
+    },
+    {
+     "text": "vem",
+     "start": 0.48,
+     "end": 0.62
+    },
+    {
+     "text": "o",
+     "start": 0.64,
+     "end": 0.72
+    },
+    {
+     "text": "pequeno",
+     "start": 0.8,
+     "end": 1.28
+    },
+    {
+     "text": "detalhe",
+     "start": 1.44,
+     "end": 1.76
+    },
+    {
+     "text": "que",
+     "start": 1.84,
+     "end": 1.92
+    },
+    {
+     "text": "o",
+     "start": 1.947,
+     "end": 1.973
+    },
+    {
+     "text": "Google",
+     "start": 2.0,
+     "end": 2.24
+    },
+    {
+     "text": "Maps",
+     "start": 2.32,
+     "end": 2.56
+    },
+    {
+     "text": "não",
+     "start": 2.6,
+     "end": 2.72
+    },
+    {
+     "text": "mostra:",
+     "start": 2.8,
+     "end": 3.6
+    },
+    {
+     "text": "Quanto",
+     "start": 3.64,
+     "end": 3.92
+    },
+    {
+     "text": "mais",
+     "start": 4.0,
+     "end": 4.24
+    },
+    {
+     "text": "fundo",
+     "start": 4.32,
+     "end": 4.56
+    },
+    {
+     "text": "você",
+     "start": 4.6,
+     "end": 4.8
+    },
+    {
+     "text": "vai,",
+     "start": 4.88,
+     "end": 5.36
+    },
+    {
+     "text": "maior",
+     "start": 5.44,
+     "end": 5.84
+    },
+    {
+     "text": "fica",
+     "start": 5.92,
+     "end": 6.08
+    },
+    {
+     "text": "a",
+     "start": 6.107,
+     "end": 6.133
+    },
+    {
+     "text": "temperatura",
+     "start": 6.16,
+     "end": 6.8
+    },
+    {
+     "text": "e",
+     "start": 6.88,
+     "end": 6.92
+    },
+    {
+     "text": "a",
+     "start": 6.96,
+     "end": 7.0
+    },
+    {
+     "text": "pressão.",
+     "start": 7.04,
+     "end": 7.68
+    },
+    {
+     "text": "A",
+     "start": 7.92,
+     "end": 8.0
+    },
+    {
+     "text": "crosta",
+     "start": 8.08,
+     "end": 8.32
+    },
+    {
+     "text": "terrestre",
+     "start": 8.4,
+     "end": 8.96
+    },
+    {
+     "text": "já",
+     "start": 9.0,
+     "end": 9.12
+    },
+    {
+     "text": "ficou",
+     "start": 9.2,
+     "end": 9.44
+    },
+    {
+     "text": "para",
+     "start": 9.52,
+     "end": 9.6
+    },
+    {
+     "text": "trás.",
+     "start": 9.68,
+     "end": 10.24
+    },
+    {
+     "text": "Agora",
+     "start": 10.4,
+     "end": 10.88
+    },
+    {
+     "text": "você",
+     "start": 10.92,
+     "end": 11.12
+    },
+    {
+     "text": "está",
+     "start": 11.2,
+     "end": 11.32
+    },
+    {
+     "text": "chegando",
+     "start": 11.36,
+     "end": 11.68
+    },
+    {
+     "text": "ao",
+     "start": 11.72,
+     "end": 11.76
+    },
+    {
+     "text": "manto,",
+     "start": 11.84,
+     "end": 12.48
+    },
+    {
+     "text": "onde",
+     "start": 12.56,
+     "end": 12.64
+    },
+    {
+     "text": "as",
+     "start": 12.72,
+     "end": 12.8
+    },
+    {
+     "text": "rochas",
+     "start": 12.88,
+     "end": 13.2
+    },
+    {
+     "text": "podem",
+     "start": 13.28,
+     "end": 13.52
+    },
+    {
+     "text": "passar",
+     "start": 13.6,
+     "end": 13.84
+    },
+    {
+     "text": "de",
+     "start": 13.92,
+     "end": 14.0
+    },
+    {
+     "text": "mil",
+     "start": 14.16,
+     "end": 14.4
+    },
+    {
+     "text": "graus!",
+     "start": 14.48,
+     "end": 15.04
+    },
+    {
+     "text": "Nico",
+     "start": 15.52,
+     "end": 15.84
+    },
+    {
+     "text": "começa",
+     "start": 15.96,
+     "end": 16.16
+    },
+    {
+     "text": "a",
+     "start": 16.2,
+     "end": 16.24
+    },
+    {
+     "text": "perceber",
+     "start": 16.32,
+     "end": 16.72
+    },
+    {
+     "text": "que",
+     "start": 16.8,
+     "end": 16.88
+    },
+    {
+     "text": "talvez",
+     "start": 16.96,
+     "end": 17.28
+    },
+    {
+     "text": "tenha",
+     "start": 17.36,
+     "end": 17.48
+    },
+    {
+     "text": "escolhido",
+     "start": 17.52,
+     "end": 17.92
+    },
+    {
+     "text": "o",
+     "start": 17.96,
+     "end": 18.0
+    },
+    {
+     "text": "pior",
+     "start": 18.08,
+     "end": 18.48
+    },
+    {
+     "text": "Uber",
+     "start": 18.56,
+     "end": 18.8
+    },
+    {
+     "text": "da",
+     "start": 18.84,
+     "end": 18.88
+    },
+    {
+     "text": "história.",
+     "start": 18.96,
+     "end": 19.68
+    }
+   ]
+  },
+  "nucleo": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.04
+    },
+    {
+     "text": "tem",
+     "start": 0.08,
+     "end": 0.267
+    },
+    {
+     "text": "mais!",
+     "start": 0.32,
+     "end": 0.8
+    },
+    {
+     "text": "No",
+     "start": 0.92,
+     "end": 1.2
+    },
+    {
+     "text": "caminho,",
+     "start": 1.24,
+     "end": 1.76
+    },
+    {
+     "text": "você",
+     "start": 1.8,
+     "end": 2.0
+    },
+    {
+     "text": "ainda",
+     "start": 2.08,
+     "end": 2.24
+    },
+    {
+     "text": "teria",
+     "start": 2.32,
+     "end": 2.48
+    },
+    {
+     "text": "que",
+     "start": 2.56,
+     "end": 2.64
+    },
+    {
+     "text": "enfrentar",
+     "start": 2.68,
+     "end": 3.04
+    },
+    {
+     "text": "o",
+     "start": 3.08,
+     "end": 3.12
+    },
+    {
+     "text": "núcleo",
+     "start": 3.2,
+     "end": 3.48
+    },
+    {
+     "text": "externo,",
+     "start": 3.52,
+     "end": 4.24
+    },
+    {
+     "text": "formado",
+     "start": 4.32,
+     "end": 4.64
+    },
+    {
+     "text": "principalmente",
+     "start": 4.72,
+     "end": 5.44
+    },
+    {
+     "text": "por",
+     "start": 5.52,
+     "end": 5.68
+    },
+    {
+     "text": "ferro",
+     "start": 5.76,
+     "end": 6.16
+    },
+    {
+     "text": "e",
+     "start": 6.24,
+     "end": 6.28
+    },
+    {
+     "text": "níquel",
+     "start": 6.32,
+     "end": 6.72
+    },
+    {
+     "text": "líquidos.",
+     "start": 6.8,
+     "end": 7.48
+    },
+    {
+     "text": "Temperaturas",
+     "start": 7.68,
+     "end": 8.32
+    },
+    {
+     "text": "entre",
+     "start": 8.44,
+     "end": 8.56
+    },
+    {
+     "text": "4",
+     "start": 8.72,
+     "end": 9.04
+    },
+    {
+     "text": "mil",
+     "start": 9.2,
+     "end": 9.36
+    },
+    {
+     "text": "e",
+     "start": 9.44,
+     "end": 9.68
+    },
+    {
+     "text": "5",
+     "start": 9.76,
+     "end": 10.0
+    },
+    {
+     "text": "mil",
+     "start": 10.16,
+     "end": 10.24
+    },
+    {
+     "text": "graus!",
+     "start": 10.4,
+     "end": 11.08
+    },
+    {
+     "text": "É",
+     "start": 11.28,
+     "end": 11.36
+    },
+    {
+     "text": "basicamente",
+     "start": 11.48,
+     "end": 11.92
+    },
+    {
+     "text": "entrar",
+     "start": 12.0,
+     "end": 12.16
+    },
+    {
+     "text": "numa",
+     "start": 12.24,
+     "end": 12.36
+    },
+    {
+     "text": "panela",
+     "start": 12.4,
+     "end": 12.68
+    },
+    {
+     "text": "de",
+     "start": 12.72,
+     "end": 12.76
+    },
+    {
+     "text": "pressão",
+     "start": 12.8,
+     "end": 13.12
+    },
+    {
+     "text": "do",
+     "start": 13.16,
+     "end": 13.2
+    },
+    {
+     "text": "capeta.",
+     "start": 13.28,
+     "end": 13.92
+    },
+    {
+     "text": "E",
+     "start": 14.32,
+     "end": 14.4
+    },
+    {
+     "text": "o",
+     "start": 14.44,
+     "end": 14.48
+    },
+    {
+     "text": "Nico?",
+     "start": 14.52,
+     "end": 15.08
+    },
+    {
+     "text": "Já",
+     "start": 15.28,
+     "end": 15.36
+    },
+    {
+     "text": "virou",
+     "start": 15.44,
+     "end": 15.68
+    },
+    {
+     "text": "um",
+     "start": 15.72,
+     "end": 15.76
+    },
+    {
+     "text": "miojo",
+     "start": 15.8,
+     "end": 16.16
+    },
+    {
+     "text": "premium.",
+     "start": 16.24,
+     "end": 16.96
+    }
+   ]
+  },
+  "centro": {
+   "words": [
+    {
+     "text": "Mas,",
+     "start": 0.0,
+     "end": 0.48
+    },
+    {
+     "text": "num",
+     "start": 0.64,
+     "end": 0.773
+    },
+    {
+     "text": "cenário",
+     "start": 0.8,
+     "end": 1.28
+    },
+    {
+     "text": "completamente",
+     "start": 1.4,
+     "end": 2.08
+    },
+    {
+     "text": "impossível,",
+     "start": 2.16,
+     "end": 3.04
+    },
+    {
+     "text": "com",
+     "start": 3.12,
+     "end": 3.2
+    },
+    {
+     "text": "um",
+     "start": 3.24,
+     "end": 3.28
+    },
+    {
+     "text": "túnel",
+     "start": 3.36,
+     "end": 3.6
+    },
+    {
+     "text": "protegido",
+     "start": 3.72,
+     "end": 4.32
+    },
+    {
+     "text": "e",
+     "start": 4.4,
+     "end": 4.48
+    },
+    {
+     "text": "sem",
+     "start": 4.6,
+     "end": 4.72
+    },
+    {
+     "text": "ar...",
+     "start": 4.8,
+     "end": 5.6
+    },
+    {
+     "text": "A",
+     "start": 5.627,
+     "end": 5.653
+    },
+    {
+     "text": "gravidade",
+     "start": 5.68,
+     "end": 6.24
+    },
+    {
+     "text": "continuaria",
+     "start": 6.4,
+     "end": 6.88
+    },
+    {
+     "text": "puxando",
+     "start": 6.92,
+     "end": 7.28
+    },
+    {
+     "text": "você",
+     "start": 7.32,
+     "end": 7.6
+    },
+    {
+     "text": "em",
+     "start": 7.68,
+     "end": 7.76
+    },
+    {
+     "text": "direção",
+     "start": 7.84,
+     "end": 8.16
+    },
+    {
+     "text": "ao",
+     "start": 8.24,
+     "end": 8.32
+    },
+    {
+     "text": "centro.",
+     "start": 8.4,
+     "end": 9.12
+    },
+    {
+     "text": "E",
+     "start": 9.16,
+     "end": 9.2
+    },
+    {
+     "text": "aqui",
+     "start": 9.28,
+     "end": 9.52
+    },
+    {
+     "text": "vem",
+     "start": 9.6,
+     "end": 9.68
+    },
+    {
+     "text": "a",
+     "start": 9.76,
+     "end": 9.84
+    },
+    {
+     "text": "parte",
+     "start": 9.96,
+     "end": 10.24
+    },
+    {
+     "text": "mais",
+     "start": 10.32,
+     "end": 10.48
+    },
+    {
+     "text": "maluca:",
+     "start": 10.56,
+     "end": 11.44
+    },
+    {
+     "text": "Lá",
+     "start": 11.52,
+     "end": 11.64
+    },
+    {
+     "text": "no",
+     "start": 11.68,
+     "end": 11.84
+    },
+    {
+     "text": "fundo,",
+     "start": 11.92,
+     "end": 12.4
+    },
+    {
+     "text": "depois",
+     "start": 12.48,
+     "end": 12.72
+    },
+    {
+     "text": "do",
+     "start": 12.8,
+     "end": 12.88
+    },
+    {
+     "text": "manto,",
+     "start": 12.987,
+     "end": 13.44
+    },
+    {
+     "text": "a",
+     "start": 13.52,
+     "end": 13.56
+    },
+    {
+     "text": "gravidade",
+     "start": 13.6,
+     "end": 14.08
+    },
+    {
+     "text": "começa",
+     "start": 14.16,
+     "end": 14.4
+    },
+    {
+     "text": "a",
+     "start": 14.44,
+     "end": 14.48
+    },
+    {
+     "text": "diminuir!",
+     "start": 14.56,
+     "end": 15.44
+    },
+    {
+     "text": "Exatamente",
+     "start": 15.6,
+     "end": 16.24
+    },
+    {
+     "text": "no",
+     "start": 16.36,
+     "end": 16.48
+    },
+    {
+     "text": "centro",
+     "start": 16.6,
+     "end": 16.8
+    },
+    {
+     "text": "da",
+     "start": 16.84,
+     "end": 16.88
+    },
+    {
+     "text": "Terra,",
+     "start": 17.04,
+     "end": 17.52
+    },
+    {
+     "text": "ela",
+     "start": 17.6,
+     "end": 17.68
+    },
+    {
+     "text": "seria",
+     "start": 17.76,
+     "end": 18.08
+    },
+    {
+     "text": "praticamente",
+     "start": 18.12,
+     "end": 18.72
+    },
+    {
+     "text": "zero.",
+     "start": 18.88,
+     "end": 19.52
+    },
+    {
+     "text": "Você",
+     "start": 19.64,
+     "end": 19.76
+    },
+    {
+     "text": "ficaria",
+     "start": 19.84,
+     "end": 20.16
+    },
+    {
+     "text": "flutuando!",
+     "start": 20.2,
+     "end": 21.2
+    },
+    {
+     "text": "Nico",
+     "start": 21.28,
+     "end": 21.68
+    },
+    {
+     "text": "finalmente",
+     "start": 21.76,
+     "end": 22.32
+    },
+    {
+     "text": "conseguiu",
+     "start": 22.4,
+     "end": 22.8
+    },
+    {
+     "text": "ficar",
+     "start": 22.88,
+     "end": 23.12
+    },
+    {
+     "text": "parado",
+     "start": 23.24,
+     "end": 23.52
+    },
+    {
+     "text": "na",
+     "start": 23.6,
+     "end": 23.68
+    },
+    {
+     "text": "vida.",
+     "start": 23.76,
+     "end": 24.24
+    }
+   ]
+  },
+  "final": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "sabe",
+     "start": 0.12,
+     "end": 0.32
+    },
+    {
+     "text": "o",
+     "start": 0.36,
+     "end": 0.4
+    },
+    {
+     "text": "pior?",
+     "start": 0.44,
+     "end": 1.04
+    },
+    {
+     "text": "Se",
+     "start": 1.28,
+     "end": 1.36
+    },
+    {
+     "text": "você",
+     "start": 1.4,
+     "end": 1.6
+    },
+    {
+     "text": "conseguisse",
+     "start": 1.68,
+     "end": 2.08
+    },
+    {
+     "text": "atravessar",
+     "start": 2.16,
+     "end": 2.64
+    },
+    {
+     "text": "a",
+     "start": 2.68,
+     "end": 2.72
+    },
+    {
+     "text": "Terra",
+     "start": 2.88,
+     "end": 3.04
+    },
+    {
+     "text": "inteira",
+     "start": 3.12,
+     "end": 3.52
+    },
+    {
+     "text": "num",
+     "start": 3.64,
+     "end": 3.76
+    },
+    {
+     "text": "túnel",
+     "start": 3.8,
+     "end": 4.08
+    },
+    {
+     "text": "sem",
+     "start": 4.16,
+     "end": 4.32
+    },
+    {
+     "text": "atrito,",
+     "start": 4.4,
+     "end": 5.04
+    },
+    {
+     "text": "levaria",
+     "start": 5.12,
+     "end": 5.44
+    },
+    {
+     "text": "aproximadamente",
+     "start": 5.52,
+     "end": 6.32
+    },
+    {
+     "text": "42",
+     "start": 6.48,
+     "end": 7.2
+    },
+    {
+     "text": "minutos",
+     "start": 7.28,
+     "end": 7.68
+    },
+    {
+     "text": "para",
+     "start": 7.76,
+     "end": 7.84
+    },
+    {
+     "text": "chegar",
+     "start": 7.92,
+     "end": 8.16
+    },
+    {
+     "text": "ao",
+     "start": 8.2,
+     "end": 8.24
+    },
+    {
+     "text": "outro",
+     "start": 8.32,
+     "end": 8.48
+    },
+    {
+     "text": "lado.",
+     "start": 8.56,
+     "end": 9.08
+    },
+    {
+     "text": "Ou",
+     "start": 9.28,
+     "end": 9.36
+    },
+    {
+     "text": "seja...",
+     "start": 9.44,
+     "end": 10.24
+    },
+    {
+     "text": "Você",
+     "start": 10.36,
+     "end": 10.48
+    },
+    {
+     "text": "poderia",
+     "start": 10.56,
+     "end": 10.8
+    },
+    {
+     "text": "fazer",
+     "start": 10.88,
+     "end": 11.12
+    },
+    {
+     "text": "uma",
+     "start": 11.2,
+     "end": 11.28
+    },
+    {
+     "text": "viagem",
+     "start": 11.36,
+     "end": 11.76
+    },
+    {
+     "text": "intercontinental",
+     "start": 11.84,
+     "end": 12.8
+    },
+    {
+     "text": "sem",
+     "start": 13.04,
+     "end": 13.2
+    },
+    {
+     "text": "pagar",
+     "start": 13.28,
+     "end": 13.52
+    },
+    {
+     "text": "passagem.",
+     "start": 13.6,
+     "end": 14.24
+    },
+    {
+     "text": "Só",
+     "start": 14.56,
+     "end": 14.64
+    },
+    {
+     "text": "precisaria",
+     "start": 14.72,
+     "end": 15.2
+    },
+    {
+     "text": "sobreviver",
+     "start": 15.28,
+     "end": 15.76
+    },
+    {
+     "text": "a",
+     "start": 15.8,
+     "end": 15.84
+    },
+    {
+     "text": "uma",
+     "start": 15.88,
+     "end": 15.92
+    },
+    {
+     "text": "experiência",
+     "start": 16.0,
+     "end": 16.56
+    },
+    {
+     "text": "que",
+     "start": 16.64,
+     "end": 16.8
+    },
+    {
+     "text": "nem",
+     "start": 16.88,
+     "end": 17.04
+    },
+    {
+     "text": "o",
+     "start": 17.08,
+     "end": 17.12
+    },
+    {
+     "text": "seguro",
+     "start": 17.2,
+     "end": 17.52
+    },
+    {
+     "text": "de",
+     "start": 17.6,
+     "end": 17.68
+    },
+    {
+     "text": "vida",
+     "start": 17.76,
+     "end": 17.92
+    },
+    {
+     "text": "aceitaria",
+     "start": 18.04,
+     "end": 18.48
+    },
+    {
+     "text": "cobrir.",
+     "start": 18.56,
+     "end": 19.2
+    },
+    {
+     "text": "Nico",
+     "start": 19.52,
+     "end": 19.84
+    },
+    {
+     "text": "já",
+     "start": 19.88,
+     "end": 19.96
+    },
+    {
+     "text": "está",
+     "start": 20.0,
+     "end": 20.2
+    },
+    {
+     "text": "procurando",
+     "start": 20.24,
+     "end": 20.64
+    },
+    {
+     "text": "um",
+     "start": 20.68,
+     "end": 20.72
+    },
+    {
+     "text": "buraco",
+     "start": 20.8,
+     "end": 21.12
+    },
+    {
+     "text": "no",
+     "start": 21.16,
+     "end": 21.2
+    },
+    {
+     "text": "Rio.",
+     "start": 21.28,
+     "end": 21.68
+    },
+    {
+     "text": "Mas",
+     "start": 21.84,
+     "end": 22.0
+    },
+    {
+     "text": "dessa",
+     "start": 22.08,
+     "end": 22.24
+    },
+    {
+     "text": "vez...",
+     "start": 22.32,
+     "end": 23.04
+    },
+    {
+     "text": "ele",
+     "start": 23.12,
+     "end": 23.2
+    },
+    {
+     "text": "vai",
+     "start": 23.28,
+     "end": 23.36
+    },
+    {
+     "text": "de",
+     "start": 23.4,
+     "end": 23.44
+    },
+    {
+     "text": "metrô.",
+     "start": 23.52,
+     "end": 24.16
+    }
+   ]
+  }
+ }
+}

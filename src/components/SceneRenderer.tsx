@@ -200,6 +200,11 @@ const centerOf = (
     };
   }
   if (focus === "ceu") return { x: 540, y: 620 };
+  // Ponto livre do mundo: "xy:540,700" (cenários que desenham o próprio personagem, ep07)
+  if (focus?.startsWith("xy:")) {
+    const [fx, fy] = focus.slice(3).split(",").map(Number);
+    return { x: fx, y: fy };
+  }
   // Pontos de cenários desenhados numa camada de fundo (profundidade d): o equivalente em
   // profundidade 1 para a câmera centralizar neles
   const atDepth = (x: number, y: number, d: number) => ({

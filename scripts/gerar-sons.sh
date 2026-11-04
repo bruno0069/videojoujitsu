@@ -177,8 +177,50 @@ BATIDA="0.22*sin(2*PI*(60+40*exp(-mod(t,0.75)*30))*mod(t,0.75))*exp(-mod(t,0.75)
 CHIADO="0.03*(random(0)*2-1)*exp(-mod(t+0.375,0.75)*40)"
 gen -f lavfi -i "aevalsrc='$PAD+$BAIXO+$BATIDA+$CHIADO':s=$R:d=16" -af "lowpass=f=5000" -ac 1 "$MUS/lofi_espacial.wav"
 
+# ep07 (episódio 6) — queda até o centro da Terra
+# vento_queda: vento forte de queda (ruído rosa com passa-faixa oscilando), loop de 4 s
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.9:sample_rate=$R:duration=4:seed=91" -af "highpass=f=250,lowpass=f=2600,volume='0.75+0.25*sin(2*PI*t/2)':eval=frame,volume=1.3,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/vento_queda.wav"
+# calor_chiado: chiado de calor (ruído branco agudo com crepitar), loop de 4 s
+gen -f lavfi -i "anoisesrc=color=white:amplitude=0.5:sample_rate=$R:duration=4:seed=93" -af "highpass=f=2500,volume='0.5+0.5*gt(sin(2*PI*7.3*t)*sin(2*PI*3.1*t),0.3)':eval=frame,volume=0.9,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/calor_chiado.wav"
+# lava_borbulha: bolhas graves de metal líquido (blups com tom descendo), loop de 4 s
+gen -f lavfi -i "aevalsrc='0.4*sin(2*PI*(180-120*mod(t*2.5,1))*t)*exp(-mod(t*2.5,1)*7)+0.3*sin(2*PI*(260-150*mod(t*3.7+0.3,1))*t)*exp(-mod(t*3.7+0.3,1)*8)':s=$R:d=4" -af "lowpass=f=1400,afade=t=in:d=0.05,afade=t=out:st=3.95:d=0.05" -ac 1 "$SFX/lava_borbulha.wav"
+# apito_panela: apito de panela de pressão subindo (1,2 s)
+gen -f lavfi -i "aevalsrc='0.22*sin(2*PI*(1800*t+500*t*t))*(0.6+0.4*sin(2*PI*14*t))*min(1,t*8)':s=$R:d=1.2" -af "afade=t=out:st=1.0:d=0.2" -ac 1 "$SFX/apito_panela.wav"
+# puf: fumacinha cartunesca (ruído com envelope rápido e tom grave), 0,5 s
+gen -f lavfi -i "anoisesrc=color=pink:amplitude=0.9:sample_rate=$R:duration=0.5:seed=95" -af "lowpass=f=1800,highpass=f=120,volume='exp(-t*9)':eval=frame,volume=2.2" -ac 1 "$SFX/puf.wav"
+# falha: três notas descendo e a última tremendo ("fom fom fooom"), 1,6 s
+gen -f lavfi -i "aevalsrc='0.3*(lt(t,0.3)*sin(2*PI*311*t)+between(t,0.32,0.62)*sin(2*PI*294*t)+gte(t,0.64)*sin(2*PI*(277+6*sin(2*PI*6*t))*t))*(1+0.4*sin(4*PI*277*t))/1.4':s=$R:d=1.6" -af "lowpass=f=2200,afade=t=out:st=1.3:d=0.3" -ac 1 "$SFX/falha.wav"
+# recusado: dois toques graves de erro, 0,6 s
+gen -f lavfi -i "aevalsrc='0.35*(lt(t,0.22)*sin(2*PI*220*t)+between(t,0.28,0.55)*sin(2*PI*165*t))*(1+0.5*sin(2*PI*660*t))/1.5':s=$R:d=0.6" -af "afade=t=out:st=0.5:d=0.1" -ac 1 "$SFX/recusado.wav"
+# digitar: cliques de teclado irregulares, 1 s
+gen -f lavfi -i "aevalsrc='(random(0)*2-1)*0.6*exp(-mod(t+0.03*sin(t*37),0.085)*300)':s=$R:d=1.0" -af "highpass=f=900,afade=t=out:st=0.9:d=0.1" -ac 1 "$SFX/digitar.wav"
+# apagar: tecla de apagar repetida rápida, 0,5 s
+gen -f lavfi -i "aevalsrc='(random(0)*2-1)*0.5*exp(-mod(t,0.05)*400)':s=$R:d=0.5" -af "highpass=f=1200,afade=t=out:st=0.4:d=0.1" -ac 1 "$SFX/apagar.wav"
+# metro_chegando: sinal de duas notas (ding-dong) e um ding no fim, 1,6 s
+gen -f lavfi -i "aevalsrc='0.35*(lt(t,0.5)*sin(2*PI*784*t)*exp(-t*3)+between(t,0.45,1.0)*sin(2*PI*659*t)*exp(-(t-0.45)*3)+gte(t,0.95)*sin(2*PI*1047*t)*exp(-(t-0.95)*3))':s=$R:d=1.6" -af "afade=t=out:st=1.4:d=0.2" -ac 1 "$SFX/metro_chegando.wav"
+# flutua: arpejo suave subindo (sensação de leveza), 1,6 s
+gen -f lavfi -i "aevalsrc='0.22*sin(2*PI*523*pow(2,floor(min(t,1.2)/0.3)*4/12)*t)*exp(-mod(t,0.3)*4)*(1-t/1.7)':s=$R:d=1.6" -af "afade=t=out:st=1.4:d=0.2" -ac 1 "$SFX/flutua.wav"
+# suspense_grave: zumbido grave com pulso lento, loop de 8 s
+gen -f lavfi -i "aevalsrc='(0.5+0.5*sin(2*PI*t/4))*(0.25*sin(2*PI*73*t)+0.15*sin(2*PI*110*t))':s=$R:d=8" -af "afade=t=in:d=0.05,afade=t=out:st=7.95:d=0.05" -ac 1 "$SFX/suspense_grave.wav"
+# conquista: fanfarrinha de três notas subindo, 1 s
+gen -f lavfi -i "aevalsrc='0.28*(lt(t,0.15)*sin(2*PI*523*t)+between(t,0.15,0.3)*sin(2*PI*659*t)+gte(t,0.3)*sin(2*PI*784*t)*exp(-(t-0.3)*2.5))*(1+0.3*sin(4*PI*523*t))':s=$R:d=1.0" -af "afade=t=out:st=0.85:d=0.15" -ac 1 "$SFX/conquista.wav"
+# torrada_pop: torrada pulando (mola + estalo), 0,4 s
+gen -f lavfi -i "aevalsrc='0.4*sin(2*PI*(300+900*t)*t)*exp(-t*14)+(random(0)*2-1)*0.4*exp(-t*90)':s=$R:d=0.4" -ac 1 "$SFX/torrada_pop.wav"
+# brilho: cintilar agudo (sininhos), 0,8 s
+gen -f lavfi -i "aevalsrc='0.18*(sin(2*PI*2093*t)*exp(-t*6)+sin(2*PI*2637*t)*exp(-mod(t+0.1,0.8)*6)*gte(t,0.1)+sin(2*PI*3136*t)*exp(-mod(t+0.2,0.8)*6)*gte(t,0.2))':s=$R:d=0.8" -ac 1 "$SFX/brilho.wav"
+# energia_queda: trilha animada (Lá menor, ~125 bpm): bumbo nos tempos, chimbal no contratempo,
+# baixo em colcheias e um pluck baixinho; 7,68 s em loop (4 compassos)
+EB="mod(t,0.48)"
+EH="mod(t+0.24,0.48)"
+EC="if(lt(mod(t,7.68),1.92),0,if(lt(mod(t,7.68),3.84),-4,if(lt(mod(t,7.68),5.76),-7,-2)))"
+BUMBO="0.5*sin(2*PI*(50+70*exp(-$EB*35))*$EB)*exp(-$EB*12)"
+CHIMBAL="0.05*(random(0)*2-1)*exp(-$EH*60)"
+BAIXO="0.2*sin(2*PI*110*pow(2,($EC)/12)*t)*exp(-mod(t,0.24)*6)"
+PLUCK="0.07*sin(2*PI*440*pow(2,($EC+if(lt(mod(t,0.96),0.48),0,if(lt(mod(t,0.96),0.72),7,12)))/12)*t)*exp(-mod(t,0.24)*10)"
+gen -f lavfi -i "aevalsrc='$BUMBO+$CHIMBAL+$BAIXO+$PLUCK':s=$R:d=7.68" -af "lowpass=f=6000" -ac 1 "$MUS/energia_queda.wav"
+
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
-for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida lofi_espacial; do
+for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida lofi_espacial energia_queda; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"
 done
 

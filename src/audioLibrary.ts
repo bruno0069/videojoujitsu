@@ -68,6 +68,22 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   clique_lego: { file: "audio/sfx/clique_lego.wav", loop: false, volume: audio.sfxVolume * 0.9 },
   whoosh_grande: { file: "audio/sfx/whoosh_grande.wav", loop: false, volume: audio.sfxVolume * 0.9 },
   agua_subindo: { file: "audio/sfx/agua_correndo.wav", loop: true, volume: audio.sfxVolume * 0.6 },
+  // ep07 (episódio 6)
+  vento_queda: { file: "audio/sfx/vento_queda.wav", loop: true, volume: audio.sfxVolume * 0.32 },
+  calor_chiado: { file: "audio/sfx/calor_chiado.wav", loop: true, volume: audio.sfxVolume * 0.25 },
+  lava_borbulha: { file: "audio/sfx/lava_borbulha.wav", loop: true, volume: audio.sfxVolume * 0.4 },
+  apito_panela: { file: "audio/sfx/apito_panela.wav", loop: false, volume: audio.sfxVolume * 0.5 },
+  puf: { file: "audio/sfx/puf.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  falha: { file: "audio/sfx/falha.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  recusado: { file: "audio/sfx/recusado.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  digitar: { file: "audio/sfx/digitar.wav", loop: false, volume: audio.sfxVolume * 0.5 },
+  apagar: { file: "audio/sfx/apagar.wav", loop: false, volume: audio.sfxVolume * 0.5 },
+  metro_chegando: { file: "audio/sfx/metro_chegando.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  flutua: { file: "audio/sfx/flutua.wav", loop: false, volume: audio.sfxVolume * 0.6 },
+  suspense_grave: { file: "audio/sfx/suspense_grave.wav", loop: true, volume: audio.sfxVolume * 0.35 },
+  conquista: { file: "audio/sfx/conquista.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  torrada_pop: { file: "audio/sfx/torrada_pop.wav", loop: false, volume: audio.sfxVolume * 0.8 },
+  brilho: { file: "audio/sfx/brilho.wav", loop: false, volume: audio.sfxVolume * 0.5 },
 };
 
 // Versões com passa-altas em 120 Hz (scripts/gerar-sons.sh), para o grave não embolar com a voz
@@ -81,4 +97,5 @@ export const MUSIC: Record<string, string> = {
   crescendo_leve: "audio/music/crescendo_leve_hp120.wav",
   leve_divertida: "audio/music/leve_divertida_hp120.wav",
   lofi_espacial: "audio/music/lofi_espacial_hp120.wav",
+  energia_queda: "audio/music/energia_queda_hp120.wav",
 };

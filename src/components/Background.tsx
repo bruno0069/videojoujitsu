@@ -9,6 +9,7 @@ import { DiagramaLua, RaioLuz } from "./backgrounds/Insertos";
 import { CapsulaInterior, DiagramaEspaco, MarteSuperficie, QuartoDia } from "./backgrounds/Ep03";
 import { BalancaTerra, EscalaComparacao, EspacoTerra, MultidaoCima, QuadraDia, Sismografo } from "./backgrounds/Ep04";
 import { CeuEclipse, CeuLuaGrande, ComparacaoEsferas, CuboLego, DiagramaBaricentro, OrlaFrente, OrlaRio } from "./backgrounds/Ep06";
+import { Calor, Centro, Flutua, GloboFinal, Gravidade, Nucleo, Queda, Superficie, TerraTunel } from "./backgrounds/Ep07";
 import { FogueteInterior, HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
@@ -51,6 +52,15 @@ export const BACKGROUNDS = [
   "ceu_eclipse",
   "diagrama_baricentro",
   "cubo_lego",
+  "ep07_superficie",
+  "ep07_terra_tunel",
+  "ep07_queda",
+  "ep07_calor",
+  "ep07_nucleo",
+  "ep07_centro",
+  "ep07_gravidade",
+  "ep07_flutua",
+  "ep07_globo",
 ];
 
 // Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
@@ -154,6 +164,24 @@ export const Background: React.FC<{
       return <CuboLego cam={cam} frame={frame} params={params} />;
     case "diagrama_baricentro":
       return <DiagramaBaricentro cam={cam} frame={frame} params={params} />;
+    case "ep07_superficie":
+      return <Superficie cam={cam} frame={frame} params={params} />;
+    case "ep07_terra_tunel":
+      return <TerraTunel cam={cam} frame={frame} params={params} />;
+    case "ep07_queda":
+      return <Queda cam={cam} frame={frame} params={params} />;
+    case "ep07_calor":
+      return <Calor cam={cam} frame={frame} params={params} />;
+    case "ep07_nucleo":
+      return <Nucleo cam={cam} frame={frame} params={params} />;
+    case "ep07_centro":
+      return <Centro cam={cam} frame={frame} params={params} />;
+    case "ep07_gravidade":
+      return <Gravidade cam={cam} frame={frame} params={params} />;
+    case "ep07_flutua":
+      return <Flutua cam={cam} frame={frame} params={params} />;
+    case "ep07_globo":
+      return <GloboFinal cam={cam} frame={frame} params={params} />;
     default:
       return <rect x={0} y={0} width={1080} height={1920} fill={colors.creme} />;
   }

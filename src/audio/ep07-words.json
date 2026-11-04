@@ -1,0 +1,1844 @@
+[
+ {
+  "text": "E",
+  "startMs": 100,
+  "endMs": 180,
+  "scene": "gancho"
+ },
+ {
+  "text": "se",
+  "startMs": 220,
+  "endMs": 260,
+  "scene": "gancho"
+ },
+ {
+  "text": "você",
+  "startMs": 340,
+  "endMs": 500,
+  "scene": "gancho"
+ },
+ {
+  "text": "pudesse",
+  "startMs": 580,
+  "endMs": 900,
+  "scene": "gancho"
+ },
+ {
+  "text": "cavar",
+  "startMs": 980,
+  "endMs": 1220,
+  "scene": "gancho"
+ },
+ {
+  "text": "um",
+  "startMs": 1260,
+  "endMs": 1300,
+  "scene": "gancho"
+ },
+ {
+  "text": "buraco",
+  "startMs": 1420,
+  "endMs": 1700,
+  "scene": "gancho"
+ },
+ {
+  "text": "até",
+  "startMs": 1820,
+  "endMs": 2020,
+  "scene": "gancho"
+ },
+ {
+  "text": "o",
+  "startMs": 2140,
+  "endMs": 2260,
+  "scene": "gancho"
+ },
+ {
+  "text": "centro",
+  "startMs": 2380,
+  "endMs": 2580,
+  "scene": "gancho"
+ },
+ {
+  "text": "da",
+  "startMs": 2660,
+  "endMs": 2740,
+  "scene": "gancho"
+ },
+ {
+  "text": "Terra...",
+  "startMs": 2820,
+  "endMs": 3191,
+  "scene": "gancho"
+ },
+ {
+  "text": "e",
+  "startMs": 3631,
+  "endMs": 3751,
+  "scene": "gancho"
+ },
+ {
+  "text": "simplesmente",
+  "startMs": 3911,
+  "endMs": 4471,
+  "scene": "gancho"
+ },
+ {
+  "text": "pular?",
+  "startMs": 4631,
+  "endMs": 5010,
+  "scene": "gancho"
+ },
+ {
+  "text": "O",
+  "startMs": 5340,
+  "endMs": 5412,
+  "scene": "gancho"
+ },
+ {
+  "text": "Nico",
+  "startMs": 5452,
+  "endMs": 5652,
+  "scene": "gancho"
+ },
+ {
+  "text": "achou",
+  "startMs": 5772,
+  "endMs": 5972,
+  "scene": "gancho"
+ },
+ {
+  "text": "que",
+  "startMs": 6052,
+  "endMs": 6132,
+  "scene": "gancho"
+ },
+ {
+  "text": "seria",
+  "startMs": 6212,
+  "endMs": 6372,
+  "scene": "gancho"
+ },
+ {
+  "text": "uma",
+  "startMs": 6412,
+  "endMs": 6452,
+  "scene": "gancho"
+ },
+ {
+  "text": "experiência",
+  "startMs": 6532,
+  "endMs": 7092,
+  "scene": "gancho"
+ },
+ {
+  "text": "radical.",
+  "startMs": 7172,
+  "endMs": 7763,
+  "scene": "gancho"
+ },
+ {
+  "text": "O",
+  "startMs": 8093,
+  "endMs": 8156,
+  "scene": "gancho"
+ },
+ {
+  "text": "problema",
+  "startMs": 8276,
+  "endMs": 8796,
+  "scene": "gancho"
+ },
+ {
+  "text": "é",
+  "startMs": 8876,
+  "endMs": 8956,
+  "scene": "gancho"
+ },
+ {
+  "text": "que",
+  "startMs": 8996,
+  "endMs": 9036,
+  "scene": "gancho"
+ },
+ {
+  "text": "ele",
+  "startMs": 9116,
+  "endMs": 9196,
+  "scene": "gancho"
+ },
+ {
+  "text": "tem",
+  "startMs": 9276,
+  "endMs": 9356,
+  "scene": "gancho"
+ },
+ {
+  "text": "o",
+  "startMs": 9396,
+  "endMs": 9436,
+  "scene": "gancho"
+ },
+ {
+  "text": "instinto",
+  "startMs": 9556,
+  "endMs": 9916,
+  "scene": "gancho"
+ },
+ {
+  "text": "de",
+  "startMs": 9956,
+  "endMs": 9996,
+  "scene": "gancho"
+ },
+ {
+  "text": "sobrevivência",
+  "startMs": 10036,
+  "endMs": 10716,
+  "scene": "gancho"
+ },
+ {
+  "text": "de",
+  "startMs": 10756,
+  "endMs": 10796,
+  "scene": "gancho"
+ },
+ {
+  "text": "uma",
+  "startMs": 10876,
+  "endMs": 10956,
+  "scene": "gancho"
+ },
+ {
+  "text": "batata.",
+  "startMs": 11036,
+  "endMs": 11756,
+  "scene": "gancho"
+ },
+ {
+  "text": "Imagine",
+  "startMs": 12506,
+  "endMs": 12986,
+  "scene": "queda"
+ },
+ {
+  "text": "um",
+  "startMs": 13026,
+  "endMs": 13066,
+  "scene": "queda"
+ },
+ {
+  "text": "túnel",
+  "startMs": 13226,
+  "endMs": 13466,
+  "scene": "queda"
+ },
+ {
+  "text": "atravessando",
+  "startMs": 13546,
+  "endMs": 14106,
+  "scene": "queda"
+ },
+ {
+  "text": "o",
+  "startMs": 14133,
+  "endMs": 14159,
+  "scene": "queda"
+ },
+ {
+  "text": "planeta",
+  "startMs": 14186,
+  "endMs": 14586,
+  "scene": "queda"
+ },
+ {
+  "text": "inteiro.",
+  "startMs": 14746,
+  "endMs": 15038,
+  "scene": "queda"
+ },
+ {
+  "text": "Você",
+  "startMs": 15372,
+  "endMs": 15612,
+  "scene": "queda"
+ },
+ {
+  "text": "pula",
+  "startMs": 15772,
+  "endMs": 16092,
+  "scene": "queda"
+ },
+ {
+  "text": "e",
+  "startMs": 16252,
+  "endMs": 16292,
+  "scene": "queda"
+ },
+ {
+  "text": "começa",
+  "startMs": 16332,
+  "endMs": 16572,
+  "scene": "queda"
+ },
+ {
+  "text": "a",
+  "startMs": 16612,
+  "endMs": 16652,
+  "scene": "queda"
+ },
+ {
+  "text": "cair...",
+  "startMs": 16732,
+  "endMs": 16964,
+  "scene": "queda"
+ },
+ {
+  "text": "10",
+  "startMs": 17418,
+  "endMs": 17538,
+  "scene": "queda"
+ },
+ {
+  "text": "metros...",
+  "startMs": 17618,
+  "endMs": 18498,
+  "scene": "queda"
+ },
+ {
+  "text": "100",
+  "startMs": 18578,
+  "endMs": 18658,
+  "scene": "queda"
+ },
+ {
+  "text": "metros...",
+  "startMs": 18738,
+  "endMs": 19618,
+  "scene": "queda"
+ },
+ {
+  "text": "1",
+  "startMs": 19658,
+  "endMs": 19698,
+  "scene": "queda"
+ },
+ {
+  "text": "quilômetro...",
+  "startMs": 19778,
+  "endMs": 20818,
+  "scene": "queda"
+ },
+ {
+  "text": "E",
+  "startMs": 20845,
+  "endMs": 20871,
+  "scene": "queda"
+ },
+ {
+  "text": "a",
+  "startMs": 20898,
+  "endMs": 20938,
+  "scene": "queda"
+ },
+ {
+  "text": "velocidade",
+  "startMs": 20978,
+  "endMs": 21538,
+  "scene": "queda"
+ },
+ {
+  "text": "só",
+  "startMs": 21618,
+  "endMs": 21738,
+  "scene": "queda"
+ },
+ {
+  "text": "aumenta!",
+  "startMs": 21778,
+  "endMs": 22277,
+  "scene": "queda"
+ },
+ {
+  "text": "Nico",
+  "startMs": 22669,
+  "endMs": 22909,
+  "scene": "queda"
+ },
+ {
+  "text": "já",
+  "startMs": 22949,
+  "endMs": 23029,
+  "scene": "queda"
+ },
+ {
+  "text": "está",
+  "startMs": 23069,
+  "endMs": 23229,
+  "scene": "queda"
+ },
+ {
+  "text": "se",
+  "startMs": 23309,
+  "endMs": 23389,
+  "scene": "queda"
+ },
+ {
+  "text": "sentindo",
+  "startMs": 23509,
+  "endMs": 23789,
+  "scene": "queda"
+ },
+ {
+  "text": "o",
+  "startMs": 23869,
+  "endMs": 23949,
+  "scene": "queda"
+ },
+ {
+  "text": "próprio",
+  "startMs": 23989,
+  "endMs": 24269,
+  "scene": "queda"
+ },
+ {
+  "text": "Homem-Aranha.",
+  "startMs": 24349,
+  "endMs": 24989,
+  "scene": "queda"
+ },
+ {
+  "text": "Só",
+  "startMs": 25229,
+  "endMs": 25349,
+  "scene": "queda"
+ },
+ {
+  "text": "que",
+  "startMs": 25389,
+  "endMs": 25469,
+  "scene": "queda"
+ },
+ {
+  "text": "sem",
+  "startMs": 25549,
+  "endMs": 25709,
+  "scene": "queda"
+ },
+ {
+  "text": "poderes,",
+  "startMs": 25789,
+  "endMs": 26429,
+  "scene": "queda"
+ },
+ {
+  "text": "sem",
+  "startMs": 26509,
+  "endMs": 26669,
+  "scene": "queda"
+ },
+ {
+  "text": "plano",
+  "startMs": 26749,
+  "endMs": 27069,
+  "scene": "queda"
+ },
+ {
+  "text": "e",
+  "startMs": 27229,
+  "endMs": 27269,
+  "scene": "queda"
+ },
+ {
+  "text": "com",
+  "startMs": 27309,
+  "endMs": 27389,
+  "scene": "queda"
+ },
+ {
+  "text": "uma",
+  "startMs": 27469,
+  "endMs": 27549,
+  "scene": "queda"
+ },
+ {
+  "text": "inteligência",
+  "startMs": 27589,
+  "endMs": 28109,
+  "scene": "queda"
+ },
+ {
+  "text": "emocional",
+  "startMs": 28149,
+  "endMs": 28589,
+  "scene": "queda"
+ },
+ {
+  "text": "de",
+  "startMs": 28669,
+  "endMs": 28709,
+  "scene": "queda"
+ },
+ {
+  "text": "uma",
+  "startMs": 28749,
+  "endMs": 28829,
+  "scene": "queda"
+ },
+ {
+  "text": "torradeira.",
+  "startMs": 28989,
+  "endMs": 29672,
+  "scene": "queda"
+ },
+ {
+  "text": "Mas",
+  "startMs": 30421,
+  "endMs": 30554,
+  "scene": "calor"
+ },
+ {
+  "text": "aí",
+  "startMs": 30581,
+  "endMs": 30741,
+  "scene": "calor"
+ },
+ {
+  "text": "vem",
+  "startMs": 30901,
+  "endMs": 31041,
+  "scene": "calor"
+ },
+ {
+  "text": "o",
+  "startMs": 31061,
+  "endMs": 31141,
+  "scene": "calor"
+ },
+ {
+  "text": "pequeno",
+  "startMs": 31221,
+  "endMs": 31701,
+  "scene": "calor"
+ },
+ {
+  "text": "detalhe",
+  "startMs": 31861,
+  "endMs": 32181,
+  "scene": "calor"
+ },
+ {
+  "text": "que",
+  "startMs": 32261,
+  "endMs": 32341,
+  "scene": "calor"
+ },
+ {
+  "text": "o",
+  "startMs": 32368,
+  "endMs": 32394,
+  "scene": "calor"
+ },
+ {
+  "text": "Google",
+  "startMs": 32421,
+  "endMs": 32661,
+  "scene": "calor"
+ },
+ {
+  "text": "Maps",
+  "startMs": 32741,
+  "endMs": 32981,
+  "scene": "calor"
+ },
+ {
+  "text": "não",
+  "startMs": 33021,
+  "endMs": 33141,
+  "scene": "calor"
+ },
+ {
+  "text": "mostra:",
+  "startMs": 33221,
+  "endMs": 33610,
+  "scene": "calor"
+ },
+ {
+  "text": "Quanto",
+  "startMs": 33940,
+  "endMs": 34179,
+  "scene": "calor"
+ },
+ {
+  "text": "mais",
+  "startMs": 34259,
+  "endMs": 34499,
+  "scene": "calor"
+ },
+ {
+  "text": "fundo",
+  "startMs": 34579,
+  "endMs": 34819,
+  "scene": "calor"
+ },
+ {
+  "text": "você",
+  "startMs": 34859,
+  "endMs": 35059,
+  "scene": "calor"
+ },
+ {
+  "text": "vai,",
+  "startMs": 35139,
+  "endMs": 35619,
+  "scene": "calor"
+ },
+ {
+  "text": "maior",
+  "startMs": 35699,
+  "endMs": 36099,
+  "scene": "calor"
+ },
+ {
+  "text": "fica",
+  "startMs": 36179,
+  "endMs": 36339,
+  "scene": "calor"
+ },
+ {
+  "text": "a",
+  "startMs": 36366,
+  "endMs": 36392,
+  "scene": "calor"
+ },
+ {
+  "text": "temperatura",
+  "startMs": 36419,
+  "endMs": 37059,
+  "scene": "calor"
+ },
+ {
+  "text": "e",
+  "startMs": 37139,
+  "endMs": 37179,
+  "scene": "calor"
+ },
+ {
+  "text": "a",
+  "startMs": 37219,
+  "endMs": 37259,
+  "scene": "calor"
+ },
+ {
+  "text": "pressão.",
+  "startMs": 37299,
+  "endMs": 37692,
+  "scene": "calor"
+ },
+ {
+  "text": "A",
+  "startMs": 38022,
+  "endMs": 38081,
+  "scene": "calor"
+ },
+ {
+  "text": "crosta",
+  "startMs": 38161,
+  "endMs": 38401,
+  "scene": "calor"
+ },
+ {
+  "text": "terrestre",
+  "startMs": 38481,
+  "endMs": 39041,
+  "scene": "calor"
+ },
+ {
+  "text": "já",
+  "startMs": 39081,
+  "endMs": 39201,
+  "scene": "calor"
+ },
+ {
+  "text": "ficou",
+  "startMs": 39281,
+  "endMs": 39521,
+  "scene": "calor"
+ },
+ {
+  "text": "para",
+  "startMs": 39601,
+  "endMs": 39681,
+  "scene": "calor"
+ },
+ {
+  "text": "trás.",
+  "startMs": 39761,
+  "endMs": 40321,
+  "scene": "calor"
+ },
+ {
+  "text": "Agora",
+  "startMs": 40481,
+  "endMs": 40961,
+  "scene": "calor"
+ },
+ {
+  "text": "você",
+  "startMs": 41001,
+  "endMs": 41201,
+  "scene": "calor"
+ },
+ {
+  "text": "está",
+  "startMs": 41281,
+  "endMs": 41401,
+  "scene": "calor"
+ },
+ {
+  "text": "chegando",
+  "startMs": 41441,
+  "endMs": 41761,
+  "scene": "calor"
+ },
+ {
+  "text": "ao",
+  "startMs": 41801,
+  "endMs": 41841,
+  "scene": "calor"
+ },
+ {
+  "text": "manto,",
+  "startMs": 41921,
+  "endMs": 42561,
+  "scene": "calor"
+ },
+ {
+  "text": "onde",
+  "startMs": 42641,
+  "endMs": 42721,
+  "scene": "calor"
+ },
+ {
+  "text": "as",
+  "startMs": 42801,
+  "endMs": 42881,
+  "scene": "calor"
+ },
+ {
+  "text": "rochas",
+  "startMs": 42961,
+  "endMs": 43281,
+  "scene": "calor"
+ },
+ {
+  "text": "podem",
+  "startMs": 43361,
+  "endMs": 43601,
+  "scene": "calor"
+ },
+ {
+  "text": "passar",
+  "startMs": 43681,
+  "endMs": 43921,
+  "scene": "calor"
+ },
+ {
+  "text": "de",
+  "startMs": 44001,
+  "endMs": 44081,
+  "scene": "calor"
+ },
+ {
+  "text": "mil",
+  "startMs": 44241,
+  "endMs": 44481,
+  "scene": "calor"
+ },
+ {
+  "text": "graus!",
+  "startMs": 44561,
+  "endMs": 45105,
+  "scene": "calor"
+ },
+ {
+  "text": "Nico",
+  "startMs": 45441,
+  "endMs": 45761,
+  "scene": "calor"
+ },
+ {
+  "text": "começa",
+  "startMs": 45881,
+  "endMs": 46081,
+  "scene": "calor"
+ },
+ {
+  "text": "a",
+  "startMs": 46121,
+  "endMs": 46161,
+  "scene": "calor"
+ },
+ {
+  "text": "perceber",
+  "startMs": 46241,
+  "endMs": 46641,
+  "scene": "calor"
+ },
+ {
+  "text": "que",
+  "startMs": 46721,
+  "endMs": 46801,
+  "scene": "calor"
+ },
+ {
+  "text": "talvez",
+  "startMs": 46881,
+  "endMs": 47201,
+  "scene": "calor"
+ },
+ {
+  "text": "tenha",
+  "startMs": 47281,
+  "endMs": 47401,
+  "scene": "calor"
+ },
+ {
+  "text": "escolhido",
+  "startMs": 47441,
+  "endMs": 47841,
+  "scene": "calor"
+ },
+ {
+  "text": "o",
+  "startMs": 47881,
+  "endMs": 47921,
+  "scene": "calor"
+ },
+ {
+  "text": "pior",
+  "startMs": 48001,
+  "endMs": 48401,
+  "scene": "calor"
+ },
+ {
+  "text": "Uber",
+  "startMs": 48481,
+  "endMs": 48721,
+  "scene": "calor"
+ },
+ {
+  "text": "da",
+  "startMs": 48761,
+  "endMs": 48801,
+  "scene": "calor"
+ },
+ {
+  "text": "história.",
+  "startMs": 48881,
+  "endMs": 49401,
+  "scene": "calor"
+ },
+ {
+  "text": "E",
+  "startMs": 50152,
+  "endMs": 50192,
+  "scene": "nucleo"
+ },
+ {
+  "text": "tem",
+  "startMs": 50232,
+  "endMs": 50419,
+  "scene": "nucleo"
+ },
+ {
+  "text": "mais!",
+  "startMs": 50472,
+  "endMs": 50952,
+  "scene": "nucleo"
+ },
+ {
+  "text": "No",
+  "startMs": 51072,
+  "endMs": 51352,
+  "scene": "nucleo"
+ },
+ {
+  "text": "caminho,",
+  "startMs": 51392,
+  "endMs": 51912,
+  "scene": "nucleo"
+ },
+ {
+  "text": "você",
+  "startMs": 51952,
+  "endMs": 52152,
+  "scene": "nucleo"
+ },
+ {
+  "text": "ainda",
+  "startMs": 52232,
+  "endMs": 52392,
+  "scene": "nucleo"
+ },
+ {
+  "text": "teria",
+  "startMs": 52472,
+  "endMs": 52632,
+  "scene": "nucleo"
+ },
+ {
+  "text": "que",
+  "startMs": 52712,
+  "endMs": 52792,
+  "scene": "nucleo"
+ },
+ {
+  "text": "enfrentar",
+  "startMs": 52832,
+  "endMs": 53192,
+  "scene": "nucleo"
+ },
+ {
+  "text": "o",
+  "startMs": 53232,
+  "endMs": 53272,
+  "scene": "nucleo"
+ },
+ {
+  "text": "núcleo",
+  "startMs": 53352,
+  "endMs": 53632,
+  "scene": "nucleo"
+ },
+ {
+  "text": "externo,",
+  "startMs": 53672,
+  "endMs": 54392,
+  "scene": "nucleo"
+ },
+ {
+  "text": "formado",
+  "startMs": 54472,
+  "endMs": 54792,
+  "scene": "nucleo"
+ },
+ {
+  "text": "principalmente",
+  "startMs": 54872,
+  "endMs": 55592,
+  "scene": "nucleo"
+ },
+ {
+  "text": "por",
+  "startMs": 55672,
+  "endMs": 55832,
+  "scene": "nucleo"
+ },
+ {
+  "text": "ferro",
+  "startMs": 55912,
+  "endMs": 56312,
+  "scene": "nucleo"
+ },
+ {
+  "text": "e",
+  "startMs": 56392,
+  "endMs": 56432,
+  "scene": "nucleo"
+ },
+ {
+  "text": "níquel",
+  "startMs": 56472,
+  "endMs": 56872,
+  "scene": "nucleo"
+ },
+ {
+  "text": "líquidos.",
+  "startMs": 56952,
+  "endMs": 57632,
+  "scene": "nucleo"
+ },
+ {
+  "text": "Temperaturas",
+  "startMs": 57832,
+  "endMs": 58472,
+  "scene": "nucleo"
+ },
+ {
+  "text": "entre",
+  "startMs": 58592,
+  "endMs": 58712,
+  "scene": "nucleo"
+ },
+ {
+  "text": "4",
+  "startMs": 58872,
+  "endMs": 59192,
+  "scene": "nucleo"
+ },
+ {
+  "text": "mil",
+  "startMs": 59352,
+  "endMs": 59512,
+  "scene": "nucleo"
+ },
+ {
+  "text": "e",
+  "startMs": 59592,
+  "endMs": 59832,
+  "scene": "nucleo"
+ },
+ {
+  "text": "5",
+  "startMs": 59912,
+  "endMs": 60152,
+  "scene": "nucleo"
+ },
+ {
+  "text": "mil",
+  "startMs": 60312,
+  "endMs": 60392,
+  "scene": "nucleo"
+ },
+ {
+  "text": "graus!",
+  "startMs": 60552,
+  "endMs": 61232,
+  "scene": "nucleo"
+ },
+ {
+  "text": "É",
+  "startMs": 61432,
+  "endMs": 61512,
+  "scene": "nucleo"
+ },
+ {
+  "text": "basicamente",
+  "startMs": 61632,
+  "endMs": 62072,
+  "scene": "nucleo"
+ },
+ {
+  "text": "entrar",
+  "startMs": 62152,
+  "endMs": 62312,
+  "scene": "nucleo"
+ },
+ {
+  "text": "numa",
+  "startMs": 62392,
+  "endMs": 62512,
+  "scene": "nucleo"
+ },
+ {
+  "text": "panela",
+  "startMs": 62552,
+  "endMs": 62832,
+  "scene": "nucleo"
+ },
+ {
+  "text": "de",
+  "startMs": 62872,
+  "endMs": 62912,
+  "scene": "nucleo"
+ },
+ {
+  "text": "pressão",
+  "startMs": 62952,
+  "endMs": 63272,
+  "scene": "nucleo"
+ },
+ {
+  "text": "do",
+  "startMs": 63312,
+  "endMs": 63352,
+  "scene": "nucleo"
+ },
+ {
+  "text": "capeta.",
+  "startMs": 63432,
+  "endMs": 64026,
+  "scene": "nucleo"
+ },
+ {
+  "text": "E",
+  "startMs": 64363,
+  "endMs": 64443,
+  "scene": "nucleo"
+ },
+ {
+  "text": "o",
+  "startMs": 64483,
+  "endMs": 64523,
+  "scene": "nucleo"
+ },
+ {
+  "text": "Nico?",
+  "startMs": 64563,
+  "endMs": 65123,
+  "scene": "nucleo"
+ },
+ {
+  "text": "Já",
+  "startMs": 65323,
+  "endMs": 65403,
+  "scene": "nucleo"
+ },
+ {
+  "text": "virou",
+  "startMs": 65483,
+  "endMs": 65723,
+  "scene": "nucleo"
+ },
+ {
+  "text": "um",
+  "startMs": 65763,
+  "endMs": 65803,
+  "scene": "nucleo"
+ },
+ {
+  "text": "miojo",
+  "startMs": 65843,
+  "endMs": 66203,
+  "scene": "nucleo"
+ },
+ {
+  "text": "premium.",
+  "startMs": 66283,
+  "endMs": 66811,
+  "scene": "nucleo"
+ },
+ {
+  "text": "Mas,",
+  "startMs": 67562,
+  "endMs": 68042,
+  "scene": "centro"
+ },
+ {
+  "text": "num",
+  "startMs": 68202,
+  "endMs": 68335,
+  "scene": "centro"
+ },
+ {
+  "text": "cenário",
+  "startMs": 68362,
+  "endMs": 68842,
+  "scene": "centro"
+ },
+ {
+  "text": "completamente",
+  "startMs": 68962,
+  "endMs": 69642,
+  "scene": "centro"
+ },
+ {
+  "text": "impossível,",
+  "startMs": 69722,
+  "endMs": 70602,
+  "scene": "centro"
+ },
+ {
+  "text": "com",
+  "startMs": 70682,
+  "endMs": 70762,
+  "scene": "centro"
+ },
+ {
+  "text": "um",
+  "startMs": 70802,
+  "endMs": 70842,
+  "scene": "centro"
+ },
+ {
+  "text": "túnel",
+  "startMs": 70922,
+  "endMs": 71162,
+  "scene": "centro"
+ },
+ {
+  "text": "protegido",
+  "startMs": 71282,
+  "endMs": 71882,
+  "scene": "centro"
+ },
+ {
+  "text": "e",
+  "startMs": 71962,
+  "endMs": 72042,
+  "scene": "centro"
+ },
+ {
+  "text": "sem",
+  "startMs": 72162,
+  "endMs": 72282,
+  "scene": "centro"
+ },
+ {
+  "text": "ar...",
+  "startMs": 72362,
+  "endMs": 72622,
+  "scene": "centro"
+ },
+ {
+  "text": "A",
+  "startMs": 72980,
+  "endMs": 73006,
+  "scene": "centro"
+ },
+ {
+  "text": "gravidade",
+  "startMs": 73033,
+  "endMs": 73593,
+  "scene": "centro"
+ },
+ {
+  "text": "continuaria",
+  "startMs": 73753,
+  "endMs": 74233,
+  "scene": "centro"
+ },
+ {
+  "text": "puxando",
+  "startMs": 74273,
+  "endMs": 74633,
+  "scene": "centro"
+ },
+ {
+  "text": "você",
+  "startMs": 74673,
+  "endMs": 74953,
+  "scene": "centro"
+ },
+ {
+  "text": "em",
+  "startMs": 75033,
+  "endMs": 75113,
+  "scene": "centro"
+ },
+ {
+  "text": "direção",
+  "startMs": 75193,
+  "endMs": 75513,
+  "scene": "centro"
+ },
+ {
+  "text": "ao",
+  "startMs": 75593,
+  "endMs": 75673,
+  "scene": "centro"
+ },
+ {
+  "text": "centro.",
+  "startMs": 75753,
+  "endMs": 76064,
+  "scene": "centro"
+ },
+ {
+  "text": "E",
+  "startMs": 76405,
+  "endMs": 76445,
+  "scene": "centro"
+ },
+ {
+  "text": "aqui",
+  "startMs": 76525,
+  "endMs": 76765,
+  "scene": "centro"
+ },
+ {
+  "text": "vem",
+  "startMs": 76845,
+  "endMs": 76925,
+  "scene": "centro"
+ },
+ {
+  "text": "a",
+  "startMs": 77005,
+  "endMs": 77085,
+  "scene": "centro"
+ },
+ {
+  "text": "parte",
+  "startMs": 77205,
+  "endMs": 77485,
+  "scene": "centro"
+ },
+ {
+  "text": "mais",
+  "startMs": 77565,
+  "endMs": 77725,
+  "scene": "centro"
+ },
+ {
+  "text": "maluca:",
+  "startMs": 77805,
+  "endMs": 78685,
+  "scene": "centro"
+ },
+ {
+  "text": "Lá",
+  "startMs": 78765,
+  "endMs": 78885,
+  "scene": "centro"
+ },
+ {
+  "text": "no",
+  "startMs": 78925,
+  "endMs": 79085,
+  "scene": "centro"
+ },
+ {
+  "text": "fundo,",
+  "startMs": 79165,
+  "endMs": 79645,
+  "scene": "centro"
+ },
+ {
+  "text": "depois",
+  "startMs": 79725,
+  "endMs": 79965,
+  "scene": "centro"
+ },
+ {
+  "text": "do",
+  "startMs": 80045,
+  "endMs": 80125,
+  "scene": "centro"
+ },
+ {
+  "text": "manto,",
+  "startMs": 80232,
+  "endMs": 80685,
+  "scene": "centro"
+ },
+ {
+  "text": "a",
+  "startMs": 80765,
+  "endMs": 80805,
+  "scene": "centro"
+ },
+ {
+  "text": "gravidade",
+  "startMs": 80845,
+  "endMs": 81325,
+  "scene": "centro"
+ },
+ {
+  "text": "começa",
+  "startMs": 81405,
+  "endMs": 81645,
+  "scene": "centro"
+ },
+ {
+  "text": "a",
+  "startMs": 81685,
+  "endMs": 81725,
+  "scene": "centro"
+ },
+ {
+  "text": "diminuir!",
+  "startMs": 81805,
+  "endMs": 82317,
+  "scene": "centro"
+ },
+ {
+  "text": "Exatamente",
+  "startMs": 82771,
+  "endMs": 83411,
+  "scene": "centro"
+ },
+ {
+  "text": "no",
+  "startMs": 83531,
+  "endMs": 83651,
+  "scene": "centro"
+ },
+ {
+  "text": "centro",
+  "startMs": 83771,
+  "endMs": 83971,
+  "scene": "centro"
+ },
+ {
+  "text": "da",
+  "startMs": 84011,
+  "endMs": 84051,
+  "scene": "centro"
+ },
+ {
+  "text": "Terra,",
+  "startMs": 84211,
+  "endMs": 84691,
+  "scene": "centro"
+ },
+ {
+  "text": "ela",
+  "startMs": 84771,
+  "endMs": 84851,
+  "scene": "centro"
+ },
+ {
+  "text": "seria",
+  "startMs": 84931,
+  "endMs": 85251,
+  "scene": "centro"
+ },
+ {
+  "text": "praticamente",
+  "startMs": 85291,
+  "endMs": 85891,
+  "scene": "centro"
+ },
+ {
+  "text": "zero.",
+  "startMs": 86051,
+  "endMs": 86691,
+  "scene": "centro"
+ },
+ {
+  "text": "Você",
+  "startMs": 86811,
+  "endMs": 86931,
+  "scene": "centro"
+ },
+ {
+  "text": "ficaria",
+  "startMs": 87011,
+  "endMs": 87331,
+  "scene": "centro"
+ },
+ {
+  "text": "flutuando!",
+  "startMs": 87371,
+  "endMs": 87998,
+  "scene": "centro"
+ },
+ {
+  "text": "Nico",
+  "startMs": 88379,
+  "endMs": 88779,
+  "scene": "centro"
+ },
+ {
+  "text": "finalmente",
+  "startMs": 88859,
+  "endMs": 89419,
+  "scene": "centro"
+ },
+ {
+  "text": "conseguiu",
+  "startMs": 89499,
+  "endMs": 89899,
+  "scene": "centro"
+ },
+ {
+  "text": "ficar",
+  "startMs": 89979,
+  "endMs": 90219,
+  "scene": "centro"
+ },
+ {
+  "text": "parado",
+  "startMs": 90339,
+  "endMs": 90619,
+  "scene": "centro"
+ },
+ {
+  "text": "na",
+  "startMs": 90699,
+  "endMs": 90779,
+  "scene": "centro"
+ },
+ {
+  "text": "vida.",
+  "startMs": 90859,
+  "endMs": 91218,
+  "scene": "centro"
+ },
+ {
+  "text": "E",
+  "startMs": 91968,
+  "endMs": 92048,
+  "scene": "final"
+ },
+ {
+  "text": "sabe",
+  "startMs": 92088,
+  "endMs": 92288,
+  "scene": "final"
+ },
+ {
+  "text": "o",
+  "startMs": 92328,
+  "endMs": 92368,
+  "scene": "final"
+ },
+ {
+  "text": "pior?",
+  "startMs": 92408,
+  "endMs": 92727,
+  "scene": "final"
+ },
+ {
+  "text": "Se",
+  "startMs": 93090,
+  "endMs": 93170,
+  "scene": "final"
+ },
+ {
+  "text": "você",
+  "startMs": 93210,
+  "endMs": 93410,
+  "scene": "final"
+ },
+ {
+  "text": "conseguisse",
+  "startMs": 93490,
+  "endMs": 93890,
+  "scene": "final"
+ },
+ {
+  "text": "atravessar",
+  "startMs": 93970,
+  "endMs": 94450,
+  "scene": "final"
+ },
+ {
+  "text": "a",
+  "startMs": 94490,
+  "endMs": 94530,
+  "scene": "final"
+ },
+ {
+  "text": "Terra",
+  "startMs": 94690,
+  "endMs": 94850,
+  "scene": "final"
+ },
+ {
+  "text": "inteira",
+  "startMs": 94930,
+  "endMs": 95330,
+  "scene": "final"
+ },
+ {
+  "text": "num",
+  "startMs": 95450,
+  "endMs": 95570,
+  "scene": "final"
+ },
+ {
+  "text": "túnel",
+  "startMs": 95610,
+  "endMs": 95890,
+  "scene": "final"
+ },
+ {
+  "text": "sem",
+  "startMs": 95970,
+  "endMs": 96130,
+  "scene": "final"
+ },
+ {
+  "text": "atrito,",
+  "startMs": 96210,
+  "endMs": 96850,
+  "scene": "final"
+ },
+ {
+  "text": "levaria",
+  "startMs": 96930,
+  "endMs": 97250,
+  "scene": "final"
+ },
+ {
+  "text": "aproximadamente",
+  "startMs": 97330,
+  "endMs": 98130,
+  "scene": "final"
+ },
+ {
+  "text": "42",
+  "startMs": 98290,
+  "endMs": 99010,
+  "scene": "final"
+ },
+ {
+  "text": "minutos",
+  "startMs": 99090,
+  "endMs": 99490,
+  "scene": "final"
+ },
+ {
+  "text": "para",
+  "startMs": 99570,
+  "endMs": 99650,
+  "scene": "final"
+ },
+ {
+  "text": "chegar",
+  "startMs": 99730,
+  "endMs": 99970,
+  "scene": "final"
+ },
+ {
+  "text": "ao",
+  "startMs": 100010,
+  "endMs": 100050,
+  "scene": "final"
+ },
+ {
+  "text": "outro",
+  "startMs": 100130,
+  "endMs": 100290,
+  "scene": "final"
+ },
+ {
+  "text": "lado.",
+  "startMs": 100370,
+  "endMs": 100528,
+  "scene": "final"
+ },
+ {
+  "text": "Ou",
+  "startMs": 100893,
+  "endMs": 100973,
+  "scene": "final"
+ },
+ {
+  "text": "seja...",
+  "startMs": 101053,
+  "endMs": 101419,
+  "scene": "final"
+ },
+ {
+  "text": "Você",
+  "startMs": 101836,
+  "endMs": 101956,
+  "scene": "final"
+ },
+ {
+  "text": "poderia",
+  "startMs": 102036,
+  "endMs": 102276,
+  "scene": "final"
+ },
+ {
+  "text": "fazer",
+  "startMs": 102356,
+  "endMs": 102596,
+  "scene": "final"
+ },
+ {
+  "text": "uma",
+  "startMs": 102676,
+  "endMs": 102756,
+  "scene": "final"
+ },
+ {
+  "text": "viagem",
+  "startMs": 102836,
+  "endMs": 103236,
+  "scene": "final"
+ },
+ {
+  "text": "intercontinental",
+  "startMs": 103316,
+  "endMs": 104276,
+  "scene": "final"
+ },
+ {
+  "text": "sem",
+  "startMs": 104516,
+  "endMs": 104676,
+  "scene": "final"
+ },
+ {
+  "text": "pagar",
+  "startMs": 104756,
+  "endMs": 104996,
+  "scene": "final"
+ },
+ {
+  "text": "passagem.",
+  "startMs": 105076,
+  "endMs": 105716,
+  "scene": "final"
+ },
+ {
+  "text": "Só",
+  "startMs": 106036,
+  "endMs": 106116,
+  "scene": "final"
+ },
+ {
+  "text": "precisaria",
+  "startMs": 106196,
+  "endMs": 106676,
+  "scene": "final"
+ },
+ {
+  "text": "sobreviver",
+  "startMs": 106756,
+  "endMs": 107236,
+  "scene": "final"
+ },
+ {
+  "text": "a",
+  "startMs": 107276,
+  "endMs": 107316,
+  "scene": "final"
+ },
+ {
+  "text": "uma",
+  "startMs": 107356,
+  "endMs": 107396,
+  "scene": "final"
+ },
+ {
+  "text": "experiência",
+  "startMs": 107476,
+  "endMs": 108036,
+  "scene": "final"
+ },
+ {
+  "text": "que",
+  "startMs": 108116,
+  "endMs": 108276,
+  "scene": "final"
+ },
+ {
+  "text": "nem",
+  "startMs": 108356,
+  "endMs": 108516,
+  "scene": "final"
+ },
+ {
+  "text": "o",
+  "startMs": 108556,
+  "endMs": 108596,
+  "scene": "final"
+ },
+ {
+  "text": "seguro",
+  "startMs": 108676,
+  "endMs": 108996,
+  "scene": "final"
+ },
+ {
+  "text": "de",
+  "startMs": 109076,
+  "endMs": 109156,
+  "scene": "final"
+ },
+ {
+  "text": "vida",
+  "startMs": 109236,
+  "endMs": 109396,
+  "scene": "final"
+ },
+ {
+  "text": "aceitaria",
+  "startMs": 109516,
+  "endMs": 109956,
+  "scene": "final"
+ },
+ {
+  "text": "cobrir.",
+  "startMs": 110036,
+  "endMs": 110296,
+  "scene": "final"
+ },
+ {
+  "text": "Nico",
+  "startMs": 110669,
+  "endMs": 110989,
+  "scene": "final"
+ },
+ {
+  "text": "já",
+  "startMs": 111029,
+  "endMs": 111109,
+  "scene": "final"
+ },
+ {
+  "text": "está",
+  "startMs": 111149,
+  "endMs": 111349,
+  "scene": "final"
+ },
+ {
+  "text": "procurando",
+  "startMs": 111389,
+  "endMs": 111789,
+  "scene": "final"
+ },
+ {
+  "text": "um",
+  "startMs": 111829,
+  "endMs": 111869,
+  "scene": "final"
+ },
+ {
+  "text": "buraco",
+  "startMs": 111949,
+  "endMs": 112269,
+  "scene": "final"
+ },
+ {
+  "text": "no",
+  "startMs": 112309,
+  "endMs": 112349,
+  "scene": "final"
+ },
+ {
+  "text": "Rio.",
+  "startMs": 112429,
+  "endMs": 112829,
+  "scene": "final"
+ },
+ {
+  "text": "Mas",
+  "startMs": 112989,
+  "endMs": 113149,
+  "scene": "final"
+ },
+ {
+  "text": "dessa",
+  "startMs": 113229,
+  "endMs": 113389,
+  "scene": "final"
+ },
+ {
+  "text": "vez...",
+  "startMs": 113469,
+  "endMs": 114189,
+  "scene": "final"
+ },
+ {
+  "text": "ele",
+  "startMs": 114269,
+  "endMs": 114349,
+  "scene": "final"
+ },
+ {
+  "text": "vai",
+  "startMs": 114429,
+  "endMs": 114509,
+  "scene": "final"
+ },
+ {
+  "text": "de",
+  "startMs": 114549,
+  "endMs": 114589,
+  "scene": "final"
+ },
+ {
+  "text": "metrô.",
+  "startMs": 114669,
+  "endMs": 115072,
+  "scene": "final"
+ }
+]

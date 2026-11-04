@@ -1,0 +1,586 @@
+{
+ "_sobre": "Direção do ep07 (episódio 6, E se você pudesse cair até o centro da Terra?). Cues por palavra da narração gravada (src/audio/ep07-words.json). O Nico é desenhado dentro dos cenários (src/components/backgrounds/Ep07.tsx). O close do primeiro quadro e o do último são iguais (loop).",
+ "limitesFixos": true,
+ "legendaDe": 0,
+ "legendaSemPontuacao": true,
+ "legendaPlaca": true,
+ "duckGanho": 0.2,
+ "legendaDestaques": [
+  "batata",
+  "torradeira",
+  "pior",
+  "uber",
+  "panela",
+  "capeta",
+  "miojo",
+  "premium",
+  "parado",
+  "vida",
+  "seguro",
+  "metrô",
+  "42",
+  "mil",
+  "zero"
+ ],
+ "cenas": {
+  "gancho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:400,700",
+     "centralizar": true,
+     "zoom": [
+      2.2,
+      2.28
+     ]
+    },
+    {
+     "de": "centro-6",
+     "enquadramento": "aberto",
+     "cenario": "ep07_terra_tunel",
+     "foco": "xy:540,850",
+     "zoom": [
+      1.0,
+      1.06
+     ]
+    },
+    {
+     "de": "e#2-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.0,
+      1.04
+     ]
+    },
+    {
+     "de": "batata-3",
+     "enquadramento": "aberto",
+     "foco": "xy:700,760",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "pose": 1,
+    "agacha": "problema",
+    "mapaCai": "problema+6",
+    "radical": "radical",
+    "radicalAte": "problema",
+    "batata": "batata",
+    "cava": "centro-4",
+    "centro": "terra"
+   },
+   "texto": {
+    "de": 2,
+    "ate": "nico",
+    "mostrar": true
+   },
+   "sfx": {
+    "whoosh": "centro-8",
+    "whoosh_grande": "e#2-6",
+    "estalo": "radical",
+    "deslize": "problema+6",
+    "quica": "batata"
+   },
+   "efeitos": [
+    {
+     "id": "micro_zoom",
+     "de": "cavar"
+    }
+   ]
+  },
+  "queda": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "cenario": "ep07_terra_tunel",
+     "foco": "xy:540,600",
+     "zoom": [
+      1.0,
+      1.12
+     ]
+    },
+    {
+     "de": "voce-3",
+     "enquadramento": "aberto",
+     "cenario": "ep07_terra_tunel",
+     "foco": "xy:540,480",
+     "centralizar": true,
+     "zoom": [
+      1.4,
+      3.2
+     ]
+    },
+    {
+     "de": "pula",
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.0,
+      1.03
+     ]
+    },
+    {
+     "de": "nico-2",
+     "enquadramento": "aberto",
+     "foco": "xy:420,760",
+     "zoom": [
+      1.0,
+      1.08
+     ],
+     "entrada": "punch"
+    },
+    {
+     "de": "so#2-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.04,
+      1.0
+     ]
+    },
+    {
+     "de": "torradeira-3",
+     "enquadramento": "aberto",
+     "foco": "xy:700,760",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "pula": "pula",
+    "d10": "10",
+    "d100": "100",
+    "d1km": "1",
+    "aumenta": "aumenta",
+    "heroi": "proprio",
+    "semPoderes": "so#2",
+    "poderes": "poderes",
+    "plano": "plano",
+    "inteligencia": "inteligencia",
+    "torradeira": "torradeira"
+   },
+   "texto": {
+    "de": "velocidade",
+    "ate": "sentindo",
+    "mostrar": true
+   },
+   "sfx": {
+    "vento_queda": {
+     "de": "pula"
+    },
+    "whoosh_grande": "pula-6",
+    "whoosh": "proprio",
+    "torrada_pop": "torradeira+4"
+   },
+   "efeitos": [
+    {
+     "id": "painel_bip",
+     "de": "10"
+    },
+    {
+     "id": "painel_bip",
+     "de": "100"
+    },
+    {
+     "id": "painel_bip",
+     "de": "1"
+    },
+    {
+     "id": "estalo",
+     "de": "poderes"
+    },
+    {
+     "id": "estalo",
+     "de": "plano"
+    },
+    {
+     "id": "brilho",
+     "de": "proprio+4"
+    }
+   ]
+  },
+  "calor": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.03,
+      1.0
+     ]
+    },
+    {
+     "de": "agora-2",
+     "enquadramento": "aberto",
+     "foco": "xy:420,800",
+     "zoom": [
+      1.0,
+      1.06
+     ]
+    },
+    {
+     "de": "pior-3",
+     "enquadramento": "aberto",
+     "foco": "xy:560,700",
+     "zoom": [
+      1.0,
+      1.05
+     ],
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "mapa": "detalhe",
+    "painel": "quanto",
+    "temp": "temperatura",
+    "pressao": "pressao",
+    "crosta": "crosta",
+    "manto": "manto",
+    "mil": "mil",
+    "suor": "temperatura",
+    "medo": "nico",
+    "uber": "pior"
+   },
+   "texto": {
+    "de": "quanto",
+    "ate": "agora",
+    "mostrar": true
+   },
+   "sfx": {
+    "vento_queda": {
+     "de": 0
+    },
+    "calor_chiado": {
+     "de": "manto"
+    },
+    "painel_alerta": "mil",
+    "falha": "historia"
+   },
+   "efeitos": [
+    {
+     "id": "notificacao",
+     "de": "detalhe"
+    },
+    {
+     "id": "whoosh",
+     "de": "crosta"
+    }
+   ]
+  },
+  "nucleo": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.02,
+      1.0
+     ]
+    },
+    {
+     "de": "nucleo",
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.1,
+      1.0
+     ]
+    },
+    {
+     "de": "panela-2",
+     "enquadramento": "aberto",
+     "foco": "xy:800,820",
+     "zoom": [
+      1.0,
+      1.05
+     ]
+    },
+    {
+     "de": "nico-2",
+     "enquadramento": "aberto",
+     "foco": "xy:360,780",
+     "zoom": [
+      1.0,
+      1.28
+     ],
+     "entrada": "punch"
+    },
+    {
+     "de": "miojo-2",
+     "enquadramento": "aberto",
+     "foco": "xy:520,820",
+     "zoom": [
+      1.12,
+      1.0
+     ]
+    }
+   ],
+   "fundo": {
+    "nucleo": "nucleo",
+    "ferro": "ferro",
+    "niquel": "niquel",
+    "liquidos": "liquidos",
+    "temp": "temperaturas",
+    "t4": "4",
+    "t5": "5",
+    "panela": "panela",
+    "capeta": "capeta",
+    "nico": "nico",
+    "puf": "virou-4",
+    "miojo": "virou+6",
+    "premium": "premium"
+   },
+   "texto": {
+    "de": "formado",
+    "ate": "temperaturas",
+    "mostrar": true
+   },
+   "sfx": {
+    "vento_queda": {
+     "de": 0,
+     "ate": "nucleo"
+    },
+    "lava_borbulha": {
+     "de": "nucleo"
+    },
+    "impacto_grave": "nucleo",
+    "apito_panela": "panela",
+    "puf": "virou-4",
+    "brilho": "premium"
+   },
+   "efeitos": [
+    {
+     "id": "encaixe",
+     "de": "ferro"
+    },
+    {
+     "id": "encaixe",
+     "de": "niquel"
+    },
+    {
+     "id": "painel_alerta",
+     "de": "4"
+    },
+    {
+     "id": "estalo",
+     "de": "capeta"
+    }
+   ]
+  },
+  "centro": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.0,
+      1.04
+     ]
+    },
+    {
+     "de": "gravidade-3",
+     "enquadramento": "aberto",
+     "cenario": "ep07_gravidade",
+     "foco": "xy:540,900",
+     "zoom": [
+      1.0,
+      1.02
+     ]
+    },
+    {
+     "de": "voce#2-3",
+     "enquadramento": "aberto",
+     "cenario": "ep07_flutua",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.08,
+      1.0
+     ]
+    },
+    {
+     "de": "ficar-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,800",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "entrada": "punch",
+     "cenario": "ep07_flutua"
+    }
+   ],
+   "fundo": {
+    "volta": 2,
+    "impossivel": "impossivel",
+    "protegido": "protegido",
+    "semAr": "ar",
+    "desce": "continuaria",
+    "mantoFim": "manto",
+    "zero": "zero",
+    "puxando": "puxando",
+    "quase": "aqui",
+    "diminuir": "diminuir",
+    "flutua": "voce#2-3",
+    "calmo": "finalmente",
+    "conquista": "ficar"
+   },
+   "texto": {
+    "de": "voce#2",
+    "mostrar": true,
+    "ate": "ficar-2"
+   },
+   "musicaDe": "cenario",
+   "sfx": {
+    "puf": 2,
+    "estalo": "impossivel",
+    "suspense_grave": {
+     "de": "gravidade",
+     "ate": "voce#2-3"
+    },
+    "flutua": "voce#2-3",
+    "conquista": "ficar"
+   },
+   "efeitos": [
+    {
+     "id": "whoosh",
+     "de": "gravidade-6"
+    },
+    {
+     "id": "painel_bip",
+     "de": "diminuir"
+    },
+    {
+     "id": "painel_bip",
+     "de": "zero"
+    },
+    {
+     "id": "encaixe",
+     "de": "protegido"
+    }
+   ]
+  },
+  "final": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "cenario": "ep07_globo",
+     "foco": "xy:540,850",
+     "zoom": [
+      1.08,
+      1.0
+     ]
+    },
+    {
+     "de": "so-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1.0,
+      1.02
+     ],
+     "cenario": "ep07_superficie"
+    },
+    {
+     "de": "vai-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,900",
+     "zoom": [
+      1.0,
+      1.05
+     ],
+     "cenario": "ep07_superficie"
+    },
+    {
+     "de": "metro+30",
+     "enquadramento": "aberto",
+     "foco": "xy:400,700",
+     "centralizar": true,
+     "zoom": [
+      2.3,
+      2.2
+     ],
+     "cenario": "ep07_superficie"
+    }
+   ],
+   "fundo": {
+    "ida": "levaria",
+    "chega": "lado",
+    "relogio": "levaria",
+    "nota": "minutos",
+    "bilhete": "viagem",
+    "gratis": "pagar",
+    "celular": "so",
+    "celularAte": "vai",
+    "recusa": "nem",
+    "recusaAte": "nico-4",
+    "busca": "procurando",
+    "apaga": "mas",
+    "busca2": "vez",
+    "resultado": "vez+16",
+    "metro": "vai",
+    "alivio": "vai",
+    "oculos": 0,
+    "oculosVolta": "metro",
+    "heroiDe": "metro+30",
+    "mapaDe": "metro+30",
+    "interditado": "buraco",
+    "interditadoAte": "metro+30"
+   },
+   "texto": {
+    "de": "metro",
+    "mostrar": true
+   },
+   "sfx": {
+    "tique_taque": {
+     "de": "levaria",
+     "ate": "lado"
+    },
+    "whoosh_grande": "levaria-4",
+    "quica": "lado",
+    "recusado": "nem",
+    "apagar": "mas",
+    "metro_chegando": "metro"
+   },
+   "efeitos": [
+    {
+     "id": "estalo",
+     "de": "pagar"
+    },
+    {
+     "id": "digitar",
+     "de": "procurando"
+    },
+    {
+     "id": "digitar",
+     "de": "vez"
+    },
+    {
+     "id": "whoosh",
+     "de": "so-6"
+    },
+    {
+     "id": "whoosh",
+     "de": "metro+26"
+    },
+    {
+     "id": "notificacao",
+     "de": "nem-2"
+    }
+   ]
+  }
+ }
+}
