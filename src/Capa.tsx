@@ -2,6 +2,7 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { PessoaDefs } from "./components/backgrounds/Ep04";
 import { LuaDisco, OrlaRio } from "./components/backgrounds/Ep06";
+import { TERRA7, TerraTunel } from "./components/backgrounds/Ep07";
 import { BASE_CAM } from "./components/Camera";
 import { Globe } from "./components/elements/Globe";
 import { InfoLabel } from "./components/elements/Props";
@@ -158,6 +159,68 @@ export const Capa06: React.FC = () => {
         E SE A LUA
         <br />
         FOSSE <span style={{ color: t.highlightColor }}>2×</span> MAIOR?
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Capa do episódio 6 (composição Ep07): a Terra em corte com o túnel e o Nico de óculos caindo na
+// boca do túnel. Título no terço de cima, dentro do recorte 4:5 do feed do Instagram (y 285–1635).
+export const Capa07: React.FC = () => {
+  const k = 1.18;
+  const g = { x: 540, y: 1500 };
+  const nico = { x: 545, y: 1010, s: 0.5 };
+  return (
+    <AbsoluteFill style={{ backgroundColor: colors.noiteEscura }}>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0 }}>
+        <InkScale scale={1}>
+          <g transform={`translate(${g.x} ${g.y}) scale(${k}) translate(${-TERRA7.x} ${-TERRA7.y})`}>
+            <InkScale scale={k}>
+              <TerraTunel cam={BASE_CAM} frame={0} params={{}} />
+            </InkScale>
+          </g>
+          {/* disco chapado atrás do Nico: o cabelo escuro não some no céu */}
+          <circle cx={nico.x} cy={nico.y - 130} r={290} fill={colors.noite} />
+          {/* linhas de velocidade acima do Nico (ele está caindo) */}
+          {[-330, -270, 260, 320].map((dx, i) => (
+            <rect key={i} x={nico.x + dx - 6} y={nico.y - 300 - (i % 2) * 90} width={12} height={190 + (i % 3) * 50} rx={6} fill={colors.creme} opacity={0.6} />
+          ))}
+          {/* adesivo de calor */}
+          <g transform="translate(860 1170) rotate(8)">
+            <rect x={-170} y={-70} width={340} height={140} rx={22} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={12} />
+            <text x={0} y={26} textAnchor="middle" fontFamily={fonts.main} fontWeight={fonts.weight} fontSize={72} fill={colors.coral} stroke={colors.tinta} strokeWidth={12} paintOrder="stroke">5.000 °C</text>
+          </g>
+          <g transform={`translate(${nico.x} ${nico.y}) rotate(-14) scale(${nico.s}) translate(0 560)`}>
+            <InkScale scale={nico.s}>
+              <Nico pose="caindo" expression="susto" oculos suor look={[0, 0.6]} />
+            </InkScale>
+          </g>
+        </InkScale>
+      </svg>
+      <div
+        style={{
+          position: "absolute",
+          top: 300,
+          left: 60,
+          right: 60,
+          padding: "26px 40px",
+          backgroundColor: t.boxColor,
+          border: `${ink.stroke * 0.6}px solid ${t.borderColor}`,
+          borderRadius: t.radius,
+          boxShadow: `inset 0 0 0 10px ${t.boxColor}, inset 0 0 0 15px ${t.innerLine}, 0 ${ink.stroke * 0.8}px 0 ${t.borderColor}`,
+          textAlign: "center",
+          fontFamily: fonts.main,
+          fontWeight: fonts.weight,
+          fontSize: 92,
+          lineHeight: 1.02,
+          color: t.textColor,
+        }}
+      >
+        E SE VOCÊ PULASSE
+        <br />
+        ATÉ O <span style={{ color: t.highlightColor }}>CENTRO</span>
+        <br />
+        <span style={{ color: t.highlightColor }}>DA TERRA?</span>
       </div>
     </AbsoluteFill>
   );
