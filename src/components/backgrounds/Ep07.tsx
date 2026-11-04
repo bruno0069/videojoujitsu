@@ -428,9 +428,9 @@ export const Superficie: React.FC<{ cam: Cam; frame: number; params: Params }> =
           x={SUP.nicoX}
           y={SUP.chao}
           s={SUP.s}
-          pose={heroi ? "encolhido" : "parado"}
+          pose={heroi ? "preparando" : "parado"}
           fromPose={heroi ? "heroi" : "parado"}
-          poseT={heroi ? agacha * 0.45 : 1}
+          poseT={heroi ? agacha : 1}
           expression={expression}
           look={celular ? [0.9, 0.1] : undefined}
           oculos={oculos}
@@ -772,7 +772,7 @@ export const Calor: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
   // a fronteira crosta/manto passa de baixo para cima
   const fronteira = Number.isFinite(crosta) ? interpolate(frame, [crosta, crosta + 70], [1900, -300], clamp) : 2000;
   const suor = on(frame, n(params.suor));
-  const expression = on(frame, n(params.medo)) ? "medo" : suor ? "preocupacao" : "surpresa";
+  const expression = on(frame, n(params.uber)) ? "vergonha" : on(frame, n(params.medo)) ? "medo" : suor ? "preocupacao" : "surpresa";
   const mapa = janela(frame, n(params.mapa), n(params.painel) - 2, true);
   const painel = pop(frame, n(params.painel));
   const tempK = ramp(frame, n(params.temp), n(params.mil) + 20) * 0.85 + ramp(frame, n(params.mil), n(params.mil) + 12) * 0.1;
@@ -784,21 +784,30 @@ export const Calor: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
     <>
       <Layer cam={cam} depth={1}>
         <Paredes off={off} cor={cor} corFundo={corFundo} vel={46} frame={frame} brilho={quente} />
-        {on(frame, crosta) && fronteira > -400 ? (
-          <g>
-            <rect x={-100} y={fronteira} width={1280} height={22} fill={colors.tinta} />
-            <g transform={`translate(${PAREDE + 150} ${fronteira - 60})`}>
-              <rect x={-120} y={-44} width={240} height={88} rx={22} fill={colors.tinta} />
-              <T x={0} y={18} size={48}>CROSTA</T>
-            </g>
-            <g transform={`translate(${PAREDE + 150} ${fronteira + 90})`}>
-              <rect x={-110} y={-44} width={220} height={88} rx={22} fill={colors.tinta} />
-              <T x={0} y={18} size={48} fill={colors.amarelo}>MANTO</T>
-            </g>
-          </g>
-        ) : null}
-        <NicoEm x={420} y={900 + Math.sin(frame / 7) * 10} s={0.5} centro rot={Math.sin(frame / 11) * 6} pose="caindo" expression={expression} suor={suor} look={on(frame, n(params.uber)) ? [0.9, -0.1] : undefined} />
+        {on(frame, crosta) && fronteira > -400 ? <rect x={-100} y={fronteira} width={1280} height={22} fill={colors.tinta} /> : null}
+        <NicoEm x={420} y={900 + Math.sin(frame / 7) * 10} s={0.5} centro rot={Math.sin(frame / 11) * 6} pose="caindo" expression={expression} suor={suor} look={on(frame, n(params.uber)) ? [0.6, -0.9] : undefined} />
       </Layer>
+      {/* rótulos da troca de camada: fixos abaixo do banner, longe do Nico e do medidor */}
+      {(() => {
+        const c1 = janela(frame, crosta, crosta + 80, true);
+        const m1 = janela(frame, crosta + 20, n(params.mil) - 2, true);
+        return (
+          <g>
+            {c1 > 0 ? (
+              <g transform={`translate(190 560) scale(${c1})`}>
+                <rect x={-150} y={-40} width={300} height={80} rx={22} fill={colors.tinta} />
+                <T x={0} y={16} size={44}>↑ CROSTA</T>
+              </g>
+            ) : null}
+            {m1 > 0 ? (
+              <g transform={`translate(515 560) scale(${m1})`}>
+                <rect x={-150} y={-40} width={300} height={80} rx={22} fill={colors.tinta} />
+                <T x={0} y={16} size={44} fill={colors.amarelo}>MANTO ↓</T>
+              </g>
+            ) : null}
+          </g>
+        );
+      })()}
       {/* mapa do celular: só a superfície, nada do que tem embaixo */}
       <Cartao x={800} y={760} w={400} h={460} s={mapa} rot={3} cor={colors.creme}>
         <rect x={-170} y={-200} width={340} height={210} rx={18} fill={colors.turquesa} />
@@ -815,9 +824,9 @@ export const Calor: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
       <Barra x={960} y={1180} h={300} k={presK} cor={colors.noite} rotulo="PRESSÃO" s={painel * (1 - uber)} />
       <PlacaCalor x={430} y={520} s={janela(frame, n(params.mil), n(params.uber) - 2, true)} texto="1.000 °C+" />
       <SeloTunel frame={frame} params={params} />
-      <Cartao x={560} y={700} w={760} h={420} s={uber} rot={-2}>
-        <T x={0} y={-130} size={44} fill={colors.creme}>SUA CORRIDA</T>
-        <g transform="translate(-220 10) scale(0.9)">
+      <Cartao x={560} y={370} w={760} h={380} s={uber} rot={-2}>
+        <T x={0} y={-118} size={44} fill={colors.creme}>SUA CORRIDA</T>
+        <g transform="translate(-220 0) scale(0.85)">
           <Carrinho />
         </g>
         <T x={-50} y={-10} size={40} fill={colors.amarelo} anchor="start">DESTINO:</T>
@@ -826,7 +835,7 @@ export const Calor: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
           <path
             key={i}
             d={estrela(40)}
-            transform={`translate(${-200 + i * 100} 140) scale(${pop(frame, estrelas + i * 3)})`}
+            transform={`translate(${-200 + i * 100} 122) scale(${pop(frame, estrelas + i * 3)})`}
             fill={i === 0 ? colors.amarelo : colors.noite}
             stroke={colors.creme}
             strokeWidth={5}
@@ -924,10 +933,10 @@ const Miojo: React.FC<{ frame: number; s: number }> = ({ frame, s }) => {
 };
 
 // Puf de fumaça cartunesco (cobre a troca)
-const Puf: React.FC<{ frame: number; at: number; x: number; y: number }> = ({ frame, at, x, y }) => {
-  if (!Number.isFinite(at) || frame < at || frame > at + 26) return null;
-  const k = (frame - at) / 26;
-  const s = interpolate(k, [0, 0.3, 1], [0.3, 1.1, 1.3]);
+const Puf: React.FC<{ frame: number; at: number; x: number; y: number; escala?: number; dur?: number }> = ({ frame, at, x, y, escala = 1, dur = 26 }) => {
+  if (!Number.isFinite(at) || frame < at || frame > at + dur) return null;
+  const k = (frame - at) / dur;
+  const s = escala * interpolate(k, [0, 0.3, 1], [0.3, 1.1, 1.3]);
   const o = interpolate(k, [0, 0.7, 1], [1, 1, 0]);
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`} opacity={o}>
@@ -1060,14 +1069,14 @@ export const Centro: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
       <Layer cam={cam} depth={1}>
         <Paredes off={off} cor={colors.noite} corFundo={colors.noiteEscura} vel={24} frame={frame} />
         <TuboProtegido off={off} k={prot} frame={frame} />
-        {frame < volta + 8 ? (
+        {frame < volta + 4 ? (
           <g transform="translate(540 960)">
             <Miojo frame={frame} s={0.62} />
           </g>
         ) : (
           <NicoEm x={540} y={900 + Math.sin(frame / 8) * 10} s={0.5} centro rot={Math.sin(frame / 12) * 5} pose="caindo" expression={on(frame, n(params.impossivel)) ? "confusao" : "surpresa"} />
         )}
-        <Puf frame={frame} at={volta} x={540} y={900} />
+        <Puf frame={frame} at={volta} x={540} y={900} escala={0.55} dur={14} />
       </Layer>
       <SeloTunel frame={frame} params={params} />
       <Carimbo x={540} y={600} s={imp} texto="CENÁRIO IMPOSSÍVEL" />
@@ -1281,12 +1290,12 @@ export const GloboFinal: React.FC<{ cam: Cam; frame: number; params: Params }> =
           <T x={0} y={11} size={24} fill={colors.tinta}>densidade real: ~38 min</T>
         </g>
       ) : null}
-      <Cartao x={780} y={1110} w={440} h={210} s={bilhete} rot={-4} cor={colors.creme}>
+      <Cartao x={830} y={1000} w={400} h={210} s={bilhete} rot={-4} cor={colors.creme}>
         <T x={0} y={-36} size={34} fill={colors.tinta}>PASSAGEM</T>
         <T x={0} y={44} size={74} fill={colors.tinta}>R$ 0,00</T>
         {gratis > 0 ? (
-          <g transform={`translate(110 10) rotate(-14) scale(${2 - gratis})`} opacity={gratis}>
-            <rect x={-120} y={-44} width={240} height={88} rx={14} fill="none" stroke={colors.coral} strokeWidth={10} />
+          <g transform={`translate(70 -128) rotate(-10) scale(${(2 - gratis) * 0.8})`} opacity={gratis}>
+            <rect x={-120} y={-44} width={240} height={88} rx={14} fill={colors.creme} stroke={colors.coral} strokeWidth={10} />
             <T x={0} y={18} size={52} fill={colors.coral}>GRÁTIS</T>
           </g>
         ) : null}

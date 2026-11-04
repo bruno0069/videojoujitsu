@@ -219,6 +219,9 @@ BAIXO="0.2*sin(2*PI*110*pow(2,($EC)/12)*t)*exp(-mod(t,0.24)*6)"
 PLUCK="0.07*sin(2*PI*440*pow(2,($EC+if(lt(mod(t,0.96),0.48),0,if(lt(mod(t,0.96),0.72),7,12)))/12)*t)*exp(-mod(t,0.24)*10)"
 gen -f lavfi -i "aevalsrc='$BUMBO+$CHIMBAL+$BAIXO+$PLUCK':s=$R:d=7.68" -af "lowpass=f=6000" -ac 1 "$MUS/energia_queda.wav"
 
+# energia_queda_cauda: a própria trilha (com bumbo e baixo) decaindo até o silêncio em 4,5 s,
+# para o rabo final do ep07 (sem voz, a trilha com passa-altas some)
+gen -stream_loop 1 -i "$MUS/energia_queda.wav" -af "atrim=0:4.5,highpass=f=70,volume='exp(-t*0.9)':eval=frame,afade=t=out:st=4.0:d=0.5" -ac 1 "$SFX/energia_queda_cauda.wav"
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida lofi_espacial energia_queda; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

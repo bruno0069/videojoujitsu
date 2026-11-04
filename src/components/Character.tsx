@@ -32,7 +32,8 @@ export type PoseName =
   | "sentado_livre"
   | "pulando"
   | "mao_nas_costas"
-  | "heroi";
+  | "heroi"
+  | "preparando";
 
 export type ExpressionName =
   | "neutro"
@@ -164,6 +165,11 @@ const POSES: Record<PoseName, PoseDef> = {
   mao_nas_costas: {
     handL: [-170, -250], handR: [90, -330], footL: [-58, -22], footR: [58, -22],
     crouch: 0, lean: 0, headTilt: 6, headDy: 0, look: [-0.5, -0.1], handRBehind: true,
+  },
+  // Preparando o pulo (ep07): herói agachando, mãos nos joelhos, sem tremor
+  preparando: {
+    handL: [-190, -330], handR: [190, -330], footL: [-100, -22], footR: [100, -22],
+    crouch: 60, lean: 0, headTilt: 0, headDy: 22, look: [0.3, 0.1],
   },
   // Herói (ep07): mãos na cintura, peito estufado, queixo erguido
   heroi: {

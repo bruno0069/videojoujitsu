@@ -2,12 +2,12 @@
 """Linha do tempo do ep07 pela fala (a duração segue a voz; nada é acelerado nem cortado).
 Em cada tomada: corta o silêncio do começo e do fim e encurta as pausas internas maiores que
 0,42 s para 0,33 s. Toda cena termina numa piada: depois da última palavra ficam 0,6 s de
-respiro (TAIL) e, na última cena, 3,45 s (respiro de ≥ 3 s depois da última sílaba, com o aviso final). Gera ep07.voz.json e ajusta os
+respiro (TAIL) e, na última cena, 4,42 s (respiro de ~4,4 s depois da última sílaba, com o aviso final). Gera ep07.voz.json e ajusta os
 frames e o totalFrames de ep07.json."""
 import json, re, subprocess
 
 EP, FPS = "ep07", 30
-LEAD, TAIL, TAIL_FIM, PAUSA, MAXP = 0.15, 0.6, 3.45, 0.33, 0.42
+LEAD, TAIL, TAIL_FIM, PAUSA, MAXP = 0.15, 0.6, 4.42, 0.33, 0.42
 CENAS = ["gancho", "queda", "calor", "nucleo", "centro", "final"]
 ARQ = {c: f"ep07-narracao-0{i + 1}-{c}" for i, c in enumerate(CENAS)}
 

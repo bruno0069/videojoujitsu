@@ -626,7 +626,7 @@
    },
    "texto": {
     "de": "metro",
-    "ate": 792,
+    "ate": 821,
     "mostrar": true
    },
    "sfx": {
@@ -638,7 +638,10 @@
     "quica": "lado",
     "recusado": "nem",
     "apagar": "rio-12",
-    "metro_chegando": "metro$"
+    "metro_chegando": "metro$",
+    "energia_queda_cauda": {
+     "de": "metro$"
+    }
    },
    "efeitos": [
     {
@@ -670,8 +673,8 @@
      "de": "ele"
     },
     {
-     "id": "quica",
-     "de": "metro$+24"
+     "id": "conquista",
+     "de": "metro$+2"
     }
    ]
   }
