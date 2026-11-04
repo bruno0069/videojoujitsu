@@ -6,3 +6,5 @@ dist
 # Saídas de render: só o vídeo final do episódio é versionado
 out/*
 !out/ep*.mp4
+# acima de 100 MB (limite do GitHub): o master fica fora do git, a cópia leve é versionada
+out/ep06.mp4
