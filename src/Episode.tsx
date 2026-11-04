@@ -240,6 +240,7 @@ export const Episode: React.FC<EpisodeProps> = ({
           stripPunctuation={direction.legendaSemPontuacao}
           placa={direction.legendaPlaca}
           destaques={direction.legendaDestaques}
+          fonte={direction.legendaFonte}
         />
       </AbsoluteFill>
     </LoopLength>

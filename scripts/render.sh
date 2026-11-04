@@ -2,6 +2,8 @@
 # Renderiza um episódio e faz a mixagem final por stems (scripts/mixar.py).
 # Uso: bash scripts/render.sh [ep01|ep02|...]   -> out/epNN.mp4 (padrão ep01)
 # REMOTION_BROWSER (opcional) aponta para um Chrome já instalado.
+# OUT (opcional) troca o arquivo de saída; RENDER_ARGS (opcional) acrescenta flags ao render do
+# vídeo (ex.: --pixel-format=yuv420p --color-space=bt709 --crf=17). Sem eles, nada muda.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 EP=${1:-ep01}
@@ -9,9 +11,9 @@ EP=${1:-ep01}
 COMP=$(python3 -c "import re,sys; e=sys.argv[1]; print(re.sub(r'[_-](\\w)', lambda m: m.group(1).upper(), e[0].upper()+e[1:]))" "$EP")
 EXTRA=()
 if [ -n "${REMOTION_BROWSER:-}" ]; then EXTRA=(--browser-executable="$REMOTION_BROWSER" --chrome-mode=chrome-for-testing); fi
-OUTV="out/$EP.mp4"
+OUTV="${OUT:-out/$EP.mp4}"
 mkdir -p "out/stems/$EP"
-npx remotion render "$COMP" "$OUTV" --codec=h264 "${EXTRA[@]}" --props='{"stem":"mix"}' --log=error
+npx remotion render "$COMP" "$OUTV" --codec=h264 "${EXTRA[@]}" ${RENDER_ARGS:-} --props='{"stem":"mix"}' --log=error
 npx remotion render "$COMP" "out/stems/$EP/voz.wav" --codec=wav "${EXTRA[@]}" --props='{"stem":"voz"}' --log=error
 npx remotion render "$COMP" "out/stems/$EP/fundo.wav" --codec=wav "${EXTRA[@]}" --props='{"stem":"fundo"}' --log=error
 python3 scripts/mixar.py "$OUTV" "out/stems/$EP/voz.wav" "out/stems/$EP/fundo.wav"

@@ -4,7 +4,7 @@
   "fps": 30,
   "width": 1080,
   "height": 1920,
-  "totalFrames": 3512,
+  "totalFrames": 3556,
   "scenes": [
     {
       "id": "gancho",
@@ -113,7 +113,7 @@
     {
       "id": "final",
       "startFrame": 2755,
-      "durationInFrames": 757,
+      "durationInFrames": 801,
       "narration": "E sabe o pior? Se você conseguisse atravessar a Terra inteira num túnel sem atrito, levaria aproximadamente 42 minutos para chegar ao outro lado. Ou seja... Você poderia fazer uma viagem intercontinental sem pagar passagem. Só precisaria sobreviver a uma experiência que nem o seguro de vida aceitaria cobrir. Nico já está procurando um buraco no Rio. Mas dessa vez... ele vai de metrô.",
       "onScreenText": "NÃO TENTE ISSO. NEM SE SEU AMIGO DUVIDAR.",
       "visual": {

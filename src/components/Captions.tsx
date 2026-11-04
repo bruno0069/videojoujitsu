@@ -27,7 +27,10 @@ const FUNCIONAIS = new Set(
 );
 const nua = (t: string) => t.toLowerCase().replace(/[^\p{L}\d]/gu, "");
 const funcional = (t: string) => FUNCIONAIS.has(nua(t));
-const toPagesPlaca = (captions: Caption[], size: number): Page[] => {
+// largura útil da placa em caracteres para uma fonte de `px` (aprox. 0,56 em por caractere)
+const maxCaracteres = (px: number) => Math.floor((1080 - 2 * layout.sideMargin - 80 - 52) / (px * 0.56));
+const toPagesPlaca = (captions: Caption[], size: number, fonte?: number): Page[] => {
+  const limite = fonte ? maxCaracteres(fonte) : Infinity;
   const pages: Page[] = [];
   let cur: Caption[] = [];
   const flush = () => {
@@ -35,6 +38,13 @@ const toPagesPlaca = (captions: Caption[], size: number): Page[] => {
     cur = [];
   };
   captions.forEach((cap, i) => {
+    // fonte fixa: se a palavra não cabe na linha, a página fecha antes dela
+    if (cur.length && [...cur, cap].map((x) => x.text.trim()).join(" ").length > limite) {
+      const carry: Caption[] = [];
+      while (cur.length > 1 && funcional(cur[cur.length - 1].text)) carry.unshift(cur.pop() as Caption);
+      flush();
+      cur = carry;
+    }
     cur.push(cap);
     const fim = cap.pageBreakAfter || i === captions.length - 1 || /[.,:;?!…]$/.test(cap.text.trim());
     if (fim) return flush();
@@ -61,16 +71,17 @@ const semMaiuscula = (t: string, prev: string | undefined) =>
     ? t.charAt(0).toLowerCase() + t.slice(1)
     : t;
 
-export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean; destaques?: string[] }> = ({
+export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean; destaques?: string[]; fonte?: number }> = ({
   captions,
   showFromFrame,
   hideAfterFrame,
   stripPunctuation,
   placa,
   destaques,
+  fonte,
 }) => {
   const { fps } = useVideoConfig();
-  const pages = useMemo(() => (placa ? toPagesPlaca(captions, 4) : toPages(captions, c.wordsPerPage)), [captions, placa]);
+  const pages = useMemo(() => (placa ? toPagesPlaca(captions, 4, fonte) : toPages(captions, c.wordsPerPage)), [captions, placa, fonte]);
 
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
@@ -83,7 +94,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
-            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} destaques={destaques} />
+            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} destaques={destaques} fonte={fonte} />
           </Sequence>
         );
       })}
@@ -92,7 +103,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
 };
 
 // `destaques` (opcional, ep06 v07): palavras-chave que ficam sempre em amarelo, além da palavra falada
-const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean; destaques?: string[] }> = ({ page, fromMs, strip, placa, destaques }) => {
+const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean; destaques?: string[]; fonte?: number }> = ({ page, fromMs, strip, placa, destaques, fonte }) => {
   const chave = new Set((destaques ?? []).map(nua));
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -101,7 +112,7 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa:
   const textos = page.tokens.map((token, i) => (strip ? semMaiuscula(semPontuacao(token.text.trim()), page.tokens[i - 1]?.text) : token.text.trim()));
   // placa: uma linha só; a fonte diminui se as palavras não couberem
   const chars = textos.join(" ").length;
-  const fontSize = placa ? Math.min(c.fontSize, Math.floor((1080 - 2 * layout.sideMargin - 80) / (chars * 0.56))) : c.fontSize;
+  const fontSize = placa && fonte ? fonte : placa ? Math.min(c.fontSize, Math.floor((1080 - 2 * layout.sideMargin - 80) / (chars * 0.56))) : c.fontSize;
 
   return (
     <AbsoluteFill

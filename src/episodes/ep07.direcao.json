@@ -120,10 +120,19 @@
     {
      "de": "pula",
      "enquadramento": "aberto",
-     "foco": "xy:540,960",
+     "foco": "xy:420,800",
      "zoom": [
-      1.0,
-      1.03
+      1.12,
+      1.22
+     ]
+    },
+    {
+     "de": "10-2",
+     "enquadramento": "aberto",
+     "foco": "xy:420,800",
+     "zoom": [
+      1.2,
+      1.3
      ]
     },
     {
@@ -131,27 +140,27 @@
      "enquadramento": "aberto",
      "foco": "xy:420,760",
      "zoom": [
-      1.0,
-      1.08
+      1.25,
+      1.38
      ],
      "entrada": "punch"
     },
     {
      "de": "so#2-2",
      "enquadramento": "aberto",
-     "foco": "xy:540,960",
+     "foco": "xy:420,800",
      "zoom": [
-      1.04,
-      1.0
+      1.3,
+      1.4
      ]
     },
     {
      "de": "torradeira-3",
      "enquadramento": "aberto",
-     "foco": "xy:700,760",
+     "foco": "xy:420,780",
      "zoom": [
-      1.0,
-      1.06
+      1.35,
+      1.45
      ],
      "entrada": "punch"
     }
@@ -206,6 +215,37 @@
     {
      "id": "brilho",
      "de": "proprio+4"
+    },
+    {
+     "id": "whoosh",
+     "de": "torradeira+2"
+    }
+   ],
+   "tremidas": [
+    {
+     "de": "aumenta",
+     "frames": 20,
+     "forca": 6
+    },
+    {
+     "de": "proprio",
+     "frames": 24,
+     "forca": 9
+    },
+    {
+     "de": "so#2",
+     "frames": 30,
+     "forca": 12
+    },
+    {
+     "de": "inteligencia",
+     "frames": 40,
+     "forca": 15
+    },
+    {
+     "de": "torradeira",
+     "frames": 34,
+     "forca": 22
     }
    ]
   },
@@ -250,7 +290,8 @@
     "mil": "mil",
     "suor": "temperatura",
     "medo": "nico",
-    "uber": "pior"
+    "uber": "pior",
+    "seloTunel": 0
    },
    "texto": {
     "de": "quanto",
@@ -340,7 +381,8 @@
     "nico": "nico",
     "puf": "virou-4",
     "miojo": "virou+6",
-    "premium": "premium"
+    "premium": "premium",
+    "seloTunel": 0
    },
    "texto": {
     "de": "formado",
@@ -394,10 +436,51 @@
      "de": "gravidade-3",
      "enquadramento": "aberto",
      "cenario": "ep07_gravidade",
+     "foco": "xy:540,520",
+     "zoom": [
+      1.0,
+      1.05
+     ]
+    },
+    {
+     "de": "aqui-2",
+     "enquadramento": "aberto",
+     "cenario": "ep07_gravidade",
+     "foco": "xy:540,700",
+     "zoom": [
+      1.05,
+      1.0
+     ]
+    },
+    {
+     "de": "fundo-2",
+     "enquadramento": "aberto",
+     "cenario": "ep07_gravidade",
      "foco": "xy:540,900",
      "zoom": [
       1.0,
-      1.02
+      1.05
+     ]
+    },
+    {
+     "de": "diminuir-3",
+     "enquadramento": "aberto",
+     "cenario": "ep07_gravidade",
+     "foco": "xy:540,1100",
+     "zoom": [
+      1.04,
+      1.0
+     ],
+     "entrada": "punch"
+    },
+    {
+     "de": "exatamente-2",
+     "enquadramento": "aberto",
+     "cenario": "ep07_gravidade",
+     "foco": "xy:540,1200",
+     "zoom": [
+      1.0,
+      1.06
      ]
     },
     {
@@ -423,7 +506,7 @@
     }
    ],
    "fundo": {
-    "volta": 2,
+    "volta": 8,
     "impossivel": "impossivel",
     "protegido": "protegido",
     "semAr": "ar",
@@ -435,7 +518,8 @@
     "diminuir": "diminuir",
     "flutua": "voce#2-3",
     "calmo": "finalmente",
-    "conquista": "ficar"
+    "conquista": "ficar",
+    "seloTunel": 0
    },
    "texto": {
     "de": "voce#2",
@@ -495,7 +579,7 @@
      "cenario": "ep07_superficie"
     },
     {
-     "de": "vai-2",
+     "de": "ele-2",
      "enquadramento": "aberto",
      "foco": "xy:540,900",
      "zoom": [
@@ -505,7 +589,7 @@
      "cenario": "ep07_superficie"
     },
     {
-     "de": "metro+30",
+     "de": "metro+36",
      "enquadramento": "aberto",
      "foco": "xy:400,700",
      "centralizar": true,
@@ -524,24 +608,25 @@
     "bilhete": "viagem",
     "gratis": "pagar",
     "celular": "so",
-    "celularAte": "vai",
+    "celularAte": "ele",
     "recusa": "nem",
-    "recusaAte": "nico-4",
-    "busca": "procurando",
-    "apaga": "mas",
-    "busca2": "vez",
-    "resultado": "vez+16",
-    "metro": "vai",
-    "alivio": "vai",
+    "recusaAte": "nico-10",
+    "busca": "nico-9",
+    "apaga": "rio-12",
+    "busca2": "rio",
+    "resultado": "rio+10",
+    "metro": "ele",
+    "alivio": "ele",
     "oculos": 0,
-    "oculosVolta": "metro",
-    "heroiDe": "metro+30",
-    "mapaDe": "metro+30",
+    "oculosVolta": "ele",
+    "heroiDe": "metro+36",
+    "mapaDe": "metro+36",
     "interditado": "buraco",
-    "interditadoAte": "metro+30"
+    "interditadoAte": "metro+36"
    },
    "texto": {
     "de": "metro",
+    "ate": 792,
     "mostrar": true
    },
    "sfx": {
@@ -552,8 +637,8 @@
     "whoosh_grande": "levaria-4",
     "quica": "lado",
     "recusado": "nem",
-    "apagar": "mas",
-    "metro_chegando": "metro"
+    "apagar": "rio-12",
+    "metro_chegando": "metro$"
    },
    "efeitos": [
     {
@@ -561,26 +646,35 @@
      "de": "pagar"
     },
     {
-     "id": "digitar",
-     "de": "procurando"
-    },
-    {
-     "id": "digitar",
-     "de": "vez"
-    },
-    {
      "id": "whoosh",
      "de": "so-6"
     },
     {
      "id": "whoosh",
-     "de": "metro+26"
+     "de": "metro+32"
     },
     {
      "id": "notificacao",
      "de": "nem-2"
+    },
+    {
+     "id": "digitar",
+     "de": "nico-9"
+    },
+    {
+     "id": "digitar",
+     "de": "rio"
+    },
+    {
+     "id": "brilho",
+     "de": "ele"
+    },
+    {
+     "id": "quica",
+     "de": "metro$+24"
     }
    ]
   }
- }
+ },
+ "legendaFonte": 60
 }

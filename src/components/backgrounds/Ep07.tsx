@@ -271,6 +271,16 @@ const PlacaMetro: React.FC<{ x: number; y: number; s: number }> = ({ x, y, s }) 
 // Celular (inserto em tela): notificação, busca digitada, apagada e trocada, resultado
 const BUSCA1 = "Como chegar ao centro da Terra";
 const BUSCA2 = "Metrô mais próximo";
+// quebra o texto em linhas de até `max` caracteres (por palavra)
+const quebra = (s: string, max: number) => {
+  const linhas: string[] = [];
+  for (const p of s.split(" ")) {
+    const ult = linhas[linhas.length - 1];
+    if (ult !== undefined && (ult + " " + p).length <= max) linhas[linhas.length - 1] = ult + " " + p;
+    else linhas.push(p);
+  }
+  return linhas.length ? linhas : [""];
+};
 const Celular7: React.FC<{ frame: number; params: Params }> = ({ frame, params }) => {
   const de = n(params.celular);
   const ate = n(params.celularAte);
@@ -279,51 +289,50 @@ const Celular7: React.FC<{ frame: number; params: Params }> = ({ frame, params }
   const busca = n(params.busca);
   const apaga = n(params.apaga);
   const busca2 = n(params.busca2);
-  // digitação: ~1,7 letra por frame; apagar é mais rápido
+  // digitação rápida (2,5 letras por frame) e apagar em ~0,4 s
   let texto = "";
-  if (on(frame, busca2)) texto = BUSCA2.slice(0, Math.floor((frame - busca2) * 1.4));
-  else if (on(frame, apaga)) texto = BUSCA1.slice(0, Math.max(0, BUSCA1.length - Math.floor((frame - apaga) * 3)));
-  else if (on(frame, busca)) texto = BUSCA1.slice(0, Math.floor((frame - busca) * 1.7));
+  if (on(frame, busca2)) texto = BUSCA2.slice(0, Math.floor((frame - busca2) * 2.6));
+  else if (on(frame, apaga)) texto = BUSCA1.slice(0, Math.max(0, BUSCA1.length - Math.floor((frame - apaga) * 2.6)));
+  else if (on(frame, busca)) texto = BUSCA1.slice(0, Math.floor((frame - busca) * 2.5));
   const cursor = Math.floor(frame / 8) % 2 === 0;
   const recusa = janela(frame, n(params.recusa), n(params.recusaAte), true);
   const resultado = pop(frame, n(params.resultado), true);
-  // a busca quebra em duas linhas
-  const corte = texto.lastIndexOf(" ", 15) + 1;
-  const linhas = texto.length > 14 && corte > 0 ? [texto.slice(0, corte), texto.slice(corte)] : [texto];
+  const linhas = quebra(texto, 13);
+  const caixaH = 70 + 66 * Math.max(2, linhas.length);
   return (
-    <g transform={`translate(780 860) scale(${s}) rotate(4)`}>
-      <rect x={-250} y={-420} width={500} height={840} rx={60} fill={colors.tinta} />
-      <rect x={-222} y={-380} width={444} height={760} rx={36} fill={colors.creme} />
-      <rect x={-60} y={-404} width={120} height={14} rx={7} fill={colors.creme} opacity={0.4} />
+    <g transform={`translate(770 850) scale(${s})`}>
+      <rect x={-280} y={-450} width={560} height={900} rx={64} fill={colors.tinta} />
+      <rect x={-252} y={-410} width={504} height={820} rx={38} fill={colors.creme} />
+      <rect x={-60} y={-434} width={120} height={14} rx={7} fill={colors.creme} opacity={0.4} />
       {/* barra de busca */}
-      <rect x={-196} y={-180} width={392} height={150} rx={30} fill={colors.branco} stroke={colors.tinta} strokeWidth={8} />
-      <circle cx={-150} cy={-130} r={22} fill="none" stroke={colors.tinta} strokeWidth={8} />
-      <path d="M -134 -114 L -118 -98" stroke={colors.tinta} strokeWidth={9} strokeLinecap="round" />
+      <rect x={-232} y={-200} width={464} height={caixaH} rx={30} fill={colors.branco} stroke={colors.tinta} strokeWidth={8} />
+      <circle cx={-190} cy={-150} r={20} fill="none" stroke={colors.tinta} strokeWidth={8} />
+      <path d="M -176 -136 L -160 -120" stroke={colors.tinta} strokeWidth={9} strokeLinecap="round" />
       {linhas.map((l, i) => (
-        <T key={i} x={-104} y={-118 + i * 54} size={40} fill={colors.tinta} anchor="start">
+        <T key={i} x={-148} y={-128 + i * 66} size={56} fill={colors.tinta} anchor="start">
           {l + (i === linhas.length - 1 && cursor && on(frame, busca) ? "|" : "")}
         </T>
       ))}
       {/* resultado: metrô perto */}
       {resultado > 0 ? (
-        <g transform={`translate(0 120) scale(${resultado})`}>
-          <rect x={-196} y={-90} width={392} height={180} rx={30} fill={colors.turquesa} stroke={colors.tinta} strokeWidth={8} />
-          <T x={-170} y={-18} size={44} fill={colors.tinta} anchor="start">METRÔ</T>
-          <T x={-170} y={48} size={40} fill={colors.tinta} anchor="start">a 400 m</T>
-          <g transform="translate(130 0)">
-            <circle r={52} fill={colors.creme} stroke={colors.tinta} strokeWidth={8} />
-            <path d="M -24 0 L -6 20 L 28 -20" fill="none" stroke={colors.tinta} strokeWidth={12} strokeLinecap="round" strokeLinejoin="round" />
+        <g transform={`translate(0 210) scale(${resultado})`}>
+          <rect x={-232} y={-100} width={464} height={200} rx={30} fill={colors.turquesa} stroke={colors.tinta} strokeWidth={8} />
+          <T x={-200} y={-14} size={60} fill={colors.tinta} anchor="start">METRÔ</T>
+          <T x={-200} y={60} size={52} fill={colors.tinta} anchor="start">a 400 m</T>
+          <g transform="translate(150 0)">
+            <circle r={58} fill={colors.creme} stroke={colors.tinta} strokeWidth={8} />
+            <path d="M -26 0 L -6 22 L 30 -22" fill="none" stroke={colors.tinta} strokeWidth={13} strokeLinecap="round" strokeLinejoin="round" />
           </g>
         </g>
       ) : null}
-      {/* notificação do seguro */}
+      {/* notificação do seguro: tudo alinhado ao card, sem rotação */}
       {recusa > 0 ? (
-        <g transform={`translate(0 ${-300 - (1 - recusa) * 160})`}>
-          <rect x={-212} y={-70} width={424} height={170} rx={28} fill={colors.branco} stroke={colors.tinta} strokeWidth={8} />
-          <T x={-110} y={-14} size={34} fill={colors.tinta} anchor="start">SEGURO DE VIDA</T>
-          <T x={-110} y={42} size={38} fill={colors.coral} anchor="start" stroke={colors.tinta} sw={6}>Solicitação</T>
-          <T x={-110} y={84} size={38} fill={colors.coral} anchor="start" stroke={colors.tinta} sw={6}>recusada</T>
-          <Xis x={-158} y={16} r={40} s={1} />
+        <g transform={`translate(0 ${-312 - (1 - recusa) * 180})`}>
+          <rect x={-240} y={-92} width={480} height={200} rx={28} fill={colors.branco} stroke={colors.tinta} strokeWidth={8} />
+          <Xis x={-178} y={8} r={44} s={1} />
+          <T x={-112} y={-38} size={36} fill={colors.tinta} anchor="start">SEGURO DE VIDA</T>
+          <T x={-112} y={22} size={42} fill={colors.coral} anchor="start">Solicitação</T>
+          <T x={-112} y={76} size={42} fill={colors.coral} anchor="start">recusada</T>
         </g>
       ) : null}
     </g>
@@ -463,12 +472,27 @@ const rolagem = (frame: number, vel: (f: number) => number) => {
   return y;
 };
 
-const Paredes: React.FC<{ off: number; cor: string; corFundo: string; vel: number; frame: number; brilho?: number }> = ({ off, cor, corFundo, vel, frame, brilho = 0 }) => {
+const Paredes: React.FC<{ off: number; cor: string; corFundo: string; vel: number; frame: number; brilho?: number; parallax?: boolean }> = ({ off, cor, corFundo, vel, frame, brilho = 0, parallax = false }) => {
   const ink = useInk();
   const linhas = Math.min(14, Math.round(vel / 4));
   return (
     <>
       <rect x={-400} y={-400} width={1880} height={2720} fill={corFundo} />
+      {/* parallax: anéis do fundo do poço (mais devagar) e saliências laterais (meia velocidade) */}
+      {parallax
+        ? Array.from({ length: 9 }, (_, k) => {
+            const y = ((k * 300 - off * 0.35) % 2700 + 2700) % 2700 - 400;
+            return <rect key={`a${k}`} x={PAREDE} y={y} width={1080 - 2 * PAREDE} height={26} fill={colors.noite} opacity={0.55} />;
+          })
+        : null}
+      {parallax
+        ? Array.from({ length: 8 }, (_, k) => {
+            const y = ((k * 340 - off * 0.6) % 2720 + 2720) % 2720 - 400;
+            const lado = k % 2;
+            const x = lado ? 1080 - PAREDE - 70 : PAREDE;
+            return <path key={`s${k}`} d={lado ? `M ${x + 70} ${y} L ${x} ${y + 50} L ${x + 70} ${y + 120} Z` : `M ${x} ${y} L ${x + 70} ${y + 50} L ${x} ${y + 120} Z`} fill={sombra(colors.noite)} />;
+          })
+        : null}
       {/* linhas de velocidade no interior do poço */}
       {Array.from({ length: linhas }, (_, i) => {
         const x = PAREDE + 60 + ((i * 163) % (1080 - 2 * PAREDE - 120));
@@ -506,6 +530,22 @@ const Paredes: React.FC<{ off: number; cor: string; corFundo: string; vel: numbe
           })
         : null}
     </>
+  );
+};
+
+// Pedrinhas soltas na frente do Nico (camada mais rápida do parallax)
+const Detritos: React.FC<{ off: number; vel: number }> = ({ off, vel }) => {
+  const ink = useInk();
+  if (vel < 6) return null;
+  return (
+    <g>
+      {Array.from({ length: 5 }, (_, k) => {
+        const x = PAREDE + 60 + ((k * 197) % (1080 - 2 * PAREDE - 120));
+        const y = ((k * 520 - off * 1.9) % 2600 + 2600) % 2600 - 300;
+        const r = 18 + (k % 3) * 8;
+        return <path key={k} d={`M ${x - r} ${y} L ${x - r * 0.2} ${y - r} L ${x + r} ${y - r * 0.3} L ${x + r * 0.5} ${y + r} Z`} fill={colors.chaoSombra} stroke={colors.tinta} strokeWidth={ink * 0.5} strokeLinejoin="round" />;
+      })}
+    </g>
   );
 };
 
@@ -566,7 +606,7 @@ export const Queda: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
   const heroi = on(frame, n(params.heroi));
   const perde = n(params.semPoderes);
   const torradeira = n(params.torradeira);
-  const expression = on(frame, torradeira) ? "susto" : on(frame, n(params.inteligencia)) ? "medo" : on(frame, perde) ? "preocupacao" : heroi ? "malandro" : "surpresa";
+  const expression = on(frame, torradeira) ? "susto" : on(frame, n(params.inteligencia)) ? "medo" : on(frame, perde) ? "preocupacao" : "malandro";
   // profundidade nos números da fala, depois sobe sozinha; velocidade de queda livre sem ar
   // (v = raiz de 2·g·h, g constante perto da superfície)
   const marcas: [number, number][] = [
@@ -586,23 +626,57 @@ export const Queda: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
   const kit = janela(frame, n(params.semPoderes), torradeira - 4);
   const torr = janela(frame, torradeira, Infinity, true);
   const selo = pop(frame, pula + 10);
+  // pose muda a cada ~1,5 s (mola entre as poses); confiante -> herói -> desespero
+  const ciclo = (lista: string[], base: number, passo = 45) => {
+    const k = Math.max(0, Math.floor((frame - base) / passo));
+    return {
+      pose: lista[k % lista.length],
+      fromPose: lista[(k + lista.length - 1) % lista.length],
+      poseT: k === 0 ? 1 : spring({ frame: frame - base - k * passo, fps: 30, config: { damping: 12, mass: 0.6, stiffness: 150 } }),
+    };
+  };
+  const poseNico = on(frame, perde)
+    ? ciclo(["caindo", "flutuando", "encolhido", "caindo"], perde, 40)
+    : heroi
+      ? ciclo(["pulando", "caindo"], n(params.heroi), 45)
+      : ciclo(["caindo", "flutuando"], pula, 45);
+  const nicoX = 420 + (1 - entra) * 120;
+  const balanco = 4 + v * 0.3;
+  const rotNico = (heroi && !on(frame, perde) ? -10 : 0) + Math.sin(frame / 6) * balanco;
   return (
     <>
       <Layer cam={cam} depth={1}>
-        <Paredes off={off} cor={colors.chaoSombra} corFundo={colors.noiteEscura} vel={v} frame={frame} />
+        <Paredes off={off} cor={colors.chaoSombra} corFundo={colors.noiteEscura} vel={v} frame={frame} parallax />
+        {/* marcas de vento em volta do Nico: crescem com a velocidade (cabelo e capuz "batendo") */}
+        {v > 2
+          ? Array.from({ length: 6 }, (_, k) => {
+              const c = ((frame * (0.06 + v * 0.004) + k / 6) % 1);
+              const lado = k % 2 ? 1 : -1;
+              const x = nicoX + lado * (150 + (k % 3) * 40);
+              const y = nicoY - 260 - c * 260;
+              return <path key={k} d={`M ${x} ${y} q ${lado * 18} -40 0 -${60 + v * 2}`} fill="none" stroke={colors.creme} strokeWidth={10} strokeLinecap="round" opacity={1 - c} />;
+            })
+          : null}
         <NicoEm
-          x={heroi ? 420 : 540}
+          x={nicoX}
           y={nicoY}
-          s={0.5}
+          s={0.55}
           centro
-          rot={heroi ? -10 : Math.sin(frame / 11) * 6}
-          pose={heroi && !on(frame, perde) ? "pulando" : "caindo"}
+          rot={rotNico}
+          pose={poseNico.pose}
+          fromPose={poseNico.fromPose}
+          poseT={poseNico.poseT}
           expression={expression}
           oculos={!on(frame, torradeira)}
           suor={on(frame, n(params.inteligencia))}
+          espelhar={on(frame, perde) && Math.floor((frame - perde) / 80) % 2 === 1}
         />
+        {/* os óculos voam para trás (para cima, saindo do quadro) com rastro */}
         {oculosVoa > 0 && oculosVoa < 1 ? (
-          <g transform={`translate(${420 + oculosVoa * 120} ${nicoY - 230 - oculosVoa * 900}) rotate(${oculosVoa * 540}) scale(0.5)`}>
+          <g transform={`translate(${nicoX + oculosVoa * 160} ${nicoY - 250 - oculosVoa * 1000}) rotate(${oculosVoa * 720}) scale(0.6)`}>
+            {[1, 2, 3].map((r) => (
+              <path key={r} d={`M ${-120 + r * 60} 60 L ${-120 + r * 60} ${120 + r * 40}`} stroke={colors.creme} strokeWidth={14} strokeLinecap="round" opacity={0.7} />
+            ))}
             <path d="M -180 0 L 180 0" stroke={colors.tinta} strokeWidth={16} />
             <path d="M -170 -6 L -30 -6 Q -30 60 -100 64 Q -170 60 -170 -6 Z M 30 -6 L 170 -6 Q 170 60 100 64 Q 30 60 30 -6 Z" fill={colors.tinta} />
           </g>
@@ -613,17 +687,18 @@ export const Queda: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
               return <path key={k} d={estrela(30)} transform={`translate(${300 + k * 120} ${nicoY - 420 - c * 60}) scale(${1 - c})`} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={6} />;
             })
           : null}
+        <Detritos off={off} vel={v} />
       </Layer>
       <Selo x={540} y={505} s={selo} texto="TÚNEL HIPOTÉTICO · SEM AR" />
       {/* kit do herói: poderes e plano riscados */}
-      <Cartao x={810} y={760} w={420} h={330} s={kit} rot={3}>
+      <Cartao x={850} y={790} w={400} h={330} s={kit * 0.92} rot={3}>
         <T x={0} y={-100} size={42} fill={colors.amarelo}>KIT DO HERÓI</T>
         <T x={-150} y={0} size={46} anchor="start">PODERES</T>
         <T x={-150} y={100} size={46} anchor="start">PLANO</T>
         <Xis x={140} y={-14} r={36} s={pop(frame, n(params.poderes), true)} />
         <Xis x={140} y={86} r={36} s={pop(frame, n(params.plano), true)} />
       </Cartao>
-      <Cartao x={800} y={760} w={440} h={470} s={torr} rot={-3}>
+      <Cartao x={850} y={800} w={420} h={470} s={torr * 0.92} rot={-3}>
         <T x={0} y={-160} size={38}>INTELIGÊNCIA</T>
         <T x={0} y={-114} size={38}>EMOCIONAL:</T>
         <g transform="translate(0 120) scale(0.85)">
@@ -739,6 +814,7 @@ export const Calor: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
       <Barra x={790} y={1180} h={300} k={tempK} cor={colors.coral} rotulo="CALOR" s={painel * (1 - uber)} />
       <Barra x={960} y={1180} h={300} k={presK} cor={colors.noite} rotulo="PRESSÃO" s={painel * (1 - uber)} />
       <PlacaCalor x={430} y={520} s={janela(frame, n(params.mil), n(params.uber) - 2, true)} texto="1.000 °C+" />
+      <SeloTunel frame={frame} params={params} />
       <Cartao x={560} y={700} w={760} h={420} s={uber} rot={-2}>
         <T x={0} y={-130} size={44} fill={colors.creme}>SUA CORRIDA</T>
         <g transform="translate(-220 10) scale(0.9)">
@@ -925,6 +1001,7 @@ export const Nucleo: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
           <T x={0} y={16} size={40}>PANELA DE PRESSÃO</T>
         </g>
       ) : null}
+      <SeloTunel frame={frame} params={params} />
       {premium > 0 ? (
         <g transform={`translate(760 640) rotate(-6) scale(${premium})`}>
           <path d={estrela(170)} transform="scale(1.3 0.9)" fill={colors.amarelo} stroke={colors.tinta} strokeWidth={10} strokeLinejoin="round" />
@@ -981,7 +1058,7 @@ export const Centro: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
   return (
     <>
       <Layer cam={cam} depth={1}>
-        <Paredes off={off} cor={colors.muro} corFundo={sombra(sombra(colors.coral))} vel={24} frame={frame} brilho={1 - prot} />
+        <Paredes off={off} cor={colors.noite} corFundo={colors.noiteEscura} vel={24} frame={frame} />
         <TuboProtegido off={off} k={prot} frame={frame} />
         {frame < volta + 8 ? (
           <g transform="translate(540 960)">
@@ -992,6 +1069,7 @@ export const Centro: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
         )}
         <Puf frame={frame} at={volta} x={540} y={900} />
       </Layer>
+      <SeloTunel frame={frame} params={params} />
       <Carimbo x={540} y={600} s={imp} texto="CENÁRIO IMPOSSÍVEL" />
       <Selo x={540} y={1180} s={pop(frame, n(params.protegido), true)} texto="TÚNEL PROTEGIDO" />
       <Selo x={540} y={1100} s={selo} texto="SEM AR" cor={colors.creme} />
@@ -1003,7 +1081,13 @@ export const Centro: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
 const NUCLEO_PROF = 1 - CAMADAS.externo;
 const gravidade = (p: number) => (p <= NUCLEO_PROF ? 1 + 0.09 * (p / NUCLEO_PROF) : 1.09 * (1 - (p - NUCLEO_PROF) / (1 - NUCLEO_PROF)));
 
-export const GRAV = { x: 300, y: 900, r: 270, gx: 640, gw: 360 };
+// Layout vertical (P1): corte da Terra em cima à esquerda, o Nico grande em cima à direita e o
+// gráfico embaixo em quase toda a largura. Eixo da profundidade vertical à esquerda (rótulos
+// SUPERFÍCIE / NÚCLEO / CENTRO fixos à esquerda dele) e gravidade na horizontal.
+export const GRAV = { x: 290, y: 560, r: 225, ax: 310, top: 1040, bot: 1272, gmax: 1.15, right: 990 };
+export const SeloTunel: React.FC<{ frame: number; params: Params }> = ({ frame, params }) =>
+  on(frame, n(params.seloTunel)) ? <Selo x={540} y={1560} s={0.9} texto="TÚNEL PROTEGIDO · SEM AR" /> : null;
+
 export const Gravidade: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ cam, frame, params }) => {
   const ink = useInk();
   const G = GRAV;
@@ -1013,15 +1097,20 @@ export const Gravidade: React.FC<{ cam: Cam; frame: number; params: Params }> = 
   // profundidade do Nico: desce pelo manto até a borda do núcleo em `mantoFim`, depois até o centro em `zero`
   const p = frame < manto ? NUCLEO_PROF * ramp(frame, desce, manto) : NUCLEO_PROF + (1 - NUCLEO_PROF) * ramp(frame, manto, zero, { ...clamp, easing: Easing.out(Easing.quad) });
   const g = gravidade(p);
-  const yOf = (q: number) => G.y - G.r + q * G.r;
-  const xOf = (gg: number) => G.gx + gg * (G.gw / 1.15);
-  const pts = Array.from({ length: 41 }, (_, i) => (i / 40) * p).map((q) => `${xOf(gravidade(q)).toFixed(1)} ${yOf(q).toFixed(1)}`);
+  const yT = (q: number) => G.y - G.r + q * G.r; // no corte da Terra
+  const yG = (q: number) => G.top + q * (G.bot - G.top); // no gráfico
+  const xG = (gg: number) => G.ax + gg * ((G.right - G.ax) / G.gmax);
+  const pts = Array.from({ length: 41 }, (_, i) => (i / 40) * p).map((q) => `${xG(gravidade(q)).toFixed(1)} ${yG(q).toFixed(1)}`);
   const seta = pop(frame, n(params.puxando));
+  const quase = pop(frame, n(params.quase), true);
   const diminui = pop(frame, n(params.diminuir), true);
   const zeroK = pop(frame, zero, true);
-  const quase = pop(frame, n(params.quase), true);
-  const titulo = pop(frame, 0);
   const valor = g < 0.05 ? "≈ 0" : `${g.toFixed(1).replace(".", ",")}×`;
+  // o Nico (personagem inteiro) reage a cada estágio
+  const expression = on(frame, zero) ? "neutro" : on(frame, n(params.diminuir)) ? "surpresa" : on(frame, n(params.quase)) ? "curiosidade" : "malandro";
+  const flutuando = on(frame, zero);
+  const chipX = xG(g) + 34;
+  const chipY = yG(p);
   return (
     <>
       <Layer cam={cam} depth={0.1}>
@@ -1030,41 +1119,58 @@ export const Gravidade: React.FC<{ cam: Cam; frame: number; params: Params }> = 
       <Layer cam={cam} depth={1}>
         <CorteTerra x={G.x} y={G.y} r={G.r} />
         <circle cx={G.x} cy={G.y} r={12} fill={colors.tinta} />
-        {/* Nico (ícone da cabeça) descendo pelo túnel, com a seta da gravidade proporcional */}
-        <g transform={`translate(${G.x} ${yOf(p)})`}>
+        {/* ícone do Nico descendo pelo túnel, com a seta da gravidade proporcional */}
+        <g transform={`translate(${G.x} ${yT(p)})`}>
           {seta > 0 && g > 0.04 ? (
             <g transform={`scale(${seta})`}>
-              <path d={`M 0 30 L 0 ${30 + 120 * g}`} stroke={colors.creme} strokeWidth={22} strokeLinecap="round" />
-              <path d={`M -34 ${10 + 120 * g} L 0 ${56 + 120 * g} L 34 ${10 + 120 * g} Z`} fill={colors.creme} stroke={colors.tinta} strokeWidth={6} strokeLinejoin="round" />
+              <path d={`M 0 30 L 0 ${30 + 110 * g}`} stroke={colors.creme} strokeWidth={20} strokeLinecap="round" />
+              <path d={`M -32 ${10 + 110 * g} L 0 ${52 + 110 * g} L 32 ${10 + 110 * g} Z`} fill={colors.creme} stroke={colors.tinta} strokeWidth={6} strokeLinejoin="round" />
             </g>
           ) : null}
-          <circle r={40} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink * 0.6} />
-          <path d="M -40 -4 C -42 -40 -20 -46 0 -46 C 24 -46 44 -36 40 -4 C 30 -26 0 -34 -40 -4 Z" fill={colors.cabelo} />
-          <circle cx={-14} cy={6} r={7} fill={colors.tinta} />
-          <circle cx={14} cy={6} r={7} fill={colors.tinta} />
+          <circle r={36} fill={colors.pele} stroke={colors.tinta} strokeWidth={ink * 0.6} />
+          <path d="M -36 -4 C -38 -36 -18 -42 0 -42 C 22 -42 40 -32 36 -4 C 27 -24 0 -30 -36 -4 Z" fill={colors.cabelo} />
+          <circle cx={-12} cy={6} r={6} fill={colors.tinta} />
+          <circle cx={12} cy={6} r={6} fill={colors.tinta} />
         </g>
-        {/* gráfico alinhado à profundidade */}
-        <g opacity={titulo}>
-          <T x={G.gx + G.gw / 2} y={G.y - G.r - 50} size={46} fill={colors.creme}>GRAVIDADE</T>
-          <path d={`M ${G.gx} ${G.y - G.r} L ${G.gx} ${G.y + 10}`} stroke={colors.creme} strokeWidth={8} strokeLinecap="round" />
-          <path d={`M ${xOf(1)} ${G.y - G.r} L ${xOf(1)} ${G.y}`} stroke={colors.creme} strokeWidth={4} strokeDasharray="12 12" opacity={0.6} />
-          <T x={xOf(1)} y={G.y - G.r - 8} size={34} fill={colors.creme}>1×</T>
-          <path d={`M ${G.gx - 20} ${yOf(NUCLEO_PROF)} L ${G.gx + G.gw + 10} ${yOf(NUCLEO_PROF)}`} stroke={colors.amarelo} strokeWidth={4} strokeDasharray="10 10" />
-          <path d={`M ${G.gx - 20} ${G.y} L ${G.gx + G.gw + 10} ${G.y}`} stroke={colors.creme} strokeWidth={4} strokeDasharray="10 10" opacity={0.6} />
-          <T x={G.gx + G.gw + 6} y={yOf(NUCLEO_PROF) - 14} size={34} fill={colors.amarelo} anchor="end">NÚCLEO</T>
-          <T x={G.gx + G.gw + 6} y={G.y - 14} size={34} fill={colors.creme} anchor="end">CENTRO</T>
-          {p > 0.005 ? <path d={`M ${pts.join(" L ")}`} fill="none" stroke={colors.amarelo} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" /> : null}
-          <circle cx={xOf(g)} cy={yOf(p)} r={16} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={6} />
-          <g transform={`translate(${Math.min(xOf(g) + 30, G.gx + G.gw - 60)} ${yOf(p) + 60})`}>
-            <rect x={-10} y={-40} width={150} height={64} rx={20} fill={colors.tinta} />
-            <T x={65} y={6} size={40} fill={colors.amarelo}>{valor}</T>
+        {/* o Nico grande, ao lado do corte */}
+        <NicoEm
+          x={800}
+          y={flutuando ? 600 + Math.sin(frame / 14) * 18 : 610}
+          s={0.6}
+          centro
+          rot={flutuando ? 170 + Math.sin(frame / 20) * 6 : Math.sin(frame / 18) * 3}
+          pose={flutuando ? "flutuando" : on(frame, n(params.diminuir)) ? "mao_levantada" : "parado"}
+          expression={expression}
+          look={flutuando ? [0, 0.2] : [-0.9, 0.5]}
+        />
+        {/* gráfico */}
+        <T x={G.ax} y={G.top - 44} size={44} fill={colors.creme} anchor="start">GRAVIDADE →</T>
+        <path d={`M ${G.ax} ${G.top - 10} L ${G.ax} ${G.bot + 10}`} stroke={colors.creme} strokeWidth={10} strokeLinecap="round" />
+        <path d={`M ${xG(1)} ${G.top} L ${xG(1)} ${G.bot}`} stroke={colors.creme} strokeWidth={4} strokeDasharray="12 12" opacity={0.6} />
+        <T x={xG(1)} y={G.top - 44} size={40} fill={colors.creme}>1×</T>
+        {[
+          [0, "SUPERFÍCIE", colors.creme],
+          [NUCLEO_PROF, "NÚCLEO", colors.amarelo],
+          [1, "CENTRO", colors.creme],
+        ].map(([q, nome, cor]) => (
+          <g key={nome as string}>
+            <path d={`M ${G.ax} ${yG(q as number)} L ${G.right} ${yG(q as number)}`} stroke={cor as string} strokeWidth={4} strokeDasharray="10 12" opacity={0.6} />
+            <T x={G.ax - 20} y={yG(q as number) + 14} size={40} fill={cor as string} anchor="end">{nome as string}</T>
           </g>
+        ))}
+        {p > 0.005 ? <path d={`M ${pts.join(" L ")}`} fill="none" stroke={colors.amarelo} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" /> : null}
+        <circle cx={xG(g)} cy={yG(p)} r={18} fill={colors.amarelo} stroke={colors.tinta} strokeWidth={6} />
+        {/* chip do valor à direita do ponto (nunca cobre os rótulos, que ficam à esquerda do eixo) */}
+        <g transform={`translate(${chipX + 170 > G.right + 60 ? xG(g) - 34 - 170 : chipX} ${chipY})`}>
+          <rect x={0} y={-36} width={170} height={72} rx={22} fill={colors.tinta} stroke={colors.amarelo} strokeWidth={4} />
+          <T x={85} y={16} size={44} fill={colors.amarelo}>{valor}</T>
         </g>
       </Layer>
-      {/* rótulos dos trechos do gráfico (em tela, abaixo do corte) */}
-      <Selo x={540} y={1240} s={quase * (1 - diminui)} texto="NO MANTO: QUASE IGUAL" cor={colors.creme} />
-      <Selo x={540} y={1240} s={diminui * (1 - zeroK)} texto="NO NÚCLEO: DIMINUI" cor={colors.amarelo} />
-      <Selo x={540} y={1240} s={zeroK} texto="NO CENTRO: ≈ ZERO" cor={colors.turquesa} />
+      {/* rótulo do trecho, no alto (sem texto de tela neste plano) */}
+      <Selo x={540} y={226} s={quase * (1 - diminui)} texto="NO MANTO: QUASE IGUAL" cor={colors.creme} />
+      <Selo x={540} y={226} s={diminui * (1 - zeroK)} texto="NO NÚCLEO: DIMINUI" cor={colors.amarelo} />
+      <Selo x={540} y={226} s={zeroK} texto="NO CENTRO: ≈ ZERO" cor={colors.turquesa} />
+      <SeloTunel frame={frame} params={params} />
     </>
   );
 };
@@ -1080,7 +1186,7 @@ export const Flutua: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
   return (
     <>
       <Layer cam={cam} depth={0.4}>
-        <SkyFill color={sombra(sombra(colors.coral))} />
+        <SkyFill color={colors.noiteEscura} />
       </Layer>
       <Layer cam={cam} depth={1}>
         {/* câmara do centro: tubo protegido e a marca do centro da Terra */}
@@ -1105,6 +1211,7 @@ export const Flutua: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
         </g>
         <NicoEm x={500} y={980 + bob(7, 26)} s={0.48} centro rot={giro + bob(8, 6)} pose="flutuando" expression={calmo ? "neutro" : "surpresa"} look={calmo ? [0, 0.2] : [0.3, -0.4]} />
       </Layer>
+      <SeloTunel frame={frame} params={params} />
       {conquista > 0 ? (
         <Cartao x={540} y={560} w={760} h={190} s={conquista} rot={-2}>
           <path d={estrela(52)} transform="translate(-300 0)" fill={colors.amarelo} stroke={colors.tinta} strokeWidth={8} />
