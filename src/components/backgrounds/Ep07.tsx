@@ -625,7 +625,7 @@ export const Queda: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ c
   const oculosVoa = ramp(frame, torradeira, torradeira + 20);
   const kit = janela(frame, n(params.semPoderes), torradeira - 4);
   const torr = janela(frame, torradeira, Infinity, true);
-  const selo = pop(frame, pula + 10);
+  const selo = janela(frame, pula + 4, pula + 4 + 88);
   // pose muda a cada ~1,5 s (mola entre as poses); confiante -> herói -> desespero
   const ciclo = (lista: string[], base: number, passo = 45) => {
     const k = Math.max(0, Math.floor((frame - base) / passo));
@@ -1050,11 +1050,12 @@ const TuboProtegido: React.FC<{ off: number; k: number; frame: number }> = ({ of
   );
 };
 
-const Carimbo: React.FC<{ x: number; y: number; s: number; texto: string }> = ({ x, y, s, texto }) =>
+const Carimbo: React.FC<{ x: number; y: number; s: number; texto: string; sub?: string }> = ({ x, y, s, texto, sub }) =>
   s <= 0 ? null : (
     <g transform={`translate(${x} ${y}) rotate(-10) scale(${2.2 - 1.2 * s})`} opacity={Math.min(1, s * 1.4)}>
-      <rect x={-texto.length * 21 - 30} y={-62} width={texto.length * 42 + 60} height={124} rx={18} fill={colors.creme} stroke={colors.coral} strokeWidth={14} />
+      <rect x={-texto.length * 21 - 30} y={-62} width={texto.length * 42 + 60} height={sub ? 190 : 124} rx={18} fill={colors.creme} stroke={colors.coral} strokeWidth={14} />
       <T x={0} y={22} size={64} fill={colors.coral}>{texto}</T>
+      {sub ? <T x={0} y={96} size={44} fill={colors.tinta}>{sub}</T> : null}
     </g>
   );
 
@@ -1062,7 +1063,6 @@ export const Centro: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
   const off = rolagem(frame, (f) => Math.max(10, 40 - f * 0.08)) + 50000;
   const volta = n(params.volta, 0);
   const prot = ramp(frame, n(params.protegido), n(params.protegido) + 14);
-  const selo = pop(frame, n(params.semAr), true);
   const imp = ramp(frame, n(params.impossivel), n(params.impossivel) + 8);
   return (
     <>
@@ -1079,9 +1079,7 @@ export const Centro: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
         <Puf frame={frame} at={volta} x={540} y={900} escala={0.55} dur={14} />
       </Layer>
       <SeloTunel frame={frame} params={params} />
-      <Carimbo x={540} y={600} s={imp} texto="CENÁRIO IMPOSSÍVEL" />
-      <Selo x={540} y={1180} s={pop(frame, n(params.protegido), true)} texto="TÚNEL PROTEGIDO" />
-      <Selo x={540} y={1100} s={selo} texto="SEM AR" cor={colors.creme} />
+      <Carimbo x={540} y={600} s={imp * (1 - ramp(frame, n(params.impossivel) + 82, n(params.impossivel) + 90))} texto="CENÁRIO IMPOSSÍVEL" sub="TÚNEL PROTEGIDO · SEM AR" />
     </>
   );
 };
@@ -1144,13 +1142,14 @@ export const Gravidade: React.FC<{ cam: Cam; frame: number; params: Params }> = 
         {/* o Nico grande, ao lado do corte */}
         <NicoEm
           x={800}
-          y={flutuando ? 600 + Math.sin(frame / 14) * 18 : 610}
+          y={610}
           s={0.6}
           centro
-          rot={flutuando ? 170 + Math.sin(frame / 20) * 6 : Math.sin(frame / 18) * 3}
-          pose={flutuando ? "flutuando" : on(frame, n(params.diminuir)) ? "mao_levantada" : "parado"}
+          pose={flutuando ? "parado" : on(frame, n(params.diminuir)) ? "mao_levantada" : "parado"}
+          fromPose={flutuando ? "mao_levantada" : on(frame, n(params.diminuir)) ? "parado" : "parado"}
+          poseT={spring({ frame: frame - (flutuando ? zero : n(params.diminuir, 0)), fps: 30, config: { damping: 12, mass: 0.6, stiffness: 150 } })}
           expression={expression}
-          look={flutuando ? [0, 0.2] : [-0.9, 0.5]}
+          look={[-0.9, 0.5]}
         />
         {/* gráfico */}
         <T x={G.ax} y={G.top - 44} size={44} fill={colors.creme} anchor="start">GRAVIDADE →</T>
@@ -1190,7 +1189,11 @@ export const Flutua: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
   const calmo = on(frame, n(params.calmo));
   const conquista = pop(frame, n(params.conquista), true);
   // o Nico gira devagar até ficar de cabeça para baixo e fica boiando
-  const giro = interpolate(frame, [n(params.flutua, 0), n(params.flutua, 0) + 40], [20, 180], { ...clamp, easing: Easing.out(Easing.cubic) });
+  const f0 = n(params.flutua, 0);
+  // entra de pé, descendo e desacelerando; cruza a linha do CENTRO (y 960) e então gira devagar
+  const desceY = interpolate(frame, [f0, f0 + 18], [700, 1000], { ...clamp, easing: Easing.out(Easing.quad) });
+  const giro = interpolate(frame, [f0 + 12, f0 + 42], [0, 180], { ...clamp, easing: Easing.inOut(Easing.sin) });
+  const solto = ramp(frame, f0 + 42, f0 + 60);
   const bob = (k: number, a: number) => Math.sin(frame / (18 + k * 3) + k) * a;
   return (
     <>
@@ -1218,7 +1221,7 @@ export const Flutua: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ 
           <rect x={-56} y={-60} width={112} height={120} rx={24} fill={colors.chao} stroke={colors.tinta} strokeWidth={8} />
           <rect x={-40} y={-44} width={80} height={88} rx={16} fill={colors.muro} />
         </g>
-        <NicoEm x={500} y={980 + bob(7, 26)} s={0.48} centro rot={giro + bob(8, 6)} pose="flutuando" expression={calmo ? "neutro" : "surpresa"} look={calmo ? [0, 0.2] : [0.3, -0.4]} />
+        <NicoEm x={500} y={desceY + bob(7, 26) * solto} s={0.48} centro rot={giro + bob(8, 6) * solto} pose={giro > 0 ? "flutuando" : "caindo"} expression={calmo ? "neutro" : "surpresa"} look={calmo ? [0, 0.2] : [0.3, -0.4]} />
       </Layer>
       <SeloTunel frame={frame} params={params} />
       {conquista > 0 ? (

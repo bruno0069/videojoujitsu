@@ -290,8 +290,7 @@
     "mil": "mil",
     "suor": "temperatura",
     "medo": "nico",
-    "uber": "pior",
-    "seloTunel": 0
+    "uber": "pior"
    },
    "texto": {
     "de": "quanto",
@@ -381,8 +380,7 @@
     "nico": "nico",
     "puf": "virou-4",
     "miojo": "virou+6",
-    "premium": "premium",
-    "seloTunel": 0
+    "premium": "premium"
    },
    "texto": {
     "de": "formado",
@@ -518,8 +516,7 @@
     "diminuir": "diminuir",
     "flutua": "voce#2-3",
     "calmo": "finalmente",
-    "conquista": "ficar",
-    "seloTunel": 0
+    "conquista": "ficar"
    },
    "texto": {
     "de": "voce#2",
