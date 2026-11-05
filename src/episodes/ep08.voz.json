@@ -1,0 +1,93 @@
+{
+ "_sobre": "Linha do tempo do ep08 (episódio 7, açúcar) com as janelas de cena APROVADAS fixas.",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 4.319,
+   "em": 0.12,
+   "arquivo": "public/audio/ep08-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 8.593,
+   "em": 5.787,
+   "arquivo": "public/audio/ep08-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "gatilho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 8.274,
+   "em": 14.787,
+   "arquivo": "public/audio/ep08-narracao-03-gatilho.mp3"
+  },
+  {
+   "cena": "escalada1",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 9.254,
+   "em": 24.12,
+   "arquivo": "public/audio/ep08-narracao-04-escalada1.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 3.934,
+   "em": 35.12,
+   "arquivo": "public/audio/ep08-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 4.205,
+   "palavrasDe": 4.205,
+   "ate": 6.148,
+   "em": 39.234,
+   "arquivo": "public/audio/ep08-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 6.357,
+   "palavrasDe": 6.357,
+   "ate": 7.356,
+   "em": 41.357,
+   "arquivo": "public/audio/ep08-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "escalada2",
+   "de": 7.937,
+   "palavrasDe": 7.92,
+   "ate": 9.296,
+   "em": 42.536,
+   "arquivo": "public/audio/ep08-narracao-05-escalada2.mp3"
+  },
+  {
+   "cena": "cerebro",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.369,
+   "em": 44.12,
+   "arquivo": "public/audio/ep08-narracao-06-cerebro.mp3"
+  },
+  {
+   "cena": "virada",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.397,
+   "em": 53.12,
+   "arquivo": "public/audio/ep08-narracao-07-virada.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 6.915,
+   "em": 62.453,
+   "arquivo": "public/audio/ep08-narracao-08-fecho.mp3"
+  }
+ ]
+}

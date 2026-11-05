@@ -1,0 +1,980 @@
+[
+ {
+  "text": "E",
+  "startMs": 120,
+  "endMs": 200,
+  "scene": "gancho"
+ },
+ {
+  "text": "se",
+  "startMs": 240,
+  "endMs": 280,
+  "scene": "gancho"
+ },
+ {
+  "text": "você",
+  "startMs": 360,
+  "endMs": 520,
+  "scene": "gancho"
+ },
+ {
+  "text": "ficasse",
+  "startMs": 600,
+  "endMs": 1160,
+  "scene": "gancho"
+ },
+ {
+  "text": "uma",
+  "startMs": 1320,
+  "endMs": 1480,
+  "scene": "gancho"
+ },
+ {
+  "text": "semana",
+  "startMs": 1560,
+  "endMs": 1960,
+  "scene": "gancho"
+ },
+ {
+  "text": "sem",
+  "startMs": 2040,
+  "endMs": 2200,
+  "scene": "gancho"
+ },
+ {
+  "text": "açúcar?",
+  "startMs": 2240,
+  "endMs": 2840,
+  "scene": "gancho"
+ },
+ {
+  "text": "Ele",
+  "startMs": 3000,
+  "endMs": 3160,
+  "scene": "gancho"
+ },
+ {
+  "text": "está",
+  "startMs": 3240,
+  "endMs": 3400,
+  "scene": "gancho"
+ },
+ {
+  "text": "em",
+  "startMs": 3520,
+  "endMs": 3640,
+  "scene": "gancho"
+ },
+ {
+  "text": "todo",
+  "startMs": 3720,
+  "endMs": 3960,
+  "scene": "gancho"
+ },
+ {
+  "text": "lugar.",
+  "startMs": 4000,
+  "endMs": 4439,
+  "scene": "gancho"
+ },
+ {
+  "text": "Este",
+  "startMs": 5787,
+  "endMs": 6107,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "é",
+  "startMs": 6267,
+  "endMs": 6347,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "o",
+  "startMs": 6387,
+  "endMs": 6427,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Nico.",
+  "startMs": 6467,
+  "endMs": 7027,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Intervalo,",
+  "startMs": 7227,
+  "endMs": 7867,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "cantina",
+  "startMs": 8107,
+  "endMs": 8507,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "da",
+  "startMs": 8547,
+  "endMs": 8587,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "escola.",
+  "startMs": 8667,
+  "endMs": 9307,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Ele",
+  "startMs": 9547,
+  "endMs": 9707,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "decide",
+  "startMs": 9787,
+  "endMs": 10107,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "cortar",
+  "startMs": 10147,
+  "endMs": 10427,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "o",
+  "startMs": 10507,
+  "endMs": 10560,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "açúcar",
+  "startMs": 10614,
+  "endMs": 10987,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "por",
+  "startMs": 11067,
+  "endMs": 11227,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "sete",
+  "startMs": 11387,
+  "endMs": 11627,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "dias.",
+  "startMs": 11707,
+  "endMs": 12347,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Começa",
+  "startMs": 12507,
+  "endMs": 12907,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "devolvendo",
+  "startMs": 12987,
+  "endMs": 13547,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "o",
+  "startMs": 13607,
+  "endMs": 13667,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "refrigerante.",
+  "startMs": 13727,
+  "endMs": 14380,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Primeiro,",
+  "startMs": 14787,
+  "endMs": 15427,
+  "scene": "gatilho"
+ },
+ {
+  "text": "a",
+  "startMs": 15507,
+  "endMs": 15547,
+  "scene": "gatilho"
+ },
+ {
+  "text": "regra.",
+  "startMs": 15587,
+  "endMs": 16227,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Contam",
+  "startMs": 16467,
+  "endMs": 16787,
+  "scene": "gatilho"
+ },
+ {
+  "text": "o",
+  "startMs": 16827,
+  "endMs": 16867,
+  "scene": "gatilho"
+ },
+ {
+  "text": "açúcar",
+  "startMs": 16947,
+  "endMs": 17267,
+  "scene": "gatilho"
+ },
+ {
+  "text": "adicionado,",
+  "startMs": 17347,
+  "endMs": 18147,
+  "scene": "gatilho"
+ },
+ {
+  "text": "o",
+  "startMs": 18187,
+  "endMs": 18227,
+  "scene": "gatilho"
+ },
+ {
+  "text": "mel,",
+  "startMs": 18307,
+  "endMs": 18787,
+  "scene": "gatilho"
+ },
+ {
+  "text": "os",
+  "startMs": 18867,
+  "endMs": 18947,
+  "scene": "gatilho"
+ },
+ {
+  "text": "xaropes",
+  "startMs": 18987,
+  "endMs": 19587,
+  "scene": "gatilho"
+ },
+ {
+  "text": "e",
+  "startMs": 19667,
+  "endMs": 19707,
+  "scene": "gatilho"
+ },
+ {
+  "text": "os",
+  "startMs": 19747,
+  "endMs": 19827,
+  "scene": "gatilho"
+ },
+ {
+  "text": "sucos.",
+  "startMs": 19907,
+  "endMs": 20587,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Fruta",
+  "startMs": 20787,
+  "endMs": 21027,
+  "scene": "gatilho"
+ },
+ {
+  "text": "inteira",
+  "startMs": 21187,
+  "endMs": 21507,
+  "scene": "gatilho"
+ },
+ {
+  "text": "e",
+  "startMs": 21587,
+  "endMs": 21667,
+  "scene": "gatilho"
+ },
+ {
+  "text": "leite",
+  "startMs": 21747,
+  "endMs": 22147,
+  "scene": "gatilho"
+ },
+ {
+  "text": "ficam",
+  "startMs": 22307,
+  "endMs": 22547,
+  "scene": "gatilho"
+ },
+ {
+  "text": "de",
+  "startMs": 22627,
+  "endMs": 22707,
+  "scene": "gatilho"
+ },
+ {
+  "text": "fora.",
+  "startMs": 22827,
+  "endMs": 23061,
+  "scene": "gatilho"
+ },
+ {
+  "text": "Só",
+  "startMs": 24120,
+  "endMs": 24280,
+  "scene": "escalada1"
+ },
+ {
+  "text": "que",
+  "startMs": 24360,
+  "endMs": 24440,
+  "scene": "escalada1"
+ },
+ {
+  "text": "ele",
+  "startMs": 24520,
+  "endMs": 24600,
+  "scene": "escalada1"
+ },
+ {
+  "text": "se",
+  "startMs": 24680,
+  "endMs": 24760,
+  "scene": "escalada1"
+ },
+ {
+  "text": "esconde.",
+  "startMs": 24840,
+  "endMs": 25400,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Uma",
+  "startMs": 25720,
+  "endMs": 25880,
+  "scene": "escalada1"
+ },
+ {
+  "text": "colher",
+  "startMs": 25960,
+  "endMs": 26200,
+  "scene": "escalada1"
+ },
+ {
+  "text": "de",
+  "startMs": 26280,
+  "endMs": 26360,
+  "scene": "escalada1"
+ },
+ {
+  "text": "sopa",
+  "startMs": 26440,
+  "endMs": 26680,
+  "scene": "escalada1"
+ },
+ {
+  "text": "de",
+  "startMs": 26720,
+  "endMs": 26760,
+  "scene": "escalada1"
+ },
+ {
+  "text": "ketchup",
+  "startMs": 26840,
+  "endMs": 27400,
+  "scene": "escalada1"
+ },
+ {
+  "text": "traz",
+  "startMs": 27480,
+  "endMs": 27720,
+  "scene": "escalada1"
+ },
+ {
+  "text": "cerca",
+  "startMs": 27840,
+  "endMs": 28040,
+  "scene": "escalada1"
+ },
+ {
+  "text": "de",
+  "startMs": 28080,
+  "endMs": 28120,
+  "scene": "escalada1"
+ },
+ {
+  "text": "quatro",
+  "startMs": 28280,
+  "endMs": 28520,
+  "scene": "escalada1"
+ },
+ {
+  "text": "gramas.",
+  "startMs": 28600,
+  "endMs": 29160,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Nos",
+  "startMs": 29480,
+  "endMs": 29720,
+  "scene": "escalada1"
+ },
+ {
+  "text": "EUA,",
+  "startMs": 29800,
+  "endMs": 30440,
+  "scene": "escalada1"
+ },
+ {
+  "text": "quase",
+  "startMs": 30480,
+  "endMs": 30760,
+  "scene": "escalada1"
+ },
+ {
+  "text": "três",
+  "startMs": 30920,
+  "endMs": 31160,
+  "scene": "escalada1"
+ },
+ {
+  "text": "em",
+  "startMs": 31240,
+  "endMs": 31320,
+  "scene": "escalada1"
+ },
+ {
+  "text": "cada",
+  "startMs": 31360,
+  "endMs": 31560,
+  "scene": "escalada1"
+ },
+ {
+  "text": "quatro",
+  "startMs": 31720,
+  "endMs": 31960,
+  "scene": "escalada1"
+ },
+ {
+  "text": "embalados",
+  "startMs": 32040,
+  "endMs": 32600,
+  "scene": "escalada1"
+ },
+ {
+  "text": "levam",
+  "startMs": 32680,
+  "endMs": 32840,
+  "scene": "escalada1"
+ },
+ {
+  "text": "açúcar.",
+  "startMs": 32920,
+  "endMs": 33374,
+  "scene": "escalada1"
+ },
+ {
+  "text": "Em",
+  "startMs": 35120,
+  "endMs": 35280,
+  "scene": "escalada2"
+ },
+ {
+  "text": "estudos",
+  "startMs": 35360,
+  "endMs": 35680,
+  "scene": "escalada2"
+ },
+ {
+  "text": "pequenos,",
+  "startMs": 35760,
+  "endMs": 36480,
+  "scene": "escalada2"
+ },
+ {
+  "text": "quem",
+  "startMs": 36520,
+  "endMs": 36640,
+  "scene": "escalada2"
+ },
+ {
+  "text": "tentou",
+  "startMs": 36720,
+  "endMs": 36960,
+  "scene": "escalada2"
+ },
+ {
+  "text": "cortar",
+  "startMs": 37000,
+  "endMs": 37280,
+  "scene": "escalada2"
+ },
+ {
+  "text": "açúcar",
+  "startMs": 37360,
+  "endMs": 37840,
+  "scene": "escalada2"
+ },
+ {
+  "text": "relatou",
+  "startMs": 37920,
+  "endMs": 38320,
+  "scene": "escalada2"
+ },
+ {
+  "text": "sintomas.",
+  "startMs": 38360,
+  "endMs": 39054,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Dor",
+  "startMs": 39269,
+  "endMs": 39349,
+  "scene": "escalada2"
+ },
+ {
+  "text": "de",
+  "startMs": 39429,
+  "endMs": 39469,
+  "scene": "escalada2"
+ },
+ {
+  "text": "cabeça,",
+  "startMs": 39509,
+  "endMs": 40309,
+  "scene": "escalada2"
+ },
+ {
+  "text": "cansaço,",
+  "startMs": 40349,
+  "endMs": 41177,
+  "scene": "escalada2"
+ },
+ {
+  "text": "vontade",
+  "startMs": 41360,
+  "endMs": 41720,
+  "scene": "escalada2"
+ },
+ {
+  "text": "de",
+  "startMs": 41800,
+  "endMs": 41880,
+  "scene": "escalada2"
+ },
+ {
+  "text": "doce.",
+  "startMs": 41960,
+  "endMs": 42356,
+  "scene": "escalada2"
+ },
+ {
+  "text": "O",
+  "startMs": 42536,
+  "endMs": 42599,
+  "scene": "escalada2"
+ },
+ {
+  "text": "Nico",
+  "startMs": 42679,
+  "endMs": 43079,
+  "scene": "escalada2"
+ },
+ {
+  "text": "olha",
+  "startMs": 43159,
+  "endMs": 43319,
+  "scene": "escalada2"
+ },
+ {
+  "text": "a",
+  "startMs": 43346,
+  "endMs": 43372,
+  "scene": "escalada2"
+ },
+ {
+  "text": "vitrine.",
+  "startMs": 43399,
+  "endMs": 43895,
+  "scene": "escalada2"
+ },
+ {
+  "text": "E",
+  "startMs": 44120,
+  "endMs": 44200,
+  "scene": "cerebro"
+ },
+ {
+  "text": "o",
+  "startMs": 44240,
+  "endMs": 44280,
+  "scene": "cerebro"
+ },
+ {
+  "text": "cérebro?",
+  "startMs": 44360,
+  "endMs": 45000,
+  "scene": "cerebro"
+ },
+ {
+  "text": "Ele",
+  "startMs": 45160,
+  "endMs": 45320,
+  "scene": "cerebro"
+ },
+ {
+  "text": "gasta",
+  "startMs": 45400,
+  "endMs": 45640,
+  "scene": "cerebro"
+ },
+ {
+  "text": "glicose",
+  "startMs": 45680,
+  "endMs": 46120,
+  "scene": "cerebro"
+ },
+ {
+  "text": "o",
+  "startMs": 46160,
+  "endMs": 46200,
+  "scene": "cerebro"
+ },
+ {
+  "text": "dia",
+  "startMs": 46360,
+  "endMs": 46520,
+  "scene": "cerebro"
+ },
+ {
+  "text": "inteiro.",
+  "startMs": 46720,
+  "endMs": 47160,
+  "scene": "cerebro"
+ },
+ {
+  "text": "Ela",
+  "startMs": 47400,
+  "endMs": 47560,
+  "scene": "cerebro"
+ },
+ {
+  "text": "vem",
+  "startMs": 47640,
+  "endMs": 47720,
+  "scene": "cerebro"
+ },
+ {
+  "text": "de",
+  "startMs": 47760,
+  "endMs": 47800,
+  "scene": "cerebro"
+ },
+ {
+  "text": "arroz,",
+  "startMs": 47880,
+  "endMs": 48520,
+  "scene": "cerebro"
+ },
+ {
+  "text": "pão",
+  "startMs": 48560,
+  "endMs": 48840,
+  "scene": "cerebro"
+ },
+ {
+  "text": "e",
+  "startMs": 48920,
+  "endMs": 49000,
+  "scene": "cerebro"
+ },
+ {
+  "text": "fruta.",
+  "startMs": 49080,
+  "endMs": 49640,
+  "scene": "cerebro"
+ },
+ {
+  "text": "O",
+  "startMs": 49800,
+  "endMs": 49880,
+  "scene": "cerebro"
+ },
+ {
+  "text": "fígado",
+  "startMs": 49960,
+  "endMs": 50360,
+  "scene": "cerebro"
+ },
+ {
+  "text": "fabrica",
+  "startMs": 50560,
+  "endMs": 50787,
+  "scene": "cerebro"
+ },
+ {
+  "text": "o",
+  "startMs": 50813,
+  "endMs": 50840,
+  "scene": "cerebro"
+ },
+ {
+  "text": "que",
+  "startMs": 50880,
+  "endMs": 50920,
+  "scene": "cerebro"
+ },
+ {
+  "text": "faltar.",
+  "startMs": 51000,
+  "endMs": 51489,
+  "scene": "cerebro"
+ },
+ {
+  "text": "A",
+  "startMs": 53120,
+  "endMs": 53200,
+  "scene": "virada"
+ },
+ {
+  "text": "conta",
+  "startMs": 53280,
+  "endMs": 53520,
+  "scene": "virada"
+ },
+ {
+  "text": "que",
+  "startMs": 53600,
+  "endMs": 53680,
+  "scene": "virada"
+ },
+ {
+  "text": "mais",
+  "startMs": 53760,
+  "endMs": 54080,
+  "scene": "virada"
+ },
+ {
+  "text": "pesa",
+  "startMs": 54240,
+  "endMs": 54480,
+  "scene": "virada"
+ },
+ {
+  "text": "está",
+  "startMs": 54600,
+  "endMs": 54773,
+  "scene": "virada"
+ },
+ {
+  "text": "na",
+  "startMs": 54827,
+  "endMs": 54880,
+  "scene": "virada"
+ },
+ {
+  "text": "lata.",
+  "startMs": 54920,
+  "endMs": 55480,
+  "scene": "virada"
+ },
+ {
+  "text": "Um",
+  "startMs": 55680,
+  "endMs": 55760,
+  "scene": "virada"
+ },
+ {
+  "text": "refrigerante",
+  "startMs": 55880,
+  "endMs": 56560,
+  "scene": "virada"
+ },
+ {
+  "text": "pode",
+  "startMs": 56640,
+  "endMs": 56800,
+  "scene": "virada"
+ },
+ {
+  "text": "ter",
+  "startMs": 56880,
+  "endMs": 56960,
+  "scene": "virada"
+ },
+ {
+  "text": "até",
+  "startMs": 57040,
+  "endMs": 57280,
+  "scene": "virada"
+ },
+ {
+  "text": "quarenta",
+  "startMs": 57320,
+  "endMs": 57840,
+  "scene": "virada"
+ },
+ {
+  "text": "gramas",
+  "startMs": 57920,
+  "endMs": 58160,
+  "scene": "virada"
+ },
+ {
+  "text": "de",
+  "startMs": 58200,
+  "endMs": 58240,
+  "scene": "virada"
+ },
+ {
+  "text": "açúcar.",
+  "startMs": 58320,
+  "endMs": 58960,
+  "scene": "virada"
+ },
+ {
+  "text": "São",
+  "startMs": 59120,
+  "endMs": 59360,
+  "scene": "virada"
+ },
+ {
+  "text": "dez",
+  "startMs": 59480,
+  "endMs": 59600,
+  "scene": "virada"
+ },
+ {
+  "text": "colheres",
+  "startMs": 59680,
+  "endMs": 60040,
+  "scene": "virada"
+ },
+ {
+  "text": "de",
+  "startMs": 60080,
+  "endMs": 60160,
+  "scene": "virada"
+ },
+ {
+  "text": "chá.",
+  "startMs": 60240,
+  "endMs": 60517,
+  "scene": "virada"
+ },
+ {
+  "text": "A",
+  "startMs": 62453,
+  "endMs": 62533,
+  "scene": "fecho"
+ },
+ {
+  "text": "semana",
+  "startMs": 62613,
+  "endMs": 62933,
+  "scene": "fecho"
+ },
+ {
+  "text": "acaba.",
+  "startMs": 63053,
+  "endMs": 63613,
+  "scene": "fecho"
+ },
+ {
+  "text": "O",
+  "startMs": 63813,
+  "endMs": 63893,
+  "scene": "fecho"
+ },
+ {
+  "text": "Nico",
+  "startMs": 63933,
+  "endMs": 64213,
+  "scene": "fecho"
+ },
+ {
+  "text": "segue",
+  "startMs": 64333,
+  "endMs": 64453,
+  "scene": "fecho"
+ },
+ {
+  "text": "na",
+  "startMs": 64533,
+  "endMs": 64613,
+  "scene": "fecho"
+ },
+ {
+  "text": "cantina,",
+  "startMs": 64773,
+  "endMs": 65213,
+  "scene": "fecho"
+ },
+ {
+  "text": "lendo",
+  "startMs": 65253,
+  "endMs": 65493,
+  "scene": "fecho"
+ },
+ {
+  "text": "rótulos.",
+  "startMs": 65573,
+  "endMs": 66453,
+  "scene": "fecho"
+ },
+ {
+  "text": "E",
+  "startMs": 66773,
+  "endMs": 66853,
+  "scene": "fecho"
+ },
+ {
+  "text": "se",
+  "startMs": 66933,
+  "endMs": 67013,
+  "scene": "fecho"
+ },
+ {
+  "text": "você",
+  "startMs": 67053,
+  "endMs": 67253,
+  "scene": "fecho"
+ },
+ {
+  "text": "ficasse",
+  "startMs": 67333,
+  "endMs": 67893,
+  "scene": "fecho"
+ },
+ {
+  "text": "uma",
+  "startMs": 67973,
+  "endMs": 68133,
+  "scene": "fecho"
+ },
+ {
+  "text": "semana",
+  "startMs": 68213,
+  "endMs": 68693,
+  "scene": "fecho"
+ },
+ {
+  "text": "sem",
+  "startMs": 68773,
+  "endMs": 68853,
+  "scene": "fecho"
+ },
+ {
+  "text": "açúcar?",
+  "startMs": 68933,
+  "endMs": 69368,
+  "scene": "fecho"
+ }
+]

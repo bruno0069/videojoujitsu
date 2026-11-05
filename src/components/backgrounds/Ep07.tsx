@@ -15,21 +15,21 @@ import { SkyFill } from "../Sky";
 // `fundo` na direção (cues já convertidos em frames).
 
 type Params = Record<string, number | number[]>;
-const n = (v: number | number[] | undefined, fb = Infinity) => (typeof v === "number" ? v : fb);
-const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const ramp = (frame: number, a: number, b: number, opts: Parameters<typeof interpolate>[3] = clamp) =>
+export const n = (v: number | number[] | undefined, fb = Infinity) => (typeof v === "number" ? v : fb);
+export const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+export const ramp = (frame: number, a: number, b: number, opts: Parameters<typeof interpolate>[3] = clamp) =>
   Number.isFinite(a) ? interpolate(frame, [a, Math.max(a + 1, b)], [0, 1], opts) : 0;
-const pop = (frame: number, at: number, bouncy = false) =>
+export const pop = (frame: number, at: number, bouncy = false) =>
   Number.isFinite(at) && frame >= at
     ? spring({ frame: frame - at, fps: 30, config: bouncy ? { damping: 7, mass: 0.6, stiffness: 190 } : { damping: 11, mass: 0.6, stiffness: 160 } })
     : 0;
 // entra com mola em `de` e sai encolhendo em `ate`
-const janela = (frame: number, de: number, ate = Infinity, bouncy = false) =>
+export const janela = (frame: number, de: number, ate = Infinity, bouncy = false) =>
   frame < de || frame >= ate ? 0 : pop(frame, de, bouncy) * (Number.isFinite(ate) ? 1 - ramp(frame, ate - 6, ate) : 1);
-const on = (frame: number, at: number) => Number.isFinite(at) && frame >= at;
+export const on = (frame: number, at: number) => Number.isFinite(at) && frame >= at;
 
 // Texto chapado com contorno (ordem de pintura: contorno por baixo)
-const T: React.FC<{
+export const T: React.FC<{
   x: number;
   y: number;
   size: number;
@@ -57,7 +57,7 @@ const T: React.FC<{
 );
 
 // Cartão de tinta com filete creme (mesmo desenho dos rótulos dos episódios anteriores)
-const Cartao: React.FC<{ x: number; y: number; w: number; h: number; s: number; rot?: number; cor?: string; children?: React.ReactNode }> = ({
+export const Cartao: React.FC<{ x: number; y: number; w: number; h: number; s: number; rot?: number; cor?: string; children?: React.ReactNode }> = ({
   x,
   y,
   w,
@@ -94,7 +94,7 @@ type NicoProps = {
   suor?: boolean;
   espelhar?: boolean;
 };
-const NicoEm: React.FC<NicoProps> = ({ x, y, s, rot = 0, centro, espelhar, ...p }) => (
+export const NicoEm: React.FC<NicoProps> = ({ x, y, s, rot = 0, centro, espelhar, ...p }) => (
   <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${espelhar ? -s : s} ${s})${centro ? " translate(0 560)" : ""}`}>
     <InkScale scale={s}>
       <Nico {...p} />
@@ -103,7 +103,7 @@ const NicoEm: React.FC<NicoProps> = ({ x, y, s, rot = 0, centro, espelhar, ...p 
 );
 
 // Estrela de 5 pontas (avaliação, conquista)
-const estrela = (r: number) =>
+export const estrela = (r: number) =>
   Array.from({ length: 10 }, (_, k) => {
     const a = -Math.PI / 2 + (k * Math.PI) / 5;
     const rr = k % 2 ? r * 0.45 : r;
@@ -111,7 +111,7 @@ const estrela = (r: number) =>
   }).join(" ") + " Z";
 
 // X vermelho (coral) de "não"
-const Xis: React.FC<{ x: number; y: number; r: number; s: number }> = ({ x, y, r, s }) =>
+export const Xis: React.FC<{ x: number; y: number; r: number; s: number }> = ({ x, y, r, s }) =>
   s <= 0 ? null : (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
       <circle r={r} fill={colors.coral} stroke={colors.tinta} strokeWidth={8} />
@@ -566,7 +566,7 @@ const Placar: React.FC<{ y: number; prof: string; vel: string; s: number }> = ({
   );
 
 // Selo pequeno de cenário hipotético (canto de cima, abaixo do texto)
-const Selo: React.FC<{ x: number; y: number; s: number; texto: string; cor?: string }> = ({ x, y, s, texto, cor = colors.turquesa }) =>
+export const Selo: React.FC<{ x: number; y: number; s: number; texto: string; cor?: string }> = ({ x, y, s, texto, cor = colors.turquesa }) =>
   s <= 0 ? null : (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
       <rect x={-texto.length * 10.5 - 30} y={-34} width={texto.length * 21 + 60} height={68} rx={34} fill={cor} stroke={colors.tinta} strokeWidth={8} />

@@ -222,6 +222,15 @@ gen -f lavfi -i "aevalsrc='$BUMBO+$CHIMBAL+$BAIXO+$PLUCK':s=$R:d=7.68" -af "lowp
 # energia_queda_cauda: a própria trilha (com bumbo e baixo) decaindo até o silêncio em 4,5 s,
 # para o rabo final do ep07 (sem voz, a trilha com passa-altas some)
 gen -stream_loop 1 -i "$MUS/energia_queda.wav" -af "atrim=0:4.5,highpass=f=70,volume='exp(-t*0.9)':eval=frame,afade=t=out:st=4.0:d=0.5" -ac 1 "$SFX/energia_queda_cauda.wav"
+# ep08 (episódio 7) — cantina e suspense
+# cantina_ambiente: burburinho de cantina (ruído marrom em faixa de voz, com ondulação) e um
+# tilintar de talher de vez em quando; loop de 8 s
+gen -f lavfi -i "anoisesrc=color=brown:amplitude=0.7:sample_rate=$R:duration=8:seed=101" -af "highpass=f=300,lowpass=f=1800,volume='0.6+0.25*sin(2*PI*t/2.7)+0.15*sin(2*PI*t/1.3)':eval=frame,afade=t=in:d=0.05,afade=t=out:st=7.95:d=0.05" -ac 1 "$SFX/cantina_burburinho.wav"
+gen -f lavfi -i "aevalsrc='0.25*sin(2*PI*3100*t)*exp(-mod(t,2.9)*30)*lt(mod(t,2.9),0.3)+0.18*sin(2*PI*2300*(t-1.7))*exp(-mod(t+1.2,4.1)*35)*lt(mod(t+1.2,4.1),0.25)':s=$R:d=8" -ac 1 "$SFX/cantina_talher.wav"
+gen -i "$SFX/cantina_burburinho.wav" -i "$SFX/cantina_talher.wav" -filter_complex "amix=inputs=2:normalize=0" -ac 1 "$SFX/cantina_ambiente.wav"
+rm -f "$SFX/cantina_burburinho.wav" "$SFX/cantina_talher.wav"
+# batida_suspense: duas batidas graves de suspense (tum-tum), 1,2 s
+gen -f lavfi -i "aevalsrc='0.6*sin(2*PI*(55+40*exp(-t*20))*t)*exp(-t*9)+0.5*sin(2*PI*(52+40*exp(-(t-0.32)*20))*(t-0.32))*exp(-(t-0.32)*8)*gte(t,0.32)':s=$R:d=1.2" -af "afade=t=out:st=1.0:d=0.2" -ac 1 "$SFX/batida_suspense.wav"
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida lofi_espacial energia_queda; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"

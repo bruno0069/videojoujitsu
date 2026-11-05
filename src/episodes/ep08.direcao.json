@@ -1,0 +1,655 @@
+{
+ "_sobre": "Direção do ep08 (episódio 7, E se você ficasse uma semana sem açúcar?). Cues por palavra da narração gravada (src/audio/ep08-words.json). O Nico é desenhado dentro dos cenários (src/components/backgrounds/Ep08.tsx); os planos têm personagens: [] para o renderizador não desenhar outro. O close do primeiro quadro e o do último são iguais (loop).",
+ "limitesFixos": true,
+ "legendaDe": 0,
+ "legendaSemPontuacao": true,
+ "legendaPlaca": true,
+ "legendaFonte": 60,
+ "duckGanho": 0.2,
+ "legendaDestaques": [
+  "açúcar",
+  "ketchup",
+  "EUA",
+  "glicose",
+  "fígado",
+  "dez",
+  "lata",
+  "sete"
+ ],
+ "cenas": {
+  "gancho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:250,990",
+     "zoom": [
+      2.1,
+      2.16
+     ],
+     "personagens": [],
+     "centralizar": true
+    },
+    {
+     "de": "ele-4",
+     "enquadramento": "aberto",
+     "foco": "xy:620,1050",
+     "zoom": [
+      1.7,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "lugar+18",
+     "enquadramento": "aberto",
+     "foco": "xy:250,990",
+     "zoom": [
+      1.0,
+      1.45
+     ],
+     "personagens": [],
+     "centralizar": true,
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "pose0": 1,
+    "expr0": 1,
+    "etiquetasDe": "ele",
+    "etiquetas": [
+     "esta",
+     "em",
+     "todo",
+     "lugar"
+    ]
+   },
+   "texto": {
+    "de": 2,
+    "ate": "ele",
+    "mostrar": true
+   },
+   "sfx": {
+    "whoosh": "ele-6"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "esta"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "em"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "todo"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "lugar"
+    },
+    {
+     "id": "estalo",
+     "de": "lugar+18"
+    }
+   ]
+  },
+  "apresentacao": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.15,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "comeca-2",
+     "enquadramento": "aberto",
+     "foco": "xy:450,1100",
+     "zoom": [
+      1.0,
+      1.08
+     ],
+     "personagens": []
+    },
+    {
+     "de": "refrigerante+4",
+     "enquadramento": "aberto",
+     "foco": "xy:300,1000",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "personagens": [],
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "nome": "nico",
+    "nomeAte": "intervalo+22",
+    "trim": "intervalo",
+    "dia1": "cantina",
+    "sete": "sete",
+    "heroi": "decide",
+    "entrega": "comeca",
+    "olhaLata": "comeca+10",
+    "olhaAgua": "devolvendo",
+    "devolve": "devolvendo+10",
+    "pegaAgua": "refrigerante",
+    "confuso": "refrigerante+8"
+   },
+   "texto": {
+    "de": "cantina",
+    "mostrar": true
+   },
+   "sfx": {
+    "cantina_ambiente": {
+     "de": 0
+    }
+   },
+   "efeitos": [
+    {
+     "id": "whoosh",
+     "de": "comeca-4"
+    },
+    {
+     "id": "estalo",
+     "de": "refrigerante+2"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "sete"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "intervalo"
+    }
+   ]
+  },
+  "gatilho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:640,860",
+     "zoom": [
+      1.0,
+      1.04
+     ],
+     "personagens": []
+    },
+    {
+     "de": "sucos-2",
+     "enquadramento": "aberto",
+     "foco": "xy:500,900",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "personagens": [],
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "regra": "regra",
+    "iAcucar": "acucar",
+    "iMel": "mel",
+    "iXarope": "xaropes",
+    "sucoPula": "sucos",
+    "iFruta": "fruta",
+    "iLeite": "leite",
+    "ue": "sucos+16",
+    "ueAte": "leite-2"
+   },
+   "texto": {
+    "de": "regra",
+    "mostrar": true
+   },
+   "sfx": {
+    "estalo": "sucos+12",
+    "pop_contagem": "acucar"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "mel"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "xaropes"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "fruta"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "leite"
+    },
+    {
+     "id": "whoosh",
+     "de": "sucos"
+    },
+    {
+     "id": "cantina_ambiente",
+     "de": 0
+    }
+   ]
+  },
+  "escalada1": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:400,1100",
+     "zoom": [
+      1.05,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "uma-2",
+     "enquadramento": "aberto",
+     "foco": "xy:760,1000",
+     "zoom": [
+      1.0,
+      1.35
+     ],
+     "personagens": []
+    },
+    {
+     "de": "nos-4",
+     "enquadramento": "aberto",
+     "foco": "xy:540,1050",
+     "zoom": [
+      1.08,
+      1.0
+     ],
+     "personagens": [],
+     "entrada": "punch"
+    },
+    {
+     "de": "acucar$+4",
+     "enquadramento": "aberto",
+     "foco": "xy:380,1050",
+     "zoom": [
+      1.0,
+      1.3
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "lupa": 2,
+    "colher": "colher",
+    "quatro": "quatro",
+    "pacotes": "nos-4",
+    "etiquetas": [
+     "quase",
+     "tres",
+     "cada"
+    ],
+    "suspeito": "acucar$+4"
+   },
+   "texto": {
+    "de": "cerca",
+    "mostrar": true,
+    "partes": [
+     "cerca",
+     "nos"
+    ]
+   },
+   "sfx": {
+    "pop_contagem": "colher",
+    "whoosh": "nos-6"
+   },
+   "efeitos": [
+    {
+     "id": "estalo",
+     "de": "quatro"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "quase"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "tres"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "cada"
+    },
+    {
+     "id": "micro_zoom",
+     "de": "acucar$+4"
+    }
+   ]
+  },
+  "escalada2": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.0,
+      1.05
+     ],
+     "personagens": []
+    },
+    {
+     "de": "dor-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.05,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "vontade-2",
+     "enquadramento": "aberto",
+     "foco": "xy:250,900",
+     "zoom": [
+      1.0,
+      1.15
+     ],
+     "personagens": []
+    },
+    {
+     "de": "o-2",
+     "enquadramento": "aberto",
+     "foco": "xy:250,900",
+     "zoom": [
+      1.15,
+      1.22
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "vitrine": 0,
+    "estudo": "estudos",
+    "dor": "dor",
+    "cansaco": "cansaco",
+    "doce": "vontade",
+    "orbita": "doce+8",
+    "desvia": "o"
+   },
+   "texto": {
+    "de": "dor",
+    "mostrar": true,
+    "partes": [
+     "dor",
+     "cansaco",
+     "vontade"
+    ]
+   },
+   "sfx": {
+    "zumbido_leve": {
+     "de": 0
+    },
+    "batida_suspense": "dor"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "estudos"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "cansaco"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "vontade"
+    },
+    {
+     "id": "whoosh",
+     "de": "doce+8"
+    }
+   ]
+  },
+  "cerebro": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:600,700",
+     "zoom": [
+      1.15,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "arroz-2",
+     "enquadramento": "aberto",
+     "foco": "xy:400,1000",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "personagens": []
+    },
+    {
+     "de": "o#3-2",
+     "enquadramento": "aberto",
+     "foco": "xy:690,1000",
+     "zoom": [
+      1.0,
+      1.1
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "cerebro": "cerebro",
+    "gotas": "glicose",
+    "arroz": "arroz",
+    "pao": "pao",
+    "fruta": "fruta",
+    "figado": "figado",
+    "fabrica": "fabrica",
+    "normal": "faltar"
+   },
+   "texto": {
+    "de": "glicose",
+    "mostrar": true
+   },
+   "sfx": {
+    "pop_contagem": "arroz"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "cerebro"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "pao"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "fruta"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "figado"
+    },
+    {
+     "id": "whoosh",
+     "de": "o#3-4"
+    }
+   ]
+  },
+  "virada": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,900",
+     "zoom": [
+      1.0,
+      1.04
+     ],
+     "personagens": []
+    },
+    {
+     "de": "quarenta-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,1100",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "personagens": []
+    },
+    {
+     "de": "dez-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,1100",
+     "zoom": [
+      1.0,
+      1.08
+     ],
+     "personagens": [],
+     "entrada": "punch"
+    },
+    {
+     "de": "cha$+6",
+     "enquadramento": "aberto",
+     "foco": "xy:960,940",
+     "zoom": [
+      1.4,
+      1.6
+     ],
+     "personagens": [],
+     "entrada": "punch"
+    }
+   ],
+   "fundo": {
+    "entra": 0,
+    "cresce": "lata",
+    "colheres": [
+     130,
+     137,
+     144,
+     151,
+     158,
+     165,
+     172,
+     179,
+     186,
+     "dez"
+    ]
+   },
+   "texto": {
+    "de": "quarenta",
+    "mostrar": true
+   },
+   "sfx": {
+    "rangido_balanca": "pesa",
+    "pop_contagem": 130
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": 137
+    },
+    {
+     "id": "pop_contagem",
+     "de": 144
+    },
+    {
+     "id": "pop_contagem",
+     "de": 151
+    },
+    {
+     "id": "pop_contagem",
+     "de": 158
+    },
+    {
+     "id": "pop_contagem",
+     "de": 165
+    },
+    {
+     "id": "pop_contagem",
+     "de": 172
+    },
+    {
+     "id": "pop_contagem",
+     "de": 179
+    },
+    {
+     "id": "pop_contagem",
+     "de": 186
+    },
+    {
+     "id": "pop_contagem",
+     "de": "dez"
+    },
+    {
+     "id": "estalo",
+     "de": "dez"
+    },
+    {
+     "id": "whoosh",
+     "de": "cha$+2"
+    }
+   ]
+  },
+  "fecho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:450,1050",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "personagens": []
+    },
+    {
+     "de": "e-4",
+     "enquadramento": "aberto",
+     "foco": "xy:250,990",
+     "zoom": [
+      1.4,
+      2.1
+     ],
+     "personagens": [],
+     "centralizar": true
+    }
+   ],
+   "fundo": {
+    "lupa": 0,
+    "lupaAte": "e-6",
+    "olhaCima": "e-6"
+   },
+   "texto": {
+    "de": 4,
+    "ate": 220,
+    "mostrar": true
+   },
+   "sfx": {
+    "whoosh": "e-6"
+   },
+   "efeitos": [
+    {
+     "id": "cantina_ambiente",
+     "de": 0
+    }
+   ]
+  }
+ }
+}

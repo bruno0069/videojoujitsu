@@ -1,0 +1,852 @@
+{
+ "_sobre": "Transcrição por palavra das 8 tomadas do ep08 (episódio 7, açúcar; eleven_scribe_v1, 1 tomada por cena).",
+ "cenas": {
+  "gancho": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "se",
+     "start": 0.12,
+     "end": 0.16
+    },
+    {
+     "text": "você",
+     "start": 0.24,
+     "end": 0.4
+    },
+    {
+     "text": "ficasse",
+     "start": 0.48,
+     "end": 1.04
+    },
+    {
+     "text": "uma",
+     "start": 1.2,
+     "end": 1.36
+    },
+    {
+     "text": "semana",
+     "start": 1.44,
+     "end": 1.84
+    },
+    {
+     "text": "sem",
+     "start": 1.92,
+     "end": 2.08
+    },
+    {
+     "text": "açúcar?",
+     "start": 2.12,
+     "end": 2.72
+    },
+    {
+     "text": "Ele",
+     "start": 2.88,
+     "end": 3.04
+    },
+    {
+     "text": "está",
+     "start": 3.12,
+     "end": 3.28
+    },
+    {
+     "text": "em",
+     "start": 3.4,
+     "end": 3.52
+    },
+    {
+     "text": "todo",
+     "start": 3.6,
+     "end": 3.84
+    },
+    {
+     "text": "lugar.",
+     "start": 3.88,
+     "end": 4.56
+    }
+   ]
+  },
+  "apresentacao": {
+   "words": [
+    {
+     "text": "Este",
+     "start": 0.0,
+     "end": 0.32
+    },
+    {
+     "text": "é",
+     "start": 0.48,
+     "end": 0.56
+    },
+    {
+     "text": "o",
+     "start": 0.6,
+     "end": 0.64
+    },
+    {
+     "text": "Nico.",
+     "start": 0.68,
+     "end": 1.24
+    },
+    {
+     "text": "Intervalo,",
+     "start": 1.44,
+     "end": 2.08
+    },
+    {
+     "text": "cantina",
+     "start": 2.32,
+     "end": 2.72
+    },
+    {
+     "text": "da",
+     "start": 2.76,
+     "end": 2.8
+    },
+    {
+     "text": "escola.",
+     "start": 2.88,
+     "end": 3.52
+    },
+    {
+     "text": "Ele",
+     "start": 3.76,
+     "end": 3.92
+    },
+    {
+     "text": "decide",
+     "start": 4.0,
+     "end": 4.32
+    },
+    {
+     "text": "cortar",
+     "start": 4.36,
+     "end": 4.64
+    },
+    {
+     "text": "o",
+     "start": 4.72,
+     "end": 4.773
+    },
+    {
+     "text": "açúcar",
+     "start": 4.827,
+     "end": 5.2
+    },
+    {
+     "text": "por",
+     "start": 5.28,
+     "end": 5.44
+    },
+    {
+     "text": "sete",
+     "start": 5.6,
+     "end": 5.84
+    },
+    {
+     "text": "dias.",
+     "start": 5.92,
+     "end": 6.56
+    },
+    {
+     "text": "Começa",
+     "start": 6.72,
+     "end": 7.12
+    },
+    {
+     "text": "devolvendo",
+     "start": 7.2,
+     "end": 7.76
+    },
+    {
+     "text": "o",
+     "start": 7.82,
+     "end": 7.88
+    },
+    {
+     "text": "refrigerante.",
+     "start": 7.94,
+     "end": 8.8
+    }
+   ]
+  },
+  "gatilho": {
+   "words": [
+    {
+     "text": "Primeiro,",
+     "start": 0.0,
+     "end": 0.64
+    },
+    {
+     "text": "a",
+     "start": 0.72,
+     "end": 0.76
+    },
+    {
+     "text": "regra.",
+     "start": 0.8,
+     "end": 1.44
+    },
+    {
+     "text": "Contam",
+     "start": 1.68,
+     "end": 2.0
+    },
+    {
+     "text": "o",
+     "start": 2.04,
+     "end": 2.08
+    },
+    {
+     "text": "açúcar",
+     "start": 2.16,
+     "end": 2.48
+    },
+    {
+     "text": "adicionado,",
+     "start": 2.56,
+     "end": 3.36
+    },
+    {
+     "text": "o",
+     "start": 3.4,
+     "end": 3.44
+    },
+    {
+     "text": "mel,",
+     "start": 3.52,
+     "end": 4.0
+    },
+    {
+     "text": "os",
+     "start": 4.08,
+     "end": 4.16
+    },
+    {
+     "text": "xaropes",
+     "start": 4.2,
+     "end": 4.8
+    },
+    {
+     "text": "e",
+     "start": 4.88,
+     "end": 4.92
+    },
+    {
+     "text": "os",
+     "start": 4.96,
+     "end": 5.04
+    },
+    {
+     "text": "sucos.",
+     "start": 5.12,
+     "end": 5.8
+    },
+    {
+     "text": "Fruta",
+     "start": 6.0,
+     "end": 6.24
+    },
+    {
+     "text": "inteira",
+     "start": 6.4,
+     "end": 6.72
+    },
+    {
+     "text": "e",
+     "start": 6.8,
+     "end": 6.88
+    },
+    {
+     "text": "leite",
+     "start": 6.96,
+     "end": 7.36
+    },
+    {
+     "text": "ficam",
+     "start": 7.52,
+     "end": 7.76
+    },
+    {
+     "text": "de",
+     "start": 7.84,
+     "end": 7.92
+    },
+    {
+     "text": "fora.",
+     "start": 8.04,
+     "end": 8.48
+    }
+   ]
+  },
+  "escalada1": {
+   "words": [
+    {
+     "text": "Só",
+     "start": 0.0,
+     "end": 0.16
+    },
+    {
+     "text": "que",
+     "start": 0.24,
+     "end": 0.32
+    },
+    {
+     "text": "ele",
+     "start": 0.4,
+     "end": 0.48
+    },
+    {
+     "text": "se",
+     "start": 0.56,
+     "end": 0.64
+    },
+    {
+     "text": "esconde.",
+     "start": 0.72,
+     "end": 1.28
+    },
+    {
+     "text": "Uma",
+     "start": 1.6,
+     "end": 1.76
+    },
+    {
+     "text": "colher",
+     "start": 1.84,
+     "end": 2.08
+    },
+    {
+     "text": "de",
+     "start": 2.16,
+     "end": 2.24
+    },
+    {
+     "text": "sopa",
+     "start": 2.32,
+     "end": 2.56
+    },
+    {
+     "text": "de",
+     "start": 2.6,
+     "end": 2.64
+    },
+    {
+     "text": "ketchup",
+     "start": 2.72,
+     "end": 3.28
+    },
+    {
+     "text": "traz",
+     "start": 3.36,
+     "end": 3.6
+    },
+    {
+     "text": "cerca",
+     "start": 3.72,
+     "end": 3.92
+    },
+    {
+     "text": "de",
+     "start": 3.96,
+     "end": 4.0
+    },
+    {
+     "text": "quatro",
+     "start": 4.16,
+     "end": 4.4
+    },
+    {
+     "text": "gramas.",
+     "start": 4.48,
+     "end": 5.04
+    },
+    {
+     "text": "Nos",
+     "start": 5.36,
+     "end": 5.6
+    },
+    {
+     "text": "EUA,",
+     "start": 5.68,
+     "end": 6.32
+    },
+    {
+     "text": "quase",
+     "start": 6.36,
+     "end": 6.64
+    },
+    {
+     "text": "três",
+     "start": 6.8,
+     "end": 7.04
+    },
+    {
+     "text": "em",
+     "start": 7.12,
+     "end": 7.2
+    },
+    {
+     "text": "cada",
+     "start": 7.24,
+     "end": 7.44
+    },
+    {
+     "text": "quatro",
+     "start": 7.6,
+     "end": 7.84
+    },
+    {
+     "text": "embalados",
+     "start": 7.92,
+     "end": 8.48
+    },
+    {
+     "text": "levam",
+     "start": 8.56,
+     "end": 8.72
+    },
+    {
+     "text": "açúcar.",
+     "start": 8.8,
+     "end": 9.52
+    }
+   ]
+  },
+  "escalada2": {
+   "words": [
+    {
+     "text": "Em",
+     "start": 0.0,
+     "end": 0.16
+    },
+    {
+     "text": "estudos",
+     "start": 0.24,
+     "end": 0.56
+    },
+    {
+     "text": "pequenos,",
+     "start": 0.64,
+     "end": 1.36
+    },
+    {
+     "text": "quem",
+     "start": 1.4,
+     "end": 1.52
+    },
+    {
+     "text": "tentou",
+     "start": 1.6,
+     "end": 1.84
+    },
+    {
+     "text": "cortar",
+     "start": 1.88,
+     "end": 2.16
+    },
+    {
+     "text": "açúcar",
+     "start": 2.24,
+     "end": 2.72
+    },
+    {
+     "text": "relatou",
+     "start": 2.8,
+     "end": 3.2
+    },
+    {
+     "text": "sintomas.",
+     "start": 3.24,
+     "end": 4.08
+    },
+    {
+     "text": "Dor",
+     "start": 4.24,
+     "end": 4.32
+    },
+    {
+     "text": "de",
+     "start": 4.4,
+     "end": 4.44
+    },
+    {
+     "text": "cabeça,",
+     "start": 4.48,
+     "end": 5.28
+    },
+    {
+     "text": "cansaço,",
+     "start": 5.32,
+     "end": 6.32
+    },
+    {
+     "text": "vontade",
+     "start": 6.36,
+     "end": 6.72
+    },
+    {
+     "text": "de",
+     "start": 6.8,
+     "end": 6.88
+    },
+    {
+     "text": "doce.",
+     "start": 6.96,
+     "end": 7.64
+    },
+    {
+     "text": "O",
+     "start": 7.92,
+     "end": 8.0
+    },
+    {
+     "text": "Nico",
+     "start": 8.08,
+     "end": 8.48
+    },
+    {
+     "text": "olha",
+     "start": 8.56,
+     "end": 8.72
+    },
+    {
+     "text": "a",
+     "start": 8.747,
+     "end": 8.773
+    },
+    {
+     "text": "vitrine.",
+     "start": 8.8,
+     "end": 9.52
+    }
+   ]
+  },
+  "cerebro": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "o",
+     "start": 0.12,
+     "end": 0.16
+    },
+    {
+     "text": "cérebro?",
+     "start": 0.24,
+     "end": 0.88
+    },
+    {
+     "text": "Ele",
+     "start": 1.04,
+     "end": 1.2
+    },
+    {
+     "text": "gasta",
+     "start": 1.28,
+     "end": 1.52
+    },
+    {
+     "text": "glicose",
+     "start": 1.56,
+     "end": 2.0
+    },
+    {
+     "text": "o",
+     "start": 2.04,
+     "end": 2.08
+    },
+    {
+     "text": "dia",
+     "start": 2.24,
+     "end": 2.4
+    },
+    {
+     "text": "inteiro.",
+     "start": 2.6,
+     "end": 3.04
+    },
+    {
+     "text": "Ela",
+     "start": 3.28,
+     "end": 3.44
+    },
+    {
+     "text": "vem",
+     "start": 3.52,
+     "end": 3.6
+    },
+    {
+     "text": "de",
+     "start": 3.64,
+     "end": 3.68
+    },
+    {
+     "text": "arroz,",
+     "start": 3.76,
+     "end": 4.4
+    },
+    {
+     "text": "pão",
+     "start": 4.44,
+     "end": 4.72
+    },
+    {
+     "text": "e",
+     "start": 4.8,
+     "end": 4.88
+    },
+    {
+     "text": "fruta.",
+     "start": 4.96,
+     "end": 5.52
+    },
+    {
+     "text": "O",
+     "start": 5.68,
+     "end": 5.76
+    },
+    {
+     "text": "fígado",
+     "start": 5.84,
+     "end": 6.24
+    },
+    {
+     "text": "fabrica",
+     "start": 6.44,
+     "end": 6.667
+    },
+    {
+     "text": "o",
+     "start": 6.693,
+     "end": 6.72
+    },
+    {
+     "text": "que",
+     "start": 6.76,
+     "end": 6.8
+    },
+    {
+     "text": "faltar.",
+     "start": 6.88,
+     "end": 7.6
+    }
+   ]
+  },
+  "virada": {
+   "words": [
+    {
+     "text": "A",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "conta",
+     "start": 0.16,
+     "end": 0.4
+    },
+    {
+     "text": "que",
+     "start": 0.48,
+     "end": 0.56
+    },
+    {
+     "text": "mais",
+     "start": 0.64,
+     "end": 0.96
+    },
+    {
+     "text": "pesa",
+     "start": 1.12,
+     "end": 1.36
+    },
+    {
+     "text": "está",
+     "start": 1.48,
+     "end": 1.653
+    },
+    {
+     "text": "na",
+     "start": 1.707,
+     "end": 1.76
+    },
+    {
+     "text": "lata.",
+     "start": 1.8,
+     "end": 2.36
+    },
+    {
+     "text": "Um",
+     "start": 2.56,
+     "end": 2.64
+    },
+    {
+     "text": "refrigerante",
+     "start": 2.76,
+     "end": 3.44
+    },
+    {
+     "text": "pode",
+     "start": 3.52,
+     "end": 3.68
+    },
+    {
+     "text": "ter",
+     "start": 3.76,
+     "end": 3.84
+    },
+    {
+     "text": "até",
+     "start": 3.92,
+     "end": 4.16
+    },
+    {
+     "text": "quarenta",
+     "start": 4.2,
+     "end": 4.72
+    },
+    {
+     "text": "gramas",
+     "start": 4.8,
+     "end": 5.04
+    },
+    {
+     "text": "de",
+     "start": 5.08,
+     "end": 5.12
+    },
+    {
+     "text": "açúcar.",
+     "start": 5.2,
+     "end": 5.84
+    },
+    {
+     "text": "São",
+     "start": 6.0,
+     "end": 6.24
+    },
+    {
+     "text": "dez",
+     "start": 6.36,
+     "end": 6.48
+    },
+    {
+     "text": "colheres",
+     "start": 6.56,
+     "end": 6.92
+    },
+    {
+     "text": "de",
+     "start": 6.96,
+     "end": 7.04
+    },
+    {
+     "text": "chá.",
+     "start": 7.12,
+     "end": 7.6
+    }
+   ]
+  },
+  "fecho": {
+   "words": [
+    {
+     "text": "A",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "semana",
+     "start": 0.16,
+     "end": 0.48
+    },
+    {
+     "text": "acaba.",
+     "start": 0.6,
+     "end": 1.16
+    },
+    {
+     "text": "O",
+     "start": 1.36,
+     "end": 1.44
+    },
+    {
+     "text": "Nico",
+     "start": 1.48,
+     "end": 1.76
+    },
+    {
+     "text": "segue",
+     "start": 1.88,
+     "end": 2.0
+    },
+    {
+     "text": "na",
+     "start": 2.08,
+     "end": 2.16
+    },
+    {
+     "text": "cantina,",
+     "start": 2.32,
+     "end": 2.76
+    },
+    {
+     "text": "lendo",
+     "start": 2.8,
+     "end": 3.04
+    },
+    {
+     "text": "rótulos.",
+     "start": 3.12,
+     "end": 4.0
+    },
+    {
+     "text": "E",
+     "start": 4.32,
+     "end": 4.4
+    },
+    {
+     "text": "se",
+     "start": 4.48,
+     "end": 4.56
+    },
+    {
+     "text": "você",
+     "start": 4.6,
+     "end": 4.8
+    },
+    {
+     "text": "ficasse",
+     "start": 4.88,
+     "end": 5.44
+    },
+    {
+     "text": "uma",
+     "start": 5.52,
+     "end": 5.68
+    },
+    {
+     "text": "semana",
+     "start": 5.76,
+     "end": 6.24
+    },
+    {
+     "text": "sem",
+     "start": 6.32,
+     "end": 6.4
+    },
+    {
+     "text": "açúcar?",
+     "start": 6.48,
+     "end": 7.2
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,208 @@
+{
+  "episode": 7,
+  "title": "E se você ficasse uma semana sem açúcar?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 2100,
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 170,
+      "narration": "E se você ficasse uma semana sem açúcar? Ele está em todo lugar.",
+      "onScreenText": "E SE VOCÊ FICASSE 7 DIAS SEM AÇÚCAR?",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "olhando_para_cima",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "close",
+        "action": "Close do rosto do Nico olhando para cima, na cantina. A câmera recua rápido e revela o balcão: etiquetas chapadas 'açúcar' acendem em sequência sobre pães, molhos, sucos e salgados. Pausa curta antes de 'Ele está em todo lugar'. Corte rápido."
+      },
+      "sfx": [
+        "silencio_1s",
+        "whoosh"
+      ],
+      "music": "curiosidade_suave"
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 170,
+      "durationInFrames": 270,
+      "narration": "Este é o Nico. Intervalo, cantina da escola. Ele decide cortar o açúcar por sete dias. Começa devolvendo o refrigerante.",
+      "onScreenText": "DIA 1",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "apontando",
+            "expression": "neutro"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico na fila da cantina. Um calendário na parede mostra 'DIA 1'. Ele entrega uma lata de refrigerante de volta ao atendente (silhueta chapada) e aponta para a água. A câmera recua devagar."
+      },
+      "sfx": [
+        "cantina_ambiente"
+      ],
+      "music": "base_suave"
+    },
+    {
+      "id": "gatilho",
+      "startFrame": 440,
+      "durationInFrames": 280,
+      "narration": "Primeiro, a regra. Contam o açúcar adicionado, o mel, os xaropes e os sucos. Fruta inteira e leite ficam de fora.",
+      "onScreenText": "CONTA · NÃO CONTA",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Sobre a bandeja do Nico, dois quadros chapados: CONTA (açúcar, mel, xarope, suco) e NÃO CONTA (maçã inteira, copo de leite). Nico pega um suco de caixinha achando que vale e diz 'Ué.' num balão; o suco pula para o quadro CONTA com um estalo."
+      },
+      "sfx": [
+        "estalo",
+        "pop_contagem"
+      ],
+      "music": "base_suave"
+    },
+    {
+      "id": "escalada1",
+      "startFrame": 720,
+      "durationInFrames": 330,
+      "narration": "Só que ele se esconde. Uma colher de sopa de ketchup traz cerca de quatro gramas. Nos EUA, quase três em cada quatro embalados levam açúcar.",
+      "onScreenText": "≈ 4 g por colher de sopa · quase 3 em cada 4 embalados (EUA)",
+      "visual": {
+        "background": "prateleira_mercado",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "vergonha",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico com uma lupa lê o rótulo de um frasco de ketchup; uma colher de sopa com ketchup mostra '≈ 4 g'. Corte para quatro pacotes alinhados (pão, molho, cereal, iogurte): três acendem com uma etiqueta 'açúcar', um fica apagado. Texto de tela com '(EUA)' bem legível."
+      },
+      "sfx": [
+        "pop_contagem",
+        "whoosh"
+      ],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "escalada2",
+      "startFrame": 1050,
+      "durationInFrames": 270,
+      "narration": "Em estudos pequenos, quem tentou cortar açúcar relatou sintomas. Dor de cabeça, cansaço, vontade de doce. O Nico olha a vitrine.",
+      "onScreenText": "dor de cabeça · cansaço · vontade de doce",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "encolhido",
+            "expression": "medo"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico diante da vitrine de doces. Três ícones chapados entram um a um sobre ele: cabeça com um raio simples, bateria quase vazia, docinho flutuando em balão. O docinho orbita o Nico. Rodapé pequeno e fixo: 'informação, não é conselho médico'."
+      },
+      "sfx": [
+        "zumbido_leve",
+        "batida_suspense"
+      ],
+      "music": "suspensa_sem_batida",
+      "extraText": [
+        "nem todo mundo sente isso"
+      ],
+      "footerText": "INFORMAÇÃO, NÃO É CONSELHO MÉDICO"
+    },
+    {
+      "id": "cerebro",
+      "startFrame": 1320,
+      "durationInFrames": 270,
+      "narration": "E o cérebro? Ele gasta glicose o dia inteiro. Ela vem de arroz, pão e fruta. O fígado fabrica o que faltar.",
+      "onScreenText": "GLICOSE ≠ AÇÚCAR ADICIONADO",
+      "visual": {
+        "background": "diagrama_corpo",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "neutro",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_aberto",
+        "action": "Diagrama chapado e genérico: um cérebro com uma bateria cheia. Silhuetas de arroz, pão e fruta entram como gotinhas de glicose. Um fígado simples ao lado fabrica gotas extras. A bateria continua cheia. Nico, pequeno no canto, observa."
+      },
+      "sfx": [
+        "pop_contagem"
+      ],
+      "music": "base_suave"
+    },
+    {
+      "id": "virada",
+      "startFrame": 1590,
+      "durationInFrames": 280,
+      "narration": "A conta que mais pesa está na lata. Um refrigerante pode ter até quarenta gramas de açúcar. São dez colheres de chá.",
+      "onScreenText": "ATÉ 40 g = 10 COLHERES DE CHÁ",
+      "visual": {
+        "background": "lata_refrigerante",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "surpresa",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Uma lata gigante, genérica e sem marca, ocupa a tela. Colheres de chá cheias de açúcar entram uma a uma sobre a mesa com contador de 1 a 10 e um 'pop' a cada uma, até a mesa ficar cheia. Um letreiro pequeno: 'OMS: açúcar livre < 10% das calorias'. Nico, pequeno, olha de boca aberta."
+      },
+      "sfx": [
+        "pop_contagem",
+        "rangido_balanca"
+      ],
+      "music": "tensao_leve",
+      "footerText": "OMS: AÇÚCAR LIVRE < 10% DAS CALORIAS"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1870,
+      "durationInFrames": 230,
+      "narration": "A semana acaba. O Nico segue na cantina, lendo rótulos. E se você ficasse uma semana sem açúcar?",
+      "onScreenText": "QUANTAS COLHERES TEM UMA LATA? 3, 6 OU 10? COMENTA.",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "olhando_para_cima",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "close",
+        "action": "Nico com a lupa lê o rótulo de um pacote no balcão da cantina, sereno. Ele levanta o rosto e volta ao MESMO enquadramento do gancho: close do rosto olhando para cima, mesma expressão do primeiro frame, para o loop encaixar."
+      },
+      "sfx": [
+        "whoosh",
+        "silencio_1s"
+      ],
+      "music": "leve_divertida"
+    }
+  ]
+}
