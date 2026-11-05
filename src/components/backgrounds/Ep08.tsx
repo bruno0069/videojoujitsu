@@ -6,7 +6,7 @@ import { NameTag, SpeechBubble } from "../elements/Props";
 import { useInk } from "../Ink";
 import { SkyFill } from "../Sky";
 import { PessoaDefs } from "./Ep04";
-import { clamp, estrela, janela, n, NicoEm, on, pop, ramp, T } from "./Ep07";
+import { clamp, estrela, n, NicoEm, on, pop, ramp, T } from "./Ep07";
 
 // Cenários do ep08 (episódio 7: E se você ficasse uma semana sem açúcar?). Mesmo traço e paleta
 // do canal: chapado, contorno grosso, sem degradê, desfoque ou filtro. O Nico é desenhado aqui
@@ -22,8 +22,12 @@ export const Lata: React.FC<{ x: number; y: number; s: number; rot?: number }> =
   const ink = useInk();
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
-      <rect x={-60} y={-200} width={120} height={200} rx={18} fill={colors.coral} stroke={colors.tinta} strokeWidth={ink} />
-      <path d="M -60 -120 Q 0 -150 60 -110 L 60 -80 Q 0 -120 -60 -90 Z" fill={colors.creme} />
+      {/* lata genérica: azul-petróleo chapado, faixa reta mais escura e bolhinhas; sem onda, sem texto */}
+      <rect x={-60} y={-200} width={120} height={200} rx={18} fill={colors.folhaSombra} stroke={colors.tinta} strokeWidth={ink} />
+      <rect x={-60} y={-70} width={120} height={36} fill={sombra(colors.folhaSombra)} />
+      {[[-22, -150, 12], [14, -126, 9], [-6, -104, 7]].map(([cx, cy, r], i) => (
+        <circle key={i} cx={cx} cy={cy} r={r} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.4} />
+      ))}
       <rect x={-50} y={-216} width={100} height={22} rx={8} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink * 0.7} />
       <rect x={-60} y={-200} width={120} height={200} rx={18} fill="none" stroke={colors.tinta} strokeWidth={ink} />
     </g>
@@ -214,10 +218,10 @@ export const Cantina: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
         ))}
         <rect x={-1500} y={680} width={4080} height={24} fill={colors.tinta} />
         {/* janela */}
-        <rect x={380} y={210} width={280} height={300} rx={10} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink} />
-        <path d="M 520 210 L 520 510 M 380 360 L 660 360" stroke={colors.tinta} strokeWidth={ink * 0.7} />
+        <rect x={400} y={460} width={240} height={210} rx={10} fill={colors.ceu} stroke={colors.tinta} strokeWidth={ink} />
+        <path d="M 520 460 L 520 670 M 400 565 L 640 565" stroke={colors.tinta} strokeWidth={ink * 0.7} />
         {/* relógio */}
-        <g transform={`translate(860 300) rotate(${balanco})`}>
+        <g transform={`translate(870 560) rotate(${balanco})`}>
           <circle r={90} fill={colors.branco} stroke={colors.tinta} strokeWidth={ink} />
           <path d="M 0 0 L 0 -56 M 0 0 L 40 20" stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinecap="round" />
           {balanco !== 0 ? <path d="M -120 -60 q -20 30 0 60 M 120 -60 q 20 30 0 60" fill="none" stroke={colors.tinta} strokeWidth={ink * 0.6} strokeLinecap="round" /> : null}
@@ -245,9 +249,11 @@ export const Cantina: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
             {i % 2 ? <Garrafa x={0} y={0} s={1} /> : <Lata x={0} y={0} s={1} />}
           </g>
         ))}
-        <g transform={`translate(780 ${B + 40}) scale(0.62)`}>
-          <use href="#cant-p0" />
-        </g>
+        {!regra ? (
+          <g transform={`translate(780 ${B + 40}) scale(0.62)`}>
+            <use href="#cant-p0" />
+          </g>
+        ) : null}
         {confuso > 0 ? (
           <g transform={`translate(780 ${B - 760}) scale(${confuso})`}>
             <T x={0} y={0} size={150} fill={colors.amarelo} stroke={colors.tinta} sw={14}>?</T>
@@ -396,7 +402,7 @@ export const QuadroContaNaoConta: React.FC<{ frame: number; params: Params }> = 
   // o suco voa da mão do Nico (tela) até a 4ª casa do quadro CONTA
   const voo = ramp(frame, suco, suco + 12, { ...clamp, easing: Easing.inOut(Easing.quad) });
   const mao = { x: CANT.nicoX + 170 * CANT.s, y: CANT.chao - 230 * CANT.s - 50 };
-  const casa = (i: number) => ({ x: 485 + (i % 2) * 150, y: 720 + Math.floor(i / 2) * 170 });
+  const casa = (i: number) => ({ x: 485 + (i % 2) * 150, y: 810 + Math.floor(i / 2) * 170 });
   const destino = casa(3);
   const sx = interpolate(voo, [0, 1], [mao.x, destino.x]);
   const sy = interpolate(voo, [0, 1], [mao.y, destino.y]) - Math.sin(Math.PI * voo) * 260;
@@ -407,7 +413,7 @@ export const QuadroContaNaoConta: React.FC<{ frame: number; params: Params }> = 
         [560, "CONTA", colors.coral],
         [890, "NÃO CONTA", colors.turquesa],
       ].map(([x, titulo, cor]) => (
-        <g key={titulo as string} transform={`translate(${x} 790)`}>
+        <g key={titulo as string} transform={`translate(${x} 880)`}>
           <rect x={-150} y={-300} width={300} height={560} rx={24} fill={colors.tinta} />
           <rect x={-150} y={-310} width={300} height={560} rx={24} fill={colors.creme} stroke={colors.tinta} strokeWidth={10} />
           <rect x={-150} y={-310} width={300} height={96} rx={24} fill={cor as string} stroke={colors.tinta} strokeWidth={10} />
@@ -426,7 +432,7 @@ export const QuadroContaNaoConta: React.FC<{ frame: number; params: Params }> = 
       {naoConta.map(([tipo, at], i) => {
         const s = pop(frame, at, true);
         return s > 0 ? (
-          <g key={tipo} transform={`translate(890 ${730 + i * 230}) scale(${s * 1.6})`}>
+          <g key={tipo} transform={`translate(890 ${820 + i * 230}) scale(${s * 1.6})`}>
             <Icone tipo={tipo} />
           </g>
         ) : null;
@@ -461,7 +467,7 @@ export const Vitrine: React.FC = () => {
   const B = CANT.balcao;
   return (
     <g>
-      <rect x={430} y={B - 420} width={640} height={420} rx={20} fill={colors.ceu} opacity={0.28} />
+      <rect x={430} y={B - 420} width={640} height={420} rx={20} fill={colors.ceu} />
       <rect x={430} y={B - 420} width={640} height={420} rx={20} fill="none" stroke={colors.tinta} strokeWidth={ink} />
       <path d={`M 430 ${B - 210} L 1070 ${B - 210}`} stroke={colors.tinta} strokeWidth={ink * 0.7} />
       {[0, 1, 2, 3].map((i) => (
@@ -495,8 +501,9 @@ const IconeBateria: React.FC<{ nivel: number }> = ({ nivel }) => (
     <rect x={-58} y={-28} width={106 * nivel} height={56} rx={6} fill={nivel < 0.3 ? colors.coral : colors.turquesa} />
   </g>
 );
+const SLOTS = [380, 600, 820];
+const SLOT_Y = 640;
 export const Sintomas: React.FC<{ frame: number; params: Params }> = ({ frame, params }) => {
-  const estudo = janela(frame, n(params.estudo), n(params.dor) - 2, true);
   const icones: [number, React.ReactNode][] = [
     [n(params.dor), <IconeCabeca key="c" />],
     [n(params.cansaco), <IconeBateria key="b" nivel={0.15} />],
@@ -504,28 +511,25 @@ export const Sintomas: React.FC<{ frame: number; params: Params }> = ({ frame, p
   const nemTodo = pop(frame, n(params.dor) + 6);
   return (
     <g>
-      {estudo > 0 ? (
-        <g transform={`translate(760 600) scale(${estudo})`}>
-          <rect x={-110} y={-140} width={220} height={280} rx={16} fill={colors.branco} stroke={colors.tinta} strokeWidth={9} />
-          <rect x={-46} y={-160} width={92} height={40} rx={10} fill={colors.chaoSombra} stroke={colors.tinta} strokeWidth={7} />
-          {[-60, 0, 60].map((x, i) => (
-            <g key={i} transform={`translate(${x} 0)`}>
-              <circle cy={-30} r={22} fill={colors.noite} />
-              <path d="M -26 50 Q -26 0 0 0 Q 26 0 26 50 Z" fill={colors.noite} />
-            </g>
-          ))}
-          <rect x={-80} y={80} width={160} height={14} rx={7} fill={colors.chaoSombra} />
-        </g>
-      ) : null}
+      {SLOTS.map((x, i) => {
+        const vem = [n(params.dor), n(params.cansaco), n(params.doce)][i];
+        const s = pop(frame, n(params.estudo) + i * 6) * (1 - ramp(frame, vem - 2, vem + 4));
+        return s > 0 ? (
+          <g key={i} transform={`translate(${x} ${SLOT_Y}) scale(${s})`}>
+            <circle r={95} fill={colors.creme} stroke={colors.tinta} strokeWidth={8} strokeDasharray="22 16" />
+            <T x={0} y={34} size={96} fill={colors.chaoSombra}>?</T>
+          </g>
+        ) : null;
+      })}
       {icones.map(([at, el], i) =>
         on(frame, at) ? (
-          <g key={i} transform={`translate(${540 + i * 230} 620) scale(${1.4 * pop(frame, at, true)})`}>
+          <g key={i} transform={`translate(${SLOTS[i]} ${SLOT_Y}) scale(${1.4 * pop(frame, at, true)})`}>
             {el}
           </g>
         ) : null,
       )}
       {nemTodo > 0 ? (
-        <g transform={`translate(720 730) scale(${nemTodo})`}>
+        <g transform={`translate(600 800) scale(${nemTodo})`}>
           <rect x={-300} y={-36} width={600} height={72} rx={36} fill={colors.creme} stroke={colors.tinta} strokeWidth={6} />
           <T x={0} y={14} size={42} fill={colors.tinta}>nem todo mundo sente isso</T>
         </g>
@@ -546,8 +550,8 @@ export const DoceOrbita: React.FC<{ frame: number; params: Params }> = ({ frame,
   const ang = on(frame, orb) ? (frame - orb) / 9 - Math.PI / 2 : -Math.PI / 2;
   const alvo = { x: c.x + 255 * Math.cos(ang), y: c.y + 235 * Math.sin(ang) };
   const k = ramp(frame, orb, orb + 14, { ...clamp, easing: Easing.inOut(Easing.quad) });
-  const x = interpolate(k, [0, 1], [1000, alvo.x]);
-  const y = interpolate(k, [0, 1], [620, alvo.y]);
+  const x = interpolate(k, [0, 1], [820, alvo.x]);
+  const y = interpolate(k, [0, 1], [640, alvo.y]);
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
       {!on(frame, orb) ? <circle r={80} fill={colors.creme} stroke={colors.tinta} strokeWidth={8} /> : null}
@@ -559,10 +563,13 @@ export const DoceOrbita: React.FC<{ frame: number; params: Params }> = ({ frame,
 };
 
 // Rodapé pequeno e fixo, acima da área dos botões das plataformas (y ≤ 1670)
-export const Rodape: React.FC<{ texto: string }> = ({ texto }) => (
-  <g transform="translate(540 1590)">
-    <rect x={-texto.length * 10.5 - 26} y={-30} width={texto.length * 21 + 52} height={60} rx={14} fill={colors.tinta} opacity={0.85} />
-    <T x={0} y={11} size={32} fill={colors.creme}>{texto}</T>
+// Rodapé pequeno e fixo, DENTRO da zona segura: logo acima da faixa da legenda (y 1306+), longe da
+// interface das plataformas, com margem lateral de 90 px e fonte de 40 px
+export const RODAPE_Y = 1245;
+export const Rodape: React.FC<{ texto: string; y?: number }> = ({ texto, y = RODAPE_Y }) => (
+  <g transform={`translate(540 ${y})`}>
+    <rect x={-Math.min(450, texto.length * 11.6 + 26)} y={-34} width={Math.min(900, texto.length * 23.2 + 52)} height={68} rx={16} fill={colors.tinta} />
+    <T x={0} y={14} size={40} fill={colors.creme}>{texto}</T>
   </g>
 );
 
@@ -718,29 +725,68 @@ export const BateriaCerebro: React.FC<{ x: number; y: number; s: number; nivel: 
       ))}
     </g>
   );
+// fatia de pão (formato inconfundível: quadrada com o topo em dois gomos), apoiada no centro
+const FatiaPao: React.FC<{ s?: number }> = ({ s = 1 }) => (
+  <g transform={`scale(${s})`}>
+    <path d="M -56 52 L -56 -14 Q -82 -34 -62 -62 Q -40 -86 0 -72 Q 40 -86 62 -62 Q 82 -34 56 -14 L 56 52 Z" fill={colors.chaoSombra} stroke={colors.tinta} strokeWidth={8} strokeLinejoin="round" />
+    <path d="M -40 40 L -40 -10 Q -58 -28 -44 -46 Q -28 -62 0 -52 Q 28 -62 44 -46 Q 58 -28 40 -10 L 40 40 Z" fill={colors.creme} />
+  </g>
+);
+// ponto ao longo de uma polilinha (k 0..1)
+const aoLongo = (pts: { x: number; y: number }[], k: number) => {
+  const seg = pts.slice(1).map((p, i) => Math.hypot(p.x - pts[i].x, p.y - pts[i].y));
+  const total = seg.reduce((a, b) => a + b, 0);
+  let d = Math.max(0, Math.min(1, k)) * total;
+  for (let i = 0; i < seg.length; i++) {
+    if (d <= seg[i]) {
+      const u = seg[i] ? d / seg[i] : 0;
+      return { x: pts[i].x + (pts[i + 1].x - pts[i].x) * u, y: pts[i].y + (pts[i + 1].y - pts[i].y) * u };
+    }
+    d -= seg[i];
+  }
+  return pts[pts.length - 1];
+};
+// seta chapada (polilinha com ponta)
+const Seta: React.FC<{ pts: { x: number; y: number }[]; s: number; cor?: string }> = ({ pts, s, cor = colors.tinta }) => {
+  if (s <= 0) return null;
+  const a = pts[pts.length - 2];
+  const b = pts[pts.length - 1];
+  const ang = (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI;
+  return (
+    <g opacity={Math.min(1, s * 1.5)}>
+      <path d={`M ${pts.map((p) => `${p.x} ${p.y}`).join(" L ")}`} fill="none" stroke={cor} strokeWidth={12} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M 0 0 L -34 -20 L -34 20 Z" transform={`translate(${b.x} ${b.y}) rotate(${ang})`} fill={cor} />
+    </g>
+  );
+};
+const Rotulo: React.FC<{ x: number; y: number; s: number; texto: string; cor?: string; tinta?: string }> = ({ x, y, s, texto, cor = colors.tinta, tinta = colors.creme }) =>
+  s <= 0 ? null : (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      <rect x={-texto.length * 14 - 24} y={-34} width={texto.length * 28 + 48} height={68} rx={20} fill={cor} stroke={colors.tinta} strokeWidth={6} />
+      <T x={0} y={16} size={46} fill={tinta}>{texto}</T>
+    </g>
+  );
+
+// Diagrama do corpo (cena 6): arroz, pão e fruta -> GLICOSE -> cérebro (com a bateria cheia ligada
+// por um fio); o fígado manda gotas extras. Rótulos CÉREBRO e FÍGADO grandes; nenhum número.
 export const DiagramaCorpo: React.FC<{ cam: Cam; frame: number; params: Params }> = ({ cam, frame, params }) => {
   const ink = useInk();
   const cerebro = pop(frame, n(params.cerebro), true);
   const gotas = n(params.gotas);
   const fontes: [string, number, number][] = [
-    ["arroz", n(params.arroz), 860],
-    ["pao", n(params.pao), 1030],
-    ["fruta", n(params.fruta), 1200],
+    ["arroz", n(params.arroz), 830],
+    ["pao", n(params.pao), 1010],
+    ["fruta", n(params.fruta), 1190],
   ];
   const figado = n(params.figado);
   const fabrica = n(params.fabrica);
-  const H = { x: 600, y: 680 };
-  // caminho: estômago -> pescoço -> cérebro
-  const estomago = { x: 560, y: 1080 };
-  const fig = { x: 690, y: 1000 };
-  const caminho = (k: number, de: { x: number; y: number }) => {
-    if (k < 0.5) {
-      const t = k / 0.5;
-      return { x: de.x + (600 - de.x) * t, y: de.y + (900 - de.y) * t };
-    }
-    const t = (k - 0.5) / 0.5;
-    return { x: 600, y: 900 + (H.y + 40 - 900) * t };
-  };
+  const H = { x: 620, y: 690 };
+  const G = { x: 370, y: 1010 }; // nó GLICOSE
+  const fig = { x: 700, y: 1010 };
+  const paraCerebro = [{ x: G.x + 110, y: G.y }, { x: G.x + 150, y: 860 }, { x: H.x - 100, y: H.y + 100 }];
+  const doFigado = [{ x: fig.x - 30, y: fig.y - 50 }, { x: H.x + 10, y: 880 }, { x: H.x + 10, y: H.y + 150 }];
+  const deFonte = (y: number) => [{ x: 205, y }, { x: G.x - 115, y: G.y + (y - G.y) * 0.25 }];
+  const glicose = pop(frame, gotas);
   const pulso = on(frame, figado) ? 1 + 0.08 * Math.max(0, Math.sin((frame - figado) / 3)) : 1;
   const nicoExpr = on(frame, n(params.normal)) ? "confusao" : on(frame, n(params.cerebro)) ? "preocupacao" : "atento";
   return (
@@ -754,62 +800,68 @@ export const DiagramaCorpo: React.FC<{ cam: Cam; frame: number; params: Params }
       <Layer cam={cam} depth={1}>
         {/* silhueta genérica do corpo (chapada) */}
         <path d={`M ${H.x - 120} 1300 L ${H.x - 140} 960 Q ${H.x - 140} 870 ${H.x - 50} 860 L ${H.x - 40} 830 L ${H.x + 40} 830 L ${H.x + 50} 860 Q ${H.x + 140} 870 ${H.x + 140} 960 L ${H.x + 120} 1300 Z`} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} strokeLinejoin="round" />
-        <circle cx={H.x} cy={H.y} r={170} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+        <circle cx={H.x} cy={H.y} r={160} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
         {/* cérebro */}
-        <g transform={`translate(${H.x} ${H.y - 20}) scale(${0.4 + 0.6 * cerebro})`}>
+        <g transform={`translate(${H.x} ${H.y - 10}) scale(${0.4 + 0.6 * cerebro})`}>
           <path d="M -110 20 Q -130 -60 -60 -90 Q -20 -120 20 -96 Q 80 -120 112 -60 Q 140 0 100 50 Q 60 80 0 70 Q -80 80 -110 20 Z" fill={colors.coralClaro} stroke={colors.tinta} strokeWidth={ink * 0.8} strokeLinejoin="round" />
           <path d="M -60 -40 q 20 20 0 40 M 0 -70 q 20 30 0 70 M 60 -40 q -20 20 0 50" fill="none" stroke={colors.coral} strokeWidth={ink * 0.6} strokeLinecap="round" />
         </g>
-        {/* estômago e fígado */}
-        <ellipse cx={estomago.x} cy={estomago.y} rx={60} ry={46} fill={colors.coralClaro} stroke={colors.tinta} strokeWidth={ink * 0.7} />
+        {/* fio do cérebro até a bateria (cheia o tempo todo) */}
+        {cerebro > 0 ? <path d={`M ${H.x + 110} ${H.y - 20} Q ${H.x + 170} ${H.y - 90} ${H.x + 190} ${H.y - 130}`} fill="none" stroke={colors.tinta} strokeWidth={10} strokeLinecap="round" opacity={Math.min(1, cerebro)} /> : null}
+        <BateriaCerebro x={H.x + 290} y={H.y - 140} s={cerebro} nivel={1} />
+        {/* fígado */}
         <g transform={`translate(${fig.x} ${fig.y}) scale(${pulso})`}>
           <path d="M -70 -10 Q -60 -50 20 -46 Q 80 -40 70 0 Q 50 40 -20 36 Q -70 30 -70 -10 Z" fill={colors.muroSombra} stroke={colors.tinta} strokeWidth={ink * 0.7} strokeLinejoin="round" />
         </g>
-        {on(frame, figado) ? (
-          <g transform={`translate(${fig.x + 110} ${fig.y + 10}) scale(${pop(frame, figado, true)})`}>
-            <rect x={-56} y={-26} width={112} height={52} rx={18} fill={colors.tinta} />
-            <T x={0} y={12} size={30}>FÍGADO</T>
-          </g>
-        ) : null}
+        {/* setas: fontes -> GLICOSE -> cérebro; fígado -> cérebro */}
+        {fontes.map(([tipo, at, y]) => <Seta key={tipo} pts={deFonte(y)} s={pop(frame, at + 4)} />)}
+        <Seta pts={paraCerebro} s={glicose} />
+        <Seta pts={doFigado} s={pop(frame, fabrica)} cor={colors.muroSombra} />
         {/* fontes de glicose (sem números) */}
         {fontes.map(([tipo, at, y]) => {
           const s = pop(frame, at, true);
           if (s <= 0) return null;
           return (
-            <g key={tipo} transform={`translate(170 ${y}) scale(${s})`}>
-              <circle r={86} fill={colors.branco} stroke={colors.tinta} strokeWidth={8} />
+            <g key={tipo} transform={`translate(130 ${y}) scale(${s})`}>
+              <circle r={76} fill={colors.branco} stroke={colors.tinta} strokeWidth={8} />
               {tipo === "arroz" ? (
                 <g>
-                  <path d="M -54 0 Q 0 70 54 0 Z" fill={colors.ceu} stroke={colors.tinta} strokeWidth={7} />
-                  <path d="M -50 0 Q -30 -40 0 -36 Q 30 -40 50 0 Z" fill={colors.creme} stroke={colors.tinta} strokeWidth={6} />
+                  <path d="M -50 0 Q 0 64 50 0 Z" fill={colors.ceu} stroke={colors.tinta} strokeWidth={7} />
+                  <path d="M -46 0 Q -28 -38 0 -34 Q 28 -38 46 0 Z" fill={colors.creme} stroke={colors.tinta} strokeWidth={6} />
                 </g>
               ) : tipo === "pao" ? (
-                <g transform="translate(0 30) scale(0.7)">
-                  <Pao />
-                </g>
+                <FatiaPao s={0.78} />
               ) : (
                 <g>
-                  <circle cx={0} cy={6} r={38} fill={colors.coral} stroke={colors.tinta} strokeWidth={7} />
-                  <path d="M 0 -30 L 6 -50" stroke={colors.tinta} strokeWidth={7} strokeLinecap="round" />
+                  <circle cx={0} cy={6} r={36} fill={colors.coral} stroke={colors.tinta} strokeWidth={7} />
+                  <path d="M 0 -28 L 6 -48" stroke={colors.tinta} strokeWidth={7} strokeLinecap="round" />
+                  <path d="M 8 -40 Q 28 -54 36 -34 Q 18 -28 8 -40 Z" fill={colors.folha} stroke={colors.tinta} strokeWidth={5} />
                 </g>
               )}
             </g>
           );
         })}
-        {/* gotinhas de glicose: das fontes ao estômago e de lá ao cérebro; o fígado manda as dele */}
+        {/* gotinhas viajando pelas setas */}
         {Number.isFinite(gotas)
-          ? Array.from({ length: 10 }, (_, i) => {
+          ? Array.from({ length: 9 }, (_, i) => {
               if (frame < gotas + i * 6) return null;
-              const k = (((frame - gotas - i * 6) / 54) % 1 + 1) % 1;
-              const doFigado = Number.isFinite(fabrica) && frame > fabrica && i % 2 === 1;
-              const origem = doFigado ? fig : estomago;
-              const p = k < 0.25 && !doFigado ? { x: 250 + (estomago.x - 250) * (k / 0.25), y: fontes[i % 3][2] + (estomago.y - fontes[i % 3][2]) * (k / 0.25) } : caminho(doFigado ? k : (k - 0.25) / 0.75, origem);
-              return <path key={i} d="M 0 -18 Q 14 0 0 12 Q -14 0 0 -18 Z" transform={`translate(${p.x} ${p.y}) scale(1.3)`} fill={doFigado ? colors.muro : colors.amarelo} stroke={colors.tinta} strokeWidth={4} />;
+              const k = (((frame - gotas - i * 6) / 50) % 1 + 1) % 1;
+              const liver = Number.isFinite(fabrica) && frame > fabrica && i % 3 === 2;
+              const fonte = fontes[i % 3][2];
+              const caminho = liver ? doFigado : [...deFonte(fonte), { x: G.x, y: G.y }, ...paraCerebro];
+              const p = aoLongo(caminho, k);
+              return <path key={i} d="M 0 -18 Q 14 0 0 12 Q -14 0 0 -18 Z" transform={`translate(${p.x} ${p.y}) scale(1.3)`} fill={liver ? colors.muro : colors.amarelo} stroke={colors.tinta} strokeWidth={4} />;
             })
           : null}
-        <BateriaCerebro x={H.x + 250} y={H.y - 160} s={cerebro} nivel={1} />
+        {/* nó GLICOSE */}
+        <Rotulo x={G.x} y={G.y} s={glicose} texto="GLICOSE" cor={colors.amarelo} tinta={colors.tinta} />
+        {/* rótulos (no mundo, acompanham a câmera) */}
+        <Rotulo x={300} y={630} s={cerebro} texto="CÉREBRO" />
+        {cerebro > 0 ? <Seta pts={[{ x: 425, y: 640 }, { x: 480, y: 660 }]} s={cerebro} /> : null}
+        <Rotulo x={870} y={890} s={pop(frame, figado, true)} texto="FÍGADO" cor={colors.muroSombra} />
+        {on(frame, figado) ? <Seta pts={[{ x: 800, y: 925 }, { x: 760, y: 975 }]} s={pop(frame, figado)} /> : null}
         {/* Nico pequeno no canto, esperando uma pane que não vem */}
-        <NicoEm x={930} y={1290} s={0.32} pose={on(frame, n(params.normal)) ? "bracos_cruzados" : "parado"} expression={nicoExpr} look={[-0.9, -0.7]} />
+        <NicoEm x={950} y={1300} s={0.32} pose={on(frame, n(params.normal)) ? "bracos_cruzados" : "parado"} expression={nicoExpr} look={[-0.9, -0.7]} />
       </Layer>
     </>
   );
@@ -844,24 +896,32 @@ export const LataGigante: React.FC<{ cam: Cam; frame: number; params: Params }> 
   const bate = colheres.reduce((acc, c) => Math.max(acc, on(frame, c) ? Math.max(0, 1 - (frame - c) / 8) : 0), 0);
   const nicoExpr = on(frame, ultima + 8) ? "cetica" : valor >= 6 ? "susto" : valor >= 1 ? "surpresa" : "atento";
   const tremor = bate * 4;
-  const MESA = 1130;
-  const pos = (i: number) => ({ x: 130 + (i % 5) * 170, y: MESA + 40 + Math.floor(i / 5) * 80 });
+  // composição: texto de tela (240–430), letreiro da OMS logo abaixo, contador alto no centro,
+  // lata à esquerda, Nico inteiro à direita, colheres na mesa e toalha xadrez enchendo o rodapé
+  const MESA = 1180;
+  const pos = (i: number) => ({ x: 120 + (i % 5) * 150, y: MESA + 34 + Math.floor(i / 5) * 72 });
   return (
     <>
       <Layer cam={cam} depth={0.3}>
         <SkyFill color={colors.coralClaro} />
         {Array.from({ length: 9 }, (_, i) => (
-          <rect key={i} x={-200 + i * 180} y={0} width={70} height={1300} fill={colors.creme} opacity={0.35} />
+          <rect key={i} x={-200 + i * 180} y={0} width={70} height={1400} fill={colors.creme} opacity={0.35} />
         ))}
       </Layer>
       <Layer cam={cam} depth={1}>
-        {/* mesa */}
-        <rect x={-300} y={MESA} width={1680} height={190} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} />
-        <rect x={-300} y={MESA + 190} width={1680} height={900} fill={colors.chaoSombra} />
+        {/* mesa com toalha xadrez */}
+        <rect x={-300} y={MESA} width={1680} height={170} fill={colors.chao} stroke={colors.tinta} strokeWidth={ink} />
+        <rect x={-300} y={MESA + 170} width={1680} height={700} fill={colors.creme} stroke={colors.tinta} strokeWidth={ink} />
+        {Array.from({ length: 13 }, (_, c) =>
+          Array.from({ length: 6 }, (_, r) =>
+            (c + r) % 2 ? <rect key={`${c}-${r}`} x={-300 + c * 110} y={MESA + 170 + r * 110} width={110} height={110} fill={colors.coral} /> : null,
+          ),
+        )}
+        <path d={`M -300 ${MESA + 170} L 1380 ${MESA + 170}`} stroke={colors.tinta} strokeWidth={ink} />
         {/* lata gigante, genérica e sem marca */}
-        <g transform={`translate(${480 + tremor * Math.sin(frame * 3)} ${MESA + 10 - (1 - entra) * 900}) scale(${(0.82 + 0.22 * cresce) * 2.6})`}>
+        <g transform={`translate(${290 + tremor * Math.sin(frame * 3)} ${MESA + 10 - (1 - entra) * 900}) scale(${(0.86 + 0.18 * cresce) * 2.45})`}>
           <Lata x={0} y={0} s={1} />
-          <path d="M -40 -170 L -40 -40" stroke={colors.branco} strokeWidth={10} strokeLinecap="round" opacity={0.6} />
+          <path d="M -40 -170 L -40 -86" stroke={colors.branco} strokeWidth={10} strokeLinecap="round" opacity={0.5} />
         </g>
         {/* colheres de chá cheias de açúcar, uma a uma */}
         {colheres.map((c, i) => {
@@ -870,15 +930,15 @@ export const LataGigante: React.FC<{ cam: Cam; frame: number; params: Params }> 
           const p = pos(i);
           return (
             <g key={i} transform={`translate(${p.x} ${p.y - (1 - Math.min(1, s)) * 60}) rotate(-8)`}>
-              <Colher s={s * 0.95} />
+              <Colher s={s * 0.9} />
             </g>
           );
         })}
-        <NicoEm x={960} y={MESA + 30} s={0.3} pose={valor >= 6 ? "mao_levantada" : "parado"} expression={nicoExpr} look={on(frame, ultima + 8) ? [0, 0] : [-0.9, 0.4]} />
+        <NicoEm x={NICO7.x} y={MESA + 12} s={NICO7.s} pose={valor >= 6 ? "mao_levantada" : "parado"} expression={nicoExpr} look={on(frame, ultima + 8) ? [0, 0] : [-0.9, 0.3]} />
       </Layer>
-      <ContadorColheres x={870} y={560} s={pop(frame, colheres[0] ?? Infinity)} valor={valor} bate={bate} />
-      <Rodape texto="OMS: AÇÚCAR LIVRE < 10% DAS CALORIAS" />
+      <Rodape texto="OMS: AÇÚCAR LIVRE < 10% DAS CALORIAS" y={530} />
+      <ContadorColheres x={625} y={690} s={0.95 * pop(frame, colheres[0] ?? Infinity)} valor={valor} bate={bate} />
     </>
   );
 };
-
+export const NICO7 = { x: 900, s: 0.48 };
