@@ -312,6 +312,7 @@ export const Cantina: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
         ) : null}
         {/* Nico */}
         <NicoEm x={CANT.nicoX} y={CANT.chao} s={CANT.s} pose={pose} expression={expression} look={olhar} />
+        {vitrine ? <DoceOrbita frame={frame} params={params} /> : null}
         {lupa ? <Lupa x={apontaR.x + 10} y={apontaR.y - 10} s={0.7} rot={-20 + Math.sin(frame / 9) * 6} /> : null}
         {sucoNaMao ? <Caixinha x={CANT.nicoX + 170 * CANT.s} y={CANT.chao - 230 * CANT.s} s={0.6} /> : null}
         {on(frame, pegaAgua) && frame < pegaAgua + 40
@@ -500,16 +501,6 @@ export const Sintomas: React.FC<{ frame: number; params: Params }> = ({ frame, p
     [n(params.dor), <IconeCabeca key="c" />],
     [n(params.cansaco), <IconeBateria key="b" nivel={0.15} />],
   ];
-  const doce = n(params.doce);
-  // o docinho orbita a cabeça do Nico depois de `orbita`
-  const orb = n(params.orbita);
-  const cx = ROSTO_CANT.x + 90;
-  const cy = ROSTO_CANT.y;
-  const ang = on(frame, orb) ? (frame - orb) / 9 : 0;
-  const raio = 210;
-  const dx = on(frame, orb) ? interpolate(frame, [orb, orb + 14], [960, cx + raio * Math.cos(ang)], clamp) : 960;
-  const dy = on(frame, orb) ? interpolate(frame, [orb, orb + 14], [590, cy + raio * 0.55 * Math.sin(ang) - 60], clamp) : 590;
-  const doceS = pop(frame, doce, true);
   const nemTodo = pop(frame, n(params.dor) + 6);
   return (
     <g>
@@ -533,21 +524,6 @@ export const Sintomas: React.FC<{ frame: number; params: Params }> = ({ frame, p
           </g>
         ) : null,
       )}
-      {doceS > 0 ? (
-        <g transform={`translate(${dx} ${dy}) scale(${doceS})`}>
-          {!on(frame, orb) ? <circle r={80} fill={colors.creme} stroke={colors.tinta} strokeWidth={8} /> : null}
-          <g transform={`rotate(${Math.sin(frame / 6) * 10})`}>
-            <Docinho s={0.9} />
-          </g>
-          {on(frame, orb) ? (
-            <g opacity={0.8}>
-              {[0, 1, 2].map((k) => (
-                <circle key={k} cx={-40 * Math.cos(ang - 0.3 * (k + 1))} cy={-20 * Math.sin(ang)} r={6} fill={colors.amarelo} />
-              ))}
-            </g>
-          ) : null}
-        </g>
-      ) : null}
       {nemTodo > 0 ? (
         <g transform={`translate(720 730) scale(${nemTodo})`}>
           <rect x={-300} y={-36} width={600} height={72} rx={36} fill={colors.creme} stroke={colors.tinta} strokeWidth={6} />
@@ -555,6 +531,29 @@ export const Sintomas: React.FC<{ frame: number; params: Params }> = ({ frame, p
         </g>
       ) : null}
       <Rodape texto="INFORMAÇÃO, NÃO É CONSELHO MÉDICO" />
+    </g>
+  );
+};
+
+// Docinho que orbita a cabeça do Nico (no mundo, acompanha a câmera). Antes de `orbita` ele fica
+// no balão do terceiro ícone; a órbita tem raio maior que a cabeça (≈ 143 px) mais o doce.
+export const DoceOrbita: React.FC<{ frame: number; params: Params }> = ({ frame, params }) => {
+  const doce = n(params.doce);
+  const orb = n(params.orbita);
+  const s = pop(frame, doce, true);
+  if (s <= 0) return null;
+  const c = { x: ROSTO_CANT.x, y: ROSTO_CANT.y + 10 };
+  const ang = on(frame, orb) ? (frame - orb) / 9 - Math.PI / 2 : -Math.PI / 2;
+  const alvo = { x: c.x + 255 * Math.cos(ang), y: c.y + 235 * Math.sin(ang) };
+  const k = ramp(frame, orb, orb + 14, { ...clamp, easing: Easing.inOut(Easing.quad) });
+  const x = interpolate(k, [0, 1], [1000, alvo.x]);
+  const y = interpolate(k, [0, 1], [620, alvo.y]);
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      {!on(frame, orb) ? <circle r={80} fill={colors.creme} stroke={colors.tinta} strokeWidth={8} /> : null}
+      <g transform={`rotate(${Math.sin(frame / 6) * 10})`}>
+        <Docinho s={0.9} />
+      </g>
     </g>
   );
 };
@@ -571,11 +570,11 @@ export const Rodape: React.FC<{ texto: string }> = ({ texto }) => (
 export const olharDoce = (frame: number, params: Params): [number, number] | undefined => {
   const orb = n(params.orbita);
   if (!on(frame, orb)) return on(frame, n(params.doce)) ? [0.9, -0.6] : undefined;
-  const ang = (frame - orb) / 9;
+  const ang = (frame - orb) / 9 - Math.PI / 2;
   // tenta desviar o olhar em `desvia`, mas os olhos voltam para o doce
   const desvia = n(params.desvia);
   if (on(frame, desvia) && frame < desvia + 10) return [-0.95, 0.1];
-  return [Math.cos(ang), Math.max(-0.9, Math.min(0.9, 0.55 * Math.sin(ang) - 0.25))];
+  return [Math.cos(ang), Math.max(-0.9, Math.min(0.9, Math.sin(ang) - 0.15))];
 };
 
 // ---------------------------------------------------------------- prateleira_mercado
