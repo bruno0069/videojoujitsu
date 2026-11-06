@@ -1,0 +1,518 @@
+{
+ "_sobre": "Direção do ep08-v02 (episódio 7 v2, açúcar). Cues por palavra da narração gravada (src/audio/ep08-v02-words.json). Cantina da v1 + extras e o painel liso em src/components/backgrounds/Ep08v2.tsx. Calendário de 7 quadradinhos no topo (um riscado por cena, 2 a 7; zera no fecho). O close do primeiro quadro e o do último são iguais (loop).",
+ "limitesFixos": true,
+ "legendaDe": 0,
+ "legendaSemPontuacao": true,
+ "legendaPlaca": true,
+ "legendaFonte": 60,
+ "duckGanho": 0.2,
+ "legendaDestaques": [
+  "açúcar",
+  "amido",
+  "calorias",
+  "nove",
+  "triglicerídeos",
+  "insulina",
+  "LDL",
+  "adoçante",
+  "detox"
+ ],
+ "cenas": {
+  "gancho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:250,990",
+     "zoom": [
+      2.1,
+      2.16
+     ],
+     "personagens": [],
+     "centralizar": true,
+     "cenario": "cantina_v2"
+    },
+    {
+     "de": "num-4",
+     "enquadramento": "aberto",
+     "foco": "xy:700,1060",
+     "zoom": [
+      1.6,
+      1.0
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    },
+    {
+     "de": "o-2",
+     "enquadramento": "aberto",
+     "foco": "xy:900,1080",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    }
+   ],
+   "fundo": {
+    "pose0": 1,
+    "expr0": 1,
+    "semItens": 1,
+    "exame": "num",
+    "relogio": "nove",
+    "relogioAte": "exames",
+    "baixa": "mudaram",
+    "prato": "peso",
+    "extra": "peso",
+    "calDe": "num"
+   },
+   "texto": {
+    "de": 2,
+    "ate": "num",
+    "mostrar": true
+   },
+   "sfx": {
+    "whoosh": "num-6",
+    "tic_relogio": {
+     "de": "nove",
+     "ate": "exames+6"
+    }
+   },
+   "efeitos": [
+    {
+     "id": "estalo",
+     "de": "mudaram"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "peso"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "num"
+    }
+   ]
+  },
+  "apresentacao": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.1,
+      1.0
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    },
+    {
+     "de": "adicionado-2",
+     "enquadramento": "aberto",
+     "foco": "xy:450,1100",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    }
+   ],
+   "fundo": {
+    "semItens": 1,
+    "nome": "nico",
+    "nomeAte": "desafio",
+    "heroi": "desafio",
+    "entrega": 0,
+    "devolve": "adicionado",
+    "pratoNovo": "passar",
+    "calDe": 0,
+    "risca": "sete",
+    "caneta": 1
+   },
+   "texto": {
+    "de": "desafio",
+    "mostrar": true
+   },
+   "sfx": {
+    "cantina_ambiente": {
+     "de": 0
+    },
+    "pop_contagem": "passar"
+   },
+   "efeitos": [
+    {
+     "id": "estalo",
+     "de": "sete"
+    },
+    {
+     "id": "whoosh",
+     "de": "adicionado-4"
+    }
+   ]
+  },
+  "estudo": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,900",
+     "zoom": [
+      1.04,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "trocaram-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.0,
+      1.04
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "painel": 1,
+    "calDe": 0,
+    "calBase": 1,
+    "risca": 20,
+    "grade": "estudo",
+    "bolinhas": "quarenta",
+    "bandeja": "trocaram-10",
+    "troca": "acucar",
+    "balanca": "mesmas",
+    "regua": "nove",
+    "rodape": "estudo"
+   },
+   "texto": {
+    "de": "trocaram",
+    "mostrar": true
+   },
+   "sfx": {
+    "pop_contagem": "quarenta",
+    "estalo": "mesmas"
+   },
+   "efeitos": [
+    {
+     "id": "whoosh",
+     "de": "trocaram"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "amido"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "nove"
+    },
+    {
+     "id": "pop_contagem",
+     "de": 20
+    }
+   ]
+  },
+  "resultado": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,800",
+     "zoom": [
+      1.0,
+      1.03
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "painel": 2,
+    "calDe": 0,
+    "calBase": 2,
+    "risca": 12,
+    "c1": "pressao-4",
+    "d1": "baixou",
+    "n1": "cinco",
+    "c2": "triglicerideos-4",
+    "d2": "cairam",
+    "n2": "trinta",
+    "c3": "insulina-4",
+    "d3": "cerca",
+    "n3": "terco",
+    "rodape": "resultado"
+   },
+   "texto": {
+    "de": "pressao",
+    "mostrar": true,
+    "partes": [
+     "pressao",
+     "triglicerideos",
+     "insulina"
+    ]
+   },
+   "sfx": {
+    "pop_contagem": "cinco"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "trinta"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "terco"
+    },
+    {
+     "id": "pop_contagem",
+     "de": 12
+    }
+   ]
+  },
+  "adultos": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,900",
+     "zoom": [
+      1.04,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "subiram-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,900",
+     "zoom": [
+      1.0,
+      1.05
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "painel": 3,
+    "calDe": 0,
+    "calBase": 3,
+    "risca": 12,
+    "legenda": "quanto",
+    "colunas": "bebidas",
+    "sobe": "subiram",
+    "nada": "quase",
+    "dias": "duas",
+    "rodape": "jovens"
+   },
+   "texto": {
+    "de": "mais#2",
+    "mostrar": true
+   },
+   "sfx": {
+    "pop_contagem": "bebidas",
+    "rangido_balanca": "subiram"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "ldl"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "triglicerideos"
+    },
+    {
+     "id": "estalo",
+     "de": "quase"
+    },
+    {
+     "id": "pop_contagem",
+     "de": 12
+    }
+   ]
+  },
+  "promessas": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,880",
+     "zoom": [
+      1.04,
+      1.0
+     ],
+     "personagens": []
+    },
+    {
+     "de": "nem-2",
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.0,
+      1.04
+     ],
+     "personagens": []
+    }
+   ],
+   "fundo": {
+    "painel": 4,
+    "calDe": 0,
+    "calBase": 4,
+    "risca": 12,
+    "pote": "medido",
+    "r1": "detox",
+    "r2": "barriga",
+    "r3": "pele",
+    "bolas": "nem"
+   },
+   "texto": {
+    "de": "medido",
+    "mostrar": true
+   },
+   "sfx": {
+    "estalo": "detox+12"
+   },
+   "efeitos": [
+    {
+     "id": "estalo",
+     "de": "barriga+12"
+    },
+    {
+     "id": "estalo",
+     "de": "pele+12"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "nem"
+    },
+    {
+     "id": "pop_contagem",
+     "de": 12
+    }
+   ]
+  },
+  "primeiros_dias": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,1000",
+     "zoom": [
+      1.0,
+      1.05
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    },
+    {
+     "de": "outros-2",
+     "enquadramento": "aberto",
+     "foco": "xy:700,1050",
+     "zoom": [
+      1.05,
+      1.0
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    }
+   ],
+   "fundo": {
+    "vitrine": 0,
+    "dor": "dor",
+    "doce": "vontade",
+    "orbita": "doce+6",
+    "colega": "outros-6",
+    "colegaAte": "outros+62",
+    "calDe": 0,
+    "calBase": 5,
+    "risca": "dias"
+   },
+   "texto": {
+    "de": "alguns",
+    "mostrar": true,
+    "partes": [
+     "alguns",
+     "outros"
+    ]
+   },
+   "sfx": {
+    "zumbido_leve": {
+     "de": 0
+    },
+    "batida_suspense": "dor"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "vontade"
+    },
+    {
+     "id": "whoosh",
+     "de": "outros"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "dias"
+    }
+   ]
+  },
+  "fecho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:450,1050",
+     "zoom": [
+      1.0,
+      1.06
+     ],
+     "personagens": [],
+     "cenario": "cantina_v2"
+    },
+    {
+     "de": "e-4",
+     "enquadramento": "aberto",
+     "foco": "xy:250,990",
+     "zoom": [
+      1.4,
+      2.1
+     ],
+     "personagens": [],
+     "centralizar": true,
+     "cenario": "cantina_v2"
+    }
+   ],
+   "fundo": {
+    "semItens": 1,
+    "lupa": 0,
+    "lupaAte": "e-6",
+    "olhaCima": "e-6",
+    "calDe": 0,
+    "calBase": 6,
+    "risca": 10,
+    "calZera": "e-16",
+    "calAte": "e-6"
+   },
+   "texto": {
+    "de": 4,
+    "ate": 258,
+    "mostrar": true
+   },
+   "sfx": {
+    "whoosh": "e-6"
+   },
+   "efeitos": [
+    {
+     "id": "cantina_ambiente",
+     "de": 0
+    },
+    {
+     "id": "pop_contagem",
+     "de": 10
+    }
+   ]
+  }
+ }
+}

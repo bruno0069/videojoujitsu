@@ -4,12 +4,11 @@ Cada fala começa LEAD s depois do início da sua cena. Só quando a fala não c
 (fala + LEAD + MARGEM) as pausas internas mais longas são encurtadas (para PAUSA s), da maior
 para a menor, até caber. Nada é acelerado nem cortado. Gera ep08.voz.json; não mexe em
 startFrame, durationInFrames nem totalFrames."""
-import json, re, subprocess
+import json, re, subprocess, sys
 
-EP, FPS = "ep08", 30
+# uso: python3 scripts/layout-ep08.py [ep08|ep08-v02]; tomadas em public/audio/<EP>-narracao-NN-<cena>.mp3
+EP, FPS = (sys.argv[1] if len(sys.argv) > 1 else "ep08"), 30
 LEAD, MARGEM, PAUSA, MINP = 0.12, 0.08, 0.2, 0.12
-ARQ = {"gancho": "01-gancho", "apresentacao": "02-apresentacao", "gatilho": "03-gatilho", "escalada1": "04-escalada1",
-       "escalada2": "05-escalada2", "cerebro": "06-cerebro", "virada": "07-virada", "fecho": "08-fecho"}
 
 def silencios(path, d):
     r = subprocess.run(["ffmpeg", "-nostdin", "-hide_banner", "-i", path, "-af", f"silencedetect=n=-45dB:d={d}", "-f", "null", "-"], capture_output=True, text=True).stderr
@@ -18,6 +17,7 @@ def silencios(path, d):
     return list(zip(st, en))
 
 ep = json.load(open(f"src/episodes/{EP}.json", encoding="utf-8"))
+ARQ = {s["id"]: f"{i + 1:02d}-{s['id']}" for i, s in enumerate(ep["scenes"])}
 tr = json.load(open(f"src/audio/{EP}-transcricao.json", encoding="utf-8"))["cenas"]
 trechos = []
 for s in ep["scenes"]:

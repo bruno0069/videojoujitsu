@@ -11,6 +11,7 @@ import { BalancaTerra, EscalaComparacao, EspacoTerra, MultidaoCima, QuadraDia, S
 import { CeuEclipse, CeuLuaGrande, ComparacaoEsferas, CuboLego, DiagramaBaricentro, OrlaFrente, OrlaRio } from "./backgrounds/Ep06";
 import { Calor, Centro, Flutua, GloboFinal, Gravidade, Nucleo, Queda, Superficie, TerraTunel } from "./backgrounds/Ep07";
 import { Cantina, DiagramaCorpo, LataGigante, Mercado } from "./backgrounds/Ep08";
+import { CantinaV2, PainelLiso } from "./backgrounds/Ep08v2";
 import { FogueteInterior, HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
@@ -66,6 +67,8 @@ export const BACKGROUNDS = [
   "prateleira_mercado",
   "diagrama_corpo",
   "lata_refrigerante",
+  "cantina_v2",
+  "painel_liso",
 ];
 
 // Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
@@ -195,6 +198,10 @@ export const Background: React.FC<{
       return <DiagramaCorpo cam={cam} frame={frame} params={params} />;
     case "lata_refrigerante":
       return <LataGigante cam={cam} frame={frame} params={params} />;
+    case "cantina_v2":
+      return <CantinaV2 cam={cam} frame={frame} params={params} />;
+    case "painel_liso":
+      return <PainelLiso cam={cam} frame={frame} params={params} />;
     default:
       return <rect x={0} y={0} width={1080} height={1920} fill={colors.creme} />;
   }

@@ -1,0 +1,229 @@
+{
+  "episode": 7,
+  "version": 2,
+  "title": "E se você ficasse uma semana sem açúcar?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 2100,
+  "safeZone": {
+    "yMinPct": 12,
+    "yMaxPct": 72,
+    "xMarginPx": 90
+  },
+  "recurringDevice": "Calendário de 7 quadradinhos no topo (dentro da zona segura). Um quadradinho é riscado a cada cena de 2 a 7; no fecho todos estão riscados e o quadro volta ao do gancho (loop).",
+  "_mudancas": "Ajustes aprovados em 2026-11-06 sobre o JSON enviado: cena 'adultos' trocada pelo ensaio real da UC Davis (Stanhope et al., 2015; 85 adultos de 18 a 40 anos, 14 dias, controle com aspartame), sem números não verificados; números da UCSF com unidade e a ressalva 'sem grupo controle'; 'DESAFIO' -> 'O NICO TESTA'; CTA sem convite a cortar; 'O que ninguém mediu' -> 'O que não foi medido'.",
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 240,
+      "narration": "E se você ficasse uma semana sem açúcar? Num estudo, nove dias mudaram os exames. O peso, quase nada.",
+      "onScreenText": "E SE VOCÊ FICASSE 7 DIAS SEM AÇÚCAR?",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "olhando_para_cima",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "close",
+        "action": "Close do Nico olhando para cima. A câmera recua e revela, sobre o balcão, um papel de exame com 3 barras grossas e cheias. Um relógio gira 9 voltas e as barras descem um degrau enquanto um prato ao lado permanece idêntico (sinal '=' ao lado do prato). Pausa curta antes de 'O peso, quase nada'."
+      },
+      "sfx": [
+        "silencio_1s",
+        "whoosh",
+        "tic_relogio"
+      ],
+      "music": "curiosidade_suave",
+      "extraText": [
+        "9 DIAS · MESMAS CALORIAS · PESO QUASE IGUAL"
+      ]
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 240,
+      "durationInFrames": 240,
+      "narration": "Este é o Nico. O desafio dele: sete dias sem açúcar adicionado. Sem passar fome.",
+      "onScreenText": "O NICO TESTA: 7 DIAS SEM AÇÚCAR ADICIONADO",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "apontando",
+            "expression": "neutro"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico na cantina marca com caneta chapada o DIA 1 no calendário de 7 quadradinhos. Na bandeja dele, uma lata GENÉRICA (azul-petróleo, sem faixa, sem texto) volta para o balcão e entra um prato de arroz com feijão e uma fruta. A câmera recua devagar."
+      },
+      "sfx": [
+        "cantina_ambiente",
+        "pop_contagem"
+      ],
+      "music": "base_suave"
+    },
+    {
+      "id": "estudo",
+      "startFrame": 480,
+      "durationInFrames": 300,
+      "narration": "Para entender, olha o estudo. Quarenta e três crianças com obesidade e problemas metabólicos trocaram o açúcar por amido. Mesmas calorias. Nove dias.",
+      "onScreenText": "A TROCA: AÇÚCAR → AMIDO · MESMAS CALORIAS",
+      "visual": {
+        "background": "painel_liso",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "neutro",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_aberto",
+        "action": "Pictograma de 43 bolinhas iguais, neutras e sem rosto, em grade (NÃO desenhar corpos de crianças). Elas acendem em sequência rápida. Abaixo, uma bandeja: doce e refrigerante genérico saem pela esquerda e arroz e pão entram pela direita, com balança de pratos nivelada em '=' (calorias iguais). Uma régua de 9 quadradinhos se risca."
+      },
+      "sfx": [
+        "pop_contagem",
+        "estalo"
+      ],
+      "music": "base_suave",
+      "footerText": "UCSF, 2015 · 43 CRIANÇAS COM OBESIDADE · NÃO VALE PARA TODO MUNDO"
+    },
+    {
+      "id": "resultado",
+      "startFrame": 780,
+      "durationInFrames": 240,
+      "narration": "O resultado: a pressão baixou cinco pontos. Os triglicerídeos caíram trinta e três. A insulina, cerca de um terço.",
+      "onScreenText": "PRESSÃO −5 mmHg · TRIGLICERÍDEOS −33 mg/dL · INSULINA ≈ −1/3",
+      "visual": {
+        "background": "painel_liso",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "surpresa",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Três cartões de exame grandes, um embaixo do outro (rótulos >= 44 px: PRESSÃO DIASTÓLICA, TRIGLICERÍDEOS, INSULINA). Em cada um, uma barra chapada desce com um 'pop' e o número aparece em destaque, contando de 0 até o valor."
+      },
+      "sfx": [
+        "pop_contagem"
+      ],
+      "music": "tensao_leve",
+      "footerText": "UCSF, 2015 · SEM GRUPO CONTROLE · ESTUDO CURTO"
+    },
+    {
+      "id": "adultos",
+      "startFrame": 1020,
+      "durationInFrames": 330,
+      "narration": "E em adultos jovens? Em duas semanas, quanto mais açúcar nas bebidas, mais subiram o LDL e os triglicerídeos. Com adoçante, quase nada mudou.",
+      "onScreenText": "MAIS AÇÚCAR NA BEBIDA → MAIS LDL E TRIGLICERÍDEOS",
+      "visual": {
+        "background": "painel_liso",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "neutro",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Latas genéricas (azul-petróleo, sem marca) e um copo com sachê de adoçante. Quatro colunas, do adoçante até muito açúcar na bebida: a barra do LDL e dos triglicerídeos sobe a cada coluna com açúcar e fica parada na do adoçante. Uma régua 'dia 1 … dia 14' corre embaixo. Sem porcentagens."
+      },
+      "sfx": [
+        "pop_contagem",
+        "rangido_balanca"
+      ],
+      "music": "tensao_leve",
+      "footerText": "UC DAVIS, 2015 · 85 ADULTOS DE 18 A 40 ANOS · 14 DIAS · CONTROLE COM ADOÇANTE"
+    },
+    {
+      "id": "promessas",
+      "startFrame": 1350,
+      "durationInFrames": 270,
+      "narration": "O que não foi medido: detox, barriga seca, pele nova. Os estudos são curtos, e nem todo mundo muda igual.",
+      "onScreenText": "NÃO MEDIDO",
+      "visual": {
+        "background": "painel_liso",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "vergonha",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Três rótulos chapados genéricos aparecem num pote verde sem marca: DETOX, BARRIGA SECA, PELE NOVA. Um carimbo vermelho-tomate 'NÃO MEDIDO' bate sobre cada um (estalo), um a um. Por fim, duas bolinhas de cores diferentes recebem setas de tamanhos diferentes (cada um muda de um jeito)."
+      },
+      "sfx": [
+        "estalo"
+      ],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "primeiros_dias",
+      "startFrame": 1620,
+      "durationInFrames": 210,
+      "narration": "Nos primeiros dias, alguns relatam dor de cabeça e vontade de doce. Outros nem notam.",
+      "onScreenText": "ALGUNS SENTEM · OUTROS NEM NOTAM",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "encolhido",
+            "expression": "medo"
+          },
+          {
+            "id": "figurante",
+            "pose": "parado",
+            "expression": "neutro",
+            "note": "silhueta chapada de colega, sem nome, sem rosto detalhado"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico diante da vitrine de doces com um balão: cabeça com raio simples e docinho flutuando. Ao lado, um colega (silhueta) passa pela mesma vitrine sem reagir. Calendário no topo chega ao DIA 6."
+      },
+      "sfx": [
+        "zumbido_leve",
+        "batida_suspense"
+      ],
+      "music": "suspensa_sem_batida",
+      "extraText": [
+        "nem todo mundo sente isso"
+      ],
+      "footerText": "INFORMAÇÃO, NÃO É CONSELHO MÉDICO"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1830,
+      "durationInFrames": 270,
+      "narration": "O ganho medido veio de trocar o açúcar adicionado, não de passar fome. E se você ficasse uma semana sem açúcar?",
+      "onScreenText": "VOCÊ SABIA QUANTO AÇÚCAR TEM NA LATA? COMENTA.",
+      "visual": {
+        "background": "cantina_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "olhando_para_cima",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "close",
+        "action": "Calendário completo, 7 quadradinhos riscados. Nico lê o rótulo de um pacote com lupa, sereno, e levanta o rosto voltando ao MESMO enquadramento do gancho (close, olhando para cima, mesma expressão do primeiro frame) para o loop encaixar."
+      },
+      "sfx": [
+        "whoosh",
+        "silencio_1s"
+      ],
+      "music": "leve_divertida"
+    }
+  ]
+}

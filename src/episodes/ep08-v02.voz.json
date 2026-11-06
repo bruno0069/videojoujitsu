@@ -1,0 +1,85 @@
+{
+ "_sobre": "Linha do tempo do ep08 (episódio 7, açúcar) com as janelas de cena APROVADAS fixas.",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.646,
+   "em": 0.12,
+   "arquivo": "public/audio/ep08-v02-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 6.428,
+   "em": 8.12,
+   "arquivo": "public/audio/ep08-v02-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "estudo",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 1.617,
+   "em": 16.12,
+   "arquivo": "public/audio/ep08-v02-narracao-03-estudo.mp3"
+  },
+  {
+   "cena": "estudo",
+   "de": 2.232,
+   "palavrasDe": 2.232,
+   "ate": 7.416,
+   "em": 17.917,
+   "arquivo": "public/audio/ep08-v02-narracao-03-estudo.mp3"
+  },
+  {
+   "cena": "estudo",
+   "de": 7.86,
+   "palavrasDe": 7.86,
+   "ate": 10.24,
+   "em": 23.282,
+   "arquivo": "public/audio/ep08-v02-narracao-03-estudo.mp3"
+  },
+  {
+   "cena": "resultado",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.747,
+   "em": 26.12,
+   "arquivo": "public/audio/ep08-v02-narracao-04-resultado.mp3"
+  },
+  {
+   "cena": "adultos",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 9.943,
+   "em": 34.12,
+   "arquivo": "public/audio/ep08-v02-narracao-05-adultos.mp3"
+  },
+  {
+   "cena": "promessas",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.791,
+   "em": 45.12,
+   "arquivo": "public/audio/ep08-v02-narracao-06-promessas.mp3"
+  },
+  {
+   "cena": "primeiros_dias",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 5.793,
+   "em": 54.12,
+   "arquivo": "public/audio/ep08-v02-narracao-07-primeiros_dias.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.317,
+   "em": 61.12,
+   "arquivo": "public/audio/ep08-v02-narracao-08-fecho.mp3"
+  }
+ ]
+}

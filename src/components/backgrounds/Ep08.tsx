@@ -272,7 +272,7 @@ export const Cantina: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
         ))}
         <rect x={360} y={B - 10} width={1440} height={40} rx={10} fill={colors.chaoSombra} stroke={colors.tinta} strokeWidth={ink} />
         {/* comidinhas do balcão (somem quando a vitrine ou os quadros ocupam o balcão) */}
-        {!vitrine && !regra ? (
+        {!vitrine && !regra && params.semItens !== 1 ? (
           <g>
             {[
               [520, <Pao key="p" />],

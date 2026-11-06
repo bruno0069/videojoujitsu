@@ -231,6 +231,8 @@ gen -i "$SFX/cantina_burburinho.wav" -i "$SFX/cantina_talher.wav" -filter_comple
 rm -f "$SFX/cantina_burburinho.wav" "$SFX/cantina_talher.wav"
 # batida_suspense: duas batidas graves de suspense (tum-tum), 1,2 s
 gen -f lavfi -i "aevalsrc='0.6*sin(2*PI*(55+40*exp(-t*20))*t)*exp(-t*9)+0.5*sin(2*PI*(52+40*exp(-(t-0.32)*20))*(t-0.32))*exp(-(t-0.32)*8)*gte(t,0.32)':s=$R:d=1.2" -af "afade=t=out:st=1.0:d=0.2" -ac 1 "$SFX/batida_suspense.wav"
+# ep08 v2 — tic_relogio: tique-taque acelerado de relógio de mesa (2 toques por 0,2 s), loop de 2 s
+gen -f lavfi -i "aevalsrc='0.5*exp(-mod(t,0.2)*180)*sin(2*PI*if(lt(mod(t,0.4),0.2),2600,1900)*t)':s=$R:d=2" -ac 1 "$SFX/tic_relogio.wav"
 # Versões com passa-altas em 120 Hz (as que entram no vídeo): limpa o grave que embola com a voz
 for m in base_suave suspensa_sem_batida tensao_leve alegre_curta melancolica_suave curiosidade_suave crescendo_leve leve_divertida lofi_espacial energia_queda; do
   gen -i "$MUS/$m.wav" -af "highpass=f=120" "$MUS/${m}_hp120.wav"
