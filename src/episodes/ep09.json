@@ -1,0 +1,261 @@
+{
+  "episode": 8,
+  "title": "E se a escola ficasse debaixo d'água?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 2100,
+  "safeZone": {
+    "yMinPct": 12,
+    "yMaxPct": 72,
+    "xMarginPx": 90
+  },
+  "recurringDevice": "Régua de profundidade na lateral direita (SUPERFÍCIE / 1 m / 2 m / 10 m / 40 m) com um marcador que acompanha o Nico; volta à SUPERFÍCIE no fecho (loop).",
+  "_sobre": "JSON montado pelo Claude a pedido do usuário ('eu monto o JSON'): o arquivo anexo não veio. Frames distribuídos pela fala real das 8 tomadas (cada cena >= fala + 0,4 s + 0,12 s de entrada). Números na tela só da lista permitida; a marca 0 da régua é rotulada SUPERFÍCIE (o número '0 m' não está na lista). Nome ep09 porque ep08.json já existe (episódio 7, açúcar); o fundo novo do pátio seco chama patio_escola porque patio_dia já existe (ep01).",
+  "fontes": {
+    "pressao_1atm_10m": [
+      "NOAA PMEL, Water Pressures at Ocean Depths: https://pmel.noaa.gov/eoi/nemo1998/education/pressure.html",
+      "NOAA Ocean Explorer, animal-pressure: https://oceanexplorer.noaa.gov/facts/animal-pressure.html",
+      "LibreTexts (Física, pressão hidrostática) — citada no pedido; conferir a página exata"
+    ],
+    "boyle_6L_3L": [
+      "DAN, Ears & Equalization (lei de Boyle na descida): https://dan.org/health-medicine/health-resource/dive-medical-reference-books/ears-diving/ears-equalization/",
+      "LibreTexts (Química, Lei de Boyle: P1V1 = P2V2; 1 atm -> 2 atm, volume pela metade) — conferir a página exata"
+    ],
+    "tubo_1m": [
+      "University of Illinois, Q&A Snorkeling Limits: https://van.physics.illinois.edu/qa/listing.php?id=2253",
+      "Univ. of Leicester, Physics Special Topics P6_2 'Theoretical Limit to the Depth at Which a Snorkel May Be Used': https://journals.le.ac.uk/index.php/pst/article/view/2142",
+      "Young & Freedman, University Physics, cap. 12 (problema do snorkel)"
+    ],
+    "ouvido_2m": [
+      "DAN, Go Easy on the Ears: https://dan.org/?p=683",
+      "DAN, Ears & Equalization: https://dan.org/health-medicine/health-resource/dive-medical-reference-books/ears-diving/ears-equalization/"
+    ],
+    "regulador_40m": [
+      "PADI, Deep Diver Specialty (limite recreativo de 40 m) — conferir em padi.com",
+      "Dressel Divers, Open water depth limits: https://www.dresseldivers.com/blog/open-water-depth-limits/",
+      "Komodo Resort, How deep can you scuba dive: https://www.komodoresort.com/blog/how-deep-can-you-scuba-dive/"
+    ],
+    "subida_devagar": [
+      "DAN, Ears & Equalization (expansão do ar na subida): https://dan.org/health-medicine/health-resource/dive-medical-reference-books/ears-diving/ears-equalization/",
+      "NOAA PMEL, Water Pressures at Ocean Depths: https://pmel.noaa.gov/eoi/nemo1998/education/pressure.html"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 240,
+      "narration": "E se a escola ficasse debaixo d'água? A dez metros, a pressão dobra. O ar no seu peito encolhe pela metade.",
+      "onScreenText": "E SE A ESCOLA FICASSE DEBAIXO D'ÁGUA?",
+      "visual": {
+        "background": "patio_submerso",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "flutuando",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "close",
+        "action": "Nico boiando na superfície da água sobre o pátio alagado (régua em SUPERFÍCIE). Em 'A dez metros' ele afunda até a marca de 10 m (corte para agua_azul); o manômetro sobe de 1 atm para 2 atm em 'dobra'; um balão de ar no peito encolhe pela metade em 'metade'."
+      },
+      "sfx": [
+        "agua_ambiente",
+        "whoosh",
+        "pop_contagem"
+      ],
+      "music": "curiosidade_suave",
+      "extraText": [
+        "10 m",
+        "2 atm"
+      ]
+    },
+    {
+      "id": "apresentacao",
+      "startFrame": 240,
+      "durationInFrames": 285,
+      "narration": "Este é o Nico. A água sobe no pátio: um metro, dois, dez. Ele só quer chegar à superfície.",
+      "onScreenText": "1 m · 2 m · 10 m",
+      "visual": {
+        "background": "patio_escola",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "apontando",
+            "expression": "neutro"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Pátio seco da escola genérica (prédio simples, sem placa). Nico acena. A água sobe em três degraus (1 m, 2 m, 10 m) cobrindo o prédio; o marcador da régua acompanha. Nico, de desenho animado, nada para cima olhando a SUPERFÍCIE."
+      },
+      "sfx": [
+        "agua_subindo",
+        "pop_contagem"
+      ],
+      "music": "base_suave",
+      "extraText": [
+        "SUPERFÍCIE"
+      ]
+    },
+    {
+      "id": "regra",
+      "startFrame": 525,
+      "durationInFrames": 285,
+      "narration": "A regra é simples. A cada dez metros, a pressão sobe uma atmosfera. Na superfície, uma. Aos dez metros, duas.",
+      "onScreenText": "+1 atm A CADA 10 m · SUPERFÍCIE: 1 atm · 10 m: 2 atm",
+      "visual": {
+        "background": "painel_agua",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "atento",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Painel liso. Coluna de água com blocos chapados iguais: um bloco de ar (1 atm) e, a cada 10 m, mais um bloco de água (+1 atm). O manômetro marca 1 atm em 'uma' e 2 atm em 'duas'. Nico pequeno no canto inferior."
+      },
+      "sfx": [
+        "pop_contagem",
+        "estalo"
+      ],
+      "music": "base_suave",
+      "footerText": "FONTE: NOAA (PMEL)"
+    },
+    {
+      "id": "tubo",
+      "startFrame": 810,
+      "durationInFrames": 240,
+      "narration": "Ele tenta respirar por um tubo até a superfície. Passando de um metro, o peito não consegue puxar o ar.",
+      "onScreenText": "≈ 1 m",
+      "visual": {
+        "background": "agua_azul",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "preocupacao"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico a pouca profundidade com um tubo listrado neutro (sem marca) até a superfície. Em 'um metro' o marcador passa de 1 m; setas de pressão apertam o peito e a seta de ar no tubo para. Medo de desenho animado, sem pânico."
+      },
+      "sfx": [
+        "bolhas",
+        "batida_suspense"
+      ],
+      "music": "tensao_leve",
+      "footerText": "NÃO É PARA TESTAR"
+    },
+    {
+      "id": "ouvido",
+      "startFrame": 1050,
+      "durationInFrames": 255,
+      "narration": "E o ouvido reclama cedo. Sem equalizar, com uns dois metros o tímpano já é empurrado para dentro e dói.",
+      "onScreenText": "≈ 2 m",
+      "visual": {
+        "background": "painel_agua",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "preocupacao",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Corte lateral chapado e simplificado do ouvido (canal, tímpano, seta de pressão). Em 'dois metros' o marcador chega a 2 m e a seta cresce; o tímpano curva para dentro em 'empurrado'; um raio simples de 'ai' em 'dói'."
+      },
+      "sfx": [
+        "pop_contagem",
+        "estalo"
+      ],
+      "music": "tensao_leve",
+      "extraText": [
+        "tímpano"
+      ]
+    },
+    {
+      "id": "pulmao",
+      "startFrame": 1305,
+      "durationInFrames": 270,
+      "narration": "A dez metros, o ar de um pulmão, seis litros, vira três. É a lei de Boyle: mais pressão, menos espaço.",
+      "onScreenText": "6 L → 3 L",
+      "visual": {
+        "background": "painel_agua",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "surpresa",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Dois balões de pulmão chapados: à esquerda na SUPERFÍCIE (6 L), à direita a 10 m. O contador do balão da direita desce de 6 L para 3 L e chega a 3 L junto com 'três'. Em 'mais pressão' as setas apertam; 'menos espaço' o balão fica menor."
+      },
+      "sfx": [
+        "pop_contagem",
+        "estalo"
+      ],
+      "music": "base_suave",
+      "footerText": "PULMÃO CHEIO, SEGURANDO O AR",
+      "extraText": [
+        "SUPERFÍCIE",
+        "10 m"
+      ]
+    },
+    {
+      "id": "cilindro",
+      "startFrame": 1575,
+      "durationInFrames": 250,
+      "narration": "O cilindro resolve: o regulador entrega ar na pressão da água. Mergulhadores recreativos chegam a quarenta metros.",
+      "onScreenText": "40 m",
+      "visual": {
+        "background": "agua_azul",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "flutuando",
+            "expression": "curiosidade"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico com cilindro cinza genérico (sem texto nem marca), regulador e mangueira; bolhas sobem. O balão de ar do peito volta ao tamanho cheio. Em 'quarenta' o marcador da régua desce até 40 m."
+      },
+      "sfx": [
+        "bolhas",
+        "whoosh"
+      ],
+      "music": "leve_divertida",
+      "footerText": "EXIGE CURSO E EQUIPAMENTO"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 1825,
+      "durationInFrames": 275,
+      "narration": "Lá embaixo seria outro mundo. E quem sobe precisa ir devagar, porque o ar se expande. E se a escola ficasse debaixo d'água?",
+      "onScreenText": "E SE A ESCOLA FICASSE DEBAIXO D'ÁGUA?",
+      "visual": {
+        "background": "patio_submerso",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "flutuando",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "close",
+        "action": "O pátio submerso visto de baixo: algas chapadas e peixes genéricos. Nico sobe devagar com bolhas que crescem (o ar se expande); o marcador volta a SUPERFÍCIE. Termina no MESMO quadro do gancho (Nico boiando na superfície, régua em SUPERFÍCIE) para o loop."
+      },
+      "sfx": [
+        "bolhas",
+        "agua_ambiente"
+      ],
+      "music": "leve_divertida",
+      "footerText": "INFORMAÇÃO, NÃO É CONSELHO MÉDICO"
+    }
+  ]
+}

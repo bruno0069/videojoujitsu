@@ -1,0 +1,69 @@
+{
+ "_sobre": "Linha do tempo do ep08 (episódio 7, açúcar) com as janelas de cena APROVADAS fixas.",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 6.989,
+   "em": 0.12,
+   "arquivo": "public/audio/ep09-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "apresentacao",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.733,
+   "em": 8.12,
+   "arquivo": "public/audio/ep09-narracao-02-apresentacao.mp3"
+  },
+  {
+   "cena": "regra",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 8.4,
+   "em": 17.62,
+   "arquivo": "public/audio/ep09-narracao-03-regra.mp3"
+  },
+  {
+   "cena": "tubo",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 6.284,
+   "em": 27.12,
+   "arquivo": "public/audio/ep09-narracao-04-tubo.mp3"
+  },
+  {
+   "cena": "ouvido",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 6.909,
+   "em": 35.12,
+   "arquivo": "public/audio/ep09-narracao-05-ouvido.mp3"
+  },
+  {
+   "cena": "pulmao",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.316,
+   "em": 43.62,
+   "arquivo": "public/audio/ep09-narracao-06-pulmao.mp3"
+  },
+  {
+   "cena": "cilindro",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 7.337,
+   "em": 52.62,
+   "arquivo": "public/audio/ep09-narracao-07-cilindro.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 8.334,
+   "em": 60.953,
+   "arquivo": "public/audio/ep09-narracao-08-fecho.mp3"
+  }
+ ]
+}

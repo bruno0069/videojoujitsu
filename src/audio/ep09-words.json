@@ -1,0 +1,968 @@
+[
+ {
+  "text": "E",
+  "startMs": 120,
+  "endMs": 200,
+  "scene": "gancho"
+ },
+ {
+  "text": "se",
+  "startMs": 240,
+  "endMs": 280,
+  "scene": "gancho"
+ },
+ {
+  "text": "a",
+  "startMs": 320,
+  "endMs": 360,
+  "scene": "gancho"
+ },
+ {
+  "text": "escola",
+  "startMs": 440,
+  "endMs": 760,
+  "scene": "gancho"
+ },
+ {
+  "text": "ficasse",
+  "startMs": 840,
+  "endMs": 1160,
+  "scene": "gancho"
+ },
+ {
+  "text": "debaixo",
+  "startMs": 1240,
+  "endMs": 1560,
+  "scene": "gancho"
+ },
+ {
+  "text": "d'água?",
+  "startMs": 1640,
+  "endMs": 2040,
+  "scene": "gancho"
+ },
+ {
+  "text": "A",
+  "startMs": 2440,
+  "endMs": 2520,
+  "scene": "gancho"
+ },
+ {
+  "text": "dez",
+  "startMs": 2600,
+  "endMs": 2840,
+  "scene": "gancho"
+ },
+ {
+  "text": "metros,",
+  "startMs": 2920,
+  "endMs": 3480,
+  "scene": "gancho"
+ },
+ {
+  "text": "a",
+  "startMs": 3507,
+  "endMs": 3533,
+  "scene": "gancho"
+ },
+ {
+  "text": "pressão",
+  "startMs": 3560,
+  "endMs": 3960,
+  "scene": "gancho"
+ },
+ {
+  "text": "dobra.",
+  "startMs": 4040,
+  "endMs": 4640,
+  "scene": "gancho"
+ },
+ {
+  "text": "O",
+  "startMs": 4840,
+  "endMs": 4920,
+  "scene": "gancho"
+ },
+ {
+  "text": "ar",
+  "startMs": 5000,
+  "endMs": 5080,
+  "scene": "gancho"
+ },
+ {
+  "text": "no",
+  "startMs": 5120,
+  "endMs": 5160,
+  "scene": "gancho"
+ },
+ {
+  "text": "seu",
+  "startMs": 5240,
+  "endMs": 5400,
+  "scene": "gancho"
+ },
+ {
+  "text": "peito",
+  "startMs": 5480,
+  "endMs": 5800,
+  "scene": "gancho"
+ },
+ {
+  "text": "encolhe",
+  "startMs": 5960,
+  "endMs": 6280,
+  "scene": "gancho"
+ },
+ {
+  "text": "pela",
+  "startMs": 6320,
+  "endMs": 6440,
+  "scene": "gancho"
+ },
+ {
+  "text": "metade.",
+  "startMs": 6520,
+  "endMs": 7109,
+  "scene": "gancho"
+ },
+ {
+  "text": "Este",
+  "startMs": 8120,
+  "endMs": 8440,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "é",
+  "startMs": 8480,
+  "endMs": 8520,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "o",
+  "startMs": 8560,
+  "endMs": 8600,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Nico.",
+  "startMs": 8640,
+  "endMs": 9240,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "A",
+  "startMs": 9480,
+  "endMs": 9560,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "água",
+  "startMs": 9640,
+  "endMs": 9960,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "sobe",
+  "startMs": 10000,
+  "endMs": 10200,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "no",
+  "startMs": 10280,
+  "endMs": 10360,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "pátio:",
+  "startMs": 10440,
+  "endMs": 11160,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "um",
+  "startMs": 11240,
+  "endMs": 11320,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "metro,",
+  "startMs": 11400,
+  "endMs": 12200,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "dois,",
+  "startMs": 12320,
+  "endMs": 13080,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "dez.",
+  "startMs": 13320,
+  "endMs": 13760,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "Ele",
+  "startMs": 13960,
+  "endMs": 14120,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "só",
+  "startMs": 14200,
+  "endMs": 14280,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "quer",
+  "startMs": 14440,
+  "endMs": 14600,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "chegar",
+  "startMs": 14680,
+  "endMs": 15000,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "à",
+  "startMs": 15027,
+  "endMs": 15053,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "superfície.",
+  "startMs": 15080,
+  "endMs": 15853,
+  "scene": "apresentacao"
+ },
+ {
+  "text": "A",
+  "startMs": 17620,
+  "endMs": 17700,
+  "scene": "regra"
+ },
+ {
+  "text": "regra",
+  "startMs": 17780,
+  "endMs": 18020,
+  "scene": "regra"
+ },
+ {
+  "text": "é",
+  "startMs": 18060,
+  "endMs": 18100,
+  "scene": "regra"
+ },
+ {
+  "text": "simples.",
+  "startMs": 18180,
+  "endMs": 18980,
+  "scene": "regra"
+ },
+ {
+  "text": "A",
+  "startMs": 19020,
+  "endMs": 19060,
+  "scene": "regra"
+ },
+ {
+  "text": "cada",
+  "startMs": 19100,
+  "endMs": 19300,
+  "scene": "regra"
+ },
+ {
+  "text": "dez",
+  "startMs": 19380,
+  "endMs": 19620,
+  "scene": "regra"
+ },
+ {
+  "text": "metros,",
+  "startMs": 19700,
+  "endMs": 20260,
+  "scene": "regra"
+ },
+ {
+  "text": "a",
+  "startMs": 20287,
+  "endMs": 20313,
+  "scene": "regra"
+ },
+ {
+  "text": "pressão",
+  "startMs": 20340,
+  "endMs": 20740,
+  "scene": "regra"
+ },
+ {
+  "text": "sobe",
+  "startMs": 20780,
+  "endMs": 21140,
+  "scene": "regra"
+ },
+ {
+  "text": "uma",
+  "startMs": 21220,
+  "endMs": 21300,
+  "scene": "regra"
+ },
+ {
+  "text": "atmosfera.",
+  "startMs": 21420,
+  "endMs": 22420,
+  "scene": "regra"
+ },
+ {
+  "text": "Na",
+  "startMs": 22460,
+  "endMs": 22500,
+  "scene": "regra"
+ },
+ {
+  "text": "superfície,",
+  "startMs": 22660,
+  "endMs": 23460,
+  "scene": "regra"
+ },
+ {
+  "text": "uma.",
+  "startMs": 23620,
+  "endMs": 24180,
+  "scene": "regra"
+ },
+ {
+  "text": "Aos",
+  "startMs": 24220,
+  "endMs": 24340,
+  "scene": "regra"
+ },
+ {
+  "text": "dez",
+  "startMs": 24420,
+  "endMs": 24580,
+  "scene": "regra"
+ },
+ {
+  "text": "metros,",
+  "startMs": 24660,
+  "endMs": 25380,
+  "scene": "regra"
+ },
+ {
+  "text": "duas.",
+  "startMs": 25460,
+  "endMs": 26020,
+  "scene": "regra"
+ },
+ {
+  "text": "Ele",
+  "startMs": 27120,
+  "endMs": 27360,
+  "scene": "tubo"
+ },
+ {
+  "text": "tenta",
+  "startMs": 27440,
+  "endMs": 27600,
+  "scene": "tubo"
+ },
+ {
+  "text": "respirar",
+  "startMs": 27680,
+  "endMs": 28080,
+  "scene": "tubo"
+ },
+ {
+  "text": "por",
+  "startMs": 28160,
+  "endMs": 28240,
+  "scene": "tubo"
+ },
+ {
+  "text": "um",
+  "startMs": 28280,
+  "endMs": 28320,
+  "scene": "tubo"
+ },
+ {
+  "text": "tubo",
+  "startMs": 28480,
+  "endMs": 28720,
+  "scene": "tubo"
+ },
+ {
+  "text": "até",
+  "startMs": 28840,
+  "endMs": 29000,
+  "scene": "tubo"
+ },
+ {
+  "text": "a",
+  "startMs": 29040,
+  "endMs": 29080,
+  "scene": "tubo"
+ },
+ {
+  "text": "superfície.",
+  "startMs": 29120,
+  "endMs": 30080,
+  "scene": "tubo"
+ },
+ {
+  "text": "Passando",
+  "startMs": 30320,
+  "endMs": 30720,
+  "scene": "tubo"
+ },
+ {
+  "text": "de",
+  "startMs": 30760,
+  "endMs": 30800,
+  "scene": "tubo"
+ },
+ {
+  "text": "um",
+  "startMs": 30840,
+  "endMs": 30880,
+  "scene": "tubo"
+ },
+ {
+  "text": "metro,",
+  "startMs": 30960,
+  "endMs": 31520,
+  "scene": "tubo"
+ },
+ {
+  "text": "o",
+  "startMs": 31560,
+  "endMs": 31600,
+  "scene": "tubo"
+ },
+ {
+  "text": "peito",
+  "startMs": 31680,
+  "endMs": 32000,
+  "scene": "tubo"
+ },
+ {
+  "text": "não",
+  "startMs": 32080,
+  "endMs": 32160,
+  "scene": "tubo"
+ },
+ {
+  "text": "consegue",
+  "startMs": 32240,
+  "endMs": 32640,
+  "scene": "tubo"
+ },
+ {
+  "text": "puxar",
+  "startMs": 32720,
+  "endMs": 33040,
+  "scene": "tubo"
+ },
+ {
+  "text": "o",
+  "startMs": 33080,
+  "endMs": 33120,
+  "scene": "tubo"
+ },
+ {
+  "text": "ar.",
+  "startMs": 33240,
+  "endMs": 33404,
+  "scene": "tubo"
+ },
+ {
+  "text": "E",
+  "startMs": 35120,
+  "endMs": 35200,
+  "scene": "ouvido"
+ },
+ {
+  "text": "o",
+  "startMs": 35240,
+  "endMs": 35280,
+  "scene": "ouvido"
+ },
+ {
+  "text": "ouvido",
+  "startMs": 35360,
+  "endMs": 35760,
+  "scene": "ouvido"
+ },
+ {
+  "text": "reclama",
+  "startMs": 35840,
+  "endMs": 36240,
+  "scene": "ouvido"
+ },
+ {
+  "text": "cedo.",
+  "startMs": 36320,
+  "endMs": 36800,
+  "scene": "ouvido"
+ },
+ {
+  "text": "Sem",
+  "startMs": 37120,
+  "endMs": 37280,
+  "scene": "ouvido"
+ },
+ {
+  "text": "equalizar,",
+  "startMs": 37440,
+  "endMs": 38080,
+  "scene": "ouvido"
+ },
+ {
+  "text": "com",
+  "startMs": 38160,
+  "endMs": 38240,
+  "scene": "ouvido"
+ },
+ {
+  "text": "uns",
+  "startMs": 38360,
+  "endMs": 38480,
+  "scene": "ouvido"
+ },
+ {
+  "text": "dois",
+  "startMs": 38560,
+  "endMs": 38800,
+  "scene": "ouvido"
+ },
+ {
+  "text": "metros",
+  "startMs": 38880,
+  "endMs": 39280,
+  "scene": "ouvido"
+ },
+ {
+  "text": "o",
+  "startMs": 39320,
+  "endMs": 39360,
+  "scene": "ouvido"
+ },
+ {
+  "text": "tímpano",
+  "startMs": 39440,
+  "endMs": 39840,
+  "scene": "ouvido"
+ },
+ {
+  "text": "já",
+  "startMs": 39880,
+  "endMs": 40000,
+  "scene": "ouvido"
+ },
+ {
+  "text": "é",
+  "startMs": 40060,
+  "endMs": 40120,
+  "scene": "ouvido"
+ },
+ {
+  "text": "empurrado",
+  "startMs": 40180,
+  "endMs": 40640,
+  "scene": "ouvido"
+ },
+ {
+  "text": "para",
+  "startMs": 40720,
+  "endMs": 40880,
+  "scene": "ouvido"
+ },
+ {
+  "text": "dentro",
+  "startMs": 40960,
+  "endMs": 41280,
+  "scene": "ouvido"
+ },
+ {
+  "text": "e",
+  "startMs": 41520,
+  "endMs": 41600,
+  "scene": "ouvido"
+ },
+ {
+  "text": "dói.",
+  "startMs": 41680,
+  "endMs": 42029,
+  "scene": "ouvido"
+ },
+ {
+  "text": "A",
+  "startMs": 43620,
+  "endMs": 43780,
+  "scene": "pulmao"
+ },
+ {
+  "text": "dez",
+  "startMs": 43900,
+  "endMs": 44020,
+  "scene": "pulmao"
+ },
+ {
+  "text": "metros,",
+  "startMs": 44100,
+  "endMs": 44740,
+  "scene": "pulmao"
+ },
+ {
+  "text": "o",
+  "startMs": 44820,
+  "endMs": 44900,
+  "scene": "pulmao"
+ },
+ {
+  "text": "ar",
+  "startMs": 44980,
+  "endMs": 45060,
+  "scene": "pulmao"
+ },
+ {
+  "text": "de",
+  "startMs": 45100,
+  "endMs": 45140,
+  "scene": "pulmao"
+ },
+ {
+  "text": "um",
+  "startMs": 45180,
+  "endMs": 45220,
+  "scene": "pulmao"
+ },
+ {
+  "text": "pulmão,",
+  "startMs": 45260,
+  "endMs": 45940,
+  "scene": "pulmao"
+ },
+ {
+  "text": "seis",
+  "startMs": 46020,
+  "endMs": 46180,
+  "scene": "pulmao"
+ },
+ {
+  "text": "litros,",
+  "startMs": 46260,
+  "endMs": 46900,
+  "scene": "pulmao"
+ },
+ {
+  "text": "vira",
+  "startMs": 46953,
+  "endMs": 47060,
+  "scene": "pulmao"
+ },
+ {
+  "text": "três.",
+  "startMs": 47220,
+  "endMs": 48020,
+  "scene": "pulmao"
+ },
+ {
+  "text": "É",
+  "startMs": 48060,
+  "endMs": 48100,
+  "scene": "pulmao"
+ },
+ {
+  "text": "a",
+  "startMs": 48127,
+  "endMs": 48153,
+  "scene": "pulmao"
+ },
+ {
+  "text": "lei",
+  "startMs": 48180,
+  "endMs": 48340,
+  "scene": "pulmao"
+ },
+ {
+  "text": "de",
+  "startMs": 48380,
+  "endMs": 48420,
+  "scene": "pulmao"
+ },
+ {
+  "text": "Boyle:",
+  "startMs": 48500,
+  "endMs": 49140,
+  "scene": "pulmao"
+ },
+ {
+  "text": "mais",
+  "startMs": 49180,
+  "endMs": 49300,
+  "scene": "pulmao"
+ },
+ {
+  "text": "pressão,",
+  "startMs": 49380,
+  "endMs": 50100,
+  "scene": "pulmao"
+ },
+ {
+  "text": "menos",
+  "startMs": 50180,
+  "endMs": 50340,
+  "scene": "pulmao"
+ },
+ {
+  "text": "espaço.",
+  "startMs": 50420,
+  "endMs": 50936,
+  "scene": "pulmao"
+ },
+ {
+  "text": "O",
+  "startMs": 52620,
+  "endMs": 52700,
+  "scene": "cilindro"
+ },
+ {
+  "text": "cilindro",
+  "startMs": 52780,
+  "endMs": 53180,
+  "scene": "cilindro"
+ },
+ {
+  "text": "resolve:",
+  "startMs": 53460,
+  "endMs": 53900,
+  "scene": "cilindro"
+ },
+ {
+  "text": "o",
+  "startMs": 54060,
+  "endMs": 54100,
+  "scene": "cilindro"
+ },
+ {
+  "text": "regulador",
+  "startMs": 54140,
+  "endMs": 54700,
+  "scene": "cilindro"
+ },
+ {
+  "text": "entrega",
+  "startMs": 54780,
+  "endMs": 55180,
+  "scene": "cilindro"
+ },
+ {
+  "text": "ar",
+  "startMs": 55260,
+  "endMs": 55500,
+  "scene": "cilindro"
+ },
+ {
+  "text": "na",
+  "startMs": 55580,
+  "endMs": 55660,
+  "scene": "cilindro"
+ },
+ {
+  "text": "pressão",
+  "startMs": 55860,
+  "endMs": 56060,
+  "scene": "cilindro"
+ },
+ {
+  "text": "da",
+  "startMs": 56100,
+  "endMs": 56140,
+  "scene": "cilindro"
+ },
+ {
+  "text": "água.",
+  "startMs": 56220,
+  "endMs": 56740,
+  "scene": "cilindro"
+ },
+ {
+  "text": "Mergulhadores",
+  "startMs": 56940,
+  "endMs": 57580,
+  "scene": "cilindro"
+ },
+ {
+  "text": "recreativos",
+  "startMs": 57620,
+  "endMs": 58380,
+  "scene": "cilindro"
+ },
+ {
+  "text": "chegam",
+  "startMs": 58420,
+  "endMs": 58700,
+  "scene": "cilindro"
+ },
+ {
+  "text": "a",
+  "startMs": 58740,
+  "endMs": 58780,
+  "scene": "cilindro"
+ },
+ {
+  "text": "quarenta",
+  "startMs": 58860,
+  "endMs": 59340,
+  "scene": "cilindro"
+ },
+ {
+  "text": "metros.",
+  "startMs": 59420,
+  "endMs": 59957,
+  "scene": "cilindro"
+ },
+ {
+  "text": "Lá",
+  "startMs": 60953,
+  "endMs": 61113,
+  "scene": "fecho"
+ },
+ {
+  "text": "embaixo",
+  "startMs": 61193,
+  "endMs": 61673,
+  "scene": "fecho"
+ },
+ {
+  "text": "seria",
+  "startMs": 61753,
+  "endMs": 62153,
+  "scene": "fecho"
+ },
+ {
+  "text": "outro",
+  "startMs": 62313,
+  "endMs": 62553,
+  "scene": "fecho"
+ },
+ {
+  "text": "mundo.",
+  "startMs": 62633,
+  "endMs": 63193,
+  "scene": "fecho"
+ },
+ {
+  "text": "E",
+  "startMs": 63353,
+  "endMs": 63433,
+  "scene": "fecho"
+ },
+ {
+  "text": "quem",
+  "startMs": 63473,
+  "endMs": 63673,
+  "scene": "fecho"
+ },
+ {
+  "text": "sobe",
+  "startMs": 63753,
+  "endMs": 64153,
+  "scene": "fecho"
+ },
+ {
+  "text": "precisa",
+  "startMs": 64273,
+  "endMs": 64553,
+  "scene": "fecho"
+ },
+ {
+  "text": "ir",
+  "startMs": 64633,
+  "endMs": 64713,
+  "scene": "fecho"
+ },
+ {
+  "text": "devagar,",
+  "startMs": 64833,
+  "endMs": 65513,
+  "scene": "fecho"
+ },
+ {
+  "text": "porque",
+  "startMs": 65593,
+  "endMs": 65753,
+  "scene": "fecho"
+ },
+ {
+  "text": "o",
+  "startMs": 65833,
+  "endMs": 65913,
+  "scene": "fecho"
+ },
+ {
+  "text": "ar",
+  "startMs": 65993,
+  "endMs": 66073,
+  "scene": "fecho"
+ },
+ {
+  "text": "se",
+  "startMs": 66113,
+  "endMs": 66153,
+  "scene": "fecho"
+ },
+ {
+  "text": "expande.",
+  "startMs": 66233,
+  "endMs": 66873,
+  "scene": "fecho"
+ },
+ {
+  "text": "E",
+  "startMs": 67353,
+  "endMs": 67433,
+  "scene": "fecho"
+ },
+ {
+  "text": "se",
+  "startMs": 67473,
+  "endMs": 67513,
+  "scene": "fecho"
+ },
+ {
+  "text": "a",
+  "startMs": 67553,
+  "endMs": 67593,
+  "scene": "fecho"
+ },
+ {
+  "text": "escola",
+  "startMs": 67673,
+  "endMs": 67993,
+  "scene": "fecho"
+ },
+ {
+  "text": "ficasse",
+  "startMs": 68073,
+  "endMs": 68393,
+  "scene": "fecho"
+ },
+ {
+  "text": "debaixo",
+  "startMs": 68473,
+  "endMs": 68793,
+  "scene": "fecho"
+ },
+ {
+  "text": "d'água?",
+  "startMs": 68833,
+  "endMs": 69287,
+  "scene": "fecho"
+ }
+]

@@ -1,0 +1,449 @@
+{
+ "_sobre": "Direção do ep09 (episódio 8, água). Cues por palavra da narração gravada (src/audio/ep09-words.json). Cenários em src/components/backgrounds/Ep09.tsx; a régua de profundidade (lateral direita) acompanha a cena e volta à SUPERFÍCIE no fecho. O primeiro e o último quadro são o mesmo (Nico boiando na superfície, régua em SUPERFÍCIE, título na tela).",
+ "limitesFixos": true,
+ "legendaDe": 0,
+ "legendaSemPontuacao": true,
+ "legendaPlaca": true,
+ "legendaFonte": 60,
+ "legendaCentroY": 1320,
+ "duckGanho": 0.2,
+ "legendaDestaques": [
+  "pressão",
+  "atmosfera",
+  "tubo",
+  "tímpano",
+  "Boyle",
+  "cilindro",
+  "regulador",
+  "quarenta"
+ ],
+ "cenas": {
+  "gancho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "patio_submerso"
+    }
+   ],
+   "fundo": {
+    "modo": 1,
+    "mergulho": "dez",
+    "mano": "pressao",
+    "dobra": "dobra",
+    "peito": "peito",
+    "encolhe": "encolhe"
+   },
+   "texto": {
+    "de": 0,
+    "ate": "a#2",
+    "mostrar": true,
+    "animar": false
+   },
+   "sfx": {
+    "agua_ambiente": {
+     "de": "dez"
+    },
+    "whoosh": "dez-4",
+    "pop_contagem": "dobra"
+   },
+   "efeitos": [
+    {
+     "id": "bolhas",
+     "de": "dez+6"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "pressao"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "peito"
+    }
+   ]
+  },
+  "apresentacao": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "patio_escola"
+    }
+   ],
+   "fundo": {
+    "agua": "agua",
+    "um": "um",
+    "dois": "dois",
+    "dez": "dez",
+    "nada": "ele",
+    "seta": "chegar"
+   },
+   "texto": {
+    "de": "um",
+    "ate": "ele",
+    "mostrar": true,
+    "partes": [
+     "um",
+     "dois",
+     "dez"
+    ]
+   },
+   "sfx": {
+    "agua_subindo": {
+     "de": "um",
+     "ate": "ele"
+    },
+    "pop_contagem": "um"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "dois"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "dez"
+    },
+    {
+     "id": "bolhas",
+     "de": "ele"
+    },
+    {
+     "id": "whoosh",
+     "de": "chegar-4"
+    }
+   ]
+  },
+  "regra": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1.03
+     ],
+     "personagens": [],
+     "cenario": "painel_agua"
+    }
+   ],
+   "fundo": {
+    "painel": 1,
+    "coluna": "regra",
+    "ar": "simples",
+    "agua": "dez",
+    "mais": "sobe",
+    "na": "na",
+    "mano": "superficie",
+    "aos": "aos",
+    "duas": "duas",
+    "rodape": 6,
+    "prof0": 10,
+    "profEm": [
+     "na",
+     "dez#2"
+    ],
+    "profPara": [
+     0,
+     10
+    ]
+   },
+   "texto": {
+    "de": "cada",
+    "mostrar": true,
+    "partes": [
+     "cada",
+     "na",
+     "aos"
+    ]
+   },
+   "sfx": {
+    "pop_contagem": "simples",
+    "estalo": "duas"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "dez"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "sobe"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "superficie"
+    },
+    {
+     "id": "whoosh",
+     "de": "aos"
+    }
+   ]
+  },
+  "tubo": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "agua_azul"
+    }
+   ],
+   "fundo": {
+    "modo": 1,
+    "ar": "tenta",
+    "passa": "passando",
+    "peito": "peito",
+    "nao": "nao",
+    "prof0": 0.6,
+    "profEm": [
+     "passando"
+    ],
+    "profPara": [
+     1.2
+    ],
+    "profDur": [
+     30
+    ]
+   },
+   "texto": {
+    "de": "metro",
+    "mostrar": true
+   },
+   "sfx": {
+    "bolhas": "tenta",
+    "batida_suspense": "nao"
+   },
+   "efeitos": [
+    {
+     "id": "bolhas",
+     "de": "passando"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "metro"
+    }
+   ]
+  },
+  "ouvido": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1.03
+     ],
+     "personagens": [],
+     "cenario": "painel_agua"
+    }
+   ],
+   "fundo": {
+    "painel": 2,
+    "corte": "ouvido",
+    "seta": "sem",
+    "dois": "dois",
+    "rotulo": "timpano",
+    "empurra": "empurrado",
+    "dor": "doi",
+    "prof0": 1.2,
+    "profEm": [
+     "dois"
+    ],
+    "profPara": [
+     2
+    ]
+   },
+   "texto": {
+    "de": "dois",
+    "mostrar": true
+   },
+   "sfx": {
+    "pop_contagem": "ouvido",
+    "estalo": "doi"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "timpano"
+    },
+    {
+     "id": "whoosh",
+     "de": "sem-4"
+    }
+   ]
+  },
+  "pulmao": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1.03
+     ],
+     "personagens": [],
+     "cenario": "painel_agua"
+    }
+   ],
+   "fundo": {
+    "painel": 3,
+    "p1": "ar",
+    "p2": "pulmao",
+    "vira": "vira",
+    "tres": "tres",
+    "setas": "mais",
+    "menos": "menos",
+    "rodape": "ar",
+    "prof0": 2,
+    "profEm": [
+     "dez"
+    ],
+    "profPara": [
+     10
+    ]
+   },
+   "texto": {
+    "de": "tres",
+    "mostrar": true
+   },
+   "sfx": {
+    "pop_contagem": "pulmao",
+    "estalo": "tres"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "ar"
+    },
+    {
+     "id": "whoosh",
+     "de": "mais-4"
+    }
+   ]
+  },
+  "cilindro": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "agua_azul"
+    }
+   ],
+   "fundo": {
+    "modo": 2,
+    "cilindro": "cilindro",
+    "regulador": "regulador",
+    "entrega": "entrega",
+    "pressao": "pressao",
+    "fundo": "mergulhadores",
+    "fundoAte": "quarenta",
+    "prof0": 10,
+    "profEm": [
+     "mergulhadores"
+    ],
+    "profPara": [
+     40
+    ],
+    "profDur": [
+     58
+    ]
+   },
+   "texto": {
+    "de": "quarenta",
+    "mostrar": true
+   },
+   "sfx": {
+    "bolhas": "regulador",
+    "whoosh": "mergulhadores"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "cilindro"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "quarenta"
+    }
+   ]
+  },
+  "fecho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "patio_submerso"
+    }
+   ],
+   "fundo": {
+    "modo": 2,
+    "sobe": "sobe",
+    "sobeAte": "e#2-4",
+    "pulmao": "sobe",
+    "expande": "expande",
+    "superficie": "e#2",
+    "aviso": 4,
+    "avisoAte": "e#2-6"
+   },
+   "texto": {
+    "de": "e#2",
+    "mostrar": true,
+    "ate": 400
+   },
+   "sfx": {
+    "bolhas": "sobe",
+    "agua_ambiente": {
+     "de": 0,
+     "ate": "e#2"
+    }
+   },
+   "efeitos": [
+    {
+     "id": "whoosh",
+     "de": "e#2-6"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "expande"
+    },
+    {
+     "id": "bolhas",
+     "de": "expande"
+    }
+   ]
+  }
+ }
+}

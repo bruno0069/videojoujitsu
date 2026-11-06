@@ -241,6 +241,7 @@ export const Episode: React.FC<EpisodeProps> = ({
           placa={direction.legendaPlaca}
           destaques={direction.legendaDestaques}
           fonte={direction.legendaFonte}
+          centroY={direction.legendaCentroY}
         />
       </AbsoluteFill>
     </LoopLength>

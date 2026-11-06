@@ -1,0 +1,842 @@
+{
+ "_sobre": "Transcrição por palavra das 8 tomadas do ep09 (episódio 8, água; eleven_scribe_v1, 1 tomada por cena).",
+ "cenas": {
+  "gancho": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "se",
+     "start": 0.12,
+     "end": 0.16
+    },
+    {
+     "text": "a",
+     "start": 0.2,
+     "end": 0.24
+    },
+    {
+     "text": "escola",
+     "start": 0.32,
+     "end": 0.64
+    },
+    {
+     "text": "ficasse",
+     "start": 0.72,
+     "end": 1.04
+    },
+    {
+     "text": "debaixo",
+     "start": 1.12,
+     "end": 1.44
+    },
+    {
+     "text": "d'água?",
+     "start": 1.52,
+     "end": 1.92
+    },
+    {
+     "text": "A",
+     "start": 2.32,
+     "end": 2.4
+    },
+    {
+     "text": "dez",
+     "start": 2.48,
+     "end": 2.72
+    },
+    {
+     "text": "metros,",
+     "start": 2.8,
+     "end": 3.36
+    },
+    {
+     "text": "a",
+     "start": 3.387,
+     "end": 3.413
+    },
+    {
+     "text": "pressão",
+     "start": 3.44,
+     "end": 3.84
+    },
+    {
+     "text": "dobra.",
+     "start": 3.92,
+     "end": 4.52
+    },
+    {
+     "text": "O",
+     "start": 4.72,
+     "end": 4.8
+    },
+    {
+     "text": "ar",
+     "start": 4.88,
+     "end": 4.96
+    },
+    {
+     "text": "no",
+     "start": 5.0,
+     "end": 5.04
+    },
+    {
+     "text": "seu",
+     "start": 5.12,
+     "end": 5.28
+    },
+    {
+     "text": "peito",
+     "start": 5.36,
+     "end": 5.68
+    },
+    {
+     "text": "encolhe",
+     "start": 5.84,
+     "end": 6.16
+    },
+    {
+     "text": "pela",
+     "start": 6.2,
+     "end": 6.32
+    },
+    {
+     "text": "metade.",
+     "start": 6.4,
+     "end": 7.2
+    }
+   ]
+  },
+  "apresentacao": {
+   "words": [
+    {
+     "text": "Este",
+     "start": 0.0,
+     "end": 0.32
+    },
+    {
+     "text": "é",
+     "start": 0.36,
+     "end": 0.4
+    },
+    {
+     "text": "o",
+     "start": 0.44,
+     "end": 0.48
+    },
+    {
+     "text": "Nico.",
+     "start": 0.52,
+     "end": 1.12
+    },
+    {
+     "text": "A",
+     "start": 1.36,
+     "end": 1.44
+    },
+    {
+     "text": "água",
+     "start": 1.52,
+     "end": 1.84
+    },
+    {
+     "text": "sobe",
+     "start": 1.88,
+     "end": 2.08
+    },
+    {
+     "text": "no",
+     "start": 2.16,
+     "end": 2.24
+    },
+    {
+     "text": "pátio:",
+     "start": 2.32,
+     "end": 3.04
+    },
+    {
+     "text": "um",
+     "start": 3.12,
+     "end": 3.2
+    },
+    {
+     "text": "metro,",
+     "start": 3.28,
+     "end": 4.08
+    },
+    {
+     "text": "dois,",
+     "start": 4.2,
+     "end": 4.96
+    },
+    {
+     "text": "dez.",
+     "start": 5.2,
+     "end": 5.64
+    },
+    {
+     "text": "Ele",
+     "start": 5.84,
+     "end": 6.0
+    },
+    {
+     "text": "só",
+     "start": 6.08,
+     "end": 6.16
+    },
+    {
+     "text": "quer",
+     "start": 6.32,
+     "end": 6.48
+    },
+    {
+     "text": "chegar",
+     "start": 6.56,
+     "end": 6.88
+    },
+    {
+     "text": "à",
+     "start": 6.907,
+     "end": 6.933
+    },
+    {
+     "text": "superfície.",
+     "start": 6.96,
+     "end": 8.0
+    }
+   ]
+  },
+  "regra": {
+   "words": [
+    {
+     "text": "A",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "regra",
+     "start": 0.16,
+     "end": 0.4
+    },
+    {
+     "text": "é",
+     "start": 0.44,
+     "end": 0.48
+    },
+    {
+     "text": "simples.",
+     "start": 0.56,
+     "end": 1.36
+    },
+    {
+     "text": "A",
+     "start": 1.4,
+     "end": 1.44
+    },
+    {
+     "text": "cada",
+     "start": 1.48,
+     "end": 1.68
+    },
+    {
+     "text": "dez",
+     "start": 1.76,
+     "end": 2.0
+    },
+    {
+     "text": "metros,",
+     "start": 2.08,
+     "end": 2.64
+    },
+    {
+     "text": "a",
+     "start": 2.667,
+     "end": 2.693
+    },
+    {
+     "text": "pressão",
+     "start": 2.72,
+     "end": 3.12
+    },
+    {
+     "text": "sobe",
+     "start": 3.16,
+     "end": 3.52
+    },
+    {
+     "text": "uma",
+     "start": 3.6,
+     "end": 3.68
+    },
+    {
+     "text": "atmosfera.",
+     "start": 3.8,
+     "end": 4.8
+    },
+    {
+     "text": "Na",
+     "start": 4.84,
+     "end": 4.88
+    },
+    {
+     "text": "superfície,",
+     "start": 5.04,
+     "end": 5.84
+    },
+    {
+     "text": "uma.",
+     "start": 6.0,
+     "end": 6.56
+    },
+    {
+     "text": "Aos",
+     "start": 6.6,
+     "end": 6.72
+    },
+    {
+     "text": "dez",
+     "start": 6.8,
+     "end": 6.96
+    },
+    {
+     "text": "metros,",
+     "start": 7.04,
+     "end": 7.76
+    },
+    {
+     "text": "duas.",
+     "start": 7.84,
+     "end": 8.4
+    }
+   ]
+  },
+  "tubo": {
+   "words": [
+    {
+     "text": "Ele",
+     "start": 0.0,
+     "end": 0.24
+    },
+    {
+     "text": "tenta",
+     "start": 0.32,
+     "end": 0.48
+    },
+    {
+     "text": "respirar",
+     "start": 0.56,
+     "end": 0.96
+    },
+    {
+     "text": "por",
+     "start": 1.04,
+     "end": 1.12
+    },
+    {
+     "text": "um",
+     "start": 1.16,
+     "end": 1.2
+    },
+    {
+     "text": "tubo",
+     "start": 1.36,
+     "end": 1.6
+    },
+    {
+     "text": "até",
+     "start": 1.72,
+     "end": 1.88
+    },
+    {
+     "text": "a",
+     "start": 1.92,
+     "end": 1.96
+    },
+    {
+     "text": "superfície.",
+     "start": 2.0,
+     "end": 2.96
+    },
+    {
+     "text": "Passando",
+     "start": 3.2,
+     "end": 3.6
+    },
+    {
+     "text": "de",
+     "start": 3.64,
+     "end": 3.68
+    },
+    {
+     "text": "um",
+     "start": 3.72,
+     "end": 3.76
+    },
+    {
+     "text": "metro,",
+     "start": 3.84,
+     "end": 4.4
+    },
+    {
+     "text": "o",
+     "start": 4.44,
+     "end": 4.48
+    },
+    {
+     "text": "peito",
+     "start": 4.56,
+     "end": 4.88
+    },
+    {
+     "text": "não",
+     "start": 4.96,
+     "end": 5.04
+    },
+    {
+     "text": "consegue",
+     "start": 5.12,
+     "end": 5.52
+    },
+    {
+     "text": "puxar",
+     "start": 5.6,
+     "end": 5.92
+    },
+    {
+     "text": "o",
+     "start": 5.96,
+     "end": 6.0
+    },
+    {
+     "text": "ar.",
+     "start": 6.12,
+     "end": 6.48
+    }
+   ]
+  },
+  "ouvido": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "o",
+     "start": 0.12,
+     "end": 0.16
+    },
+    {
+     "text": "ouvido",
+     "start": 0.24,
+     "end": 0.64
+    },
+    {
+     "text": "reclama",
+     "start": 0.72,
+     "end": 1.12
+    },
+    {
+     "text": "cedo.",
+     "start": 1.2,
+     "end": 1.68
+    },
+    {
+     "text": "Sem",
+     "start": 2.0,
+     "end": 2.16
+    },
+    {
+     "text": "equalizar,",
+     "start": 2.32,
+     "end": 2.96
+    },
+    {
+     "text": "com",
+     "start": 3.04,
+     "end": 3.12
+    },
+    {
+     "text": "uns",
+     "start": 3.24,
+     "end": 3.36
+    },
+    {
+     "text": "dois",
+     "start": 3.44,
+     "end": 3.68
+    },
+    {
+     "text": "metros",
+     "start": 3.76,
+     "end": 4.16
+    },
+    {
+     "text": "o",
+     "start": 4.2,
+     "end": 4.24
+    },
+    {
+     "text": "tímpano",
+     "start": 4.32,
+     "end": 4.72
+    },
+    {
+     "text": "já",
+     "start": 4.76,
+     "end": 4.88
+    },
+    {
+     "text": "é",
+     "start": 4.94,
+     "end": 5.0
+    },
+    {
+     "text": "empurrado",
+     "start": 5.06,
+     "end": 5.52
+    },
+    {
+     "text": "para",
+     "start": 5.6,
+     "end": 5.76
+    },
+    {
+     "text": "dentro",
+     "start": 5.84,
+     "end": 6.16
+    },
+    {
+     "text": "e",
+     "start": 6.4,
+     "end": 6.48
+    },
+    {
+     "text": "dói.",
+     "start": 6.56,
+     "end": 7.2
+    }
+   ]
+  },
+  "pulmao": {
+   "words": [
+    {
+     "text": "A",
+     "start": 0.0,
+     "end": 0.16
+    },
+    {
+     "text": "dez",
+     "start": 0.28,
+     "end": 0.4
+    },
+    {
+     "text": "metros,",
+     "start": 0.48,
+     "end": 1.12
+    },
+    {
+     "text": "o",
+     "start": 1.2,
+     "end": 1.28
+    },
+    {
+     "text": "ar",
+     "start": 1.36,
+     "end": 1.44
+    },
+    {
+     "text": "de",
+     "start": 1.48,
+     "end": 1.52
+    },
+    {
+     "text": "um",
+     "start": 1.56,
+     "end": 1.6
+    },
+    {
+     "text": "pulmão,",
+     "start": 1.64,
+     "end": 2.32
+    },
+    {
+     "text": "seis",
+     "start": 2.4,
+     "end": 2.56
+    },
+    {
+     "text": "litros,",
+     "start": 2.64,
+     "end": 3.28
+    },
+    {
+     "text": "vira",
+     "start": 3.333,
+     "end": 3.44
+    },
+    {
+     "text": "três.",
+     "start": 3.6,
+     "end": 4.4
+    },
+    {
+     "text": "É",
+     "start": 4.44,
+     "end": 4.48
+    },
+    {
+     "text": "a",
+     "start": 4.507,
+     "end": 4.533
+    },
+    {
+     "text": "lei",
+     "start": 4.56,
+     "end": 4.72
+    },
+    {
+     "text": "de",
+     "start": 4.76,
+     "end": 4.8
+    },
+    {
+     "text": "Boyle:",
+     "start": 4.88,
+     "end": 5.52
+    },
+    {
+     "text": "mais",
+     "start": 5.56,
+     "end": 5.68
+    },
+    {
+     "text": "pressão,",
+     "start": 5.76,
+     "end": 6.48
+    },
+    {
+     "text": "menos",
+     "start": 6.56,
+     "end": 6.72
+    },
+    {
+     "text": "espaço.",
+     "start": 6.8,
+     "end": 7.52
+    }
+   ]
+  },
+  "cilindro": {
+   "words": [
+    {
+     "text": "O",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "cilindro",
+     "start": 0.16,
+     "end": 0.56
+    },
+    {
+     "text": "resolve:",
+     "start": 0.84,
+     "end": 1.28
+    },
+    {
+     "text": "o",
+     "start": 1.44,
+     "end": 1.48
+    },
+    {
+     "text": "regulador",
+     "start": 1.52,
+     "end": 2.08
+    },
+    {
+     "text": "entrega",
+     "start": 2.16,
+     "end": 2.56
+    },
+    {
+     "text": "ar",
+     "start": 2.64,
+     "end": 2.88
+    },
+    {
+     "text": "na",
+     "start": 2.96,
+     "end": 3.04
+    },
+    {
+     "text": "pressão",
+     "start": 3.24,
+     "end": 3.44
+    },
+    {
+     "text": "da",
+     "start": 3.48,
+     "end": 3.52
+    },
+    {
+     "text": "água.",
+     "start": 3.6,
+     "end": 4.12
+    },
+    {
+     "text": "Mergulhadores",
+     "start": 4.32,
+     "end": 4.96
+    },
+    {
+     "text": "recreativos",
+     "start": 5.0,
+     "end": 5.76
+    },
+    {
+     "text": "chegam",
+     "start": 5.8,
+     "end": 6.08
+    },
+    {
+     "text": "a",
+     "start": 6.12,
+     "end": 6.16
+    },
+    {
+     "text": "quarenta",
+     "start": 6.24,
+     "end": 6.72
+    },
+    {
+     "text": "metros.",
+     "start": 6.8,
+     "end": 7.52
+    }
+   ]
+  },
+  "fecho": {
+   "words": [
+    {
+     "text": "Lá",
+     "start": 0.0,
+     "end": 0.16
+    },
+    {
+     "text": "embaixo",
+     "start": 0.24,
+     "end": 0.72
+    },
+    {
+     "text": "seria",
+     "start": 0.8,
+     "end": 1.2
+    },
+    {
+     "text": "outro",
+     "start": 1.36,
+     "end": 1.6
+    },
+    {
+     "text": "mundo.",
+     "start": 1.68,
+     "end": 2.24
+    },
+    {
+     "text": "E",
+     "start": 2.4,
+     "end": 2.48
+    },
+    {
+     "text": "quem",
+     "start": 2.52,
+     "end": 2.72
+    },
+    {
+     "text": "sobe",
+     "start": 2.8,
+     "end": 3.2
+    },
+    {
+     "text": "precisa",
+     "start": 3.32,
+     "end": 3.6
+    },
+    {
+     "text": "ir",
+     "start": 3.68,
+     "end": 3.76
+    },
+    {
+     "text": "devagar,",
+     "start": 3.88,
+     "end": 4.56
+    },
+    {
+     "text": "porque",
+     "start": 4.64,
+     "end": 4.8
+    },
+    {
+     "text": "o",
+     "start": 4.88,
+     "end": 4.96
+    },
+    {
+     "text": "ar",
+     "start": 5.04,
+     "end": 5.12
+    },
+    {
+     "text": "se",
+     "start": 5.16,
+     "end": 5.2
+    },
+    {
+     "text": "expande.",
+     "start": 5.28,
+     "end": 5.92
+    },
+    {
+     "text": "E",
+     "start": 6.4,
+     "end": 6.48
+    },
+    {
+     "text": "se",
+     "start": 6.52,
+     "end": 6.56
+    },
+    {
+     "text": "a",
+     "start": 6.6,
+     "end": 6.64
+    },
+    {
+     "text": "escola",
+     "start": 6.72,
+     "end": 7.04
+    },
+    {
+     "text": "ficasse",
+     "start": 7.12,
+     "end": 7.44
+    },
+    {
+     "text": "debaixo",
+     "start": 7.52,
+     "end": 7.84
+    },
+    {
+     "text": "d'água?",
+     "start": 7.88,
+     "end": 8.56
+    }
+   ]
+  }
+ }
+}

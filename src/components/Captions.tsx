@@ -71,7 +71,7 @@ const semMaiuscula = (t: string, prev: string | undefined) =>
     ? t.charAt(0).toLowerCase() + t.slice(1)
     : t;
 
-export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean; destaques?: string[]; fonte?: number }> = ({
+export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hideAfterFrame: number; stripPunctuation?: boolean; placa?: boolean; destaques?: string[]; fonte?: number; centroY?: number }> = ({
   captions,
   showFromFrame,
   hideAfterFrame,
@@ -79,6 +79,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
   placa,
   destaques,
   fonte,
+  centroY,
 }) => {
   const { fps } = useVideoConfig();
   const pages = useMemo(() => (placa ? toPagesPlaca(captions, 4, fonte) : toPages(captions, c.wordsPerPage)), [captions, placa, fonte]);
@@ -94,7 +95,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
         if (endFrame <= startFrame) return null;
         return (
           <Sequence key={index} from={startFrame} durationInFrames={endFrame - startFrame} layout="none" name={`Legenda ${index + 1}`}>
-            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} destaques={destaques} fonte={fonte} />
+            <CaptionPage page={page} fromMs={(startFrame / fps) * 1000} strip={stripPunctuation === true} placa={placa === true} destaques={destaques} fonte={fonte} centroY={centroY} />
           </Sequence>
         );
       })}
@@ -103,7 +104,7 @@ export const Captions: React.FC<{ captions: Caption[]; showFromFrame: number; hi
 };
 
 // `destaques` (opcional, ep06 v07): palavras-chave que ficam sempre em amarelo, além da palavra falada
-const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean; destaques?: string[]; fonte?: number }> = ({ page, fromMs, strip, placa, destaques, fonte }) => {
+const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa: boolean; destaques?: string[]; fonte?: number; centroY?: number }> = ({ page, fromMs, strip, placa, destaques, fonte, centroY }) => {
   const chave = new Set((destaques ?? []).map(nua));
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -117,7 +118,8 @@ const CaptionPage: React.FC<{ page: Page; fromMs: number; strip: boolean; placa:
   return (
     <AbsoluteFill
       style={{
-        top: c.centerY - (c.fontSize * c.lineHeight * c.maxLines) / 2,
+        // centroY (opcional, ep09): centro da faixa da legenda; sem ele, o padrão do tema
+        top: (centroY ?? c.centerY) - (c.fontSize * c.lineHeight * c.maxLines) / 2,
         height: c.fontSize * c.lineHeight * c.maxLines,
         left: layout.sideMargin,
         right: layout.sideMargin,

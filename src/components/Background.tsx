@@ -12,6 +12,7 @@ import { CeuEclipse, CeuLuaGrande, ComparacaoEsferas, CuboLego, DiagramaBaricent
 import { Calor, Centro, Flutua, GloboFinal, Gravidade, Nucleo, Queda, Superficie, TerraTunel } from "./backgrounds/Ep07";
 import { Cantina, DiagramaCorpo, LataGigante, Mercado } from "./backgrounds/Ep08";
 import { CantinaV2, PainelLiso } from "./backgrounds/Ep08v2";
+import { AguaAzul, PainelAgua, PatioEscola, PatioSubmerso } from "./backgrounds/Ep09";
 import { FogueteInterior, HabitatInterior, NaveInterior } from "./backgrounds/Ep03Longo";
 import { InsertoPao } from "./backgrounds/InsertoPao";
 import { MapaRio } from "./backgrounds/MapaRio";
@@ -69,6 +70,10 @@ export const BACKGROUNDS = [
   "lata_refrigerante",
   "cantina_v2",
   "painel_liso",
+  "patio_escola",
+  "patio_submerso",
+  "agua_azul",
+  "painel_agua",
 ];
 
 // Nível de noite do cenário (0..1). No céu escurecendo, sobe em três passos
@@ -202,6 +207,14 @@ export const Background: React.FC<{
       return <CantinaV2 cam={cam} frame={frame} params={params} />;
     case "painel_liso":
       return <PainelLiso cam={cam} frame={frame} params={params} />;
+    case "patio_escola":
+      return <PatioEscola cam={cam} frame={frame} globalFrame={globalFrame} params={params} />;
+    case "patio_submerso":
+      return <PatioSubmerso cam={cam} frame={frame} globalFrame={globalFrame} params={params} />;
+    case "agua_azul":
+      return <AguaAzul cam={cam} frame={frame} globalFrame={globalFrame} params={params} />;
+    case "painel_agua":
+      return <PainelAgua cam={cam} frame={frame} params={params} />;
     default:
       return <rect x={0} y={0} width={1080} height={1920} fill={colors.creme} />;
   }

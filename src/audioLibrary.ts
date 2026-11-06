@@ -88,6 +88,9 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   cantina_ambiente: { file: "audio/sfx/cantina_ambiente.wav", loop: true, volume: audio.sfxVolume * 0.4 },
   batida_suspense: { file: "audio/sfx/batida_suspense.wav", loop: false, volume: audio.sfxVolume * 0.9 },
   tic_relogio: { file: "audio/sfx/tic_relogio.wav", loop: true, volume: audio.sfxVolume * 0.6 },
+  // ep09 (episódio 8, água)
+  bolhas: { file: "audio/sfx/bolhas.wav", loop: false, volume: audio.sfxVolume * 0.7 },
+  agua_ambiente: { file: "audio/sfx/agua_ambiente.wav", loop: true, volume: audio.sfxVolume * 0.35 },
   // ep07 v4: cauda da trilha no rabo final (toca uma vez; "loop" só para durar até o fim da cena)
   energia_queda_cauda: { file: "audio/sfx/energia_queda_cauda.wav", loop: true, volume: audio.sfxVolume * 1.2 },
 };

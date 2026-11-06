@@ -137,6 +137,8 @@ export type Direction = {
   legendaDestaques?: string[];
   // Tamanho fixo da legenda placa em px (ep07): blocos longos quebram em dois em vez de encolher a fonte
   legendaFonte?: number;
+  // Centro vertical da legenda em px (ep09): sobe a faixa para caber inteira até 72% da altura
+  legendaCentroY?: number;
   // Ganho da trilha e dos efeitos sob a fala (padrão audio.duckGain; ep06: 0,2 ≈ -14 dB)
   duckGanho?: number;
   // Mantém os limites de cena do roteiro mesmo quando uma fala passa um pouco do corte

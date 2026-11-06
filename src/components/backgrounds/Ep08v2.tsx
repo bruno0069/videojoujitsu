@@ -203,6 +203,8 @@ const Fundo: React.FC<{ cam: Cam }> = ({ cam }) => (
     ))}
   </Layer>
 );
+// grade do painel liso, reaproveitada pelo ep09
+export const FundoPainel = Fundo;
 const NicoCanto: React.FC<{ x: number; y: number; s: number; expression: string; pose?: string; look?: [number, number] }> = ({ x, y, s, expression, pose = "parado", look }) => (
   <NicoEm x={x} y={y} s={s} pose={pose} expression={expression} look={look} />
 );
