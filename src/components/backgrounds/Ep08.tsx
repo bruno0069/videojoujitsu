@@ -249,7 +249,7 @@ export const Cantina: React.FC<{ cam: Cam; frame: number; params: Params }> = ({
             {i % 2 ? <Garrafa x={0} y={0} s={1} /> : <Lata x={0} y={0} s={1} />}
           </g>
         ))}
-        {!regra ? (
+        {!regra && params.semAtendente !== 1 ? (
           <g transform={`translate(780 ${B + 40}) scale(0.62)`}>
             <use href="#cant-p0" />
           </g>

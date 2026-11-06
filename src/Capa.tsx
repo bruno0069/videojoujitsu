@@ -3,6 +3,8 @@ import { AbsoluteFill } from "remotion";
 import { PessoaDefs } from "./components/backgrounds/Ep04";
 import { LuaDisco, OrlaRio } from "./components/backgrounds/Ep06";
 import { TERRA7, TerraTunel } from "./components/backgrounds/Ep07";
+import { Cantina } from "./components/backgrounds/Ep08";
+import { CalendarioTopo, Exame } from "./components/backgrounds/Ep08v2";
 import { BASE_CAM } from "./components/Camera";
 import { Globe } from "./components/elements/Globe";
 import { InfoLabel } from "./components/elements/Props";
@@ -221,6 +223,57 @@ export const Capa07: React.FC = () => {
         ATÉ O <span style={{ color: t.highlightColor }}>CENTRO</span>
         <br />
         <span style={{ color: t.highlightColor }}>DA TERRA?</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Capa do episódio 7 (açúcar, composição Ep08V02): a cantina do episódio com o Nico surpreso em
+// primeiro plano, o calendário de 7 quadradinhos e o papel de exame com as barras descendo.
+// Título no terço de cima, tudo importante dentro do recorte 4:5 do feed (y 285–1635).
+export const Capa08: React.FC = () => {
+  const cam = { zoom: 1.35, x: 360, y: 1000 };
+  return (
+    <AbsoluteFill style={{ backgroundColor: colors.creme }}>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920" style={{ position: "absolute", inset: 0 }}>
+        <InkScale scale={1}>
+          <Cantina cam={cam} frame={0} params={{ semItens: 1, pose0: 1, expr0: 1, semAtendente: 1 }} />
+          <g transform="translate(0 115)">
+            <CalendarioTopo frame={30} params={{ calDe: 0, calBase: 3 }} />
+          </g>
+          {/* papel de exame grande, com as barras já descidas e a seta para baixo */}
+          <g transform="translate(830 1330) rotate(-6) scale(1.45)">
+            <InkScale scale={1.45}>
+              <Exame frame={30} baixa={0} />
+            </InkScale>
+          </g>
+          <g transform="translate(905 905) rotate(-6)">
+            <path d="M -26 -90 L 26 -90 L 26 10 L 60 10 L 0 90 L -60 10 L -26 10 Z" fill={colors.coral} stroke={colors.tinta} strokeWidth={ink.stroke} strokeLinejoin="round" />
+          </g>
+        </InkScale>
+      </svg>
+      <div
+        style={{
+          position: "absolute",
+          top: 300,
+          left: 60,
+          right: 60,
+          padding: "26px 40px",
+          backgroundColor: t.boxColor,
+          border: `${ink.stroke * 0.6}px solid ${t.borderColor}`,
+          borderRadius: t.radius,
+          boxShadow: `inset 0 0 0 10px ${t.boxColor}, inset 0 0 0 15px ${t.innerLine}, 0 ${ink.stroke * 0.8}px 0 ${t.borderColor}`,
+          textAlign: "center",
+          fontFamily: fonts.main,
+          fontWeight: fonts.weight,
+          fontSize: 92,
+          lineHeight: 1.02,
+          color: t.textColor,
+        }}
+      >
+        E SE VOCÊ FICASSE
+        <br />
+        <span style={{ color: t.highlightColor }}>7 DIAS</span> SEM <span style={{ color: t.highlightColor }}>AÇÚCAR?</span>
       </div>
     </AbsoluteFill>
   );

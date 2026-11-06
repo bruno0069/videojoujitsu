@@ -111,7 +111,7 @@ const Relogio: React.FC<{ voltas: number; s: number }> = ({ voltas, s }) => (
   </g>
 );
 // Exame: papel com 3 barras; em `baixa` elas descem um degrau
-const Exame: React.FC<{ frame: number; baixa: number }> = ({ frame, baixa }) => {
+export const Exame: React.FC<{ frame: number; baixa: number }> = ({ frame, baixa }) => {
   const k = ramp(frame, baixa, baixa + 10, { ...clamp, easing: Easing.out(Easing.back(1.6)) });
   const cores = [colors.coral, colors.amarelo, colors.turquesa];
   return (
