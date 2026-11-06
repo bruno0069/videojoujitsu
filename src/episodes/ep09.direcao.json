@@ -308,8 +308,8 @@
    ],
    "fundo": {
     "painel": 3,
-    "p1": "ar",
-    "p2": "pulmao",
+    "p1": 4,
+    "p2": "metros",
     "vira": "vira",
     "tres": "tres",
     "setas": "mais",
@@ -334,7 +334,7 @@
    "efeitos": [
     {
      "id": "pop_contagem",
-     "de": "ar"
+     "de": "metros"
     },
     {
      "id": "whoosh",
