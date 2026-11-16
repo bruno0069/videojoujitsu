@@ -43,7 +43,7 @@
    "texto": {
     "de": 6,
     "mostrar": true,
-    "topo": 432
+    "topo": 452
    },
    "sfx": {
     "silencio_1s": 0,
@@ -92,7 +92,8 @@
    "texto": {
     "de": "sem",
     "mostrar": true,
-    "topo": 432
+    "topo": 452,
+    "animar": false
    },
    "sfx": {
     "pop_contagem": "surpresa",
@@ -144,7 +145,7 @@
     "de": "todo",
     "ate": "pessoas",
     "mostrar": true,
-    "topo": 432
+    "topo": 452
    },
    "sfx": {
     "whoosh": 0,
@@ -206,7 +207,8 @@
    "texto": {
     "de": "gotas",
     "mostrar": true,
-    "topo": 432
+    "topo": 452,
+    "animar": false
    },
    "sfx": {
     "bolhas": "gotas+6",
@@ -269,7 +271,8 @@
    "texto": {
     "de": "oceanos",
     "mostrar": true,
-    "topo": 432
+    "topo": 452,
+    "animar": false
    },
    "sfx": {
     "whoosh": 0,
@@ -320,7 +323,7 @@
    "texto": {
     "de": "gravidade",
     "mostrar": true,
-    "topo": 495
+    "topo": 518
    },
    "tremidas": [
     {
@@ -383,7 +386,7 @@
     "de": "e",
     "ate": 306,
     "mostrar": true,
-    "topo": 432
+    "topo": 452
    },
    "sfx": {
     "gota": "chao",

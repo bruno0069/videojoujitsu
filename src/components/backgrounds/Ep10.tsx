@@ -25,12 +25,12 @@ const ASFALTO = interpolateColors(0.55, [0, 1], [colors.chaoSombra, colors.tinta
 // ---------------------------------------------------------------- ContadorGravidade
 // Círculo de tinta no topo com o dígito grande. `valor` muda com um "pop"; `anel` (0..1) é o
 // mostrador em câmera lenta em volta (sem números).
-export const CONT = { x: 540, y: 330, r: 80 };
+export const CONT = { x: 540, y: 350, r: 80 };
 export const ContadorGravidade: React.FC<{ valor: number; troca: number; frame: number; s?: number; anel?: number; grande?: number }> = ({ valor, troca, frame, s = 1, anel = 0, grande = 0 }) => {
   const ink = useInk();
   if (s <= 0) return null;
-  const bate = Number.isFinite(troca) && frame >= troca ? 1 + 0.25 * (1 - ramp(frame, troca, troca + 10, { ...clamp, easing: Easing.out(Easing.quad) })) : 1;
-  const k = s * bate * (1 + 0.35 * grande);
+  const bate = Number.isFinite(troca) && frame >= troca ? 1 + 0.18 * (1 - ramp(frame, troca, troca + 10, { ...clamp, easing: Easing.out(Easing.quad) })) : 1;
+  const k = s * bate * (1 + 0.3 * grande);
   const { x, y, r } = CONT;
   const a = Math.max(0, Math.min(1, anel)) * 2 * Math.PI;
   const arco = anel > 0.001 && anel < 0.999 ? `M ${x} ${y - r - 14} A ${r + 14} ${r + 14} 0 ${a > Math.PI ? 1 : 0} 1 ${x + Math.sin(a) * (r + 14)} ${y - Math.cos(a) * (r + 14)}` : "";
@@ -617,7 +617,7 @@ export const RuaBairro: React.FC<{ cam: Cam; frame: number; globalFrame: number;
       </>
     );
     frente = <NuvemPoeira x={xL} y={G + 10} k={ramp(f, pousa, pousa + 26)} />;
-    rodape = <PlacaLinhas linhas={["É ANIMAÇÃO. NÃO REPRODUZA."]} y={452} s={1} cor={colors.coral} tinta={colors.creme} size={40} />;
+    rodape = <PlacaLinhas linhas={["É ANIMAÇÃO. NÃO REPRODUZA."]} y={478} s={1} cor={colors.coral} tinta={colors.creme} size={40} />;
     passaro = null;
   } else if (modo === 7) {
     // fecho: sentado entre as almofadas, ergue o sorvete derretido; nos últimos 20 frames, corte
