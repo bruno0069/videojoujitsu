@@ -1,0 +1,61 @@
+{
+ "_sobre": "Linha do tempo do ep08 (episódio 7, açúcar) com as janelas de cena APROVADAS fixas.",
+ "trechos": [
+  {
+   "cena": "gancho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 9.475,
+   "em": 0.12,
+   "arquivo": "public/audio/ep10-narracao-01-gancho.mp3"
+  },
+  {
+   "cena": "surpresa",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 11.504,
+   "em": 10.12,
+   "arquivo": "public/audio/ep10-narracao-02-surpresa.mp3"
+  },
+  {
+   "cena": "todo_mundo",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 10.594,
+   "em": 22.62,
+   "arquivo": "public/audio/ep10-narracao-03-todo_mundo.mp3"
+  },
+  {
+   "cena": "agua",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 8.718,
+   "em": 34.12,
+   "arquivo": "public/audio/ep10-narracao-04-agua.mp3"
+  },
+  {
+   "cena": "terra",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 11.098,
+   "em": 44.12,
+   "arquivo": "public/audio/ep10-narracao-05-terra.mp3"
+  },
+  {
+   "cena": "volta",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 9.456,
+   "em": 57.62,
+   "arquivo": "public/audio/ep10-narracao-06-volta.mp3"
+  },
+  {
+   "cena": "fecho",
+   "de": 0.0,
+   "palavrasDe": 0.0,
+   "ate": 8.805,
+   "em": 69.12,
+   "arquivo": "public/audio/ep10-narracao-07-fecho.mp3"
+  }
+ ]
+}

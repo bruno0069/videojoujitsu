@@ -1,0 +1,903 @@
+{
+ "_sobre": "Transcrição por palavra das 7 tomadas do ep10 (episódio 9, gravidade; eleven_scribe_v1, 1 tomada por cena).",
+ "cenas": {
+  "gancho": {
+   "words": [
+    {
+     "text": "Imagine",
+     "start": 0.0,
+     "end": 0.48
+    },
+    {
+     "text": "que,",
+     "start": 0.56,
+     "end": 0.96
+    },
+    {
+     "text": "do",
+     "start": 1.04,
+     "end": 1.12
+    },
+    {
+     "text": "nada,",
+     "start": 1.2,
+     "end": 1.76
+    },
+    {
+     "text": "a",
+     "start": 1.8,
+     "end": 1.84
+    },
+    {
+     "text": "gravidade",
+     "start": 1.92,
+     "end": 2.4
+    },
+    {
+     "text": "da",
+     "start": 2.44,
+     "end": 2.48
+    },
+    {
+     "text": "Terra",
+     "start": 2.64,
+     "end": 2.88
+    },
+    {
+     "text": "desaparecesse",
+     "start": 2.96,
+     "end": 3.68
+    },
+    {
+     "text": "por",
+     "start": 3.84,
+     "end": 4.0
+    },
+    {
+     "text": "cinco",
+     "start": 4.08,
+     "end": 4.24
+    },
+    {
+     "text": "segundos.",
+     "start": 4.32,
+     "end": 5.12
+    },
+    {
+     "text": "Você",
+     "start": 5.36,
+     "end": 5.6
+    },
+    {
+     "text": "sairia",
+     "start": 5.64,
+     "end": 5.92
+    },
+    {
+     "text": "voando?",
+     "start": 6.0,
+     "end": 6.64
+    },
+    {
+     "text": "Os",
+     "start": 6.88,
+     "end": 7.04
+    },
+    {
+     "text": "carros",
+     "start": 7.12,
+     "end": 7.44
+    },
+    {
+     "text": "flutuariam?",
+     "start": 7.52,
+     "end": 8.36
+    },
+    {
+     "text": "E",
+     "start": 8.56,
+     "end": 8.64
+    },
+    {
+     "text": "os",
+     "start": 8.68,
+     "end": 8.72
+    },
+    {
+     "text": "oceanos?",
+     "start": 8.8,
+     "end": 9.68
+    }
+   ]
+  },
+  "surpresa": {
+   "words": [
+    {
+     "text": "Primeiro,",
+     "start": 0.0,
+     "end": 0.64
+    },
+    {
+     "text": "uma",
+     "start": 0.72,
+     "end": 0.8
+    },
+    {
+     "text": "surpresa:",
+     "start": 0.88,
+     "end": 1.84
+    },
+    {
+     "text": "você",
+     "start": 1.88,
+     "end": 2.16
+    },
+    {
+     "text": "não",
+     "start": 2.24,
+     "end": 2.4
+    },
+    {
+     "text": "seria",
+     "start": 2.48,
+     "end": 2.72
+    },
+    {
+     "text": "lançado",
+     "start": 2.8,
+     "end": 3.2
+    },
+    {
+     "text": "automaticamente",
+     "start": 3.28,
+     "end": 4.0
+    },
+    {
+     "text": "para",
+     "start": 4.08,
+     "end": 4.16
+    },
+    {
+     "text": "o",
+     "start": 4.187,
+     "end": 4.213
+    },
+    {
+     "text": "espaço.",
+     "start": 4.24,
+     "end": 4.96
+    },
+    {
+     "text": "Mas,",
+     "start": 5.2,
+     "end": 5.76
+    },
+    {
+     "text": "sem",
+     "start": 5.84,
+     "end": 6.0
+    },
+    {
+     "text": "a",
+     "start": 6.04,
+     "end": 6.08
+    },
+    {
+     "text": "gravidade",
+     "start": 6.16,
+     "end": 6.64
+    },
+    {
+     "text": "para",
+     "start": 6.72,
+     "end": 6.8
+    },
+    {
+     "text": "puxar",
+     "start": 6.84,
+     "end": 7.12
+    },
+    {
+     "text": "você",
+     "start": 7.16,
+     "end": 7.36
+    },
+    {
+     "text": "de",
+     "start": 7.44,
+     "end": 7.52
+    },
+    {
+     "text": "volta,",
+     "start": 7.6,
+     "end": 8.16
+    },
+    {
+     "text": "um",
+     "start": 8.28,
+     "end": 8.4
+    },
+    {
+     "text": "simples",
+     "start": 8.48,
+     "end": 8.88
+    },
+    {
+     "text": "salto",
+     "start": 8.96,
+     "end": 9.28
+    },
+    {
+     "text": "poderia",
+     "start": 9.36,
+     "end": 9.68
+    },
+    {
+     "text": "se",
+     "start": 9.76,
+     "end": 9.84
+    },
+    {
+     "text": "transformar",
+     "start": 10.04,
+     "end": 10.4
+    },
+    {
+     "text": "num",
+     "start": 10.52,
+     "end": 10.64
+    },
+    {
+     "text": "problemão!",
+     "start": 10.72,
+     "end": 11.68
+    }
+   ]
+  },
+  "todo_mundo": {
+   "words": [
+    {
+     "text": "Agora",
+     "start": 0.0,
+     "end": 0.28
+    },
+    {
+     "text": "imagine",
+     "start": 0.32,
+     "end": 0.8
+    },
+    {
+     "text": "isso",
+     "start": 0.84,
+     "end": 0.96
+    },
+    {
+     "text": "acontecendo",
+     "start": 1.04,
+     "end": 1.6
+    },
+    {
+     "text": "com",
+     "start": 1.68,
+     "end": 1.76
+    },
+    {
+     "text": "todo",
+     "start": 2.0,
+     "end": 2.24
+    },
+    {
+     "text": "mundo",
+     "start": 2.32,
+     "end": 2.56
+    },
+    {
+     "text": "ao",
+     "start": 2.6,
+     "end": 2.64
+    },
+    {
+     "text": "mesmo",
+     "start": 2.72,
+     "end": 2.96
+    },
+    {
+     "text": "tempo.",
+     "start": 3.04,
+     "end": 3.44
+    },
+    {
+     "text": "Pessoas",
+     "start": 3.84,
+     "end": 4.16
+    },
+    {
+     "text": "que",
+     "start": 4.24,
+     "end": 4.28
+    },
+    {
+     "text": "estivessem",
+     "start": 4.32,
+     "end": 4.8
+    },
+    {
+     "text": "pulando",
+     "start": 4.853,
+     "end": 5.28
+    },
+    {
+     "text": "continuariam",
+     "start": 5.44,
+     "end": 5.92
+    },
+    {
+     "text": "subindo.",
+     "start": 6.0,
+     "end": 6.48
+    },
+    {
+     "text": "E",
+     "start": 6.8,
+     "end": 6.88
+    },
+    {
+     "text": "objetos",
+     "start": 7.08,
+     "end": 7.44
+    },
+    {
+     "text": "soltos",
+     "start": 7.48,
+     "end": 7.92
+    },
+    {
+     "text": "deixariam",
+     "start": 7.96,
+     "end": 8.48
+    },
+    {
+     "text": "de",
+     "start": 8.52,
+     "end": 8.56
+    },
+    {
+     "text": "se",
+     "start": 8.64,
+     "end": 8.72
+    },
+    {
+     "text": "comportar",
+     "start": 8.8,
+     "end": 9.2
+    },
+    {
+     "text": "como",
+     "start": 9.28,
+     "end": 9.44
+    },
+    {
+     "text": "estamos",
+     "start": 9.52,
+     "end": 9.68
+    },
+    {
+     "text": "acostumados!",
+     "start": 9.76,
+     "end": 10.8
+    }
+   ]
+  },
+  "agua": {
+   "words": [
+    {
+     "text": "Até",
+     "start": 0.0,
+     "end": 0.32
+    },
+    {
+     "text": "a",
+     "start": 0.36,
+     "end": 0.4
+    },
+    {
+     "text": "água",
+     "start": 0.48,
+     "end": 0.72
+    },
+    {
+     "text": "ficaria",
+     "start": 0.8,
+     "end": 1.12
+    },
+    {
+     "text": "estranha.",
+     "start": 1.24,
+     "end": 1.96
+    },
+    {
+     "text": "Sem",
+     "start": 2.16,
+     "end": 2.32
+    },
+    {
+     "text": "a",
+     "start": 2.347,
+     "end": 2.373
+    },
+    {
+     "text": "gravidade",
+     "start": 2.4,
+     "end": 2.88
+    },
+    {
+     "text": "puxando",
+     "start": 2.96,
+     "end": 3.28
+    },
+    {
+     "text": "as",
+     "start": 3.32,
+     "end": 3.36
+    },
+    {
+     "text": "gotas",
+     "start": 3.44,
+     "end": 3.68
+    },
+    {
+     "text": "para",
+     "start": 3.76,
+     "end": 3.92
+    },
+    {
+     "text": "baixo,",
+     "start": 4.0,
+     "end": 4.48
+    },
+    {
+     "text": "elas",
+     "start": 4.6,
+     "end": 4.72
+    },
+    {
+     "text": "poderiam",
+     "start": 4.8,
+     "end": 5.12
+    },
+    {
+     "text": "formar",
+     "start": 5.24,
+     "end": 5.52
+    },
+    {
+     "text": "pequenas",
+     "start": 5.64,
+     "end": 6.08
+    },
+    {
+     "text": "bolhas",
+     "start": 6.16,
+     "end": 6.4
+    },
+    {
+     "text": "flutuantes.",
+     "start": 6.48,
+     "end": 7.36
+    },
+    {
+     "text": "Parece",
+     "start": 7.52,
+     "end": 7.84
+    },
+    {
+     "text": "divertido,",
+     "start": 7.92,
+     "end": 8.48
+    },
+    {
+     "text": "né?",
+     "start": 8.56,
+     "end": 8.96
+    }
+   ]
+  },
+  "terra": {
+   "words": [
+    {
+     "text": "Mas",
+     "start": 0.0,
+     "end": 0.24
+    },
+    {
+     "text": "calma!",
+     "start": 0.32,
+     "end": 0.88
+    },
+    {
+     "text": "Os",
+     "start": 1.04,
+     "end": 1.12
+    },
+    {
+     "text": "oceanos",
+     "start": 1.2,
+     "end": 1.76
+    },
+    {
+     "text": "não",
+     "start": 1.84,
+     "end": 2.0
+    },
+    {
+     "text": "sairiam",
+     "start": 2.08,
+     "end": 2.48
+    },
+    {
+     "text": "voando",
+     "start": 2.56,
+     "end": 2.96
+    },
+    {
+     "text": "para",
+     "start": 3.04,
+     "end": 3.12
+    },
+    {
+     "text": "o",
+     "start": 3.147,
+     "end": 3.173
+    },
+    {
+     "text": "espaço",
+     "start": 3.2,
+     "end": 3.6
+    },
+    {
+     "text": "em",
+     "start": 3.64,
+     "end": 3.68
+    },
+    {
+     "text": "apenas",
+     "start": 3.76,
+     "end": 4.08
+    },
+    {
+     "text": "cinco",
+     "start": 4.16,
+     "end": 4.32
+    },
+    {
+     "text": "segundos.",
+     "start": 4.4,
+     "end": 5.24
+    },
+    {
+     "text": "O",
+     "start": 5.44,
+     "end": 5.52
+    },
+    {
+     "text": "comportamento",
+     "start": 5.6,
+     "end": 6.16
+    },
+    {
+     "text": "da",
+     "start": 6.2,
+     "end": 6.24
+    },
+    {
+     "text": "água",
+     "start": 6.32,
+     "end": 6.6
+    },
+    {
+     "text": "e",
+     "start": 6.64,
+     "end": 6.68
+    },
+    {
+     "text": "do",
+     "start": 6.72,
+     "end": 6.8
+    },
+    {
+     "text": "ar",
+     "start": 6.88,
+     "end": 7.04
+    },
+    {
+     "text": "começaria",
+     "start": 7.12,
+     "end": 7.52
+    },
+    {
+     "text": "a",
+     "start": 7.56,
+     "end": 7.6
+    },
+    {
+     "text": "mudar,",
+     "start": 7.68,
+     "end": 8.4
+    },
+    {
+     "text": "mas",
+     "start": 8.48,
+     "end": 8.56
+    },
+    {
+     "text": "os",
+     "start": 8.6,
+     "end": 8.64
+    },
+    {
+     "text": "efeitos",
+     "start": 8.72,
+     "end": 9.28
+    },
+    {
+     "text": "dependeriam",
+     "start": 9.36,
+     "end": 9.84
+    },
+    {
+     "text": "de",
+     "start": 9.92,
+     "end": 10.0
+    },
+    {
+     "text": "muitos",
+     "start": 10.08,
+     "end": 10.4
+    },
+    {
+     "text": "fatores.",
+     "start": 10.48,
+     "end": 11.28
+    }
+   ]
+  },
+  "volta": {
+   "words": [
+    {
+     "text": "E",
+     "start": 0.0,
+     "end": 0.08
+    },
+    {
+     "text": "quando",
+     "start": 0.16,
+     "end": 0.32
+    },
+    {
+     "text": "a",
+     "start": 0.347,
+     "end": 0.373
+    },
+    {
+     "text": "gravidade",
+     "start": 0.4,
+     "end": 0.8
+    },
+    {
+     "text": "voltasse?",
+     "start": 0.88,
+     "end": 1.68
+    },
+    {
+     "text": "Tudo",
+     "start": 1.92,
+     "end": 2.08
+    },
+    {
+     "text": "que",
+     "start": 2.12,
+     "end": 2.16
+    },
+    {
+     "text": "tivesse",
+     "start": 2.24,
+     "end": 2.64
+    },
+    {
+     "text": "se",
+     "start": 2.68,
+     "end": 2.72
+    },
+    {
+     "text": "afastado",
+     "start": 2.8,
+     "end": 3.2
+    },
+    {
+     "text": "do",
+     "start": 3.28,
+     "end": 3.36
+    },
+    {
+     "text": "chão",
+     "start": 3.44,
+     "end": 3.68
+    },
+    {
+     "text": "poderia",
+     "start": 3.76,
+     "end": 4.08
+    },
+    {
+     "text": "começar",
+     "start": 4.16,
+     "end": 4.48
+    },
+    {
+     "text": "a",
+     "start": 4.52,
+     "end": 4.56
+    },
+    {
+     "text": "cair.",
+     "start": 4.64,
+     "end": 5.04
+    },
+    {
+     "text": "Dependendo",
+     "start": 5.36,
+     "end": 5.84
+    },
+    {
+     "text": "da",
+     "start": 5.88,
+     "end": 5.92
+    },
+    {
+     "text": "altura,",
+     "start": 6.16,
+     "end": 6.56
+    },
+    {
+     "text": "esses",
+     "start": 6.72,
+     "end": 6.88
+    },
+    {
+     "text": "cinco",
+     "start": 6.96,
+     "end": 7.12
+    },
+    {
+     "text": "segundos",
+     "start": 7.2,
+     "end": 7.68
+    },
+    {
+     "text": "poderiam",
+     "start": 7.76,
+     "end": 8.08
+    },
+    {
+     "text": "terminar",
+     "start": 8.16,
+     "end": 8.56
+    },
+    {
+     "text": "muito",
+     "start": 8.8,
+     "end": 9.12
+    },
+    {
+     "text": "mal!",
+     "start": 9.2,
+     "end": 9.68
+    }
+   ]
+  },
+  "fecho": {
+   "words": [
+    {
+     "text": "Então,",
+     "start": 0.0,
+     "end": 0.6
+    },
+    {
+     "text": "talvez",
+     "start": 0.72,
+     "end": 1.2
+    },
+    {
+     "text": "cinco",
+     "start": 1.28,
+     "end": 1.52
+    },
+    {
+     "text": "segundos",
+     "start": 1.6,
+     "end": 2.0
+    },
+    {
+     "text": "sem",
+     "start": 2.08,
+     "end": 2.16
+    },
+    {
+     "text": "gravidade",
+     "start": 2.28,
+     "end": 2.8
+    },
+    {
+     "text": "não",
+     "start": 2.88,
+     "end": 3.04
+    },
+    {
+     "text": "pareçam",
+     "start": 3.16,
+     "end": 3.44
+    },
+    {
+     "text": "muita",
+     "start": 3.48,
+     "end": 3.76
+    },
+    {
+     "text": "coisa...",
+     "start": 3.84,
+     "end": 4.72
+    },
+    {
+     "text": "até",
+     "start": 4.88,
+     "end": 5.12
+    },
+    {
+     "text": "você",
+     "start": 5.16,
+     "end": 5.44
+    },
+    {
+     "text": "precisar",
+     "start": 5.52,
+     "end": 5.84
+    },
+    {
+     "text": "voltar",
+     "start": 5.92,
+     "end": 6.16
+    },
+    {
+     "text": "para",
+     "start": 6.24,
+     "end": 6.32
+    },
+    {
+     "text": "o",
+     "start": 6.36,
+     "end": 6.4
+    },
+    {
+     "text": "chão!",
+     "start": 6.48,
+     "end": 6.8
+    },
+    {
+     "text": "E",
+     "start": 7.28,
+     "end": 7.32
+    },
+    {
+     "text": "você?",
+     "start": 7.36,
+     "end": 7.92
+    },
+    {
+     "text": "Arriscaria?",
+     "start": 8.08,
+     "end": 9.04
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,193 @@
+{
+  "episode": 9,
+  "version": 1,
+  "title": "E se a gravidade desaparecesse por cinco segundos?",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "totalFrames": 2400,
+  "safeZone": {
+    "yMinPct": 12,
+    "yMaxPct": 72,
+    "xMarginPx": 90
+  },
+  "recurringDevice": "ContadorGravidade: contador grande de 5 a 0 no topo, dentro da zona segura. Aparece congelado em '5' no gancho, corre em câmera lenta de 5 a 0 entre as cenas 3 e 5 (chega a 0 junto com a fala 'E quando a gravidade voltasse?') e some na cena 7. O último frame volta ao enquadramento do frame 0, com o contador em '5', para o loop encaixar.",
+  "scenes": [
+    {
+      "id": "gancho",
+      "startFrame": 0,
+      "durationInFrames": 300,
+      "narration": "Imagine que, do nada, a gravidade da Terra desaparecesse por cinco segundos. Você sairia voando? Os carros flutuariam? E os oceanos?",
+      "onScreenText": "E SE A GRAVIDADE SUMISSE POR 5 SEGUNDOS?",
+      "visual": {
+        "background": "rua_bairro_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "andando",
+            "expression": "neutro"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico anda por uma rua de bairro carioca genérica (calçada, poste, prédio simples, sem placas nem marcas) segurando um sorvete genérico. De repente o mundo congela: carro, passarinho e folhas param no ar. Um contador gigante '5' surge e fica congelado no topo. Nico olha em volta com cara de quem percebeu que algo está errado. Na pergunta 'Os carros flutuariam?' o carro parado balança de leve; em 'E os oceanos?' uma onda chapada aparece no canto."
+      },
+      "sfx": [
+        "silencio_1s",
+        "whoosh",
+        "tic_relogio"
+      ],
+      "music": "curiosidade_suave"
+    },
+    {
+      "id": "surpresa",
+      "startFrame": 300,
+      "durationInFrames": 375,
+      "narration": "Primeiro, uma surpresa: você não seria lançado automaticamente para o espaço. Mas, sem a gravidade para puxar você de volta, um simples salto poderia se transformar num problemão!",
+      "onScreenText": "SEM GRAVIDADE, UM PULO NÃO TEM VOLTA",
+      "visual": {
+        "background": "rua_bairro_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "pulando",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico testa um pulinho. A cena congela com ele no ar, e uma seta grossa e chapada aponta para cima, mostrando o movimento que não vai parar. Os pés ficam a poucos centímetros do chão e a distância cresce como um gag: uma régua simples sem números cresce ao lado. Nico olha para baixo, depois para a câmera. Na fala 'não seria lançado' ele permanece perto do chão, sem sair voando; em 'problemão' a seta se alonga."
+      },
+      "sfx": [
+        "pop_contagem",
+        "estalo",
+        "whoosh"
+      ],
+      "music": "base_suave"
+    },
+    {
+      "id": "todo_mundo",
+      "startFrame": 675,
+      "durationInFrames": 345,
+      "narration": "Agora imagine isso acontecendo com todo mundo ao mesmo tempo. Pessoas que estivessem pulando continuariam subindo. E objetos soltos deixariam de se comportar como estamos acostumados!",
+      "onScreenText": "TODO MUNDO AO MESMO TEMPO",
+      "visual": {
+        "background": "rua_bairro_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "pulando",
+            "expression": "medo"
+          }
+        ],
+        "camera": "plano_aberto",
+        "action": "A gravidade 'desaparece': o contador sai do '5' e começa a correr de 5 para 4 em câmera lenta. Nico salta, começa a subir e percebe que não consegue descer, com expressão de desespero (sem falas). Câmera abre e mostra outras silhuetas chapadas, sem rosto, também subindo aos poucos, além de chinelos, um guarda-chuva e um boné soltos. Depois a cena é repetida em câmera lenta, com o contador 'marcando cinco segundos reais' em um mostrador pequeno no canto."
+      },
+      "sfx": [
+        "whoosh",
+        "tic_relogio",
+        "batida_suspense"
+      ],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "agua",
+      "startFrame": 1020,
+      "durationInFrames": 300,
+      "narration": "Até a água ficaria estranha. Sem a gravidade puxando as gotas para baixo, elas poderiam formar pequenas bolhas flutuantes. Parece divertido, né?",
+      "onScreenText": "GOTAS VIRAM BOLHAS",
+      "visual": {
+        "background": "rua_bairro_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "alcancando",
+            "expression": "surpresa"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Um copo inclinado numa mesinha de quiosque libera gotas que viram esferas chapadas e flutuam. Nico tenta pegar uma delas, gira desajeitado no ar e acaba de cabeça para baixo. As esferas refletem um brilho simples em cor chapada, sem degradê e sem blur. O contador corre de 4 para 2. Em 'Parece divertido, né?' Nico olha para a câmera com ironia."
+      },
+      "sfx": [
+        "bolhas",
+        "pop_contagem",
+        "pop_contagem"
+      ],
+      "music": "base_suave"
+    },
+    {
+      "id": "terra",
+      "startFrame": 1320,
+      "durationInFrames": 405,
+      "narration": "Mas calma! Os oceanos não sairiam voando para o espaço em apenas cinco segundos. O comportamento da água e do ar começaria a mudar, mas os efeitos dependeriam de muitos fatores.",
+      "onScreenText": "OS OCEANOS NÃO FOGEM EM 5 SEGUNDOS",
+      "visual": {
+        "background": "terra_espaco",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "parado",
+            "expression": "neutro",
+            "scale": "inserto_pequeno"
+          }
+        ],
+        "camera": "plano_aberto",
+        "action": "A câmera se afasta rápido e mostra a Terra como um disco chapado com oceanos e uma faixa fina de atmosfera. Setas curtas, discretas e com tamanhos diferentes apontam para cima nos oceanos e na atmosfera, mostrando que o movimento só começa, sem explosão e sem a água saindo do planeta. Pequenas ondas e nuvens se mexem de leve. Nico, pequeno no canto, observa. O contador corre de 2 para 1."
+      },
+      "sfx": [
+        "whoosh",
+        "tic_relogio"
+      ],
+      "music": "suspensa_sem_batida"
+    },
+    {
+      "id": "volta",
+      "startFrame": 1725,
+      "durationInFrames": 345,
+      "narration": "E quando a gravidade voltasse? Tudo que tivesse se afastado do chão poderia começar a cair. Dependendo da altura, esses cinco segundos poderiam terminar muito mal!",
+      "onScreenText": "A GRAVIDADE VOLTA",
+      "footerText": "É ANIMAÇÃO. NÃO REPRODUZA.",
+      "visual": {
+        "background": "rua_bairro_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "caindo",
+            "expression": "medo"
+          }
+        ],
+        "camera": "plano_aberto",
+        "action": "O contador chega a 0 junto com 'E quando a gravidade voltasse?'. Chinelos, guarda-chuva, boné e as esferas de água despencam. Nico cai de braços abertos, com boca aberta e linhas de movimento (grito só visual, sem áudio de voz), e aterrissa num monte de almofadas de uma loja de sofá genérica na calçada, levantando uma nuvem de poeira em formas chapadas. Em 'terminar muito mal' a câmera faz um pequeno tremor."
+      },
+      "sfx": [
+        "whoosh",
+        "estalo",
+        "pof_almofada"
+      ],
+      "music": "tensao_leve"
+    },
+    {
+      "id": "fecho",
+      "startFrame": 2070,
+      "durationInFrames": 330,
+      "narration": "Então, talvez cinco segundos sem gravidade não pareçam muita coisa... até você precisar voltar para o chão! E você? Arriscaria?",
+      "onScreenText": "VOCÊ ARRISCARIA? COMENTA.",
+      "visual": {
+        "background": "rua_bairro_dia",
+        "characters": [
+          {
+            "id": "nico",
+            "pose": "sentado",
+            "expression": "vergonha"
+          }
+        ],
+        "camera": "plano_medio",
+        "action": "Nico sentado entre as almofadas, assustado. Olha para a câmera e levanta o sorvete, agora completamente derretido e pingando em cores chapadas, com expressão de resignação. Nos últimos 20 frames, corte seco de volta ao enquadramento do frame 0: Nico andando pela rua, sorvete inteiro, contador congelado em '5', para o loop encaixar."
+      },
+      "sfx": [
+        "gota",
+        "whoosh",
+        "silencio_1s"
+      ],
+      "music": "leve_divertida"
+    }
+  ]
+}
