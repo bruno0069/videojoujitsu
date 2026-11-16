@@ -91,6 +91,10 @@ export const SFX: Record<string, { file: string | null; loop: boolean; volume: n
   // ep09 (episódio 8, água)
   bolhas: { file: "audio/sfx/bolhas.wav", loop: false, volume: audio.sfxVolume * 0.7 },
   agua_ambiente: { file: "audio/sfx/agua_ambiente.wav", loop: true, volume: audio.sfxVolume * 0.35 },
+  // ep10 (episódio 9, gravidade)
+  tic: { file: "audio/sfx/tic.wav", loop: false, volume: audio.sfxVolume * 0.9 },
+  pof_almofada: { file: "audio/sfx/pof_almofada.wav", loop: false, volume: audio.sfxVolume * 1.1 },
+  gota: { file: "audio/sfx/gota.wav", loop: false, volume: audio.sfxVolume * 0.7 },
   // ep07 v4: cauda da trilha no rabo final (toca uma vez; "loop" só para durar até o fim da cena)
   energia_queda_cauda: { file: "audio/sfx/energia_queda_cauda.wav", loop: true, volume: audio.sfxVolume * 1.2 },
 };

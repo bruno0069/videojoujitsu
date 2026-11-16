@@ -1,0 +1,405 @@
+{
+ "_sobre": "Direção do ep10 (episódio 9, gravidade). Cues por palavra da narração gravada (src/audio/ep10-words.json). Cenários em src/components/backgrounds/Ep10.tsx; o Nico é desenhado dentro do cenário. ContadorGravidade: 5 congelado nas cenas 1–2; corre de 5 a 0 nas cenas 3–5 (anel = mostrador lento) e chega a 0 em 'gravidade' de 'E quando a gravidade voltasse?'; some na cena 7 e volta em 5 no corte final (loop).",
+ "limitesFixos": true,
+ "legendaDe": 0,
+ "legendaSemPontuacao": true,
+ "legendaPlaca": true,
+ "legendaFonte": 60,
+ "legendaCentroY": 1320,
+ "duckGanho": 0.2,
+ "legendaDestaques": [
+  "gravidade",
+  "oceanos",
+  "problemão",
+  "bolhas",
+  "cair",
+  "Arriscaria"
+ ],
+ "cenas": {
+  "gancho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    }
+   ],
+   "fundo": {
+    "modo": 1,
+    "congela": "desaparecesse",
+    "grande": "desaparecesse",
+    "voando": "voando",
+    "carros": "flutuariam",
+    "oceanos": "oceanos",
+    "cont0": 5,
+    "contDe": 0
+   },
+   "texto": {
+    "de": 6,
+    "mostrar": true,
+    "topo": 432
+   },
+   "sfx": {
+    "silencio_1s": 0,
+    "whoosh": "desaparecesse-3",
+    "tic_relogio": {
+     "de": "cinco",
+     "ate": "segundos$"
+    }
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "oceanos"
+    },
+    {
+     "id": "estalo",
+     "de": "desaparecesse"
+    }
+   ]
+  },
+  "surpresa": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:387,1000",
+     "zoom": [
+      1,
+      1.06
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    }
+   ],
+   "fundo": {
+    "modo": 2,
+    "pula": "surpresa",
+    "seta": "voce",
+    "baixo": "volta",
+    "camera": "salto",
+    "problemao": "problemao",
+    "congelaAntes": 92,
+    "cont0": 5,
+    "contDe": 0
+   },
+   "texto": {
+    "de": "sem",
+    "mostrar": true,
+    "topo": 432
+   },
+   "sfx": {
+    "pop_contagem": "surpresa",
+    "estalo": "lancado",
+    "whoosh": "problemao-4"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "voce"
+    }
+   ]
+  },
+  "todo_mundo": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,1225",
+     "zoom": [
+      1,
+      0.72
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    }
+   ],
+   "fundo": {
+    "modo": 3,
+    "y0": 95,
+    "desce": "continuariam",
+    "pessoas": "pessoas",
+    "objetos": "objetos",
+    "congelaAntes": 92,
+    "cont0": 5,
+    "contDe": 0,
+    "trocas": [
+     "subindo"
+    ],
+    "valores": [
+     4
+    ],
+    "anelDe": 0,
+    "anelAte": 345,
+    "anelIni": 0,
+    "anelFim": 0.3236
+   },
+   "texto": {
+    "de": "todo",
+    "ate": "pessoas",
+    "mostrar": true,
+    "topo": 432
+   },
+   "sfx": {
+    "whoosh": 0,
+    "tic_relogio": {
+     "de": "tempo",
+     "ate": "subindo"
+    },
+    "batida_suspense": "objetos"
+   },
+   "efeitos": [
+    {
+     "id": "tic",
+     "de": "subindo"
+    },
+    {
+     "id": "pop_contagem",
+     "de": "pessoas"
+    }
+   ]
+  },
+  "agua": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:450,900",
+     "zoom": [
+      1,
+      1.05
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    }
+   ],
+   "fundo": {
+    "modo": 4,
+    "copo": "ficaria",
+    "gotas": "gotas",
+    "pega": "elas",
+    "gira": "formar",
+    "giraAte": "flutuantes",
+    "ironia": "parece",
+    "congelaAntes": 92,
+    "cont0": 4,
+    "contDe": 0,
+    "trocas": [
+     "gotas",
+     "divertido"
+    ],
+    "valores": [
+     3,
+     2
+    ],
+    "anelDe": 0,
+    "anelAte": 300,
+    "anelIni": 0.3236,
+    "anelFim": 0.6051
+   },
+   "texto": {
+    "de": "gotas",
+    "mostrar": true,
+    "topo": 432
+   },
+   "sfx": {
+    "bolhas": "gotas+6",
+    "pop_contagem": "formar"
+   },
+   "efeitos": [
+    {
+     "id": "pop_contagem",
+     "de": "bolhas"
+    },
+    {
+     "id": "tic",
+     "de": "gotas"
+    },
+    {
+     "id": "tic",
+     "de": "divertido"
+    }
+   ]
+  },
+  "terra": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,930",
+     "zoom": [
+      2.3,
+      1
+     ],
+     "personagens": [],
+     "cenario": "terra_espaco"
+    },
+    {
+     "de": "os",
+     "enquadramento": "aberto",
+     "foco": "xy:540,930",
+     "zoom": [
+      1,
+      1.04
+     ],
+     "personagens": [],
+     "cenario": "terra_espaco"
+    }
+   ],
+   "fundo": {
+    "setas": "comecaria",
+    "cont0": 2,
+    "trocas": [
+     "comportamento"
+    ],
+    "valores": [
+     1
+    ],
+    "anelDe": 0,
+    "anelAte": 405,
+    "anelIni": 0.6051,
+    "anelFim": 0.985
+   },
+   "texto": {
+    "de": "oceanos",
+    "mostrar": true,
+    "topo": 432
+   },
+   "sfx": {
+    "whoosh": 0,
+    "tic_relogio": {
+     "de": "apenas",
+     "ate": "segundos$"
+    }
+   },
+   "efeitos": [
+    {
+     "id": "tic",
+     "de": "comportamento"
+    }
+   ]
+  },
+  "volta": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:540,1225",
+     "zoom": [
+      0.82,
+      0.82
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    }
+   ],
+   "fundo": {
+    "modo": 6,
+    "cai": "tudo",
+    "pousa": "cair+6",
+    "zonzo": "dependendo",
+    "cont0": 1,
+    "contDe": 0,
+    "trocas": [
+     "gravidade"
+    ],
+    "valores": [
+     0
+    ],
+    "anelDe": 0,
+    "anelAte": "gravidade",
+    "anelIni": 0.985,
+    "anelFim": 1
+   },
+   "texto": {
+    "de": "gravidade",
+    "mostrar": true,
+    "topo": 495
+   },
+   "tremidas": [
+    {
+     "de": "terminar",
+     "frames": 16,
+     "forca": 12
+    }
+   ],
+   "sfx": {
+    "whoosh": "tudo",
+    "estalo": "gravidade",
+    "pof_almofada": "cair+6"
+   },
+   "efeitos": [
+    {
+     "id": "tic",
+     "de": "gravidade"
+    },
+    {
+     "id": "batida_suspense",
+     "de": "terminar"
+    }
+   ]
+  },
+  "fecho": {
+   "planos": [
+    {
+     "de": 0,
+     "enquadramento": "aberto",
+     "foco": "xy:830,1050",
+     "zoom": [
+      1.15,
+      1.15
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    },
+    {
+     "de": 310,
+     "enquadramento": "aberto",
+     "foco": "xy:540,960",
+     "zoom": [
+      1,
+      1
+     ],
+     "personagens": [],
+     "cenario": "rua_bairro_dia"
+    }
+   ],
+   "fundo": {
+    "modo": 7,
+    "ergue": "chao",
+    "camera": "voce",
+    "corte": 310,
+    "fim": 329,
+    "cont0": 5,
+    "contDe": 310
+   },
+   "texto": {
+    "de": "e",
+    "ate": 306,
+    "mostrar": true,
+    "topo": 432
+   },
+   "sfx": {
+    "gota": "chao",
+    "whoosh": 306,
+    "silencio_1s": 0
+   },
+   "efeitos": [
+    {
+     "id": "gota",
+     "de": "coisa"
+    },
+    {
+     "id": "gota",
+     "de": "arriscaria"
+    }
+   ]
+  }
+ }
+}
