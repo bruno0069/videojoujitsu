@@ -1,5 +1,6 @@
 import React from "react";
-import { Composition, Folder } from "remotion";
+import { Composition, Folder, Still } from "remotion";
+import { CharacterSheet } from "./characters/Sheet";
 import { PrimeirosSocorros } from "./Video";
 import { Cena1 } from "./scenes/Cena1";
 import { Cena2 } from "./scenes/Cena2";
@@ -24,6 +25,7 @@ export const RemotionRoot: React.FC = () => (
         <Composition key={id} id={id} component={comp} width={1920} height={1080} fps={FPS} durationInFrames={sceneFrames(getScene(key))} />
       ))}
     </Folder>
+    <Still id="Personagens" component={CharacterSheet} width={1920} height={1080} />
     <Composition
       id="PrimeirosSocorros"
       component={PrimeirosSocorros}
