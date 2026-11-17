@@ -1,6 +1,7 @@
 import React from "react";
 import { C } from "../theme";
 import { FirstAidCross } from "../icons";
+import { Bia } from "../characters/Bia";
 import { cueFrame, getScene } from "../timeline";
 import { Reveal, SceneBg, Subtitles, useIn } from "../ui";
 
@@ -21,7 +22,7 @@ export const Cena1: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 90,
+          top: 56,
           left: 0,
           right: 0,
           display: "flex",
@@ -31,9 +32,9 @@ export const Cena1: React.FC = () => {
         }}
       >
         <div style={{ scale: `${0.6 + crossIn * 0.4}`, opacity: crossIn }}>
-          <FirstAidCross size={150} bg={C.white} fg={C.green} />
+          <FirstAidCross size={112} bg={C.white} fg={C.green} />
         </div>
-        <Reveal from={6} style={{ marginTop: 28, fontSize: 34, fontWeight: 600, letterSpacing: 4, opacity: 0.9 }}>
+        <Reveal from={6} style={{ marginTop: 22, fontSize: 34, fontWeight: 600, letterSpacing: 4, opacity: 0.9 }}>
           TÉCNICO EM SEGURANÇA DO TRABALHO
         </Reveal>
         <Reveal from={10}>
@@ -47,9 +48,9 @@ export const Cena1: React.FC = () => {
         from={cueFrame(scene, 1)}
         style={{
           position: "absolute",
-          left: 360,
-          width: 1200,
-          top: 545,
+          left: 130,
+          width: 1160,
+          top: 540,
         }}
       >
         <div
@@ -74,6 +75,10 @@ export const Cena1: React.FC = () => {
           <div style={{ fontWeight: 600 }}>Realengo</div>
         </div>
       </Reveal>
+      <Reveal from={cueFrame(scene, 1)} dy={0} style={{ position: "absolute", left: 1365, top: 445, width: 400, height: 400, borderRadius: 200, background: "rgba(255,255,255,0.92)" }}>
+        <div />
+      </Reveal>
+      <Bia pose="acenando" x={1565} y={835} height={400} enterAt={cueFrame(scene, 1)} enterFrom="right" />
       <Subtitles scene={scene} />
     </SceneBg>
   );

@@ -18,8 +18,8 @@ const STYLE: BodyStyle = {
 
 const POSES: Record<TeoPose, { left: ArmPose; right: ArmPose }> = {
   parado: { left: { upper: 8, fore: -4 }, right: { upper: -8, fore: 4 } },
-  // Mão (lado direito da tela) erguida à frente, com brilho vermelho simples.
-  mao_ferida: { left: { upper: -28, fore: -92 }, right: { upper: -24, fore: 128, glow: true } },
+  // Mão (lado direito da tela) estendida para o lado, com brilho vermelho simples.
+  mao_ferida: { left: { upper: 8, fore: -4 }, right: { upper: -62, fore: -28, glow: true } },
   tossindo: { left: { upper: -55, fore: -132 }, right: { upper: -8, fore: 4 } },
   sentado_repouso: { left: { upper: -4, fore: 6 }, right: { upper: 4, fore: -6 } },
   polegar_ok: { left: { upper: 8, fore: -4 }, right: { upper: -35, fore: -145, hand: "thumb" } },

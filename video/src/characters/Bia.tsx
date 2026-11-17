@@ -20,13 +20,13 @@ const STYLE: BodyStyle = {
   blinkOffset: 47,
 };
 
-const usePose = (pose: BiaPose): { left: ArmPose; right: ArmPose } => {
+const usePose = (pose: BiaPose, aim: number): { left: ArmPose; right: ArmPose } => {
   const frame = useCurrentFrame();
   switch (pose) {
     case "acenando":
       return { left: { upper: 8, fore: -4 }, right: { upper: -150, fore: 20 + Math.sin(frame / 4) * 22 } };
     case "apontando":
-      return { left: { upper: 8, fore: -4 }, right: { upper: -92, fore: -4, hand: "point" } };
+      return { left: { upper: 8, fore: -4 }, right: { upper: -90 - aim, fore: 0, hand: "point" } };
     case "ajudando":
       return { left: { upper: 8, fore: -4 }, right: { upper: -62, fore: -28 } };
     case "com_respirador":
@@ -36,12 +36,13 @@ const usePose = (pose: BiaPose): { left: ArmPose; right: ArmPose } => {
   }
 };
 
-export const BiaBody: React.FC<{ pose?: BiaPose; expressao?: Expressao; headShake?: boolean }> = ({
+export const BiaBody: React.FC<{ pose?: BiaPose; expressao?: Expressao; headShake?: boolean; aim?: number }> = ({
   pose = "acenando",
   expressao = "neutra",
   headShake,
+  aim = 2,
 }) => {
-  const p = usePose(pose);
+  const p = usePose(pose, aim);
   return (
     <Body
       style={STYLE}
@@ -55,9 +56,9 @@ export const BiaBody: React.FC<{ pose?: BiaPose; expressao?: Expressao; headShak
 };
 
 export const Bia: React.FC<
-  { pose?: BiaPose; expressao?: Expressao; headShake?: boolean } & Omit<React.ComponentProps<typeof CharacterFrame>, "children">
-> = ({ pose, expressao, headShake, ...frame }) => (
+  { pose?: BiaPose; expressao?: Expressao; headShake?: boolean; aim?: number } & Omit<React.ComponentProps<typeof CharacterFrame>, "children">
+> = ({ pose, expressao, headShake, aim, ...frame }) => (
   <CharacterFrame breathOffset={20} {...frame}>
-    <BiaBody pose={pose} expressao={expressao} headShake={headShake} />
+    <BiaBody pose={pose} expressao={expressao} headShake={headShake} aim={aim} />
   </CharacterFrame>
 );

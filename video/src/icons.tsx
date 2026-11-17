@@ -212,3 +212,28 @@ export const useLoop = (period: number) => {
   const f = useCurrentFrame();
   return interpolate(f % period, [0, period], [0, 1]);
 };
+
+/** Torneira na parede; `flow` 0→1 controla a água (gotas descendo). */
+export const Faucet: React.FC<{ flow: number; streamLength: number; style?: React.CSSProperties }> = ({ flow, streamLength, style }) => {
+  const f = useCurrentFrame();
+  const w = 200;
+  const h = 120 + streamLength;
+  return (
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{ overflow: "visible", ...style }}>
+      <rect x={110} y={10} width={90} height={34} rx={8} fill="#90A4AE" />
+      <rect x={60} y={14} width={70} height={26} rx={13} fill="#B0BEC5" />
+      <rect x={54} y={20} width={30} height={60} rx={12} fill="#B0BEC5" />
+      <rect x={112} y={0} width={14} height={18} rx={4} fill={C.red} />
+      <rect x={100} y={-8} width={38} height={10} rx={5} fill={C.red} />
+      {flow > 0 ? (
+        <g opacity={flow}>
+          <rect x={59} y={78} width={20} height={streamLength * flow} rx={10} fill="#64B5F6" opacity={0.75} />
+          {[0, 1, 2, 3, 4].map((i) => {
+            const y = 80 + (((f * 6 + i * (streamLength / 5)) % streamLength) * flow);
+            return <ellipse key={i} cx={69} cy={y} rx={5} ry={9} fill="#E3F2FD" opacity={0.9} />;
+          })}
+        </g>
+      ) : null}
+    </svg>
+  );
+};

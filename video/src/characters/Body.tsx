@@ -46,6 +46,37 @@ export type BodyProps = {
 const UPPER = 52;
 const FORE = 46;
 
+
+/**
+ * Mãos com gesto, desenhadas em coordenadas de tela com o punho na origem.
+ * thumb: punho fechado com os dedos dobrados à vista e o polegar curto na lateral.
+ * point: indicador estendido para a direita, polegar por cima, demais dedos dobrados.
+ */
+const Hand: React.FC<{ kind: "thumb" | "point"; gloves: string }> = ({ kind, gloves }) => {
+  const knuckle = "#5A5F63";
+  if (kind === "thumb") {
+    return (
+      <g>
+        <rect x={-13} y={-18} width={9} height={18} rx={4.5} fill={gloves} transform="rotate(-10 -8 -2)" />
+        <rect x={-12} y={-6} width={22} height={26} rx={7} fill={gloves} />
+        {[0, 1, 2, 3].map((i) => (
+          <rect key={i} x={-1} y={-4 + i * 6} width={17} height={4.6} rx={2.3} fill={knuckle} />
+        ))}
+      </g>
+    );
+  }
+  return (
+    <g>
+      <rect x={-12} y={-10} width={22} height={21} rx={7} fill={gloves} />
+      <rect x={4} y={-10} width={24} height={7.5} rx={3.75} fill={gloves} />
+      <rect x={-4} y={-15} width={13} height={6.5} rx={3.25} fill={gloves} transform="rotate(12 2 -12)" />
+      {[0, 1, 2].map((i) => (
+        <rect key={i} x={5} y={-1 + i * 5} width={9} height={4} rx={2} fill={knuckle} />
+      ))}
+    </g>
+  );
+};
+
 const Arm: React.FC<{ x: number; y: number; pose: ArmPose; color: string; gloves: string }> = ({ x, y, pose, color, gloves }) => {
   const frame = useCurrentFrame();
   const glowO = 0.45 + Math.sin(frame / 6) * 0.2;
@@ -60,9 +91,14 @@ const Arm: React.FC<{ x: number; y: number; pose: ArmPose; color: string; gloves
             <circle cx={0} cy={FORE + 2} r={17} fill="none" stroke="#FF3B30" strokeWidth={3} opacity={glowO + 0.2} />
           </>
         ) : null}
-        {pose.hand === "point" ? <rect x={-3} y={FORE + 4} width={6} height={18} rx={3} fill={gloves} /> : null}
-        {pose.hand === "thumb" ? <rect x={-3.5} y={FORE + 2} width={7} height={20} rx={3.5} fill={gloves} /> : null}
-        <circle cx={0} cy={FORE + 2} r={11} fill={gloves} />
+        {pose.hand === "point" || pose.hand === "thumb" ? (
+          // A mão é desenhada em coordenadas de tela (contra-rotação), para ficar sempre legível.
+          <g transform={`translate(0 ${FORE + 2}) rotate(${-(pose.upper + pose.fore)})`}>
+            <Hand kind={pose.hand} gloves={gloves} />
+          </g>
+        ) : (
+          <circle cx={0} cy={FORE + 2} r={11} fill={gloves} />
+        )}
       </g>
     </g>
   );
