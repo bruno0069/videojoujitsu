@@ -1,0 +1,209 @@
+{
+ "rate": "+0%",
+ "scenes": [
+  {
+   "id": "cena1",
+   "audio": "voz/cena1.mp3",
+   "audioDuration": 22.56,
+   "captions": [
+    {
+     "text": "Olá!",
+     "start": 0.1,
+     "end": 1.438,
+     "spoken": "Olá!"
+    },
+    {
+     "text": "Meu nome é Caio Raphael de Souza Figueiredo, R.A. 26966498-9, polo Realengo.",
+     "start": 1.387,
+     "end": 14.012,
+     "spoken": "Meu nome é Caio Raphael de Souza Figueiredo, erre á: dois, seis, nove, seis, seis, quatro, nove, oito, traço, nove; polo Realengo."
+    },
+    {
+     "text": "Neste vídeo, vou falar sobre a importância dos primeiros socorros no trabalho, com foco em queimaduras e inalação de gases tóxicos.",
+     "start": 14.012,
+     "end": 22.5,
+     "spoken": "Neste vídeo, vou falar sobre a importância dos primeiros socorros no trabalho, com foco em queimaduras e inalação de gases tóxicos."
+    }
+   ]
+  },
+  {
+   "id": "cena2",
+   "audio": "voz/cena2.mp3",
+   "audioDuration": 33.528,
+   "captions": [
+    {
+     "text": "Primeiros socorros são os cuidados iniciais prestados a quem sofreu um acidente ou passou mal, antes da chegada do atendimento especializado.",
+     "start": 0.1,
+     "end": 8.75,
+     "spoken": "Primeiros socorros são os cuidados iniciais prestados a quem sofreu um acidente ou passou mal, antes da chegada do atendimento especializado."
+    },
+    {
+     "text": "Eles ajudam a preservar vidas, evitar que as lesões piorem e manter a vítima segura.",
+     "start": 8.7,
+     "end": 14.625,
+     "spoken": "Eles ajudam a preservar vidas, evitar que as lesões piorem e manter a vítima segura."
+    },
+    {
+     "text": "Em qualquer emergência, lembre-se de três passos: Proteger, Avisar e Socorrer.",
+     "start": 14.625,
+     "end": 20.637,
+     "spoken": "Em qualquer emergência, lembre-se de três passos: Proteger, Avisar e Socorrer."
+    },
+    {
+     "text": "Primeiro, garanta que a área está segura.",
+     "start": 20.637,
+     "end": 23.95,
+     "spoken": "Primeiro, garanta que a área está segura."
+    },
+    {
+     "text": "Depois, acione a brigada ou a equipe de emergência da empresa e o SAMU, pelo 192.",
+     "start": 23.95,
+     "end": 30.625,
+     "spoken": "Depois, acione a brigada ou a equipe de emergência da empresa e o SAMU, pelo cento e noventa e dois."
+    },
+    {
+     "text": "Só então, preste o socorro.",
+     "start": 30.625,
+     "end": 33.462,
+     "spoken": "Só então, preste o socorro."
+    }
+   ]
+  },
+  {
+   "id": "cena3",
+   "audio": "voz/cena3.mp3",
+   "audioDuration": 50.736,
+   "captions": [
+    {
+     "text": "Nas queimaduras, afaste a vítima da fonte de calor, desde que isso não ofereça risco a quem socorre.",
+     "start": 0.1,
+     "end": 7.013,
+     "spoken": "Nas queimaduras, afaste a vítima da fonte de calor, desde que isso não ofereça risco a quem socorre."
+    },
+    {
+     "text": "Em seguida, resfrie a região com água corrente limpa, fria ou em temperatura ambiente, por 10 a 20 minutos.",
+     "start": 6.963,
+     "end": 14.562,
+     "spoken": "Em seguida, resfrie a região com água corrente limpa, fria ou em temperatura ambiente, por dez a vinte minutos."
+    },
+    {
+     "text": "Retire anéis, relógios e pulseiras próximos à área, antes que ocorra o inchaço.",
+     "start": 14.562,
+     "end": 20.45,
+     "spoken": "Retire anéis, relógios e pulseiras próximos à área, antes que ocorra o inchaço."
+    },
+    {
+     "text": "Se a roupa estiver grudada na pele, não a puxe.",
+     "start": 20.45,
+     "end": 24.363,
+     "spoken": "Se a roupa estiver grudada na pele, não a puxe."
+    },
+    {
+     "text": "Não use gelo, pasta de dente, manteiga ou receitas caseiras, e não estoure as bolhas.",
+     "start": 24.363,
+     "end": 30.712,
+     "spoken": "Não use gelo, pasta de dente, manteiga ou receitas caseiras, e não estoure as bolhas."
+    },
+    {
+     "text": "Se a queimadura for causada por produto químico, lave com água em abundância, retire a roupa contaminada e informe à equipe de emergência qual é o produto.",
+     "start": 30.712,
+     "end": 40.337,
+     "spoken": "Se a queimadura for causada por produto químico, lave com água em abundância, retire a roupa contaminada e informe à equipe de emergência qual é o produto."
+    },
+    {
+     "text": "Em queimaduras graves, como as de terceiro grau, ou extensas, acione imediatamente o serviço de emergência, cubra a área com um pano limpo e aguarde o atendimento.",
+     "start": 40.337,
+     "end": 50.675,
+     "spoken": "Em queimaduras graves, como as de terceiro grau, ou extensas, acione imediatamente o serviço de emergência, cubra a área com um pano limpo e aguarde o atendimento."
+    }
+   ]
+  },
+  {
+   "id": "cena4",
+   "audio": "voz/cena4.mp3",
+   "audioDuration": 50.28,
+   "captions": [
+    {
+     "text": "Outro acidente possível na indústria é a inalação de gases tóxicos, como o cloro, o monóxido de carbono ou o gás sulfídrico.",
+     "start": 0.1,
+     "end": 8.45,
+     "spoken": "Outro acidente possível na indústria é a inalação de gases tóxicos, como o cloro, o monóxido de carbono ou o gás sulfídrico."
+    },
+    {
+     "text": "Os sinais incluem tosse, irritação nos olhos e dificuldade para respirar, podendo chegar à perda de consciência.",
+     "start": 8.4,
+     "end": 15.725,
+     "spoken": "Os sinais incluem tosse, irritação nos olhos e dificuldade para respirar, podendo chegar à perda de consciência."
+    },
+    {
+     "text": "Acione a equipe de emergência e siga o plano de evacuação.",
+     "start": 15.725,
+     "end": 19.688,
+     "spoken": "Acione a equipe de emergência e siga o plano de evacuação."
+    },
+    {
+     "text": "Nunca entre em uma área contaminada sem treinamento e equipamento adequado, como o respirador autônomo, pois isso pode transformar você em mais uma vítima.",
+     "start": 19.688,
+     "end": 29.163,
+     "spoken": "Nunca entre em uma área contaminada sem treinamento e equipamento adequado, como o respirador autônomo, pois isso pode transformar você em mais uma vítima."
+    },
+    {
+     "text": "Quando a vítima estiver em local seguro, com ar fresco, mantenha-a em repouso.",
+     "start": 29.163,
+     "end": 34.688,
+     "spoken": "Quando a vítima estiver em local seguro, com ar fresco, mantenha-a em repouso."
+    },
+    {
+     "text": "Se houve contato com os olhos, lave-os com água corrente.",
+     "start": 34.688,
+     "end": 38.95,
+     "spoken": "Se houve contato com os olhos, lave-os com água corrente."
+    },
+    {
+     "text": "Informe à equipe qual é o gás envolvido.",
+     "start": 38.95,
+     "end": 42.163,
+     "spoken": "Informe à equipe qual é o gás envolvido."
+    },
+    {
+     "text": "E atenção: mesmo que a vítima melhore, ela deve ser avaliada por um médico, pois os sintomas podem piorar horas depois.",
+     "start": 42.163,
+     "end": 50.212,
+     "spoken": "E atenção: mesmo que a vítima melhore, ela deve ser avaliada por um médico, pois os sintomas podem piorar horas depois."
+    }
+   ]
+  },
+  {
+   "id": "cena5",
+   "audio": "voz/cena5.mp3",
+   "audioDuration": 20.496,
+   "captions": [
+    {
+     "text": "Para finalizar: os primeiros socorros são fundamentais para proteger a vida e a saúde dos trabalhadores.",
+     "start": 0.1,
+     "end": 7.125,
+     "spoken": "Para finalizar: os primeiros socorros são fundamentais para proteger a vida e a saúde dos trabalhadores."
+    },
+    {
+     "text": "Conheça os procedimentos de emergência, use corretamente os EPIs e participe dos treinamentos da empresa.",
+     "start": 7.075,
+     "end": 13.95,
+     "spoken": "Conheça os procedimentos de emergência, use corretamente os é-pê-ís e participe dos treinamentos da empresa."
+    },
+    {
+     "text": "Prevenção e segurança são responsabilidade de todos.",
+     "start": 13.95,
+     "end": 18.0,
+     "spoken": "Prevenção e segurança são responsabilidade de todos."
+    },
+    {
+     "text": "Obrigado pela atenção!",
+     "start": 18.0,
+     "end": 20.425,
+     "spoken": "Obrigado pela atenção!"
+    }
+   ]
+  }
+ ],
+ "total": 179.6
+}

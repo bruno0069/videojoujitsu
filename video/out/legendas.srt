@@ -1,0 +1,111 @@
+1
+00:00:00,100 --> 00:00:01,387
+Olá!
+
+2
+00:00:01,387 --> 00:00:14,012
+Meu nome é Caio Raphael de Souza Figueiredo, R.A. 26966498-9, polo Realengo.
+
+3
+00:00:14,012 --> 00:00:22,500
+Neste vídeo, vou falar sobre a importância dos primeiros socorros no trabalho, com foco em queimaduras e inalação de gases tóxicos.
+
+4
+00:00:23,067 --> 00:00:31,667
+Primeiros socorros são os cuidados iniciais prestados a quem sofreu um acidente ou passou mal, antes da chegada do atendimento especializado.
+
+5
+00:00:31,667 --> 00:00:37,592
+Eles ajudam a preservar vidas, evitar que as lesões piorem e manter a vítima segura.
+
+6
+00:00:37,592 --> 00:00:43,604
+Em qualquer emergência, lembre-se de três passos: Proteger, Avisar e Socorrer.
+
+7
+00:00:43,604 --> 00:00:46,917
+Primeiro, garanta que a área está segura.
+
+8
+00:00:46,917 --> 00:00:53,592
+Depois, acione a brigada ou a equipe de emergência da empresa e o SAMU, pelo 192.
+
+9
+00:00:53,592 --> 00:00:56,429
+Só então, preste o socorro.
+
+10
+00:00:57,000 --> 00:01:03,863
+Nas queimaduras, afaste a vítima da fonte de calor, desde que isso não ofereça risco a quem socorre.
+
+11
+00:01:03,863 --> 00:01:11,462
+Em seguida, resfrie a região com água corrente limpa, fria ou em temperatura ambiente, por 10 a 20 minutos.
+
+12
+00:01:11,462 --> 00:01:17,350
+Retire anéis, relógios e pulseiras próximos à área, antes que ocorra o inchaço.
+
+13
+00:01:17,350 --> 00:01:21,263
+Se a roupa estiver grudada na pele, não a puxe.
+
+14
+00:01:21,263 --> 00:01:27,612
+Não use gelo, pasta de dente, manteiga ou receitas caseiras, e não estoure as bolhas.
+
+15
+00:01:27,612 --> 00:01:37,237
+Se a queimadura for causada por produto químico, lave com água em abundância, retire a roupa contaminada e informe à equipe de emergência qual é o produto.
+
+16
+00:01:37,237 --> 00:01:47,575
+Em queimaduras graves, como as de terceiro grau, ou extensas, acione imediatamente o serviço de emergência, cubra a área com um pano limpo e aguarde o atendimento.
+
+17
+00:01:48,167 --> 00:01:56,467
+Outro acidente possível na indústria é a inalação de gases tóxicos, como o cloro, o monóxido de carbono ou o gás sulfídrico.
+
+18
+00:01:56,467 --> 00:02:03,792
+Os sinais incluem tosse, irritação nos olhos e dificuldade para respirar, podendo chegar à perda de consciência.
+
+19
+00:02:03,792 --> 00:02:07,755
+Acione a equipe de emergência e siga o plano de evacuação.
+
+20
+00:02:07,755 --> 00:02:17,230
+Nunca entre em uma área contaminada sem treinamento e equipamento adequado, como o respirador autônomo, pois isso pode transformar você em mais uma vítima.
+
+21
+00:02:17,230 --> 00:02:22,755
+Quando a vítima estiver em local seguro, com ar fresco, mantenha-a em repouso.
+
+22
+00:02:22,755 --> 00:02:27,017
+Se houve contato com os olhos, lave-os com água corrente.
+
+23
+00:02:27,017 --> 00:02:30,230
+Informe à equipe qual é o gás envolvido.
+
+24
+00:02:30,230 --> 00:02:38,279
+E atenção: mesmo que a vítima melhore, ela deve ser avaliada por um médico, pois os sintomas podem piorar horas depois.
+
+25
+00:02:38,867 --> 00:02:45,842
+Para finalizar: os primeiros socorros são fundamentais para proteger a vida e a saúde dos trabalhadores.
+
+26
+00:02:45,842 --> 00:02:52,717
+Conheça os procedimentos de emergência, use corretamente os EPIs e participe dos treinamentos da empresa.
+
+27
+00:02:52,717 --> 00:02:56,767
+Prevenção e segurança são responsabilidade de todos.
+
+28
+00:02:56,767 --> 00:02:59,192
+Obrigado pela atenção!

@@ -1,0 +1,57 @@
+{
+  "scenes": [
+    {
+      "id": "cena1",
+      "sentences": [
+        { "display": "Olá!", "tts": "Olá!" },
+        { "display": "Meu nome é Caio Raphael de Souza Figueiredo, R.A. 26966498-9, polo Realengo.", "tts": "Meu nome é Caio Raphael de Souza Figueiredo, erre á: dois, seis, nove, seis, seis, quatro, nove, oito, traço, nove; polo Realengo." },
+        { "display": "Neste vídeo, vou falar sobre a importância dos primeiros socorros no trabalho, com foco em queimaduras e inalação de gases tóxicos.", "tts": "Neste vídeo, vou falar sobre a importância dos primeiros socorros no trabalho, com foco em queimaduras e inalação de gases tóxicos." }
+      ]
+    },
+    {
+      "id": "cena2",
+      "sentences": [
+        { "display": "Primeiros socorros são os cuidados iniciais prestados a quem sofreu um acidente ou passou mal, antes da chegada do atendimento especializado.", "tts": "Primeiros socorros são os cuidados iniciais prestados a quem sofreu um acidente ou passou mal, antes da chegada do atendimento especializado." },
+        { "display": "Eles ajudam a preservar vidas, evitar que as lesões piorem e manter a vítima segura.", "tts": "Eles ajudam a preservar vidas, evitar que as lesões piorem e manter a vítima segura." },
+        { "display": "Em qualquer emergência, lembre-se de três passos: Proteger, Avisar e Socorrer.", "tts": "Em qualquer emergência, lembre-se de três passos: Proteger, Avisar e Socorrer." },
+        { "display": "Primeiro, garanta que a área está segura.", "tts": "Primeiro, garanta que a área está segura." },
+        { "display": "Depois, acione a brigada ou a equipe de emergência da empresa e o SAMU, pelo 192.", "tts": "Depois, acione a brigada ou a equipe de emergência da empresa e o SAMU, pelo cento e noventa e dois." },
+        { "display": "Só então, preste o socorro.", "tts": "Só então, preste o socorro." }
+      ]
+    },
+    {
+      "id": "cena3",
+      "sentences": [
+        { "display": "Nas queimaduras, afaste a vítima da fonte de calor, desde que isso não ofereça risco a quem socorre.", "tts": "Nas queimaduras, afaste a vítima da fonte de calor, desde que isso não ofereça risco a quem socorre." },
+        { "display": "Em seguida, resfrie a região com água corrente limpa, fria ou em temperatura ambiente, por 10 a 20 minutos.", "tts": "Em seguida, resfrie a região com água corrente limpa, fria ou em temperatura ambiente, por dez a vinte minutos." },
+        { "display": "Retire anéis, relógios e pulseiras próximos à área, antes que ocorra o inchaço.", "tts": "Retire anéis, relógios e pulseiras próximos à área, antes que ocorra o inchaço." },
+        { "display": "Se a roupa estiver grudada na pele, não a puxe.", "tts": "Se a roupa estiver grudada na pele, não a puxe." },
+        { "display": "Não use gelo, pasta de dente, manteiga ou receitas caseiras, e não estoure as bolhas.", "tts": "Não use gelo, pasta de dente, manteiga ou receitas caseiras, e não estoure as bolhas." },
+        { "display": "Se a queimadura for causada por produto químico, lave com água em abundância, retire a roupa contaminada e informe à equipe de emergência qual é o produto.", "tts": "Se a queimadura for causada por produto químico, lave com água em abundância, retire a roupa contaminada e informe à equipe de emergência qual é o produto." },
+        { "display": "Em queimaduras graves, como as de terceiro grau, ou extensas, acione imediatamente o serviço de emergência, cubra a área com um pano limpo e aguarde o atendimento.", "tts": "Em queimaduras graves, como as de terceiro grau, ou extensas, acione imediatamente o serviço de emergência, cubra a área com um pano limpo e aguarde o atendimento." }
+      ]
+    },
+    {
+      "id": "cena4",
+      "sentences": [
+        { "display": "Outro acidente possível na indústria é a inalação de gases tóxicos, como o cloro, o monóxido de carbono ou o gás sulfídrico.", "tts": "Outro acidente possível na indústria é a inalação de gases tóxicos, como o cloro, o monóxido de carbono ou o gás sulfídrico." },
+        { "display": "Os sinais incluem tosse, irritação nos olhos e dificuldade para respirar, podendo chegar à perda de consciência.", "tts": "Os sinais incluem tosse, irritação nos olhos e dificuldade para respirar, podendo chegar à perda de consciência." },
+        { "display": "Acione a equipe de emergência e siga o plano de evacuação.", "tts": "Acione a equipe de emergência e siga o plano de evacuação." },
+        { "display": "Nunca entre em uma área contaminada sem treinamento e equipamento adequado, como o respirador autônomo, pois isso pode transformar você em mais uma vítima.", "tts": "Nunca entre em uma área contaminada sem treinamento e equipamento adequado, como o respirador autônomo, pois isso pode transformar você em mais uma vítima." },
+        { "display": "Quando a vítima estiver em local seguro, com ar fresco, mantenha-a em repouso.", "tts": "Quando a vítima estiver em local seguro, com ar fresco, mantenha-a em repouso." },
+        { "display": "Se houve contato com os olhos, lave-os com água corrente.", "tts": "Se houve contato com os olhos, lave-os com água corrente." },
+        { "display": "Informe à equipe qual é o gás envolvido.", "tts": "Informe à equipe qual é o gás envolvido." },
+        { "display": "E atenção: mesmo que a vítima melhore, ela deve ser avaliada por um médico, pois os sintomas podem piorar horas depois.", "tts": "E atenção: mesmo que a vítima melhore, ela deve ser avaliada por um médico, pois os sintomas podem piorar horas depois." }
+      ]
+    },
+    {
+      "id": "cena5",
+      "sentences": [
+        { "display": "Para finalizar: os primeiros socorros são fundamentais para proteger a vida e a saúde dos trabalhadores.", "tts": "Para finalizar: os primeiros socorros são fundamentais para proteger a vida e a saúde dos trabalhadores." },
+        { "display": "Conheça os procedimentos de emergência, use corretamente os EPIs e participe dos treinamentos da empresa.", "tts": "Conheça os procedimentos de emergência, use corretamente os é-pê-ís e participe dos treinamentos da empresa." },
+        { "display": "Prevenção e segurança são responsabilidade de todos.", "tts": "Prevenção e segurança são responsabilidade de todos." },
+        { "display": "Obrigado pela atenção!", "tts": "Obrigado pela atenção!" }
+      ]
+    }
+  ]
+}
